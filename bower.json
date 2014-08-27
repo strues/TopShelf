@@ -1,0 +1,32 @@
+{
+  "name": "tsGuild",
+  "version": "0.0.0",
+  "homepage": "https://github.com/strues/tsGuild",
+  "authors": [
+    "Steve Truesdell <steven.truesdell@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.2.0+1",
+    "angular": "~1.3.0-beta.19",
+    "angular-messages": "~1.3.0-build.3118+sha.2ae4f40",
+    "angular-animate": "~1.3.0-beta.19",
+    "angular-resource": "~1.3.0-beta.19",
+    "angular-cookies": "~1.3.0-beta.19",
+    "angular-sanitize": "~1.3.0-beta.19",
+    "angular-route": "~1.3.0-beta.19",
+    "angular-ui-router": "~0.2.10",
+    "modernizr": "~2.8.3"
+  },
+  "resolutions": {
+    "angular": "~1.3.0-beta.19"
+  }
+}
