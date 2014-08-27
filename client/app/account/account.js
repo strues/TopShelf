@@ -11,7 +11,8 @@ angular.module('app')
       .state('signup', {
         url: '/signup',
         templateUrl: 'app/account/signup/signup.tpl.html',
-        controller: 'SignupCtrl'
+        controller: 'SignupCtrl',
+        controllerAs: 'vm'
       })
       .state('settings', {
         url: '/settings',

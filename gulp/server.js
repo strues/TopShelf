@@ -1,13 +1,18 @@
 'use strict';
 
 var gulp = require('gulp');
-
 var browserSync = require('browser-sync');
+var nodemon = require('gulp-nodemon');
 var httpProxy = require('http-proxy');
+var server = require('gulp-express');
 
 /* This configuration allow you to configure browser sync to proxy your backend */
 var proxyTarget = 'http://localhost:9000'; // The location of your backend
 var proxyApiPrefix = 'api'; // The element in the URL which differentiate between API request and static file request
+
+// we'd need a slight delay to reload browsers
+// connected to browser-sync after restarting nodemon
+var BROWSER_SYNC_RELOAD_DELAY = 500;
 
 var proxy = httpProxy.createProxyServer({
   target: proxyTarget
@@ -35,27 +40,36 @@ function browserSyncInit(baseDir, files, browser) {
 
 }
 
-gulp.task('serve', ['watch'], function () {
-  browserSyncInit([
-    'client',
-    '.tmp'
-  ], [
-    'client/*.html',
-    '.tmp/styles/**/*.css',
-    'client/app/**/*.js',
-    'client/app/**/*.tpl.html',
-    'client/assets/images/**/*'
-  ]);
+
+gulp.task('nodemon', function (cb) {
+  var called = false;
+  return nodemon({
+
+    // nodemon our expressjs server
+    script: './server/app.js',
+
+    // watch core server file(s) that require server restart on change
+    watch: ['./server/app.js']
+  })
+    .on('start', function onStart() {
+      // ensure start only got called once
+      if (!called) { cb(); }
+      called = true;
+    })
+    .on('restart', function onRestart() {
+      // reload connected browsers after a slight delay
+      setTimeout(function reload() {
+        browserSync.reload({
+          stream: false   //
+        });
+      }, BROWSER_SYNC_RELOAD_DELAY);
+    });
 });
 
-gulp.task('serve:dist', ['build'], function () {
-  browserSyncInit('dist');
-});
+gulp.task('server', ['watch'], function () {
+    //start the server at the beginning of the task
+    server.run({
+        file: 'server/app.js'
+    });
 
-gulp.task('serve:e2e', function () {
-  browserSyncInit(['app', '.tmp'], null, []);
-});
-
-gulp.task('serve:e2e-dist', ['watch'], function () {
-  browserSyncInit('dist', null, []);
 });

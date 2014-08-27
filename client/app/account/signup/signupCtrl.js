@@ -1,40 +1,38 @@
-(function() {
-
 'use strict';
-      
-      function SignupCtrl (Auth, $location, $window) {
-        var vm = this;
 
-        vm.user = {};
-        vm.errors = {};
+angular.module('app')
+  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
+    $scope.user = {};
+    $scope.errors = {};
 
-          vm.register = function(form) {
-            vm.submitted = true;
+    $scope.register = function(form) {
+      $scope.submitted = true;
 
-            if(form.$valid) {
-              Auth.createUser({
-                userName: vm.user.userName,
-                email: vm.user.email,
-                password: vm.user.password
-              })
-              .then( function() {
-                $location.path('/');
-              })
-              .catch( function(err) {
-                err = err.data;
-                vm.errors = {};
+      if(form.$valid) {
+        Auth.createUser({
+          userName: $scope.user.userName,
+          email: $scope.user.email,
+          password: $scope.user.password
+        })
+        .then( function() {
+          // Account created, redirect to home
+          $location.path('/');
+        })
+        .catch( function(err) {
+          err = err.data;
+          $scope.errors = {};
 
-                angular.forEach(err.errors, function(error, field) {
-                  form[field].$setValidity('mongoose', false);
-                  vm.errors[field] = error.message;
-                });
-              });
-            }
-      };
+          // Update validity of form fields that match the mongoose errors
+          angular.forEach(err.errors, function(error, field) {
+            form[field].$setValidity('mongoose', false);
+            $scope.errors[field] = error.message;
+          });
+        });
+      }
+    };
 
-}
+    $scope.loginOauth = function(provider) {
+      $window.location.href = '/auth/' + provider;
+    };
+  });
 
-angular
-  .module('app')
-  .controller('SignupCtrl', SignupCtrl);
-})();

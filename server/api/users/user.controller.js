@@ -6,7 +6,7 @@ var config   = require('../../config/environment');
 var jwt      = require('jsonwebtoken');
 
 var validationError = function(res, err) {
-  return res.json(422, err);
+  return res.status(422).json(err);
 };
 
 /**
@@ -23,8 +23,12 @@ exports.index = function(req, res) {
 /**
  * Creates a new user
  */
-exports.create = function (req, res, next) {
-  var newUser = new User(req.body);
+exports.create = function (req, res) {
+  var newUser = new User({
+    userName = req.body.userName,
+    password = req.body.password,
+    email = req.body.email
+  });
   newUser.provider = 'local';
   newUser.role = 'user';
   newUser.save(function(err, user) {

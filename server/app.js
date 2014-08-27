@@ -26,6 +26,7 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
 var app = express();
 var server = require('http').createServer(app);
 
+
 require('./config/express')(app);
 require('./routes')(app);
 
@@ -33,6 +34,8 @@ require('./routes')(app);
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
+
+
 
 // Expose app
 exports = module.exports = app;
