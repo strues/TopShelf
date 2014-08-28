@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 var httpProxy = require('http-proxy');
 var server = require('gulp-express');

@@ -2,7 +2,7 @@
 
 'use strict';
 
-function NavbarCtrl($location, Auth) {
+function NavbarCtrl($location, $scope, Auth) {
 
   var vm = this;
 
@@ -16,7 +16,7 @@ function NavbarCtrl($location, Auth) {
       vm.isAdmin = Auth.isAdmin;
       vm.getCurrentUser = Auth.getCurrentUser;
 
-      vm.logout = function() {
+      $scope.logout = function() {
         Auth.logout();
         
         $location.path('/login');

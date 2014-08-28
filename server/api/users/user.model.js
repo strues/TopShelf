@@ -46,7 +46,8 @@ UserSchema
   .get(function() {
     return {
       'userName': this.userName,
-      'role': this.role
+      'role': this.role,
+      'birthday': this.birthday
     };
   });
 
@@ -56,7 +57,9 @@ UserSchema
   .get(function() {
     return {
       '_id': this._id,
-      'role': this.role
+      'role': this.role,
+      'userName': this.userName,
+      'btag': this.btag
     };
   });
 

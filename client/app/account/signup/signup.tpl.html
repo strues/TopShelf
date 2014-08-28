@@ -1,14 +1,13 @@
 <div class="container">
- <div class="container">
+<div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h1>Sign up</h1>
-    </div>
-    <div class="col-sm-12">
+    <div class="center-form panel">
+      <div class="panel-body">
       <form class="form" name="form" ng-submit="register(form)" ng-controller="SignupCtrl as vm" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.userName.$valid && submitted,
                                             'has-error': form.userName.$invalid && submitted }">
+                                            
           <label>Name</label>
 
           <input type="text" name="name" class="form-control" ng-model="user.userName"
@@ -25,6 +24,7 @@
           <input type="email" name="email" class="form-control" ng-model="user.email"
                  required
                  mongoose-error/>
+                   <span class="ion-at form-control-feedback"></span>
           <p class="help-block" ng-show="form.email.$error.email && submitted">
             Doesn't look like a valid email.
           </p>
@@ -44,6 +44,7 @@
                  ng-minlength="3"
                  required
                  mongoose-error/>
+                   <span class="ion-at form-control-feedback"></span>
           <p class="help-block"
              ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
             Password must be at least 3 characters.
@@ -64,6 +65,7 @@
 
         <hr>
         <div>
+
           <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
             <i class="fa fa-google-plus"></i> Connect with Google+
           </a>

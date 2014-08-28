@@ -6,7 +6,7 @@ angular.module('app')
       .state('signin', {
         url: '/signin',
         templateUrl: 'app/account/signin/signin.tpl.html',
-        controller: 'LoginCtrl'
+        controller: 'SigninCtrl'
       })
       .state('signup', {
         url: '/signup',

@@ -16,7 +16,7 @@ module.exports = function(app) {
    * All other routes should redirect to the index.html
    */
   app.use('/api/users', require('./api/users'));
-
+  app.use('/api/applications', require('./api/applications'));
   app.use('/auth', require('./auth')); // for OAuth routes
   
   // Error 404

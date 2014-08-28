@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var server = require('gulp-express');
 
 gulp.task('watch', ['wiredep', 'styles'] ,function () {
   gulp.watch('client/styles/**/*.scss', ['styles', server.notify]);
