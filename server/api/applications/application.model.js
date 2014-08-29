@@ -8,6 +8,7 @@ var ApplicationSchema = new Schema({
       type: Date,
       default: Date.now
     },
+    charName: String,
     charClass: String,
     charSpec: String,
     charOffSpec: String,

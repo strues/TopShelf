@@ -20,6 +20,7 @@ exports.index = function(req, res) {
 exports.create = function (req, res, next) {
   var application = new Application ();
   application.user = req.user;
+  application.charName = req.body.charName;
   application.charClass = req.body.charClass;
   application.charSpec = req.body.charSpec;
   application.charOffSpec = req.body.charOffSpec;

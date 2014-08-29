@@ -8,7 +8,13 @@ function NavbarCtrl($location, $scope, Auth) {
 
       vm.menu = [{
       'title': 'Home',
+      'uiref': 'main',
       'link': '/'
+      },
+      {
+        'title': 'Apply',
+        'uiref': 'application',
+        'link': '/#/application'
       }];
 
       vm.isCollapsed = true;
