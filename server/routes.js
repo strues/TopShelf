@@ -15,9 +15,9 @@ module.exports = function(app) {
    * All undefined assets or api routes should return a 404
    * All other routes should redirect to the index.html
    */
-  app.use('/api/users', require('./api/users'));
+  //app.use('/api/users', require('./api/users'));
   app.use('/api/applications', require('./api/applications'));
-  app.use('/auth', require('./auth')); // for OAuth routes
+
   
   // Error 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

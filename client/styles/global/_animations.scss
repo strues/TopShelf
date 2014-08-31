@@ -1,3 +1,18 @@
+.panel {
+    border-color: #cfd9D7;
+    border-radius: 2px;
+    box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2);
+}
+
+.panel-default > .panel-heading {
+    font-size: 85%;
+    font-weight: bold;
+    color: #444;
+    text-transform: uppercase;
+    background-color: #f6f6f6;
+    border-color: #cfd9db;
+}
+
 .form-control {
     border-radius: 0;
 }

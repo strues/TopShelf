@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/app.css">
     <!-- endbuild -->
   <link href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css" rel="stylesheet">
+  <link href="bower_components/angular-motion/dist/angular-motion.css" rel="stylesheet">
    <link href="//cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
     <!-- build:js scripts/modernizr.js -->
     
@@ -53,29 +54,36 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
     <script src="bower_components/angular-form-for/dist/form-for.js"></script>
+    <script src="bower_components/satellizer/satellizer.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({client,.tmp}) scripts/app.js -->
-     <script src="app/app.js"></script>
-    <script src="app/common/auth/authService.js"></script>
-    <script src="app/common/auth/userService.js"></script>
+    <script src="app/app.js"></script>
+   
+    <script src="app/common/accountService.js"></script>
     <script src="app/common/layout/navbarCtrl.js"></script>
-    <script src="app/common/mongooseDirective.js"></script>
+
+    <script src="app/common/passwordStrengthDirective.js"></script>
 
     <script src="app/main/main.js"></script>
     <script src="app/main/mainCtrl.js"></script>
 
     <script src="app/account/account.js"></script>
+    <script src="app/account/logoutCtrl.js"></script>
     <script src="app/account/signup/signupCtrl.js"></script>
-    <script src="app/account/signin/signinCtrl.js"></script>
+    <script src="app/account/login/loginCtrl.js"></script>
+    <script src="app/account/profileCtrl.js"></script>
 
     <script src="app/application/application.js"></script>
     <script src="app/application/applicationCtrl.js"></script>
-    <script src="app/application/applicationService.js"></script>
+    <script src="app/application/applicationProvider.js"></script>
+    <script src="app/application/appValidationService.js"></script>
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->
