@@ -1,12 +1,12 @@
 <p class="lead">
-  Notes
+  Applications
   <a ui-sref="appAdmin.add" href="" class="btn btn-default pull-right">
     <i class="glyphicon glyphicon-plus-sign"></i>
   </a>
 </p>
 
 
-<div ng-repeat="application in applications">
+<div ng-repeat="application in vm.applications" ng-controller="AppAdminListCtrl as vm">
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right btn-group">
@@ -20,14 +20,8 @@
       <a ui-sref="appAdmin.item({id:application._id})" href="">{{application.charName}}</a>
     </div>
     <div class="panel-body">
-      <pre>{{application.charClass}}</pre>
-            <pre>{{application.charSpec}}</pre>
+      <pre><h6>Class:</h6>{{application.charClass}}</pre>
+            <pre><h6>Spec:</h6>{{application.charSpec}}</pre>
     </div>
   </div>
-</div>
-
-<div ng-hide="appAdmin.length">
-  <h4>
-    <a ui-sref="appAdmin.add" href="">You have no notes, add some!</a>
-  </h4>
 </div>

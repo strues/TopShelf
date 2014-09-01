@@ -7,11 +7,22 @@
   </a>
 </p>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="AppAdminItemCtrl as vm">
   <div class="panel-heading">
-      {{application.charName}}
+      {{vm.application.charName}}
+      {{vm.application.btag}}
   </div>
   <div class="panel-body">
-    <pre>{{application.charClass}}</pre>
+  <h4>Class:</h4><pre>{{vm.application.charClass}}</pre>
+  <h4>Spec:</h4><pre>{{vm.application.charSpec}}</pre>
+  <h4>Offspec</h4><pre>{{vm.application.charOffSpec}}</pre>
+  <h4>Armory:</h4><pre>{{vm.application.charArmory}}</pre>
+  <h4>Logs</h4><pre>{{vm.application.charLogs}}</pre>
+  <h4>Heroic Exp:</h4><pre>{{vm.application.heroicXP}}</pre>
+  <h4>Guild History:</h4><pre>{{vm.application.pastGuilds}}</pre>
+  <h4>Microphone:</h4><pre>{{vm.application.microphone}}</pre>
+  <h4>PC Specs:</h4><pre>{{vm.application.pcSpecs}}</pre>
+  <h4>UI Screenshot:</h4><pre>{{vm.application.uiScreenshot}}</pre>
+  <h4>Why Top Shelf?</h4><pre>{{vm.application.whyTS}}</pre>
   </div>
 </div>

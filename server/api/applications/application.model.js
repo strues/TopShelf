@@ -20,10 +20,7 @@ var ApplicationSchema = new Schema({
     pcSpecs: String,
     uiScreenshot: String,
     whyTS: String,
-    user: {
-    type: Schema.ObjectId,
-    ref: 'User'
-    }
+    btag: String
 });
 
 /**

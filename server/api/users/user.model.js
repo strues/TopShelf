@@ -20,7 +20,8 @@ var UserSchema = new mongoose.Schema({
   btag: String,
   birthday: String,
   characters: {},
-  role: {}
+  role: {},
+  application: {}
 });
 
 UserSchema.pre('save', function(next) {

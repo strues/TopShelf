@@ -25,11 +25,10 @@ exports.show = function(req, res) {
 };
 
 /**
- * Creates a new user
+ * Creates a new application
  */
 exports.create = function (req, res, next) {
   var application = new Application ();
-  application.user = req.user;
   application.charName = req.body.charName;
   application.charClass = req.body.charClass;
   application.charSpec = req.body.charSpec;
@@ -41,6 +40,7 @@ exports.create = function (req, res, next) {
   application.microphone = req.body.microphone;
   application.pcSpecs = req.body.pcSpecs;
   application.uiScreenshot = req.body.uiScreenshot;
+  application.btag = req.body.btag;
   application.whyTS = req.body.whyTS;
 
 

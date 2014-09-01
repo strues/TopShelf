@@ -130,6 +130,11 @@ angular.module('app')
         label: 'UI Screenshot'
       },
       {
+        key: 'btag',
+        type: 'text',
+        label: 'Battletag'
+      },
+      {
         key: 'whyTS',
         type: 'textarea',
         label: 'Why Top Shelf?',

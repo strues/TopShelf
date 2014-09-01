@@ -8,37 +8,36 @@ angular.module('app')
         templateUrl: 'app/admin/admin.tpl.html'
       })
     .state('appAdmin', {
-      abstract: true,
-      url: '/admin/applications',
-      templateUrl: 'app/admin/applications/main.tpl.html'
+        abstract: true,
+        url: '/admin/applications',
+        templateUrl: 'app/admin/applications/main.tpl.html'
     })
 
     .state('appAdmin.list', {
-      url: '',
+        url: '',
         templateUrl: 'app/admin/applications/appAdmin.tpl.html',
-      controller: 'AppAdminListCtrl'
+        controller: 'AppAdminListCtrl',
+        controllerAs: 'vm'
     })
 
     .state('appAdmin.add', {
-      url: '/add',
-      templateUrl: 'app/admin/applications/appAdminEdit.tpl.html',
-      controller: 'AppAdminListCtrl'
+        url: '/add',
+        templateUrl: 'app/admin/applications/appAdminEdit.tpl.html',
+        controller: 'AppAdminListCtrl',
+        controllerAs: 'vm'
     })
 
     .state('appAdmin.edit', {
-      url: '/edit/{id}',
+        url: '/edit/{id}',
         templateUrl: 'app/admin/applications/appAdminEdit.tpl.html',
-      controller: 'AppAdminEditCtrl'
+        controller: 'AppAdminEditCtrl',
+        controllerAs: 'vm'
     })
 
     .state('appAdmin.item', {
-      url: '/{id}',
+        url: '/{id}',
         templateUrl: 'app/admin/applications/appAdminItem.tpl.html',
-      controller: 'AppAdminItemCtrl',
-     /* resolve: {
-          application: function (Restangular, $route) {
-            return Restangular.one('applications', $route.current.params.applicationId).get();
-          }
-  } */
+        controller: 'AppAdminItemCtrl',
+        controllerAs: 'vm'
+    });
 });
-  });
