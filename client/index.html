@@ -52,10 +52,9 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
-    <script src="bower_components/angular-form-for/dist/form-for.js"></script>
+    <script src="bower_components/angular-formly/dist/formly.js"></script>
+    <script src="bower_components/angular-formly/dist/formly.bootstrap.js"></script>
     <script src="bower_components/satellizer/satellizer.js"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
@@ -64,8 +63,9 @@
     <!-- endbuild -->
 
     <!-- build:js({client,.tmp}) scripts/app.js -->
+
     <script src="app/app.js"></script>
-   
+    <script src="app/common/auth/permissionService.js"></script>
     <script src="app/common/accountService.js"></script>
     <script src="app/common/layout/navbarCtrl.js"></script>
 

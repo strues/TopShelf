@@ -76,6 +76,24 @@ module.exports = function(app) {
     next();
   }
 
+  /**
+ * Checks if the user role meets the minimum requirements of the route
+ */
+function hasRole(roleRequired) {
+  if (!roleRequired) throw new Error('Required role needs to be set');
+
+  return compose()
+    .use(ensureAuthenticated())
+    .use(function meetsRequirements(req, res, next) {
+      if (config.userRoles.indexOf(req.user.role) >= config.userRoles.indexOf(roleRequired)) {
+        next();
+      }
+      else {
+        res.send(403);
+      }
+    });
+}
+
   /*
    |--------------------------------------------------------------------------
    | Generate JSON Web Token
@@ -85,6 +103,7 @@ module.exports = function(app) {
     var payload = {
       iss: req.hostname,
       sub: user._id,
+      role: user.role,
       iat: moment().valueOf(),
       exp: moment().add(14, 'days').valueOf()
     };
