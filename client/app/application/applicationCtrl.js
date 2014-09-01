@@ -2,6 +2,7 @@
 
 angular.module('app')
 .controller('ApplicationCtrl', function($scope, $state, $http, Application) {
+
  $scope.formData = {};
     $scope.formFields = [
         {

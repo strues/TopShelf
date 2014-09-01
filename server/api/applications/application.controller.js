@@ -7,10 +7,20 @@ var config      = require('../../config/environment');
  * Get list of applications
  * restriction: 'admin'
  */
+// Get list of servers
 exports.index = function(req, res) {
-  Application.find({}, function (err, applications) {
-    if(err) return res.send(500, err);
-    res.json(200, applications);
+  Application.find(function (err, applications) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, applications);
+  });
+};
+
+// Get a single server
+exports.show = function(req, res) {
+  Application.findById(req.params.id, function (err, application) {
+    if(err) { return handleError(res, err); }
+    if(!application) { return res.send(404); }
+    return res.json(application);
   });
 };
 
@@ -42,40 +52,32 @@ exports.create = function (req, res, next) {
   });
 };
 
-/**
- * Get a single application
- */
-exports.getApplication = function (req, res, next) {
-
-  Application.find({ userId: req.user._id, _id: req.params.application_id }, function(err, application) {
-    if (err)
-      res.send(err);
-
-    res.json(application);
+// Updates an existing server in the DB.
+exports.update = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  Application.findById(req.params.id, function (err, application) {
+    if (err) { return handleError(res, err); }
+    if(!application) { return res.send(404); }
+    var updated = _.merge(application, req.body);
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, application);
+    });
   });
 };
 
-/**
- * Deletes an application
- * restriction: 'admin'
- */
+// Deletes a server from the DB.
 exports.destroy = function(req, res) {
-  Application.remove({ userId: req.user._id, _id: req.params.application_id }, function(err) {
-
-    if(err) return res.send(500, err);
-    return res.json({ message: 'Application removed from the db' });
+  Application.findById(req.params.id, function (err, application) {
+    if(err) { return handleError(res, err); }
+    if(!application) { return res.send(404); }
+    application.remove(function(err) {
+      if(err) { return handleError(res, err); }
+      return res.send(204);
+    });
   });
 };
 
-
-// Create endpoint /api/applications/:application_id for PUT
-exports.putApplication = function(req, res) {
-  // Use the Application model to find a specific application
-  Application.update({ userId: req.user._id, _id: req.params.application_id }, function(err, num, raw) {
-    if (err)
-      res.send(err);
-
-    res.json({ message: num + ' updated' });
-  });
-};
-
+function handleError(res, err) {
+  return res.send(500, err);
+}

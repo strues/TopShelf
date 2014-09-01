@@ -10,16 +10,40 @@ angular.module('app', [
   'mgcrea.ngStrap',
   'satellizer',
   'formly',
+  'restangular',
   'angular-loading-bar'
 ])
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, cfpLoadingBarProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, RestangularProvider, cfpLoadingBarProvider) {
       $urlRouterProvider
       .otherwise('/');
+      
+      RestangularProvider.setBaseUrl('/api');
+      RestangularProvider.setRestangularFields({ 
+          id: '_id.$oid',
+          selfLink: 'self.link'
+      });
+
+      RestangularProvider.setRequestInterceptor(function (elem, operation) {
+        if (operation === "remove") {
+          return null;
+        }
+          return elem;
+      });
+
+      RestangularProvider.setRequestInterceptor(function (elem, operation, what) {
+      
+      if (operation === 'put') {
+      elem._id = undefined;
+      return elem;
+      }
+      return elem;
+      });
       
       $locationProvider.html5Mode(false);
       cfpLoadingBarProvider.includeSpinner = true;
       cfpLoadingBarProvider.includeBar = true;
+
       $authProvider.facebook({
       clientId: '657854390977827'
       });
