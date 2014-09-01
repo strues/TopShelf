@@ -4,6 +4,7 @@
   </div>
   <ul class="nav navbar-nav">
     <li><a ui-sref="home">Home</a></li>
+    <li><a ui-sref="application">Apply</a></li>
     <li ng-if="isAuthenticated()"><a ui-sref="profile">Profile</a></li>
   </ul>
   <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
