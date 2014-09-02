@@ -21,10 +21,11 @@ module.exports = function(app) {
 
   app.use('/auth', require('./authorization'));
   
+  
+  
   // Error 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
-
 
   
 };

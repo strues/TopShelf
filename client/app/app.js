@@ -66,7 +66,7 @@ angular.module('app', [
       });
       
       $httpProvider.interceptors.push('authInterceptor');
-      $locationProvider.html5Mode(false);
+      $locationProvider.html5Mode(true);
 
 })
 
@@ -78,5 +78,10 @@ angular.module('app', [
           $location.path('/login');
         }
       });
+      $rootScope.$on('$stateChangeStart', function(event, toState) {
+  if (toState.auth && !Auth.isAdmin(toState.auth)) {
+    event.preventDefault();
+  }
+});
     });
   });

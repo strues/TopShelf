@@ -5,11 +5,13 @@ angular.module('app')
     $stateProvider
       .state('admin', {
         url: '/admin',
-        templateUrl: 'app/admin/admin.tpl.html'
+        templateUrl: 'app/admin/admin.tpl.html',
+        controller: 'AdminCtrl',
+        controllerAs: 'vm'
       })
     .state('appAdmin', {
         abstract: true,
-        url: '/admin/applications',
+        url: '/applications',
         templateUrl: 'app/admin/applications/main.tpl.html'
     })
 
