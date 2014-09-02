@@ -9,6 +9,7 @@ angular.module('app', [
   'ui.router',
   'mgcrea.ngStrap',
   'formly',
+  'ui.grid',
   'restangular'
 ])
 

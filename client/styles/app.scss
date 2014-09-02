@@ -1,5 +1,11 @@
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "./global/grid";
 @import "./global/animations";
+
+.grid {
+    width: 500px;
+    height: 450px;
+}
 
 .page-signin,
 .page-signup,

@@ -9,6 +9,12 @@ angular.module('app')
         controller: 'AdminCtrl',
         controllerAs: 'vm'
       })
+    .state('roster', {
+        url: '/roster',
+        templateUrl: 'app/admin/roster/roster.tpl.html',
+        controller: 'RosterCtrl',
+        controllerAs: 'vm'
+    })
     .state('appAdmin', {
         abstract: true,
         url: '/applications',
