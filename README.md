@@ -9,24 +9,20 @@ repo for the tutorial blog series I'm writing to go along with my experience. Pl
 leave comments, suggestions or use it as a base for your own project.  However, I retain the rights  
 to my design and would prefer if you use it, that you go your own creative way.  
   
-Before beginning you should have [NodeJS](http://www.nodejs.com) and [MongoDB](http://www.mongodb.org/downloads) installed on your computer. As a quick note,  
-I do all of my work using a Mac so any commands I included might not work for Windows users.  
+Before beginning you should have [NodeJS](http://www.nodejs.com) and [MongoDB](http://www.mongodb.org/downloads) installed on your computer. As a quick note, I do all of my work using a Mac so any commands I included might not work for Windows users.  
   
 ##### Credit Where Credit is Due
-You will find me referencing many people who are truly much more experienced than I am when it comes  
-to this whole stack. I reference [John Papa](http://twitter.com/john_papa) and [Todd Motto](http://twitter.com/toddmotto)  
-often. You will even see me modify or use snippets from [Angular-Fullstack](https://github.com/DaftMonk/generator-angular-fullstack)  
-because I find those guys do a great job.  
+You will find me referencing many people who are truly much more experienced than I am when it comes to this whole stack. I reference [John Papa](http://twitter.com/john_papa) and [Todd Motto](http://twitter.com/toddmotto) often. You will even see me modify or use snippets from [Angular-Fullstack](https://github.com/DaftMonk/generator-angular-fullstack) because I find those guys do a great job.  
   
 ### Usage
 
 Clone the repo
-```
+
 'git clone git@github.com/strues/tsGuild.git yourApp'
-```
+
 
 Run `npm install && bower install`, in order to get started.
-```
+
 
 Run `gulp serve' to launch the development.
 
@@ -84,6 +80,7 @@ Inside of the api at`server/api`
     ├── index.js                - Routes
     ├── user.controller.js      - Controller for the users endpoint
     ├── user.model.js           - Mongoose model
+
 
 ### To Do
 * Style and design          - Not the highest priority at the moment
