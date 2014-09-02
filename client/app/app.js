@@ -10,6 +10,7 @@ angular.module('app', [
   'mgcrea.ngStrap',
   'formly',
   'ui.grid',
+  'ui-notification',
   'restangular'
 ])
 
@@ -67,7 +68,7 @@ angular.module('app', [
       });
       
       $httpProvider.interceptors.push('authInterceptor');
-      $locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true).hashPrefix('!');
 
 })
 

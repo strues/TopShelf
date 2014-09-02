@@ -7,7 +7,7 @@
 'use strict';
 
 var errors = require('./components/errors');
-
+var path = require('path');
 module.exports = function(app) {
 
   /*
@@ -21,7 +21,10 @@ module.exports = function(app) {
 
   app.use('/auth', require('./authorization'));
   
-  
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', {   root: path.normalize(__dirname + '/../client') });
+});
   
   // Error 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-.controller('ApplicationCtrl', function($scope, $state, $http, Application) {
+.controller('ApplicationCtrl', function($scope, $state, $http, $window, $location, Application, Notification) {
 
  $scope.formData = {};
     $scope.formFields = [
@@ -69,11 +69,13 @@ angular.module('app')
         key: 'charSpec',
         type: 'text',
         label: 'What spec is your character?',
+        placeholder: 'Fury'
       },
       {
         key: 'charOffSpec',
         type: 'text',
         label: 'What is your characters offspec?',
+        placeholder: 'Protection'
       },
     {
         key: 'charArmory',
@@ -127,12 +129,14 @@ angular.module('app')
       {
         key: 'uiScreenshot',
         type: 'text',
-        label: 'UI Screenshot'
+        label: 'UI Screenshot',
+        placeholder: 'http://imgur.com'
       },
       {
         key: 'btag',
         type: 'text',
-        label: 'Battletag'
+        label: 'Battletag',
+        placeholder: 'Rekt#1234'
       },
       {
         key: 'whyTS',
@@ -148,8 +152,12 @@ angular.module('app')
         uniqueFormId: 'appForm'
     };
 
+    $scope.appReceived = 'Your application has been submitted.'
+
+
     $scope.onSubmit = function() {
         $http.post('/api/applications', $scope.formData);
-        console.log('form submitted:', $scope.formData);
+        console.log('application submitted:', $scope.formData);
+         Notification.success('Your application has been submitted successfully.');
     };
 });
