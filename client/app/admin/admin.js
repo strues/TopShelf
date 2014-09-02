@@ -19,14 +19,6 @@ angular.module('app')
         controller: 'AppAdminListCtrl',
         controllerAs: 'vm'
     })
-
-    .state('appAdmin.add', {
-        url: '/add',
-        templateUrl: 'app/admin/applications/appAdminEdit.tpl.html',
-        controller: 'AppAdminListCtrl',
-        controllerAs: 'vm'
-    })
-
     .state('appAdmin.edit', {
         url: '/edit/{id}',
         templateUrl: 'app/admin/applications/appAdminEdit.tpl.html',

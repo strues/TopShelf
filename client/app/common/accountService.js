@@ -1,5 +1,5 @@
 angular.module('app')
-  .factory('Account', function($http, $auth) {
+  .factory('Account', function($http, Auth) {
     return {
       getProfile: function() {
         return $http.get('/api/me');

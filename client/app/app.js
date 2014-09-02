@@ -8,13 +8,37 @@ angular.module('app', [
   'ngSanitize',
   'ui.router',
   'mgcrea.ngStrap',
-  'satellizer',
   'formly',
-  'restangular',
-  'angular-loading-bar'
+  'restangular'
 ])
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, RestangularProvider, cfpLoadingBarProvider) {
+.factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
+    return {
+      // Add authorization token to headers
+      request: function (config) {
+        config.headers = config.headers || {};
+        if ($cookieStore.get('token')) {
+          config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+        }
+        return config;
+      },
+
+      // Intercept 401s and redirect you to login
+      responseError: function(response) {
+        if(response.status === 401) {
+          $location.path('/login');
+          // remove any stale tokens
+          $cookieStore.remove('token');
+          return $q.reject(response);
+        }
+        else {
+          return $q.reject(response);
+        }
+      }
+    };
+  })
+
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider) {
       $urlRouterProvider
       .otherwise('/');
       
@@ -23,7 +47,8 @@ angular.module('app', [
           id: '_id.$oid',
           selfLink: 'self.link'
       });
-
+      RestangularProvider.setDefaultHttpFields({cache: true});
+      RestangularProvider.setMethodOverriders(['put', 'patch']);
       RestangularProvider.setRequestInterceptor(function (elem, operation) {
         if (operation === "remove") {
           return null;
@@ -40,27 +65,18 @@ angular.module('app', [
       return elem;
       });
       
+      $httpProvider.interceptors.push('authInterceptor');
       $locationProvider.html5Mode(false);
-      cfpLoadingBarProvider.includeSpinner = true;
-      cfpLoadingBarProvider.includeBar = true;
 
-      $authProvider.facebook({
-      clientId: '657854390977827'
+})
+
+  .run(function ($rootScope, $location, Auth) {
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      Auth.isLoggedInAsync(function(loggedIn) {
+        if (next.authenticate && !loggedIn) {
+          $location.path('/login');
+        }
       });
-      
-      $authProvider.google({
-      clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
-      });
-      
-      $authProvider.github({
-      clientId: '0ba2600b1dbdb756688b'
-      });
-      
-      $authProvider.linkedin({
-      clientId: '77cw786yignpzj'
-      });
-      
-      $authProvider.twitter({
-      url: '/auth/twitter'
-      });
-});
+    });
+  });

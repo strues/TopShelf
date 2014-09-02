@@ -2,7 +2,7 @@
 
 'use strict';
 
-function MainCtrl(cfpLoadingBar) {
+function MainCtrl() {
 
         // Capture the 'this' context of the controller using vm, standing for ViewModel.
         // Use it to avoid having to call bind and unnecessary scoping issues.
@@ -11,14 +11,6 @@ function MainCtrl(cfpLoadingBar) {
         vm.someObject = 'Some value';
 
         vm.stuff = [];
-
-        vm.start = function() {
-      cfpLoadingBar.start();
-    };
-
-    vm.complete = function () {
-      cfpLoadingBar.complete();
-    }
 
 
    

@@ -1,3 +1,4 @@
+<div ng-controller="AppAdminItemCtrl as vm">
 <p class="lead">
   <a ui-sref="^.list" class="btn btn-large btn-default">
     <i class="glyphicon glyphicon-arrow-left"></i>
@@ -7,7 +8,7 @@
   </a>
 </p>
 
-<div class="panel panel-default" ng-controller="AppAdminItemCtrl as vm">
+<div class="panel panel-default">
   <div class="panel-heading">
       {{vm.application.charName}}
       {{vm.application.btag}}
@@ -25,4 +26,5 @@
   <h4>UI Screenshot:</h4><pre>{{vm.application.uiScreenshot}}</pre>
   <h4>Why Top Shelf?</h4><pre>{{vm.application.whyTS}}</pre>
   </div>
+</div>
 </div>

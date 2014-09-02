@@ -11,7 +11,7 @@ var config      = require('../../config/environment');
 exports.index = function(req, res) {
   Application.find(function (err, applications) {
     if(err) { return handleError(res, err); }
-    return res.json(200, applications);
+   return res.status(200).json(applications)
   });
 };
 
