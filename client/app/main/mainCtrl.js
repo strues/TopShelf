@@ -17,6 +17,7 @@ function MainCtrl() {
 
     }
     
-  angular.module('app')
-    .controller('MainCtrl', MainCtrl);
+angular
+  .module('app')
+  .controller('MainCtrl', MainCtrl);
 })();
