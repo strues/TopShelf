@@ -3,13 +3,13 @@
   <a ui-sref="^.list" class="btn btn-large btn-default">
     <i class="glyphicon glyphicon-arrow-left"></i>
   </a>
-  <a ng-click="update()" href="" class="btn btn-default pull-right">
+  <a ng-click="save()" href="" class="btn btn-default pull-right">
     <i class="glyphicon glyphicon-floppy-save"></i>
   </a>
 </p>
 
 <div class="form-group">
-  <input class="form-control" id="charName" name="charName" ng-model="application.charName" placeholder="Character Name">
+  <input class="form-control" id="classType" name="classType" ng-model="recruit.classType" placeholder="Class Type">
 </div>
 <div class="form-group">
 
@@ -19,7 +19,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-      {{application.charName}}
+      {{recruit.classType}}
   </div>
   <div class="panel-body">
 

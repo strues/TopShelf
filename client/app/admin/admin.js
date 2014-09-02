@@ -9,12 +9,12 @@ angular.module('app')
         controller: 'AdminCtrl',
         controllerAs: 'vm'
       })
-    .state('roster', {
+ /*   .state('roster', {
         url: '/roster',
         templateUrl: 'app/admin/roster/roster.tpl.html',
         controller: 'RosterCtrl',
         controllerAs: 'vm'
-    })
+    })*/
     .state('appAdmin', {
         abstract: true,
         url: '/applications',
@@ -39,5 +39,30 @@ angular.module('app')
         templateUrl: 'app/admin/applications/appAdminItem.tpl.html',
         controller: 'AppAdminItemCtrl',
         controllerAs: 'vm'
-    });
+    })
+    .state('recruit', {
+        abstract: true,
+        url: '/admin/recruit',
+        templateUrl: 'app/admin/recruit/main.tpl.html'
+    })
+    .state('recruit.list', {
+        url: '',
+        templateUrl: 'app/admin/recruit/recruit.tpl.html',
+        controller: 'RecruitListCtrl'
+    })
+    .state('recruit.edit', {
+        url: '/edit/{id}',
+        templateUrl: 'app/admin/recruit/recruitEdit.tpl.html',
+        controller: 'RecruitEditCtrl'
+    })
+    .state('recruit.add', {
+        url: '/add',
+        templateUrl: 'app/admin/recruit/recruitEdit.tpl.html',
+        controller: 'RecruitAddCtrl'
+    })
+    .state('recruit.item', {
+        url: '/{id}',
+        templateUrl: 'app/admin/recruit/recruitItem.tpl.html',
+        controller: 'RecruitItemCtrl'
+    }); 
 });

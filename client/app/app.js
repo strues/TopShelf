@@ -51,21 +51,15 @@ angular.module('app', [
       });
       RestangularProvider.setDefaultHttpFields({cache: true});
       RestangularProvider.setMethodOverriders(['put', 'patch']);
-      RestangularProvider.setRequestInterceptor(function (elem, operation) {
-        if (operation === "remove") {
-          return null;
-        }
-          return elem;
-      });
+  RestangularProvider.setRequestInterceptor(
+    function(elem, operation, what) {
 
-      RestangularProvider.setRequestInterceptor(function (elem, operation, what) {
-      
       if (operation === 'put') {
-      elem._id = undefined;
-      return elem;
+        elem._id = undefined;
+        return elem;
       }
       return elem;
-      });
+    })
       
       $httpProvider.interceptors.push('authInterceptor');
       $locationProvider.html5Mode(true).hashPrefix('!');

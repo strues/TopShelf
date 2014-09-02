@@ -12,6 +12,7 @@ function MainCtrl() {
 
         vm.stuff = [];
 
+        vm.recruitmentNeeds
 
    
 

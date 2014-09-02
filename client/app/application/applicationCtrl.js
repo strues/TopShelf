@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-.controller('ApplicationCtrl', function($scope, $state, $http, $window, $location, Application, Notification) {
+.controller('ApplicationCtrl', function($scope, $state, $http, $window, $location, Notification) {
 
  $scope.formData = {};
     $scope.formFields = [

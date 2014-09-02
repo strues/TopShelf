@@ -1,11 +1,11 @@
-<div ng-controller="AppAdminListCtrl as vm">
+
 <p class="lead">
   Applications
   <a ui-sref="appAdmin.add" href="" class="btn btn-default pull-right">
     <i class="glyphicon glyphicon-plus-sign"></i>
   </a>
 </p>
-<div ng-repeat="application in vm.applications">
+<div ng-repeat="application in applications">
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right btn-group">
@@ -24,4 +24,4 @@
     </div>
   </div>
 </div>
-</div>
+

@@ -18,6 +18,7 @@ module.exports = function(app) {
   //app.use('/api/users', require('./api/users'));
   app.use('/api/applications', require('./api/applications'));
   app.use('/api/users', require('./api/users'));
+  app.use('/api/recruits', require('./api/recruit'));
 
   app.use('/auth', require('./authorization'));
   

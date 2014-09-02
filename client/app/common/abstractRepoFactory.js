@@ -6,29 +6,29 @@ angular.module('app')
 
   function () {
 
-    function AbstractRepository(Restangular, route) {
-      this.Restangular = Restangular;
+    function AbstractRepository(restangular, route) {
+      this.restangular = restangular;
       this.route = route;
     }
 
     AbstractRepository.prototype = {
       getList: function (params) {
-        return this.Restangular.all(this.route).getList(params).$object;
+        return this.restangular.all(this.route).getList(params).$object;
       },
       get: function (id) {
-        return this.Restangular.one(this.route, id).get();
+        return this.restangular.one(this.route, id).get();
       },
       getView: function (id) {
-        return this.Restangular.one(this.route, id).one(this.route + 'view').get();
+        return this.restangular.one(this.route, id).one(this.route + 'view').get();
       },
       update: function (updatedResource) {
         return updatedResource.put().$object;
       },
       create: function (newResource) {
-        return this.Restangular.all(this.route).post(newResource);
+        return this.restangular.all(this.route).post(newResource);
       },
       remove: function (object) {
-        return this.Restangular.one(this.route, object._id).remove();
+        return this.restangular.one(this.route, object._id).remove();
       }
     };
 

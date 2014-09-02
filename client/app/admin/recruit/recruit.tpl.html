@@ -1,0 +1,28 @@
+
+<p class="lead">
+  Applications
+  <a ui-sref="recruit.add" href="" class="btn btn-default pull-right">
+    <i class="glyphicon glyphicon-plus-sign"></i>
+  </a>
+</p>
+<div ng-repeat="recruit in recruits">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-right btn-group">
+        <a class="btn btn-default btn-xs" ui-sref="recruit.edit({id:recruit._id})">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+        <a class="btn btn-default btn-xs"  ng-click="delete(recruit)">
+          <i class="glyphicon glyphicon-trash"></i>
+        </a>
+      </div>
+      <a ui-sref="recruit.item({id:recruit._id})" href="">{{recruit.classType}}</a>
+    </div>
+    <div class="panel-body">
+      <pre><h6>Priority Status:</h6>{{recruit.currentStatus}}</pre>
+            <pre><h6>Quantity:</h6>{{recruit.quantity}}</pre>
+    </div>
+  </div>
+</div>
+
+

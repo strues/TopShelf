@@ -12,13 +12,11 @@
   .controller('AppAdminItemCtrl', AppAdminItemCtrl);
 
   /* @ngInject */
-  function AppAdminItemCtrl ($stateParams, ApplicationRepository) {
-    var vm = this;
-    
-
-   vm.application = ApplicationRepository.get($stateParams.id)
+  function AppAdminItemCtrl ($scope, $stateParams, ApplicationRepository) {
+ 
+   $scope.application = ApplicationRepository.get($stateParams.id)
       .then(function (data) {
-      vm.application = data;
+        $scope.application = data;
       });
   }
 

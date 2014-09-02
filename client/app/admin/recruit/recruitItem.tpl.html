@@ -1,0 +1,20 @@
+<div ng-controller="RecruitItemCtrl as vm">
+<p class="lead">
+  <a ui-sref="^.list" class="btn btn-large btn-default">
+    <i class="glyphicon glyphicon-arrow-left"></i>
+  </a>
+  <a href="#/recruit/edit/{{recruit.id}}" class="btn btn-default pull-right">
+    <i class="glyphicon glyphicon-pencil"></i>
+  </a>
+</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+      {{vm.recruit.classType}}
+      {{vm.recruit.currentStatus}}
+  </div>
+  <div class="panel-body">
+  
+  </div>
+</div>
+</div>

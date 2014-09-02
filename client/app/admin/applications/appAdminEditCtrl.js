@@ -12,16 +12,15 @@
   .controller('AppAdminEditCtrl', AppAdminEditCtrl);
 
   /* @ngInject */
-  function AppAdminEditCtrl ($stateParams, $location, ApplicationRepository) {
-    var vm = this;
-    
-     vm.application = ApplicationRepository.get($stateParams.id)
+  function AppAdminEditCtrl ($scope, $stateParams, $location, ApplicationRepository) {
+   
+     $scope.application = ApplicationRepository.get($stateParams.id)
        .then(function (data) {
-          vm.application = data;
+          $scope.application = data;
         });
 
-  vm.update = function () {
-    vm.application.put().then(function () {
+  $scope.update = function () {
+    $scope.application.put().then(function () {
       $location.path('/applications/' + $stateParams.id);
     });
   };
