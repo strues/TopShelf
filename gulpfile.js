@@ -69,7 +69,49 @@ gulp.task('watch', function () {
     ['build', browserSync.reload]);
 });
 
+var nodemon = require('gulp-nodemon');
+var httpProxy = require('http-proxy');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 
+gulp.task('serve', ['nodemon', 'reload-browser'], function() {
+  browserSync.init(null, {
+    proxy: 'http://localhost:9000',
+    port: 5000,
+    notify: true,
+    https: true
+   
+  });
+  gulp.watch([appScripts, appStyles, appHTML, appTemplates, appImages, appFonts],
+    ['build', browserSync.reload])});
+
+
+
+  gulp.task('nodemon', function (cb) {
+  var called = false;
+  return nodemon({
+    verbose: true,
+    script: 'server/app.js',
+    ext: 'js html scss',
+    ignore: ['bower_components', 'node_modules', '.sass-cache', '.idea', '.git']
+  }).on('start', function () {
+    if (!called) {
+      called = true;
+      cb();
+    }
+  }).on('change', function () {
+    gulp.run('reload-browser');
+  });
+});
+
+gulp.task('reload-browser', ['server_restart'], function () {
+  setTimeout(function () {
+    reload({ stream: false });
+  }, 1000);
+});
+gulp.task('server_restart', function () {
+
+});
 /*
  * JAVASCRIPT
  * BUILD:SCRIPTS // DIST:SCRIPTS
@@ -102,6 +144,66 @@ gulp.task('jshint', function () {
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(plato('report'));
 });
+
+
+/*
+ * TEMPLATES
+ * BUILD:TEMPLATES // DIST:TEMPLATES
+ * JSHINT
+ */
+var ngHtml2Js = require("gulp-ng-html2js"),
+    htmlmin       = require("gulp-htmlmin"),
+    concat        = require("gulp-concat");
+    uglify        = require("gulp-uglify");
+
+gulp.task('build:templates', function () {
+return gulp.src(appTemplates)
+    .pipe(minifyHtml({
+        empty: true,
+        spare: true,
+        quotes: true
+    }))
+    .pipe(ngHtml2Js({
+        moduleName: 'app.templates',
+        prefix: '/templates'
+    }))
+    .pipe(concat('templates.min.js'))
+    .pipe(gulp.dest(buildTemplates));
+});
+
+gulp.task('dist:templates', function () {
+return gulp.src(appTemplates)
+    .pipe(minifyHtml({
+        empty: true,
+        spare: true,
+        quotes: true
+    }))
+    .pipe(ngHtml2Js({
+        moduleName: 'app.templates',
+        prefix: '/templates'
+    }))
+    .pipe(concat('templates.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(buildTemplates));
+});
+
+/*
+ * HTML
+ * BUILD:HTML // DIST:HTML
+ * 
+ */
+gulp.task('build:html', ['clean'], function () {
+  return gulp.src(appHTML)
+    .pipe(wiredep())
+    .pipe(gulp.dest(build));
+});
+
+
+/*
+ * STYLESHEETS
+ * BUILD:STYLES // DIST:STYLES
+ * 
+ */
 
 var sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
