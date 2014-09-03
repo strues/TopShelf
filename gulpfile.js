@@ -161,7 +161,7 @@ gulp.task('nodemon', function (cb) {
     verbose: true,
     script: 'server/app.js',
     ext: 'js html scss',
-    ignore: ['bower_components', 'node_modules', '.sass-cache', '.idea', '.git']
+    ignore: ['vendors', 'node_modules', '.sass-cache', '.idea', '.git']
   }).on('start', function () {
     if (!called) {
       called = true;

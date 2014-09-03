@@ -54,7 +54,7 @@ module.exports = function(app) {
   }
 
   if ('development' === env || 'test' === env) {
-    app.use(express.static(path.join(config.root, '.tmp')));
+    app.use(express.static(path.join(config.root, 'built/dev')));
     app.use(express.static(path.join(config.root, 'client')));
     app.set('appPath', 'client');
     app.use(morgan('dev'));

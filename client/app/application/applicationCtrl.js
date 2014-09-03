@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-.controller('ApplicationCtrl', function($scope, $state, $http, $window, $location, Notification) {
+.controller('ApplicationCtrl', function($scope, $state, $http, $window, $location) {
 
  $scope.formData = {};
     $scope.formFields = [
@@ -152,12 +152,11 @@ angular.module('app')
         uniqueFormId: 'appForm'
     };
 
-    $scope.appReceived = 'Your application has been submitted.'
 
 
     $scope.onSubmit = function() {
         $http.post('/api/applications', $scope.formData);
         console.log('application submitted:', $scope.formData);
-         Notification.success('Your application has been submitted successfully.');
+        // $alert('Your application has been submitted successfully.');
     };
 });
