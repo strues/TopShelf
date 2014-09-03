@@ -1,4 +1,9 @@
 bower_components
-.DS_STORE
+.DS_Store
 node_modules
 .tmp
+built
+report
+test
+vendor
+client/assets/images
