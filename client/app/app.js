@@ -9,7 +9,6 @@ angular.module('app', [
   'ui.router',
   'ui.bootstrap',
   'formly',
-  'ui.grid',
   'ui-notification',
   'restangular'
 ])
