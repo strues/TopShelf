@@ -10,7 +10,8 @@ var RecruitSchema = new Schema({
     },
     currentStatus: {type: String },
     quantity: Number,
-    classType: { type: String }
+    classType: { type: String },
+    classImage: { type: String }
 });
 
 /**

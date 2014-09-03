@@ -32,6 +32,7 @@ exports.create = function (req, res, next) {
   recruit.classType = req.body.classType;
   recruit.currentStatus = req.body.currentStatus;
   recruit.quantity = req.body.quantity;
+  recruit.classImage = req.body.classImage;
   recruit.created = req.body.created;
 
   recruit.save(function(err, recruit) {
