@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - '0.10'
+before_install:
+  - 'npm install npm -g'
+  - 'npm install gulp -g'
+  - 'npm install bower -g'
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+install:
+  - 'npm install'
+  - 'bower update'
+script:
+  - 'gulp test'
+  - 'gulp protractor'
+notifications:
+  slack: smartorg:nle3gU183MeaEZkcv37psNDQ
