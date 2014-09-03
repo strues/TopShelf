@@ -7,7 +7,7 @@ angular.module('app', [
   'ngCookies',
   'ngSanitize',
   'ui.router',
-  'mgcrea.ngStrap',
+  'ui.bootstrap',
   'formly',
   'ui.grid',
   'ui-notification',
@@ -51,18 +51,19 @@ angular.module('app', [
       });
       RestangularProvider.setDefaultHttpFields({cache: true});
       RestangularProvider.setMethodOverriders(['put', 'patch']);
-  RestangularProvider.setRequestInterceptor(
-    function(elem, operation, what) {
+      RestangularProvider.setRequestInterceptor(
+        function(elem, operation, what) {
 
-      if (operation === 'put') {
-        elem._id = undefined;
-        return elem;
-      }
-      return elem;
-    })
+          if (operation === 'put') {
+            elem._id = undefined;
+            return elem;
+          }
+          return elem;
+        })
       
       $httpProvider.interceptors.push('authInterceptor');
       $locationProvider.html5Mode(true).hashPrefix('!');
+
 
 })
 

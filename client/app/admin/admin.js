@@ -4,20 +4,18 @@ angular.module('app')
   .config(function ($stateProvider) {
     $stateProvider
       .state('admin', {
+        abstract: true,
         url: '/admin',
-        templateUrl: 'app/admin/admin.tpl.html',
-        controller: 'AdminCtrl',
-        controllerAs: 'vm'
+        templateUrl: 'app/admin/admin.tpl.html'
       })
- /*   .state('roster', {
-        url: '/roster',
-        templateUrl: 'app/admin/roster/roster.tpl.html',
-        controller: 'RosterCtrl',
-        controllerAs: 'vm'
-    })*/
+    .state('admin.dashboard', {
+        url: '',
+        templateUrl: 'app/admin/adminDash.tpl.html',
+        controller: 'AdminCtrl'
+    })
     .state('appAdmin', {
         abstract: true,
-        url: '/applications',
+        url: '/admin/applications',
         templateUrl: 'app/admin/applications/main.tpl.html'
     })
 
@@ -25,7 +23,7 @@ angular.module('app')
         url: '',
         templateUrl: 'app/admin/applications/appAdmin.tpl.html',
         controller: 'AppAdminListCtrl',
-        controllerAs: 'vm'
+        view: 'adminCont'
     })
     .state('appAdmin.edit', {
         url: '/edit/{id}',

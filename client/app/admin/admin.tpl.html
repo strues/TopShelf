@@ -1,13 +1,12 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-  
-  </div>
-</header>
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+<div ng-include="'app/admin/adminNav.tpl.html'"></div>
+        </div>
+        <div class="col-sm-10" ui-view>
+     
 
-<div class="container">
-  <div class="row">
-  <a ui-sref="appAdmin.list">Applications</a>
- </div>
+
+    </div>
+    </div>
   </div>
