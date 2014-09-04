@@ -1,14 +1,14 @@
 // Normalize
-@import "_h5bp";
+@import "h5bp";
 
 // Global variables
-@import "global/_variables";
-@import "global/_normalize";
+@import "global/variables";
+@import "global/normalize";
 @import "modules/modules";
 @import "../vendors/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
-@import "global/_animations";
-@import "global/_helpers";
+@import "global/animations";
+@import "global/helpers";
 
 
 
