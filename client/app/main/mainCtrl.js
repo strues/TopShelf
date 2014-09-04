@@ -13,7 +13,6 @@ function MainCtrl(Restangular) {
 
 
 
-
     }
 
 angular

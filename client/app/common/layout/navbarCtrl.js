@@ -1,6 +1,6 @@
   angular.module('app')
   .controller('NavbarCtrl', function($scope, $location, Auth) {
- 
+
   $scope.menu = [
     {
       'title': 'Home',
@@ -9,6 +9,10 @@
       {
         'title': 'Apply',
         'link': '/application'
+      },
+      {
+          'title': 'Guild Info',
+          'link': '/about'
       }
     ];
 
