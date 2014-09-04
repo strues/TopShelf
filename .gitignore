@@ -5,7 +5,6 @@ built
 report
 test
 vendor
-_
 pre-commit-hook.sh
 .travis.yml
 client/assets/images
