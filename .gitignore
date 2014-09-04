@@ -1,9 +1,11 @@
-bower_components
 .DS_Store
 node_modules
-.tmp
+.idea
 built
 report
 test
 vendor
+_
+pre-commit-hook.sh
+.travis.yml
 client/assets/images

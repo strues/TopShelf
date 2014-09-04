@@ -10,7 +10,6 @@
     <!-- build:css({.tmp,client}) styles/app.css -->
     <link rel="stylesheet" href="styles/app.css">
     <!-- endbuild -->
-  <link href="vendors/angular-motion/dist/angular-motion.css" rel="stylesheet">
     <!-- build:js scripts/modernizr.js -->
         <script src="vendors/modernizr/modernizr.js"></script>
     <!-- endbuild -->
@@ -20,15 +19,15 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    
+
    <div ng-include="'app/common/layout/navbar.tpl.html'"></div>
    <div ui-view class="fadeZoom"></div>
 
 
    <div ng-include="'app/common/layout/footer.tpl.html'"></div>
-    
-   
-    
+
+
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -53,14 +52,14 @@
     <script src="vendors/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="vendors/lodash/dist/lodash.compat.js"></script>
     <script src="vendors/restangular/dist/restangular.js"></script>
-    <script src="vendors/angular-formly/dist/formly.min.js"></script>
+    <script src="vendors/angular-form-for/dist/form-for.js"></script>
+    <script src="vendors/angularjs-toaster/toaster.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({client,.tmp}) scripts/app.js -->
 
     <script src="app/app.js"></script>
-    <script src="app/common/accountService.js"></script>
     <script src="app/common/abstractRepoFactory.js"></script>
     <script src="app/common/layout/navbarCtrl.js"></script>
     <script src="app/common/auth/authService.js"></script>
@@ -80,7 +79,7 @@
     <script src="app/application/application.js"></script>
     <script src="app/application/applicationCtrl.js"></script>
     <script src="app/application/applicationFactory.js"></script>
-  
+
 
 
     <script src="app/admin/admin.js"></script>

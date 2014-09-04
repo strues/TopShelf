@@ -1,8 +1,8 @@
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-  
+    <p class="lead">Top Shelf guild, yo.</p>
+
   </div>
 </header>
 
@@ -14,10 +14,10 @@
         <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
       </ul>
     </div>
-    <div class="col-lg-4">
-    <h1>hasdf</h1>
-    <div ng-repeat="recruit in recruits">
-    {{recruit.classType}}
+    <div class="col-lg-4" ng-controller="MainCtrl as vm">
+    <h1>Currently Recruiting:</h1>
+    <div ng-repeat="recruit in vm.recruits">
+    {{recruit.classType}} {{recruit.currentStatus}}
           <img src="{{recruit.classImage}}"></div>
     </div>
     </div>

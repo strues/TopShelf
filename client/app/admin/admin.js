@@ -4,15 +4,11 @@ angular.module('app')
   .config(function ($stateProvider) {
     $stateProvider
       .state('admin', {
-        abstract: true,
         url: '/admin',
-        templateUrl: 'app/admin/admin.tpl.html'
+        templateUrl: 'app/admin/adminDash.tpl.html'
+
       })
-    .state('admin.dashboard', {
-        url: '',
-        templateUrl: 'app/admin/adminDash.tpl.html',
-        controller: 'AdminCtrl'
-    })
+
     .state('appAdmin', {
         abstract: true,
         url: '/admin/applications',
@@ -28,15 +24,13 @@ angular.module('app')
     .state('appAdmin.edit', {
         url: '/edit/{id}',
         templateUrl: 'app/admin/applications/appAdminEdit.tpl.html',
-        controller: 'AppAdminEditCtrl',
-        controllerAs: 'vm'
+        controller: 'AppAdminEditCtrl'
     })
 
     .state('appAdmin.item', {
         url: '/{id}',
         templateUrl: 'app/admin/applications/appAdminItem.tpl.html',
-        controller: 'AppAdminItemCtrl',
-        controllerAs: 'vm'
+        controller: 'AppAdminItemCtrl'
     })
     .state('recruit', {
         abstract: true,
@@ -62,5 +56,5 @@ angular.module('app')
         url: '/{id}',
         templateUrl: 'app/admin/recruit/recruitItem.tpl.html',
         controller: 'RecruitItemCtrl'
-    }); 
+    });
 });

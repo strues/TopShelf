@@ -8,7 +8,7 @@ angular.module('app', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'formly',
+  'formFor',
   'restangular'
 ])
 
@@ -41,9 +41,9 @@ angular.module('app', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider) {
       $urlRouterProvider
       .otherwise('/');
-      
+
       RestangularProvider.setBaseUrl('/api');
-      RestangularProvider.setRestangularFields({ 
+      RestangularProvider.setRestangularFields({
           id: '_id.$oid',
           selfLink: 'self.link'
       });
@@ -58,7 +58,7 @@ angular.module('app', [
           }
           return elem;
         })
-      
+
       $httpProvider.interceptors.push('authInterceptor');
       $locationProvider.html5Mode(true).hashPrefix('!');
 

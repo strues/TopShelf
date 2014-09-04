@@ -20,7 +20,9 @@ var ApplicationSchema = new Schema({
     pcSpecs: String,
     uiScreenshot: String,
     whyTS: String,
-    btag: String
+    btag: String,
+    firstName: String,
+    age: Number
 });
 
 /**

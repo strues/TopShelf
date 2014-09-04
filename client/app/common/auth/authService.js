@@ -39,11 +39,6 @@ angular.module('app')
         return deferred.promise;
       },
 
-      /**
-       * Delete access token and user info
-       *
-       * @param  {Function}
-       */
       logout: function() {
         $cookieStore.remove('token');
         currentUser = {};
