@@ -57,7 +57,7 @@ angular.module('app', [
             return elem;
           }
           return elem;
-        })
+        });
 
       $httpProvider.interceptors.push('authInterceptor');
       $locationProvider.html5Mode(true).hashPrefix('!');
