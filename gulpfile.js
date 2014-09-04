@@ -116,7 +116,7 @@ gulp.task('csscomb', function () {
 
 gulp.task('test', function () {
     'use strict';
-    
+
     return gulp.src('client/app/**/*.js')
      .pipe($.jshint())
         .pipe($.jshint.reporter(jsHintStylish))
@@ -193,7 +193,7 @@ gulp.task('open-browser', ['server'], function () {
             }));
     }
 });
-  
+
 
 gulp.task('watchers', function () {
     'use strict';
@@ -338,7 +338,7 @@ gulp.task('process-index', [
 gulp.task('process-sass', function () {
     'use strict';
 
-    return gulp.src('client/styles/app.scss')
+    return gulp.src(['client/styles/app.scss', 'client/styles/**/*.scss'])
         .pipe($.plumber(plumberConfig))
         .pipe($.sass())
         .pipe($.cssimport())

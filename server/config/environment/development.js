@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/topshelfdev'
+    uri: 'mongodb://localhost/topshelf-dev'
   },
   TOKEN_SECRET: process.env.TOKEN_SECRET || 'topk3k',
   MONGO_URI: process.env.MONGO_URI || 'localhost',

@@ -9,16 +9,16 @@
     <div class="col-sm-12">
       <form class="form" name="form" ng-submit="register(form)" novalidate>
 
-        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
+        <div class="form-group" ng-class="{ 'has-success': form.username.$valid && submitted,
+                                            'has-error': form.username.$invalid && submitted }">
           <label>Username</label>
 
           <input type="text" name="name" class="form-control" ng-model="user.username"
                  required/>
-          <p class="help-block" ng-show="form.name.$error.required && submitted">
-            A name is required
+          <p class="help-block" ng-show="form.username.$error.required && submitted">
+            A username is required
           </p>
-        </div>
+        </div><!-- end username -->
 
         <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                             'has-error': form.email.$invalid && submitted }">
@@ -36,7 +36,7 @@
           <p class="help-block" ng-show="form.email.$error.mongoose">
             {{ errors.email }}
           </p>
-        </div>
+        </div><!-- end email -->
 
         <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                             'has-error': form.password.$invalid && submitted }">
@@ -53,7 +53,60 @@
           <p class="help-block" ng-show="form.password.$error.mongoose">
             {{ errors.password }}
           </p>
-        </div>
+        </div> <!-- end password -->
+
+          <div class="form-group" ng-class="{ 'has-success': form.firstName.$valid && submitted,
+                                            'has-error': form.firstName.$invalid && submitted }">
+              <label>First Name</label>
+
+              <input type="text" name="firstName" class="form-control" ng-model="user.firstName"
+                     required/>
+              <p class="help-block" ng-show="form.firstName.$error.required && submitted">
+                  Your first name required
+              </p>
+          </div><!-- end firstname -->
+
+          <div class="form-group" ng-class="{ 'has-success': form.age.$valid && submitted,
+                                            'has-error': form.age.$invalid && submitted }">
+              <label>Age</label>
+
+              <input type="text" name="age" class="form-control" ng-model="user.age"
+                     required/>
+              <p class="help-block" ng-show="form.age.$error.required && submitted">
+                 Your age is required.
+              </p>
+          </div><!-- end age -->
+
+          <div class="form-group">
+              <label>Sex</label>
+
+              <input type="text" name="sex" class="form-control" ng-model="user.sex"
+                     required/>
+
+          </div><!-- end sex -->
+
+          <div class="form-group" ng-class="{ 'has-success': form.location.$valid && submitted,
+                                            'has-error': form.location.$invalid && submitted }">
+              <label>Location</label>
+
+              <input type="text" name="location" class="form-control" ng-model="user.location"
+                     required/>
+              <p class="help-block" ng-show="form.location.$error.required && submitted">
+                  A location is required
+              </p>
+          </div><!-- end location -->
+          <div class="form-group" ng-class="{ 'has-success': form.btag.$valid && submitted,
+                                            'has-error': form.btag.$invalid && submitted }">
+              <label>Battletag</label>
+
+              <input type="text" name="btag" class="form-control" ng-model="user.btag"
+                     required/>
+              <p class="help-block" ng-show="form.btag.$error.required && submitted">
+                  A battletag is required
+              </p>
+          </div><!-- end btag -->
+
+
 
         <div>
           <button class="btn btn-inverse btn-lg btn-login" type="submit">
@@ -77,4 +130,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

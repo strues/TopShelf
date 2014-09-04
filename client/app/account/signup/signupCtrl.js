@@ -10,9 +10,16 @@ angular.module('app')
 
       if(form.$valid) {
         Auth.createUser({
-          name: $scope.user.username,
+          username: $scope.user.username,
           email: $scope.user.email,
-          password: $scope.user.password
+          password: $scope.user.password,
+          firstName: $scope.user.firstName,
+          age: $scope.user.age,
+          birthday: $scope.user.birthday,
+          btag: $scope.user.btag,
+          sex: $scope.user.sex,
+          location: $scope.user.location
+
         })
         .then( function() {
           // Account created, redirect to home
@@ -35,5 +42,3 @@ angular.module('app')
       $window.location.href = '/auth/' + provider;
     };
   });
-
-

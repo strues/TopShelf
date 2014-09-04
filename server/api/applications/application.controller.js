@@ -1,7 +1,11 @@
 'use strict';
 
 var Application     = require('./application.model');
+var mongoose = require('mongoose');
 var config      = require('../../config/environment');
+var User = require('../users/user.model');
+
+var _ = require('lodash');
 
 /**
  * Get list of applications
@@ -45,8 +49,9 @@ exports.create = function (req, res, next) {
 
 
 
+
   application.save(function(err, application) {
-    if (err) 
+    if (err)
       res.send(err);
     res.json({ message: 'application saved to the database', data: application });
   });

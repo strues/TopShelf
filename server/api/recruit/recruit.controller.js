@@ -31,12 +31,12 @@ exports.create = function (req, res, next) {
   var recruit = new Recruit ();
   recruit.classType = req.body.classType;
   recruit.currentStatus = req.body.currentStatus;
-  recruit.quantity = req.body.quantity;
+  recruit.classSpec = req.body.classSpec;
   recruit.classImage = req.body.classImage;
   recruit.created = req.body.created;
 
   recruit.save(function(err, recruit) {
-    if (err) 
+    if (err)
       res.send(err);
     res.json({ message: 'recruiting status saved to the database', data: recruit });
   });

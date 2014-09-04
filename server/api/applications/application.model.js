@@ -22,7 +22,11 @@ var ApplicationSchema = new Schema({
     whyTS: String,
     btag: String,
     firstName: String,
-    age: Number
+    age: Number,
+    applicant: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 /**

@@ -7,9 +7,9 @@ var authTypes = ['battlenet', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   username: String,
-  email: { 
-    type: String, 
-    lowercase: true 
+  email: {
+    type: String,
+    lowercase: true
   },
   role: {
     type: String,
@@ -18,6 +18,9 @@ var UserSchema = new Schema({
   firstName: String,
   age: Number,
   birthday: String,
+  sex: String,
+  btag: String,
+  location: String,
   hashedPassword: String,
   provider: String,
   salt: String,
@@ -25,7 +28,10 @@ var UserSchema = new Schema({
   application:{},
   twitter: {},
   google: {},
-  battlenet: {}
+  battlenet: {},
+  createdOn: { type: Date, default: Date.now },
+  modifiedOn: Date,
+  lastLogin: Date
 });
 
 /**
