@@ -4,10 +4,11 @@
 // Global variables
 @import "global/_variables";
 @import "global/_normalize";
-
+@import "modules/modules";
 @import "../vendors/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
 @import "global/_animations";
 @import "global/_helpers";
 
-@import "modules/modules";
+
+
