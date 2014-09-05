@@ -40,18 +40,23 @@ var all = {
       }
     }
   },
+    twitter: {
+        clientID:     process.env.TWITTER_ID || 'id',
+        clientSecret: process.env.TWITTER_SECRET || 'secret',
+        callbackURL:  process.env.DOMAIN + '/auth/twitter/callback'
+    },
 
-  twitter: {
-    clientID:     process.env.TWITTER_ID || 'id',
-    clientSecret: process.env.TWITTER_SECRET || 'secret',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/twitter/callback'
-  },
+    google: {
+        clientID:     process.env.GOOGLE_ID || 'id',
+        clientSecret: process.env.GOOGLE_SECRET || 'secret',
+        callbackURL:  process.env.DOMAIN + '/auth/google/callback'
+    },
 
-  google: {
-    clientID:     process.env.GOOGLE_ID || 'id',
-    clientSecret: process.env.GOOGLE_SECRET || 'secret',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/google/callback'
-  }
+    bnet: {
+        clientID:     process.env.BNET_ID || 'jbdqc3ufm6hfzpymxc3ej52988vvh59b',
+        clientSecret: process.env.BNET_SECRET || 'GEuXBv5wBQkdAvyyC9YkhS7XeQHTzFYe',
+        callbackURL:  process.env.DOMAIN + '/auth/bnet/callback'
+    }
 };
 
 // Export the config object based on the NODE_ENV

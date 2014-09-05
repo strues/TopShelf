@@ -1,10 +1,12 @@
 .DS_Store
 node_modules
 .idea
-built
+build
 report
 test
 vendor
 pre-commit-hook.sh
 .travis.yml
-client/assets/images
+client/assets
+changelog.tpl
+npm-debug.log

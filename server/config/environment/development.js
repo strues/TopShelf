@@ -16,5 +16,8 @@ module.exports = {
   LINKEDIN_SECRET: process.env.LINKEDIN_SECRET || 'LinkedIn Client Secret',
   TWITTER_KEY: process.env.TWITTER_KEY || 'Twitter Consumer Key',
   TWITTER_SECRET: process.env.TWITTER_SECRET || 'Twitter Consumer Secret',
-  TWITTER_CALLBACK: process.env.TWITTER_CALLBACK || 'Twitter Callback Url'
+  TWITTER_CALLBACK: process.env.TWITTER_CALLBACK || 'Twitter Callback Url',
+    BNET_KEY: process.env.BNET_KEY|| 'jbdqc3ufm6hfzpymxc3ej52988vvh59b',
+    BNET_SECRET: process.env.BNET_SECRET || 'GEuXBv5wBQkdAvyyC9YkhS7XeQHTzFYe',
+    BNET_CALLBACK: process.env.BNET_CALLBACK || 'Bnet Callback Url'
 };

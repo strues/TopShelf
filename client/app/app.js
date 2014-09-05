@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('app', [
-
   'ngResource',
   'ngAnimate',
   'ngCookies',
@@ -9,9 +8,41 @@ angular.module('app', [
   'ui.router',
   'ui.bootstrap',
   'formFor',
-  'restangular'
+  'restangular',
+  'ncy-angular-breadcrumb',
+  'ngRetina',
+  'angular-growl'
 ])
+.run(function ($rootScope, $location, $state, $stateParams, Auth) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+    
+    $rootScope.page_title = 'Top Shelf Guild';
+    
+    $rootScope.$on('$stateChangeSuccess', function () {
+    // scroll view to top
+    $("html, body").animate({ scrollTop: 0 }, 200);
+    });
 
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      Auth.isLoggedInAsync(function(loggedIn) {
+        if (next.authenticate && !loggedIn) {
+          $location.path('/login');
+        }
+      });
+    });
+
+    $rootScope.$on('$stateChangeStart', function (event, toState) {
+        if (toState.auth && !Auth.isAdmin(toState.auth)) {
+          event.preventDefault();
+        }
+    });
+}) // End run block
+
+/*
+ * Need to separate this from the main app module
+ */
 .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
@@ -38,9 +69,10 @@ angular.module('app', [
     };
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider, $tooltipProvider, growlProvider) {
       $urlRouterProvider
-      .otherwise('/');
+          .when('/home', '/')
+          .otherwise('/');
 
       RestangularProvider.setBaseUrl('/api');
       RestangularProvider.setRestangularFields({
@@ -61,22 +93,9 @@ angular.module('app', [
 
       $httpProvider.interceptors.push('authInterceptor');
       $locationProvider.html5Mode(true).hashPrefix('!');
-
-
-})
-
-.run(function ($rootScope, $location, Auth) {
-    // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
-          $location.path('/login');
-        }
-      });
-    });
-    $rootScope.$on('$stateChangeStart', function (event, toState) {
-        if (toState.auth && !Auth.isAdmin(toState.auth)) {
-          event.preventDefault();
-        }
-    });
+      $tooltipProvider.options({
+            appendToBody: true
+        });
+     
+      $httpProvider.interceptors.push(growlProvider.serverMessagesInterceptor);
 });

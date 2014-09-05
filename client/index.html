@@ -2,22 +2,28 @@
 <html class="no-js" ng-app="app">
   <head>
     <meta charset="utf-8">
-    <title>Top Shelf</title>
+    <title ng-bind="$root.page_title"></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <base href="/">
-    <!-- build:css({.tmp,client}) styles/app.css -->
-    <link rel="stylesheet" href="styles/app.css">
-    <!-- endbuild -->
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- inject:css -->
+    <!-- endinject -->
+
     <!-- build:js scripts/modernizr.js -->
-        <script src="vendors/modernizr/modernizr.js"></script>
+        <script src="vendor/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
   <body>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div style="height:0; overflow: hidden;">
+      <!-- inject:svg --><!-- endinject -->
+    </div>
 
 
    <div ng-include="'app/common/layout/navbar.tpl.html'"></div>
@@ -25,6 +31,8 @@
 
 
    <div ng-include="'app/common/layout/footer.tpl.html'"></div>
+
+
 
 
 
@@ -38,67 +46,10 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
-
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="vendors/jquery/dist/jquery.js"></script>
-    <script src="vendors/angular/angular.js"></script>
-    <script src="vendors/angular-messages/angular-messages.js"></script>
-    <script src="vendors/angular-animate/angular-animate.js"></script>
-    <script src="vendors/angular-resource/angular-resource.js"></script>
-    <script src="vendors/angular-cookies/angular-cookies.js"></script>
-    <script src="vendors/angular-sanitize/angular-sanitize.js"></script>
-    <script src="vendors/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="vendors/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="vendors/lodash/dist/lodash.compat.js"></script>
-    <script src="vendors/restangular/dist/restangular.js"></script>
-    <script src="vendors/angular-form-for/dist/form-for.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js({client,.tmp}) scripts/app.js -->
-
-    <script src="app/app.js"></script>
-    <script src="app/common/abstractRepoFactory.js"></script>
-    <script src="app/common/layout/navbarCtrl.js"></script>
-    <script src="app/common/auth/authService.js"></script>
-    <script src="app/common/auth/userService.js"></script>
-
-
-    <script src="app/main/main.js"></script>
-    <script src="app/main/mainCtrl.js"></script>
-
-    <script src="app/about/about.js"></script>
-    <script src="app/about/aboutCtrl.js"></script>
-
-    <script src="app/account/account.js"></script>
-    <script src="app/account/logoutCtrl.js"></script>
-    <script src="app/account/signup/signupCtrl.js"></script>
-    <script src="app/account/login/loginCtrl.js"></script>
-    <script src="app/account/settings/settingsCtrl.js"></script>
-
-
-    <script src="app/application/application.js"></script>
-    <script src="app/application/applicationCtrl.js"></script>
-    <script src="app/application/applicationFactory.js"></script>
-
-
-
-    <script src="app/admin/admin.js"></script>
-    <script src="app/admin/adminCtrl.js"></script>
-    <script src="app/admin/applications/appAdminListCtrl.js"></script>
-    <script src="app/admin/applications/appAdminItemCtrl.js"></script>
-    <script src="app/admin/applications/appAdminEditCtrl.js"></script>
-    <script src="app/admin/recruit/recruitmentFactory.js"></script>
-    <script src="app/admin/recruit/recruitListCtrl.js"></script>
-    <script src="app/admin/recruit/recruitEditCtrl.js"></script>
-    <script src="app/admin/recruit/recruitAddCtrl.js"></script>
-    <script src="app/admin/recruit/recruitItemCtrl.js"></script>
-
-
-
-    <!-- inject:partials -->
+    
+    <!-- inject:js -->
     <!-- endinject -->
+   
     <!-- endbuild -->
   </body>
 </html>
