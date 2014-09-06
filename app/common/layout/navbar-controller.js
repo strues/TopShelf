@@ -16,7 +16,7 @@
  $scope.menu = [
     {
       'title': 'Home',
-      'link': '/'
+      'link': '/',
       },
       {
         'title': 'Apply',

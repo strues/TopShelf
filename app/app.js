@@ -104,9 +104,11 @@ function AuthInterceptor($q, $cookieStore, $location) {
       'ui.router',
       'ui.bootstrap',
       'formFor',
+      'pageslide-directive',
       'restangular',
       'ncy-angular-breadcrumb',
       'angular-growl',
+      'ngTable',
       'account'
     ]);
 

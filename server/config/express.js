@@ -14,7 +14,6 @@ var express        = require('express'),
     cookieParser   = require('cookie-parser'),
     errorHandler   = require('errorhandler'),
     path           = require('path'),
-    config         = require('./environment'),
     passport       = require('passport'),
     session        = require('express-session'),
     RedisStore     = require('connect-redis')(session),
@@ -45,7 +44,7 @@ module.exports = function(app) {
           port: '6379'
     })
   }));
-  
+
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));

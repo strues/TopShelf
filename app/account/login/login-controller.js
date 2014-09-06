@@ -28,7 +28,7 @@
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/home');
+          $location.path('/');
         }
         .catch( function(err) {
           $scope.errors.other = err.message;

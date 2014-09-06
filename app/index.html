@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang='en' data-ng-app='app'>
+<html lang="en" data-ng-app="app">
 <head>
   <title>app</title>
-  <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <base href="/">
   <!-- inject:head:js -->
   <!-- endinject -->
@@ -14,10 +15,13 @@
   <!-- endinject -->
 </head>
 <body>
-<ng-include src="'common/layout/navbar.tpl.html'"></ng-include>
-  <div data-ui-view>
+<aside data-ng-include="'common/layout/navbar.tpl.html'"  id="nav-container"></aside>
 
-  </div>
+
+  <div class="view-container">
+                <section data-ui-view id="content" class="animate-fade-up"></section>
+            </div>
+
 <ng-include src="'common/layout/footer.tpl.html'"></ng-include>
   <!-- bower:js -->
   <!-- endbower -->

@@ -1,14 +1,20 @@
 <div class="homeHero">
-    <div class="container">
+
 <header class="hero-unit">
-
-    <h1>Top Shelf's Website is in Alpha</h1>
-    <p class="lead">Functionality works, design not so hot.</p>
-
+<div ng-controller="HomeCarouselCtrl as vm">
+  <div style="background-size: cover; max-height: 400px;">
+    <carousel interval="switchInterval">
+      <slide ng-repeat="slide in vm.slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+      </slide>
+    </carousel>
+    </div>
+</div>
 
 </header>
  </div>
-</div>
+
+    <div class="container">
 <div class="blurbSection">
     <div class="container">
         <section id="information">
@@ -66,10 +72,12 @@
     </div>
 
     <div class="col-lg-4" ng-controller="HomeCtrl as home">
+    <div class="well well-lg">
     <h1>Currently Recruiting:</h1>
     <div ng-repeat="recruit in home.recruits">
     {{recruit.classType}} {{recruit.currentStatus}}
-          <img src="{{recruit.classImage}}"></div>
+          <img src="{{recruit.classImage}}"></div><img src="images/icons/shaman.svg" width="40px"></div>
+          </div>
     </div>
     </div>
   </div>
