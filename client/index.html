@@ -1,55 +1,30 @@
-<!doctype html>
-<html class="no-js" ng-app="app">
-  <head>
-    <meta charset="utf-8">
-    <title ng-bind="$root.page_title"></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <base href="/">
-    <!-- font awesome from BootstrapCDN -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
-    <!-- inject:css -->
-    <!-- endinject -->
-
-    <!-- build:js scripts/modernizr.js -->
-        <script src="vendor/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
-  </head>
-  <body>
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div style="height:0; overflow: hidden;">
-      <!-- inject:svg --><!-- endinject -->
-    </div>
-
-
+<!DOCTYPE html>
+<html lang='en' data-ng-app='app'>
+<head>
+  <title>app</title>
+  <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes'>
+  <!-- inject:head:js -->
+  <!-- endinject -->
+  <!-- inject:html -->
+  <!-- endinject -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- inject:css -->
+  <!-- endinject -->
+</head>
+<body>
    <div ng-include="'app/common/layout/navbar.tpl.html'"></div>
-   <div ui-view class="fadeZoom"></div>
+   <div data-ui-view class="fadeZoom"></div>
 
 
    <div ng-include="'app/common/layout/footer.tpl.html'"></div>
 
+  <!-- bower:js -->
+  <!-- endbower -->
 
-
-
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-    
-    <!-- inject:js -->
-    <!-- endinject -->
-   
-    <!-- endbuild -->
-  </body>
+  <!-- inject:js -->
+  <!-- endinject -->
+</body>
 </html>
+
+

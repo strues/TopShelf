@@ -1,0 +1,34 @@
+
+<p class="lead">
+  <a ui-sref="^.list" class="btn btn-large btn-default">
+    <i class="glyphicon glyphicon-arrow-left"></i>
+  </a>
+  <a ng-click="save()" href="" class="btn btn-default pull-right">
+    <i class="glyphicon glyphicon-floppy-save"></i>
+  </a>
+</p>
+
+<div class="form-group">
+  <input class="form-control" id="classType" name="classType" ng-model="recruit.classType" placeholder="Class Type">
+</div>
+<div class="form-group">
+  <input class="form-control" id="classImage" name="classImage" ng-model="recruit.classImage" placeholder="Class Image">
+</div>
+<div class="form-group">
+<input class="form-control" id="currentStatus" name="currentStatus" ng-model="recruit.currentStatus" placeholder="Priority">
+</div>
+<div class="form-group">
+<input class="form-control" id="classSpec" name="classSpec" ng-model="recruit.classSpec" placeholder="Class Spec">
+</div>
+<hr>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+      {{recruit.classType}}
+      {{recruit.currentStatus}}
+      {{recruit.classSpec}}
+  </div>
+  <div class="panel-body">
+
+  </div>
+</div>

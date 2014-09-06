@@ -55,8 +55,7 @@ module.exports = function(app) {
 
   if ('development' === env || 'test' === env) {
     app.use(express.static(path.join(config.root, 'build')));
-    app.use(express.static(path.join(config.root, 'client')));
-    app.set('appPath', 'client');
+    app.set('appPath', 'build');
     app.use(morgan('dev'));
     app.use(errorHandler()); // Error handler - has to be last
   }
