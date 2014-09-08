@@ -1,6 +1,6 @@
 function socket($rootScope) {
   
-  var socket = io.connect('http://localhost:9000');
+
   
   return {
   
@@ -21,11 +21,11 @@ function socket($rootScope) {
             callback.apply(socket, args);
           }
         });
-      })
+      });
     }
   };
-};
+}
 
 angular
   .module('app')
-  .service('socket', socket)
+  .service('socket', socket);

@@ -17,7 +17,7 @@
           ApplicationRepository.remove(data).then(function () {
               $scope.applications = ApplicationRepository.getList();
             });
-        };
+        }
       };
   }
 

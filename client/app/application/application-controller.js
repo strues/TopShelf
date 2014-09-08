@@ -40,7 +40,7 @@
         console.log('application submitted:', $scope.formData);
         // $alert('Your application has been submitted successfully.');
 
-  }
+  };
 }
   angular
     .module('app')

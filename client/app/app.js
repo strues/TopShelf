@@ -16,7 +16,7 @@ function run($rootScope, $location, $state, $stateParams, Auth) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 
-    $rootScope.page_title = 'Top Shelf Guild';
+    
 
     $rootScope.$on('$stateChangeSuccess', function () {
     // scroll view to top
@@ -62,7 +62,7 @@ function AuthInterceptor($q, $cookieStore, $location) {
                 return $q.reject(response);
               }
             }
-          }
+          };
         }
 
   function config($urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider) {

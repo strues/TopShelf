@@ -31,12 +31,12 @@ function ChatCtrl($scope, socket) {
 
     socket.on('send:name', function (data) {
       $scope.name = data.name;
-      console.log("DATA= "+JSON.stringify(data));   //TEST
+      console.log('DATA= '+JSON.stringify(data));   //TEST
     });
 
     socket.on('send:time', function (data) {
       $scope.time = data.time;
-      console.log("DATA time= "+JSON.stringify(data));   //TEST
+      console.log('DATA time= '+JSON.stringify(data));   //TEST
     });
 
 

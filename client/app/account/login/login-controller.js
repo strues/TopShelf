@@ -33,7 +33,8 @@
         .catch( function(err) {
           $scope.errors.other = err.message;
         })
-      )}
+      );
+      }
     };
 
     $scope.loginOauth = function(provider) {
