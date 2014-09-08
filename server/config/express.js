@@ -6,6 +6,7 @@
 
 var express        = require('express'),
     favicon        = require('serve-favicon'),
+    cors           = require('cors'),
     morgan         = require('morgan'),
     colors         = require('colors'),
     compression    = require('compression'),
@@ -20,9 +21,10 @@ var express        = require('express'),
     mongoose       = require('mongoose'),
     config         = require('./environment');
 
+
 module.exports = function(app) {
   var env = app.get('env');
-
+  app.use(cors());
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
@@ -32,6 +34,8 @@ module.exports = function(app) {
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());
+
+
 
   // Persist sessions with Redis
   // We need to enable sessions for passport twitter because its an oauth 1.0 strategy
@@ -45,7 +49,7 @@ module.exports = function(app) {
     })
   }));
 
-  if ('production' === env) {
+   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));
     app.set('appPath', config.root + '/public');
@@ -53,9 +57,10 @@ module.exports = function(app) {
   }
 
   if ('development' === env || 'test' === env) {
-    app.use(express.static(path.join(config.root, 'build')));
-    app.set('appPath', 'build');
-    app.use(morgan('dev'));
+    app.use(require('connect-livereload')());
+    app.use(express.static(path.join(config.root, '.tmp')));
+    app.use(express.static(path.join(config.root, 'client')));
+    app.set('appPath', 'client');
     app.use(errorHandler()); // Error handler - has to be last
   }
 };

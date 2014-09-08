@@ -1,0 +1,46 @@
+//== Navbar Overrides
+//
+//##
+
+.navbar {
+    font-weight: 700;
+    font-size: 16px;
+    padding-top: 15px;
+    letter-spacing: 1px;
+    background-color: $lightest;
+    z-index: 300;
+    font-family: 'Gesta', sans-serif;
+}
+
+.navbar-inverse {
+    background-color: $lightest;
+    z-index: 300;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background: $lightest;
+}
+
+.navbar-inverse .navbar-brand {
+    color: $dark-gray;
+    font-weight: bolder;
+    font-size: 22px;
+    letter-spacing: 1.2px;
+}
+
+.navbar-inverse .navbar-brand i {
+    color: $dark-gray;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+    text-decoration: none;
+    background: none;
+    border-bottom: 2px solid $brand-primary;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}

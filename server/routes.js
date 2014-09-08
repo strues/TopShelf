@@ -19,12 +19,12 @@ module.exports = function(app) {
   app.use('/api/applications', require('./api/applications'));
   app.use('/api/users', require('./api/users'));
   app.use('/api/recruits', require('./api/recruit'));
-
+  
   app.use('/auth', require('./authorization'));
 
 app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
-    res.sendFile('index.html', {   root: path.normalize(__dirname + '/../build') });
+    res.sendFile('index.html', {   root: path.normalize(__dirname + '/../client') });
 });
 
   // Error 404

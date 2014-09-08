@@ -1,0 +1,49 @@
+{
+  "name": "angular-form-for",
+  "version": "1.2.16",
+  "main": [
+    "./dist/form-for.css",
+    "./dist/form-for.js"
+  ],
+  "homepage": "https://github.com/bvaughn/angular-form-for",
+  "authors": [
+    "Brian Vaughn <brian.david.vaughn@gmail.com>"
+  ],
+  "description": "Set of Angular directives to simplify creating and validating HTML forms.",
+  "keywords": [
+    "angular",
+    "form",
+    "forms",
+    "crud",
+    "validation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular": "1.2.22"
+  },
+  "devDependencies": {
+    "jasmine-object-matchers": "~0.0.3",
+    "jasmine-promise-matchers": "~0.0.3",
+    "angular-mocks": "1.2.22"
+  },
+  "resolutions": {
+    "angular": "1.2.22"
+  },
+  "_release": "1.2.16",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.2.16",
+    "commit": "9075334f06e1fd2b97bc7a0ad76b9111a0ce80da"
+  },
+  "_source": "git://github.com/bvaughn/angular-form-for.git",
+  "_target": "~1.2.16",
+  "_originalSource": "angular-form-for"
+}

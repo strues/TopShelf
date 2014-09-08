@@ -16,7 +16,7 @@ var all = {
   env: process.env.NODE_ENV,
 
   // Root path of server
-  root: path.normalize(__dirname + '/../../..'),
+  root: path.normalize(__dirname + '/../../../..'),
 
   // Server port
   port: process.env.PORT || 9000,
@@ -52,10 +52,11 @@ var all = {
         callbackURL:  process.env.DOMAIN + '/auth/google/callback'
     },
 
+
     bnet: {
-        clientID:     process.env.BNET_ID || 'jbdqc3ufm6hfzpymxc3ej52988vvh59b',
-        clientSecret: process.env.BNET_SECRET || 'GEuXBv5wBQkdAvyyC9YkhS7XeQHTzFYe',
-        callbackURL:  process.env.DOMAIN + '/auth/bnet/callback'
+        clientID:     process.env.BNET_ID || 'guamkwyf4rxq8pvwuzhftz2yzut44ufa',
+        clientSecret: process.env.BNET_SECRET || 'M76WCRvv9GVuMnCGVbrKSxaJA9MHRCfK',
+        callbackURL:  process.env.DOMAIN + 'https://guildr.me/auth/bnet/callback'
     }
 };
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app" class="no-js">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+        <meta name="description" content="<%appdescription%>">
+        <meta name="version" content="<%appversion%>">
+        <meta name="build" content="<%appbuild%>">
+        <meta name="title" content="<%apptitle%>">
+    <base href="/">
+        <title>{{settings.title}}</title>
+        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="196x196" href="images/touch/chrome-touch-icon-196x196.png">
+
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+
+        <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#3372DF">
+
+        <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+        <!--
+        <link rel="canonical" href="http://www.example.com/">
+        -->
+
+        <!-- inject:head:js -->
+        <!-- endinject -->
+        <!-- inject:css -->
+        <!-- endinject -->
+    <style>
+    /* This helps the ng-show/ng-hide animations start at the right place. */
+    /* Since Angular has this but needs to load, this gives us the class early. */
+    .ng-hide {
+    display: none!important;
+    }
+    </style>
+  </head>
+  
+  <body>
+  <nav data-ng-include="'app/common/layout/navbar.tpl.html'"></nav>
+  
+  <div class="view-container">
+  <section data-ui-view id="content" class="animate-fade-up"></section>
+  </div>
+  <ng-include src="'app/common/layout/footer.tpl.html'"></ng-include>
+
+
+        <!-- inject:bower:js -->
+        <!-- endinject -->
+        
+        <!-- inject:libraries:js -->
+        <!-- endinject -->
+        
+        <!-- inject:js -->
+        <!-- endinject -->
+</body>
+</html>

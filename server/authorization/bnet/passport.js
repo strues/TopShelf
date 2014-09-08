@@ -4,13 +4,17 @@ var BnetStrategy = require('passport-bnet').Strategy;
 exports.setup = function (User, config) {
 
 
-// Use the BnetStrategy within Passport.
-    passport.use(new BnetStrategy({
-        clientID: config.bnet.clientID,
-        clientSecret: config.bnet.clientSecret,
-        callbackURL: "https://topshelfguild.com/auth/bnet/callback"
-    }, function(accessToken, refreshToken, profile, done) {
+passport.use(
+  new BnetStrategy(
+    { clientID: 'guamkwyf4rxq8pvwuzhftz2yzut44ufa',
+      clientSecret: 'M76WCRvv9GVuMnCGVbrKSxaJA9MHRCfK',
+      scope: "wow.profile",
+      callbackURL: "https://guildr.me/auth/bnet/callback" },
+    function(accessToken, refreshToken, profile, done) {
+      process.nextTick(function () {
         return done(null, profile);
-    }));
+      });
+    })
+);
 
 };

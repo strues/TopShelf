@@ -1,0 +1,61 @@
+@require '_variables';
+
+radio-field {
+  display: inline-block;
+}
+
+.radio-field-input {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-image: linear-gradient(to top, $color-fill-1, white);
+  border-radius: 15px;
+  border: $border;
+  position: relative;
+  margin-right: $padding-small;
+  vertical-align: middle;
+
+   &.is-selected {
+    &::before {
+      content: " ";
+      display: inline-block;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-radius: 5px;
+      background-color: $color-text-1;
+    }
+  }
+}
+
+.radio-field {
+  cursor: pointer;
+
+  .field-label {
+    vertical-align: middle;
+  }
+
+  label {
+    cursor: inherit;
+  }
+
+  &.disabled {
+    cursor: default;
+
+    .radio-field-input {
+      opacity: $opacity-disabled;
+    }
+  }
+
+  .field-input {
+    display: none;
+  }
+
+  &.has-error {
+    .radio-field-input {
+      border-color: $border-color-error;
+    }
+  }
+}
