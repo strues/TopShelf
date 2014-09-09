@@ -89,6 +89,10 @@ function AuthInterceptor($q, $cookieStore, $location) {
       $httpProvider.interceptors.push('AuthInterceptor');
       $locationProvider.html5Mode(true);
   }
+ function toastrConfig(toastr) {
+        toastr.options.timeOut = 4000;
+        toastr.options.positionClass = 'toast-bottom-right';
+    }
 
   angular
     .module('app', [
@@ -98,7 +102,7 @@ function AuthInterceptor($q, $cookieStore, $location) {
       'ngCookies',
       'ngSanitize',
       'ui.router',
-      
+      'ui.bootstrap',
       'formFor',
       'restangular',
       'ngTable'

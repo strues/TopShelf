@@ -38,7 +38,7 @@
         $scope.onSubmit = function() {
         $http.post('/api/applications', $scope.formData);
         console.log('application submitted:', $scope.formData);
-        // $alert('Your application has been submitted successfully.');
+        toastr.success('Your application has been submitted successfully.');
 
   };
 }

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="app" class="no-js">
+<html lang="en" data-ng-app="app">
   <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-        <meta name="description" content="<%appdescription%>">
-        <meta name="version" content="<%appversion%>">
-        <meta name="build" content="<%appbuild%>">
-        <meta name="title" content="<%apptitle%>">
-    <base href="/">
+        <meta name="title" content="TopShelf">
+
         <title>{{settings.title}}</title>
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
@@ -23,40 +20,93 @@
         <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
         <meta name="msapplication-TileColor" content="#3372DF">
 
-        <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-        <!--
-        <link rel="canonical" href="http://www.example.com/">
-        -->
+    <base href="/">
+    <!-- build:css({.tmp,client}) /styles/app.css -->
+    <link href="styles/app.css" rel="stylesheet" type="text/css">
+    <!-- endbuild -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//use.typekit.net/oqx8pks.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-        <!-- inject:head:js -->
-        <!-- endinject -->
-        <!-- inject:css -->
-        <!-- endinject -->
-    <style>
-    /* This helps the ng-show/ng-hide animations start at the right place. */
-    /* Since Angular has this but needs to load, this gives us the class early. */
-    .ng-hide {
-    display: none!important;
-    }
-    </style>
   </head>
   
   <body>
   <nav data-ng-include="'app/common/layout/navbar.tpl.html'"></nav>
-  
+  <toaster-container></toaster-container>
   <div class="view-container">
   <section data-ui-view id="content" class="animate-fade-up"></section>
   </div>
   <ng-include src="'app/common/layout/footer.tpl.html'"></ng-include>
 
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
 
-        <!-- inject:bower:js -->
-        <!-- endinject -->
-        
-        <!-- inject:libraries:js -->
-        <!-- endinject -->
-        
-        <!-- inject:js -->
-        <!-- endinject -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
+    <script src="bower_components/angular-form-for/dist/form-for.js"></script>
+    <script src="bower_components/ng-table/ng-table.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+   <!-- build:js({client,.tmp}) client/app/app.js -->
+    <script src="app/app.js"></script>
+    
+    <script src="app/common/auth/authSrv.js"></script>
+    <script src="app/common/auth/userSrv.js"></script>
+    <script src="app/common/abstractRepoFactory.js"></script>
+    <script src="app/common/socketSrv.js"></script>
+    <script src="app/common/layout/navbarCtrl.js"></script>
+    <script src="app/account/account.js"></script>
+    <script src="app/account/accountCtrl.js"></script>
+    <script src="app/account/login/loginCtrl.js"></script>
+    <script src="app/account/signup/signupCtrl.js"></script>
+    <script src="app/account/settings/settingsCtrl.js"></script>
+    <script src="app/home/home.js"></script>
+    <script src="app/home/homeCtrl.js"></script>
+    <script src="app/home/homeCarouselCtrl.js"></script>
+    <script src="app/admin/admin.js"></script>
+    <script src="app/admin/adminCtrl.js"></script>
+    <script src="app/admin/applications/appAdminEditCtrl.js"></script>
+    <script src="app/admin/applications/appAdminListCtrl.js"></script>
+    <script src="app/admin/applications/appAdminItemCtrl.js"></script>
+    <script src="app/admin/recruit/recruitmentFactory.js"></script>
+    <script src="app/admin/recruit/recruitAddCtrl.js"></script>
+    <script src="app/admin/recruit/recruitEditCtrl.js"></script>
+    <script src="app/admin/recruit/recruitItemCtrl.js"></script>
+    <script src="app/admin/recruit/recruitListCtrl.js"></script>
+    <script src="app/admin/recruit/recruitProvider.js"></script>
+    <script src="app/application/application.js"></script>
+    <script src="app/application/applicationCtrl.js"></script>
+    <script src="app/application/applicationProvider.js"></script>
+    <script src="app/application/applicationRepoFactory.js"></script>
+    <script src="app/about/about.js"></script>
+    <script src="app/about/aboutCtrl.js"></script>
+    <script src="app/chat/chat.js"></script>
+    <script src="app/chat/chatCtrl.js"></script>
+    <!-- inject:partials -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
 </body>
 </html>

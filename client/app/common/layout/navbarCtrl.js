@@ -34,7 +34,9 @@
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.logout = function() {
-      Auth.logout();
+      Auth.logout()
+      toastr.info('Successfully logged out.');
+
       $location.path('/login');
     };
 

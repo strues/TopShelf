@@ -1,657 +1,577 @@
-/* jshint node: true */
+var os = require('os');
+var fs = require('fs');
+var path = require('path');
+var gulp = require('gulp');
+var wireDepStream = require('wiredep').stream;
+var jsHintStylish = require('jshint-stylish');
+var $ = require('gulp-load-plugins')();
 
-/**
- *
- *  Angular Starter Kit
- *
- *  Licensed under the the Creative Common License (CC0)
- *  Copyright (c) <2014> <Jan Nahody>
- *
- */
+var devConfigPath = './gulpfile-dev.js';
+var devConfig = {};
 
-'use strict';
+if (fs.existsSync(devConfigPath)) {
+    devConfig = require(devConfigPath)
+}
+var nodemon = require('gulp-nodemon');
+var livereload = require('gulp-livereload');
+var gulpArguments = process.argv.splice(2);
+var ENV = process.env.NODE_ENV || 'dev';
+var isDev = ENV === 'dev';
+var configFilename = 'config.' + (isDev ? 'dev' : 'prod') + '.js';
+var templateCacheModuleName = 'app.templates';
 
 
-/* Include Gulp, Plugins and Tools *************************/
-var gulp            = require('gulp'),
-    angularInject   = require('gulp-angular-inject-module'),
-    autoprefixer    = require('gulp-autoprefixer'),
-    bower           = require('main-bower-files'),
-    clip            = require('gulp-clip-empty-files'),
-    concat          = require('gulp-concat'),
-    connect         = require('gulp-connect'),
-    consolidate     = require('gulp-consolidate'),
-    cssmin          = require('gulp-minify-css'),
-    filter          = require('gulp-filter'),
-    flatten         = require('gulp-flatten'),
-    fs              = require('fs'),
-    gulpif          = require('gulp-if'),
-    gutil           = require('gulp-util'),
-    gzip            = require('gulp-gzip'),
-    htmlmin         = require('gulp-htmlmin'),
-    icontypo        = require('gulp-iconfont'),
-    ignore          = require('gulp-ignore'),
-    imagemin        = require('gulp-imagemin'),
-    inject          = require('gulp-inject'),
-    jshint          = require('gulp-jshint'),
-    lodash          = require('lodash'),
-    open            = require('gulp-open'),
-    plumber         = require('gulp-plumber'),
-    rename          = require('gulp-rename'),
-    replace         = require('gulp-replace'),
-    rev             = require('gulp-rev'),
-    rimraf          = require('gulp-rimraf'),
-    runSequence     = require('run-sequence'),
-    sass            = require('gulp-sass'),
-    size            = require('gulp-size'),
-    stream          = require('event-stream'),
-    streamqueue     = require('streamqueue'),
-    tar             = require('gulp-tar'),
-    templateCache   = require('gulp-angular-templatecache'),
-    uglify          = require('gulp-uglify');
-    var modRewrite = require('connect-modrewrite');
-/* Configuration *******************************************/
-var config = {
-    name:               'TopShelf',
-    version:            '0.4.0',
-    build:              'dev',
-    title:              'Top Shelf - Sargeras Mythic Raiding',
-    description:        'Top Shelf guild.',
 
-    mainScript:         'app.js',
-    templatesModule:    'app',
-    imageTypes:         '**/*.{jpg,png,gif,svg}',
-    typoTypes:          '**/*.{ttf,eot,woff,svg}',
-    typoName:           'webicons',
-    typoClassName:      'webicon',
-    paths: {
-        staticFiles:        ['client/*.{jpg,png,ico,gif,txt,webapp}','client/data/**','client/i18n/**','client/assets/typo/**'],
-        headScripts:        ['client/bower_components/modernizr/modernizr.js'],
-        images:             ['client/assets/images/**/*'],
-        sass:               ['client/styles/**/*.scss'],
-        css:                ['client/styles/**/*.css'],
-        templates:          ['client/app/**/*.tpl.html'],
-        scripts:            ['client/app/**/*.js'],
-        typo:               'client/assets/typo',
-        icons:              'client/assets/icons',
-        serve:              '.tmp',
-        build:              'dist',
-        libraries: {
-            paths: {
-                bowerDirectory: 'client/bower_components',
-                bowerrc:        '.bowerrc',
-                bowerJson:      'bower.json'
-            }
-        }
-    },
-    serve: {
-        host:               '0.0.0.0',
-        port:               8000,
-        middleware: function() { // this is a rewrite to proxy to the express server
-          return [ // express must be started first
-            modRewrite([
-              '^/api/(.*)$ http://localhost:9000/api/$1 [P]'
-            ])
-          ];
-        },
-        livereload: {
-            port:           35729
-        },
-        openUrl:            'http://localhost',
-        root:               ['./.tmp','./client']
-    },
-    reload: {
-        onTemplateChanged:  true,
-        onStaticChanged:    false,
-        onImageChanged:     false,
-        onIconsChanged:     false,
-        onTypoChanged:      false
-    },
-    use: {
-        jshint:             true,
-        imagemin:           true,
-        openbrowser:        true
-    },
-    plugins: {
-        imagemin: {
-            progressive:    true,
-            interlaced:     true
-        },
-        htmlmin: {
-            collapseWhitespace: true,
-            removeComments:     true
-        },
-        sass: {
 
-        },
-        gzip: {
 
-        },
-        bower: {
 
-        },
-        uglify: {
-            mangle: false
-        }
+
+var browserApp = (function () {
+    //also can be 'firefox'
+    var platformBrowserApp;
+
+    switch (os.platform()) {
+        case 'linux':
+            platformBrowserApp = 'google-chrome';
+            break;
+        case 'darwin':
+            platformBrowserApp = 'open /Applications/Google\\ Chrome.app';
+            break;
+        case 'win32':
+            platformBrowserApp = 'chrome';
+            break;
+        default:
+            $.util.log($.util.colors.red('Unsupported dev platform'));
+            process.exit();
+            break;
+    }
+
+    return devConfig.browser || platformBrowserApp;
+})();
+var polyfillsBrowsers = [
+    'last 2 version',
+    'ie 8',
+    'ie 9'
+];
+var prefixesBrowsers = [
+    'Android 2.3',
+    'Android >= 4',
+    'Chrome >= 20',
+    'Firefox >= 24', // Firefox 24 is the latest ESR
+    'Explorer >= 8',
+    'iOS >= 6',
+    'Opera >= 12',
+    'Safari >= 6'
+];
+var folders = {
+    src: 'client',
+    app: path.join('src', 'app'),
+    indexFile: path.join('src', 'index.html'),
+    appAssets: path.join('src', 'assets'),
+    appModules: path.join('src', 'app/**'),
+    appViews: path.join('src', 'app/**/*.tpl.html'),
+    dev: path.join('built', 'dev'),
+    prod: path.join('built', 'prod')
+};
+var buildFolder = isDev && gulpArguments[0] !== 'build'
+    ? folders.dev
+    : folders.prod;
+var plumberConfig = {
+    errorHandler: function (err) {
+        $.util.log($.util.colors.red(err.toString()));
+        $.util.beep();
     }
 };
 
+/****************                ****************/
+/****************   MAIN TASKS   ****************/
+/****************                ****************/
+gulp.task('default', ['clean'], function () {
+    'use strict';
 
+    isDev
+        ? gulp.start('build-flow', 'open-browser', 'watchers')
+        : gulp.start('build', 'open-browser');
+});
 
+gulp.task('build', ['clean', 'nodemon'], function () {
+    'use strict';
 
-/* Helpers *************************************************/
-// hot fix for buggy gulp.src handling empty array
-function emptyArray(value) {
-    if ( (value instanceof Array) && (value.length > 0) ) {
-        return value;
-    }
-    return '';
-}
+    gulp.start('prod:full-flow');
+});
 
-// Get timestamp
-function getTimestamp() {
-    var _date = new Date();
+gulp.task('release', ['bump'], function () {
+    'use strict';
 
-    function padStr(i) {
-        return (i < 10) ? "0" + i : "" + i;
-    }
+    gulp.start('release-push');
+});
 
-    return  padStr(_date.getFullYear()) +
-        padStr(1 + _date.getMonth()) +
-        padStr(_date.getDate()) +
-        padStr(_date.getHours()) +
-        padStr(_date.getMinutes()) +
-        padStr(_date.getSeconds());
-}
+gulp.task('csscomb', function () {
+    'use strict';
 
-// User settings for Gulpfile
-function getSettings(options) {
-    var _options, settings, manifest, packageinfo;
+    var CssComb = require('csscomb');
+    var comb = new CssComb(JSON.parse(fs.readFileSync('.csscomb.json')));
+    comb.processPath(path.join(folders.appAssets, 'styles'));
+});
 
-    // options settings
-    _options = {manifest: true};
+gulp.task('test', function () {
+    'use strict';
 
-    if (typeof options === 'object') {
-        _options = lodash.merge(_options, options);
-    }
-
-    // load files
-    settings     = false;
-    manifest     = false;
-    packageinfo  = false;
-
-    // load user settings
-    try {
-        settings = JSON.parse(fs.readFileSync(__dirname + '/gulptask.json'));
-
-    } catch (err) {
-        gutil.log(gutil.colors.red('Missing gulptask.json file.'), gutil.colors.blue(' Run \'gulp init\' to generate.'));
-        process.exit(1);
-    }
-
-    // load package settings
-    try {
-        packageinfo = JSON.parse(fs.readFileSync(__dirname + '/package.json'));
-        packageinfo.extract = {};
-        if (typeof packageinfo.name !== 'undefined') {
-            packageinfo.extract.name = packageinfo.name;
-        }
-        if (typeof packageinfo.version !== 'undefined') {
-            packageinfo.extract.version = packageinfo.version;
-        }
-        if (typeof packageinfo.title !== 'undefined') {
-            packageinfo.extract.title = packageinfo.title;
-        }
-        if (typeof packageinfo.description !== 'undefined') {
-            packageinfo.extract.description = packageinfo.description;
-        }
-    } catch (err) {
-        gutil.log(gutil.colors.red('Missing or mismatched package.json file.'));
-        process.exit(1);
-    }
-
-    // load manifest.webapp
-    try {
-        manifest = JSON.parse(fs.readFileSync( __dirname + '/client/manifest.webapp'));
-    } catch (err) {
-        gutil.log(gutil.colors.red('Missing or mismatched client/manifest.webapp file.'));
-        process.exit(1);
-    }
-
-    // load user settings
-    if (settings) {
-        config = lodash.merge(config, settings, packageinfo.extract);
-    }
-
-    // set build
-    config.build = getTimestamp();
-
-    // update to manifest.webapp
-    if (manifest && _options.manifest) {
-        if (typeof config.version != 'undefined') {
-            manifest.version = config.version;
-        }
-
-        if (typeof config.description != 'undefined') {
-            manifest.description = config.description;
-        }
-
-        if (typeof config.name != 'undefined') {
-            manifest.name = config.name;
-        }
-
-        // write out
-        fs.writeFile( __dirname + '/client/manifest.webapp', JSON.stringify(manifest, null, 4), function(err) {
-            if(err) {
-                gutil.log(err);
-            } else {
-                gutil.log("Manifest.webapp file updated.");
+    return gulp.src('client/app/**/*.js')
+     .pipe($.jshint())
+        .pipe($.jshint.reporter(jsHintStylish))
+        .pipe($.plato('report'))
+        .pipe($.notify(function (file) {
+            if (file.jshint.success) {
+                return false;
             }
-        });
+
+            var errors = file.jshint.results.map(function (data) {
+                if (data.error) {
+                    return '(' + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
+                }
+            }).join('\n');
+
+            return file.relative + ' (' + file.jshint.results.length + ' errors)\n' + errors;
+        }));
+});
+
+
+/****************               ****************/
+/****************   COMMON TASKS   ****************/
+/****************               ****************/
+gulp.task('build-flow', ['process-index', 'process-sass', 'process-assets']);
+
+gulp.task('clean', function () {
+    'use strict';
+
+    return gulp.src([
+        path.join(buildFolder, '*'),
+        path.join(buildFolder, 'js'),
+        path.join(buildFolder, 'styles'),
+        path.join(buildFolder, 'images')
+    ], { read: false })
+        .pipe($.plumber(plumberConfig))
+        .pipe($.rimraf());
+});
+
+gulp.task('nodemon', function (cb) {
+  var called = false;
+  return nodemon({
+    verbose: true,
+    script: 'server/app.js',
+    ext: 'js html scss',
+    ignore: ['vendors', 'node_modules', '.sass-cache', '.idea', '.git']
+  }).on('start', function () {
+    if (!called) {
+      called = true;
+      cb();
+    }
+  })
+});
+
+
+
+gulp.task('server', [isDev ? 'build-flow': 'prod:full-flow', 'nodemon'], function () {
+
+    var notification = 'Dev server was started on: http://' +
+        (isPublicServer ? 'localhost' : server.host) + ':' + server.port;
+
+    return gulp.src(buildFolder)
+        .pipe($.plumber(plumberConfig))
+        .pipe($.notify(notification))
+});
+
+gulp.task('open-browser', ['server'], function () {
+    'use strict';
+
+    if (gulpArguments.indexOf('--not-open') === -1) {
+        gulp.src(buildFolder + '/index.html')
+            .pipe($.open('', {
+                url: 'http://' + (isPublicServer ? 'localhost' : server.host) + ':' + server.port,
+                app: browserApp
+            }));
+    }
+});
+
+
+gulp.task('watchers', function () {
+    'use strict';
+
+    gulp.watch([
+        path.join(folders.appAssets, 'styles', '**', '*.+(scss|css)'),
+        path.join(folders.appModules, '**', '*.+(scss|css)')
+    ], ['process-sass']);
+
+    gulp.watch([
+        path.join(folders.app, '**', '*.js'),
+        '!' + path.join(folders.app, 'config', configFilename)
+        ], [
+            'process-app-polyfills',
+            'process-app-js'
+        ]);
+    gulp.watch(path.join(folders.app, 'config', configFilename), ['process-app-config']);
+    gulp.watch(folders.indexFile, ['process-index']);
+    gulp.watch(path.join(folders.appViews, '**', '*.html'), ['process-app-templates']);
+    gulp.watch(path.join(folders.appAssets, 'images', '**', '*.*'), ['process-assets-images']);
+    gulp.watch(path.join(folders.src, 'favicon.ico'), ['process-assets-favicon']);
+    gulp.watch(path.join(folders.appAssets, 'fonts', '**', '*.*'), ['process-assets-fonts']);
+});
+
+gulp.task('process-app-polyfills', function () {
+    'use strict';
+
+    return gulp.src(path.join(folders.app, '**'))
+        .pipe($.plumber(plumberConfig))
+        .pipe($.autopolyfiller('polyfills.js', { browsers: polyfillsBrowsers }))
+        .pipe(gulp.dest(path.join(buildFolder, 'js')));
+});
+
+gulp.task('process-app-config', function () {
+    'use strict';
+
+    return gulp.src(path.join(folders.app, 'config', configFilename))
+        .pipe($.plumber(plumberConfig))
+        .pipe($.rename('config.js'))
+        .pipe($.jshint())
+        .pipe($.jshint.reporter(jsHintStylish))
+        .pipe($.plato('report'))
+        .pipe($.notify(function (file) {
+            if (file.jshint.success) {
+                return false;
+            }
+
+            var errors = file.jshint.results.map(function (data) {
+                if (data.error) {
+                    return '(' + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
+                }
+            }).join('\n');
+
+            return file.relative + ' (' + file.jshint.results.length + ' errors)\n' + errors;
+        }))
+        .pipe(gulp.dest(path.join(buildFolder, 'js')))
+        .pipe(livereload());
+});
+
+gulp.task('process-app-templates', function () {
+    'use strict';
+
+    return gulp.src(path.join(folders.appViews, '**', '*.html'))
+        .pipe($.plumber(plumberConfig))
+        .pipe($.angularHtmlify())
+        .pipe($.cleanhtml())
+        .pipe($.angularTemplatecache({
+            standalone: true,
+            module: templateCacheModuleName,
+            root: '/templates/'
+        }))
+        .pipe(gulp.dest(path.join(buildFolder, 'js')))
+        .pipe(livereload());
+});
+
+
+gulp.task('process-app-js', function () {
+    'use strict';
+
+    return gulp.src(folders.indexFile)
+        .pipe($.plumber(plumberConfig))
+        .pipe($.useref.assets())
+        .pipe($.filter(function (file) {
+            return /app\.js$/.test(file.path);
+        }))
+        .pipe($.jshint())
+        .pipe($.jshint.reporter(jsHintStylish))
+        .pipe($.notify(function (file) {
+            if (file.jshint.success) {
+                return false;
+            }
+
+            var errors = file.jshint.results.map(function (data) {
+                if (data.error) {
+                    return '(' + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
+                }
+            }).join('\n');
+
+            return file.relative + ' (' + file.jshint.results.length + ' errors)\n' + errors;
+        }))
+        .pipe($.size({title: 'Original app sources size: '}))
+        .pipe($.ngAnnotate())
+        .pipe($.size({title: 'Compressed app sources size: '}))
+        .pipe(gulp.dest(buildFolder))
+        .pipe(livereload());
+});
+
+gulp.task('process-vendors-js', function () {
+    'use strict';
+
+    return gulp.src(folders.indexFile)
+        .pipe($.plumber(plumberConfig))
+        .pipe(wireDepStream())
+        .pipe($.useref.assets())
+        .pipe($.filter(function (file) {
+            return /vendors\.js$/.test(file.path);
+        }))
+        .pipe($.size({title: 'Original vendors size: '}))
+        .pipe($.uglifyjs())
+        .pipe($.size({title: 'Compressed vendors size: '}))
+        .pipe(gulp.dest(buildFolder));
+});
+
+gulp.task('process-index', [
+        'process-app-polyfills',
+        'process-app-config',
+        'process-app-templates',
+        'process-app-js',
+        'process-vendors-js'
+    ], function () {
+        'use strict';
+
+        return gulp.src(folders.indexFile)
+            .pipe($.plumber(plumberConfig))
+            .pipe($.useref())
+            .pipe($.angularHtmlify())
+            .pipe($.cleanhtml())
+            .pipe(gulp.dest(buildFolder))
+            .pipe(livereload());
+    });
+
+gulp.task('process-sass', function () {
+    'use strict';
+
+    return gulp.src(['client/styles/app.scss', 'client/styles/**/*.scss'])
+        .pipe($.plumber(plumberConfig))
+        .pipe($.sass())
+        .pipe($.cssimport())
+        .pipe($.size({title: 'Original app styles size: '}))
+        .pipe($.autoprefixer(prefixesBrowsers))
+        .pipe($.csso())
+        .pipe($.rename({
+            basename: 'app'
+        }))
+        .pipe($.size({title: 'Compressed app styles size: '}))
+        .pipe(gulp.dest(path.join(buildFolder, 'styles')))
+        .pipe(livereload());
+});
+
+gulp.task('process-assets-images', function () {
+    'use strict';
+
+    return gulp.src(path.join(folders.appAssets, 'images', '**', '*.*'))
+        .pipe(gulp.dest(path.join(buildFolder, 'images')));
+});
+
+gulp.task('process-assets-favicon', function () {
+    'use strict';
+
+    return gulp.src(path.join(folders.src, 'favicon.ico'))
+        .pipe(gulp.dest(buildFolder));
+});
+
+gulp.task('process-assets-fonts', function () {
+    'use strict';
+
+    return gulp.src(path.join(folders.appAssets, 'fonts', '**', '*.*'))
+        .pipe(gulp.dest(path.join(buildFolder, 'fonts')));
+});
+
+gulp.task('process-assets', ['process-assets-images', 'process-assets-favicon', 'process-assets-fonts']);
+
+
+/****************               ****************/
+/****************   PROD TASKS   ****************/
+/****************               ****************/
+gulp.task('prod:process-index', [
+    'process-app-polyfills',
+    'process-app-config',
+    'process-app-templates',
+    'process-app-js',
+    'process-vendors-js'
+], function () {
+    'use strict';
+
+    return gulp.src(folders.indexFile)
+        .pipe($.plumber(plumberConfig))
+        .pipe($.useref())
+        .pipe(gulp.dest(buildFolder));
+});
+
+gulp.task('prod:process-assets-images', function () {
+    'use strict';
+
+    return gulp.src(path.join(folders.appAssets, 'images', '**', '*.*'))
+        .pipe($.size('Images size before compression'))
+        .pipe($.imagemin({
+            progressive: true,
+            optimizationLevel: 5
+        }))
+        .pipe($.size('Images size after compression'))
+        .pipe(gulp.dest(path.join(buildFolder, 'images')));
+});
+
+gulp.task('prod:concat-app-js', [
+        'prod:process-index',
+        'process-sass',
+        'prod:process-assets-images',
+        'process-assets-favicon',
+        'process-assets-fonts'
+    ], function () {
+        'use strict';
+
+        function getConcatPath(files) {
+            var jsDirPath = path.join(buildFolder, 'js');
+            var total = [];
+
+            for (var i = 0, length = files.length; i < length; i++) {
+                total.push(path.join(jsDirPath, files[i]));
+            }
+
+            return total;
+        }
+
+        return gulp.src(getConcatPath(['polyfills.js', 'config.js', 'templates.js', 'app.js']))
+            .pipe($.concat('all.js'))
+            .pipe($.uglifyjs())
+            .pipe(gulp.dest(path.join(buildFolder, 'js')))
+    });
+
+
+gulp.task('prod:replace-concatenated-js-path', ['prod:concat-app-js'], function () {
+    'use strict';
+
+    return gulp.src(path.join(buildFolder, 'index.html'))
+        .pipe($.replace(
+            /<!--\s*prod-app-js:start\(([.\/\w]+)\)\s*-->((?:\s|.)+)<!--\s*prod-app-js:end\s*-->/,
+            '<script src="$1"></script>'
+        ))
+        .pipe($.angularHtmlify())
+        .pipe($.cleanhtml())
+        .pipe(gulp.dest(buildFolder));
+});
+
+gulp.task('prod:revisioning-assets', ['prod:replace-concatenated-js-path'], function () {
+        'use strict';
+
+        return gulp.src(path.join(buildFolder, '**'))
+            .pipe($.revAll({
+                ignore: [/^\/favicon.ico$/g, /^\/index.html/g]
+            }))
+            .pipe(gulp.dest(buildFolder));
+    }
+);
+
+
+gulp.task('prod:full-flow', ['prod:revisioning-assets'], function () {
+    'use strict';
+
+    var includes = [
+        /(app|config|polyfills|templates).\w{8}\.js$/
+    ];
+    var includesLength = includes.length;
+    var excludes = [
+        /index\.html$/, //main index file
+        /favicon\.ico$/, //website favicon
+        /([-\w.]+)\.\w{8}\.[\w]{2,}$/
+    ];
+    var excludesLength = excludes.length;
+
+    function notRemove(filePath) {
+        var i;
+
+        for (i = 0; i < includesLength; i++) {
+            if (includes[i].test(path.basename(filePath))) {
+                return false;
+            }
+        }
+
+        for (i = 0; i < excludesLength; i++) {
+            if (excludes[i].test(path.basename(filePath))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
+    //clear unnecessary files
+    return gulp.src(path.join(buildFolder, '**'))
+        .pipe($.filter(function (file) {
+            console.log(file.path);
+            return !fs.statSync(file.path).isDirectory() && !notRemove(file.path);
+        }))
+        .pipe($.rimraf());
+});
+
+
+
+/****************                       ****************/
+/****************   NEW RELEASE TASKS   ****************/
+/****************                       ****************/
+
+function getBumpedVersion(file, key) {
+    'use strict';
+
+    file = file || './package.json';
+    key = key || 'version';
+
+    var cached = null;
+
+    if (cached === null) {
+        cached = JSON.parse(fs.readFileSync(file))[key];
+    }
+
+    return cached;
 }
 
+gulp.task('release-push', ['release-tag'], function () {
+    'use strict';
 
-/**
- * Error handling
- *
- * @param err
- */
-var onError = function (err) {
-    gutil.beep();
-    gutil.log(err);
-};
-
-
-
-
-/**
- * Task: DEFAULT
- *
- */
-gulp.task('default', ['build']);
-
-
-
-/**
- * Task: INIT
- *
- */
-gulp.task('init', function() {
-    var settings;
-
-    settings = {
-        serve: {
-            host:         config.serve.host,
-            port:         config.serve.port,
-            livereload:   config.serve.livereload,
-            openUrl:      config.serve.openUrl
-        },
-        reload:             config.reload,
-        use:                config.use
-    };
-
-    fs.writeFile( __dirname + '/gulptask.json', JSON.stringify(settings, null, 4), function(err) {
-        if(err) {
-            gutil.log(err);
-        } else {
-            gutil.log("gulptask.json file created.");
-        }
-    });
+    if (gulpArguments.indexOf('--not-push') === -1) {
+        $.git.push('origin', 'master', {args: '--tags'}).end();
+    }
 });
 
 
+gulp.task('release-tag', ['release-commit'], function (cb) {
+    'use strict';
 
+    var version = 'v' + getBumpedVersion();
+    var message = 'Release ' + version;
 
-
-
-
-
-
-
-
-
-
-/**
- * Task: SERVE
- *
- */
-gulp.task('serve-clean', function() {
-    getSettings();
-    gulp.src('.tmp').pipe(rimraf());
+    $.git.tag(version, message);
+    cb();
 });
 
-gulp.task('serve-style', ['serve-clean'], function() {
-    var styles = {};
+gulp.task('release-commit', function () {
+    'use strict';
 
-    // sass files
-    styles.sass_files = gulp.src(config.paths.sass)
-        .pipe(clip())
-        .pipe(plumber({
-            errorHandler: onError
-        }))
-        .pipe(sass(config.plugins.sass));
+    var version = 'v' + getBumpedVersion();
+    var message = 'Release ' + version;
 
-    // css files
-    styles.css_files = gulp.src(config.paths.css);
-
-    // stream
-    return streamqueue({ objectMode: true }, styles.sass_files, styles.css_files)
-        .pipe(autoprefixer('last 1 versions'))
-        .pipe(gulp.dest('.tmp/styles'));
+    return gulp.src('./')
+        .pipe($.git.add())
+        .pipe($.git.commit(message))
+        .pipe($.git.checkout('HEAD'));
 });
 
-// ** TYPO **
-// clean-icons
-gulp.task('serve-clean-icons', ['serve-clean'], function() {
-    var clean = {};
+gulp.task('bump', function (cb) {
+    'use strict';
 
-    // scss file
-    clean.scss = gulp.src('client/styles/' + config.typoName + '.scss');
+    var type;
+    var allowedTypes = ['major', 'minor', 'patch', 'prerelease'];
 
-    // typo files
-    clean.typo_files = gulp.src(config.paths.typo + '/' + config.typoName + '.*');
-
-    // stream
-    return stream.merge( clean.scss, clean.typo_files)
-        .pipe(rimraf());
-});
-
-// icons generate
-gulp.task('serve-icons', ['serve-clean','serve-clean-icons'], function(){
-    return gulp.src(config.paths.icons + '/*.svg')
-        .pipe(icontypo({
-            fontName: config.typoName,
-            appendCodepoints: false
-        }))
-        .on('codepoints', function(codepoints) {
-            gulp.src('client/assets/icons/icons.scss.template')
-                .pipe(consolidate('lodash', {
-                    glyphs: codepoints,
-                    fontName: config.typoName,
-                    fontPath: '../typo/',             // set path to typo (from your CSS file if relative)
-                    className: config.typoClassName    // set class name in your CSS
-                }))
-                .pipe(rename(config.typoName + '.css'))
-                .pipe(gulp.dest('.tmp/styles/'));
-        })
-        .pipe(gulp.dest(config.paths.typo));
-});
-
-
-// ** LINT **
-// Lint JavaScript
-gulp.task('serve-jshint', ['serve-clean'], function () {
-    if (config.use.jshint) {
-        gutil.log(gutil.colors.green('JS Hint active.'));
-    } else {
-        gutil.log(gutil.colors.red('JS Hint deactivated.'));
+    if (!gulpArguments[1]) {
+        cb('You must specify release type. You can use this types: \'' + allowedTypes.join('\', \'') + '\'.');
+        return;
     }
 
-    return gulp.src(config.paths.scripts)
-        .pipe( gulpif(config.use.jshint, jshint(), gutil.noop()) )
-        .pipe( gulpif(config.use.jshint, jshint.reporter('jshint-stylish'), gutil.noop()) );
-       
-});
+    type = allowedTypes.indexOf(gulpArguments[1].replace(/^--/g, ''));
 
+    if (type === -1) {
+        cb('Not allowed release type, You can use this types: \'' + allowedTypes.join('\', \'') + '\'.');
+        return;
+    }
 
-
-
-
-// ** INJECT **
-// inject - serve (index.html)
-gulp.task('serve-inject', ['serve-style', 'serve-icons', 'serve-jshint'], function() {
-    var html_inject = {};
-
-    var inject_err = new gutil.PluginError('test', {
-        message: 'something broke'
-    });
-
-
-    // html file inject script into head
-    html_inject.head_scripts = inject(
-        gulp.src(config.paths.headScripts,{read: false}),
-        {starttag: '<!-- inject:head:{{ext}} -->', ignorePath: ['client'], addRootSlash: false});
-
-    // html file inject library scripts
-    html_inject.library_script = inject(
-        gulp.src(emptyArray(bower(config.paths.libraries))),
-        {starttag: '<!-- inject:libraries:{{ext}} -->', ignorePath: ['client'], addRootSlash: false});
-
-    // html file inject bower css, css and script files
-    html_inject.body_script_css = inject(
-        streamqueue( { objectMode: true },
-            gulp.src(emptyArray(bower(config.plugins.bower))).pipe(ignore.exclude('!**/*.css')),
-            gulp.src(['client/app/**/*.js', '.tmp/styles/**/*.css'], {read: false}) ),
-        {ignorePath: ['/.tmp', 'client'], addRootSlash: false});
-
-    // html file inject bower script files
-    html_inject.bower_script = inject(
-        gulp.src(emptyArray(bower(config.plugins.bower))),
-        {starttag: '<!-- inject:bower:{{ext}} -->', ignorePath: ['client'], addRootSlash: false});
-
-    // html file inject
-    return gulp.src('client/index.html')
-        .pipe(html_inject.head_scripts)
-        .pipe(html_inject.library_script)
-        .pipe(html_inject.body_script_css)
-        .pipe(html_inject.bower_script)
-        .pipe(replace('<%appversion%>',     config.version))
-        .pipe(replace('<%apptitle%>',       config.title))
-        .pipe(replace('<%appdescription%>', config.description))
-        .pipe(replace('<%appbuild%>',       'dev'))
-        .pipe(gulp.dest('.tmp'));
-});
-
-// ** SERVE **
-// serve
-gulp.task('serve', ['serve-inject'], function() {
-    // Start server
-    connect.server(config.serve);
-
-    // Open browser
-    gulp.src(config.paths.serve + '/index.html')
-        .pipe(gulpif(config.use.openbrowser, open('', {url: config.serve.openUrl + ':' + config.serve.port + '/'})) );
-
-    /*** INTERNAL TASKS ***/
-    // Refresh
-    gulp.task('dev-serve-refresh', ['serve-inject'], function() {
-        gulp.src('client/*.html').pipe(connect.reload());
-    });
-
-    /*** WATCHERS ***/
-    // Serve watch
-    gulp.watch(['client/index.html','bower.json','!client/styles/fonts/' + config.fontName + '.scss'].concat(config.paths.scripts, config.paths.sass, config.paths.css), ['dev-serve-refresh']);
-
-    // Serve watch images
-    gulp.watch(config.paths.images, function() {
-        gulp.src('.tmp/*.html').pipe( gulpif(config.reload.onImageChanged, connect.reload()) );
-    });
-
-    // data (static files)
-    gulp.watch(config.paths.statics, function() {
-        gulp.src('.tmp/*.html').pipe( gulpif(config.reload.onStaticChanged, connect.reload()) );
-    });
-
-    // Serve watch templates
-    gulp.watch(config.paths.templates, function() {
-        gulp.src('.tmp/*.html').pipe( gulpif(config.reload.onTemplateChanged, connect.reload()) );
-    });
-
-    // Serve watch font files
-    gulp.watch([config.paths.typo+'/'+config.typoTypes], function() {
-        gulp.src('.tmp/*.html').pipe( gulpif(config.reload.onTypoChanged, connect.reload()) );
-    });
-
-    // Server watch icon files
-    gulp.watch([config.paths.icons+'/**/*.svg'], function() {
-        gulp.src('.tmp/*.html').pipe( gulpif(config.reload.onIconsChanged, connect.reload()) );
-    });
-
-});
-
-
-
-
-
-/**
- * Task: BUILD
- *
- */
-// ** CLEAN **
-// clean - build
-gulp.task('build-clean', ['serve-style', 'serve-icons', 'serve-jshint'], function() {
-    getSettings();
-    return gulp.src(config.paths.build).pipe(rimraf());
-});
-
-// ** STYLES **
-// styles - build
-gulp.task('build-styles', ['build-clean'], function() {
-    var styles = {};
-
-    // css files from .tmp
-    styles.css_files = gulp.src('.tmp/styles/**/*.css');
-
-    // bower css files
-    styles.bower_css_files = gulp.src(emptyArray(bower(config.plugins.bower)))
-        .pipe(ignore.exclude('!**/*.css'));
-
-    // stream
-    return streamqueue({ objectMode: true }, styles.css_files, styles.bower_css_files)
-        .pipe(autoprefixer('last 2 versions'))
-        .pipe(concat('app.css'))
-        .pipe(cssmin())
-        .pipe(rev())
-        .pipe(gulp.dest(config.paths.build + '/styles'))
-        .pipe(size({title: 'app.css'}));
-});
-
-// ** SCRIPTS **
-// scripts - build
-gulp.task('build-scripts', ['build-clean'], function() {
-    var jsFilter = filter('**/*.js');
-    var build = {};
-
-    // build bower files
-    build.bower_files = gulp.src(emptyArray(bower(config.plugins.bower)))
-        .pipe(filter('**/*.js'));
-
-    // build libraries files
-    build.library_files = gulp.src(emptyArray(bower(config.paths.libraries)))
-        .pipe(filter('**/*.js'));
-
-    // build app scripts files
-    build.app_script_files = gulp.src(config.paths.scripts)
-        .pipe(angularInject({file: 'app.js', module: 'templates'}));
-
-    // build app template files
-    build.app_template_files = gulp.src(config.paths.templates)
-        .pipe(htmlmin(config.plugins.htmlmin))
-        .pipe(templateCache({standalone: true, module: config.templatesModule,root: './scripts/'}))
-
-    // stream
-    return streamqueue({ objectMode: true },
-        build.bower_files,
-        build.library_files,
-        build.app_script_files,
-        build.app_template_files)
-        .pipe(concat('app.min.js'))
-        .pipe(uglify(config.plugins.uglify))
-        .pipe(rev())
-        .pipe(gulp.dest(config.paths.build))
-        .pipe(size({title: 'app.min.js'}));
-});
-
-
-// scripts pre loader - build
-gulp.task('build-head-scripts', ['build-clean'], function() {
-    return gulp.src(config.paths.headScripts)
-        .pipe(concat('head.min.js'))
-        .pipe(uglify(config.plugins.uglify))
-        .pipe(rev())
-        .pipe(gulp.dest(config.paths.build))
-        .pipe(size({title: 'head.min.js'}));
-});
-
-// ** IMAGES **
-// images - build
-gulp.task('build-images', ['build-clean'], function() {
-    var imgFilter = filter(config.imageTypes);
-
-    var images = {};
-
-    // images inside image folder
-    images.app_files = gulp.src(config.paths.images)
-        .pipe(imgFilter)
-        .pipe( gulpif(config.use.imagemin, imagemin(config.plugins.imagemin)) )
-        .pipe(imgFilter.restore())
-        .pipe(gulp.dest(config.paths.build + '/images'))
-        .pipe(size({title: 'All images'}));
-
-    // images from bower libs
-    images.bower_files = gulp.src(emptyArray(bower(config.plugins.bower)))
-        .pipe(ignore.exclude('!' + config.imageTypes))
-        .pipe(flatten({newPath: 'styles/'}))
-        .pipe(gulp.dest(config.paths.build))
-        .pipe(size({title: 'All bower components images'}));
-
-    // stream
-    return streamqueue( { objectMode: true }, images.app_files, images.bower_files);
-});
-
-// ** STATIC FILE **
-// copy static files
-gulp.task('build-copy-static-files', ['build-clean'], function() {
-    return gulp.src(config.paths.staticFiles, {base: 'client'}).pipe(gulp.dest(config.paths.build));
-});
-
-// ** INJECT **
-// inject - build (index.html)
-gulp.task('build', ['build-scripts', 'build-styles', 'build-head-scripts', 'build-images', 'build-copy-static-files'], function(){
-    var html_inject = {};
-
-    // html file inject script into head
-    html_inject.scripts_head = inject(
-        gulp.src(config.paths.build + '/head*.js',{read: false}),
-        {starttag: '<!-- inject:head:{{ext}} -->', ignorePath: '/' + config.paths.build, addRootSlash: false});
-
-    // html file inject bower css, css and script files
-    html_inject.script_body = inject(
-        gulp.src(config.paths.build + '/app*.js',{read: false}),
-        {ignorePath: '/' + config.paths.build, addRootSlash: false});
-
-    // html file inject bower script files
-    html_inject.css = inject(
-        gulp.src(config.paths.build + '/styles/**/*.css',{read: false}),
-        {ignorePath: '/' + config.paths.build, addRootSlash: false});
-
-    // html file inject
-    return gulp.src('client/index.html')
-        .pipe(html_inject.scripts_head)
-        .pipe(html_inject.script_body)
-        .pipe(html_inject.css)
-        .pipe(htmlmin(config.plugins.htmlmin))
-        .pipe(replace('<%appversion%>',     config.version))
-        .pipe(replace('<%apptitle%>',       config.title))
-        .pipe(replace('<%appdescription%>', config.description))
-        .pipe(replace('<%appbuild%>',       config.build))
-        .pipe(gulp.dest(config.paths.build))
-        .pipe(size({title: 'index.html'}));
-});
-
-
-
-
-
-/**
- * Task: BUILD-PACK
- *
- */
-gulp.task('build-pack', ['build'], function(){
-    gulp.src(config.paths.build + '/**/*')
-        .pipe(tar(config.name + '-' + config.version + '-' + config.build + '.tar'))
-        .pipe(gzip(config.plugins.gzip))
-        .pipe(gulp.dest('./'));
+    return gulp.src('package.json')
+        .pipe($.bump({ type: allowedTypes[type] }))
+        .pipe(gulp.dest('.'));
 });

@@ -16,7 +16,7 @@ var all = {
   env: process.env.NODE_ENV,
 
   // Root path of server
-  root: path.normalize(__dirname + '/../../../..'),
+  root: path.normalize(__dirname + '/../../..'),
 
   // Server port
   port: process.env.PORT || 9000,
@@ -40,24 +40,18 @@ var all = {
       }
     }
   },
-    twitter: {
-        clientID:     process.env.TWITTER_ID || 'id',
-        clientSecret: process.env.TWITTER_SECRET || 'secret',
-        callbackURL:  process.env.DOMAIN + '/auth/twitter/callback'
-    },
 
-    google: {
-        clientID:     process.env.GOOGLE_ID || 'id',
-        clientSecret: process.env.GOOGLE_SECRET || 'secret',
-        callbackURL:  process.env.DOMAIN + '/auth/google/callback'
-    },
+  twitter: {
+    clientID:     process.env.TWITTER_ID || 'id',
+    clientSecret: process.env.TWITTER_SECRET || 'secret',
+    callbackURL:  (process.env.DOMAIN || '') + '/auth/twitter/callback'
+  },
 
-
-    bnet: {
-        clientID:     process.env.BNET_ID || 'guamkwyf4rxq8pvwuzhftz2yzut44ufa',
-        clientSecret: process.env.BNET_SECRET || 'M76WCRvv9GVuMnCGVbrKSxaJA9MHRCfK',
-        callbackURL:  process.env.DOMAIN + 'https://guildr.me/auth/bnet/callback'
-    }
+  google: {
+    clientID:     process.env.GOOGLE_ID || 'id',
+    clientSecret: process.env.GOOGLE_SECRET || 'secret',
+    callbackURL:  (process.env.DOMAIN || '') + '/auth/google/callback'
+  }
 };
 
 // Export the config object based on the NODE_ENV

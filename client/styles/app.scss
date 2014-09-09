@@ -13,13 +13,12 @@
 $icon-font-path: "../assets/fonts/bootstrap/";
 $fa-font-path: "../assets/fonts/";
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700|Ubuntu:400,500);
-
 @import "./base/normalize";
 @import "./variables";
 @import "./sections/navbar";
 @import "./utils/mixins";
 @import "./sections/footer";
+@import "./utils/toastr";
 
 /* 
  * Global
@@ -138,14 +137,8 @@ body {
 /* 
  * Component Injections
  *********************************************************************/
-//noinspection CssUnknownTarget
+
 @import "./base/bootstrap";
-
-//noinspection CssUnknownTarget
-@import "../../bower_components/font-awesome/scss/font-awesome";
-
-// Component styles are injected through gulp
-// injector
 
 @import "utils/animations";
 @import "modules/home";

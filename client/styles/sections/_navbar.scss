@@ -9,7 +9,7 @@
     letter-spacing: 1px;
     background-color: $lightest;
     z-index: 300;
-    font-family: 'Gesta', sans-serif;
+    font-family: $header-font-family;
 }
 
 .navbar-inverse {
@@ -19,6 +19,7 @@
 
 .navbar-inverse .navbar-nav > .active > a {
     background: $lightest;
+    font-family: $header-font-family;
 }
 
 .navbar-inverse .navbar-brand {
@@ -38,6 +39,7 @@
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
     text-decoration: none;
+    font-family: $header-font-family;
     background: none;
     border-bottom: 2px solid $brand-primary;
     -webkit-box-shadow: none;

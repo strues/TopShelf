@@ -1,13 +1,25 @@
 .homeHero {
     min-height: 400px;
-    background-color: #232b2d;
     color: #fff;
     margin-top: -20px;
 }
 
+.attntxt {
+    color: #3F9CAD;
+}
+
 .blurbSection {
     padding-top: 35px;
+    margin-top: 30px;
+    font-size: 18px;
     text-align: center;
+    margin-bottom: 0px;
+    font-weight: 300;
+    min-height: 400px;
+    & .blurbHead {
+        padding-bottom: 20px;
+        font-weight: 700;
+    }
     & h1 {
         padding-top: 40px;
     }
@@ -20,7 +32,9 @@ section#information {
     line-height: 1.5;
     font-weight: 500;
     font-size: 24px;
-    color: #2d3232;
+    & h3 {
+        font-family: "proxima-nova";
+    }
 }
 
 section#information h1 span {
@@ -35,17 +49,4 @@ hr {
     height: 1.5px;
     background: #849392;
     width: 200px;
-}
-
-.blurbSection {
-    padding-top: 35px;
-    margin-top: 30px;
-    text-align: center;
-    margin-bottom: 0px;
-    font-weight: 100;
-    min-height: 400px;
-    & .blurbHead {
-        padding-bottom: 20px;
-        font-weight: 700;
-    }
 }

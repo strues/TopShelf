@@ -26,14 +26,8 @@
           email: $scope.user.email,
           password: $scope.user.password
         })
-        .then( function() {
-          // Logged in, redirect to home
-          $location.path('/');
-        }
-        .catch( function(err) {
-          $scope.errors.other = err.message;
-        })
-      );
+        toastr.success('Successfully logged into your account')
+        $location.path('/')
       }
     };
 

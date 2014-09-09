@@ -10,3 +10,4 @@ pre-commit-hook.sh
 client/assets
 changelog.tpl
 npm-debug.log
+bower_components
