@@ -1,6 +1,6 @@
 Top Shelf Guild
 ===========
-
+This is currently a fucking disaster that only I can understand. Will fix in the morning
 A website built for a World of Warcraft guild using MongoDB, Angular.js, Express.js, and Node.js.
 
 #### Intro  
