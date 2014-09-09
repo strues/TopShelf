@@ -17,7 +17,7 @@
                           enable-filtering>
             </select-field>
             <text-field label="Spec" attribute="charSpec" placeholder="Protection" help="Your main specialization"></text-field>
-            <text-field label="Armory" attribute="armory"
+            <text-field label="Armory" attribute="charArmory"
                         placeholder="http://us.battle.net/" help="Link to your armory. Please be in raid gear."></text-field>
             <text-field label="Offspec" attribute="charOffSpec" placeholder="Fury" help="Your secondary specialization"></text-field>
             <text-field label="Raid Experience" attribute="heroicXP" multiline
@@ -37,7 +37,7 @@
             <hr>
 
             <h5>Please remember to fill this out thoroughly.</h5>
-            <button class="btn btn-primary btn-block btn-lg" type="submit">
+            <button class="btn btn-primary btn-block btn-lg" ng-click="openToast();" type="submit">
                 Submit
             </button>
 
@@ -46,6 +46,10 @@
 </div>
   <div class="col-sm-4">
   <h1>Application Info</h1>
+  <div class="well well-lg">
+  <p>Your application is our first impression of you. If it looks like you spent 30 seconds filling it out
+    expect us to spend 5 seconds looking at it and a few days mocking it. We're always in search of competitive
+    players for our roster.</p></div>
   </div>
 </div>
 </div>

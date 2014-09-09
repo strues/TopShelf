@@ -17,7 +17,7 @@ function config ($stateProvider) {
           url: '/',
           templateUrl: 'app/home/home.tpl.html',
           controller: 'HomeCtrl',
-          controllerAs: 'home'
+          controllerAs: 'vm'
         });
     }
 

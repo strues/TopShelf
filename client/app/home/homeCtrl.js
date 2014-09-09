@@ -13,12 +13,11 @@
    *
    */
   function HomeCtrl(Restangular) {
-    var vm = this;
-    vm.ctrlName = 'HomeCtrl';
+  var vm = this;
 
      vm.recruits = Restangular.all('recruits').getList().$object;
 
-   
+
   }
 
   angular
@@ -26,6 +25,3 @@
     .controller('HomeCtrl', HomeCtrl);
 
 })();
-
-
-  

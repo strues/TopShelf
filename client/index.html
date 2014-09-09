@@ -24,6 +24,7 @@
     <!-- build:css({.tmp,client}) /styles/app.css -->
     <link href="styles/app.css" rel="stylesheet" type="text/css">
     <!-- endbuild -->
+
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="//use.typekit.net/oqx8pks.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -32,11 +33,13 @@
   
   <body>
   <nav data-ng-include="'app/common/layout/navbar.tpl.html'"></nav>
-  <toaster-container></toaster-container>
-  <div class="view-container">
-  <section data-ui-view id="content" class="animate-fade-up"></section>
-  </div>
+
+  <div ui-view></div>
+
   <ng-include src="'app/common/layout/footer.tpl.html'"></ng-include>
+
+
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -50,28 +53,28 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
+       <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-form-for/dist/form-for.js"></script>
     <script src="bower_components/ng-table/ng-table.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
-    <script src="bower_components/toastr/toastr.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
    <!-- build:js({client,.tmp}) client/app/app.js -->
     <script src="app/app.js"></script>
-    
+    <script src="app/common/angular-toastr.js"></script>
     <script src="app/common/auth/authSrv.js"></script>
     <script src="app/common/auth/userSrv.js"></script>
     <script src="app/common/abstractRepoFactory.js"></script>

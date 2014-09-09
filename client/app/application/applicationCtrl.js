@@ -12,7 +12,7 @@
    * @ngInject
    *
    */
-  function ApplicationCtrl($scope, $state, $http, ApplicationRepository) {
+  function ApplicationCtrl($scope, $state, toastr, $location, $http, ApplicationRepository) {
 
     $scope.formData = {};
 
@@ -39,6 +39,7 @@
         $http.post('/api/applications', $scope.formData);
         console.log('application submitted:', $scope.formData);
         toastr.success('Your application has been submitted successfully.');
+        $location.path('/');
 
   };
 }

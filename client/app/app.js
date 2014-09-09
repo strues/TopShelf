@@ -18,10 +18,7 @@ function run($rootScope, $location, $state, $stateParams, Auth) {
 
     
 
-    $rootScope.$on('$stateChangeSuccess', function () {
-    // scroll view to top
-    $('html, body').animate({ scrollTop: 0 }, 200);
-    });
+  
 
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
@@ -89,10 +86,7 @@ function AuthInterceptor($q, $cookieStore, $location) {
       $httpProvider.interceptors.push('AuthInterceptor');
       $locationProvider.html5Mode(true);
   }
- function toastrConfig(toastr) {
-        toastr.options.timeOut = 4000;
-        toastr.options.positionClass = 'toast-bottom-right';
-    }
+
 
   angular
     .module('app', [
@@ -100,12 +94,14 @@ function AuthInterceptor($q, $cookieStore, $location) {
       'btford.socket-io',
       'ngAnimate',
       'ngCookies',
+      'ngTouch',
       'ngSanitize',
       'ui.router',
       'ui.bootstrap',
       'formFor',
       'restangular',
-      'ngTable'
+      'ngTable',
+      'toastr'
     ]);
 
   angular
