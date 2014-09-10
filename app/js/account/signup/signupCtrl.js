@@ -36,7 +36,7 @@
 
         })
         .then( function() {
-          toastr.sucess('Your account has been created')
+          toastr.sucess('Your account has been created');
           // Account created, redirect to home
           $location.path('/');
         })

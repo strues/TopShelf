@@ -9,7 +9,7 @@
   */
 
   /* @ngInject */
-  function AppAdminListCtrl ($scope, ApplicationRepository) {
+  function AppAdminListCtrl ($scope, $window, ApplicationRepository) {
   
    $scope.applications = ApplicationRepository.getList();
       $scope.delete = function (data) {

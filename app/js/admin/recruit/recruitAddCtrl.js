@@ -11,7 +11,7 @@
   .module('app')
   .controller('RecruitAddCtrl', RecruitAddCtrl);
 
-  /* @ngInject */
+  /* @ngInject *//*jshint validthis: true */
   function RecruitAddCtrl ($scope, $stateParams, $location, RecruitmentRepository) {
     
     $scope.save = function () {

@@ -60,6 +60,7 @@
     "gulp-minify-html": "latest",
     "gulp-ng-annotate": "latest",
     "gulp-ng-html2js": "latest",
+    "gulp-plato": "^1.0.1",
     "gulp-plumber": "latest",
     "gulp-protractor": "latest",
     "gulp-replace": "latest",

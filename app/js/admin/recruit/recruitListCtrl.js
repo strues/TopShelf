@@ -9,7 +9,7 @@
   */
 
   /* @ngInject */
-  function RecruitListCtrl ($scope, RecruitmentRepository) {
+  function RecruitListCtrl ($scope, $window, RecruitmentRepository) {
     
      $scope.recruits = RecruitmentRepository.getList();
       $scope.delete = function (data) {

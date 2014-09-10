@@ -30,7 +30,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.ngHtml2js({
-      moduleName: 'yo',
+      moduleName: 'app',
       prefix: 'partials/'
     }))
     .pipe(gulp.dest('.tmp/partials'))

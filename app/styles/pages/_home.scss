@@ -27,3 +27,20 @@
 .homePageHeader {
     font-family: $header-font-family;
 }
+
+.thirdSection {
+    padding-top: 10%;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 400px;
+    color: #E4F1FE;
+    background-color: $guildBlueDrk;
+}
+
+.blurbs {
+    color: $guildBlue;
+    & h4 {
+        font-family: $header-font-family;
+        font-size: floor($font-size-base * 2.6);
+    }
+}

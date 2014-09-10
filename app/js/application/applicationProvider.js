@@ -14,6 +14,7 @@
   function Application() {
     return {
       $get: function ($resource) {
+        /*jshint validthis: true */
            var Application = $resource('/api/applications/:_id', {}, {
         update: {
           method: 'PUT'

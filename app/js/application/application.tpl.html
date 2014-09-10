@@ -11,14 +11,15 @@
             <text-field label="Age" attribute="age" placeholder="12" help="Your age"></text-field>
             <text-field label="Character Name" attribute="charName" placeholder="Soopie" help="The name of your main"></text-field>
             <text-field label="Battletag" attribute="btag" placeholder="battletag#1234"></text-field>
-            <select-field label="Class"
-                          attribute="charClass" options="classOptions"
-                          enable-filtering>
-            </select-field>
-            <text-field label="Spec" attribute="charSpec" placeholder="Protection" help="Your main specialization"></text-field>
+             <select-field label="Class"
+                attribute="charClass" options="classOptions"
+                enable-filtering></select-field>
+            <select-field label="Spec" attribute="charSpec" options="specOptions"
+                enable-filtering></select-field>
             <text-field label="Armory" attribute="charArmory"
                         placeholder="http://us.battle.net/" help="Link to your armory. Please be in raid gear."></text-field>
-            <text-field label="Offspec" attribute="charOffSpec" placeholder="Fury" help="Your secondary specialization"></text-field>
+            <select-field label="Spec" attribute="charOffSpec" options="specOptions"
+                enable-filtering></select-field>
             <text-field label="Raid Experience" attribute="heroicXP" multiline
                         placeholder="Tell us about your heroic raiding experience"></text-field>
             <text-field label="Previous Guilds" attribute="pastGuilds" multiline
@@ -43,7 +44,7 @@
         </form>
     </div>
 </div>
-  <div class="col-sm-4">
+  <div class="col-sm-4 appInfo">
   <h1>Application Info</h1>
   <div class="well well-lg">
   <p>Your application is our first impression of you. If it looks like you spent 30 seconds filling it out

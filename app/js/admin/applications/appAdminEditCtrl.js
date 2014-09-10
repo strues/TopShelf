@@ -11,7 +11,7 @@
   .module('app')
   .controller('AppAdminEditCtrl', AppAdminEditCtrl);
 
-  /* @ngInject */
+  /* @ngInject */ /*jshint validthis: true */
   function AppAdminEditCtrl ($scope, $stateParams, $location, ApplicationRepository) {
    
      $scope.application = ApplicationRepository.get($stateParams.id)

@@ -11,7 +11,7 @@
   .module('app')
   .controller('RecruitEditCtrl', RecruitEditCtrl);
 
-  /* @ngInject */
+  /* @ngInject *//*jshint validthis: true */
   function RecruitEditCtrl ($scope, $stateParams, $location, RecruitmentRepository) {
     $scope.recruit = RecruitmentRepository.get($stateParams.id).then(function (data) {
       $scope.recruit = data;

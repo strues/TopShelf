@@ -31,6 +31,7 @@
 <div class="container">
 <div ng-include="'js/common/layout/navbar.tpl.html'"></div>
     <div ui-view></div>
+<div ng-include="'js/common/layout/footer.tpl.html'"></div>
 </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -60,7 +61,7 @@
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
+    <script src="bower_components/angular-form-for/dist/form-for.bootstrap-templates.js"></script>
     <!-- build:js({app,.tmp}) js/app.js -->
     <script src="js/app.js"></script>
     <script src="js/common/abstractRepoFactory.js"></script>

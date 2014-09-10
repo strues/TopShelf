@@ -94,6 +94,7 @@ function AuthInterceptor($q, $cookieStore, $location) {
       'ui.router',
       'ui.bootstrap',
       'formFor',
+      'formFor.bootstrapTemplates',
       'restangular',
       'ngTable',
       'toastr'
