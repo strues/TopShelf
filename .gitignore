@@ -1,13 +1,5 @@
-.DS_Store
 node_modules
-.idea
-build
-report
-test
-vendor
-pre-commit-hook.sh
-.travis.yml
-client/assets
-changelog.tpl
-npm-debug.log
-bower_components
+dist
+.tmp
+.sass-cache
+app/bower_components

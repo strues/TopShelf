@@ -24,7 +24,7 @@ module.exports = function(app) {
   
 app.all('/*', function(req, res, next) {
     // Just send the index.html for other files to support HTML5Mode
-    res.sendFile('index.html', {   root: path.normalize(__dirname + '/../client') });
+    res.sendFile('index.html', {   root: path.normalize(__dirname + '/../app') });
 });
   
   // Error 404
