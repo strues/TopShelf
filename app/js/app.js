@@ -89,6 +89,7 @@ function AuthInterceptor($q, $cookieStore, $location) {
       'ngResource',
       'ngAnimate',
       'ngCookies',
+      'ngMessages',
       'ngSanitize',
       'ui.router',
       'ui.bootstrap',

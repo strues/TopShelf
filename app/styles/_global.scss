@@ -1,37 +1,17 @@
 /* global styles
 ===========================*/
 
-//== Colors
-//
-//## Gray and brand colors for use across Bootstrap.
-
 $gray-darker: lighten(black, 13.5%) !default;
-
-// #222
 $gray-dark: lighten(black, 20%) !default;
-
-// #333
 $gray: lighten(black, 33.5%) !default;
-
-// #555
 $gray-light: lighten(black, 46.7%) !default;
-
-// #777
 $gray-lighter: lighten(black, 93.5%) !default;
-
-// #eee
-
 $brand-primary: #428bca !default;
 $brand-success: #5cb85c !default;
 $brand-info: #5bc0de !default;
 $brand-warning: #f0ad4e !default;
 $brand-danger: #d9534f !default;
 
-//== Scaffolding
-//
-//## Settings for some of the most global styles.
-
-//** Background color for `<body>`.
 $body-bg: #1c1c1c !default;
 
 //** Global text color on `<body>`.
@@ -47,7 +27,7 @@ $link-hover-color: darken($link-color, 15%) !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$header-font-family: "refrigerator-deluxe", sans-serif;
+$header-font-family: "bebas-neue", sans-serif;
 $font-family-sans-serif: "proxima-nova", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "clavo", "Times New Roman", Times, serif !default;
 $font-family-base: "proxima-nova" !default;
@@ -78,29 +58,22 @@ $font-size-h4: ceil($font-size-base * 1.25) !default;
 // ~18px
 $font-size-h5: $font-size-base !default;
 $font-size-h6: ceil($font-size-base * 0.85) !default;
-
-// ~12px
-
-//** Unit-less `line-height` for use in components like buttons.
 $line-height-base: 1.42857 !default;
-
-// 20/14
-//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 $line-height-computed: floor($font-size-base * $line-height-base) !default;
 
-// ~20px
-
-//** By default, this inherits from the `<body>`.
 $headings-font-family: inherit !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.1 !default;
 $headings-color: inherit !default;
 
+$guildBlue: rgba(52, 152, 219, 1);
+$guildBlueMd: rgba(30, 139, 195, 1);
+$guildBlueDrk: darken($guildBlue, 30%);
+
 body {
     padding-top: 60px;
     padding-bottom: 0px;
     font-size: 16px;
-    background: $body-bg;
 }
 
 header {

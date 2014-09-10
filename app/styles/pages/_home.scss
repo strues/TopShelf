@@ -1,6 +1,29 @@
 .tsBlock {
     min-height: 400px;
-    background: #56becc;
-    padding-top: 140px;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(52, 152, 219, 1)), to(rgba(30, 139, 195, 1)));
+    background: -webkit-linear-gradient(left, rgba(52, 152, 219, 1), rgba(30, 139, 195, 1));
+    background: -moz-linear-gradient(left, rgba(52, 152, 219, 1), rgba(30, 139, 195, 1));
+    background: -o-linear-gradient(left, rgba(52, 152, 219, 1), rgba(30, 139, 195, 1));
+    background: -ms-linear-gradient(left, rgba(52, 152, 219, 1), rgba(30, 139, 195, 1));
+    background: linear-gradient(left, rgba(52, 152, 219, 1), rgba(30, 139, 195, 1));
+    background-color: rgba(52, 152, 219, 1);
+    padding-top: 10%;
     text-align: center;
+    & h1 {
+        font-family: $header-font-family;
+        color: $gray-lighter;
+        font-size: floor($font-size-base * 3.6);
+        text-shadow: 1px 2px 3px #428bca;
+    }
+    & h3 {
+        color: $gray-lighter;
+    }
+}
+
+.attntxt {
+    color: $guildBlueDrk;
+}
+
+.homePageHeader {
+    font-family: $header-font-family;
 }

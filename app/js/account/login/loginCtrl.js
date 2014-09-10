@@ -21,14 +21,14 @@
     $scope.login = function(form) {
       $scope.submitted = true;
 
-      if(form.$valid) {
+
         Auth.login({
           email: $scope.user.email,
           password: $scope.user.password
         })
          toastr.success('Successfully logged into your account!')
         $location.path('/')
-      }
+
     };
 
     $scope.loginOauth = function(provider) {
