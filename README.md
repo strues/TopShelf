@@ -1,6 +1,6 @@
 Top Shelf Guild
 ===========
-This is currently a fucking disaster that only I can understand. Will fix in the morning
+
 A website built for a World of Warcraft guild using MongoDB, Angular.js, Express.js, and Node.js.
 
 #### Intro  
@@ -34,7 +34,7 @@ Run `gulp serve' to launch the development.
 * Markup:  `HTML`
 * Stylesheets: `Sass`
 * Task Runner: `Gulp`
-* Angular: `1.3 Beta` `Restangular` `ui.router` `Angular Strap`
+* Angular: `1.3 RC1` `Restangular` `ui.router` `Angular Strap`
 
 
 **Server Side**
@@ -49,8 +49,8 @@ Run `gulp serve' to launch the development.
 
 Overview
 
-    |── client
-    |   ├── app                 - Everything related to Angular and our app
+    |── app
+    |   ├── js                 - Everything related to Angular and our app
     |          |___ common      - Appwide things such a directives, navbar and auth
     |   ├── assets              - Fonts, Images, etc
     |   ├── bower_components    - Bower installations
@@ -68,11 +68,10 @@ Overview
 
 A look inside the main component in `client/app`
 
-    main
-    ├── main.js                 - Routes
-    ├── mainCtrl.js             - Controller for our main route
-    ├── main.tpl.html           - View
-    └── main.scss               - Style specific to that page
+    home
+    ├── home.js                 - Routes
+    ├── homeCtrl.js             - Controller for our main route
+    ├── home.tpl.html           - View
 
 Inside of the api at`server/api`
 
