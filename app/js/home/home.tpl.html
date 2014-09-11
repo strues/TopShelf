@@ -21,10 +21,10 @@
   <div class="col-lg-4" ng-controller="HomeCtrl as home">
     <div class="well well-lg">
     <table class="table">
-        <h4>Currently Recruiting:</h4>
+        <h4><i class="linecon-icon-star"></i> Currently Recruiting:</h4>
         <tr ng-repeat="recruit in home.recruits" class="bounceInDown">
-        <td>{{recruit.classType}}</td><td> {{recruit.currentStatus}}</td>
-          <td><img src="{{recruit.classImage}}"></td></tr>
+        <td>{{recruit.classType}}</td><td> {{recruit.classSpec}}</td>
+          <td><img src="{{recruit.classImage}}" height="30px"></td></tr>
     </table>
     </div>
     </div>

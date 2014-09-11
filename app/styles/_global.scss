@@ -74,6 +74,8 @@ body {
     padding-top: 60px;
     padding-bottom: 0px;
     font-size: 16px;
+    background-image: url("images/bgtexture.png");
+    background-repeat: repeat-x, repeat;
 }
 
 header {
@@ -95,9 +97,9 @@ header {
     -webkit-box-shadow: 2px 1px 2px #2f3a45;
     -moz-box-shadow: 2px 1px 2px #2f3a45;
     box-shadow: 2px 1px 2px #2f3a45;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .globalAdminBlock {
@@ -109,7 +111,7 @@ header {
     -webkit-box-shadow: 2px 1px 2px #2f3a45;
     -moz-box-shadow: 2px 1px 2px #2f3a45;
     box-shadow: 2px 1px 2px #2f3a45;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
