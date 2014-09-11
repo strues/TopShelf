@@ -1,51 +1,50 @@
 'use strict';
 
 var gulp = require('gulp');
-var httpProxy = require('http-proxy');
 var browserSync = require('browser-sync');
-
-
-/* This configuration allow you to configure browser sync to proxy your backend */
-var proxyTarget = 'http://localhost:9000'; // The location of your backend
-var proxyApiPrefix = 'api'; // The element in the URL which differentiate between API request and static file request
-
-var proxy = httpProxy.createProxyServer({
-  target: proxyTarget
+var reload = browserSync.reload;
+var nodemon = require('gulp-nodemon');
+ 
+/**
+ * Gulp Tasks
+ */
+ 
+gulp.task('browser-sync', ['nodemon'], function() {
+  browserSync({
+    proxy: "localhost:9000",  // local node app address
+    port: 5000,  // use *different* port than above
+    notify: true
+  });
+});
+ 
+gulp.task('nodemon', function (cb) {
+  var called = false;
+  return nodemon({
+    script: 'server/app.js',
+    ignore: [
+      'gulpfile.js',
+      'node_modules/'
+    ]
+  })
+  .on('start', function () {
+    if (!called) {
+      called = true;
+      cb();
+    }
+  })
+  .on('restart', function () {
+    setTimeout(function () {
+      reload({ stream: false });
+    }, 1000);
+  });
 });
 
-function proxyMiddleware(req, res, next) {
-  if (req.url.indexOf(proxyApiPrefix) !== -1) {
-    proxy.web(req, res);
-  } else {
-    next();
-  }
-}
-
-function browserSyncInit(baseDir, files, browser) {
-  browser = browser === undefined ? 'default' : browser;
-
-  browserSync.instance = browserSync.init(files, {
-    startPath: '/index.html',
-    server: {
-      baseDir: baseDir,
-      middleware: proxyMiddleware
-    },
-    browser: browser
+gulp.task('serve', ['watch', 'nodemon'], function () {
+  browserSync({
+    proxy: "localhost:9000",  // local node app address
+    port: 5000,  // use *different* port than above
+    notify: true
   });
-
-}
-
-gulp.task('serve', ['watch'], function () {
-  browserSyncInit([
-    'app',
-    '.tmp'
-  ], [
-    'app/*.html',
-    '.tmp/styles/**/*.css',
-    'app/js/**/*.js',
-    'app/js/**/*.tpl.html',
-    'app/images/**/*'
-  ]);
 });
 
 gulp.task('serve:dist', ['build'], function () {

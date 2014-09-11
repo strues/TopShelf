@@ -41,8 +41,7 @@
     "path": "^0.4.9",
     "request": "^2.40.0",
     "serve-favicon": "^2.1.1",
-    "socket.io": "^1.1.0",
-    "static-favicon": "^2.0.0-alpha"
+    "socket.io": "^1.1.0"
   },
   "devDependencies": {
     "browser-sync": "latest",
@@ -60,6 +59,7 @@
     "gulp-minify-html": "latest",
     "gulp-ng-annotate": "latest",
     "gulp-ng-html2js": "latest",
+    "gulp-nodemon": "^1.0.4",
     "gulp-plato": "^1.0.1",
     "gulp-plumber": "latest",
     "gulp-protractor": "latest",

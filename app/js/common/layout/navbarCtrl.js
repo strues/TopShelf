@@ -12,7 +12,7 @@
    * @ngInject
    *
    */
-  function NavbarCtrl($scope, $location, Auth, toastr) {
+  function NavbarCtrl($scope, $location, Auth) {
  $scope.menu = [
     {
       'title': 'Home',
@@ -35,7 +35,6 @@
 
     $scope.logout = function() {
       Auth.logout();
-      toastr.info('Successfully logged out.');
 
       $location.path('/login');
     };

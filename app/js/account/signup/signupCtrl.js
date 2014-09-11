@@ -12,7 +12,7 @@
    * @ngInject
    *
    */
-  function SignupCtrl(Auth, $location, toastr, $window) {
+  function SignupCtrl(Auth, $location, $window) {
     var $scope = this;
     $scope.ctrlName = 'SignupCtrl';
     
@@ -36,7 +36,7 @@
 
         })
         .then( function() {
-          toastr.sucess('Your account has been created');
+         
           // Account created, redirect to home
           $location.path('/');
         })
