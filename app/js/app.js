@@ -93,10 +93,11 @@ function AuthInterceptor($q, $cookieStore, $location) {
       'ngSanitize',
       'ui.router',
       'ui.bootstrap',
-      'ui.grid',
       'formFor',
       'formFor.bootstrapTemplates',
-      'restangular'
+      'restangular',
+      'angularCharts',
+      'ngTable'
     ]);
 
   angular

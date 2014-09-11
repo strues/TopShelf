@@ -65,8 +65,33 @@
               url: '/{id}',
               templateUrl: 'js/admin/recruit/recruitItem.tpl.html',
               controller: 'RecruitItemCtrl'
+          })
+          .state('roster', {
+              abstract: true,
+              url: '/admin/roster',
+              templateUrl: 'js/admin/roster/main.tpl.html'
+          })
+          .state('roster.list', {
+              url: '',
+              templateUrl: 'js/admin/roster/roster.tpl.html',
+              controller: 'RosterCtrl'
+          })
+            .state('roster.add', {
+              url: '/add',
+              templateUrl: 'js/admin/roster/rosterEdit.tpl.html',
+              controller: 'RosterAddCtrl'
+          })
+          .state('roster.edit', {
+              url: '/edit/{id}',
+              templateUrl: 'js/admin/roster/rosterEdit.tpl.html',
+              controller: 'RosterEditCtrl'
+          })
+          .state('roster.item', {
+              url: '/{id}',
+              templateUrl: 'js/admin/roster/rosterItem.tpl.html',
+              controller: 'RosterItemCtrl'
           });
-
+        
   }
 
   angular

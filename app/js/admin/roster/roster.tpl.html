@@ -1,0 +1,49 @@
+<p class="lead">
+Roster Management
+<a ui-sref="roster.add" href="" class="btn btn-default pull-right">
+  <i class="glyphicon glyphicon-plus-sign"></i>
+</a>
+</p>
+<div ng-repeat="roster in rosters">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-right btn-group">
+        <a class="btn btn-default btn-xs" ui-sref="roster.edit({id:roster._id})">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+        <a class="btn btn-default btn-xs"  ng-click="delete(roster)">
+          <i class="glyphicon glyphicon-trash"></i>
+        </a>
+      </div>
+      <a ui-sref="roster.item({id:roster._id})" href="">{{roster.charName}}</a>
+    </div>
+    <div class="panel-body">
+<pre><h6>Priority Status:</h6>{{roster.charClass}}</pre>
+<pre><h6>Quantity:</h6>{{roster.charSpec}}</pre>
+    </div>
+  </div>
+</div>
+  <button ng-click="tableParams.reload()" class="btn btn-default">Reload</button>
+    <button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
+    <div class="clearfix"></div>
+     <div loading-container="tableParams.settings().$loading">
+      <table ng-table="tableParams" show-filter="true" class="table">
+        <tbody>
+          <tr ng-repeat="roster in rosters">
+            <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="name">
+                    {{roster.charName}}
+                    {{$loading}}
+                </td>
+            <td data-title="'Class'" sortable="class">
+                    {{roster.charClass}}
+                </td>
+            <td data-title="'Spec'" sortable="spec">
+                    {{roster.charSpec}}
+                </td>
+            <td data-title="'Armory'" sortable="armory">
+                    {{roster.charArmory}}
+                </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
