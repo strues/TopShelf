@@ -12,7 +12,7 @@
    * @ngInject
    *
    */
-  function AdminCtrl($scope) {
+  function AdminCtrl($scope, RosterRepository) {
 
      $scope.config = {
     title: 'Products',
