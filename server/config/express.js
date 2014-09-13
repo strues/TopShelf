@@ -48,15 +48,14 @@ module.exports = function(app) {
   
   if ('production' === env) {
 
-    app.use(express.static(path.join(config.root, 'dist')));
-    app.set('appPath', config.root + '/dist');
+    app.use(express.static(path.join(config.root, 'dist/public')));
+    app.set('appPath', config.root + '/dist/public');
     app.use(morgan('dev'));
   }
 
   if ('development' === env || 'test' === env) {
-    app.use(express.static(path.join(config.root, '.tmp')));
-    app.use(express.static(path.join(config.root, 'app')));
-    app.set('appPath', 'app');
+    app.use(express.static(path.join(config.root, 'dist/public')));
+    app.set('appPath', 'dist/public');
     app.use(morgan('dev'));
     app.use(errorHandler()); // Error handler - has to be last
   }
