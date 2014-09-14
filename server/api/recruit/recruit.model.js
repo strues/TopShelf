@@ -8,7 +8,7 @@ var RecruitSchema = new Schema({
       type: Date,
       default: Date.now
     },
-    currentStatus: {enum:['High','Medium','Low', 'Closed'] },
+    currentStatus: String,
     classSpec: String,
     classType: { type: String },
     classImage: { type: String }
