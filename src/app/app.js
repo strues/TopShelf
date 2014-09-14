@@ -95,6 +95,7 @@ angular
       'formFor.bootstrapTemplates',
       'restangular',
       'ngTable',
+      'toastr',
       'angularCharts'
     ]);
 

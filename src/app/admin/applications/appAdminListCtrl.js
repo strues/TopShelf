@@ -13,7 +13,7 @@
   
    $scope.applications = ApplicationRepository.getList();
       $scope.delete = function (data) {
-        if(window.confirm('Are you sure?')) {
+        if($window.confirm('Are you sure?')) {
           ApplicationRepository.remove(data).then(function () {
               $scope.applications = ApplicationRepository.getList();
             });

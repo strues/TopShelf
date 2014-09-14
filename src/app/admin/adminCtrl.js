@@ -30,17 +30,17 @@
   $scope.data = {
     series: ['Sales', 'Income', 'Expense', 'Laptops', 'Keyboards'],
     data: [{
-      x: "Laptops",
+      x: 'Laptops',
       y: [100, 500, 0],
-      tooltip: "this is tooltip"
+      tooltip: 'this is tooltip'
     }, {
-      x: "Desktops",
+      x: 'Desktops',
       y: [300, 100, 100]
     }, {
-      x: "Mobiles",
+      x: 'Mobiles',
       y: [351]
     }, {
-      x: "Tablets",
+      x: 'Tablets',
       y: [54, 0, 879]
     }]
   };

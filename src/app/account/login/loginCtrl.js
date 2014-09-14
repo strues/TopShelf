@@ -12,7 +12,7 @@
    * @ngInject
    *
    */
-  function LoginCtrl($scope, Auth, $location, $window) {
+  function LoginCtrl($scope, Auth, $location, toastr, $window) {
     
     
     $scope.user = {};
@@ -25,8 +25,9 @@
         Auth.login({
           email: $scope.user.email,
           password: $scope.user.password
-        })
-        $location.path('/')
+        });
+        toastr.success('Successfully logged into your account!');
+        $location.path('/');
        
     };
  
