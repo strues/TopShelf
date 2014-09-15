@@ -24,14 +24,14 @@ module.exports = function(app) {
   
   app.use('/auth', require('./authorization'));
   
-app.all('/*', function(req, res, next) {
-    // Just send the index.html for other files to support HTML5Mode
-    res.sendFile('index.html', {   root: path.normalize(__dirname + '/../dist/public') });
-});
-  
   // Error 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
 
+  // All other routes should redirect to the index.html
+  app.route('/*')
+    .get(function(req, res) {
+      res.sendfile(app.get('appPath') + '/index.html');
+    });
   
 };

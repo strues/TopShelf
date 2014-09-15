@@ -11,7 +11,7 @@
   /* @ngInject */
   function RecruitListCtrl ($scope, $window, RecruitmentRepository) {
     
-     $scope.recruits = RecruitmentRepository.getList();
+     $scope.recruits = RecruitmentRepository.getList().$object;
       $scope.delete = function (data) {
         if(window.confirm('Are you sure?')) {
           RecruitmentRepository.remove(data).then(function () {

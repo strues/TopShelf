@@ -56,7 +56,7 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!roster) { return res.send(404); }
     var updated = _.merge(roster, req.body);
-    updated.save(function (err) {
+    roster.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, roster);
     });

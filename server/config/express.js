@@ -18,8 +18,15 @@ var express        = require('express'),
     passport       = require('passport'),
     session        = require('express-session'),
     RedisStore     = require('connect-redis')(session),
-    mongoose       = require('mongoose'),
-    config         = require('./environment');
+    mongoose       = require('mongoose');
+
+
+var expressJwt = require('express-jwt');
+var jwt = require('jsonwebtoken');
+
+// We are going to protect /api routes with JWT
+
+
 
 module.exports = function(app) {
   var env = app.get('env');
@@ -45,11 +52,11 @@ module.exports = function(app) {
           port: '6379'
     })
   }));
-  
+
   if ('production' === env) {
 
-    app.use(express.static(path.join(config.root, 'dist/public')));
-    app.set('appPath', config.root + '/dist/public');
+    app.use(express.static(path.join(config.root, 'public')));
+    app.set('appPath', config.root + 'public');
     app.use(morgan('dev'));
   }
 

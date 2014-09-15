@@ -18,8 +18,11 @@ var jsFilter = plugins.filter('*.js');
 
 gulp.task('vendor', function(){
   return gulp.src(mainBowerFiles())
+    .pipe(plugins.changed(config.paths.dist.js))
     .pipe(jsFilter)
     .pipe(plugins.uglify())
     .pipe(plugins.concat('vendor.min.js'))
-    .pipe(gulp.dest("dist/public/js"));
+    .pipe(plugins.size())
+    .pipe(plugins.notify())
+    .pipe(gulp.dest(config.paths.dist.js));
 });

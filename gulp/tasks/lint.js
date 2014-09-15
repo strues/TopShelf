@@ -14,7 +14,7 @@ var gulp = require('gulp'),
     config = require('../config.js');
 
 gulp.task('lint', function() {
-  return gulp.src(config.paths.srcJS)
+  return gulp.src(config.paths.app.js)
   .pipe(plugins.jshint())
   .pipe(plugins.jshint.reporter('jshint-stylish'))
   .pipe(plugins.plato('report', {

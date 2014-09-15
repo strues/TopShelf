@@ -14,12 +14,12 @@ var gulp = require('gulp'),
     config = require('../config.js');
 
 gulp.task('templates', function() {
-    return gulp.src(config.paths.srcTmpl)
+    return gulp.src(config.paths.app.tmpl)
     .pipe(plugins.htmlmin())
     .pipe(templateCache({
       standalone: 'true',
       module: 'templates'
     }))
     .pipe(plugins.rename('templates.js'))
-    .pipe(gulp.dest('./dist/public/js'));
+    .pipe(gulp.dest(config.paths.dist.js));
 });

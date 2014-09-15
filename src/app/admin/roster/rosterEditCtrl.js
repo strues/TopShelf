@@ -18,9 +18,10 @@
     });
     $scope.save = function () {
       $scope.roster.put().then(function () {
-        $location.path('/');
+        $location.path('/rosters/'+ $stateParams.id);
       });
     };
 }
 
 })();
+

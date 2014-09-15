@@ -15,7 +15,7 @@
   function SignupCtrl(Auth, $location, $window) {
     var $scope = this;
     $scope.ctrlName = 'SignupCtrl';
-    
+
     $scope.user = {};
     $scope.errors = {};
 
@@ -36,7 +36,7 @@
 
         })
         .then( function() {
-         
+
           // Account created, redirect to home
           $location.path('/');
         })

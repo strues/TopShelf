@@ -11,10 +11,8 @@
    * @ngInject
    *
    */
-  function config($stateProvider, $urlRouterProvider, $httpProvider) {
+  function config($stateProvider, $httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
-      $urlRouterProvider
-          .otherwise('/admin/dashboard');
       $stateProvider
           .state('admin', {
               abstract: true,

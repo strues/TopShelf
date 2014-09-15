@@ -6,9 +6,7 @@ angular.module('app')
     if($cookieStore.get('token')) {
       currentUser = User.get();
     }
-
     return {
-
       /**
        * Authenticate user and save token
        *

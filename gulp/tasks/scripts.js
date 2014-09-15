@@ -13,9 +13,12 @@ var gulp = require('gulp'),
     config = require('../config.js');
 
 gulp.task('scripts', function() {
-  return gulp.src(config.paths.srcJS)
+  return gulp.src(config.paths.app.js)
   .pipe(ngFilesort())
+  .pipe(plugins.changed(config.paths.dist.js))
   .pipe(plugins.ngAnnotate())
   .pipe(plugins.concat('app.js'))
-  .pipe(gulp.dest(config.paths.distJS));
+  .pipe(plugins.size())
+  .pipe(plugins.notify())
+  .pipe(gulp.dest(config.paths.dist.js));
 });

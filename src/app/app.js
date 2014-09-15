@@ -61,7 +61,6 @@ function AuthInterceptor($q, $cookieStore, $location) {
   function config($urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider) {
       $httpProvider.interceptors.push('AuthInterceptor');
       $locationProvider.html5Mode(true);
-
       $urlRouterProvider.otherwise('/');
 
       RestangularProvider.setBaseUrl('/api');
@@ -71,16 +70,15 @@ function AuthInterceptor($q, $cookieStore, $location) {
       });
       RestangularProvider.setDefaultHttpFields({cache: true});
       RestangularProvider.setMethodOverriders(['put', 'patch']);
-      RestangularProvider.setRequestInterceptor(
-        function(elem, operation) {
+       RestangularProvider.setRequestInterceptor(function(elem, operation, what) {
 
-          if (operation === 'put') {
-            elem._id = undefined;
-            return elem;
-          }
+        if (operation === 'put') {
+          elem._id = undefined;
           return elem;
-        });
-  }
+        }
+        return elem;
+      })
+  };
 angular
     .module('app', [
       'templates',
@@ -93,10 +91,7 @@ angular
       'ui.bootstrap',
       'formFor',
       'formFor.bootstrapTemplates',
-      'restangular',
-      'ngTable',
-      'toastr',
-      'angularCharts'
+      'restangular'
     ]);
 
   angular

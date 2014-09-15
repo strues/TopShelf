@@ -13,7 +13,7 @@
 
     /* @ngInject */
     /*jshint validthis: true */
-    function RecruitEditCtrl($scope, $stateParams, $location, RecruitmentRepository) {
+    function RecruitEditCtrl($scope, $stateParams, $location,$resource, RecruitmentRepository) {
         $scope.recruit = RecruitmentRepository.get($stateParams.id).then(function(data) {
             $scope.recruit = data;
         });
@@ -35,7 +35,7 @@
 
         $scope.save = function() {
             $scope.recruit.put().then(function() {
-                $location.path('/recruits/' + $stateParams.id);
+                $location.path('/recruit/' + $stateParams.id);
             });
         };
     }

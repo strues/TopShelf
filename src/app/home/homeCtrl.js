@@ -15,7 +15,7 @@
   function HomeCtrl(Restangular) {
   var vm = this;
 
-     vm.recruits = Restangular.all('recruits').getList().$object;
+     vm.recruits = Restangular.all('recruit').getList().$object;
 
 
   }

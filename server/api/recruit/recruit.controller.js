@@ -3,10 +3,6 @@
 var Recruit     = require('./recruit.model');
 var config      = require('../../config/environment');
 
-/**
- * Get list of recruiting status
- * restriction: 'admin'
- */
 // Get list of servers
 exports.index = function(req, res) {
   Recruit.find(function (err, recruits) {
@@ -31,12 +27,12 @@ exports.create = function (req, res, next) {
   var recruit = new Recruit ();
   recruit.classType = req.body.classType;
   recruit.currentStatus = req.body.currentStatus;
-  recruit.classSpec = req.body.classSpec;
+  recruit.quantity = req.body.quantity;
   recruit.classImage = req.body.classImage;
   recruit.created = req.body.created;
 
   recruit.save(function(err, recruit) {
-    if (err)
+    if (err) 
       res.send(err);
     res.json({ message: 'recruiting status saved to the database', data: recruit });
   });

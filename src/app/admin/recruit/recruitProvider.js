@@ -1,14 +1,33 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('app')
-  .provider('Recruit', function() {
-    this.$get = ['$resource', function($resource) {
-      var Recruit = $resource('/api/recruits/:_id', {}, {
+  /**
+   * @ngdoc service
+   * @name application.provider:Application
+   * @function
+   *
+   * @description
+   *
+   * @ngInject 
+   *
+   */
+  function Recruit() {
+    return {
+      $get: function ($resource) {
+        /*jshint validthis: true */
+           var Recruit = $resource('/api/recruits/:_id', {}, {
         update: {
           method: 'PUT'
         }
       });
 
-      return Recruit;
-    }];
-  });
+        return 'Recruit';
+      }
+    };
+  }
+
+  angular
+    .module('app')
+    .provider('Recruit', Recruit);
+
+})();

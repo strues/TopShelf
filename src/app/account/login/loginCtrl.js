@@ -12,9 +12,9 @@
    * @ngInject
    *
    */
-  function LoginCtrl($scope, Auth, $location, toastr, $window) {
-    
-    
+  function LoginCtrl($scope, Auth, $location, $window) {
+
+
     $scope.user = {};
     $scope.errors = {};
 
@@ -26,11 +26,11 @@
           email: $scope.user.email,
           password: $scope.user.password
         });
-        toastr.success('Successfully logged into your account!');
-        $location.path('/');
        
+        $location.path('/');
+
     };
- 
+
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };

@@ -12,10 +12,11 @@ var gulp = require('gulp'),
     config = require('../config.js');
 
 gulp.task('styles', function() {
-    return gulp.src(config.paths.srcSass)
+    return gulp.src(config.paths.app.sass)
+        .pipe(plugins.changed(config.paths.dist.css))
         .pipe(plugins.sass())
         .pipe(plugins.autoprefixer('last 1 version'))
         .pipe(plugins.csso())
-        .pipe(plugins.rename('main.css'))
-        .pipe(gulp.dest(config.paths.distCSS));
+        .pipe(plugins.rename('main.min.css'))
+        .pipe(gulp.dest(config.paths.dist.css));
 });

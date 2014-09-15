@@ -14,8 +14,7 @@ var gulp     = require('gulp'),
     config   = require('../config.js');
 
 gulp.task('images', function() {
-  return gulp.src(config.paths.srcImages)
- .pipe(plugins.cache(plugins.imagemin({ 
-    optimizationLevel: 5, progressive: true, interlaced: true })))
-  .pipe(gulp.dest(config.paths.distImages));
+  return gulp.src(config.paths.app.img)
+    .pipe(plugins.imagemin())
+    .pipe(gulp.dest(config.paths.dist.img));
  });

@@ -14,5 +14,5 @@ var gulp = require('gulp'),
 
 
 gulp.task('clean', function (cb) {
-   return rimraf.sync(config.paths.dist, cb);
-});
+   return rimraf.sync(config.paths.dist.root, cb);
+}); 
