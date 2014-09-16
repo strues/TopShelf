@@ -31,7 +31,8 @@
     "angular-permission": "~0.1.0",
     "angular-socket-io": "~0.6.0",
     "es5-shim": "~4.0.3",
-    "json3": "~3.3.2"
+    "json3": "~3.3.2",
+    "angular-ui-router-anim-in-out": "~0.0.13"
   },
   "overrides": {
     "bootstrap-sass-official": {

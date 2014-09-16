@@ -6,12 +6,7 @@
     <base href="/">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-
-
-<link rel="stylesheet" href="main.min.css">
-
-   <!-- inject:css -->
-   <!-- endinject -->
+    <link href="main.min.css" rel="stylesheet">
     <link href="//cdn.jsdelivr.net/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="//use.typekit.net/oqx8pks.js"></script>
@@ -23,9 +18,7 @@
     <![endif]-->
 <div ng-include="'common/layout/navbar.tpl.html'"></div>
 <div ui-view></div>
-<div ng-include="'common/layout/footer.tpl.html'"></div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -34,16 +27,11 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-28905817-3');ga('send','pageview');
     </script>
-
-  
-  <!-- vendor:js -->
-  <!-- vendor installed scripts will go here... -->
-  <!-- endinject -->
   <!-- inject:js -->
   <!-- app scripts will go here... -->
   <!-- endinject -->
-      <script src="https://s3.amazonaws.com/rekt/scripts/angular-ui-notification.min.js" type="text/javascript"></script>
-    <script src="https://s3.amazonaws.com/rekt/scripts/socket.min.js" type="text/javascript"></script>
-  <script src="https://s3.amazonaws.com/rekt/scripts/form-for.bootstrap-templates.js" type="text/javascript"></script>
+<script src="https://s3.amazonaws.com/rekt/scripts/angular-ui-notification.min.js" type="text/javascript"></script>
+<script src="https://s3.amazonaws.com/rekt/scripts/socket.min.js" type="text/javascript"></script>
+<script src="https://s3.amazonaws.com/rekt/scripts/form-for.bootstrap-templates.js" type="text/javascript"></script>
   </body>
 </html>

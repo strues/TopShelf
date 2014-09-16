@@ -58,19 +58,21 @@ function AuthInterceptor($rootScope, $q, $cookieStore, $location) {
 
       RestangularProvider.setBaseUrl('/api');
       RestangularProvider.setRestangularFields({
-          id: '_id.$oid',
-          selfLink: 'self.link'
+      id: '_id.$oid'
       });
-      RestangularProvider.setDefaultHttpFields({cache: true});
-      RestangularProvider.setMethodOverriders(['put', 'patch']);
-       RestangularProvider.setRequestInterceptor(function(elem, operation) {
 
-        if (operation === 'put') {
-          elem._id = undefined;
-          return elem;
-        }
+      RestangularProvider.setMethodOverriders(['put', 'delete']);
+      RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'});
+ 
+
+    RestangularProvider.setRequestInterceptor(function (elem, operation, what) {
+
+      if (operation === 'put') {
+        elem._id = undefined;
         return elem;
-      });
+      }
+      return elem;
+    })
   }
 angular
     .module('app', [

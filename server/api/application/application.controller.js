@@ -60,15 +60,13 @@ exports.create = function (req, res, next) {
 
 // Updates an existing server in the DB.
 exports.update = function(req, res) {
-  Application.findById(req.params.id, function (err, application) {
-    if (err) { return handleError(res, err); }
-    if(!application) { return res.send(404); }
-    var updated = _.merge(application, req.body);
-    updated.put(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, application);
-    });
-  });
+            Application.findById.id, function (err, application) {
+                application.charName = req.body.charName;
+                application.charClass = req.body.charClass;
+                application.save(function () {
+                    res.send('OK');
+                });
+            };
 };
 
 // Deletes a server from the DB.
