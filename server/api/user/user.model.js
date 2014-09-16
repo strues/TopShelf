@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
-var authTypes = ['battlenet', 'twitter', 'facebook', 'google'];
+var authTypes = ['twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   username: String,
@@ -25,7 +25,7 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   characters: {},
-  application:{},
+  guildApp: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Application' }],
   twitter: {},
   google: {},
   battlenet: {},

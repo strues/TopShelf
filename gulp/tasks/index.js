@@ -20,6 +20,6 @@ gulp.task('index', ['vendor', 'scripts', 'styles'], function () {
         './dist/public/js/templates.js',
         './dist/public/css/main.min.css'
         ], 
-    {read: false}), {ignorePath: '/dist/public/'}, {addRootSlash: false}))
+    {read: false}), {ignorePath: '/dist/public/'}, {addRootSlash: true}))
     .pipe(gulp.dest(config.paths.dist.root));
 });

@@ -1,21 +1,27 @@
-(function () {
-  'use strict';
-
   /**
    * @ngdoc object
    * @name home.controller:SignupCtrl
    * @function
    *
    * @description
-   *
+   *    username: $scope.user.username,
+          email: $scope.user.email,
+          password: $scope.user.password,
+          firstName: $scope.user.firstName,
+          age: $scope.user.age,
+          birthday: $scope.user.birthday,
+          btag: $scope.user.btag,
+          sex: $scope.user.sex,
+          location: $scope.user.location
+
    *
    * @ngInject
    *
    */
-  function SignupCtrl(Auth, $location, $window) {
-    var $scope = this;
-    $scope.ctrlName = 'SignupCtrl';
+ 'use strict';
 
+angular.module('app')
+  .controller('SignupCtrl', function ($scope, Auth, $location, $window, Notification) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -33,10 +39,9 @@
           btag: $scope.user.btag,
           sex: $scope.user.sex,
           location: $scope.user.location
-
         })
         .then( function() {
-
+           Notification.success('Your account has been created');
           // Account created, redirect to home
           $location.path('/');
         })
@@ -56,9 +61,4 @@
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };
-}
-  angular
-    .module('app')
-    .controller('SignupCtrl', SignupCtrl);
-
-})();
+  });

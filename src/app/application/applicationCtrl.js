@@ -12,7 +12,7 @@
    * @ngInject
    *
    */
-  function ApplicationCtrl($scope, $state, $location, $http, ApplicationRepository) {
+  function ApplicationCtrl($scope, $state, $location, $http, Notification, ApplicationRepository) {
 
     $scope.formData = {};
         $scope.classOptions = [
@@ -68,7 +68,7 @@
         $scope.onSubmit = function() {
         $http.post('/api/applications', $scope.formData);
         console.log('application submitted:', $scope.formData);
-       
+        Notification.success('Your application has been submitted.');
         $location.path('/');
 
   };

@@ -1,42 +1,30 @@
-(function () {
-  'use strict';
+'use strict';
 
-  /**
-   * @ngdoc object
-   * @name home.controller:LoginCtrl
-   * @function
-   *
-   * @description
-   *
-   *
-   * @ngInject
-   *
-   */
-  function LoginCtrl($scope, Auth, $location, $window) {
-
-
+angular.module('app')
+  .controller('LoginCtrl', function ($scope, Auth, $location, $window, Notification) {
     $scope.user = {};
     $scope.errors = {};
 
     $scope.login = function(form) {
       $scope.submitted = true;
 
-
+      if(form.$valid) {
         Auth.login({
           email: $scope.user.email,
           password: $scope.user.password
+        })
+        .then( function() {
+          // Logged in, redirect to home
+          Notification.success('Successfully logged in.');
+          $location.path('/');
+        })
+        .catch( function(err) {
+          $scope.errors.other = err.message;
         });
-       
-        $location.path('/');
-
+      }
     };
 
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };
-}
-  angular
-    .module('app')
-    .controller('LoginCtrl', LoginCtrl);
-
-})();
+  });

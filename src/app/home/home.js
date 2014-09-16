@@ -15,7 +15,7 @@ function config ($stateProvider) {
     $stateProvider
         .state('home', {
           url: '/',
-          templateUrl: 'app/home/home.tpl.html',
+          templateUrl: 'home/home.tpl.html',
           controller: 'HomeCtrl',
           controllerAs: 'vm'
         });

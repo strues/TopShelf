@@ -6,7 +6,7 @@
         $stateProvider
             .state('about', {
                 url: '/about',
-                templateUrl: 'app/about/about.tpl.html',
+                templateUrl: 'about/about.tpl.html',
                 controller: 'AboutCtrl',
                 controllerAs: 'vm'
             });

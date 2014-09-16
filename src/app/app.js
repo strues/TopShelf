@@ -18,21 +18,14 @@ function run($rootScope, $location, $state, $stateParams, Auth) {
 
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
+      Auth.isLoggedIn(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
         }
       });
     });
-
-    $rootScope.$on('$stateChangeStart', function (event, toState) {
-        if (toState.Auth && !Auth.isAdmin(toState.Auth)) {
-          event.preventDefault();
-        }
-    });
 } // End run block
-
-function AuthInterceptor($q, $cookieStore, $location) {
+function AuthInterceptor($rootScope, $q, $cookieStore, $location) {
       return {
             // Add authorization token to headers
             request: function (config) {
@@ -70,15 +63,15 @@ function AuthInterceptor($q, $cookieStore, $location) {
       });
       RestangularProvider.setDefaultHttpFields({cache: true});
       RestangularProvider.setMethodOverriders(['put', 'patch']);
-       RestangularProvider.setRequestInterceptor(function(elem, operation, what) {
+       RestangularProvider.setRequestInterceptor(function(elem, operation) {
 
         if (operation === 'put') {
           elem._id = undefined;
           return elem;
         }
         return elem;
-      })
-  };
+      });
+  }
 angular
     .module('app', [
       'templates',
@@ -91,7 +84,9 @@ angular
       'ui.bootstrap',
       'formFor',
       'formFor.bootstrapTemplates',
-      'restangular'
+      'restangular',
+      'btford.socket-io',
+      'ui-notification'
     ]);
 
   angular

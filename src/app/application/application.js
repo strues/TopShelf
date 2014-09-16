@@ -6,7 +6,7 @@
     $stateProvider
       .state('application', {
         url: '/application',
-        templateUrl: 'app/application/application.tpl.html',
+        templateUrl: 'application/application.tpl.html',
         controller: 'ApplicationCtrl'
       });
     }

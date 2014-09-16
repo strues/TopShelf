@@ -9,7 +9,7 @@
   */
 
   /* @ngInject */
-  function RosterCtrl ($scope, $window, Restangular, RosterRepository, $timeout, $resource, ngTableParams) {
+  function RosterCtrl ($scope, $window, Restangular, RosterRepository) {
     
 $scope.rosters = RosterRepository.getList();
       $scope.delete = function (data) {
@@ -19,31 +19,7 @@ $scope.rosters = RosterRepository.getList();
             });
         }
       };
-  
-    
-    
-    $scope.tableParams = new ngTableParams({
-        page: 1,            // show first page
-        count: 10,          // count per page
-        sorting: {
-            name: 'asc'     // initial sorting
-        }
-    }, {
-        total: 0,           // length of data
-        getData: function($defer, params) {
-            // ajax request to api
-            RosterRepository.getList(), function(data) {
-                $timeout(function() {
-                    // update table params
-                    params.total(data.total);
-                    // set new data
-                    $defer.resolve(data.result);
-                }, 500);
-            };
-        }
-    })
-
-  }
+}
 
 angular
   .module('app')

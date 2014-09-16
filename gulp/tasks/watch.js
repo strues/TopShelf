@@ -12,9 +12,9 @@ var gulp = require('gulp'),
 
 
 gulp.task('watch', function () {
-  gulp.watch('src/styles/**/*.scss', ['styles']);
-  gulp.watch('src/app/**/*.js', ['scripts']);
-  gulp.watch('src/index.html', ['index']);
-  gulp.watch('src/**/*.tpl.html', ['templates']);
+  gulp.watch('./src/styles/**/*.scss', ['styles']);
+  gulp.watch('./src/app/**/*.js', ['scripts']);
+  gulp.watch('./src/index.html', ['index']);
+  gulp.watch('./src/**/*.tpl.html', ['templates']);
   gulp.watch('bower.json');
 });

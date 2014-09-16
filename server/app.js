@@ -1,5 +1,5 @@
 /**
- * Main File for our Express backend
+ * Main application file
  */
 
 'use strict';
@@ -7,25 +7,16 @@
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var express  = require('express'),
-    mongoose = require('mongoose'),
-    config   = require('./config/environment');
+var express = require('express');
+var mongoose = require('mongoose');
+var config = require('./config/environment');
 
-/*
- * Connect to database
- * Using info from environment settings
- */
+// Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
-
-/*
- * Setup server
- * Require config/express(alias is app)
- * Require routes(alias is app)
- */
+// Setup server
 var app = express();
 var server = require('http').createServer(app);
-
 var socketio = require('socket.io')(server, {
   serveClient: (config.env === 'production') ? false : true,
   path: '/socket.io-client'
@@ -38,8 +29,6 @@ require('./routes')(app);
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
-
-
 
 // Expose app
 exports = module.exports = app;

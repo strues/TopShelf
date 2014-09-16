@@ -13,10 +13,10 @@ var gulp = require('gulp'),
 
 gulp.task('styles', function() {
     return gulp.src(config.paths.app.sass)
-        .pipe(plugins.changed(config.paths.dist.css))
+        .pipe(plugins.changed('./dist/public/'))
         .pipe(plugins.sass())
         .pipe(plugins.autoprefixer('last 1 version'))
         .pipe(plugins.csso())
         .pipe(plugins.rename('main.min.css'))
-        .pipe(gulp.dest(config.paths.dist.css));
+        .pipe(gulp.dest('./dist/public/'));
 });

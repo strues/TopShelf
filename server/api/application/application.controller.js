@@ -3,7 +3,7 @@
 var Application     = require('./application.model');
 var mongoose = require('mongoose');
 var config      = require('../../config/environment');
-var User = require('../users/user.model');
+var User = require('../user/user.model');
 
 var _ = require('lodash');
 
@@ -46,6 +46,7 @@ exports.create = function (req, res, next) {
   application.uiScreenshot = req.body.uiScreenshot;
   application.btag = req.body.btag;
   application.whyTS = req.body.whyTS;
+  application.applicant = req.body.user;
 
 
 
@@ -59,12 +60,11 @@ exports.create = function (req, res, next) {
 
 // Updates an existing server in the DB.
 exports.update = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
   Application.findById(req.params.id, function (err, application) {
     if (err) { return handleError(res, err); }
     if(!application) { return res.send(404); }
     var updated = _.merge(application, req.body);
-    updated.save(function (err) {
+    updated.put(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, application);
     });

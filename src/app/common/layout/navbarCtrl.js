@@ -12,7 +12,7 @@
    * @ngInject
    *
    */
-  function NavbarCtrl($scope, $location, Auth) {
+  function NavbarCtrl($scope, $location, Auth, Notification) {
  $scope.menu = [
     {
       'title': 'Home',
@@ -35,7 +35,7 @@
 
     $scope.logout = function() {
       Auth.logout();
-
+       Notification.success('Session destroyed.');
       $location.path('/login');
     };
 

@@ -17,33 +17,33 @@
           .state('admin', {
               abstract: true,
               url: '/admin',
-              templateUrl: 'app/admin/adminShell.tpl.html'
-          })
+              templateUrl: 'admin/adminShell.tpl.html'
+        })
           .state('admin.dashboard', {
-              url: '/dashboard',
-              templateUrl: 'app/admin/dashboard.tpl.html',
+              url: '',
+              templateUrl: 'admin/dashboard.tpl.html',
               controller: 'AdminCtrl'
           })
            .state('appAdmin', {
               abstract: true,
               url: '/admin/applications',
-              templateUrl: 'app/admin/applications/main.tpl.html'
+              templateUrl: 'admin/applications/main.tpl.html'
           })
 
           .state('appAdmin.list', {
               url: '',
-              templateUrl: 'app/admin/applications/appAdmin.tpl.html',
+              templateUrl: 'admin/applications/appAdmin.tpl.html',
               controller: 'AppAdminListCtrl'
           })
           .state('appAdmin.edit', {
               url: '/edit/{id}',
-              templateUrl: 'app/admin/applications/appAdminEdit.tpl.html',
+              templateUrl: 'admin/applications/appAdminEdit.tpl.html',
               controller: 'AppAdminEditCtrl'
           })
 
           .state('appAdmin.item', {
               url: '/{id}',
-              templateUrl: 'app/admin/applications/appAdminItem.tpl.html',
+              templateUrl: 'admin/applications/appAdminItem.tpl.html',
               controller: 'AppAdminItemCtrl'
           })
           .state('recruit', {

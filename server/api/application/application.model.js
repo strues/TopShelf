@@ -23,11 +23,15 @@ var ApplicationSchema = new Schema({
     btag: String,
     firstName: String,
     age: Number,
-    applicant: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }
+    applicant: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 });
+
+
+ApplicationSchema.methods.upvote = function(cb) {
+  this.upvotes += 1;
+  this.save(cb);
+};
 
 /**
  * Validations

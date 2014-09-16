@@ -16,5 +16,5 @@ var gulp     = require('gulp'),
 gulp.task('images', function() {
   return gulp.src(config.paths.app.img)
     .pipe(plugins.imagemin())
-    .pipe(gulp.dest(config.paths.dist.img));
+    .pipe(gulp.dest('./dist/public/'));
  });

@@ -12,12 +12,15 @@
   .controller('AppAdminItemCtrl', AppAdminItemCtrl);
 
   /* @ngInject *//*jshint validthis: true */
-  function AppAdminItemCtrl ($scope, $stateParams, ApplicationRepository) {
+  function AppAdminItemCtrl ($scope, $stateParams, $http, ApplicationRepository) {
  
    $scope.application = ApplicationRepository.get($stateParams.id)
       .then(function (data) {
         $scope.application = data;
       });
+  
+      
   }
+
 
 })();
