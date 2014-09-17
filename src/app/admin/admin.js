@@ -74,11 +74,11 @@
           .state('roster', {
               abstract: true,
               url: '/admin/roster',
-              templateUrl: 'app/admin/roster/main.tpl.html'
+              templateUrl: 'admin/roster/main.tpl.html'
           })
           .state('roster.list', {
               url: '',
-              templateUrl: 'app/admin/roster/roster.tpl.html',
+              templateUrl: 'admin/roster/roster.tpl.html',
               controller: 'RosterCtrl'
           })
             .state('roster.add', {

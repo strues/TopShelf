@@ -28,7 +28,7 @@
 
                 <li class="divider"></li>
                 <li class="dropdown-header" ng-show="isLoggedIn()">Resources</li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
+                  <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="#/admin">Admin</a></li>
                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
 
                 <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>

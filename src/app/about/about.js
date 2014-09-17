@@ -11,7 +11,6 @@
                 controllerAs: 'vm'
             });
     }
-
     angular
         .module('app')
         .config(config);

@@ -16,15 +16,15 @@
  $scope.menu = [
     {
       'title': 'Home',
-      'link': '/',
+      'link': '#/',
       },
       {
         'title': 'Apply',
-        'link': '/application'
+        'link': '#/application'
       },
       {
           'title': 'Guild Info',
-          'link': '/about'
+          'link': '#/about'
       }
     ];
 
@@ -36,7 +36,7 @@
     $scope.logout = function() {
       Auth.logout();
        Notification.success('Session destroyed.');
-      $location.path('/login');
+      $location.path('#/login');
     };
 
     $scope.isActive = function(route) {

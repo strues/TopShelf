@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 requireDir('./gulp', { recurse: true });
 
 gulp.task('default', ['clean', 'serve']);
-gulp.task('build', ['clean','lint','vendor','scripts', 'templates','styles','images', 'index'])
+gulp.task('build', ['clean','lint','vendor','scripts', 'templates','styles', 'index'])
 
 gulp.task('copy:fonts', function() {
   return gulp.src(config.paths.srcFonts)

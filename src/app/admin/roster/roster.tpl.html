@@ -1,40 +1,15 @@
+
 <div class="col-sm-9">
 <p class="lead">
 Roster Management
-<a ui-sref="roster.add" href="" class="btn btn-default pull-right">
-  <i class="glyphicon glyphicon-plus-sign"></i>
-</a>
 </p>
-
-<button ng-click="tableParams.reload()" class="btn btn-default">Reload</button>
-<button ng-click="tableParams.sorting({})" class="btn btn-default">Clear sorting</button>
-<div class="clearfix"></div>
-<div loading-container="tableParams.settings().$loading">
-  <table ng-table="tableParams" class="table">
-    <tbody>
-      <tr ng-repeat="roster in rosters">
-        <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="name">
-{{roster.charName}}
-<a class="btn btn-default btn-xs pull-right"  ng-click="delete(roster)">
-<i class="glyphicon glyphicon-trash"></i></a>
-<a class="btn btn-default btn-xs pull-right" ui-sref="roster.edit({id:roster._id})">
-<i class="glyphicon glyphicon-pencil"></i></a>
-
-        </td>
-        <td data-title="'Class'" sortable="class">
-{{roster.charClass}}
-        </td>
-        <td data-title="'Spec'" sortable="spec">
-{{roster.charSpec}}
-        </td>
-        <td data-title="'Offspec'" sortable="offspec">
-{{roster.charOffSpec}}
-        </td>
-        <td data-title="'Armory'" sortable="armory">
-{{roster.charArmory}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div ng-controller="RosterCtrl">
+       <button type="button" class="btn btn-success" ng-click="swapData()">Swap Data</button>
+      <button type="button" class="btn btn-success" ng-click="addData()">Add Data</button>
+      <button type="button" class="btn btn-success" ng-click="removeFirstRow()">Remove First Row</button>
+      <button type="button" class="btn btn-success" ng-click="reset()">Reset</button>
+      <br>
+      <br>
+      <div ui-grid="gridOpts" class="grid"></div>
+    </div>
 </div>

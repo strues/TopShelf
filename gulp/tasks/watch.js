@@ -10,11 +10,12 @@ var gulp = require('gulp'),
     rimraf = require('rimraf'),
     config = require('../config.js');
 
+var appBase = 'src/',
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload;
 
 gulp.task('watch', function () {
-  gulp.watch('./src/styles/**/*.scss', ['styles']);
-  gulp.watch('./src/app/**/*.js', ['scripts']);
-  gulp.watch('./src/index.html', ['index']);
-  gulp.watch('./src/**/*.tpl.html', ['templates']);
-  gulp.watch('bower.json');
+  browserSync.reload();
+  gulp.watch([appBase + '**/*'], ['build', browserSync.reload]);
 });
+

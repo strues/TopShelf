@@ -53,7 +53,7 @@ function AuthInterceptor($rootScope, $q, $cookieStore, $location) {
 
   function config($urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider) {
       $httpProvider.interceptors.push('AuthInterceptor');
-      $locationProvider.html5Mode(true);
+
       $urlRouterProvider.otherwise('/');
 
       RestangularProvider.setBaseUrl('/api');
@@ -88,9 +88,10 @@ angular
       'formFor.bootstrapTemplates',
       'restangular',
       'btford.socket-io',
-      'ui-notification'
+      'ui-notification',
+      'ui.grid',
+      'ui.grid.edit'
     ]);
-
   angular
     .module('app')
     .config(config)

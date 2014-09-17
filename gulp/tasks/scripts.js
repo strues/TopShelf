@@ -12,13 +12,17 @@ var gulp = require('gulp'),
     ngFilesort = require('gulp-angular-filesort'),
     config = require('../config.js');
 
+var scriptsGlob = 'src/app/**/*.js';
+
 gulp.task('scripts', function() {
-  return gulp.src(config.paths.app.js)
-  .pipe(ngFilesort())
-  .pipe(plugins.changed(config.paths.dist.js))
-  .pipe(plugins.ngAnnotate())
-  .pipe(plugins.concat('app.js'))
-  .pipe(plugins.size())
-  .pipe(plugins.notify())
-  .pipe(gulp.dest(config.paths.dist.js));
+  return gulp.src(scriptsGlob)
+      .pipe(plugins.cached('scripts'))        // only pass through changed files
+      .pipe(plugins.jshint())                 // do special things to the changed files...
+      .pipe(ngFilesort())
+      .pipe(plugins.remember('scripts'))     
+      .pipe(plugins.ngAnnotate())
+      .pipe(plugins.concat('app.js'))
+      .pipe(plugins.size())
+      .pipe(plugins.notify())
+      .pipe(gulp.dest('dist/public/js/'));
 });

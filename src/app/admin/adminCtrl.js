@@ -14,6 +14,8 @@
    */
   function AdminCtrl($scope, Auth, User) {
  
+    $scope.things = [];
+
   }
 
   angular
