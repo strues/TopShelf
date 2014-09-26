@@ -1,0 +1,93 @@
+.chatbar {
+  position:fixed;
+  bottom:0;
+  margin:0;
+  padding:0;
+  width:100%;
+  height:50px;
+  z-index:3;
+}
+
+.add-friend {
+	position:absolute;
+}
+
+ul.conversation-list {
+	display:block;
+	height:100%;
+	width:80%;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	float:left;
+}
+
+ ul.conversation-list > li {
+	display:block;
+	height:100%;
+	width:10%;
+	min-width:100px;
+	float:left;
+	list-style-type: none;
+	border-top:0px solid #4393B9;
+	line-height:50px;
+	text-align:center;
+
+	font-weight:bold;
+	font-family:'Myriad Pro', 'Segoe UI', 'Helvetica', 'Arial';
+
+	transition:0.2s;
+
+	cursor:pointer;
+}
+
+ul.conversation-list > li:hover {
+	border-top:5px solid #4393B9;
+}
+
+ul.chat-tools {
+	margin:0;
+	padding:0;
+	display:block;
+	width:15%;
+	height:100%;
+	float:left;
+}
+
+ul.chat-tools > li {
+	display:block;
+	width:25%;
+	height:100%;
+	float:right;
+}
+
+.online-indicator {
+	width:10px;
+	height:10px;
+	border-radius:50%;
+	margin-top:20px;
+	margin-left:10px;
+	float:left;
+	background-color:#333;
+}
+
+.online-indicator.active {
+	background-color:green;
+}
+
+.bar-resizer {
+	width:30px;
+	height:30px;
+	position:absolute;
+	bottom:50;
+	left:50%;
+	cursor:pointer;
+}
+
+.active-conversation {
+	width:300px;
+	height:300px;
+	background-color:red;
+	position:fixed;
+	bottom:50px;
+}

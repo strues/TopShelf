@@ -1,28 +1,26 @@
-/** 
- * vendorJS
- * Performs jshint and finishes off by producing a plato
- * report for reference
- * @return {Function}
- */
-
+/* jshint node: true */
 'use strict';
-var gulp = require('gulp'),
-    plugins = require("gulp-load-plugins")({ lazy:false }),
-    path = require('path'),
-    rimraf = require('rimraf'),
-    ngFilesort = require('gulp-angular-filesort'),
-    mainBowerFiles = require('main-bower-files'),
-    config = require('../config.js');
 
-var jsFilter = plugins.filter('*.js');
+var gulp       = require('gulp'),
+    concat     = require('gulp-concat'),
+    uglify     = require('gulp-uglify'),
+        path        = require('path'),
+        config = require('../config'),
+    sourcemaps = require('gulp-sourcemaps'),
+    ngAnnotate = require('gulp-ng-annotate'),
+    rename = require('gulp-rename'),
+    concatJson2js = require('gulp-concat-json2js'),
+    ngFilesort = require('gulp-angular-filesort');
 
 gulp.task('vendor', function(){
-  return gulp.src(mainBowerFiles())
-    .pipe(plugins.changed(config.paths.dist.js))
-    .pipe(jsFilter)
-    .pipe(plugins.uglify())
-    .pipe(plugins.concat('vendor.min.js'))
-    .pipe(plugins.size())
-    .pipe(plugins.notify())
-    .pipe(gulp.dest(config.paths.dist.js));
+    // concat application vendors
+  return gulp.src([path.join(config.CLIENT,'vendors.json')])
+        //.pipe(gulpif(config.env.jsSourceMaps , sourcemaps.init()))
+        .pipe(concatJson2js('vendor.js'))
+        .pipe(ngAnnotate()) // fix uglify mangleling - not compatible with sourceMaps
+        .pipe(ngFilesort())
+        .pipe(uglify())
+        .pipe(rename({basename: 'vendor'})) //,suffix: '.min'
+        //.pipe(gulpif(config.env.jsSourceMaps , sourcemaps.write()))
+        .pipe(gulp.dest('./.tmp/js'))
 });

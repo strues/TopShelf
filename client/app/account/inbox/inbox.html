@@ -1,0 +1,22 @@
+<div class="container">
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="row globalContentBlock" style="margin-bottom: 100px;">
+<p>
+<br>
+</p>
+<p>
+<br>
+<h1>afM</h1>
+</p>
+<input type="text" id="recipient" placeholder="Recipient">
+<textarea id="message"></textarea>
+<button id="send-message">Send</button>
+
+<div class="col-md-12" ng-repeat="box in inbox[0].box">
+	<ul>
+		<li><strong>{{box.sender.name}} - {{box.sender}}</strong></li>
+		<li ng-repeat="message in box.messages">{{message.date}} - {{message.message}}</li>
+	</ul>
+</div>
+</div>
+</div>

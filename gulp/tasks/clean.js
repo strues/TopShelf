@@ -1,18 +1,16 @@
-/**
- * clean
- * removes the dist directory
- * @param  {Function} cb 
- * @return {Function}
- */
 
 'use strict';
+
 var gulp = require('gulp'),
-    plugins = require("gulp-load-plugins")({ lazy:false }),
-    path = require('path'),
-    rimraf = require('rimraf'),
-    config = require('../config.js');
+    del = require('del');
 
+/**
+ * Remove the .tmp- and dist-folder
+ */
+gulp.task('clean', function() {
+  
+  del(['.tmp', '.sass-cache', 'dist'], function(err) {
+    if(err) return console.error(err);
+  });
 
-gulp.task('clean', function (cb) {
-   return rimraf.sync(config.paths.dist.root, cb);
-}); 
+});

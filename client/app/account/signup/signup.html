@@ -1,0 +1,183 @@
+<div class="page-signup">
+  <div class="container globalContentBlock" style="margin-top: 45px;">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+      <div class="form-container signupForm">
+      <h1>Register an Account</h1>
+        <hr>
+     
+      <form style="margin-top:10px;" 
+      class="form" 
+      name="form" 
+      ng-submit="register(form)" 
+      novalidate>
+
+ <div class="form-group" 
+            ng-class="{ 'has-success': form.name.$valid && submitted,'has-error': form.name.$invalid && submitted }">
+            
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <input type="text" 
+                name="name" 
+                placeholder="Username"
+                class="form-control" 
+                ng-model="user.name"
+                required/>
+                <p class="help-block" 
+                ng-show="form.name.$error.required && submitted">
+                A username is required
+                </p>
+              </div>
+            </div>
+            <!-- end username-->
+            <div class="form-group" 
+            ng-class="{ 'has-success': form.email.$valid && submitted,'has-error': form.email.$invalid && submitted }">
+             
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-envelope"></span>
+                </span>
+                <input type="email" 
+                name="email" 
+                placeholder="Email"
+                class="form-control" 
+                ng-model="user.email"
+                required
+                mongoose-error/>
+                <p class="help-block" 
+                ng-show="form.email.$error.email && submitted">
+                Doesn't look like a valid email.
+                </p>
+                <p class="help-block" 
+                ng-show="form.email.$error.required && submitted">
+                What's your email address?
+                </p>
+                <p class="help-block" 
+                ng-show="form.email.$error.mongoose">
+                {{ errors.email }}
+                </p>
+              </div>
+            </div>
+            <!-- end email -->
+            <div class="form-group" 
+            ng-class="{ 'has-success': form.password.$valid && submitted,'has-error': form.password.$invalid && submitted }">
+             
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock"></span>
+                </span>
+                <input type="password" 
+                name="password" 
+                placeholder="Password"
+                class="form-control"
+                ng-model="user.password"
+                ng-minlength="3"
+                required
+                mongoose-error/>
+                <p class="help-block"
+                ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+                Password must be at least 3 characters.
+                </p>
+                <p class="help-block" 
+                ng-show="form.password.$error.mongoose">
+                {{ errors.password }}
+                </p>
+              </div>
+            </div>
+            <!-- end password -->
+            <div class="form-group" 
+            ng-class="{ 'has-success': form.firstName.$valid && submitted,'has-error': form.firstName.$invalid && submitted }">
+             
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-asterisk"></span>
+                </span>
+                <input type="text" 
+                name="firstName" 
+                placeholder="First Name"
+                class="form-control" 
+                ng-model="user.firstName"
+                required/>
+                <p class="help-block" 
+                ng-show="form.firstName.$error.required && submitted">
+                Your first name required
+                </p>
+              </div>
+            </div>
+            <!-- end first name -->
+            <div class="form-group" 
+            ng-class="{ 'has-success': form.age.$valid && submitted,
+              'has-error': form.age.$invalid && submitted }">
+      
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-plus"></span>
+                </span>
+                <input type="text" 
+                name="age"
+                placeholder="Age"
+                class="form-control" 
+                ng-model="user.age"
+                required/>
+                <p class="help-block" 
+                ng-show="form.age.$error.required && submitted">
+                Your age is required.
+                </p>
+              </div>
+            </div>
+            <!-- end age -->
+           
+            <div class="form-group" 
+            ng-class="{ 'has-success': form.location.$valid && submitted,
+              'has-error': form.location.$invalid && submitted }">
+                
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-map-marker"></span>
+                </span>
+                <input type="text" 
+                name="location" 
+                placeholder="Location"
+                class="form-control" 
+                ng-model="user.location"
+                required/>
+                <p class="help-block" 
+                ng-show="form.location.$error.required && submitted">
+                A location is required
+                </p>
+              </div>
+            </div>
+            <!--end location -->
+            <div class="form-group" 
+            ng-class="{ 'has-success': form.btag.$valid && submitted,
+              'has-error': form.btag.$invalid && submitted }">
+        
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-tag"></span>
+                </span>
+                <input type="text" 
+                name="btag"
+                placeholder="Battletag"
+                class="form-control" 
+                ng-model="user.btag"
+                required/>
+                <p class="help-block" 
+                ng-show="form.btag.$error.required && submitted">
+                A battletag is required
+                </p>
+              </div>
+            </div>
+            <!-- end btag -->
+            <div class="form-group">
+              <p class="text-muted text-small">By clicking on Sign up, you agree to <a href="javascript:;">terms & conditions</a> and <a href="javascript:;">privacy policy</a></p>
+              <div class="divider"></div>
+              <button class="btn btn-inverse btn-lg btn-login" type="submit">Sign up</button>
+            </div>
+            
+      </form>
+      </div>
+      <hr>
+  </div>
+</div>

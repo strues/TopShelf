@@ -1,30 +1,29 @@
-/** 
- * srcScripts -- Lint
- * Performs jshint and finishes off by producing a plato
- * report for reference
- * @return {Function}
- */
 'use strict';
-var gulp = require('gulp'),
-    plugins = require("gulp-load-plugins")({ lazy:false }),
-    path = require('path'),
-    rimraf = require('rimraf'),
-    help = require('gulp-help'),
-    stylish = require('jshint-stylish'),
-    config = require('../config.js');
 
+var gulp = require('gulp'),
+    jshint = require('gulp-jshint'),
+    stylish = require('jshint-stylish'),
+    gulpIf = require('gulp-if'),
+    size = require('gulp-size'),
+    plumber = require('gulp-plumber'),
+    jscs = require('gulp-jscs');
+
+var browserSync = require('browser-sync');
+
+var reload = browserSync.reload;
+
+/**
+ * Lint JavaScript-files
+ */
 gulp.task('lint', function() {
-  return gulp.src(config.paths.app.js)
-  .pipe(plugins.jshint())
-  .pipe(plugins.jshint.reporter('jshint-stylish'))
-  .pipe(plugins.plato('report', {
-            jshint: {
-                options: {
-                    strict: true
-                }
-            },
-            complexity: {
-                trycatch: true
-            }
-        })
-)});
+
+  return gulp.src('client/app/**/*.js')
+    .pipe(reload({stream: true, once: true})) // after a file is written, reload the js
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(gulpIf(!browserSync.active, jshint.reporter('fail')))
+    .pipe(plumber())
+/*    .pipe(jscs())
+    .pipe(plumber())*/
+    .pipe(size({title: 'jshint'}));
+});

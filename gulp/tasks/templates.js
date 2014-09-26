@@ -1,25 +1,23 @@
-/**
- * templates
- * compiles partials into angular $templatecache
- * @param  {Function} cb 
- * @return {Function}
- */
-
 'use strict';
-var gulp = require('gulp'),
-    plugins = require("gulp-load-plugins")({ lazy:false }),
-    path = require('path'),
-    rimraf = require('rimraf'),
-    templateCache = require('gulp-angular-templatecache'),
-    config = require('../config.js');
+ var gutil        = require('gulp-util'),
+      gulp        = require('gulp'),
+      gulpif      = require('gulp-if'),
+      path        = require('path'),
+      concat      = require('gulp-concat'),
+      rename      = require('gulp-rename'),
+      sourcemaps  = require('gulp-sourcemaps'),
+      ngAnnotate  = require('gulp-ng-annotate'),
+      templateCache = require('gulp-angular-templatecache'),
+      uglify      = require('gulp-uglify');
 
-gulp.task('templates', function() {
-    return gulp.src(config.paths.app.tmpl)
-    .pipe(plugins.htmlmin())
-    .pipe(templateCache({
-      standalone: 'true',
-      module: 'templates'
-    }))
-    .pipe(plugins.rename('templates.js'))
-    .pipe(gulp.dest(config.paths.dist.js));
+
+gulp.task('templates', function(){
+    // before build JS we need to regenerate template file:
+    return gulp.src(path.join('./client/app','**', '*.html')) //'./app/src/**/*.html')
+        .pipe(templateCache({
+            filename: 'templates.js',
+            module:'templates',
+            standalone: true
+        }))
+        .pipe(gulp.dest(path.join('./.tmp/js')));
 });

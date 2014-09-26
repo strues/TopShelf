@@ -1,0 +1,40 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+$fa-font-path: "../bower_components/font-awesome/fonts";
+
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
+@import "../bower_components/font-awesome/scss/font-awesome";
+
+/**
+ * App-wide Styles
+ */
+$guildBlue: rgba(52, 152, 219, 1);
+$guildBlueMd: rgba(30, 139, 195, 1);
+$guildBlueDrk: darken($guildBlue, 30%);
+
+body {
+    padding-bottom: 0px;
+    font-size: 16px;
+    background: url("../assets/images/sitebg.png");
+    background-attachment: fixed;
+}
+
+// Component styles are injected through grunt
+// injector
+@import "account/login/login.scss";
+@import "account/signup/signup.scss";
+@import "admin/admin.scss";
+@import "chat/chat.scss";
+@import "sass/_animations.scss";
+@import "sass/_header.scss";
+@import "sass/_icons.scss";
+@import "sass/_ui-notification.scss";
+@import "sass/components/_adminNav.scss";
+@import "sass/components/_forms.scss";
+@import "sass/global.scss";
+@import "sass/pages/_about.scss";
+@import "sass/pages/_application.scss";
+@import "sass/pages/_home.scss";
+@import "sass/pages/_login.scss";
+@import "sass/pages/_signup.scss";
+
+// endinjector

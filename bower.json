@@ -1,44 +1,25 @@
 {
-  "name": "TopShelf",
+  "name": "guild",
   "version": "0.0.0",
-  "homepage": "https://github.com/strues/TopShelf",
-  "authors": [
-    "Steve Truesdell <steven.truesdell@gmail.com>"
-  ],
-  "license": "MIT",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
-    "modernizr": "2.8.x",
-    "jquery": "2.x.x",
-    "angular": "1.3.x",
-    "restangular": "1.3.x",
-    "angular-resource": "~1.3.x",
-    "angular-messages": "~1.3.0-rc.1",
-    "angular-animate": "1.3.x",
-    "angular-cookies": "1.3.x",
-    "angular-sanitize": "1.3.x",
-    "angular-ui-router": "0.2.x",
-    "bootstrap-sass-official": "3.2.x",
+    "angular": ">=1.2.*",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.0.1",
+    "jquery": "~1.11.0",
+    "bootstrap-sass-official": "~3.1.1",
+    "bootstrap": "~3.1.1",
+    "angular-resource": ">=1.2.*",
+    "angular-cookies": ">=1.2.*",
+    "angular-sanitize": ">=1.2.*",
     "angular-bootstrap": "~0.11.0",
-    "angular-form-for": "~1.3.1",
-    "angular-permission": "~0.1.0",
+    "font-awesome": ">=4.1.0",
+    "lodash": "~2.4.1",
     "angular-socket-io": "~0.6.0",
-    "es5-shim": "~4.0.3",
-    "json3": "~3.3.2",
-    "angular-ui-router-anim-in-out": "~0.0.13"
+    "angular-ui-router": "~0.2.10",
+    "angular-form-for": "~1.4.2"
   },
-  "overrides": {
-    "bootstrap-sass-official": {
-      "main": {
-        "ignore": true
-      }
-    }
+  "devDependencies": {
+    "angular-mocks": ">=1.2.*",
+    "angular-scenario": ">=1.2.*"
   }
 }

@@ -1,14 +1,7 @@
 'use strict';
 
-var fs = require('fs'),
-  argv = require('yargs').argv,
-  tasks = fs.readdirSync('./gulp/tasks/');
+var gulp = require('gulp');
+var requireDir = require('require-dir');
 
-require('./config');
-
-// --release flag when executing a task
-global.release = argv.release;
-
-tasks.forEach(function (task) {
-  require('./tasks/' + task);
-});
+// Require all tasks in gulp/tasks, including subfolders
+requireDir('./tasks', { recurse: true });

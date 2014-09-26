@@ -1,21 +1,36 @@
-/** 
- * Watch
- * Watches files for changes
- * @return {Function}
- */
-'use strict';
-var gulp = require('gulp'),
-    plugins = require("gulp-load-plugins")({ lazy:false }),
-    path = require('path'),
-    rimraf = require('rimraf'),
-    config = require('../config.js');
+var config      = require('../config'),
+    path        = require('path'),
+    gulp        = require('gulp'),
+    gutil       = require('gulp-util');
 
-var appBase = 'src/',
-    browserSync = require('browser-sync'),
-    reload = browserSync.reload;
 
-gulp.task('watch', function () {
-  browserSync.reload();
-  gulp.watch([appBase + '**/*'], ['build', browserSync.reload]);
+// ['build'],
+gulp.task('watch',  function() {
+
+    gulp.watch(path.join(config.CLIENT_JS,'**', '*.js'),[
+        'lint',
+        'scripts'
+    ]);
+    // watch vendors refs
+    gulp.watch( path.join(config.CLIENT_JS, 'bower.json'),[
+        'wiredep',
+        'scripts'
+    ]);
+
+    // watch for templates
+    gulp.watch([path.join(config.CLIENT_JS,'**', '*.tpl.html')], [
+        'scripts'
+    ]);
+
+    // Watch our sass files
+    gulp.watch([path.join(config.CLIENT_SASS,'**', '*.sass'), path.join(config.CLIENT_SASS,'**', '*.scss')], [
+        'sass'
+    ]);
+    // app entry point
+    gulp.watch([path.join(config.CLIENT,'index.html')], [
+        'html'
+    ]);
+    gulp.watch(path.join(config.DIST_JS, '*.*'));
+    gulp.watch(path.join(config.DIST_CSS, '*.*'));
+    gulp.watch(path.join(config.DIST, '*.html'));
 });
-
