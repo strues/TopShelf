@@ -18,13 +18,13 @@ You will find me referencing many people who are truly much more experienced tha
 
 Clone the repo
 
-'git clone git@github.com/strues/tsGuild.git yourApp'
+`git clone git@github.com:strues/TopShelf.git yourApp`
 
 
 Run `npm install && bower install`, in order to get started.
 
 
-Run `gulp serve' to launch the development.
+Run `gulp serve` to launch the development.
 
 ### Features
 
