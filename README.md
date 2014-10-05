@@ -34,7 +34,7 @@ Run `gulp serve` to launch the development.
 * Markup:  `HTML`
 * Stylesheets: `Sass`
 * Task Runner: `Gulp`
-* Angular: `1.3 RC1` `Restangular` `ui.router` `Angular Strap`
+* Angular: `1.2.6` `Restangular` `ui.router` `ui.bootstrap` `Angular FormFor`
 
 
 **Server Side**
@@ -49,9 +49,9 @@ Run `gulp serve` to launch the development.
 
 Overview
 
-    |── app
-    |   ├── js                 - Everything related to Angular and our app
-    |          |___ common      - Appwide things such a directives, navbar and auth
+    |── client
+    |   ├── app                 - Everything related to Angular and our app
+    |          |___ components  - Appwide things such a directives, navbar and auth
     |   ├── assets              - Fonts, Images, etc
     |   ├── bower_components    - Bower installations
     |
@@ -82,6 +82,7 @@ Inside of the api at`server/api`
 
 
 ### To Do
+* Figure out Socket.io errors in Chrome Console  -- Caused by Gulp
 * Style and design          - Not the highest priority at the moment
 * Integrate Battle.net API
 * Setup ngGrid or ngTable   - For roster management
