@@ -1,0 +1,16 @@
+<div ng-controller="CommunityCtrl">
+<div class="col-md-4 col-md-offset-4">
+  <h1 class="page-header">Users </h1>
+  <ul class="user-list">
+    <li ng-repeat="user in users">
+      <div class="user-img">
+              <img ng-src="{{ user.picture }}">
+            </div>
+            <div class="user-info">
+            <strong><a ui-sref="profile({ id: user._id })">{{ user.name }}</a></strong>
+              <p>{{ user.email }}</p>
+            </div>
+    </li>
+  </ul>
+</div>
+</div>

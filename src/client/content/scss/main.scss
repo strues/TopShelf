@@ -1,0 +1,32 @@
+body {
+    background-image: url('../../images/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+@import "variables";
+@import "../../../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+@import "_header.scss";
+@import "_icons.scss";
+@import "_ui-notification.scss";
+@import "components/_adminNav.scss";
+@import "components/_forms.scss";
+@import "global.scss";
+@import "pages/_about.scss";
+@import "pages/_application.scss";
+@import "pages/_home.scss";
+@import "pages/_login.scss";
+@import "pages/_signup.scss";
+
+
+.globalContentBlock {
+    margin-top: -10px;
+    background: #fefefe;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 2px 1px 2px #2f3a45;
+    -moz-box-shadow: 2px 1px 2px #2f3a45;
+    box-shadow: 2px 1px 2px #2f3a45;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

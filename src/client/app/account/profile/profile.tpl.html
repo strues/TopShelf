@@ -1,0 +1,9 @@
+<div ng-controller="ProfileCtrl">
+<div class="profile col-md-4 col-md-offset-4 text-center">
+  <img ng-src="{{ user.picture }}">
+  <p class="name">{{ user.name }}</p>
+  <p>{{ user.email }}</p>
+  <div class="edit-profile" ng-show="user._id === currentUser._id"> <a ui-sref="settings">Edit your profile</a></div>
+</div>
+<h2>{{ error }}</h2>
+</div>

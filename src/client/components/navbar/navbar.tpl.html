@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default navbar-fixed-top container" role="navigation" ng-controller="NavbarCtrl">
+  <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="home"><strong  style="font-variant: small-caps;">Top Shelf</strong></a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" collapse="!isCollapsed">
+    <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a href="https://topshelfguild.com/forums" target="_blank">Forums</a></li>
+      <li ui-sref-active="active"><a ui-sref="guild">Guild</a></li>
+      <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Recruitment <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                     <li ui-sref-active="active"><a ui-sref="recruitmentInfo">Info</a></li>
+                     <li ui-sref-active="active"><a ui-sref="apply">Apply</a></li>
+                     <li class="divider"></li>
+                     <li ng-show="isAdmin()" ng-class="{active: isActive('/recruitment/applist')}">
+                      <a ui-sref="applicationList">View Apps</a></li>
+                </ul>
+      </li>
+     <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a ui-sref="admin">Admin</a></li> -->
+
+     
+
+        <li ng-hide="Auth.isLoggedIn()" ui-sref-active="active"><a ui-sref="register">Sign up</a></li>
+        <li ng-hide="Auth.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+        <li ng-show="Auth.isLoggedIn()">
+          <p class="navbar-text">{{ Auth.getCurrentUser().name }}</p>
+         <!-- <img src="{{ Auth.getCurrentUser().picture }}" class="img-circle"> -->
+        </li>
+        <li ng-show="Auth.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="Auth.isLoggedIn()" ui-sref-active="active"><a ui-sref="logout">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>

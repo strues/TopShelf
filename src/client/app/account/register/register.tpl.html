@@ -1,0 +1,59 @@
+<div ng-controller="RegisterCtrl">
+<center>
+  <h1 class="text-light">Please sign up</h1>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-3">
+      <!--<p class="text-danger" ng-show="signupError">{{ signupError }}</p> -->
+      <form class="form-horizontal auth-form" role="form" ng-submit="register(form)" name="form" novalidate autocomplete="off">
+        <div class="form-group" ng-class="{ 'has-error': form.name.$dirty && form.name.$invalid }">
+          <label for="email" class="col-sm-4 control-label">Name</label>
+          <div class="col-sm-8">
+            <input type="text" ng-model="vm.user.name" class="form-control" name="name" placeholder="Name" required autofocus ng-minlength="3" ng-maxlength="20" ng-pattern="/^[a-zA-Z\s]+$/">
+            <div class="has-error" ng-show="form.name.$dirty && form.name.$invalid">
+              <small ng-show="form.name.$error.required">Enter your name.</small>
+              <small ng-show="form.name.$error.minlength">Your name is required to be at least 3 characters</small>
+              <small ng-show="form.name.$error.maxlength">Your name cannot be longer than 20 characters</small>
+              <small ng-show="form.name.$error.pattern">Name can only contain alphabetical characters</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$invalid }">
+          <label for="email" class="col-sm-4 control-label">Email</label>
+          <div class="col-sm-8">
+            <input type="email" ng-model="user.email" class="form-control" name="email" placeholder="Email" required unique-email>
+            <div class="has-error" ng-show="form.email.$dirty && form.email.$invalid">
+              <small ng-show="form.email.$error.required">Your email is required.</small>
+              <small ng-show="form.email.$error.email">Invalid email.</small>
+              <small ng-show="form.email.$error.unique">Email is taken.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-sm-4 control-label">Password</label>
+          <div class="col-sm-8">
+            <input type="password" ng-model="user.password" class="form-control" name="password" placeholder="Password" required ng-minlength="5">
+            <div class="has-error" ng-show="form.password.$dirty && form.password.$invalid">
+              <small ng-show="form.password.$error.required">Password is required.</small>
+              <small ng-show="form.password.$error.minlength">Your password must be at least 5 characters.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-sm-4 control-label">Repeat Password</label>
+          <div class="col-sm-8">
+            <input type="password" ng-model="user.confirmPassword" class="form-control" name="confirmPassword" placeholder="Repeat Password" repeat-password="password" required>
+            <div class="has-error" ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
+              <small ng-show="form.confirmPassword.$error.required">Please confirm password.</small>
+              <small ng-show="form.confirmPassword.$error.repeat">Passwords do not match.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-8">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Create Account</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
