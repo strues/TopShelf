@@ -43,6 +43,12 @@ var all = {
     }
   },
 
+  bnet: {
+    clientID:     process.env.BNET_ID || 'guamkwyf4rxq8pvwuzhftz2yzut44ufa',
+    clientSecret: process.env.BNET_SECRET || 'M76WCRvv9GVuMnCGVbrKSxaJA9MHRCfK',
+    callbackURL:  (process.env.BASE_URL || '') + 'https://localhost:8443/auth/bnet/callback'
+  }
+
 };
 
 // Export the config object based on the NODE_ENV

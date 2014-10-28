@@ -7,6 +7,17 @@
             $stateProvider
                 .state('recruitment', {
                     url: '/recruitment',
+                    abstract: 'true',
+                    templateUrl: '',
+                    controller: 'ApplicationCtrl'
+                })
+                .state('recruitmentInfo', {
+                    url: '/recruitment',
+                    templateUrl: 'app/recruitment/application.tpl.html',
+                    controller: 'ApplicationCtrl'
+                })
+                .state('apply', {
+                    url: '/recruitment/apply',
                     templateUrl: 'app/recruitment/application.tpl.html',
                     controller: 'ApplicationCtrl'
                 })

@@ -24,5 +24,8 @@
           $location.path('/')
       });
     };
+      $scope.loginOauth = function(provider) {
+      $window.location.href = '/auth/' + provider;
+    };
     }
 })();

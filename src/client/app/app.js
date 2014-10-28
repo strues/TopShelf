@@ -3,14 +3,17 @@
 
   angular
     .module('app', ['ngAnimate', 'ngStorage',  'ngMessages', 'ngResource', 'ui.router',
-        'angular-loading-bar', 'ui.bootstrap','restangular', 'ngSanitize', 'formFor', 'formFor.bootstrapTemplates'
+   'ui.bootstrap', 'ngSanitize','ngBattleNet', 'httpi', 'formFor', 'formFor.bootstrapTemplates'
     ])
 
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, RestangularProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, battleNetConfigProvider) {
 
-      RestangularProvider.setBaseUrl('api/');
       $urlRouterProvider.otherwise('/');
       $httpProvider.interceptors.push('authInterceptor');
+
+       battleNetConfigProvider.setApiKey( 'jbdqc3ufm6hfzpymxc3ej52988vvh59b' );
+       battleNetConfigProvider.setDefaultRegion( 'us' );
+
     })
       .factory('authInterceptor', function ($rootScope, $q, $localStorage, $location) {
         return {
