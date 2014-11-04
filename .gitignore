@@ -1,5 +1,8 @@
-node_modules
-dist
-.tmp
-.sass-cache
-client/bower_components
+node_modules/
+client/bower_components/
+client/styles/css
+.idea/
+.yo-rc.json
+server/config/keys/
+dist/
+.DS_Store

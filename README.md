@@ -1,7 +1,8 @@
 Top Shelf Guild
 ===========
 
-A website built for a World of Warcraft guild using MongoDB, Angular.js, Express.js, and Node.js.
+A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.js, Express.js, and Node.js. 
+Also a perfect MEAN seed application with Gulp and Jwt.
 
 #### Intro  
 This is a repository for an SPA I'm building for my World of Warcraft guild. It also serves as the  
@@ -18,7 +19,7 @@ You will find me referencing many people who are truly much more experienced tha
 
 Clone the repo
 
-`git clone git@github.com:strues/TopShelf.git yourApp`
+`git clone git@github.com:strues/topshelfguild.git yourApp`
 
 
 Run `npm install && bower install`, in order to get started.
@@ -50,28 +51,38 @@ Run `gulp serve` to launch the development.
 Overview
 
     |── client
-    |   ├── app                 - Everything related to Angular and our app
-    |          |___ components  - Appwide things such a directives, navbar and auth
+    |   ├── views               - Everything related to Angular and our app
+    |   |-- directives / services / filters
     |   ├── assets              - Fonts, Images, etc
-    |   ├── bower_components    - Bower installations
+    |   |__ styles              - Sass files
+    |
+    |── bower_components
     |
     |
     ├── test                    - Testing
     |
+    |__ gulp                    - Gulp tasks
+    |
     |── server
         ├── api                 - Our express REST api 
-        ├── authorization       - Passport strategies
+        ├── auth                - Passport strategies
         ├── components          - Errors for the most part (404)
         ├── config              - Express settings and environemtn
         │   └── environment     - Node env configurations
         └── views               - Server rendered jade views
 
-A look inside the main component in `client/app`
+
+A look inside the home component in `client/app`
+    
+    The files are all named with .whatever.js because I load them into gulp that way.
 
     home
-    ├── home.js                 - Routes
-    ├── homeCtrl.js             - Controller for our main route
+    ├── home.module.js          - Routes
+    ├── home.controller.js      - Controller for our main route
     ├── home.tpl.html           - View
+    ├── home.directive.js       - 
+    ├── home.filter.js          - 
+    ├── home.service.js         - 
 
 Inside of the api at`server/api`
 
@@ -82,10 +93,3 @@ Inside of the api at`server/api`
 
 
 ### To Do
-* Figure out Socket.io errors in Chrome Console  -- Caused by Gulp
-* Style and design          - Not the highest priority at the moment
-* Integrate Battle.net API
-* Setup ngGrid or ngTable   - For roster management
-* Setup XML parsing         - For guild bank and attendence tracking
-* Create calendar           - For raid management
-* Cleanup Code              - Controller As syntax for everything

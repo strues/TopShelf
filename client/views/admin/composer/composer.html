@@ -1,0 +1,67 @@
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+    <form novalidate ng-submit="createPost()">
+      <div class="input-group">
+
+        <!-- newPost.date input-->
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="input-group" ng-controller="DatepickerCtrl">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="newPost.date" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <br>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><span class="glyphicon glyphicon-calendar"></span></button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- newPost.title input-->
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="title" ng-minLength=3 ng-maxLength=75 ng-model="newPost.title" ng-required="true" />
+          </div>
+        </div>
+        <div class="row">
+<text-angular ng-model="newPost.content"></text-angular>
+</div>
+ <!-- newPost.tags input-->
+        <div class="row">
+          <div class="col-sm-8">
+            <!-- ng-list - text input that converts between a delimited string and an array of strings -->
+            <input type="text" class="form-control" placeholder="tags" ng-model="newPost.tags" ng-list=", " ng-required="true" />
+          </div>
+        </div>
+
+        <!-- Save Btn-->
+        <div class="row">
+          <div class="col-sm-12">
+            <input type="submit" class="saveBtn" value="Save Post" />
+          </div>
+        </div>
+
+      </div>  <!-- END OF input-group -->
+    </form>
+</div>
+</div>
+<!-- existing posts list - can edit or delete, also: orderBy:'date':true, notes: use date instead of post.date and  :true which is used to reverse order is outside of quotes-->
+<div class="container-fluid">
+  <div class="col-sm-9">
+    <ul class="posts" ng-repeat="post in posts | orderBy:'date':reverse | limitTo: postsShownPerView() | filter:searchText">
+      <li>{{post.date | date:'MM/dd/yyyy'}}</li>
+      <li>
+        <h4 class="post-title">{{post.title}}</h4>
+        <span class="more" ng-hide="showMode" ng-click="showMode=!showMode">more...</span>
+        <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode">less...</span>
+      </li>
+      <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
+      <li ng-hide="!showMode" ng-bind-html="post.content"></li>
+      <li>
+        <span class="taggedEM">tagged:</span>
+        <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{ tag }}</span>  <!-- {{$last ? '':', '}} -->
+        <button class="editDeleteBtn" ng-click="deletePost(post._id)">&times;</button>
+      </li>
+    </ul>
+    <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+
+    <title>app</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <base href="/">
+
+    <!-- build:css app.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+      <!-- endinject -->
+
+      <!-- inject:css -->
+      <link rel="stylesheet" href="styles/css/app.css">
+      <!-- endinject -->
+    <!-- endbuild -->
+      <link rel="stylesheet" href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css">
+  </head>
+  <body ng-app="app" id="app"
+ off-canvas-nav>
+  <div class="row">
+  <div navbar></div>
+     <div ui-view="" class="fadeZoom"></div>
+</div>
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js app.js -->
+      <!-- bower:js -->
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/ngstorage/ngStorage.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-socket-io/socket.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-formly/dist/formly.min.js"></script>
+      <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
+      <script src="bower_components/ng-battlenet/src/ng-battlenet.js"></script>
+      <!-- endinject -->
+      <script src="socket.io-client/socket.io.js"></script>
+      <script src='//cdn.jsdelivr.net/g/angular.textangular@1.2.2(textAngular-sanitize.min.js+textAngular.min.js)'></script>
+      <!-- inject:js -->
+      <script src="app.js"></script>
+      <script src="directives/highlightactive/highlightactive.directive.js"></script>
+      <script src="directives/mongoose-error/mongoose-error.directive.js"></script>
+      <script src="directives/loginform/loginform.directive.js"></script>
+      <script src="directives/sidebar/sidebar.directive.js"></script>
+      <script src="directives/navbar/navbar.directive.js"></script>
+      <script src="directives/signupform/signupform.directive.js"></script>
+      <script src="directives/toggleminnav/toggleminnav.directive.js"></script>
+      <script src="directives/toggleoffcanvas/toggleoffcanvas.directive.js"></script>
+      <script src="filters/posttagsformat/posttagsformat.js"></script>
+      <script src="services/auth/auth.js"></script>
+      <script src="services/authinterceptor/authinterceptor.js"></script>
+      <script src="services/modal/modal.js"></script>
+      <script src="services/navbar/navbar.js"></script>
+      <script src="services/postsfactory/postsfactory.js"></script>
+      <script src="services/recruitment/recruitment.js"></script>
+      <script src="services/socket/socket.js"></script>
+      <script src="services/user/user.js"></script>
+      <script src="views/account/account.js"></script>
+      <script src="views/account/navbar.controller.js"></script>
+      <script src="views/admin/admin.controller.js"></script>
+      <script src="views/admin/admin.js"></script>
+      <script src="views/admin/adminDashboard.controller.js"></script>
+      <script src="views/admin/adminSidebar.controller.js"></script>
+      <script src="views/application/application.controller.js"></script>
+      <script src="views/application/application.js"></script>
+      <script src="views/home/home.controller.js"></script>
+      <script src="views/home/home.js"></script>
+      <script src="views/account/login/login.controller.js"></script>
+      <script src="views/account/settings/settings.controller.js"></script>
+      <script src="views/account/signup/signup.controller.js"></script>
+      <script src="views/admin/applications/applicationEdit.controller.js"></script>
+      <script src="views/admin/applications/applicationList.controller.js"></script>
+      <script src="views/admin/composer/composer.controller.js"></script>
+      <script src="views/admin/composer/datePicker.controller.js"></script>
+      <script src="views/admin/recruitment/recruitment.controller.js"></script>
+      <script src="views/admin/recruitment/recruitmentList.controller.js"></script>
+      <!-- endinject -->
+    <!-- endbuild -->
+
+  <script src="http://localhost:35729/livereload.js?snipver=1"></script>
+
+  </body>
+</html>

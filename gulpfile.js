@@ -1,159 +1,303 @@
-var gulp = require('gulp'),
-  gulpif = require('gulp-if'),
-  concat = require('gulp-concat'),
-  rimraf = require('gulp-rimraf'),
-  templateCache = require('gulp-angular-templatecache'),
-  minifyHtml = require('gulp-minify-html'),
-  es = require('event-stream'),
-  sass = require('gulp-sass'),
-  jshint = require('gulp-jshint'),
-  rename = require('gulp-rename'),
-  ngAnnotate = require('gulp-ng-annotate'),
-  uglify = require('gulp-uglify'),
-  minifyCSS = require('gulp-minify-css'),
-  webserver = require('gulp-webserver'),
-  livereload = require('gulp-livereload'),
-  watch = require('gulp-watch'),
-  nodemon = require('gulp-nodemon'),
-  testem = require('gulp-testem'),
-  argv = require('yargs').argv;
+'use strict';
 
-var _paths = ['src/server/**/*.js', 'src/client/**/*'];
-var paths = {
-  appJavascript: ['src/client/app/app.js','src/client/components/**/*.js', 'src/client/app/**/*.js'],
-  appTemplates: 'src/client/**/*.tpl.html',
-  appMainSass: 'src/client/content/scss/main.scss',
-  appStyles: 'src/client/content/scss/**/*.scss',
-  appImages: 'src/client/content/images/**/*',
-  indexHtml: 'src/client/index.html',
-  vendorJavascript: [
-    'vendor/jquery/dist/jquery.js',
-    'vendor/lodash/dist/lodash.js',
-    'vendor/angular/angular.js',
-    'vendor/ngstorage/ngStorage.js',
-    'vendor/angular-animate/angular-animate.js',
-    'vendor/angular-resource/angular-resource.js',
-    'vendor/angular-messages/angular-messages.js',
-    'vendor/angular-sanitize/angular-sanitize.js',
-    'vendor/angular-httpi/build/httpi.min.js',
-    'vendor/ng-battlenet/src/ng-battlenet.js',
-    'vendor/angular-ui-router/release/angular-ui-router.js',
-    'vendor/angular-bootstrap/ui-bootstrap.js',
-    'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
-    'vendor/angular-form-for/dist/form-for.js',
-    'vendor/angular-form-for/dist/form-for.bootstrap-templates.js'
-  ],
-  vendorCss: [
-    'vendor/font-awesome/css/font-awesome.css',
-    'vendor/icomoon/style.css',
-    'vendor/angular-loading-bar/src/loading-bar.cs'
+var gulp = require('gulp');
+var del = require('del');
+var chalk = require('chalk');
+var bowerFiles = require('main-bower-files');
+var runSequence = require('run-sequence');
+var sq = require('streamqueue');
+var path = require('path');
+var $ = require('gulp-load-plugins')();
 
-  ],
-  specFolder: ['spec/**/*_spec.js'],
-  tmpFolder: 'tmp',
-  tmpJavascript: 'tmp/js',
-  tmpCss: 'tmp/css',
-  tmpImages: 'tmp/images',
-  distFolder: 'dist',
-  distJavascript: 'dist/js',
-  distCss: 'dist/css',
-  distImages: 'dist/images'
+process.env.NODE_ENV = $.util.env.env || 'development';
+
+var config = require('./server/config/environment');
+
+var openOpts = {
+  url: 'http://localhost:' + config.port
 };
 
-//register nodemon task
-gulp.task('nodemon', function() {
-  nodemon({
-      script: 'src/server/app.js',
-      env: {
-        'NODE_ENV': 'development'
-      }
-    })
-    .on('restart');
-});
+var toInject = [
+  'client/app.js',
+  'client/directives/**/*.js', '!client/directives/**/*.spec.js',
+  'client/filters/**/*.js', '!client/filters/**/*.spec.js',
+  'client/services/**/*.js', '!client/services/**/*.spec.js',
+  'client/views/**/*.js', '!client/views/**/*.spec.js',
+  'client/styles/css/app.css'
+];
 
+var toDelete = [];
 
-gulp.task('scripts', function() {
-  return gulp.src(paths.vendorJavascript.concat(paths.appJavascript, paths.appTemplates))
-    .pipe(gulpif(/html$/, buildTemplates()))
-    .pipe(concat('app.js'))
-    .pipe(gulpif(argv.production, ngAnnotate()))
-    .pipe(gulpif(argv.production, uglify()))
-    .pipe(gulpif(argv.production, gulp.dest(paths.distJavascript), gulp.dest(paths.tmpJavascript)));
-});
-
-gulp.task('styles', function() {
-  return gulp.src(paths.vendorCss.concat(paths.appMainSass))
-    .pipe(gulpif(/scss$/, sass()))
-    .pipe(concat('app.css'))
-    .pipe(gulpif(argv.production, minifyCSS()))
-    .pipe(gulpif(argv.production, gulp.dest(paths.distCss), gulp.dest(paths.tmpCss)));
-});
-
-gulp.task('images', function() {
-  return gulp.src(paths.appImages)
-    .pipe(gulpif(argv.production, gulp.dest(paths.distImages), gulp.dest(paths.tmpImages)));
-});
-
-gulp.task('indexHtml', function() {
-  return gulp.src(paths.indexHtml)
-    .pipe(gulpif(argv.production, gulp.dest(paths.distFolder), gulp.dest(paths.tmpFolder)));
-});
-
-gulp.task('lint', function() {
-  return gulp.src(paths.appJavascript.concat(paths.specFolder))
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('testem', function() {
-  return gulp.src(['']) // We don't need files, that is managed on testem.json
-    .pipe(testem({
-      configFile: 'testem.json'
-    }));
-});
-
-gulp.task('clean', function() {
-  return gulp.src([paths.tmpFolder, paths.distFolder], {
-      read: false
-    })
-    .pipe(rimraf());
-});
-
-gulp.task('watch', ['nodemon'], function() {
-  livereload.listen();
-  gulp.watch(paths.appJavascript, ['lint', 'scripts']);
-  gulp.watch(paths.appTemplates, ['scripts']);
-  gulp.watch(paths.vendorJavascript, ['scripts']);
-  gulp.watch(paths.appImages, ['images']);
-  gulp.watch(paths.specFolder, ['lint']);
-  gulp.watch(paths.indexHtml, ['indexHtml']);
-  gulp.watch(paths.appStyles, ['styles']);
-
-  gulp.watch(_paths).on('change', livereload.changed);
-});
-
-gulp.task('webserver', ['scripts', 'styles', 'images', 'indexHtml'], function() {
-  gulp.src(paths.tmpFolder)
-    .pipe(webserver({
-      port: 5000,
-      proxies: [{
-        source: '/api',
-        target: 'http://localhost:3000/api'
-      }]
-    }));
-});
-
-gulp.task('default', ['watch']);
-
-function buildTemplates() {
-  return es.pipeline(
-    minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true
-    }),
-    templateCache({
-      module: 'app'
-    })
+/**
+ * Log. With options.
+ *
+ * @param {String} msg
+ * @param {Object} options
+ */
+function log (msg, options) {
+  options = options || {};
+  console.log(
+    (options.padding ? '\n' : '') +
+    chalk.yellow(' > ' + msg) +
+    (options.padding ? '\n' : '')
   );
 }
+
+/**
+ * Compile sass
+ */
+gulp.task('sass', function () {
+  return gulp.src('client/styles/app.scss')
+    .pipe($.plumber())
+    .pipe($.sass({style: 'expanded'}))
+    .pipe(gulp.dest('client/styles/css'));
+});
+
+/**
+ * Inject css/js files in index.html
+ */
+gulp.task('inject', ['sass'], function () {
+  var sources = gulp.src(toInject, { read: false });
+
+  return gulp.src('client/index.html')
+    .pipe($.inject(gulp.src(bowerFiles(), { read: false }), {
+      name: 'bower',
+      relative: 'true'
+    }))
+    .pipe($.inject(sources, { relative: true }))
+    .pipe(gulp.dest('client'));
+});
+
+/**
+ * Watch files and reload page.
+ * Recompile scss if needed.
+ * Reinject files
+ */
+gulp.task('watch', ['inject'], function () {
+
+  $.livereload.listen();
+
+  gulp.watch('bower.json', function () {
+    gulp.src('client/index.html')
+      .pipe($.inject(gulp.src(bowerFiles(), { read: false }), {
+        name: 'bower',
+        relative: 'true'
+      }))
+      .pipe(gulp.dest('client'));
+  });
+
+  gulp.watch(['client/index.html', 'client/app.js'])
+    .on('change', $.livereload.changed);
+
+  $.watch('client/styles/**/*.scss', function () {
+    gulp.src('client/styles/app.scss')
+      .pipe($.plumber())
+      .pipe($.sass())
+      .pipe(gulp.dest('client/styles/css'))
+      .pipe($.livereload());
+  });
+
+  $.watch([
+    'client/views',
+    'client/views/**/*.html',
+    'client/views/**/*.js',
+    '!client/views/**/*.spec.js',
+    'client/directives',
+    'client/directives/**/*.html',
+    'client/directives/**/*.js',
+    '!client/directives/**/*.spec.js',
+    'client/services',
+    'client/services/**/*.js',
+    '!client/services/**/*.spec.js',
+    'client/filters',
+    'client/filters/**/*.js',
+    '!client/filters/**/*.spec.js'
+  ], function () {
+    gulp.src('client/index.html')
+      .pipe($.inject(gulp.src(toInject), { relative: true }))
+      .pipe(gulp.dest('client'));
+  });
+
+});
+
+/**
+ * Control things
+ */
+gulp.task('control', function () {
+  return gulp.src([
+    'client/**/**/*.js',
+    'server/**/**/*.js',
+    '!client/bower_components/**'
+  ])
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('default'));
+});
+
+/**
+ * Tests
+ */
+function testServer (done) {
+
+  log('Running server test...', { padding: true });
+
+  gulp.src('server/**/*.spec.js', { read: false })
+    .pipe($.plumber())
+    .pipe($.mocha({ reporter: 'spec' }))
+    .once('end', function () {
+      done();
+    });
+}
+
+function testClient (done) {
+
+  log('Running client test...', { padding: true });
+
+  gulp.src([
+    'client/bower_components/angular/angular.js',
+    'client/bower_components/angular-mocks/angular-mocks.js',
+    'client/bower_components/angular-route/angular-route.js',
+    'client/bower_components/angular-resource/angular-resource.js',
+    'client/app.js',
+    'client/views/**/*.js',
+    'client/services/**/*.js',
+    'client/directives/**/*.js',
+    'client/filters/**/*.js'
+  ])
+    .pipe($.karma({
+      action: 'run',
+      configFile: 'client/karma.conf.js'
+    }))
+    .on('error', function (err) {
+      console.log(err);
+      this.emit('end');
+    })
+    .once('end', function () {
+      done();
+    });
+}
+
+gulp.task('test', function (done) {
+  process.env.NODE_ENV = 'test';
+  var filter = process.argv[3] ? process.argv[3].substr(2) : false;
+  if (filter === 'client') {
+    return testClient(function () { process.exit(); done(); });
+  } else if (filter === 'server') {
+    return testServer(function () { process.exit(); done(); });
+  } else if (filter === false) {
+    return testClient(function () {
+      testServer(function () {
+        process.exit();
+        done();
+      });
+    });
+  } else {
+    console.log('Wrong parameter [%s], availables : --client, --server', filter);
+  }
+});
+
+/**
+ * Launch server
+ */
+gulp.task('serve', ['watch'], function () {
+  return $.nodemon({ script: 'server/server.js', ext: 'js', ignore: ['client', 'dist', 'node_modules'] })
+    .on('restart',  function () {
+      gulp.src('client/index.html')
+        .pipe($.wait(250))
+        .pipe($.livereload());
+    });
+});
+
+gulp.task('preview', ['build'], function () {
+  process.env.NODE_ENV = 'production';
+  require('./dist/server/server');
+  return gulp.src('client/index.html')
+    .pipe($.open('', openOpts));
+});
+
+/**
+ * Build
+ */
+gulp.task('clean:dist', function (cb) {
+  del(['dist/**', '!dist', '!dist/.git{,/**}'], cb);
+});
+
+gulp.task('clean:finish', function (cb) {
+  del([
+    '.tmp/**',
+    'dist/client/app.{css,js}'
+  ].concat(toDelete), cb);
+});
+
+gulp.task('copy:dist', function () {
+  var main = gulp.src(['server/**/*', 'package.json'], { base: './' });
+  var assets = gulp.src('client/assets/**/*', { base: './' });
+
+  return sq({ objectMode: true }, main, assets)
+    .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('usemin', ['inject'], function () {
+  return gulp.src('client/index.html')
+    .pipe($.plumber())
+    .pipe($.usemin())
+    .pipe(gulp.dest('dist/client/'));
+});
+
+gulp.task('cssmin', function () {
+  return gulp.src('dist/client/app.css')
+    .pipe($.minifyCss())
+    .pipe(gulp.dest('dist/client/'));
+});
+
+gulp.task('scripts', function () {
+  var tpl = gulp.src('client/views/**/*.html')
+    .pipe($.angularTemplatecache({
+      root: 'views',
+      module: 'app'
+    }));
+
+  var app = gulp.src('dist/client/app.js');
+
+  return sq({ objectMode: true }, app, tpl)
+    .pipe($.concat('app.js'))
+    .pipe($.ngAnnotate())
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/client/'));
+});
+
+gulp.task('replace', function () {
+  return gulp.src('dist/client/index.html')
+    .pipe($.replace(/<script.*livereload.*><\/script>\n*/, ''))
+    .pipe(gulp.dest('dist/client'));
+});
+
+gulp.task('rev', function () {
+  return gulp.src('dist/client/**')
+    .pipe($.revAll({
+      ignore: ['favicon.ico', '.html'],
+      quiet: true,
+      transformFilename: function (file, hash) {
+        toDelete.push(path.resolve(file.path));
+        var ext = path.extname(file.path);
+        return path.basename(file.path, ext) + '.' + hash.substr(0, 8) + ext;
+      }
+    }))
+    .pipe(gulp.dest('dist/client/'))
+});
+
+gulp.task('build', function (cb) {
+  runSequence(
+    ['clean:dist', 'sass'],
+    ['usemin', 'copy:dist'],
+    ['replace', 'scripts', 'cssmin'],
+    'rev',
+    'clean:finish',
+    cb);
+});
+
+gulp.task('open', ['serve'], function () {
+  gulp.src('client/index.html')
+    .pipe($.open('', openOpts));
+});
+
+gulp.task('default', ['open']);
