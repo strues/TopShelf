@@ -1,3 +1,8 @@
+/*
+ * @TODO
+ * Bottom portion of the composer page is brokenish
+ */
+
 (function () {
   'use strict';
 

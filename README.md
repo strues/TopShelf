@@ -19,7 +19,7 @@ You will find me referencing many people who are truly much more experienced tha
 
 Clone the repo
 
-`git clone git@github.com:strues/topshelfguild.git yourApp`
+`git clone git@github.com:strues/TopShelf.git yourApp`
 
 
 Run `npm install && bower install`, in order to get started.
@@ -35,7 +35,7 @@ Run `gulp serve` to launch the development.
 * Markup:  `HTML`
 * Stylesheets: `Sass`
 * Task Runner: `Gulp`
-* Angular: `1.2.6` `Restangular` `ui.router` `ui.bootstrap` `Angular FormFor`
+* Angular: `1.3.1` `ui.router` `ui.bootstrap` 
 
 
 **Server Side**
@@ -93,3 +93,8 @@ Inside of the api at`server/api`
 
 
 ### To Do
+* MODULARIZE - instead of having the entire application running from app.
+* Bottom portion of the composer page is brokenish
+* Admin Navigation needs proper ui-srefs again
+* Session appears to not store. Could be Gulp though.
+

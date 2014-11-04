@@ -164,9 +164,9 @@ $table-border-color:            #ddd !default;
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              #333 !default;
-$btn-default-bg:                 #fff !default;
-$btn-default-border:             #ccc !default;
+$btn-default-color:              $text-color !default;
+$btn-default-bg:                 $bright !default;
+$btn-default-border:             darken($btn-default-bg, 5%) !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
@@ -188,8 +188,15 @@ $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
 $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
 
-$btn-link-disabled-color:        $gray-light !default;
+$btn-info-alt-color:              #fff !default;
+$btn-info-alt-bg:                 $brand-info-alt !default;
+$btn-info-alt-border:             darken($btn-info-alt-bg, 5%) !default;
 
+$btn-dark-color:                 #fff !default;
+$btn-dark-bg:                    $dark !default;
+$btn-dark-border:                darken($btn-dark-bg, 5%) !default;
+
+$btn-link-disabled-color:        $gray-light !default;
 
 //== Forms
 //
@@ -446,7 +453,7 @@ $nav-tabs-active-link-hover-border-color:   #ddd !default;
 
 $nav-tabs-justified-link-border-color:            #ddd !default;
 $nav-tabs-justified-active-link-border-color:     $body-bg !default;
-
+$header_height: 50px;
 //== Pills
 $nav-pills-border-radius:                   $border-radius-base !default;
 $nav-pills-active-link-hover-bg:            $component-active-bg !default;
