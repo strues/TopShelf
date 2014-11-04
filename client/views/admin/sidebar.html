@@ -2,49 +2,32 @@
     <ul id="nav"
         ng-controller="AdminSidebarCtrl"
         data-highlight-active>
-        <li><a ui-sref="admin"> <i class="fa fa-dashboard"></i>Dashboard </a></li>
         <li>
-            <a href="#/ui"><i class="fa fa-magic"></i>UI</a>
-            <ul>
-                <li><a href="#/ui/buttons"><i class="fa fa-caret-right"></i>Buttons</a></li>
-                <li><a href="#/ui/typography"><i class="fa fa-caret-right"></i>Other</a></li>
-            </ul>
+            <a href="#/" data-toggle-min-nav class="toggle-min"><i class="fa fa-bars"></i></a>
         </li>
         <li>
-            <a href="#/pages"><i class="fa fa-file-text-o"></i><span data-i18n="Pages"></span></a>
+          <a ui-sref="admin"> <i class="fa fa-dashboard"></i>Dash</a>
+        </li>
+        <li>
+          <a ui-sref="admin.composer"><i class="fa fa-newspaper-o"></i>News</a>
             <ul>
-                             <li><a href="#/ui/buttons"><i class="fa fa-caret-right"></i>Buttons</a></li>
-                <li><a href="#/ui/typography"><i class="fa fa-caret-right"></i>Other</a></li>
+                <li><a ui-sref="admin.composer"><i class="fa fa-caret-right"></i>New Post</a></li>
+                <li><a ui-sref="admin"><i class="fa fa-caret-right"></i>Place Holder</a></li>
             </ul>
         </li>
         <li>
-            <a href="#/table"><i class="fa fa-table"></i><span data-i18n="Tables"></span></a>
+            <a ui-sref="admin.applications"><i class="fa fa-file-text-o"></i>Apps</a>
             <ul>
-            <li><a href="#/ui/buttons"><i class="fa fa-caret-right"></i>Buttons</a></li>
-                <li><a href="#/ui/typography"><i class="fa fa-caret-right"></i>Other</a></li>
+                <li><a ui-sref="admin.applications"><i class="fa fa-caret-right"></i>View Applications</a></li>
+                <li><a ui-sref="admin"><i class="fa fa-caret-right"></i>Placeholder</a></li>
             </ul>
         </li>
         <li>
-            <a href="#/form"><i class="fa fa-pencil"></i><span data-i18n="Forms"></span></a>
+            <a ui-sref="admin.recruitment"><i class="fa fa-compass"></i>Recruit</a>
             <ul>
-                            <li><a href="#/ui/buttons"><i class="fa fa-caret-right"></i>Buttons</a></li>
-                <li><a href="#/ui/typography"><i class="fa fa-caret-right"></i>Other</a></li>
+            <li><a ui-sref="admin.recruitment"><i class="fa fa-caret-right"></i>Recruitment Needs</a></li>
+                <li><a ui-sref="admin"><i class="fa fa-caret-right"></i>Placeholder</a></li>
             </ul>
         </li>
-       <li>
-            <a href="#/charts"><i class="fa fa-bar-chart-o"></i><span data-i18n="Charts"></span></a>
-            <ul>
-                            <li><a href="#/ui/buttons"><i class="fa fa-caret-right"></i>Buttons</a></li>
-                <li><a href="#/ui/typography"><i class="fa fa-caret-right"></i>Other</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#/maps"><i class="fa fa-map-marker"></i><span data-i18n="Maps"></span></a>
-            <ul>
-                              <li><a href="#/ui/buttons"><i class="fa fa-caret-right"></i>Buttons</a></li>
-                <li><a href="#/ui/typography"><i class="fa fa-caret-right"></i>Other</a></li>
-            </ul>
-        </li>
-
     </ul>
 </div>

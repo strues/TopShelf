@@ -8,6 +8,7 @@ $link_active_bg:        $brand-primary;
 
     #nav-container {
         left: 0;
+        height: 100%;
     }
 
     .top-header .top-nav {
@@ -25,6 +26,7 @@ $link_active_bg:        $brand-primary;
     .nav-min {
         #nav-container {
             width: 60px;
+
         }
         #content {
             left: 60px;
@@ -98,8 +100,8 @@ $link_active_bg:        $brand-primary;
 #nav-wrapper {
     -webkit-overflow-scrolling: touch;
     -webkit-overflow-scrolling: -blackberry-touch;
-    width: 100%;
-    height: 100%;
+    height: 400px;
+
 }
 
 #nav {

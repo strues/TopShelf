@@ -1,38 +1,48 @@
 <div class="container frontendWrap">
-<div class="row no-gutter">
-<div class="col-sm-12 col-lg-9">
-
-   <img src="http://placehold.it/900x350">
-   <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-
-</div>
-<sidebar class="recruitmentPanel col-sm-12 col-lg-3"></sidebar>
-</div>
-
-<div class="container-fluid">
-  <div class="col-sm-12">
-    <ul class="posts" ng-repeat="post in posts | orderBy:'date' | limitTo: postsShownPerView() | filter:searchText">
-      <li>{{post.date | date:'MM/dd/yyyy'}}</li>
-      <li>
-        <h1 class="post-title">{{post.title}}</h1>
-        <span class="more" ng-hide="showMode" ng-click="showMode=!showMode">more...</span>
-        <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode">less...</span>
-      </li>
-      <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
-      <li ng-hide="!showMode" ng-bind-html="post.content"></li>
-      <li><span class="taggedEM">tagged:</span><span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span></li>
-    </ul>
-    <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>
+  <div class="row" style="background: #FFF;">
+    <div class="col-sm-12 col-lg-9" style="padding-top:10px;">
+      <img src="http://placehold.it/900x350">
+      <h1>Recruiting for WoD</h1>
+      <p class="lead">Join us as we take on Draenor</p>
+    </div>
+    <sidebar class="recruitmentPanel col-sm-12 col-lg-3"></sidebar>
   </div>
-</div>
-
-
-
-
-<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-lg-6">
+        <ul class="posts" ng-repeat="post in posts | orderBy:'date' | limitTo: postsShownPerView() | filter:searchText">
+          <li>{{post.date | date:'MM/dd/yyyy'}}</li>
+          <li>
+            <h1 class="post-title">{{post.title}}</h1>
+            <span class="more" ng-hide="showMode" ng-click="showMode=!showMode">more...</span>
+            <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode">less...</span>
+          </li>
+          <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
+          <li ng-hide="!showMode" ng-bind-html="post.content"></li>
+          <li><span class="taggedEM">tagged:</span><span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span></li>
+        </ul>
+        <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>
+      </div>
+      <div class="col-sm-12 col-lg-6">
+        <div class="row">
+          <div class="col-sm-12">
+          <h1>Top?</h1>
+          </div><!-- ./col-sm-12 -->
+        </div><!-- ./row -->
+        <div class="row">
+          <div class="col-sm-12">
+            <h1>Middle??</h1>
+          </div><!-- ./col-sm-12 -->
+        </div><!-- ./row -->
+        <div class="row">
+          <div class="col-sm-12">
+            <h1>Last?</h1>
+          </div><!-- ./col-sm-12 -->
+        </div><!-- ./row -->
+      </div><!-- ./col -->
+    </div><!-- ./row -->
+    <footer class="footer">
       <p>Top Shelf Guild | by
-        <a href="https://twitter.com/itsSoop">@itsSoop</a> |
-         <a href="http://steventruesdell.com">Website</a></p>
-</footer>
-</div>
+      <a href="https://twitter.com/itsSoop">@itsSoop</a> |
+      <a href="http://steventruesdell.com">Website</a></p>
+    </footer>

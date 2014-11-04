@@ -1,16 +1,16 @@
-<h1>Recruiting</h1>
-<div ng-controller="RecruitmentCtrl">
-<div class="row">
-<div class="col-sm-8 col-sm-offset-2">
+<div class="container backendWrap">
 
+<div class="row" ng-controller="RecruitmentCtrl">
+<div class="col-sm-8 col-sm-offset-2">
+<h1>Guild Recruitment</h1>
+<hr>
     <formly-form result="formData" fields="formFields" options="formOptions" ng-submit="onSubmit()">
         <button type="submit">Submit</button>
     </formly-form>
 </div>
 </div>
-</div>
 <div class="row">
-<div class="col-sm-10 col-sm-offset-1" ng-controller="RecruitmentListCtrl as vm">
+<div class="col-sm-8 col-sm-offset-2" ng-controller="RecruitmentListCtrl as vm">
  <table class="table table-condensed">
                 <thead>
                     <tr style="font-size:14px;">
@@ -48,4 +48,4 @@
             </table>
 </div>
 </div>
-
+</div>

@@ -6,7 +6,16 @@
   box-shadow: 0 0 6px #ccc;
 
 }
+.backendWrap {
+  background: $body-bg;
+  border: 1px #e4e4e4 solid;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px #ccc;
+  min-height: 900px;
+  overflow-x:hidden;
 
+}
 .no-gutter > [class*='col-'] {
     padding-right:0;
     padding-left:0;

@@ -1,5 +1,8 @@
+
 <div class="row">
-<div class="col-sm-8 col-sm-offset-2">
+<div class="col-sm-8 col-sm-offset-2 backendWrap">
+<h1>New Post</h1>
+<h6>Create a new post that displays on the homepage</h6>
     <form novalidate ng-submit="createPost()">
       <div class="input-group">
 
@@ -36,32 +39,18 @@
         <!-- Save Btn-->
         <div class="row">
           <div class="col-sm-12">
-            <input type="submit" class="saveBtn" value="Save Post" />
+            <input type="submit" class="btn btn-primary" value="Save Post" />
           </div>
         </div>
 
       </div>  <!-- END OF input-group -->
     </form>
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+<h1>Post Preview</h1>
+<span>{{newPost.content}}
+</span>
 </div>
 </div>
-<!-- existing posts list - can edit or delete, also: orderBy:'date':true, notes: use date instead of post.date and  :true which is used to reverse order is outside of quotes-->
-<div class="container-fluid">
-  <div class="col-sm-9">
-    <ul class="posts" ng-repeat="post in posts | orderBy:'date':reverse | limitTo: postsShownPerView() | filter:searchText">
-      <li>{{post.date | date:'MM/dd/yyyy'}}</li>
-      <li>
-        <h4 class="post-title">{{post.title}}</h4>
-        <span class="more" ng-hide="showMode" ng-click="showMode=!showMode">more...</span>
-        <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode">less...</span>
-      </li>
-      <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
-      <li ng-hide="!showMode" ng-bind-html="post.content"></li>
-      <li>
-        <span class="taggedEM">tagged:</span>
-        <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{ tag }}</span>  <!-- {{$last ? '':', '}} -->
-        <button class="editDeleteBtn" ng-click="deletePost(post._id)">&times;</button>
-      </li>
-    </ul>
-    <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>
   </div>
 </div>
