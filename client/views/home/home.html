@@ -1,42 +1,38 @@
-<div class="container">
-<div class="row">
-<div class="col-sm-12 col-lg-10">
+<div class="container frontendWrap">
+<div class="row no-gutter">
+<div class="col-sm-12 col-lg-9">
 
    <img src="http://placehold.it/900x350">
    <h1>'Allo, 'Allo!</h1>
     <p class="lead">Kick-start your next web app with Angular Fullstack</p>
 
 </div>
-<sidebar class="recruitmentPanel col-sm-2"></sidebar>
+<sidebar class="recruitmentPanel col-sm-12 col-lg-3"></sidebar>
 </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
-      </ul>
-    </div>
+
+<div class="container-fluid">
+  <div class="col-sm-12">
+    <ul class="posts" ng-repeat="post in posts | orderBy:'date' | limitTo: postsShownPerView() | filter:searchText">
+      <li>{{post.date | date:'MM/dd/yyyy'}}</li>
+      <li>
+        <h1 class="post-title">{{post.title}}</h1>
+        <span class="more" ng-hide="showMode" ng-click="showMode=!showMode">more...</span>
+        <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode">less...</span>
+      </li>
+      <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
+      <li ng-hide="!showMode" ng-bind-html="post.content"></li>
+      <li><span class="taggedEM">tagged:</span><span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span></li>
+    </ul>
+    <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>
   </div>
-
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
-
-
 </div>
+
+
+
 
 <footer class="footer">
-  <div class="container">
       <p>Top Shelf Guild | by
         <a href="https://twitter.com/itsSoop">@itsSoop</a> |
          <a href="http://steventruesdell.com">Website</a></p>
-  </div>
 </footer>
+</div>

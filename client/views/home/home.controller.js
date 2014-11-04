@@ -6,29 +6,33 @@
 angular.module('app')
   .controller('HomeCtrl', HomeCtrl);
 
-   function HomeCtrl($scope, $http, socket) {
-      $scope.awesomeThings = [];
+   function HomeCtrl($scope, $http, postsFactory, socket) {
+      postsFactory.getPosts()
+    .success(function (posts) {
+    console.log('main.controller.js - postsFactory.getPosts() - posts:', posts);
 
-      $http.get('/api/things').success(function(awesomeThings) {
-        $scope.awesomeThings = awesomeThings;
-        socket.syncUpdates('thing', $scope.awesomeThings);
-      });
+      $scope.posts = posts;
+      socket.syncUpdates('post', $scope.posts);
 
-      $scope.addThing = function() {
-        if($scope.newThing === '') {
-          return;
-        }
-        $http.post('/api/things', { name: $scope.newThing });
-        $scope.newThing = '';
+      // display more posts
+      $scope.postsLength = posts.length;
+      var view = 1;
+      var postsQty = 6;
+      $scope.postsShownPerView = function() {
+        return view * postsQty;
       };
-
-      $scope.deleteThing = function(thing) {
-        $http.delete('/api/things/' + thing._id);
+      $scope.getAdditionalPosts = function() {
+        return view < ($scope.postsLength / postsQty);
       };
+      $scope.showMorePosts = function() {
+        view = view + 1;
+      };
+    }).
+    error(function (error) {
+      $scope.status = 'Unable to Retrieve Posts: ' + error.message;
+    });
 
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('thing');
-      });
-    };
-
+    // ng-show/ng-hide
+    $scope.showMode = false;
+  }
 })();

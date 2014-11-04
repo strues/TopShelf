@@ -1,6 +1,5 @@
 $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 $fa-font-path: "../../bower_components/font-awesome/fonts";
-
 @import "normalize";
 @import "variables";
 @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
@@ -10,34 +9,14 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
 @import "components/buttons";
 @import "components/icons";
 @import "components/navbar";
+@import "base/global";
 @import "components/recruitmentPanel";
 @import "admin/sidebar";
 @import "loginSignup";
 
-.hero-unit #banner {
-  background-image: url(http://placehold.it/900x350);
-  background-size: 100%;
-}
-
-#content {
-    position: absolute;
-    top: ($header_height * 2);
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    -webkit-overflow-scrolling: -blackberry-touch;
-    // @include transition(left .3s ease-in-out);
-    @media (min-width:$screen-sm) {
-        top: $header_height;
-        width: auto;
-        left: 220px;
-    }
-    // !important, avoid flikering for all pages.
-    // @include transition(left .25s ease-in-out);
-    @include transition(none);
+body {
+  background-image: url(http://i.imgur.com/bvNoPe8.jpg);
+  background-size: cover;
 }
 
 // for special page, like 404, sign in, sign up
@@ -49,3 +28,19 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
     }
 }
 
+ul.posts {
+  list-style: none;
+  padding: 20px 5px 20px 20px;
+  margin-bottom: 10px;
+  list-style-type: none;
+  border-radius: 10px;
+  break-inside: avoid;  /*prevents individual posts from breaking to next column*/
+}
+li.posts {
+  margin: 10px 0;
+  cursor: default;
+}
+.taggedEM {
+  margin-right: 10px;
+  font-style: italic;
+}

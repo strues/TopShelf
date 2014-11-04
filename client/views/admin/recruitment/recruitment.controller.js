@@ -17,47 +17,58 @@
         options: [
           {
             'name':'Death Knight',
-            'value': 'deathknight'
+            'value': 'deathknight',
+            'image': 'assets/images/icons/icon_class_death_knight.png'
           },
           {
             'name':'Druid',
-            'value': 'druid'
+            'value': 'druid',
+            'image': 'assets/images/icons/icon_class_druid.png'
           },
           {
             'name':'Hunter',
-            'value': 'hunter'
+            'value': 'hunter',
+            'image': 'assets/images/icons/icon_class_hunter.png'
           },
           {
             'name':'Mage',
-            'value': 'mage'
+            'value': 'mage',
+            'image': 'assets/images/icons/icon_class_mage.png'
           },
           {
             'name':'Monk',
-            'value': 'monk'
+            'value': 'monk',
+            'image': 'assets/images/icons/icon_class_monk.png'
           },
           {
             'name':'Paladin',
-            'value': 'paladin'
+            'value': 'paladin',
+            'image': 'assets/images/icons/icon_class_paladin.png'
           },
           {
             'name':'Priest',
-            'value': 'priest'
+            'value': 'priest',
+            'image': 'assets/images/icons/icon_class_priest.png'
           },
           {
             'name':'Rogue',
-            'value':'rogue'
+            'value':'rogue',
+            'image': 'assets/images/icons/icon_class_rogue.png'
           },
           {
             'name':'Shaman',
-            'value':'shaman'
+            'value':'shaman',
+            'image': 'assets/images/icons/icon_class_shaman.png'
           },
           {
             'name':'Warlock',
-            'value':'warlock'
+            'value':'warlock',
+            'image': 'assets/images/icons/icon_class_warlock.png'
           },
           {
             'name':'Warrior',
-            'value':'warrior'
+            'value':'warrior',
+            'image': 'assets/images/icons/icon_class_warrior.png'
           }]
        },
        {

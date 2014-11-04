@@ -1,7 +1,6 @@
-<div class="row sidebarRecruitmentStatus">
-  <div class="col-sm-12 col-lg-2">
+<div class="recruitmentPanel">
+    <h3 style="padding-left:50px;">Recruitment Status</h3>
     <ul ng-repeat="recruitment in recruitments">
-      <li ng-click="open(recruitment._id)" style="cursor: pointer; cursor: hand;">{{ recruitment.classType }} {{ recruitment.classSpec }} {{ recruitment.priority }}</li>
+      <li ng-click="open(recruitment._id)" style="cursor: pointer; cursor: hand;"><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" height="30px"> {{ recruitment.classSpec }} {{ recruitment.priority }}</li>
     </ul>
-  </div>
 </div>
