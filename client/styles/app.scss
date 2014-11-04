@@ -9,10 +9,15 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
 @import "animations";
 @import "components/buttons";
 @import "components/icons";
-@import "components/navabar";
+@import "components/navbar";
+@import "components/recruitmentPanel";
 @import "admin/sidebar";
 @import "loginSignup";
 
+.hero-unit #banner {
+  background-image: url(http://placehold.it/900x350);
+  background-size: 100%;
+}
 
 #content {
     position: absolute;
