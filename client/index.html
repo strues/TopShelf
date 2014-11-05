@@ -20,8 +20,10 @@
       <link rel="stylesheet" href="styles/css/app.css">
       <!-- endinject -->
     <!-- endbuild -->
+
       <link rel="stylesheet" href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
       <link rel="stylesheet" href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css">
+      <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css">
   </head>
   <body ng-app="app" id="app"
  off-canvas-nav>
@@ -51,23 +53,26 @@
       <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
       <script src="bower_components/ng-battlenet/src/ng-battlenet.js"></script>
       <!-- endinject -->
-        <script src="bower_components/angular-httpi/lib/httpi.js"></script>
+      <script src="bower_components/angular-httpi/lib/httpi.js"></script>
       <script src="socket.io-client/socket.io.js"></script>
       <script src='//cdn.jsdelivr.net/g/angular.textangular@1.2.2(textAngular-sanitize.min.js+textAngular.min.js)'></script>
       <!-- inject:js -->
       <script src="app.js"></script>
-      <script src="directives/loginform/loginform.directive.js"></script>
       <script src="directives/highlightactive/highlightactive.directive.js"></script>
-      <script src="directives/navbar/navbar.directive.js"></script>
+      <script src="directives/loginform/loginform.directive.js"></script>
       <script src="directives/mongoose-error/mongoose-error.directive.js"></script>
+      <script src="directives/navbar/navbar.directive.js"></script>
       <script src="directives/sidebar/sidebar.directive.js"></script>
       <script src="directives/signupform/signupform.directive.js"></script>
       <script src="directives/toggleminnav/toggleminnav.directive.js"></script>
       <script src="directives/toggleoffcanvas/toggleoffcanvas.directive.js"></script>
+      <script src="filters/characterclass/characterclass.js"></script>
+      <script src="filters/characterrace/characterrace.js"></script>
+      <script src="filters/guildrank/guildrank.js"></script>
       <script src="filters/posttagsformat/posttagsformat.js"></script>
       <script src="services/auth/auth.js"></script>
-      <script src="services/modal/modal.js"></script>
       <script src="services/authinterceptor/authinterceptor.js"></script>
+      <script src="services/modal/modal.js"></script>
       <script src="services/navbar/navbar.js"></script>
       <script src="services/postsfactory/postsfactory.js"></script>
       <script src="services/recruitment/recruitment.js"></script>
@@ -75,16 +80,16 @@
       <script src="services/user/user.js"></script>
       <script src="views/account/account.js"></script>
       <script src="views/account/navbar.controller.js"></script>
-      <script src="views/application/application.controller.js"></script>
-      <script src="views/application/application.js"></script>
       <script src="views/admin/admin.controller.js"></script>
       <script src="views/admin/admin.js"></script>
       <script src="views/admin/adminDashboard.controller.js"></script>
       <script src="views/admin/adminSidebar.controller.js"></script>
-      <script src="views/home/home.controller.js"></script>
-      <script src="views/home/home.js"></script>
+      <script src="views/application/application.controller.js"></script>
+      <script src="views/application/application.js"></script>
       <script src="views/guild/guild.js"></script>
       <script src="views/guild/guildInfo.controller.js"></script>
+      <script src="views/home/home.controller.js"></script>
+      <script src="views/home/home.js"></script>
       <script src="views/recruitment/recruitment.js"></script>
       <script src="views/account/login/login.controller.js"></script>
       <script src="views/account/settings/settings.controller.js"></script>
