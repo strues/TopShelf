@@ -9,7 +9,9 @@ angular.module('app', [
   'ui.router',
   'ui.bootstrap',
   'textAngular',
-  'formly'
+  'formly',
+  'httpi',
+  'ngBattleNet'
 ])
  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -19,6 +21,11 @@ angular.module('app', [
     $httpProvider.interceptors.push('authInterceptor');
 
   })
+ .config(function (battleNetConfigProvider) {
+
+      battleNetConfigProvider.setApiKey( 'h3enxjtkv2fvgcvts4qbx878hthr9ecp' );
+      battleNetConfigProvider.setDefaultRegion('us');
+ })
 
   .factory('authInterceptor', function ($rootScope, $q, $localStorage, $location) {
     return {

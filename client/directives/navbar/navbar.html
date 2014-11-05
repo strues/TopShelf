@@ -5,7 +5,9 @@
     </div>
     <div id="navbar-main" collapse="Navbar.isCollapsed" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in Navbar.menu" ui-sref-active="active"><a ui-sref="{{item.state}}">{{item.title}}</a></li>
+        <li ui-sref-active="active"><a ui-sref="recruitment">Recruitment</a></li>
+        <li ui-sref-active="active"><a ui-sref="application">Apply</a></li>
+        <li ui-sref-active="active"><a ui-sref="about">Guild Info</a></li>
         <li ng-show="Auth.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -12,7 +12,8 @@ angular
       menu: [{
         'title': 'Home',
         'state': 'main'
-      }]
+      }
+      ]
     };
   };
 })();
