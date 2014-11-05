@@ -15,25 +15,20 @@
 
   function config($stateProvider) {
     $stateProvider
-      .state('guild', {
-        abstract: true,
-        url: '/guild',
-        templateUrl: '<ui-view />'
-      })
-      .state('guild.info', {
-        url: '/info',
+      .state('guildinfo', {
+        url: '/guild/info',
         templateUrl: 'guild/info/info.tpl.html',
-        controller: 'InfoCtrl as info'
+        controller: 'InfoCtrl'
       })
-      .state('guild.recruitment', {
-        url: '/recruitment',
+      .state('guildrecruitment', {
+        url: '/guild/recruitment',
         templateUrl: 'guild/recruitment/recruitment.tpl.html',
         controller: 'RecruitmentCtrl as recruitment'
       })
-      .state('guild.application', {
-        url: '/recruitment/apply',
+      .state('apply', {
+        url: '/guild/apply',
         templateUrl: 'guild/recruitment/application/application.tpl.html',
-        controller: 'ApplicationCtrl as application'
+        controller: 'ApplicationCtrl'
       });
   }
 

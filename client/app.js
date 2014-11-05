@@ -39,7 +39,7 @@ angular.module('topshelf.admin', []);
 
 
   function config($urlRouterProvider, $locationProvider, $httpProvider, battleNetConfigProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
