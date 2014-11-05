@@ -12,11 +12,10 @@
     .module('topshelf.admin')
     .controller('AdminCtrl', AdminCtrl);
 
-  function AdminCtrl(Authentication) {
+  function AdminCtrl(Auth) {
     var vm = this;
     vm.ctrlName = 'AdminCtrl';
 
-    Authentication.data = vm.something;
   }
 
 })();

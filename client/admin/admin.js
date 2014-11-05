@@ -33,7 +33,7 @@
           }
         }
       })
-      .state('admin.recruitment', {
+      .state('admin.recruitmentStatus', {
         url: '/recruitment',
         views: {
           'sidebar@admin': {
@@ -55,12 +55,12 @@
           },
           'content@admin': {
             controller: 'ApplicationListCtrl',
-            templateUrl: 'admin/guildApps/applicationsList.tpl.html'
+            templateUrl: 'admin/guildApps/applicationList.tpl.html'
           }
         }
       })
       .state('admin.applicationEdit', {
-         url: "/applications/edit",
+         url: '/applications/edit',
           views: {
           'sidebar@admin': {
             controller: 'AdminSidebarCtrl',
@@ -73,7 +73,7 @@
         }
        })
       .state('admin.applicationEditID', {
-        url: "/applications/edit/:id",
+        url: '/applications/edit/:id',
          views: {
           'sidebar@admin': {
             controller: 'AdminSidebarCtrl',
@@ -93,7 +93,7 @@
             templateUrl: 'admin/sidebar.tpl.html'
           },
           'content@admin': {
-            controller: 'ComposerCtrl',
+            controller: 'NewsCtrl',
             templateUrl: 'admin/news/news.tpl.html',
           }
         }
