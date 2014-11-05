@@ -1,60 +1,55 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('app', [
-  'ngStorage',
-  'ngResource',
-  'ngSanitize',
-  'ngAnimate',
-  'btford.socket-io',
-  'ui.router',
-  'ui.bootstrap',
-  'textAngular',
-  'formly',
-  'httpi',
-  'ngBattleNet'
-])
- .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-    $urlRouterProvider
-      .otherwise('/');
+  /* @ngdoc object
+   * @name topshelf
+   * @requires $urlRouterProvider
+   *
+   * @description
+   *
+   */
+angular.module('topshelf.core', []);
+angular.module('topshelf.guild', []);
+angular.module('topshelf.user', []);
+angular.module('topshelf.admin', []);
+
+  angular
+    .module('topshelf', [
+      'ngStorage',
+      'ngResource',
+      'ngSanitize',
+      'ngAnimate',
+      'btford.socket-io',
+      'ui.router',
+      'ui.bootstrap',
+      'textAngular',
+      'formly',
+      'httpi',
+      'ngBattleNet',
+      'topshelf.core',
+      'topshelf.guild',
+      'topshelf.admin',
+      'topshelf.user'
+    ]);
+
+  angular
+    .module('topshelf')
+    .config(config)
+    .run(run);
+
+
+  function config($urlRouterProvider, $locationProvider, $httpProvider, battleNetConfigProvider) {
+    $urlRouterProvider.otherwise('/home');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
 
-  })
- .config(function (battleNetConfigProvider) {
+    battleNetConfigProvider.setApiKey( 'h3enxjtkv2fvgcvts4qbx878hthr9ecp' );
+    battleNetConfigProvider.setDefaultRegion('us');
+  }
 
-      battleNetConfigProvider.setApiKey( 'h3enxjtkv2fvgcvts4qbx878hthr9ecp' );
-      battleNetConfigProvider.setDefaultRegion('us');
- })
-
-  .factory('authInterceptor', function ($rootScope, $q, $localStorage, $location) {
-    return {
-      // Add authorization token to headers
-      request: function (config) {
-        config.headers = config.headers || {};
-        if ($localStorage.token) {
-          config.headers.Authorization = 'Bearer ' + $localStorage.token;
-        }
-        return config;
-      },
-
-      // Intercept 401s and redirect you to login
-      responseError: function(response) {
-        if(response.status === 401) {
-          $location.path('/');
-          // remove any stale tokens
-          delete $localStorage.token;
-          return $q.reject(response);
-        }
-        else {
-          return $q.reject(response);
-        }
-      }
-    };
-  })
-
-  .run(function ($rootScope, $location, Auth) {
-    // Redirect to login if route requires auth and you're not logged in
+  function run($rootScope, $location, Auth) {
+     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
@@ -62,4 +57,6 @@ angular.module('app', [
         }
       });
     });
-  });
+  }
+
+})();

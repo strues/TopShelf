@@ -1,0 +1,51 @@
+<div class="container backendWrap">
+
+<div class="row" ng-controller="RecruitmentCtrl">
+<div class="col-sm-8 col-sm-offset-2">
+<h1>Guild Recruitment</h1>
+<hr>
+    <formly-form result="formData" fields="formFields" options="formOptions" ng-submit="onSubmit()">
+        <button type="submit">Submit</button>
+    </formly-form>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2" ng-controller="RecruitmentListCtrl as vm">
+ <table class="table table-condensed">
+                <thead>
+                    <tr style="font-size:14px;">
+                        <th>Class Type</th>
+                        <th>Class Spec</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="recruitment in vm.recruitments" ng-class-even="table-striped" style="cursor:pointer">
+                        <td>{{recruitment.classType}}</td>
+
+                        <td>{{recruitment.classSpec}}</td>
+
+                        <td>{{recruitment.priority}}</td>
+
+                        <td>{{recruitment.status}}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a ui-sref=".applicationEditID"  ng-click="selectApplication(application)"  class="btn btn-sm btn-primary">
+                                    <span class="glyphicon glyphicon-eye-open"></span>View</a>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="" ng-click="vm.deleteRecruitment(recruitment)" class="btn btn-sm btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>Delete</a>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+</div>
+</div>

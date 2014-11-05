@@ -19,10 +19,11 @@ var openOpts = {
 
 var toInject = [
   'client/app.js',
-  'client/directives/**/*.js', '!client/directives/**/*.spec.js',
-  'client/filters/**/*.js', '!client/filters/**/*.spec.js',
-  'client/services/**/*.js', '!client/services/**/*.spec.js',
-  'client/views/**/*.js', '!client/views/**/*.spec.js',
+  'client/**/*.directive.js', '!client/**/*.directive.spec.js',
+  'client/core/filters/**/*.js', '!client/core/filters/**/*.spec.js',
+  'client/**/*.service.js', '!client/**/*.service.spec.js',
+  'client/**/*.js', '!client/**/*.spec.js', '!client/bower_components/**/*',
+  'client/**/*.controller.js', '!client/**/*.controller.spec.js',
   'client/styles/css/app.css'
 ];
 
@@ -98,20 +99,19 @@ gulp.task('watch', ['inject'], function () {
   });
 
   $.watch([
-    'client/views',
-    'client/views/**/*.html',
-    'client/views/**/*.js',
-    '!client/views/**/*.spec.js',
-    'client/directives',
-    'client/directives/**/*.html',
-    'client/directives/**/*.js',
-    '!client/directives/**/*.spec.js',
-    'client/services',
-    'client/services/**/*.js',
-    '!client/services/**/*.spec.js',
-    'client/filters',
-    'client/filters/**/*.js',
-    '!client/filters/**/*.spec.js'
+    'client/',
+    'client/**/*.html',
+    'client/**/*.js',
+    '!client/**/*.spec.js',
+    'client/**/*.directive.js',
+    'client/**/*.tpl.html',
+    'client/**/*.controller.js',
+    '!client/bower_components/**/*',
+    'client/**/*.service.js',
+    '!client/**/*.service.spec.js',
+    'client/core/filters',
+    'client/core/filters/**/*.js',
+    '!client/core/filters/**/*.spec.js'
   ], function () {
     gulp.src('client/index.html')
       .pipe($.inject(gulp.src(toInject), { relative: true }))
@@ -250,10 +250,9 @@ gulp.task('cssmin', function () {
 });
 
 gulp.task('scripts', function () {
-  var tpl = gulp.src('client/views/**/*.html')
+  var tpl = gulp.src('client/**/*.tpl.html')
     .pipe($.angularTemplatecache({
-      root: 'views',
-      module: 'app'
+      module: 'topshelf'
     }));
 
   var app = gulp.src('dist/client/app.js');
