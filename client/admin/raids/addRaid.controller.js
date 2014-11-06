@@ -49,8 +49,7 @@
         title: $scope.newRaid.title,
         zone: $scope.newRaid.zone,
         difficulty: $scope.newRaid.difficulty,
-        description:  $scope.newRaid.description,
-        leader: $scope.newRaid.leader
+        description:  $scope.newRaid.description
       }
 
       // data to postsFactory service
@@ -72,7 +71,7 @@
       $scope.newRaid.zone = '';
       $scope.newRaid.difficulty = '';
       $scope.newRaid.description = '';
-      $scope.newRaid.leader = '';
+
 
     }; // end of $scope.createPost
 

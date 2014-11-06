@@ -9,11 +9,10 @@ var PostSchema = new Schema({
   // name: String,
   // info: String,
   // active: Boolean
-
   date: Date,
   title: String,
   content: String,
-  author:[{type: Schema.Types.ObjectId, ref: 'User'}],
+  author:{type: Schema.Types.ObjectId, ref: 'User'},
   tags: Array
 });
 

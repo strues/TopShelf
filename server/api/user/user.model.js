@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var crypto = require('crypto');
 var authTypes = ['bnet', 'twitter', 'facebook', 'google'];
+var relationship = require('mongoose-relationship');
 
 var UserSchema = new Schema({
   name: String,
@@ -21,9 +22,9 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   bnet: {},
-  characters: [{type: Schema.Types.ObjectId, ref: 'Character'}],
-  guildApp: [{type: Schema.Types.ObjectId, ref: 'Application'}],
-    posts:[{type: Schema.Types.ObjectId, ref: 'Post'}]
+  //characters: [{type: mongoose.Schema.Types.ObjectId, ref: 'Character'}],
+  guildapps:[{ type:Schema.ObjectId, ref: 'Application' }],
+  posts:{type: Schema.Types.ObjectId, ref: 'Post'},
 });
 
 /**

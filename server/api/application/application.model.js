@@ -11,7 +11,7 @@ charClass:{type: String},
 charSpec: {type: String},
 charArmory: {type: String},
 applicantName: {type: String},
-applicantAge: {type: Number},
+applicantAge: {type: String},
 applicantSex: {type: String},
 applicantLocation: {type: String},
 applicantRealId: {type: String},
@@ -21,7 +21,7 @@ heroicXP: {type: String},
 pastGuilds: {type: String},
 screenshot: {type: String},
 whyTS: {type: String},
-applicant:[{type: Schema.Types.ObjectId, ref: 'User'}]
+applicant: {type: ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('Application', ApplicationSchema);

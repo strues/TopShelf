@@ -21,6 +21,7 @@ function onConnect(socket) {
     require('../api/post/post.socket').register(socket);
     require('../api/thing/thing.socket').register(socket);
     require('../api/recruitment/recruitment.socket').register(socket);
+    require('../api/raid/raid.socket').register(socket);
 }
 
 module.exports = function (socketio) {

@@ -35,6 +35,7 @@ require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
 
+
 var httpsServer = https.createServer(credentials, app);
 // Start server
 server.listen(config.port, config.ip, function () {

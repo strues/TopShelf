@@ -4,21 +4,21 @@
 
 'use strict';
 
-var express = require('express');
-var favicon = require('serve-favicon');
-var morgan = require('morgan');
-var compression = require('compression');
-var bodyParser = require('body-parser');
+var express        = require('express');
+var favicon        = require('serve-favicon');
+var morgan         = require('morgan');
+var compression    = require('compression');
+var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-var cookieParser = require('cookie-parser');
-var errorHandler = require('errorhandler');
-var path = require('path');
-var config = require('./environment');
-var passport = require('passport');
-var session = require('express-session');
-var mongoStore = require('connect-mongo')(session);
-var mongoose = require('mongoose');
-
+var cookieParser   = require('cookie-parser');
+var errorHandler   = require('errorhandler');
+var path           = require('path');
+var config         = require('./environment');
+var passport       = require('passport');
+var session        = require('express-session');
+var mongoStore     = require('connect-mongo')(session);
+var mongoose       = require('mongoose');
+var docs           = require('express-mongoose-docs');
 module.exports = function(app) {
   var env = app.get('env');
 
@@ -40,6 +40,7 @@ module.exports = function(app) {
     saveUninitialized: true,
     store: new mongoStore({ mongoose_connection: mongoose.connection })
   }));
+  docs(app, mongoose);
   app.set('appPath', path.join(config.root, 'client'));
 
   if ('production' === env) {
