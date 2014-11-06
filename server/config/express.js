@@ -16,7 +16,7 @@ var path           = require('path');
 var config         = require('./environment');
 var passport       = require('passport');
 var session        = require('express-session');
-var RedisStore     = require('connect-redis')(session);
+var mongoStore     = require('connect-mongo')(session);
 var mongoose       = require('mongoose');
 var docs           = require('express-mongoose-docs');
 module.exports = function(app) {
@@ -24,7 +24,7 @@ module.exports = function(app) {
 
   app.all('*', function(req, res, next) {
   res.set('Access-Control-Allow-Origin', '*');
-  //res.set('Access-Control-Allow-Credentials', true);
+  res.set('Access-Control-Allow-Credentials', true);
   res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
   res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
   if ('OPTIONS' == req.method) return res.send(200);
@@ -45,12 +45,11 @@ module.exports = function(app) {
   // Persist sessions with mongoStore
   // We need to enable sessions for passport twitter because its an oauth 1.0 strategy
   app.use(session({
-  saveUninitialized: true,
-  resave: true,
-  store: new RedisStore({ host: 'localhost', port: 6379, ttl: (60000 * 24 * 30)}),
-  cookie: { maxAge: (60000 * 24 * 30)},
-  secret: config.secrets.session
-    }));
+    secret: config.secrets.session,
+    resave: true,
+    saveUninitialized: true,
+    store: new mongoStore({ mongoose_connection: mongoose.connection })
+  }));
   docs(app, mongoose);
   app.set('appPath', path.join(config.root, 'client'));
 

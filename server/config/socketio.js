@@ -3,10 +3,6 @@
  */
 
 'use strict';
-var socketIO = require('socket.io'),
-    redis = require('socket.io-redis'),
-    socketIOEmitter = require('socket.io-emitter'),
-    socketioJwt = require('socketio-jwt');
 
 var config = require('./environment');
 
@@ -17,6 +13,10 @@ function onDisconnect(socket) {
 // When the user connects.. perform this
 function onConnect(socket) {
   // When the client emits 'info', this listens and executes
+  socket.on('info', function (data) {
+    console.info('[%s] %s', socket.address, JSON.stringify(data, null, 2));
+  });
+
     require('../api/post/post.socket').register(socket);
     require('../api/thing/thing.socket').register(socket);
     require('../api/recruitment/recruitment.socket').register(socket);
@@ -26,37 +26,26 @@ function onConnect(socket) {
 
 module.exports = function (socketio) {
 
-   var io = socketIOEmitter(config.redis);
+  socketio.use(require('socketio-jwt').authorize({
+  secret: config.secrets.session,
+  handshake: true
+  }));
 
-    function init(http) {
-      io = socketIO(http);
+  socketio.on('connection', function (socket) {
+    socket.address = socket.handshake.address !== null ?
+            socket.handshake.address.address + ':' + socket.handshake.address.port :
+            process.env.DOMAIN;
 
-      io.adapter(redis(config.redis));
+    socket.connectedAt = new Date();
 
-      socketio.on('connection', socketioJwt.authorize({
-        secret: config.secrets.session,
-        timeout: 10000 // 10 seconds to send the authentication message
-      })).on('authenticated', function(socket) {
-        socket.join('user.' + socket.decoded_token.user._id);
-      });
+    // Call onDisconnect.
+    socket.on('disconnect', function () {
+      onDisconnect(socket);
+      console.info('[%s] DISCONNECTED', socket.address);
+    });
 
-return {
-      init: init,
-      getIO: function() {
-        return io;
-      },
-      isUserOnline: function(userId) {
-        var room = io.sockets.adapter.rooms['user.' + userId];
-        return (!!room && Object.keys(room).length > 0);
-      },
-      emitToUser: function(userId, event, data) {
-        io.to('user.' + userId).emit(event, data);
-      },
-      emitToAll: function(event, data) {
-        io.emit(event, data);
-      }
-    };
-
-  };
-
-  };
+    // Call onConnect.
+    onConnect(socket);
+    console.info('[%s] CONNECTED', socket.address);
+  });
+};
