@@ -8,7 +8,7 @@ var User = require('../user/user.model');
 exports.index = function(req, res) {
   Post.find(function (err, posts) {
     if(err) { return handleError(res, err); }
-    return res.json(200, posts);
+    return res.status(200).json(posts);
   });
 };
 

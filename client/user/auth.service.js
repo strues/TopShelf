@@ -12,9 +12,16 @@
     .module('topshelf.user')
     .factory('Auth', Auth);
 
-   function Auth($location, $rootScope, $http, User, $localStorage, $q) {
+   function Auth($location, $rootScope, $http, User, $localStorage, $sessionStorage, $q) {
+          var STORAGE_KEY = 'token';
 
-        var currentUser = $localStorage.token ? User.get() : {};
+        function getStorageDriver(isPersistent) {
+          return isPersistent ? $localStorage : $sessionStorage;
+        }
+
+        var currentUser = $sessionStorage.token ? User.get() : {};
+        Auth.isPersistent = true;
+
 
         return {
 
@@ -35,7 +42,8 @@
               rememberme : user.rememberme
             }).
             success(function(data) {
-              $localStorage.token = data.token;
+              $sessionStorage.token = data.token;
+
               currentUser = User.get();
               deferred.resolve(data);
               return cb();
@@ -55,7 +63,7 @@
            * @param  {Function}
            */
           logout: function() {
-            delete $localStorage.token;
+            delete $sessionStorage.token;
             currentUser = {};
           },
 
@@ -71,7 +79,7 @@
 
             return User.save(user,
               function(data) {
-                $localStorage.token = data.token;
+                $sessionStorage.token = data.token;
                 currentUser = User.get();
                 return cb(user);
               },
@@ -136,6 +144,35 @@
               cb(false);
             }
           },
+          store: function(data) {
+            getStorageDriver(Auth.isPersistent)[STORAGE_KEY] = angular.copy(data);
+
+            return this;
+          },
+
+          retrieve: function() {
+              if (getStorageDriver(true)[STORAGE_KEY]) {
+                return getStorageDriver(true)[STORAGE_KEY];
+              } else if (getStorageDriver(false)[STORAGE_KEY]) {
+                return getStorageDriver(false)[STORAGE_KEY];
+              } else {
+                return null;
+              }
+              return this;
+            },
+          clear: function() {
+              delete getStorageDriver(true)[STORAGE_KEY];
+              delete getStorageDriver(false)[STORAGE_KEY];
+              return this;
+            },
+
+          isAuthenticated: function() {
+              return !!Auth.retrieve();
+            },
+
+
+
+
 
           /**
            * Check if a user is an admin
@@ -161,7 +198,7 @@
            */
           setSessionToken: function(sessionToken, callback) {
             var cb = callback || angular.noop;
-            $localStorage.token = sessionToken;
+            $sesionStorage.token = sessionToken;
             currentUser = User.get(cb);
           }
         };

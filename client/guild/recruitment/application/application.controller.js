@@ -12,7 +12,7 @@
     .module('topshelf.guild')
     .controller('ApplicationCtrl', ApplicationCtrl);
 
-  function ApplicationCtrl($scope, $http, $location) {
+  function ApplicationCtrl($scope, $http, $location, ngToast) {
    // var vm = this;
    $scope.formData = {};
    $scope.formFields = [
@@ -253,6 +253,7 @@
 
       $scope.onSubmit = function() {
           $http.post('/api/applications', $scope.formData)
+          ngToast.create('Application submitted');
           console.log('form submitted:', $scope.formData);
       };
 }

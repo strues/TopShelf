@@ -16,11 +16,21 @@ var path           = require('path');
 var config         = require('./environment');
 var passport       = require('passport');
 var session        = require('express-session');
-var mongoStore     = require('connect-mongo')(session);
+var RedisStore     = require('connect-redis')(session);
 var mongoose       = require('mongoose');
 var docs           = require('express-mongoose-docs');
 module.exports = function(app) {
   var env = app.get('env');
+
+  app.all('*', function(req, res, next) {
+  res.set('Access-Control-Allow-Origin', '*');
+  //res.set('Access-Control-Allow-Credentials', true);
+  res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+  res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
+  if ('OPTIONS' == req.method) return res.send(200);
+  next();
+});
+
 
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
@@ -38,7 +48,7 @@ module.exports = function(app) {
     secret: config.secrets.session,
     resave: true,
     saveUninitialized: true,
-    store: new mongoStore({ mongoose_connection: mongoose.connection })
+    store: new RedisStore(config.redis)
   }));
   docs(app, mongoose);
   app.set('appPath', path.join(config.root, 'client'));

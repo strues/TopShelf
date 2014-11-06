@@ -21,7 +21,7 @@
     .module('topshelf.user')
     .directive('loginForm', loginForm);
 
-  function loginForm(Auth, $location, $window) {
+  function loginForm(Auth, $location, $window, ngToast) {
     return {
       templateUrl: 'user/login/loginForm.tpl.html',
       restrict: 'EA',
@@ -38,6 +38,7 @@
             password: scope.user.password
           })
           .then( function() {
+            ngToast.create('Successfully logged in!');
             // Logged in, redirect to home
             $location.path('/');
           })

@@ -28,7 +28,10 @@ var all = {
   secrets: {
     session: 'topk3k'
   },
-
+  redis: {
+    host: '127.0.0.1',
+    port: 6379
+  },
   tokenDuration : {
     session: 60 * 24 * 30
   },

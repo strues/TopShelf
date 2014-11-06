@@ -2,13 +2,14 @@
 
 var mongoose = require('mongoose');
 var passport = require('passport');
+var moment = require('moment');
 var config = require('../config/environment');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 var compose = require('composable-middleware');
 var User = require('../api/user/user.model');
 var validateJwt = expressJwt({ secret: config.secrets.session });
-
+var expires = moment().add(7, 'days').valueOf();
 /**
  * Attaches the user object to the request if authenticated
  * Otherwise returns 403
@@ -57,7 +58,8 @@ function hasRole(roleRequired) {
  * Returns a jwt token signed by the app secret
  */
 function signToken(id, role, expiresInMinutes) {
-  return jwt.sign({ _id: id, role : role }, config.secrets.session, { expiresInMinutes: expiresInMinutes });
+
+  return jwt.sign({ _id: id, role : role }, config.secrets.session, { expiresInMinutes: expires });
 }
 
 /**

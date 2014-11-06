@@ -14,6 +14,7 @@
     <!-- build:css app.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+      <link rel="stylesheet" href="bower_components/ngtoast/dist/ngToast.min.css">
       <!-- endinject -->
 
       <!-- inject:css -->
@@ -29,6 +30,7 @@
  off-canvas-nav>
 
 <div navbar></div>
+<ng-toast></ng-toast>
      <div ui-view="" class="fadeZoom"></div>
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -51,6 +53,7 @@
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-formly/dist/formly.min.js"></script>
       <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
+      <script src="bower_components/ngtoast/dist/ngToast.min.js"></script>
       <script src="bower_components/ng-battlenet/src/ng-battlenet.js"></script>
       <!-- endinject -->
       <script src="bower_components/angular-httpi/lib/httpi.js"></script>
@@ -66,8 +69,8 @@
       <script src="core/navbar/navbar.directive.js"></script>
       <script src="user/login/loginForm.directive.js"></script>
       <script src="user/signup/signupForm.directive.js"></script>
-      <script src="core/filters/characterclass/characterclass.js"></script>
       <script src="core/filters/characterrace/characterrace.js"></script>
+      <script src="core/filters/characterclass/characterclass.js"></script>
       <script src="core/filters/guildrank/guildrank.js"></script>
       <script src="core/filters/posttagsformat/posttagsformat.js"></script>
       <script src="user/auth.service.js"></script>
@@ -101,8 +104,8 @@
       <script src="guild/info/info.controller.js"></script>
       <script src="guild/recruitment/recruitment.controller.js"></script>
       <script src="user/login/login.controller.js"></script>
-      <script src="user/settings/settings.controller.js"></script>
       <script src="user/signup/signup.controller.js"></script>
+      <script src="user/settings/settings.controller.js"></script>
       <script src="guild/recruitment/application/application.controller.js"></script>
       <!-- endinject -->
     <!-- endbuild -->
