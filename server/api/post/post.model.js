@@ -1,18 +1,16 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose');
 
 
-var PostSchema = new Schema({
+var PostSchema = new mongoose.Schema({
   // name: String,
   // info: String,
   // active: Boolean
   date: Date,
   title: String,
   content: String,
-  author:{type: Schema.Types.ObjectId, ref: 'User'},
+  author:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   tags: Array
 });
 

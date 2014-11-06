@@ -1,13 +1,11 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.ObjectId;
 var crypto = require('crypto');
+var _ = require('lodash');
 var authTypes = ['bnet', 'twitter', 'facebook', 'google'];
-var relationship = require('mongoose-relationship');
 
-var UserSchema = new Schema({
+var UserSchema = new mongoose.Schema({
   name: String,
   email: { type: String, lowercase: true },
   role: {
@@ -22,9 +20,10 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   bnet: {},
-  //characters: [{type: mongoose.Schema.Types.ObjectId, ref: 'Character'}],
-  guildapps:[{ type:Schema.ObjectId, ref: 'Application' }],
-  posts:{type: Schema.Types.ObjectId, ref: 'Post'},
+  characters: [{type: mongoose.Schema.Types.ObjectId, ref: 'Character'}],
+  applications:[{ type:mongoose.Schema.Types.ObjectId, ref: 'Application' }],
+  posts:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+  attendence: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Raid' }]
 });
 
 /**

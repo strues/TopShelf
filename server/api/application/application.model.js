@@ -1,10 +1,8 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose');
 
-var ApplicationSchema = new Schema({
+var ApplicationSchema = new mongoose.Schema({
 date: Date,
 charName: {type: String},
 charClass:{type: String},
@@ -21,7 +19,7 @@ heroicXP: {type: String},
 pastGuilds: {type: String},
 screenshot: {type: String},
 whyTS: {type: String},
-applicant: {type: ObjectId, ref: 'User'}
+applicant: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 });
 
 module.exports = mongoose.model('Application', ApplicationSchema);

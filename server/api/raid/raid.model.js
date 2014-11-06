@@ -1,11 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose');
 
 
-var RaidSchema = new Schema({
+var RaidSchema = new mongoose.Schema({
   // name: String,
   // info: String,
   // active: Boolean

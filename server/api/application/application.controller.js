@@ -34,6 +34,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Application.create(req.body, function(err, application) {
     if(err) { return handleError(res, err); }
+    application.applicant.push(req.user._id);
     return res.json(201, application);
   });
 };

@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Post = require('./post.model');
+var User = require('../user/user.model');
 
 // Get list of posts
 exports.index = function(req, res) {
@@ -24,6 +25,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Post.create(req.body, function(err, post) {
     if(err) { return handleError(res, err); }
+    post.author.push(req.user._id);
     return res.json(201, post);
   });
 };
