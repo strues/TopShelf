@@ -94,7 +94,7 @@ Inside of the api at`server/api`
 
 ### To Do
 
-* `MODULARIZE` - instead of having the entire application running from app.
+* `MODULARIZE` - ~~instead of having the entire application running from app.~~
 * `Composer Post Listing` - Needs to be added to the routes
 * `Admin Navigation` - ~~needs proper ui-srefs again~~
 * `Session` - session appears to not store. Could be Gulp though.

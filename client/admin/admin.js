@@ -99,6 +99,21 @@
         }
 
 
+      })
+      .state('admin.addRaid', {
+        url: '/raids',
+         views: {
+          'sidebar@admin': {
+            controller: 'AdminSidebarCtrl',
+            templateUrl: 'admin/sidebar.tpl.html'
+          },
+          'content@admin': {
+            controller: 'AddRaidCtrl',
+            templateUrl: 'admin/raids/addRaid.tpl.html',
+          }
+        }
+
+
       });
 }
 })();

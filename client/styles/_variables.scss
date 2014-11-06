@@ -17,7 +17,7 @@ $gray:                   lighten(#000, 33.5%) !default; // #555
 $gray-light:             lighten(#000, 60%) !default;   // #999
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
-$brand-primary:         #31C0BE !default;
+$brand-primary:         #008ffc !default;
 $brand-success:         #60CD9B !default;
 $brand-info:            #66B5D7 !default;
 $brand-info-alt:        #8170CA !default;
@@ -33,7 +33,7 @@ $skin:                  $brand-primary;
 $skin-light:            #5BDDDC;
 // $skin-lighter:          #
 // $skin-bright:           #
-$dark:                  #242633;
+$dark:                  #060A0F;
 $bright:                #fafafa;
 $reverse:               #fff;
 
@@ -382,7 +382,7 @@ $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2
 $navbar-collapse-max-height:       340px !default;
 
 $navbar-default-color:             #777 !default;
-$navbar-default-bg:                #f8f8f8 !default;
+$navbar-default-bg:                #101010 !default;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
@@ -395,7 +395,7 @@ $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 
 // Navbar brand label
-$navbar-default-brand-color:               $navbar-default-link-color !default;
+$navbar-default-brand-color:               $brand-primary !default;
 $navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
 $navbar-default-brand-hover-bg:            transparent !default;
 

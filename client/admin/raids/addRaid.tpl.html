@@ -1,0 +1,60 @@
+
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2 backendWrap">
+<h1>Add Raid</h1>
+<h6>Schedule a new raid.</h6>
+    <form novalidate ng-submit="createRaid()">
+      <div class="input-group">
+
+        <!-- newRaid.date input-->
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="input-group" ng-controller="DatepickerCtrl">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="newRaid.date" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <br>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><span class="glyphicon glyphicon-calendar"></span></button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="8pm" ng-minLength=1 ng-maxLength=5 ng-model="newRaid.time" ng-required="true"/>
+          </div>
+        </div>
+        <!-- newRaid.title input-->
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="title" ng-minLength=3 ng-maxLength=75 ng-model="newRaid.title" ng-required="true"/>
+          </div>
+        </div>
+        <div class="row">
+<text-angular ng-model="newRaid.description"></text-angular>
+</div>
+ <!-- newRaid.tags input-->
+        <div class="row">
+          <div class="col-sm-8">
+            <!-- ng-list - text input that converts between a delimited string and an array of strings -->
+            <input type="text" class="form-control" placeholder="tags" ng-model="newRaid.tags" ng-list=", " ng-required="true" />
+          </div>
+        </div>
+
+        <!-- Save Btn-->
+        <div class="row">
+          <div class="col-sm-12">
+            <input type="submit" class="btn btn-primary" value="Add Raid" />
+          </div>
+        </div>
+
+      </div>  <!-- END OF input-group -->
+    </form>
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+<h1>Raid Preview</h1>
+<span>{{newRaid.description}}
+</span>
+</div>
+</div>
+  </div>
+</div>
