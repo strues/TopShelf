@@ -38,7 +38,7 @@
         views: {
           'sidebar@admin': {
             controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.html'
+            templateUrl: 'admin/sidebar.tpl.html'
           },
           'content@admin': {
             controller: 'RecruitmentCtrl',

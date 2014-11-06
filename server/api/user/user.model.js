@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+
 var crypto = require('crypto');
 var _ = require('lodash');
 var authTypes = ['bnet', 'twitter', 'facebook', 'google'];
@@ -22,9 +23,10 @@ var UserSchema = new mongoose.Schema({
   bnet: {},
   characters: [{type: mongoose.Schema.Types.ObjectId, ref: 'Character'}],
   applications:[{ type:mongoose.Schema.Types.ObjectId, ref: 'Application' }],
-  posts:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+  posts: [mongoose.Schema.ObjectId],
   attendence: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Raid' }]
 });
+
 
 /**
  * Virtuals

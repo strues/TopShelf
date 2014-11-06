@@ -45,11 +45,12 @@ module.exports = function(app) {
   // Persist sessions with mongoStore
   // We need to enable sessions for passport twitter because its an oauth 1.0 strategy
   app.use(session({
-    secret: config.secrets.session,
-    resave: true,
-    saveUninitialized: true,
-    store: new RedisStore(config.redis)
-  }));
+  saveUninitialized: true,
+  resave: true,
+  store: new RedisStore({ host: 'localhost', port: 6379, ttl: (60000 * 24 * 30)}),
+  cookie: { maxAge: (60000 * 24 * 30)},
+  secret: config.secrets.session
+    }));
   docs(app, mongoose);
   app.set('appPath', path.join(config.root, 'client'));
 

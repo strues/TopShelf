@@ -15,7 +15,7 @@ var Application = require('./application.model');
 
 // Get list of applications
 exports.index = function(req, res) {
-  Application.find(function (err, applications) {
+  Application.loadRecent(function (err, applications) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(applications);
   });
@@ -32,10 +32,9 @@ exports.show = function(req, res) {
 
 // Creates a new application in the DB.
 exports.create = function(req, res) {
-  Application.create(req.body, function(err, application) {
+  Application.create(_.merge({ author: req.user._id }, req.body), function(err, application) {
     if(err) { return handleError(res, err); }
-    application.applicant.push(req.user._id);
-    return res.json(201, application);
+    return res.status(201).json(application);
   });
 };
 
@@ -48,7 +47,7 @@ exports.update = function(req, res) {
     var updated = _.merge(application, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
-      return res.json(200, application);
+      return res.status(200).json(application);
     });
   });
 };

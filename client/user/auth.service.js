@@ -19,7 +19,7 @@
           return isPersistent ? $localStorage : $sessionStorage;
         }
 
-        var currentUser = $sessionStorage.token ? User.get() : {};
+        var currentUser = $localStorage.token ? User.get() : {};
         Auth.isPersistent = true;
 
 
@@ -42,7 +42,7 @@
               rememberme : user.rememberme
             }).
             success(function(data) {
-              $sessionStorage.token = data.token;
+              $localStorage.token = data.token;
 
               currentUser = User.get();
               deferred.resolve(data);
@@ -198,7 +198,7 @@
            */
           setSessionToken: function(sessionToken, callback) {
             var cb = callback || angular.noop;
-            $sesionStorage.token = sessionToken;
+            $localStorage.token = sessionToken;
             currentUser = User.get(cb);
           }
         };

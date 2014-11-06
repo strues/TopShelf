@@ -12,10 +12,21 @@
     .module('topshelf.admin')
     .controller('ApplicationListCtrl', ApplicationListCtrl);
 
-  function ApplicationListCtrl($scope, $http, $location) {
+  function ApplicationListCtrl($scope, $http, $location, socket) {
    $http.get('/api/applications').success(function(applications) {
       $scope.applications = applications;
-    });
+      socket.syncUpdates('applications', $scope.applications, function(event, application, applications) {
+        // This callback is fired after the comments array is updated by the socket listeners
+
+        // sort the array every time its modified
+        applications.sort(function(a, b) {
+          a = new Date(a.date);
+          b = new Date(b.date);
+          return a>b ? -1 : a<b ? 1 : 0;
+        });
+    })
+  })
+
 
     $scope.selectApplication = function(application) {
         $location.path('/admin/applications/edit/' + application._id);

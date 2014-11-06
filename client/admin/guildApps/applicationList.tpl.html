@@ -9,6 +9,7 @@
                 <thead>
                     <tr style="font-size:14px;">
                         <th>Character Name</th>
+                         <th>User</th>
                         <th>Class</th>
                         <th>Spec</th>
                         <th>Armory</th>
@@ -17,7 +18,7 @@
                 <tbody>
                     <tr ng-repeat="application in applications" ng-class-even="table-striped" style="cursor:pointer">
                         <td>{{application.charName}}</td>
-
+                        <td>{{ application.author.name }}</td>
                         <td>{{application.charClass}}</td>
 
                         <td>{{application.charSpec}}</td>

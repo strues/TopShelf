@@ -1,8 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-var ApplicationSchema = new mongoose.Schema({
+var ApplicationSchema = new Schema({
 date: Date,
 charName: {type: String},
 charClass:{type: String},
@@ -19,7 +20,20 @@ heroicXP: {type: String},
 pastGuilds: {type: String},
 screenshot: {type: String},
 whyTS: {type: String},
-applicant: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
+
+ApplicationSchema.statics = {
+  loadRecent: function(cb) {
+    this.find({})
+      .populate({path:'author', select: 'name'})
+      .sort('-date')
+      .limit(20)
+      .exec(cb);
+  }
+};
 
 module.exports = mongoose.model('Application', ApplicationSchema);

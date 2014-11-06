@@ -25,8 +25,8 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Post.create(req.body, function(err, post) {
     if(err) { return handleError(res, err); }
-    post.author.push(req.user._id);
-    return res.json(201, post);
+
+    return res.status(201).json(post);
   });
 };
 

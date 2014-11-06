@@ -12,7 +12,7 @@
     .module('topshelf.guild')
     .controller('ApplicationCtrl', ApplicationCtrl);
 
-  function ApplicationCtrl($scope, $http, $location, ngToast) {
+  function ApplicationCtrl($scope, $http, $location, socket, ngToast) {
    // var vm = this;
    $scope.formData = {};
    $scope.formFields = [

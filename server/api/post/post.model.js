@@ -10,8 +10,9 @@ var PostSchema = new mongoose.Schema({
   date: Date,
   title: String,
   content: String,
-  author:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+  author: mongoose.Schema.ObjectId,
   tags: Array
 });
+
 
 module.exports = mongoose.model('Post', PostSchema);
