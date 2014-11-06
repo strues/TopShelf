@@ -152,7 +152,7 @@
           },
           {
               key: 'applicantLocation',
-              type: 'select',
+              type: 'Timezone',
               Label: 'Timezone',
               options: [
                   {

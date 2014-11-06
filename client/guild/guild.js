@@ -25,6 +25,15 @@
         templateUrl: 'guild/recruitment/recruitment.tpl.html',
         controller: 'RecruitmentCtrl as recruitment'
       })
+      .state('applicationSm', {
+        url: '/guild/application',
+        views: {
+          'applicationSm@guildrecruitment': {
+            controller:'ApplicationCtrl',
+            templateUrl: 'guild/recruitment/application/application.tpl.html'
+          }
+        }
+      })
       .state('apply', {
         url: '/guild/apply',
         templateUrl: 'guild/recruitment/application/application.tpl.html',

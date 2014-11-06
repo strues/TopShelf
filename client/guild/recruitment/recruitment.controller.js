@@ -12,9 +12,9 @@
     .module('topshelf.guild')
     .controller('RecruitmentCtrl', RecruitmentCtrl);
 
-  function RecruitmentCtrl() {
-    var vm = this;
-    vm.ctrlName = 'RecruitmentCtrl';
-  }
+  function RecruitmentCtrl($scope, $modal, $log) {
+
+var vm= this;
+}
 
 })();

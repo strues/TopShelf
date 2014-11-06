@@ -2,11 +2,29 @@
 <div class="row" ng-controller="ApplicationCtrl">
   <h1 class="text-light">Interested in joining Top Shelf?</h1>
 
-    <div class="col-md-5 col-md-offset-3">
+    <div class="col-sm-12 col-lg-8">
 
     <formly-form result="formData" fields="formFields" options="formOptions" ng-submit="onSubmit()">
         <button type="submit">Apply</button>
     </formly-form>
+    </div>
+    <div class="col-lg-4">
+    <div class="well">
+    <h6>Character Name:</h6><span ng-bind="formData.charName"></span>
+    <h6>Character Class:</h6><span ng-bind="formData.charClass"></span>
+    <h6>Character Spec:</h6><span ng-bind="formData.charSpec"></span>
+    <h6>Armory:</h6><span ng-bind="formData.charArmory"></span>
+    <h6>First Name:</h6><span ng-bind="formData.applicantName"></span>
+    <h6>Age:</h6><span ng-bind="formData.applicantAge"></span>
+    <h6>Timezone:</h6><span ng-bind="formData.applicantLocation"></span>
+    <h6>RealId:</h6><span ng-bind="formData.applicantRealId"></span>
+    <h6>Sex:</h6><span ng-bind="formData.applicantSex"></span>
+    <h6>Heroic Experience:</h6><span ng-bind="formData.heroicXP"></span>
+    <h6>Guild History:</h6><span ng-bind="formData.pastGuilds"></span>
+    <h6>Mumble Usage:</h6><span ng-bind="formData.voiceCom"></span>
+    <h6>UI Screenshot:</h6><span ng-bind="formData.screenshot"></span>
+    <h6>Why Top Shelf:</h6><span ng-bind="formData.whyTS"></span>
+    </div>
     </div>
   </div>
 </div>
