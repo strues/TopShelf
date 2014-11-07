@@ -22,7 +22,41 @@ body {
   width: 800px;
   height: 600px;
 }
+.btn.btn-primary {
+    background: #bb3a3a;
+    border: 0;
+    border-radius: 0;
+    -webkit-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    -ms-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+}
 
+ul.circle {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.circle li {
+    position: relative;
+    margin-left: 30px;
+    padding-bottom: 20px;
+}
+
+ul.circle li:before {
+    content: "\f111";
+    color: #bb3a3a;
+    font-family: FontAwesome;
+    font-size: 8px;
+    line-height: 8px;
+    border: 2px solid rgba(0,0,0,.1);
+    border-radius: 100%;
+    position: absolute;
+    left: -33px;
+    top: 5px;
+}
 // for special page, like 404, sign in, sign up
 .body-special {
     #content {
@@ -30,6 +64,19 @@ body {
         top: 0;
         left: 0;
     }
+}
+.form-control {
+    box-shadow: none;
+    border: 1px solid #cecece;
+    background: 0 0;
+    color: #959595;
+    font-size: 14px;
+    border-radius: 0;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid $brand-primary;
 }
 
 ul.posts {
