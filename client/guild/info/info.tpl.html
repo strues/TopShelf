@@ -2,12 +2,7 @@
 <div class="row">
 <div ng-controller="InfoCtrl">
 
-<!-- <div ng-repeat="character in characters">
-<h1>{{character.character.name}}</h1>
-
-</div> -->
-
-    <table ng-table="tableParams" show-filter="false" class="table">
+  <table ng-table="tableParams" class="table">
   <tr ng-repeat="character in characters">
   <td><img ng-src="http://us.battle.net/static-render/us/{{character.character.thumbnail}}"></td>
   <td>{{ character.character.name }}</td>
@@ -24,4 +19,9 @@
 </div>
 </div>
 </div>
-<!-- {{ guild.data || members}} <li ng-repeat="character in guild.data.members"> {{ character.character.name }} </li> -->
+<!-- {{ guild.data || members}}
+<div ng-repeat="character in characters">
+<h1>{{character.character.name}}</h1>
+
+</div>
+ <li ng-repeat="character in guild.data.members"> {{ character.character.name }} </li> -->
