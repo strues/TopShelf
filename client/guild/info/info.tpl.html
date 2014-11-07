@@ -1,17 +1,24 @@
 <div class="container frontendWrap">
 <div class="row">
 <div ng-controller="InfoCtrl">
-<table>
-<tbody ng-repeat="character in guild.data.members">
-  <tr><td><img ng-src="http://us.battle.net/static-render/us/{{character.character.thumbnail}}"></td>
+
+<!-- <div ng-repeat="character in characters">
+<h1>{{character.character.name}}</h1>
+
+</div> -->
+
+    <table ng-table="tableParams" show-filter="false" class="table">
+  <tr ng-repeat="character in characters">
+  <td><img ng-src="http://us.battle.net/static-render/us/{{character.character.thumbnail}}"></td>
   <td>{{ character.character.name }}</td>
   <td>{{ character.character.class | characterClass }}</td>
   <td>{{ character.character.race | characterRace }}</td>
   <td>{{ character.rank | guildRank }}</td>
+  <td>{{ character.character.spec.name }}</td>
+   <td>{{ character.character.spec.role }}</td>
   </tr>
   </tbody>
   </table>
-
 </div>
 
 </div>

@@ -23,6 +23,7 @@ angular.module('topshelf.admin', []);
       'ui.router',
       'ui.bootstrap',
       'textAngular',
+      'ngTable',
       'formly',
       'ngToast',
       'httpi',
