@@ -29,7 +29,7 @@
         url: '/guild/application',
         views: {
           'applicationSm@guildrecruitment': {
-            controller:'ApplicationCtrl',
+            controller:'ApplicationCtrl as form',
             templateUrl: 'guild/recruitment/application/application.tpl.html'
           }
         }

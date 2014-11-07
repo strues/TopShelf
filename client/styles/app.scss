@@ -23,7 +23,7 @@ body {
   height: 600px;
 }
 .btn.btn-primary {
-    background: #bb3a3a;
+    background: #008ffc;
     border: 0;
     border-radius: 0;
     -webkit-transition: all .3s ease 0s;
@@ -32,30 +32,36 @@ body {
     -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s;
 }
-
-ul.circle {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.has-feedback label ~ .form-control-feedback {
+  margin-right: 10px;
+  color: $brand-primary;
+}
+label {
+  position: relative;
+}
+.appPreview {
+  font-weight: 700;
+}
+.form-item {
+  margin-bottom: 0.75em;
+  width: 100%;
 }
 
-ul.circle li {
-    position: relative;
-    margin-left: 30px;
-    padding-bottom: 20px;
+.form-item input {
+  background: #fafafa;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: #666;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  height: 50px;
+  transition: border-color 0.3s;
+  width: 100%;
 }
 
-ul.circle li:before {
-    content: "\f111";
-    color: #bb3a3a;
-    font-family: FontAwesome;
-    font-size: 8px;
-    line-height: 8px;
-    border: 2px solid rgba(0,0,0,.1);
-    border-radius: 100%;
-    position: absolute;
-    left: -33px;
-    top: 5px;
+.form-item input:focus {
+  border-bottom: 2px solid #c0c0c0;
+  outline: none;
 }
 // for special page, like 404, sign in, sign up
 .body-special {
