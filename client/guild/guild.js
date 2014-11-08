@@ -39,7 +39,8 @@
       .state('apply', {
         url: '/guild/apply',
         templateUrl: 'guild/recruitment/application/application.tpl.html',
-        controller: 'ApplicationCtrl'
+        controller: 'ApplicationCtrl',
+        authenticate: true
       });
   }
 

@@ -1,8 +1,6 @@
 <div class="asideModal">
-  <ul class="asideModalContent">
-    <li>{{recruitment.date | date:'MM/dd/yyyy'}}</li>
-    <li><h4 class="post-title">{{recruitment.classType}}</h4></li>
-    <li ng-bind-html="recruitment.content"></li>
-
-  </ul>
+  <div class="asideModalContent">
+ <h4 class="post-title">If you're a {{recruitment.classType}}, please fill out an application. We look forward to speaking with you!</h4>
+ <a ui-sref="apply"><button class="btn btn-secondary">Apply Now</button></a>
+  </div>
 </div>

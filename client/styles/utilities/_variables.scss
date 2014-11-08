@@ -44,7 +44,7 @@ $state-default-border-light:    #f3f3f3;
 //** Background color for `<body>`.
 $body-bg:               #f3f3f3 !default;
 //** Global text color on `<body>`.
-$text-color:            #767676 !default;
+$text-color:            rgb(190,190,190) !default;
 
 //** Global textual link color.
 $link-color:            $gray-dark !default;
@@ -82,7 +82,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)) !default;
 $headings-font-family:    "Play" !default;
 $headings-font-weight:    500 !default;
 $headings-line-height:    1.1 !default;
-$headings-color:          inherit !default;
+$headings-color:          $brand-primary !default;
 //== Iconography
 //
 //## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
@@ -90,7 +90,7 @@ $headings-color:          inherit !default;
 //** Load fonts from this directory.
 
 // [converter] Asset helpers such as Sprockets and Node.js Mincer do not resolve relative paths
-$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/") !default;
+$icon-font-path: if($bootstrap-sass-asset-helper, "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/", "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/") !default;
 
 //** File name for all font files.
 $icon-font-name:          "glyphicons-halflings-regular" !default;
@@ -663,7 +663,7 @@ $thumbnail-caption-padding:   9px !default;
 //
 //##
 
-$well-bg:                     #f5f5f5 !default;
+$well-bg:                     #141414 !default;
 $well-border:                 darken($well-bg, 7%) !default;
 
 
