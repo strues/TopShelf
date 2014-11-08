@@ -25,15 +25,17 @@
         templateUrl: 'guild/recruitment/recruitment.tpl.html',
         controller: 'RecruitmentCtrl as recruitment'
       })
-      .state('applicationSm', {
-        url: '/guild/application',
-        views: {
-          'applicationSm@guildrecruitment': {
-            controller:'ApplicationCtrl as form',
-            templateUrl: 'guild/recruitment/application/application.tpl.html'
-          }
-        }
+      .state('raidlist', {
+        url: '/guild/raids',
+        templateUrl: 'guild/raid/raidList.tpl.html',
+        controller: 'RaidListCtrl'
       })
+      .state('raidView', {
+        url: '/guild/raids/:id',
+        templateUrl: 'guild/raid/viewRaid.tpl.html',
+        controller: 'RaidViewCtrl'
+      })
+
       .state('apply', {
         url: '/guild/apply',
         templateUrl: 'guild/recruitment/application/application.tpl.html',

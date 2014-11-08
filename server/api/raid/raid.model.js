@@ -1,9 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-
-var RaidSchema = new mongoose.Schema({
+var RaidSchema = new Schema({
   // name: String,
   // info: String,
   // active: Boolean
@@ -14,7 +14,18 @@ var RaidSchema = new mongoose.Schema({
   zone: String,
   difficulty: String,
   description: String,
-  attendees:[{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+  raidLead: {type: Schema.Types.ObjectId, ref: 'User'},
+  confirmed:[{type: Schema.Types.ObjectId, ref: 'User'}]
 });
+
+RaidSchema.statics = {
+loadConfirmed: function(cb) {
+    this.find({})
+      .populate({path:'confirmed', select: 'name'})
+      .sort('-date')
+      .limit(40)
+      .exec(cb);
+  }
+};
 
 module.exports = mongoose.model('Raid', RaidSchema);

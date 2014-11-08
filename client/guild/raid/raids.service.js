@@ -2,7 +2,7 @@
   'use strict';
 
 angular
-  .module('topshelf.core')
+  .module('topshelf.guild')
   .factory('raidsFactory', raidsFactory);
 
   function raidsFactory ($http) {
@@ -28,13 +28,17 @@ angular
 
     raidsFactory.showRaid = function (raidID) {
       // console.log('raidsFactory.service.js - showRaid', raidID);
-      return $http.get(urlBase + '/' + raidID)
+      return $http.get(urlBase + '/' + {raidID: raid._id})
     };
 
     raidsFactory.updateRaid = function (raidID, raid) {
       // console.log('raidsFactory.service.js - updateRaid', raidID, raid);
       return $http.put(urlBase + '/' + raidID, raid)
     };
+
+    raidsFactory.attendRaid = function (raidID, raid) {
+      return $http.post('/api/raids', { raidID: raid._id });
+    }
 
     return raidsFactory;
 

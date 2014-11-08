@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var Raid = require('./raid.model');
-
+var User = require('../user/user.model');
 // Get list of raids
 exports.index = function(req, res) {
   Raid.find(function (err, raids) {
@@ -22,11 +22,12 @@ exports.show = function(req, res) {
 
 // Creates a new raid in the DB.
 exports.create = function(req, res) {
-  Raid.create(req.body, function(err, raid) {
+  Raid.create(_.merge({ raidLead: req.user._id },req.body, function(err, raid) {
     if(err) { return handleError(res, err); }
     return res.json(201, raid);
-  });
-};
+  })
+)};
+
 
 // Updates an existing raid in the DB.
 exports.update = function(req, res) {

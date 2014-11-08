@@ -1,0 +1,44 @@
+ <div class="container frontendWrap">
+    <div class="row">
+      <div class="col-sm-12 col-lg-6">
+      <h1> This isnt functioning fully yet</h1>
+ <table class="table table-condensed">
+                <thead>
+                    <tr style="font-size:14px;">
+                        <th>Character Name</th>
+                         <th>User</th>
+                        <th>Class</th>
+                        <th>Spec</th>
+                        <th>Armory</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="raid in raids" ng-class-even="table-striped" style="cursor:pointer">
+                        <td>{{raid.title}}</td>
+                        <td>{{ raid.date }}</td>
+                        <td>{{raid.time}}</td>
+
+                        <td>{{raid.description}}</td>
+
+                        <td>{{application.charArmory}}</td>
+                        <td>
+                            <div class="btn-group">
+                             <a ui-sref=".raidView"  ng-click="selectRaid(raid)"  class="btn btn-sm btn-primary">
+                                    <span class="glyphicon glyphicon-eye-open"></span>View</a>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="" ng-click="deleteApplication(application)" class="btn btn-sm btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>Delete</a>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+      </div>
+     </div>
+     </div>

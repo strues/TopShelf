@@ -1,0 +1,10 @@
+
+<h1>{{raid.title}}</h1>
+<div ng-controller="RaidViewCtrl as form">
+  <form name="raidForm" novalidate ng-submit="form.submit(data)">
+   <input type="radio" ng-model="form.data.confirmed" value="confirmed"> Attending <br/>
+  <input type="radio" ng-model="color" value="specialValue"> Green <br/>
+  <input type="radio" ng-model="color" value="blue"> Blue <br/>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

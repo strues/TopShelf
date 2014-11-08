@@ -19,6 +19,7 @@
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
       <link rel="stylesheet" href="bower_components/ngtoast/dist/ngToast.min.css">
       <link rel="stylesheet" href="bower_components/ng-table/ng-table.css">
+      <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css">
       <!-- endinject -->
 
       <!-- inject:css -->
@@ -35,12 +36,6 @@
 <div navbar></div>
 <ng-toast></ng-toast>
      <div ui-view="" class="fadeZoom"></div>
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
 
     <!-- build:js app.js -->
       <!-- bower:js -->
@@ -61,16 +56,15 @@
       <script src="bower_components/ng-battlenet/src/ng-battlenet.js"></script>
       <!-- endinject -->
       <script src="bower_components/angular-httpi/lib/httpi.js"></script>
-      <script src="socket.io-client/socket.io.js"></script>
-      <script src='//cdn.jsdelivr.net/g/angular.textangular@1.2.2(textAngular-sanitize.min.js+textAngular.min.js)'></script>
+      <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
       <!-- inject:js -->
       <script src="app.js"></script>
       <script src="admin/directives/highlightactive.directive.js"></script>
       <script src="admin/directives/toggleminnav.directive.js"></script>
       <script src="admin/directives/toggleoffcanvas.directive.js"></script>
       <script src="core/common/mongoose-error.directive.js"></script>
-      <script src="core/navbar/navbar.directive.js"></script>
       <script src="core/home/sidebar.directive.js"></script>
+      <script src="core/navbar/navbar.directive.js"></script>
       <script src="guild/info/loadingContainer.directive.js"></script>
       <script src="user/login/loginForm.directive.js"></script>
       <script src="user/signup/signupForm.directive.js"></script>
@@ -82,18 +76,18 @@
       <script src="user/user.service.js"></script>
       <script src="core/common/authInterceptor.service.js"></script>
       <script src="core/common/posts.service.js"></script>
-      <script src="core/common/raids.service.js"></script>
       <script src="core/common/socket.service.js"></script>
       <script src="core/navbar/navbar.service.js"></script>
+      <script src="guild/raid/raids.service.js"></script>
       <script src="guild/recruitment/recruitment.service.js"></script>
       <script src="admin/admin.controller.js"></script>
       <script src="admin/admin.js"></script>
       <script src="admin/adminDashboard.controller.js"></script>
       <script src="admin/adminSidebar.controller.js"></script>
-      <script src="guild/guild.controller.js"></script>
-      <script src="guild/guild.js"></script>
       <script src="core/core.controller.js"></script>
       <script src="core/core.js"></script>
+      <script src="guild/guild.controller.js"></script>
+      <script src="guild/guild.js"></script>
       <script src="user/user.controller.js"></script>
       <script src="user/user.js"></script>
       <script src="admin/guildApps/applicationEdit.controller.js"></script>
@@ -107,6 +101,9 @@
       <script src="core/home/home.controller.js"></script>
       <script src="core/navbar/navbar.controller.js"></script>
       <script src="guild/info/info.controller.js"></script>
+      <script src="guild/raid/raid.controller.js"></script>
+      <script src="guild/raid/raidList.controller.js"></script>
+      <script src="guild/raid/raidView.controller.js"></script>
       <script src="guild/recruitment/recruitment.controller.js"></script>
       <script src="user/login/login.controller.js"></script>
       <script src="user/settings/settings.controller.js"></script>
@@ -114,6 +111,8 @@
       <script src="guild/recruitment/application/application.controller.js"></script>
       <!-- endinject -->
     <!-- endbuild -->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+          <script src='//cdn.jsdelivr.net/g/angular.textangular@1.2.2(textAngular-sanitize.min.js+textAngular.min.js)'></script>
       <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

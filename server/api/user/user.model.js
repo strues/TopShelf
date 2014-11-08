@@ -20,11 +20,7 @@ var UserSchema = new mongoose.Schema({
   facebook: {},
   twitter: {},
   google: {},
-  bnet: {},
-  characters: [{type: mongoose.Schema.Types.ObjectId, ref: 'Character'}],
-  applications:[{ type:mongoose.Schema.Types.ObjectId, ref: 'Application' }],
-  posts: [mongoose.Schema.ObjectId],
-  attendence: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Raid' }]
+  bnet: {}
 });
 
 
