@@ -97,8 +97,19 @@
             templateUrl: 'admin/news/news.tpl.html',
           }
         }
-
-
+      })
+      .state('admin.newsList', {
+        url: '/news/list',
+         views: {
+          'sidebar@admin': {
+            controller: 'AdminSidebarCtrl',
+            templateUrl: 'admin/sidebar.tpl.html'
+          },
+          'content@admin': {
+            controller: 'NewsListCtrl',
+            templateUrl: 'admin/news/newsList.tpl.html',
+          }
+        }
       })
       .state('admin.addRaid', {
         url: '/raids',
@@ -112,8 +123,6 @@
             templateUrl: 'admin/raids/addRaid.tpl.html',
           }
         }
-
-
       });
 }
 })();

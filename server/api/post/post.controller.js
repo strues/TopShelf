@@ -2,8 +2,7 @@
 
 var _ = require('lodash');
 var Post = require('./post.model');
-var User = require('../user/user.model');
-var multiparty = require('multiparty');
+
 // Get list of posts
 exports.index = function(req, res) {
   Post.find(function (err, posts) {
@@ -23,7 +22,7 @@ exports.show = function(req, res) {
 
 // Creates a new post in the DB.
 exports.create = function(req, res) {
-  Post.create(req.body, function(err, post) {
+  Post.create(_.merge({ author: req.user._id }, req.body), function(err, post) {
     if(err) { return handleError(res, err); }
 
     return res.status(201).json(post);
@@ -44,25 +43,7 @@ exports.update = function(req, res) {
     });
   });
 };
-exports.addImages = function(req, res) {
 
-    Post.findById(req.params.id, function(err, post) {
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!post) {
-            return res.send(404);
-        }
-
-        post.images = req.body;
-        post.save(function(err) {
-            if (err) {
-                return handleError(res, err);
-            }
-            return res.json(200, post);
-        });
-    });
-};
 // Deletes a post from the DB.
 exports.destroy = function(req, res) {
   Post.findById(req.params.id, function (err, post) {

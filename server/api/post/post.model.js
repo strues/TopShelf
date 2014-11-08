@@ -1,17 +1,20 @@
 'use strict';
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-
-var PostSchema = new mongoose.Schema({
+var PostSchema = new Schema({
   // name: String,
   // info: String,
   // active: Boolean
   date: Date,
   title: String,
   content: String,
-  author: mongoose.Schema.ObjectId,
-  tags: Array
+  tags: Array,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 
