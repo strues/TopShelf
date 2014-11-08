@@ -1,0 +1,39 @@
+.form-control {
+    box-shadow: none;
+    border: 1px solid #cecece;
+    background: 0 0;
+    color: #959595;
+    font-size: 14px;
+    border-radius: 0;
+
+  &:focus {
+    box-shadow: none;
+    border: 1px solid $brand-primary;
+  }
+}
+
+.form-item {
+  margin-bottom: 0.75em;
+  width: 100%;
+
+ &input {
+  background: #fafafa;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: #666;
+  font-family: $font-family-sans-serif, sans-serif;
+  font-size: 1em;
+  height: 50px;
+  transition: border-color 0.3s;
+
+   &:focus {
+    border-bottom: 2px solid #c0c0c0;
+    outline: none;
+    }
+  }
+}
+// IonicIcons
+.has-feedback label ~ .form-control-feedback {
+  margin-right: 10px;
+  color: $brand-primary;
+}

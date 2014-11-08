@@ -1,113 +1,58 @@
-$icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-$fa-font-path: "../../bower_components/font-awesome/fonts";
-@import "normalize";
-@import "variables";
-@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
-@import "../bower_components/font-awesome/scss/font-awesome";
+//
+// Fonts
+//
 
-@import "animations";
-@import "components/buttons";
-@import "components/icons";
-@import "components/navbar";
-@import "base/global";
-@import "components/recruitmentPanel";
-@import "admin/sidebar";
-@import "loginSignup";
+@import
+  "bases/fonts",
+  "bases/icons";
 
-body {
-  background-image: url(http://i.imgur.com/VETTKLG.jpg);
-  background-size: cover;
-}
-.grid {
-  width: 800px;
-  height: 600px;
-}
-.btn.btn-primary {
-    background: #008ffc;
-    border: 0;
-    border-radius: 0;
-    -webkit-transition: all .3s ease 0s;
-    -moz-transition: all .3s ease 0s;
-    -ms-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
-    transition: all .3s ease 0s;
-}
-.has-feedback label ~ .form-control-feedback {
-  margin-right: 10px;
-  color: $brand-primary;
-}
-label {
-  position: relative;
-}
+//
+// Utilities
+//
+@import
+  "utilities/variables",
+  "utilities/bootstrap",
+  "utilities/animations";
+
+
+//
+// Components
+//
+
+
+@import
+  "components/buttons",
+  "components/forms",
+  "components/hero",
+  "components/lists",
+  "components/table";
+
+
+//
+// Sections
+//
+
+@import
+  "sections/global",
+  "sections/navbar",
+  "sections/loginSignup",
+  "sections/admin/sidebar";
+
+//
+// Non-modular
+//
+
 .appPreview {
   font-weight: 700;
 }
-.form-item {
-  margin-bottom: 0.75em;
-  width: 100%;
-}
 
-.form-item input {
-  background: #fafafa;
-  border: none;
-  border-bottom: 2px solid #e9e9e9;
-  color: #666;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1em;
-  height: 50px;
-  transition: border-color 0.3s;
-  width: 100%;
-}
 
-.form-item input:focus {
-  border-bottom: 2px solid #c0c0c0;
-  outline: none;
-}
-// for special page, like 404, sign in, sign up
-.body-special {
-    #content {
-        z-index: 2;
-        top: 0;
-        left: 0;
-    }
-}
-.form-control {
-    box-shadow: none;
-    border: 1px solid #cecece;
-    background: 0 0;
-    color: #959595;
-    font-size: 14px;
-    border-radius: 0;
-}
-.ng-table th.sortable.sort-desc,
-.ng-table th.sortable.sort-asc {
-  color: $brand-primary;
-  background-color: $dark;
-}
-.form-control:focus {
-    box-shadow: none;
-    border: 1px solid $brand-primary;
-}
 .editorPanel{
   margin-bottom: 25px;
   padding: 20px 20px 20px 20px;
 }
-.btn-toolbar{
-margin-left: 10px;
-padding-top: 15px;
-}
-ul.posts {
-  list-style: none;
-  padding: 20px 5px 20px 20px;
-  margin-bottom: 10px;
-  list-style-type: none;
-  border-radius: 10px;
-  //break-inside: avoid;  /*prevents individual posts from breaking to next column*/
-}
-li.posts {
-  margin: 10px 0;
-  cursor: default;
-}
+
+
 .taggedEM {
   margin-right: 10px;
   font-style: italic;
