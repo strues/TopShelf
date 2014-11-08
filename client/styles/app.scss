@@ -79,12 +79,23 @@ label {
     font-size: 14px;
     border-radius: 0;
 }
-
+.ng-table th.sortable.sort-desc,
+.ng-table th.sortable.sort-asc {
+  color: $brand-primary;
+  background-color: $dark;
+}
 .form-control:focus {
     box-shadow: none;
     border: 1px solid $brand-primary;
 }
-
+.editorPanel{
+  margin-bottom: 25px;
+  padding: 20px 20px 20px 20px;
+}
+.btn-toolbar{
+margin-left: 10px;
+padding-top: 15px;
+}
 ul.posts {
   list-style: none;
   padding: 20px 5px 20px 20px;

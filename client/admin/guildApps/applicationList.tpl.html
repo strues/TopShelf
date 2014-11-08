@@ -4,21 +4,13 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-default" ng-click="addNew()">Add</button>
             </div>
-
-            <table class="table table-condensed">
-                <thead>
-                    <tr style="font-size:14px;">
-                        <th>Character Name</th>
-                         <th>User</th>
-                        <th>Class</th>
-                        <th>Spec</th>
-                        <th>Armory</th>
-                    </tr>
-                </thead>
+ <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+    <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
+            <table ng-table="tableParams" class="table">
                 <tbody>
-                    <tr ng-repeat="application in applications" ng-class-even="table-striped" style="cursor:pointer">
-                        <td>{{application.charName}}</td>
-                        <td>{{ application.author.name }}</td>
+                    <tr ng-repeat="application in $data" ng-class-even="table-striped" style="cursor:pointer">
+                        <td data-title="'Name'" sortable="'charName'">{{application.charName}}</td>
+                        <td>{{application.author.name}}</td>
                         <td>{{application.charClass}}</td>
 
                         <td>{{application.charSpec}}</td>

@@ -13,7 +13,7 @@
         <ul class="posts" ng-repeat="post in posts | orderBy:'date' | limitTo: postsShownPerView() | filter:searchText">
           <li>{{post.date | date:'MM/dd/yyyy'}}</li>
           <li>
-            <h1 class="post-title">{{post.title}} {{post.author}}</h1>
+            <h1 class="post-title">{{post.title}} {{post.author}}</h1> <img ng-src="{{post.images[0]}}" alt="{{post.images[0]}}">
             <span class="more" ng-hide="showMode" ng-click="showMode=!showMode">more...</span>
             <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode">less...</span>
           </li>

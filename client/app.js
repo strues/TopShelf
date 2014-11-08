@@ -24,7 +24,6 @@ angular.module('topshelf.admin', []);
       'ui.bootstrap',
       'textAngular',
       'ngTable',
-      'angularFileUpload',
       'formly',
       'ngToast',
       'httpi',
