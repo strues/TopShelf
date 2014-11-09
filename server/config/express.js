@@ -18,7 +18,7 @@ var passport       = require('passport');
 var session        = require('express-session');
 var mongoStore     = require('connect-mongo')(session);
 var mongoose       = require('mongoose');
-var docs           = require('express-mongoose-docs');
+
 module.exports = function(app) {
   var env = app.get('env');
 
@@ -36,8 +36,9 @@ module.exports = function(app) {
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
   app.use(compression());
-  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());
@@ -50,7 +51,7 @@ module.exports = function(app) {
     saveUninitialized: true,
     store: new mongoStore({ mongoose_connection: mongoose.connection })
   }));
-  docs(app, mongoose);
+
   app.set('appPath', path.join(config.root, 'client'));
 
   if ('production' === env) {

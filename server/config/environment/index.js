@@ -69,6 +69,4 @@ var all = {
 
 // Export the config object based on the NODE_ENV
 // ==============================================
-module.exports = _.merge(
-  all,
-  require('./' + process.env.NODE_ENV + '.js') || {});
+module.exports = _.merge(all, require('./' + process.env.NODE_ENV + '.js') || {});

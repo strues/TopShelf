@@ -7,18 +7,20 @@
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var express = require('express');
+var express  = require('express');
 var mongoose = require('mongoose');
-var config = require('./config/environment');
-var fs = require('fs');
-var https = require('https');
+var config   = require('./config/environment');
+var fs       = require('fs');
+var https    = require('https');
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
-
-var pkey = fs.readFileSync('./server/config/keys/key.pem');
-var pcert = fs.readFileSync('./server/config/keys/cert.pem');
+/*
+ * Disable these in production and replace with new.
+ */
+var pkey        = fs.readFileSync('./server/config/keys/key.pem');
+var pcert       = fs.readFileSync('./server/config/keys/cert.pem');
 var credentials = {key: pkey, cert: pcert};
 
 // Populate DB with sample data
@@ -37,12 +39,12 @@ require('./config/express')(app);
 require('./routes')(app);
 
 
-var httpsServer = https.createServer(credentials, app);
+var httpsServer = https.createServer(credentials, app); // Disable if needed
 // Start server
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
 
-httpsServer.listen(8443);
+httpsServer.listen(8443); // Disable
 // Expose app
 exports = module.exports = app;
