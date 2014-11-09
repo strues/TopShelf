@@ -50,7 +50,10 @@ angular.module('topshelf.admin', []);
     battleNetConfigProvider.setDefaultRegion('us');
   }
 
-  function run($rootScope, $location, Auth) {
+  function run($rootScope, $state, $stateParams, $location, Auth) {
+
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
 
      // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {

@@ -1,0 +1,42 @@
+<div class="container frontendWrap">
+
+<div ng-repeat="stream in allStreams">
+    {{stream}}
+  </div>
+
+  <input type="text" ng-model="updateInterval">
+
+ <div class="streams" ng-repeat="stream in streamsList">
+    <div class="row">
+      <div class="col-xs-8">
+
+        <p class="streamName">
+          <a href="http://twitch.tv/{{ stream.stream.channel.display_name }}/">{{ stream.stream.channel.status }}</a>
+        </p>
+        / {{ stream.stream.viewers }} viewers - {{ stream.stream.channel.name }}
+      </div>
+      <div class="col-xs-4">
+        <img ng-click="showDetails = ! showDetails" src="{{ stream.stream.preview.large }}">
+      </div>
+    </div>
+    <br>
+<div class="streamContainer" ng-show="showDetails">
+    <object
+      type="application/x-shockwave-flash"
+        height="{HEIGHT}"
+        width="{WIDTH}"
+        id="live_embed_player_flash"
+        data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream.stream.channel.display_name  }}"
+        bgcolor="#000000">
+
+        <param  name="allowFullScreen"
+               value="true" />
+      <param  name="allowScriptAccess"
+                value="always" />
+      <param  name="allowNetworking"
+                value="all" />
+      <param  name="movie"
+                value="http://www.twitch.tv/widgets/live_embed_player.swf" />
+    </object>
+    <i ng-click="closeStream()" class="fa fa-times"></i>
+</div>

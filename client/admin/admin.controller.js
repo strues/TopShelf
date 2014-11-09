@@ -14,7 +14,6 @@
 
   function AdminCtrl(Auth) {
     var vm = this;
-    vm.ctrlName = 'AdminCtrl';
 
   }
 

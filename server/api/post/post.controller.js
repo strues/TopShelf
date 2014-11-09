@@ -51,7 +51,7 @@ exports.destroy = function(req, res) {
     if(!post) { return res.send(404); }
     post.remove(function(err) {
       if(err) { return handleError(res, err); }
-      return res.send(204);
+      return res.sendStatus(204);
     });
   });
 };

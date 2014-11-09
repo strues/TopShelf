@@ -11,9 +11,11 @@
       <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
       <li ng-hide="!showMode" ng-bind-html="post.content"></li>
       <li>
+      <i ng-click="deletePost(post._id)" class="fa fa-trash"></i></button>
         <span class="taggedEM">tagged:</span>
         <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{ tag }}</span>  <!-- {{$last ? '':', '}} -->
-        <button class="editDeleteBtn" ng-click="deletePost(post._id)">&times;</button>
+
+
       </li>
     </ul>
     <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>

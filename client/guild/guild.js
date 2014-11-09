@@ -41,7 +41,17 @@
         templateUrl: 'guild/recruitment/application/application.tpl.html',
         controller: 'ApplicationCtrl',
         authenticate: true
-      });
+      })
+      .state('streams', {
+        url: '/guild/streams',
+        templateUrl: 'guild/streams/streams.tpl.html',
+        controller: 'StreamCtrl as vm'
+      })
+      .state('streams.watch', {
+        url: '/guild/streams/watch',
+        templateUrl: 'guild/streams/watch.tpl.html',
+        controller: 'StreamCtrl as vm'
+      })
   }
 
 })();
