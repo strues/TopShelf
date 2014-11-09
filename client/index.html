@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="topshelf"  ng-hint-include="controllers dom"> <!--<![endif]-->
  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -29,7 +29,7 @@
       <link rel="stylesheet" href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
       <link rel="stylesheet" href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css">
   </head>
-  <body ng-app="topshelf" id="app" off-canvas-nav>
+  <body id="app" off-canvas-nav>
 
 <div navbar></div>
 <ng-toast></ng-toast>
@@ -51,9 +51,9 @@
       <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
       <script src="bower_components/ngtoast/dist/ngToast.min.js"></script>
       <script src="bower_components/ng-table/ng-table.js"></script>
-      <script src="bower_components/restangular/dist/restangular.js"></script>
       <script src="bower_components/ng-battlenet/src/ng-battlenet.js"></script>
       <!-- endinject -->
+
       <script src="bower_components/angular-httpi/lib/httpi.js"></script>
       <!-- inject:js -->
       <script src="app.js"></script>
@@ -76,8 +76,8 @@
       <script src="core/common/socket.service.js"></script>
       <script src="core/navbar/navbar.service.js"></script>
       <script src="guild/raid/raids.service.js"></script>
-      <script src="guild/streams/streams.service.js"></script>
       <script src="guild/recruitment/recruitment.service.js"></script>
+      <script src="guild/streams/streams.service.js"></script>
       <script src="admin/admin.controller.js"></script>
       <script src="admin/admin.js"></script>
       <script src="admin/adminDashboard.controller.js"></script>
@@ -90,15 +90,15 @@
       <script src="admin/news/datePicker.controller.js"></script>
       <script src="admin/news/news.controller.js"></script>
       <script src="admin/news/newsList.controller.js"></script>
-      <script src="admin/raids/addRaid.controller.js"></script>
       <script src="admin/recruitment/recruitment.controller.js"></script>
       <script src="admin/recruitment/recruitmentList.controller.js"></script>
+      <script src="admin/raids/addRaid.controller.js"></script>
       <script src="core/home/home.controller.js"></script>
       <script src="core/navbar/navbar.controller.js"></script>
-      <script src="guild/info/info.controller.js"></script>
       <script src="guild/raid/raid.controller.js"></script>
       <script src="guild/raid/raidList.controller.js"></script>
       <script src="guild/raid/raidView.controller.js"></script>
+      <script src="guild/info/info.controller.js"></script>
       <script src="guild/recruitment/recruitment.controller.js"></script>
       <script src="guild/streams/stream.controller.js"></script>
       <script src="user/login/login.controller.js"></script>

@@ -1,14 +1,13 @@
 <div class="container frontendWrap">
-
+<div class="row">
+<div class="col-sm-12">
 <div ng-repeat="stream in allStreams">
     {{stream}}
   </div>
 
-  <input type="text" ng-model="updateInterval">
 
  <div class="streams" ng-repeat="stream in streamsList">
     <div class="row">
-      <div class="col-xs-8">
 
         <p class="streamName">
           <a href="http://twitch.tv/{{ stream.stream.channel.display_name }}/">{{ stream.stream.channel.status }}</a>
@@ -39,4 +38,7 @@
                 value="http://www.twitch.tv/widgets/live_embed_player.swf" />
     </object>
     <i ng-click="closeStream()" class="fa fa-times"></i>
+</div>
+</div>
+</div>
 </div>

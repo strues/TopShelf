@@ -26,8 +26,11 @@ module.exports = function(app) {
   res.set('Access-Control-Allow-Origin', '*');
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
-  res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
-  if ('OPTIONS' == req.method) return res.send(200);
+  res.set('Access-Control-Allow-Headers',
+    'X-Requested-With, Content-Type, Authorization');
+  if ('OPTIONS' === req.method) {
+    return res.send(200);
+    }
   next();
 });
 
@@ -44,7 +47,6 @@ module.exports = function(app) {
   app.use(passport.initialize());
 
   // Persist sessions with mongoStore
-  // We need to enable sessions for passport twitter because its an oauth 1.0 strategy
   app.use(session({
     secret: config.secrets.session,
     resave: true,

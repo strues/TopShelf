@@ -1,5 +1,5 @@
 /**
- * Main application routes
+ * Route includes for API calls
  */
 
 'use strict';
