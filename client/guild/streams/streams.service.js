@@ -28,7 +28,7 @@ angular
          .success(function(data) {
           $rootScope.$broadcast('event', data);
            console.log('Working, yo!', data, status);
-        })
+        });
       },
        getStreamToxic: function(channel) {
         return $http({
@@ -38,9 +38,9 @@ angular
          .success(function(data) {
           $rootScope.$broadcast('event', data);
            console.log('Working, yo!', data, status);
-        })
+        });
       }
     };
-  };
+  }
 
 })();
