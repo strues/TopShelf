@@ -3,18 +3,22 @@
 
  <div class="streams" ng-repeat="stream in streamsList">
     <div class="row">
-      <div class="col-xs-8">
+      <div class="col-sm-10 col-sm-offset-1">
 
         <p class="streamName">
-          <a href="http://twitch.tv/{{ stream.stream.channel.display_name }}/">{{ stream.stream.channel.status }}</a>
+        <h4>{{ stream.stream.channel.name }}</h4>
+          <a href="http://twitch.tv/{{ stream.stream.channel.display_name }}/"><h5>Status:</h5> {{ stream.stream.channel.status }}</a>
         </p>
-        / {{ stream.stream.viewers }} viewers - {{ stream.stream.channel.name }}
-      </div>
-
+        <h5>Current Viewers:</h5>{{ stream.stream.viewers }}
+       </div>
+        </div>
+<div class="row">
+<div class="col-sm-10 col-sm-offset-1">
         <img ng-click="showDetails = ! showDetails" src="{{ stream.stream.preview.large }}">
+</div>
+</div>
 
-    </div>
-    <br>
+
     <!-- goes full screen-->
 <div class="streamContainer" ng-show="showDetails">
     <object

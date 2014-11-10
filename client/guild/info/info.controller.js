@@ -18,7 +18,9 @@
  wowApi.guild.members({ name: 'Top Shelf', realm: 'Sargeras' }).then(function (data){
 
             $scope.data = data;
-            $scope.characters = $scope.data.data.members;
+            $scope.members = data.data.level1;
+            $scope.characters = data.data.level2;
+            console.log(data.data);
            // $scope.character = $scope.character.character;
 
 
@@ -45,7 +47,7 @@ page: 1,   // show first page
         }
     });
 
-  })
+  });
 }
 })();
 

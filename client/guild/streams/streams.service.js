@@ -11,7 +11,7 @@ angular
       getStreamData: function (channel) {
         return $http({
           method: 'jsonp',
-          url: 'https://api.twitch.tv/kraken/streams/' + channel + '?callback=JSON_CALLBACK',
+          url: 'https://api.twitch.tv/kraken/streams/' + channel + '?callback=JSON_CALLBACK'
         })
         .success(function(data) {
           $rootScope.$broadcast('event', data);
@@ -20,24 +20,24 @@ angular
           console.log('error!', data, status);
         });
       },
-      getStreamSoopie: function(channel) {
+      getStreamSoopie: function() {
         return $http({
           method: 'jsonp',
           url: 'https://api.twitch.tv/kraken/streams/Soopie?callback=JSON_CALLBACK'
         })
          .success(function(data) {
           $rootScope.$broadcast('event', data);
-           console.log('Working, yo!', data, status);
+           console.log('Soopie stream is working, yo!', data, status);
         });
       },
-       getStreamToxic: function(channel) {
+       getStreamToxic: function() {
         return $http({
           method: 'jsonp',
-          url: 'https://api.twitch.tv/kraken/streams/Toxicpopsicles?callback=JSON_CALLBACK'
+          url:'https://api.twitch.tv/kraken/streams/Toxicpopsicles?callback=JSON_CALLBACK'
         })
          .success(function(data) {
           $rootScope.$broadcast('event', data);
-           console.log('Working, yo!', data, status);
+           console.log('Toxics stream is there', data, status);
         });
       }
     };

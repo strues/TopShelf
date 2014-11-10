@@ -14,10 +14,10 @@
   "nonbsp": true,
   "nonew": false,
   "quotmark": "single",
-  "undef": true,
+  "undef": false,
   "unused": true,
   "strict": true,
-  "maxparams": 3,
+  "maxparams": 5,
   "maxdepth": 3,
   "maxlen": 80,
 

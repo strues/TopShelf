@@ -12,10 +12,7 @@
     .module('topshelf.guild')
     .controller('StreamCtrl', StreamCtrl);
 
-  function StreamCtrl ($scope, $modal, $rootScope, $log, Streams) {
-
-// Function that will fetch JSON and save all nessesary data for us to use
-
+  function StreamCtrl($scope, $rootScope, Streams) {
 
 
     $scope.allStreams = [
