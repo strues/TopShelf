@@ -10,9 +10,9 @@
     .module('topshelf.admin')
     .controller('NewsCtrl', NewsCtrl);
 
-    function NewsCtrl($scope, postsFactory, socket, Auth) {
+    function NewsCtrl($scope, PostFactory, socket, Auth) {
         // get all posts which will display below editor area
-    postsFactory.getPosts()
+    PostFactory.getAllPosts()
     .success(function (posts) {
 
       $scope.posts = posts;
@@ -49,10 +49,10 @@
         content:  $scope.newPost.content,
         author: $scope.newPost.author,
         tags: $scope.newPost.tags
-      }
+      };
 
       // data to postsFactory service
-      postsFactory.createPost(post)
+      PostFactory.createPost(post)
         .success(function () {
           $scope.status = 'Created Post! Refreshing Post List.';
           //console.log('$scope.status', $scope.status);
@@ -75,7 +75,7 @@
     // when x is clicked
     $scope.deletePost = function (postID) {
       console.log('inside posts.controller.js deletePost - postID', postID);
-      postsFactory.deletePost(postID);
+      PostFactory.deletePost(postID);
     };
     }
 })();

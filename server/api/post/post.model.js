@@ -17,5 +17,14 @@ var PostSchema = new Schema({
   }
 });
 
+PostSchema.statics = {
+  loadRecent: function(cb) {
+    this.find({})
+      .populate({path:'User', select: 'name'})
+      .sort('-date')
+      .limit(20)
+      .exec(cb);
+  }
+};
 
 module.exports = mongoose.model('Post', PostSchema);

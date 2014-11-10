@@ -12,35 +12,36 @@
     .module('topshelf.core')
     .controller('HomeCtrl', HomeCtrl);
 
-  function HomeCtrl($scope, $http, postsFactory, socket) {
+  function HomeCtrl($scope, $http, PostFactory, socket) {
     var vm = this;
     vm.ctrlName = 'HomeCtrl';
 
-      postsFactory.getPosts().success(function (posts) {
-        console.log('main.controller.js - postsFactory.getPosts() - posts:', posts);
+      PostFactory.getAllPosts().success(function (posts) {
+        console.log('getting posts', posts);
 
-        $scope.posts = posts;
-        socket.syncUpdates('post', $scope.posts);
+        vm.posts = posts;
+        socket.syncUpdates('post', vm.posts);
 
         // display more posts
-        $scope.postsLength = posts.length;
+        vm.postsLength = posts.length;
         var view = 1;
         var postsQty = 6;
-        $scope.postsShownPerView = function() {
+
+        vm.postsShownPerView = function() {
           return view * postsQty;
         };
-        $scope.getAdditionalPosts = function() {
+        vm.getAdditionalPosts = function() {
           return view < ($scope.postsLength / postsQty);
         };
-        $scope.showMorePosts = function() {
+        vm.showMorePosts = function() {
           view = view + 1;
         };
     }).
     error(function (error) {
-      $scope.status = 'Unable to Retrieve Posts: ' + error.message;
+      vm.status = 'Unable to Retrieve Posts: ' + error.message;
     });
 
     // ng-show/ng-hide
-    $scope.showMode = false;
+    vm.showMode = false;
   }
 })();

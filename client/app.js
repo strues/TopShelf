@@ -52,8 +52,7 @@ angular.module('topshelf.admin', []);
 
   function run($rootScope, $state, $stateParams, $location, Auth) {
 
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
+
 
 
      // Redirect to login if route requires auth and you're not logged in

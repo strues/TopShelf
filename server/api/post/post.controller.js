@@ -4,16 +4,16 @@ var _ = require('lodash');
 var Post = require('./post.model');
 
 // Get list of posts
-exports.index = function(req, res) {
-  Post.find(function (err, posts) {
+exports.index = function(req, res, next) {
+Post.find().sort('-date').populate('author', 'name').exec(function(err, posts) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(posts);
   });
 };
 
 // Get a single post
-exports.show = function(req, res) {
-  Post.findById(req.params.id, function (err, post) {
+exports.show = function(req, res, next, id) {
+  Post.findById(req.params.id).populate('author', 'name').exec(function (err, post) {
     if(err) { return handleError(res, err); }
     if(!post) { return res.send(404); }
     return res.json(post);

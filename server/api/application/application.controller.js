@@ -12,6 +12,7 @@
 var _ = require('lodash');
 var mongoose = require('mongoose');
 var Application = require('./application.model');
+var User = require('../user/user.model');
 
 // Get list of applications
 exports.index = function(req, res) {
@@ -23,7 +24,8 @@ exports.index = function(req, res) {
 
 // Get a single application
 exports.show = function(req, res) {
-  Application.findById(req.params.id, function (err, application) {
+  var author = req.user.name;
+  Application.findById(req.params.id).populate('user', 'name').exec(function (err, application) {
     if(err) { return handleError(res, err); }
     if(!application) { return res.send(404); }
     return res.json(application);
@@ -32,7 +34,7 @@ exports.show = function(req, res) {
 
 // Creates a new application in the DB.
 exports.create = function(req, res) {
-  Application.create(_.merge({ author: req.user._id }, req.body), function(err, application) {
+  Application.create(req.body, function(err, application) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(application);
   });

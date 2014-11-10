@@ -6,20 +6,26 @@
     </div>
     <sidebar class="recruitmentPanel col-sm-12 col-lg-3"></sidebar>
   </div>
-  <div class="container-fluid">
+  <div class="container-fluid" ng-controller="HomeCtrl as vm">
     <div class="row">
       <div class="col-sm-12 col-lg-6">
-        <ul class="posts" ng-repeat="post in posts | orderBy:'date' | limitTo: postsShownPerView() | filter:searchText">
-          <li>{{post.date | date:'MM/dd/yyyy'}}</li>
+        <ul class="posts" ng-repeat="post in vm.posts | orderBy:'date' | limitTo: vm.postsShownPerView() | filter:searchText">
+
           <li>
             <h1 class="post-title">{{post.title}}</h1>
-            <span class="more" ng-hide="showMode" ng-click="showMode=!showMode">more...</span>
-            <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode">less...</span>
           </li>
+          <div class="well">
+          <li>{{post.date | date:'MM/dd/yyyy'}}</li>
+          <hr>
           <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
           <li ng-hide="!showMode" ng-bind-html="post.content"></li>
-          <li>Posted by {{post.author.name}}</li>
+          <li>Posted by {{user.name}}</li>
           <li><span class="taggedEM">tagged:</span><span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span></li>
+          <li>
+             <span class="more" ng-hide="showMode" ng-click="showMode=!showMode"><button class="btn btn-primary pull-right">Read More</button></span>
+             <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode"><button class="btn btn-primary pull-right">Read Less</button></span>
+            </li>
+          </div>
         </ul>
         <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>
       </div>

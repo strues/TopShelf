@@ -27,7 +27,7 @@ author: {
 ApplicationSchema.statics = {
   loadRecent: function(cb) {
     this.find({})
-      .populate({path:'author', select: 'name'})
+      .populate({path:'Author', select: 'name'})
       .sort('-date')
       .limit(20)
       .exec(cb);
