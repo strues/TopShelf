@@ -7,7 +7,7 @@
 
         <p class="streamName">
         <h4>{{ stream.stream.channel.name }}</h4>
-          <a href="http://twitch.tv/{{ stream.stream.channel.display_name }}/"><h5>Status:</h5> {{ stream.stream.channel.status }}</a>
+          <a href="//twitch.tv/{{ stream.stream.channel.display_name }}/"><h5>Status:</h5> {{ stream.stream.channel.status }}</a>
         </p>
         <h5>Current Viewers:</h5>{{ stream.stream.viewers }}
        </div>
@@ -26,7 +26,7 @@
         height="{HEIGHT}"
         width="{WIDTH}"
         id="live_embed_player_flash"
-        data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ stream.stream.channel.display_name  }}"
+        data="https://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?channel={{ stream.stream.channel.display_name  }}"
         bgcolor="#000000">
 
         <param  name="allowFullScreen"
@@ -36,7 +36,7 @@
       <param  name="allowNetworking"
                 value="all" />
       <param  name="movie"
-                value="http://www.twitch.tv/widgets/live_embed_player.swf" />
+                value="https://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" />
     </object>
     <i ng-click="closeStream()" class="fa fa-times"></i>
 </div>
