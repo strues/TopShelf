@@ -19,7 +19,7 @@
           <hr>
           <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
           <li ng-hide="!showMode" ng-bind-html="post.content"></li>
-          <li>Posted by {{user.name}}</li>
+          <li>Posted by {{post.author.name}}</li>
           <li><span class="taggedEM">tagged:</span><span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span></li>
           <li>
              <span class="more" ng-hide="showMode" ng-click="showMode=!showMode"><button class="btn btn-primary pull-right">Read More</button></span>
@@ -33,7 +33,7 @@
         <div class="row">
           <div class="col-sm-12">
           <h3>Watch our streams on Twitch</h3>
-          <img src="assets/images/twitch.jpg">
+          <a ui-sref="streams"><img src="assets/images/twitch.jpg"></a>
 
           </div><!-- ./col-sm-12 -->
         </div><!-- ./row -->

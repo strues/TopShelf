@@ -74,7 +74,9 @@
 
 
   this.submit = function(valid) {
-        if(!valid) return;
+        if(!valid) {
+           return;
+        }
 
         self.submitting = true;
 
@@ -90,6 +92,6 @@
 
       this.goBack = function () {
         $location.path('/');
-      }
+      };
 }
 })();

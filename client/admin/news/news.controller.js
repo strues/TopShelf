@@ -10,7 +10,7 @@
     .module('topshelf.admin')
     .controller('NewsCtrl', NewsCtrl);
 
-    function NewsCtrl($scope, PostFactory, socket, Auth) {
+    function NewsCtrl($scope, PostFactory, ngToast, socket, Auth) {
         // get all posts which will display below editor area
     PostFactory.getAllPosts()
     .success(function (posts) {
@@ -47,18 +47,20 @@
         date: $scope.newPost.date,
         title: $scope.newPost.title,
         content:  $scope.newPost.content,
-        author: $scope.newPost.author,
+        author: Auth.currentUser,
         tags: $scope.newPost.tags
       };
 
       // data to postsFactory service
       PostFactory.createPost(post)
         .success(function () {
+          ngToast.create('Post submitted');
           $scope.status = 'Created Post! Refreshing Post List.';
           //console.log('$scope.status', $scope.status);
           // $scope.posts.push(post);
         }).
         error(function (error) {
+          ngToast.create('An erorr has occured:' + error.message);
           $scope.status = 'Unable to Create Post: ' + error.message;
           //console.log('$scope.status', $scope.status);
         });
