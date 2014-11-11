@@ -1,7 +1,7 @@
 <div class="recruitmentPanel">
     <h3 style="padding-left:50px;">Current Needs</h3>
     <ul ng-repeat="recruitment in recruitments">
-      <li ng-click="open(recruitment._id)" style="cursor: pointer; cursor: hand;border-bottom: solid 1px;"><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" style="padding-right: 10px;" height="30px"> {{ recruitment.classSpec }}
+      <li ng-click="open(recruitment._id)" style="cursor: pointer; cursor: hand;"><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" style="padding-right: 10px;" height="30px"> {{ recruitment.classSpec }}
       <strong>{{ recruitment.priority }}</strong></li>
     </ul>
 </div>

@@ -2,9 +2,9 @@
 <div class="row">
 <div ng-controller="InfoCtrl">
 
- <div ng-repeat="character in data.members track by $index">
+ <div ng-repeat="character in data.data.members">
 
- {{character.name}}
+ {{ character.name }}
 </div>
 
 </div>

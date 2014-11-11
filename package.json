@@ -27,6 +27,7 @@
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "passport-twitch": "^1.0.1",
+    "request": "^2.47.0",
     "serve-favicon": "^2.1.6",
     "socket.io": "^1.2.0",
     "socketio-jwt": "^2.3.5"

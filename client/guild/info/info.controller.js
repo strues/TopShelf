@@ -12,11 +12,11 @@
     .module('topshelf.guild')
     .controller('InfoCtrl', InfoCtrl);
 
-  function InfoCtrl($scope, wowApi, $window, $filter, ngTableParams) {
-      //var vm = this;
+  function InfoCtrl($scope, $http, wowApi, ngTableParams) {
+
 
  wowApi.guild.members({ name: 'Top Shelf', realm: 'Sargeras' }).then(function (data){
-
+            $scope.data = {};
             $scope.data = data;
             $scope.members = data.data.level1;
             $scope.characters = data.data.level2;
