@@ -35,5 +35,31 @@
 // IonicIcons
 .has-feedback label ~ .form-control-feedback {
   margin-right: 10px;
+  margin-top: -10px;
   color: $brand-primary;
+}
+fieldset[disabled] .form-control, .form-control-wrapper .form-control, .form-control {
+    &, &:focus, &.focus {
+        &:not(textarea):not(select) {
+            height: 28px;
+        }
+        padding: 0;
+        float: none;
+        border: 0;
+        box-shadow: none;
+        border-radius: 0;
+        background: transparent;
+        border-bottom: 1px solid #757575;
+        &:disabled {
+            border-style: dashed;
+        }
+    }
+}
+select.form-control {
+    height: 23px;
+}
+select[multiple].form-control {
+    &, &:focus, &.focus {
+        height: 85px;
+    }
 }
