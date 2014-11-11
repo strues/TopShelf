@@ -10,9 +10,9 @@
     .module('topshelf.admin')
     .controller('NewsListCtrl', NewsListCtrl);
 
-    function NewsListCtrl($scope, postsFactory, socket, Auth) {
+    function NewsListCtrl($scope, PostFactory, socket, Auth) {
         // get all posts which will display below editor area
-    postsFactory.getPosts()
+    PostFactory.getAllPosts()
     .success(function (posts) {
 
       $scope.posts = posts;
@@ -52,7 +52,7 @@
       }
 
       // data to postsFactory service
-      postsFactory.createPost(post)
+      PostFactory.createPost(post)
         .success(function () {
           $scope.status = 'Created Post! Refreshing Post List.';
           //console.log('$scope.status', $scope.status);
