@@ -12,42 +12,26 @@
     .module('topshelf.guild')
     .controller('InfoCtrl', InfoCtrl);
 
-  function InfoCtrl($scope, $http, wowApi, ngTableParams) {
+ function InfoCtrl($scope, wowApi, $window,$filter, ngTableParams) {
 
-
- wowApi.guild.members({ name: 'Top Shelf', realm: 'Sargeras' }).then(function (data){
-            $scope.data = {};
-            $scope.data = data;
-            $scope.members = data.data.level1;
-            $scope.characters = data.data.level2;
-            console.log(data.data);
-           // $scope.character = $scope.character.character;
-
-
-
- //render a JSON file as deep as we like
-
+  wowApi.guild.members({ name: 'Top Shelf', realm: 'Sargeras' })
+  .success(function (myData){
+    var data = [myData];
 
 $scope.tableParams = new ngTableParams({
-page: 1,   // show first page
-        count: 5,
-       sorting: {
-       name: 'asc'
-       }  // count per page
+        page: 1,            // show first page
+        count: 10         // count per page
+
     }, {
-
-    total: data.length, // length of data
+        total: data.length, // length of data
         getData: function($defer, params) {
-            // use build-in angular filter
-            var orderedData = params.sorting() ?
-                                $filter('orderBy')(data, params.orderBy()) :
-                                data;
-
-            $defer.resolve(orderedData);
+            $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
         }
     });
 
+
   });
 }
+
 })();
 

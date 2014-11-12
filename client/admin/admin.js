@@ -23,10 +23,10 @@
             controller: 'AdminCtrl',
             templateUrl: 'admin/admin.tpl.html'
           },
-          'sidebar@admin': {
-            controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.tpl.html'
-          },
+          // 'sidebar@admin': {
+          //   controller: 'AdminSidebarCtrl',
+          //   templateUrl: 'admin/sidebar.tpl.html'
+          // },
           'content@admin': {
             controller: 'AdminDashboardCtrl',
             templateUrl: 'admin/dashboard.tpl.html'
@@ -36,9 +36,13 @@
       .state('admin.recruitmentStatus', {
         url: '/recruitment',
         views: {
-          'sidebar@admin': {
-            controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.tpl.html'
+          // 'sidebar@admin': {
+          //   controller: 'AdminSidebarCtrl',
+          //   templateUrl: 'admin/sidebar.tpl.html'
+          // },
+            '': {
+            controller: 'AdminCtrl',
+            templateUrl: 'admin/admin.tpl.html'
           },
           'content@admin': {
             controller: 'RecruitmentCtrl',
@@ -49,9 +53,13 @@
       .state('admin.applications', {
         url: '/applications',
         views: {
-          'sidebar@admin': {
-            controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.tpl.html'
+          // 'sidebar@admin': {
+          //   controller: 'AdminSidebarCtrl',
+          //   templateUrl: 'admin/sidebar.tpl.html'
+          // },
+            '': {
+            controller: 'AdminCtrl',
+            templateUrl: 'admin/admin.tpl.html'
           },
           'content@admin': {
             controller: 'ApplicationListCtrl',
@@ -61,11 +69,11 @@
       })
       .state('admin.applicationEdit', {
          url: '/applications/edit',
-          views: {
-          'sidebar@admin': {
-            controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.tpl.html'
-          },
+           views: {
+          // 'sidebar@admin': {
+          //   controller: 'AdminSidebarCtrl',
+          //   templateUrl: 'admin/sidebar.tpl.html'
+          // },
           'content@admin': {
             controller: 'ApplicationEditCtrl',
             templateUrl: 'admin/guildApps/applicationEdit.tpl.html',
@@ -75,9 +83,13 @@
       .state('admin.applicationEditID', {
         url: '/applications/edit/:id',
          views: {
-          'sidebar@admin': {
-            controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.tpl.html'
+          // 'sidebar@admin': {
+          //   controller: 'AdminSidebarCtrl',
+          //   templateUrl: 'admin/sidebar.tpl.html'
+          // },
+            '': {
+            controller: 'AdminCtrl',
+            templateUrl: 'admin/admin.tpl.html'
           },
           'content@admin': {
             controller: 'ApplicationEditCtrl',
@@ -88,9 +100,13 @@
       .state('admin.news', {
         url: '/news',
          views: {
-          'sidebar@admin': {
-            controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.tpl.html'
+          // 'sidebar@admin': {
+          //   controller: 'AdminSidebarCtrl',
+          //   templateUrl: 'admin/sidebar.tpl.html'
+          // },
+            '': {
+            controller: 'AdminCtrl',
+            templateUrl: 'admin/admin.tpl.html'
           },
           'content@admin': {
             controller: 'NewsCtrl',
@@ -101,9 +117,13 @@
       .state('admin.newsList', {
         url: '/news/list',
          views: {
-          'sidebar@admin': {
-            controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.tpl.html'
+          // 'sidebar@admin': {
+          //   controller: 'AdminSidebarCtrl',
+          //   templateUrl: 'admin/sidebar.tpl.html'
+          // },
+            '': {
+            controller: 'AdminCtrl',
+            templateUrl: 'admin/admin.tpl.html'
           },
           'content@admin': {
             controller: 'NewsListCtrl',
@@ -114,9 +134,13 @@
       .state('admin.addRaid', {
         url: '/raids',
          views: {
-          'sidebar@admin': {
-            controller: 'AdminSidebarCtrl',
-            templateUrl: 'admin/sidebar.tpl.html'
+          // 'sidebar@admin': {
+          //   controller: 'AdminSidebarCtrl',
+          //   templateUrl: 'admin/sidebar.tpl.html'
+          // },
+            '': {
+            controller: 'AdminCtrl',
+            templateUrl: 'admin/admin.tpl.html'
           },
           'content@admin': {
             controller: 'AddRaidCtrl',
