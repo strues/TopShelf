@@ -1,12 +1,14 @@
 'use strict';
 
-var User = require('./user.model');
+var User     = require('./user.model');
 var passport = require('passport');
-var config = require('../../config/environment');
-var jwt = require('jsonwebtoken');
+var config   = require('../../config/environment');
+var jwt      = require('jsonwebtoken');
+var _        = require('lodash');
+var moment   = require('moment');
 
 var validationError = function(res, err) {
-  return res.json(422, err);
+  return res.status(422).json(err);
 };
 
 /**
@@ -20,17 +22,102 @@ exports.index = function(req, res) {
   });
 };
 
+exports.getUsers = function(req, res) {
+    User.find({}).exec(function(err, collection) {
+        res.send(collection);
+    })
+}
+
+exports.getUserById = function(req, res) {
+    User.findOne({_id:req.params.id}).exec(function(err, user) {
+        res.send(user);
+    })
+}
+
+exports.updateCurrentUser = function(req, res) {
+    var userUpdates = req.body;
+
+    if(req.user._id != userUpdates._id && !req.user.hasRole('admin')) {
+        res.status(403);
+        return res.end();
+    }
+
+    req.user.firstName = userUpdates.firstName;
+    req.user.lastName = userUpdates.lastName;
+    req.user.username = userUpdates.username;
+
+    if(userUpdates.password && userUpdates.password.length > 0) {
+        req.user.salt = encryption.createSalt();
+        req.user.hashed_pwd = encryption.hashPwd(req.user.salt, userUpdates.password);
+    }
+
+    req.user.save(function(err) {
+        if(err) {
+            res.status(400);
+            return res.send({reason:err.toString()});
+        }
+        res.send(req.user);
+    })
+}
+
+exports.updateUser = function(req, res) {
+    var userUpdates = req.body;
+
+    if(!req.user.hasRole('admin')) {
+        res.status(403);
+        return res.end();
+    }
+
+    //get the original from db
+    User.findOne({_id:req.params.id}).exec(function(err, userToEdit) {
+        userToEdit.name     = userUpdates.name;
+        userToEdit.email    = userUpdates.email;
+        userToEdit.battletag = userUpdates.battletag;
+
+        userToEdit.save(function(err) {
+            if(err) {
+                res.status(400);
+                return res.send({reason:err.toString()});
+            }
+            res.send(userToEdit);
+        })
+    })
+}
 /**
  * Creates a new user
  */
 exports.create = function (req, res, next) {
-  var newUser = new User(req.body);
+
+  var newUser      = new User(req.body);
   newUser.provider = 'local';
-  newUser.role = 'user';
+  newUser.role     = 'user';
   newUser.save(function(err, user) {
-    if (err) return validationError(res, err);
-    var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: config.tokenDuration.session });
+
+    if (err) {
+      return validationError(res, err);
+
+    }
+    // Create the token with the session length
+  var token = jwt.sign({_id: user._id }, config.secrets.session,
+    { expiresInMinutes: config.tokenDuration.session });
+  // Return the user token and log to console upon success
     res.json({ token: token });
+    console.log('user ' + req.body.name + ' created');
+  });
+};
+
+// Updates an existing post in the DB.
+exports.update = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  User.findById(req.params.id, function (err, user) {
+    if (err) { return handleError(res, err); }
+    if(!user) { return res.send(404); }
+    // var updated = _.merge(post, req.body);
+    var updated = _.extend(user, req.body);
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, user);
+    });
   });
 };
 
@@ -96,6 +183,10 @@ exports.me = function(req, res, next) {
     res.json(user);
   });
 };
+
+function handleError(res, err) {
+  return res.send(500, err);
+}
 
 /**
  * Authentication callback

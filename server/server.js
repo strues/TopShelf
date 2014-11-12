@@ -38,6 +38,16 @@ require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
 
+// handle pretty urls
+app.get('*', function(req, res) {
+  res.redirect('/#' + req.originalUrl);
+});
+
+// error handling
+app.use(function(err, req, res, next) {
+  res.status(500).body({ message: err.message });
+});
+
 
 //var httpsServer = https.createServer(credentials, app);
 // Start server

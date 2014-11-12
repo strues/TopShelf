@@ -4,11 +4,16 @@ var mongoose = require('mongoose');
 
 var crypto = require('crypto');
 var _ = require('lodash');
-var authTypes = ['bnet', 'twitter', 'facebook', 'google'];
+var authTypes = ['bnet'];
 
 var UserSchema = new mongoose.Schema({
   name: String,
-  email: { type: String, lowercase: true },
+  email: {
+    type: String,
+    lowercase: true,
+    trim: true,
+    unique: true
+  },
   role: {
     type: String,
     default: 'user'
@@ -17,10 +22,14 @@ var UserSchema = new mongoose.Schema({
   provider: String,
   salt: String,
   battletag: String,
-  facebook: {},
-  twitter: {},
-  google: {},
-  bnet: {}
+  character: {
+    name: { type: String },
+    cClass: { type: String },
+    cSpec: { type: String },
+    cRealm: { type: String },
+    cRace: { type: String },
+    cGuild: { type: String }
+  }
 });
 
 
@@ -141,6 +150,10 @@ UserSchema.methods = {
       }
     });
   },
+
+hasRole: function(role) {
+        return this.roles.indexOf(role) > -1;
+    },
 
   /**
    * Make salt

@@ -12,7 +12,9 @@
     .module('topshelf.user')
     .controller('SettingsCtrl', SettingsCtrl);
 
-  function SettingsCtrl($scope, Auth, User) {
+  function SettingsCtrl($scope, Auth) {
+
+
    // var vm = this;
      $scope.errors = {};
 
@@ -31,5 +33,6 @@
       }
     };
   }
+
 
 })();

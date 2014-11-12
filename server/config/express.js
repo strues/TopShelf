@@ -18,6 +18,7 @@ var passport       = require('passport');
 var session        = require('express-session');
 var mongoStore     = require('connect-mongo')(session);
 var mongoose       = require('mongoose');
+var User           = mongoose.model('User');
 
 module.exports = function(app) {
   var env = app.get('env');
@@ -53,6 +54,23 @@ module.exports = function(app) {
     saveUninitialized: true,
     store: new mongoStore({ mongoose_connection: mongoose.connection })
   }));
+
+   passport.serializeUser(function (user, done) {
+        if (user) {
+            done(null, user._id);
+        }
+    })
+
+    passport.deserializeUser(function (id, done) {
+        User.findOne({_id: id}).exec(function (err, user) {
+            if (user) {
+                return done(null, user);
+            } else {
+                return done(null, false);
+            }
+        });
+    })
+
 
   app.set('appPath', path.join(config.root, 'client'));
 
