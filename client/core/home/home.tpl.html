@@ -15,12 +15,12 @@
             <h1 class="post-title">{{post.title}}</h1>
           </li>
           <div class="well">
-          <li>{{post.date | date:'MM/dd/yyyy'}}</li>
+          <li><i class="ico-calendar2"></i> {{post.date | date:'MM/dd/yyyy'}}</li>
           <hr>
           <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
           <li ng-hide="!showMode" ng-bind-html="post.content"></li>
           <li>Posted by {{post.author.name}}</li>
-          <li><span class="taggedEM">tagged:</span><span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span></li>
+          <li><span class="taggedEM"><i class="ico-tags2"></i></span><span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span></li>
           <li>
              <span class="more" ng-hide="showMode" ng-click="showMode=!showMode"><button class="btn btn-primary pull-right">Read More</button></span>
              <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode"><button class="btn btn-primary pull-right">Read Less</button></span>

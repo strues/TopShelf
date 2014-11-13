@@ -4,6 +4,11 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.navbar-nav > li > a {
+  padding-top: 35px !important;
+  padding-bottom: none !important;
+}
+
 
 .frontendWrap {
   background: #222222;
