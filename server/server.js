@@ -10,8 +10,8 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var express     = require('express'),
     mongoose    = require('mongoose'),
     config      = require('./config/environment');
-// var https       = require('https');
-// var fs = require('fs');
+var https       = require('https');
+var fs = require('fs');
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
@@ -19,9 +19,9 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
 /*
  * Disable these in production and replace with new.
  */
-// var pkey        = fs.readFileSync('./server/config/keys/key.pem');
-// var pcert       = fs.readFileSync('./server/config/keys/cert.pem');
-// var credentials = {key: pkey, cert: pcert};
+var pkey        = fs.readFileSync('./server/config/keys/key.pem');
+var pcert       = fs.readFileSync('./server/config/keys/cert.pem');
+var credentials = {key: pkey, cert: pcert};
 
 // Populate DB with sample data
 if(config.seedDB) { require('./config/seed'); }
@@ -49,12 +49,12 @@ app.use(function(err, req, res, next) {
 });
 
 
-//var httpsServer = https.createServer(credentials, app);
+var httpsServer = https.createServer(credentials, app);
 // Start server
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode',
     config.port, app.get('env'));
 });
-//httpsServer.listen(8443); // Disable unless testing oauth
+httpsServer.listen(8443); // Disable unless testing oauth
 // Expose app
 exports = module.exports = app;

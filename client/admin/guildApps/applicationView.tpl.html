@@ -1,12 +1,10 @@
+<div class="backendWrap">
 <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 backendWrap">
-
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
  <h1> {{application.charName}}'s Application</h1>
                     </div>
-                    <dl class="dl-horizontal" style="padding-top: 15px;">
+                    <dl class="dl-horizontal" style="padding-top: 15px; padding-left: 10px; padding-right: 15px;">
                         <dt>Character Name:</dt>
                         <dd>{{application.charName}}</dd>
                         <dt>Class:</dt>
@@ -25,12 +23,12 @@
                         <dd>{{application.applicantAge}}</dd>
                         <dt>RealID:</dt>
                         <dd>{{application.applicantRealId}}</dd>
+                         <dt>UI Screenshot:</dt>
+                        <dd>{{application.screenshot}}</dd>
                         <dt>Heroic Exp:</dt>
                         <dd>{{application.heroicXP}}</dd>
                         <dt>Guild History:</dt>
                         <dd>{{application.pastGuilds}}</dd>
-                        <dt>UI Screenshot:</dt>
-                        <dd>{{application.screenshot}}</dd>
                         <dt>Why Top Shelf?</dt>
                         <dd>{{application.whyTS}}</dd>
                       </dl>
@@ -39,10 +37,12 @@
                     {{data.data.name}}
                     {{data.data.items.averageItemLevel}}
                     {{data.data.items.averageItemLevelEquipped}}
+                    {{ data.data.class | characterClass }}
+                    {{ data.data.race | characterRace }}
 
                 </div>
             </div>
-        </div>
+
         <!-- end 12 col -->
     <!-- end row-->
 <!-- End container -->

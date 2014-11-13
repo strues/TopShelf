@@ -21,10 +21,13 @@ angular.module('topshelf.admin', []);
       'ngAnimate',
       'btford.socket-io',
       'ui.router',
+      'ui.grid',
+      'ui.grid.edit',
+      'ngTable',
       'ui.bootstrap',
       'textAngular',
-      'ngTable',
       'formly',
+      'restangular',
       'ngToast',
       'httpi',
       'ngBattleNet',
@@ -40,7 +43,7 @@ angular.module('topshelf.admin', []);
     .run(run);
 
 
-  function config($urlRouterProvider, $locationProvider, $httpProvider, battleNetConfigProvider) {
+  function config($urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider, battleNetConfigProvider) {
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);
@@ -48,6 +51,8 @@ angular.module('topshelf.admin', []);
 
     battleNetConfigProvider.setApiKey( 'h3enxjtkv2fvgcvts4qbx878hthr9ecp' );
     battleNetConfigProvider.setDefaultRegion('us');
+
+
   }
 
   function run($rootScope, $state, $stateParams, $location, Auth) {

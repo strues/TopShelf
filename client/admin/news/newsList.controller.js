@@ -49,7 +49,7 @@
         content:  $scope.newPost.content,
         author: $scope.newPost.author,
         tags: $scope.newPost.tags
-      }
+      };
 
       // data to postsFactory service
       PostFactory.createPost(post)

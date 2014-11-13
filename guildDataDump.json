@@ -1,13 +1,5 @@
-{
-    "lastModified": 1415810968000,
-    "name": "Top Shelf",
-    "realm": "Sargeras",
-    "battlegroup": "Shadowburn",
-    "level": 25,
-    "side": 0,
-    "achievementPoints": 1725,
-    "members": [{
-        "character": {
+[{
+      "character": {
             "name": "Araele",
             "realm": "Sargeras",
             "battlegroup": "Shadowburn",
@@ -7798,12 +7790,5 @@
             "guildRealm": "Sargeras"
         },
         "rank": 9
-    }],
-    "emblem": {
-        "icon": 10,
-        "iconColor": "ffdfa55a",
-        "border": 4,
-        "borderColor": "ff0f1415",
-        "backgroundColor": "ff003582"
     }
-}
+  ]

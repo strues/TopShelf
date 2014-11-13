@@ -1,7 +1,31 @@
-.ng-table th.sortable.sort-desc,
-.ng-table th.sortable.sort-asc {
-  color: $brand-primary;
-  background-color: $dark;
+.datagrid-row > * {
+   -webkit-transition: opacity 0.5s ease-out;
+   -moz-transition: opacity 0.5s ease-out;
+   -ms-transition: opacity 0.5s ease-out;
+   -o-transition: opacity 0.5s ease-out;
+   transition: opacity 0.5s ease-out;
+}
+
+.uncompiled > * {
+   visibility: hidden;
+   opacity: 0;
+}
+
+.compiled > * {
+   opacity: 1;
+}
+
+.datagrid-chunk {
+   opacity: 0;
+   -webkit-transition: opacity 0.5s ease-out;
+   -moz-transition: opacity 0.5s ease-out;
+   -ms-transition: opacity 0.5s ease-out;
+   -o-transition: opacity 0.5s ease-out;
+   transition: opacity 0.5s ease-out;
+}
+
+.datagrid-chunk-ready {
+   opacity: 1;
 }
 
 .well {

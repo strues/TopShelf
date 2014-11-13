@@ -24,7 +24,7 @@ angular
     };
 
     exports.updatePost = function(updatedPost){
-      return $http.put(urlBase + updatedPost._id, updatedPost);
+      return $http.put('/api/posts/' + updatedPost._id, updatedPost);
     };
 
     exports.removePost = function(postId){

@@ -12,7 +12,8 @@
     .module('topshelf.admin')
     .controller('ApplicationListCtrl', ApplicationListCtrl);
 
-  function ApplicationListCtrl($scope, $filter, ngTableParams, $http, $location, socket) {
+
+  function ApplicationListCtrl ($scope, $filter, ngTableParams, $http, $location, socket) {
    $http.get('/api/applications').success(function(applications) {
       $scope.applications = applications;
       socket.syncUpdates('applications', $scope.applications, function(event, application, applications) {
@@ -24,37 +25,21 @@
           b = new Date(b.date);
           return a>b ? -1 : a<b ? 1 : 0;
         });
-    })
-      var data = $scope.applications;
+    });
+$scope.applications = applications;
 
-    $scope.tableParams = new ngTableParams({
-        page: 1,            // show first page
-        count: 10,          // count per page
-        sorting: {
-            charName: 'asc'     // initial sorting
-        }
-    }, {
-        total: data.length, // length of data
-        getData: function($defer, params) {
-            // use build-in angular filter
-            var orderedData = params.sorting() ?
-                                $filter('orderBy')(data, params.orderBy()) :
-                                data;
 
-            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-        }
-    })
-  })
+  });
     $scope.selectApplication = function(application) {
-        $location.path('/admin/applications/edit/' + application._id);
-    }
+        $location.path('/admin/applications/view/' + application._id);
+    };
     $scope.deleteApplication = function(application) {
         $http.delete('/api/applications/' + application._id).success(function() {
             $http.get('/api/applications').success(function(applications) {
               $scope.applications = applications;
             });
         });
-    }
+    };
 
 
         $scope.getApplicationById = function(id) {
@@ -67,7 +52,7 @@
 
 
     $scope.addNew = function() {
-        $location.path('/admin/applications/edit')
+        $location.path('/admin/applications/view')
     }
   }
 

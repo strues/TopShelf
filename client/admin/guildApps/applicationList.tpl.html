@@ -1,38 +1,35 @@
 <div class="backendWrap">
 <div class="row" ng-controller="ApplicationListCtrl">
-<div class="col-sm-8 col-sm-offset-2">
+
         <h1>Guild Applications</h1>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default" ng-click="addNew()">Add</button>
-            </div>
- <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
-    <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
-            <table ng-table="tableParams" class="table">
-                <tbody>
-                    <tr ng-repeat="application in $data" ng-class-even="table-striped" style="cursor:pointer">
-                        <td data-title="'Name'" sortable="'charName'">{{application.charName}}</td>
-                        <td>{{application.author.name}}</td>
-                        <td>{{application.charClass}}</td>
+     <table class="table table-striped table-hover" width="100%">
+    <thead>
+    <th><h4>Name</h4></th>
+    <th><h4>Class</h4></th>
+    <th><h4>Spec</h4></th>
+    <th><h4>Armory</h4></th>
+    </thead>
+        <tr ng-repeat="application in applications">
+            <td data-field="name">{{application.charName}}</td>
+            <td data-field="class">{{application.charClass}}</td>
+            <td data-field="charSpec">{{application.charSpec}}</td>
+            <td data-field="charArmory">{{application.charArmory}}</td>
+            <td>
+              <div class="btn-group">
+              <a ui-sref=".applicationEditID"
+                 ng-click="selectApplication(application)"
+                class="btn btn-default btn-primary btn-sm">
+              <span class="glyphicon glyphicon-eye-open"></span></a>
 
-                        <td>{{application.charSpec}}</td>
+            </div></td>
+            <td><div class="btn-group">
+                <a href="" ng-click="deleteApplication(application)" class="btn btn-default btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-trash"></span></a>
 
-                        <td>{{application.charArmory}}</td>
-                        <td>
-                            <div class="btn-group">
-                                <a ui-sref=".applicationEditID"  ng-click="selectApplication(application)"  class="btn btn-sm btn-primary">
-                                    <span class="glyphicon glyphicon-eye-open"></span>View</a>
+            </div></td>
+        </tr>
 
-                            </div>
-                        </td>
-                        <td>
-                            <div class="btn-group">
-                                <a href="" ng-click="deleteApplication(application)" class="btn btn-sm btn-danger">
-                                    <span class="glyphicon glyphicon-trash"></span>Delete</a>
+</table>
 
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </div>
+</div>
 </div>

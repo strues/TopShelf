@@ -10,9 +10,9 @@
    */
   angular
     .module('topshelf.admin')
-    .controller('ApplicationEditCtrl', ApplicationEditCtrl);
+    .controller('ApplicationViewCtrl', ApplicationViewCtrl);
 
-  function ApplicationEditCtrl($scope, $http, $stateParams, $location, wowApi) {
+  function ApplicationViewCtrl($scope, $http, $stateParams, $location, wowApi) {
   //  var vm = this;
     //vm.ctrlName = 'ApplicationEditCtrl';
 
@@ -22,6 +22,7 @@
         $http.get('/api/applications/' + applicationId)
         .success(function(application) {
           $scope.application = application;
+
         wowApi.character.items({
           name: application.charName,
           realm: application.charServer

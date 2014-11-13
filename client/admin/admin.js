@@ -67,21 +67,21 @@
           }
         }
       })
-      .state('admin.applicationEdit', {
-         url: '/applications/edit',
+      .state('admin.applicationView', {
+         url: '/applications/view',
            views: {
           // 'sidebar@admin': {
           //   controller: 'AdminSidebarCtrl',
           //   templateUrl: 'admin/sidebar.tpl.html'
           // },
           'content@admin': {
-            controller: 'ApplicationEditCtrl',
-            templateUrl: 'admin/guildApps/applicationEdit.tpl.html',
+            controller: 'ApplicationViewCtrl',
+            templateUrl: 'admin/guildApps/applicationView.tpl.html',
           }
         }
        })
-      .state('admin.applicationEditID', {
-        url: '/applications/edit/:id',
+      .state('admin.applicationViewID', {
+        url: '/applications/view/:id',
          views: {
           // 'sidebar@admin': {
           //   controller: 'AdminSidebarCtrl',
@@ -92,8 +92,8 @@
             templateUrl: 'admin/admin.tpl.html'
           },
           'content@admin': {
-            controller: 'ApplicationEditCtrl',
-            templateUrl: 'admin/guildApps/applicationEdit.tpl.html',
+            controller: 'ApplicationViewCtrl',
+            templateUrl: 'admin/guildApps/applicationView.tpl.html',
           }
         }
       })

@@ -1,0 +1,52 @@
+<div class="modal-body">
+  <div class="container formContainer">
+    <form novalidate ng-submit="updatePost(post._id)">
+
+      <div class="input-group">
+        <!-- post.date datepicker update-->
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="input-group" ng-controller="DatepickerCtrl">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="post.date" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <!-- post.title update -->
+        <div class="row">
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="title" ng-minLength=3 ng-maxLength=75 ng-model="post.title" ng-required="true">
+          </div>
+        </div>
+
+        <!-- post.content update -->
+        <div class="row">
+          <div class="col-sm-12">
+          <textarea ui-tinymce="tinymceOptions" ng-model="post.content"></textarea>
+          </div>
+        </div>
+
+
+
+        <!--  post.tags update -->
+        <div class="row">
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="tags" ng-model="post.tags" ng-list=", " ng-required="true">
+          </div>
+        </div>
+
+        <!-- Update -->
+        <div class="row">
+          <div class="col-sm-1">
+            <input type="submit" class="btn btn-primary"
+            ng-disabled="!(!!post.date && !!post.title && !!post.content && !!post.tags)" value="Update Post">
+          </div>
+        </div>
+      </div>  <!-- END OF input-group -->
+
+    </form>
+  </div>
+</div>

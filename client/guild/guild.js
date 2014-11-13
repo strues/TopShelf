@@ -51,7 +51,7 @@
         url: '/guild/streams/watch',
         templateUrl: 'guild/streams/watch.tpl.html',
         controller: 'StreamCtrl as vm'
-      })
+      });
   }
 
 })();

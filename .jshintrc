@@ -19,7 +19,7 @@
   "strict": true,
   "maxparams": 5,
   "maxdepth": 3,
-  "maxlen": 80,
+  "maxlen": 120,
 
   "globalstrict": true,
   "laxcomma": true,
