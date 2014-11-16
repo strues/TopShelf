@@ -21,13 +21,10 @@ angular.module('topshelf.admin', []);
       'ngAnimate',
       'btford.socket-io',
       'ui.router',
-      'ui.grid',
-      'ui.grid.edit',
       'ngTable',
       'ui.bootstrap',
       'textAngular',
       'formly',
-      'restangular',
       'ngToast',
       'httpi',
       'ngBattleNet',
@@ -37,13 +34,7 @@ angular.module('topshelf.admin', []);
       'topshelf.user'
     ]);
 
-  angular
-    .module('topshelf')
-    .config(config)
-    .run(run);
-
-
-  function config($urlRouterProvider, $locationProvider, RestangularProvider, $httpProvider, battleNetConfigProvider) {
+  function config($urlRouterProvider, $locationProvider, $httpProvider, battleNetConfigProvider) {
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);
@@ -51,15 +42,9 @@ angular.module('topshelf.admin', []);
 
     battleNetConfigProvider.setApiKey( 'h3enxjtkv2fvgcvts4qbx878hthr9ecp' );
     battleNetConfigProvider.setDefaultRegion('us');
-
-
   }
 
   function run($rootScope, $state, $stateParams, $location, Auth) {
-
-
-
-
      // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
@@ -70,4 +55,8 @@ angular.module('topshelf.admin', []);
     });
   }
 
+  angular
+    .module('topshelf')
+    .config(config)
+    .run(run);
 })();

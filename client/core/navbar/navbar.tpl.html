@@ -16,7 +16,7 @@
         <li ng-hide="Auth.isLoggedIn()" ui-sref-active="active"><a ui-sref="user.signup"><i class="ico-user-plus"></i> Sign up</a></li>
         <li ng-hide="Auth.isLoggedIn()" ui-sref-active="active"><a ui-sref="user.login"><i class="ico-key"></i> Login</a></li>
         <li ng-show="Auth.isLoggedIn()">
-          <p class="navbar-text">{{ Auth.getCurrentUser().name }}</p>
+          <p style="padding-top:10px;"class="navbar-text">{{ Auth.getCurrentUser().name }}</p>
 
         </li>
         <li ng-show="Auth.isLoggedIn()" ui-sref-active="active"><a ui-sref="user.settings"><i class="ico-tools"></i></a></li>

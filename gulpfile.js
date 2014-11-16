@@ -1,13 +1,13 @@
 'use strict';
 
-var gulp = require('gulp');
-var del = require('del');
-var chalk = require('chalk');
-var bowerFiles = require('main-bower-files');
+var gulp        = require('gulp');
+var del         = require('del');
+var chalk       = require('chalk');
+var bowerFiles  = require('main-bower-files');
 var runSequence = require('run-sequence');
-var sq = require('streamqueue');
-var path = require('path');
-var $ = require('gulp-load-plugins')();
+var sq          = require('streamqueue');
+var path        = require('path');
+var $           = require('gulp-load-plugins')();
 
 process.env.NODE_ENV = $.util.env.env || 'development';
 
