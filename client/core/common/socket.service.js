@@ -1,11 +1,8 @@
 (function () {
   'use strict';
 
-  angular
-    .module('topshelf.core')
-    .factory('socket', socket);
 
-     function socket(socketFactory, Auth) {
+  function socket(socketFactory) {
 
     // socket.io now auto-configures its connection when we ommit a connection url
     var ioSocket = io('', {
@@ -14,7 +11,7 @@
       path: '/socket.io-client'
     });
 
-    var socket = socketFactory({
+  var socket = socketFactory({
       ioSocket: ioSocket
     });
 
@@ -74,6 +71,9 @@
         socket.removeAllListeners(modelName + ':remove');
       }
     };
-    };
+    }
 
+  angular
+    .module('topshelf.core')
+    .factory('socket', socket);
 })();

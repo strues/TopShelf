@@ -5,9 +5,6 @@
 /**
  * Removes server error when user updates input
  */
-angular
-  .module('topshelf.core')
-  .directive('mongooseError', mongooseError);
 
   function mongooseError () {
     return {
@@ -19,6 +16,11 @@ angular
         });
       }
     };
-  };
+  }
+
+
+angular
+  .module('topshelf.core')
+  .directive('mongooseError', mongooseError);
 
 })();

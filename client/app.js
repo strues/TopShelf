@@ -21,7 +21,6 @@ angular.module('topshelf.admin', []);
       'ngAnimate',
       'btford.socket-io',
       'ui.router',
-      'ngTable',
       'ui.bootstrap',
       'textAngular',
       'formly',

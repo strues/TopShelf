@@ -17,9 +17,6 @@
      </example>
    *
    */
-  angular
-    .module('topshelf.core')
-    .directive('navbar', navbar);
 
   function navbar() {
      return {
@@ -30,4 +27,7 @@
     };
   }
 
+ angular
+    .module('topshelf.core')
+    .directive('navbar', navbar);
 })();

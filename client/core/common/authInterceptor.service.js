@@ -8,9 +8,7 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.core')
-    .factory('authInterceptor', authInterceptor);
+
 
      function authInterceptor($rootScope, $q, $localStorage, $location) {
 
@@ -37,5 +35,10 @@
         }
       }
     };
-  };
+  }
+
+angular
+  .module('topshelf.core')
+  .factory('authInterceptor', authInterceptor);
+
 })();

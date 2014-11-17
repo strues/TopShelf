@@ -8,11 +8,8 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.core')
-    .controller('HomeCtrl', HomeCtrl);
+function HomeCtrl($http, PostFactory, socket) {
 
-  function HomeCtrl($scope, $http, PostFactory, socket) {
     var vm = this;
     vm.ctrlName = 'HomeCtrl';
 
@@ -31,7 +28,7 @@
           return view * postsQty;
         };
         vm.getAdditionalPosts = function() {
-          return view < ($scope.postsLength / postsQty);
+          return view < (vm.postsLength / postsQty);
         };
         vm.showMorePosts = function() {
           view = view + 1;
@@ -44,4 +41,8 @@
     // ng-show/ng-hide
     vm.showMode = false;
   }
+
+    angular
+    .module('topshelf.core')
+    .controller('HomeCtrl', HomeCtrl);
 })();
