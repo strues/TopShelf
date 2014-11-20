@@ -22,6 +22,8 @@ angular.module('topshelf.admin', []);
       'btford.socket-io',
       'ui.router',
       'ui.bootstrap',
+      'ui.grid',
+      'ui.grid.edit',
       'textAngular',
       'formly',
       'ngToast',

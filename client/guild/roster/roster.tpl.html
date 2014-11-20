@@ -1,0 +1,11 @@
+<div class="container frontendWrap">
+<h1>Roster</h1>
+<div ng-controller="RosterCtrl">
+      <strong>Data Length:</strong> {{ gridOptions.data.length | number }}
+      <br>
+      <strong>Last Cell Edited:</strong> {{msg.lastCellEdited}}
+      <br>
+      <div ui-grid="gridOptions" ui-grid-edit class="grid"></div>
+    </div>
+
+</div>

@@ -15,10 +15,10 @@
 
   function config($stateProvider) {
     $stateProvider
-      .state('guildinfo', {
-        url: '/guild/info',
-        templateUrl: 'guild/info/info.tpl.html',
-        controller: 'InfoCtrl'
+      .state('roster', {
+        url: '/guild/roster',
+        templateUrl: 'guild/roster/roster.tpl.html',
+        controller: 'RosterCtrl'
       })
       .state('guildrecruitment', {
         url: '/guild/recruitment',
