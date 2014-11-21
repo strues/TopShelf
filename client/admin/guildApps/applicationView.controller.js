@@ -8,9 +8,7 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.admin')
-    .controller('ApplicationViewCtrl', ApplicationViewCtrl);
+
 
   function ApplicationViewCtrl($scope, $http, $stateParams, $location, wowApi) {
   //  var vm = this;
@@ -59,5 +57,7 @@
 
 
 }
-
+  angular
+    .module('topshelf.admin')
+    .controller('ApplicationViewCtrl', ApplicationViewCtrl);
 })();

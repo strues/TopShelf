@@ -21,4 +21,4 @@ var RosterSchema = new Schema({
 
 
 RosterSchema.plugin(toUiGrid, {});
-module.exports = mongoose.model('Roster', RosterSchema, 'Roster');
+module.exports = mongoose.model('Roster', RosterSchema, 'roster');

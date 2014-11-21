@@ -10,18 +10,18 @@
    */
 
 
-  function RosterCtrl($scope, $http, $interval, $q) {
+  function RosterCtrl($scope, $http) {
 
     $scope.gridOptions = {};
     $scope.gridOptions.columnDefs = [
     { name: '_id', enableCellEdit: false, width: '10%' },
     { name: 'name', displayName: 'Name', width: '20%' },
-    { name: 'Class', displayName: 'Class' , width: '10%' },
-    { name: 'Race', displayName: 'Race' , width: '10%' },
-    { name: 'Spec', displayName: 'Spec' , width: '10%' },
-    { name: 'Thumbnail', displayName: 'Thumbnail' , width: '10%' },
+    { name: 'class', displayName: 'Class' , width: '10%' },
+    { name: 'race', displayName: 'Race' , width: '10%' },
+    { name: 'spec', displayName: 'Spec' , width: '10%' },
+    { name: 'thumbnail', displayName: 'Thumbnail' , width: '10%' },
     { name: 'ilvl', displayName: 'iLvl' , width: '10%' },
-    { name: 'Rank', displayName: 'Rank', width: '10%' }
+    { name: 'rank', displayName: 'Rank', width: '10%' }
   ];
 
  $scope.msg = {};
@@ -47,6 +47,26 @@ $scope.saveRow = function( rowEntity ) {
     .success(function(data) {
       $scope.gridOptions.data = data;
     });
+
+ $scope.addMember = function() {
+    $http.post('/api/roster')
+    .success(function() {
+      console.log('added');
+      }
+    );
+
+    var n = $scope.gridOptions.data.length + 1;
+    $scope.gridOptions.data.push({
+                'id': null,
+                'name': 'New ' + n,
+                'class': 'Monkadin ' + n,
+                'spec': 'Resto'+ n,
+                'race': 'rekt'+ n,
+                'ilvl':'0'+ n,
+                'thumbnail' : 'temp'+ n,
+                'rank': 'bad'+ n
+              });
+  };
 
 }
   angular

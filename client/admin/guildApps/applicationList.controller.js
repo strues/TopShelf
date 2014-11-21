@@ -8,9 +8,7 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.admin')
-    .controller('ApplicationListCtrl', ApplicationListCtrl);
+
 
 
   function ApplicationListCtrl ($scope, $filter, ngTableParams, $http, $location, socket) {
@@ -47,13 +45,15 @@ $scope.applications = applications;
                 return ( application._id === id );
             });
             return results[0];
-        }
+        };
 
 
 
     $scope.addNew = function() {
         $location.path('/admin/applications/view')
-    }
+    };
   }
-
+  angular
+    .module('topshelf.admin')
+    .controller('ApplicationListCtrl', ApplicationListCtrl);
 })();
