@@ -24,6 +24,7 @@ angular.module('topshelf.admin', []);
       'ui.bootstrap',
       'ui.grid',
       'ui.grid.edit',
+      'ui.grid.selection',
       'textAngular',
       'formly',
       'ngToast',

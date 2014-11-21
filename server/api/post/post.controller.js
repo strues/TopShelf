@@ -5,7 +5,7 @@ var Post = require('./post.model');
 
 // Get list of posts
 exports.index = function(req, res, next) {
-Post.find().sort('-date').populate('author', 'name').exec(function(err, posts) {
+Post.find().sort('date').populate('author', 'name').exec(function(err, posts) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(posts);
   });

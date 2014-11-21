@@ -18,8 +18,8 @@
                    required>
             <span class="ion-android-contact form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.charName.$touched"
-                ng-messages="applicationForm.charName.$error" class="help-block text-danger">
-              <div ng-message="required">Your character's name is required.</div>
+                ng-messages="applicationForm.charName.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.charName.$error.required">Your character's name is required.</div>
             </div>
           </div>
 <!-- ./charName -->
@@ -34,8 +34,8 @@
                    required>
             <span class="ion-android-friends form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.charClass.$touched"
-                ng-messages="applicationForm.charClass.$error" class="help-block text-danger">
-              <div ng-message="required">Your class type is required.</div>
+                ng-messages="applicationForm.charClass.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.charClass.$error.required">Your class type is required.</div>
             </div>
           </div>
 <!-- ./charClass -->
@@ -50,8 +50,8 @@
                    required>
             <span class="ion-ios7-glasses-outline form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.charSpec.$touched"
-                ng-messages="applicationForm.charSpec.$error" class="help-block text-danger">
-              <div ng-message="required">Your class spec required.</div>
+                ng-messages="applicationForm.charSpec.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.charSpec.$error.required">Your class spec required.</div>
             </div>
           </div>
   </div>
@@ -68,8 +68,8 @@
                    required>
             <span class="ion-planet form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.charServer.$touched"
-                ng-messages="applicationForm.charServer.$error" class="help-block text-danger">
-              <div ng-message="required">Your server is required.</div>
+                ng-messages="applicationForm.charServer.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.charServer.$error.required">Your server is required.</div>
             </div>
           </div>
 
@@ -78,8 +78,8 @@
             <input class="form-control input-lg" type="url" id="armory" name="armory" ng-model="form.data.charArmory" placeholder="http://us.battle.net/" required autofocus>
             <span class="ion-android-user-menu form-control-feedback"></span>
               <div ng-if="applicationForm.$submitted || applicationForm.charArmory.$touched"
-                ng-messages="applicationForm.charArmory.$error" class="help-block text-danger">
-              <div ng-message="required">Your armory is required.</div>
+                ng-messages="applicationForm.charArmory.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.charArmory.$error.required">An armory is required.</div>
             </div>
           </div>
 <!-- ./charArmory -->
@@ -96,8 +96,8 @@
                    required>
             <span class="ion-person form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.applicantName.$touched"
-                ng-messages="applicationForm.applicantName.$error" class="help-block text-danger">
-              <div ng-message="required">Your name is required.</div>
+                ng-messages="applicationForm.applicantName.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.applicantName.$error.required">Please tell us your name.</div>
             </div>
           </div>
 <!-- ./applicantName -->
@@ -113,8 +113,8 @@
                    required>
             <span class="ion-calendar form-control-feedback"></span>
          <div ng-if="applicationForm.$submitted || applicationForm.applicantAge.$touched"
-                ng-messages="applicationForm.applicantAge.$error" class="help-block text-danger">
-              <div ng-message="required">Your age is required.</div>
+                ng-messages="applicationForm.applicantAge.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.applicantAge.$error.required">Your age is required.</div>
             </div>
           </div>
 <!-- ./applicantAge -->
@@ -130,18 +130,18 @@
                    required>
             <span class="ion-person form-control-feedback"></span>
             <div ng-if="applicationForm.$submitted || applicationForm.realID.$touched"
-                ng-messages="applicationForm.realID.$error" class="help-block text-danger">
-              <div ng-message="required">Your realID is required.</div>
+                ng-messages="applicationForm.realID.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.realID.$error.required">Your realID is required.</div>
             </div>
           </div><!-- ./realID-->
 </div>
           <div class="form-group has-feedback" ng-class="{ 'has-error' : applicationForm.charLogs.$invalid && applicationForm.charLogs.$dirty }">
           <label>Warcraft Logs</label>
-            <input class="form-control input-lg" type="url" id="armory" name="armory" ng-model="form.data.charLogs" placeholder="These are extremely important to your application" required autofocus>
+            <input class="form-control input-lg" type="url" id="armory" name="armory" ng-model="form.data.charLogs" placeholder="http://www.warcraftlogs.com" required>
             <span class="ion-link form-control-feedback"></span>
               <div ng-if="applicationForm.$submitted || applicationForm.charLogs.$touched"
-                ng-messages="applicationForm.charLogs.$error" class="help-block text-danger">
-              <div ng-message="required">Logs are required.</div>
+                ng-messages="applicationForm.charLogs.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.charLogs.$error.required">Logs are required for your application.</div>
             </div>
           </div>
 
@@ -157,8 +157,8 @@
           </textarea>
            <span class="ion-trophy form-control-feedback"></span>
             <div ng-if="applicationForm.$submitted || applicationForm.heroicXP.$touched"
-                ng-messages="applicationForm.heroicXP.$error" class="help-block text-danger">
-              <div ng-message="required">Your heroic experience is required.</div>
+                ng-messages="applicationForm.heroicXP.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.heroicXP.$error.required">Your heroic raiding experience is required.</div>
             </div><!--ngMessage-->
           </div><!-- ./heroicXP -->
 
@@ -174,8 +174,8 @@
           </textarea>
            <span class="ion-ios7-albums-outline form-control-feedback"></span>
             <div ng-if="applicationForm.$submitted || applicationForm.pastGuilds.$touched"
-                ng-messages="applicationForm.pastGuilds.$error" class="help-block text-danger">
-              <div ng-message="required">Your guild history is required.</div>
+                ng-messages="applicationForm.pastGuilds.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.pastGuilds.$error.required">Your guild history is required.</div>
             </div><!--ngMessage-->
           </div><!-- ./pastGuilds -->
 
@@ -190,8 +190,8 @@
                    required>
             <span class="ion-image form-control-feedback"></span>
            <div ng-if="applicationForm.$submitted || applicationForm.screenshot.$touched"
-                ng-messages="applicationForm.screenshot.$error" class="help-block text-danger">
-              <div ng-message="required">A UI screenshot is required.</div>
+                ng-messages="applicationForm.screenshot.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.screenshot.$error.required">A UI screenshot is required.</div>
             </div><!-- ./ngMessage -->
           </div><!-- ./screen -->
 
@@ -208,14 +208,14 @@
           </textarea>
            <span class="ion-help form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.whyTS.$touched"
-              ng-messages="applicationForm.whyTS.$error" class="help-block text-danger">
-              <div ng-message="required">Your response is required.</div>
+              ng-messages="applicationForm.whyTS.$error" class="text-danger">
+              <div ng-message="required" ng-show="applicationForm.whyTS.$error.required">Your response is required.</div>
             </div><!-- ngMessage-->
           </div><!-- ./why Top Shelf -->
 
 
 
-          <p class="text-center text-muted"><small>Your application will be reviewed within 1-2 days</small></p>
+          <p class="text-center text-muted"><small>Your application will be reviewed within 1-2 days. All fields are required. If you dont see a notification telling you we received your application, it did not submit. You can preview your application as you type it.</small></p>
 
           <button type="submit" ng-disabled="applicationForm.$invalid" class="btn btn-lg btn-block btn-primary">Apply</button>
           <br/>

@@ -1,10 +1,6 @@
 (function () {
   'use strict';
 
-angular
-  .module('topshelf.core')
-  .factory('PostFactory', PostFactory);
-
   function PostFactory ($http) {
      console.log('post.service.js');
 
@@ -33,4 +29,8 @@ angular
     return exports;
 
   }
+
+  angular
+  .module('topshelf.core')
+  .factory('PostFactory', PostFactory);
 })();
