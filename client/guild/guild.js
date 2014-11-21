@@ -8,18 +8,8 @@
    * @description
    *
    */
-
-  angular
-    .module('topshelf.guild')
-    .config(config);
-
   function config($stateProvider) {
     $stateProvider
-      .state('roster', {
-        url: '/guild/roster',
-        templateUrl: 'guild/roster/roster.tpl.html',
-        controller: 'RosterCtrl'
-      })
       .state('guildrecruitment', {
         url: '/guild/recruitment',
         templateUrl: 'guild/recruitment/recruitment.tpl.html',
@@ -53,5 +43,7 @@
         controller: 'StreamCtrl as vm'
       });
   }
-
+  angular
+    .module('topshelf.guild')
+    .config(config);
 })();

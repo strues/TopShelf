@@ -17,11 +17,11 @@
 
     <accordion-group>
         <accordion-heading>
-             <a ui-sref="admin.newsList"><i class="fa fa-newspaper-o"></i> News</a><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+             <a ui-sref="admin.news"><i class="fa fa-newspaper-o"></i> News</a><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
         </accordion-heading>
             <ul class="list-unstyled adminSidebar">
-                <li><a ui-sref="admin.news"><i class="fa fa-caret-right"></i> New Post</a></li>
-                <li><a ui-sref="admin.newsList"><i class="fa fa-caret-right"></i> Show Posts</a></li>
+                <li><a ui-sref="admin.newsPost"><i class="fa fa-caret-right"></i> New Post</a></li>
+                <li><a ui-sref="admin.news"><i class="fa fa-caret-right"></i> Show Posts</a></li>
             </ul>
     </accordion-group>
     <accordion-group>
@@ -31,6 +31,14 @@
             <ul class="list-unstyled adminSidebar">
                 <li><a ui-sref="admin.applications"><i class="fa fa-caret-right"></i> View Applications</a></li>
                 <li><a ui-sref="admin"><i class="fa fa-caret-right"></i> Placeholder</a></li>
+            </ul>
+    </accordion-group>
+    <accordion-group>
+        <accordion-heading>
+            <a ui-sref="admin.roster"><i class="fa fa-file-excel-o"></i> Roster</a><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+        </accordion-heading>
+            <ul class="list-unstyled adminSidebar">
+                <li><a ui-sref="admin.roster"><i class="fa fa-caret-right"></i> View Roster</a></li>
             </ul>
     </accordion-group>
     <accordion-group>

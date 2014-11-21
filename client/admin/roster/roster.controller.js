@@ -14,6 +14,7 @@
 
     $scope.gridOptions = {
       enableGridMenu: true,
+      enableFiltering: true,
       enableRowSelection: true,
       enableSelectAll: true,
       selectionRowHeaderWidth: 35
@@ -23,7 +24,6 @@
     { name: 'name', displayName: 'Name', width: '10%' },
     { name: 'classType', displayName: 'Class' , width: '10%' },
     { name: 'classSpec', displayName: 'Spec' , width: '10%' },
-    { name: 'thumbnail', displayName: 'Thumbnail' , width: '10%' },
     { name: 'ilvl', displayName: 'iLvl' , width: '5%' },
     { name: 'rank', displayName: 'Rank', width: '10%' }
 

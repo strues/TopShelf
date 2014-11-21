@@ -42,9 +42,7 @@ exports.updateCurrentUser = function(req, res) {
         return res.end();
     }
 
-    req.user.firstName = userUpdates.firstName;
-    req.user.lastName = userUpdates.lastName;
-    req.user.username = userUpdates.username;
+    req.user.name = userUpdates.name;
 
     if(userUpdates.password && userUpdates.password.length > 0) {
         req.user.salt = encryption.createSalt();
@@ -129,7 +127,7 @@ exports.show = function (req, res, next) {
 
   User.findById(userId, function (err, user) {
     if (err) return next(err);
-    if (!user) return res.send(401);
+ //   if (!user) return res.send(401);
     res.json(user.profile);
   });
 };

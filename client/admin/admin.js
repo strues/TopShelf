@@ -9,9 +9,6 @@
    *
    */
 
-  angular
-    .module('topshelf.admin')
-    .config(config);
 
   function config($stateProvider) {
     $stateProvider
@@ -23,40 +20,15 @@
             controller: 'AdminCtrl',
             templateUrl: 'admin/admin.tpl.html'
           },
-          // 'sidebar@admin': {
-          //   controller: 'AdminSidebarCtrl',
-          //   templateUrl: 'admin/sidebar.tpl.html'
-          // },
           'content@admin': {
             controller: 'AdminDashboardCtrl',
             templateUrl: 'admin/dashboard.tpl.html'
           }
         }
       })
-      .state('admin.recruitmentStatus', {
-        url: '/recruitment',
-        views: {
-          // 'sidebar@admin': {
-          //   controller: 'AdminSidebarCtrl',
-          //   templateUrl: 'admin/sidebar.tpl.html'
-          // },
-            '': {
-            controller: 'AdminCtrl',
-            templateUrl: 'admin/admin.tpl.html'
-          },
-          'content@admin': {
-            controller: 'RecruitmentCtrl',
-            templateUrl: 'admin/recruitment/recruitment.tpl.html'
-          }
-        }
-      })
       .state('admin.applications', {
         url: '/applications',
         views: {
-          // 'sidebar@admin': {
-          //   controller: 'AdminSidebarCtrl',
-          //   templateUrl: 'admin/sidebar.tpl.html'
-          // },
             '': {
             controller: 'AdminCtrl',
             templateUrl: 'admin/admin.tpl.html'
@@ -70,78 +42,60 @@
       .state('admin.applicationView', {
          url: '/applications/view',
            views: {
-          // 'sidebar@admin': {
-          //   controller: 'AdminSidebarCtrl',
-          //   templateUrl: 'admin/sidebar.tpl.html'
-          // },
-          'content@admin': {
-            controller: 'ApplicationViewCtrl',
-            templateUrl: 'admin/guildApps/applicationView.tpl.html',
+              'content@admin': {
+                controller: 'ApplicationViewCtrl',
+                templateUrl: 'admin/guildApps/applicationView.tpl.html',
+              }
           }
-        }
        })
       .state('admin.applicationViewID', {
         url: '/applications/view/:id',
          views: {
-          // 'sidebar@admin': {
-          //   controller: 'AdminSidebarCtrl',
-          //   templateUrl: 'admin/sidebar.tpl.html'
-          // },
-            '': {
-            controller: 'AdminCtrl',
-            templateUrl: 'admin/admin.tpl.html'
-          },
           'content@admin': {
             controller: 'ApplicationViewCtrl',
             templateUrl: 'admin/guildApps/applicationView.tpl.html',
           }
         }
       })
-      .state('admin.news', {
-        url: '/news',
+      .state('admin.newsPost', {
+        url: '/news/new-post',
          views: {
-          // 'sidebar@admin': {
-          //   controller: 'AdminSidebarCtrl',
-          //   templateUrl: 'admin/sidebar.tpl.html'
-          // },
-            '': {
-            controller: 'AdminCtrl',
-            templateUrl: 'admin/admin.tpl.html'
-          },
           'content@admin': {
             controller: 'NewsCtrl',
-            templateUrl: 'admin/news/news.tpl.html',
+            templateUrl: 'admin/news/newsPost.tpl.html',
           }
         }
       })
-      .state('admin.newsList', {
+      .state('admin.news', {
         url: '/news/list',
          views: {
-          // 'sidebar@admin': {
-          //   controller: 'AdminSidebarCtrl',
-          //   templateUrl: 'admin/sidebar.tpl.html'
-          // },
-            '': {
-            controller: 'AdminCtrl',
-            templateUrl: 'admin/admin.tpl.html'
-          },
           'content@admin': {
             controller: 'NewsListCtrl',
             templateUrl: 'admin/news/newsList.tpl.html',
           }
         }
       })
+      .state('admin.recruitmentStatus', {
+        url: '/recruitment',
+        views: {
+          'content@admin': {
+            controller: 'RecruitmentCtrl',
+            templateUrl: 'admin/recruitment/recruitment.tpl.html'
+          }
+        }
+      })
+      .state('admin.roster', {
+        url: '/roster',
+        views: {
+          'content@admin': {
+            controller: 'RosterCtrl',
+            templateUrl: 'admin/roster/roster.tpl.html'
+          }
+        }
+      })
       .state('admin.addRaid', {
         url: '/raids',
          views: {
-          // 'sidebar@admin': {
-          //   controller: 'AdminSidebarCtrl',
-          //   templateUrl: 'admin/sidebar.tpl.html'
-          // },
-            '': {
-            controller: 'AdminCtrl',
-            templateUrl: 'admin/admin.tpl.html'
-          },
           'content@admin': {
             controller: 'AddRaidCtrl',
             templateUrl: 'admin/raids/addRaid.tpl.html',
@@ -149,4 +103,8 @@
         }
       });
 }
+
+  angular
+    .module('topshelf.admin')
+    .config(config);
 })();
