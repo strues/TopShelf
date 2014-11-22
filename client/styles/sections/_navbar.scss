@@ -7,13 +7,33 @@ $link_active_bg:        $brand-primary;
 .navbar-brand {
   padding-top: 10px;
   padding-right: 15px;
+  max-height: 100%;
+  margin-right: 10px;
+  line-height: 1em;
 }
-
+.navbar {
+  margin-bottom: 60px;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1);
+  transition: background 0.1s ease-in-out 0s;
+}
+.navbar-fixed-top {
+  margin-bottom: 60px;
+  transform: translate3d(0, 0, 0);
+}
 .navbar-nav > li > a {
+  font-family: $headings-font-family;
+  font-size: $font-size-h4;
   padding-top: 35px !important;
   padding-bottom: none !important;
+  border-right: 1px solid $nav-border;
+  &:hover {
+    border-bottom: 1px solid $brand-primary;
+  }
 }
-
+.navbar-nav > li:last-child {
+  border-right: none;
+}
+.page_nav_last {border-right: none;}
 .navbar-text {
   padding-top: 15px;
 }

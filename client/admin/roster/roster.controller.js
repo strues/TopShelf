@@ -42,19 +42,6 @@
       $scope.data = data;
     });
 
-  $scope.itemLevel = {
-    getIlvl : function(){
-      wowApi.character.items({
-          name: $scope.data.name,
-          realm: 'Sargeras'
-        }).
-       then(function (myData){
-            $scope.myData = {};
-            $scope.myData = myData;
-        });
-    }
-
-  };
   $scope.info = {};
   $scope.msg = {};
   $scope.gridOptions.multiSelect = true;

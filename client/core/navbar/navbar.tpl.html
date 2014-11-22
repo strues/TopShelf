@@ -1,5 +1,6 @@
-<div class="navbar navbar-default navbar-static-top">
-  <div class="container">
+<div class="container" style="margin-bottom:60px;">
+<div class="navbar navbar-default navbar-fixed-top container">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button"
       ng-click="Navbar.isCollapsed = !Navbar.isCollapsed"
@@ -13,7 +14,7 @@
       <img src="assets/images/logo.png" style="padding-top:10px" height="50px">
       </a>
     </div>
-    <div id="navbar-main" collapse="Navbar.isCollapsed" class="navbar-collapse collapse">
+    <div id="navbar-main" collapse="Navbar.isCollapsed" class="navbar-right navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li ui-sref-active="active">
           <a ui-sref="guildrecruitment"><i class="ico-shield3"></i> Recruitment</a></li>
@@ -33,7 +34,7 @@
                         <i class="ico-user-plus"></i> Sign up</a>
                     </li>
                       <li ng-hide="Auth.isLoggedIn()" ui-sref-active="active">
-                        <a ui-sref="user.login"><i class="ico-key"></i> Login</a>
+                        <a ui-sref="user.login" style="border-right: none;"><i class="ico-key"></i> Login</a>
                       </li>
                         <!-- dropdown user -->
                         <li class="dropdown" ng-show="Auth.isLoggedIn()">
@@ -41,7 +42,7 @@
                             class="dropdown-toggle"
                             data-toggle="dropdown" role="button"
                           aria-expanded="false">{{ Auth.getCurrentUser().name }} <i class="ico-user"></i> <span class="caret"></span></a>
-                          <ul class="dropdown-menu" role="menu">
+                          <ul class="dropdown-menu page_nav_last" role="menu">
                             <li ng-show="Auth.isLoggedIn()" ui-sref-active="active">
                               <a ui-sref="user.settings"><i class="ico-tools"></i> Settings</a>
                             </li>
@@ -55,3 +56,4 @@
                     </div>
                   </div>
                 </div>
+</div>

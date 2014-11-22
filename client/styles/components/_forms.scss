@@ -41,7 +41,7 @@
 fieldset[disabled] .form-control, .form-control-wrapper .form-control, .form-control {
     &, &:focus, &.focus {
         &:not(textarea):not(select) {
-            height: 28px;
+            height: 50px;
         }
         padding: 0;
         float: none;
@@ -56,7 +56,7 @@ fieldset[disabled] .form-control, .form-control-wrapper .form-control, .form-con
     }
 }
 select.form-control {
-    height: 33px;
+    height: 50px;
 }
 select[multiple].form-control {
     &, &:focus, &.focus {
