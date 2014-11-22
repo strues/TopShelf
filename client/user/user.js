@@ -9,9 +9,6 @@
    *
    */
 
-  angular
-    .module('topshelf.user')
-    .config(config);
 
   function config($stateProvider) {
      $stateProvider
@@ -56,4 +53,7 @@
       });
   }
 
+  angular
+    .module('topshelf.user')
+    .config(config);
 })();

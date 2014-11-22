@@ -11,7 +11,7 @@
 
 
 
-  function ApplicationListCtrl ($scope, $filter, ngTableParams, $http, $location, socket) {
+  function ApplicationListCtrl ($scope, $filter, $http, $location, socket) {
    $http.get('/api/applications').success(function(applications) {
       $scope.applications = applications;
       socket.syncUpdates('applications', $scope.applications, function(event, application, applications) {

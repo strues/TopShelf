@@ -10,25 +10,52 @@
    */
 
 
-  function RosterCtrl($scope, $http, socket, $log) {
+  function RosterCtrl($scope, $http, socket, $log, wowApi) {
 
     $scope.gridOptions = {
       enableGridMenu: true,
       enableFiltering: true,
       enableRowSelection: true,
       enableSelectAll: true,
-      selectionRowHeaderWidth: 35
-    };
-    $scope.gridOptions.columnDefs = [
+      selectionRowHeaderWidth: 35,
+    columnDefs: [
 
     { name: 'name', displayName: 'Name', width: '10%' },
     { name: 'classType', displayName: 'Class' , width: '10%' },
     { name: 'classSpec', displayName: 'Spec' , width: '10%' },
-    { name: 'ilvl', displayName: 'iLvl' , width: '5%' },
+    { name: 'ilvl', displayName: 'iLvl' , width: '5%'},
     { name: 'rank', displayName: 'Rank', width: '10%' }
 
-  ];
-$scope.info = {};
+  ]
+
+};
+/**
+ * Get roster info from mongo
+ */
+
+
+/**
+ * Get item level
+ */
+   $http.get('/api/roster').success(function(data) {
+      $scope.gridOptions.data = data;
+      $scope.data = data;
+    });
+
+  $scope.itemLevel = {
+    getIlvl : function(){
+      wowApi.character.items({
+          name: $scope.data.name,
+          realm: 'Sargeras'
+        }).
+       then(function (myData){
+            $scope.myData = {};
+            $scope.myData = myData;
+        });
+    }
+
+  };
+  $scope.info = {};
   $scope.msg = {};
   $scope.gridOptions.multiSelect = true;
 
@@ -77,10 +104,7 @@ $scope.saveRow = function( rowEntity ) {
     });
     };
 
-  $http.get('/api/roster')
-    .success(function(data) {
-      $scope.gridOptions.data = data;
-    });
+
 
  $scope.addMember = function() {
     $http.post('/api/roster')
