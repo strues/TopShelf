@@ -10,8 +10,8 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var express     = require('express'),
     mongoose    = require('mongoose'),
     config      = require('./config/environment');
-// var https       = require('https');
-// var fs = require('fs');
+ // var https       = require('https');
+ // var fs = require('fs');
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
@@ -20,8 +20,8 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
  * Disable these in production and replace with new.
  */
 // var pkey        = fs.readFileSync('./server/config/keys/key.pem');
-// var pcert       = fs.readFileSync('./server/config/keys/cert.pem');
-// var credentials = {key: pkey, cert: pcert};
+//  var pcert       = fs.readFileSync('./server/config/keys/cert.pem');
+//  var credentials = {key: pkey, cert: pcert};
 
 // Populate DB with sample data
 if(config.seedDB) { require('./config/seed'); }

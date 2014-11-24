@@ -22,14 +22,7 @@ var UserSchema = new mongoose.Schema({
   provider: String,
   salt: String,
   battletag: String,
-  character: {
-    name: { type: String },
-    cClass: { type: String },
-    cSpec: { type: String },
-    cRealm: { type: String },
-    cRace: { type: String },
-    cGuild: { type: String }
-  }
+  bnet: {}
 });
 
 

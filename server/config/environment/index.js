@@ -53,7 +53,11 @@ var all = {
     clientSecret: process.env.FACEBOOK_SECRET || 'secret',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/facebook/callback'
   },
-
+  bnet: {
+    clientID:     process.env.BNET_ID || '4gfahazrsuk3qaw4ja4ddhxcreg4qwy7',
+    clientSecret: process.env.BNET_SECRET || '2qSuv8kgtg9PDyTj2UB5Ey2Q624ERaED',
+    callbackURL:  (process.env.DOMAIN || '') + '/auth/bnet/callback'
+  },
   twitter: {
     clientID:     process.env.TWITTER_ID || 'id',
     clientSecret: process.env.TWITTER_SECRET || 'secret',

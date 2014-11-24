@@ -17,9 +17,7 @@
      </example>
    *
    */
-  angular
-    .module('topshelf.user')
-    .directive('loginForm', loginForm);
+
 
   function loginForm(Auth, $location, $window, ngToast) {
     return {
@@ -53,5 +51,8 @@
       };
       }
     };
-  };
+  }
+    angular
+    .module('topshelf.user')
+    .directive('loginForm', loginForm);
 })();

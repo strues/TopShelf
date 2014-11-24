@@ -1,6 +1,6 @@
 <div class="container frontendWrap">
 <div class="row" ng-controller="ApplicationCtrl as form">
-
+ <alert ng-repeat="alert in form.alerts" type="{{alert.type}}" close="form.closeAlert($index)">{{alert.msg}}</alert>
 
     <div class="col-sm-12 col-lg-8">
   <h1 class="text-light">Top Shelf Application</h1>

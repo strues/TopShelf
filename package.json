@@ -30,6 +30,7 @@
     "mongoose-to-ui-grid": "^0.1.14",
     "morgan": "^1.5.0",
     "passport": "^0.2.1",
+    "passport-bnet": "^1.0.1",
     "passport-local": "^1.0.0",
     "passport-twitch": "^1.0.1",
     "request": "^2.48.0",

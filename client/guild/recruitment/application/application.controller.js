@@ -8,9 +8,7 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.guild')
-    .controller('ApplicationCtrl', ApplicationCtrl);
+
 
   function ApplicationCtrl($scope, $http, $location, socket, ngToast) {
    // var vm = this;
@@ -93,5 +91,18 @@
       this.goBack = function () {
         $location.path('/');
       };
+
+ this.alerts = [
+    { type: 'danger', msg: 'All fields are required for your application. If you cannot see what youve written' +
+    ' in the preview area, it contains an error and we will not receive your application.' +
+    ' Make sure all URLs are valid, ie http://topshelfguild.com' }
+  ];
+
+  this.closeAlert = function(index) {
+    this.alerts.splice(index, 1);
+  };
 }
+  angular
+    .module('topshelf.guild')
+    .controller('ApplicationCtrl', ApplicationCtrl);
 })();

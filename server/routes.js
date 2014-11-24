@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.use('/api/applications', require('./api/application'));
   app.use('/api/recruitment', require('./api/recruitment'));
   app.use('/api/roster', require('./api/roster'));
+  app.use('/api/characters', require('./api/character'));
   app.use('/api/raids', require('./api/raid'));
   app.use('/auth', require('./auth'));
 
