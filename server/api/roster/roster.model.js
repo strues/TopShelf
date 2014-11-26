@@ -14,6 +14,7 @@ var RosterSchema = new Schema({
   name: { type: String, uiGrid: { name: 'Name' }},
   race: { type: String, uiGrid: {name: 'Race'}},
   rank: { type: String, uiGrid: {name: 'Rank'}},
+  role: { type: String, uiGrid: {name: 'Role'}},
   thumbnail: { type: String, uiGrid: { name: 'thumbnail' }},
   ilvl: { type: Number, uiGrid: { name: 'ilvl' }}
 });

@@ -23,6 +23,7 @@
     { name: 'name', displayName: 'Name', width: '10%' },
     { name: 'classType', displayName: 'Class' , width: '10%' },
     { name: 'classSpec', displayName: 'Spec' , width: '10%' },
+    { name: 'role', displayName: 'Role' , width: '10%' },
     { name: 'ilvl', displayName: 'iLvl' , width: '5%'},
     { name: 'rank', displayName: 'Rank', width: '10%' }
 
