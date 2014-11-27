@@ -9,11 +9,6 @@
    *
    */
 
-
-  angular
-    .module('topshelf.core')
-    .config(config);
-
   function config($stateProvider) {
     $stateProvider
       .state('home', {
@@ -23,4 +18,7 @@
       });
   }
 
+  angular
+    .module('topshelf.core')
+    .config(config);
 })();

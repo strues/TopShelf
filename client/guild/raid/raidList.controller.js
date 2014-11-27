@@ -8,9 +8,7 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.guild')
-    .controller('RaidListCtrl', RaidListCtrl);
+
 
   function RaidListCtrl($scope, $http, $location, socket) {
    $http.get('/api/raids').success(function(raids) {
@@ -24,20 +22,20 @@
           b = new Date(b.date);
           return a>b ? -1 : a<b ? 1 : 0;
         });
-    })
-  })
+    });
+  });
 
 
     $scope.selectRaid = function(raid) {
         $location.path('/guild/raids/' + raid._id);
-    }
+    };
     $scope.deleteRaid = function(raid) {
         $http.delete('/api/raids/' + raid._id).success(function() {
             $http.get('/api/raids').success(function(raids) {
               $scope.raids = raids;
             });
         });
-    }
+    };
 
 
         $scope.getApplicationById = function(id) {
@@ -45,13 +43,15 @@
                 return ( raid._id === id );
             });
             return results[0];
-        }
+        };
 
 
 
     $scope.addNew = function() {
-        $location.path('/admin/raids/view')
-    }
+        $location.path('/admin/raids/view');
+    };
   }
-
+  angular
+    .module('topshelf.guild')
+    .controller('RaidListCtrl', RaidListCtrl);
 })();

@@ -8,13 +8,16 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.admin')
-    .controller('AdminCtrl', AdminCtrl);
 
-  function AdminCtrl(Auth) {
+
+  function AdminCtrl() {
     var vm = this;
+
+    vm.thing = [];
 
   }
 
+  angular
+    .module('topshelf.admin')
+    .controller('AdminCtrl', AdminCtrl);
 })();

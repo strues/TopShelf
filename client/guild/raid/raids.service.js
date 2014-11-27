@@ -1,46 +1,36 @@
 (function () {
   'use strict';
 
-angular
-  .module('topshelf.guild')
-  .factory('raidsFactory', raidsFactory);
-
-  function raidsFactory ($http) {
-    // console.log('raidsFactory.service.js');
+  function RaidFactory ($http) {
+     console.log('raid.service.js');
 
     var urlBase = 'api/raids';
-    var raidsFactory = {};
+        var exports = {};
 
-    raidsFactory.getRaids = function () {
-      // console.log('raidsFactory.service.js - getRaids');
-      return $http.get(urlBase);
+    exports.getAllRaids = function(){
+      return $http.get('/api/raids');
     };
 
-    raidsFactory.createRaid = function (raid) {
-      // console.log('raidsFactory.service.js - createRaids', raid);
-      return $http.post(urlBase, raid)
+    exports.getRaidById = function(raidId){
+      return $http.get(urlBase + raidId);
     };
 
-    raidsFactory.deleteRaid = function (raidID) {
-      // console.log('raidsFactory.service.js - deleteRaid', raidID);
-      return $http.delete(urlBase + '/' + raidID)
+    exports.createRaid = function(newRaid){
+      return $http.post(urlBase, newRaid);
     };
 
-    raidsFactory.showRaid = function (raidID) {
-      // console.log('raidsFactory.service.js - showRaid', raidID);
-      return $http.get(urlBase + '/' + {raidID: raid._id})
+    exports.updateRaid = function(updatedRaid){
+      return $http.put('/api/raids/' + updatedRaid._id, updatedRaid);
     };
 
-    raidsFactory.updateRaid = function (raidID, raid) {
-      // console.log('raidsFactory.service.js - updateRaid', raidID, raid);
-      return $http.put(urlBase + '/' + raidID, raid)
+    exports.removeRaid = function(raidId){
+      return $http.delete(urlBase + raidId);
     };
+    return exports;
 
-    raidsFactory.attendRaid = function (raidID, raid) {
-      return $http.post('/api/raids', { raidID: raid._id });
-    }
+  }
 
-    return raidsFactory;
-
-  };
+  angular
+  .module('topshelf.core')
+  .factory('RaidFactory', RaidFactory);
 })();

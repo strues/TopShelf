@@ -8,9 +8,7 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.admin')
-    .controller('RecruitmentCtrl', RecruitmentCtrl);
+
 
  function RecruitmentCtrl ($scope, $http, $location, socket, recruitmentFactory) {
 
@@ -159,8 +157,11 @@
       };
 socket.syncUpdates('recruitment', $scope.recruitments);
       $scope.onSubmit = function() {
-          $http.post('/api/recruitment', $scope.formData)
+          $http.post('/api/recruitment', $scope.formData);
           console.log('recruitment status submitted:', $scope.formData);
       };
 }
+  angular
+    .module('topshelf.admin')
+    .controller('RecruitmentCtrl', RecruitmentCtrl);
 })();

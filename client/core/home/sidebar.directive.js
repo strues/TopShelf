@@ -50,7 +50,7 @@ function sidebar() {
               $log.info('Modal dismissed at: ' + new Date());
             });
         };
-        var ModalInstanceCtrl = function ($scope, $modalInstance, recruitment) {
+        var ModalInstanceCtrl = function ($scope, $modalInstance) {
           $scope.ok = function () {
             $modalInstance.close();
           };
