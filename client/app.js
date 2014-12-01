@@ -43,7 +43,7 @@ angular.module('topshelf.admin', []);
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
-
+    $httpProvider.useApplyAsync(true);
     battleNetConfigProvider.setApiKey( 'h3enxjtkv2fvgcvts4qbx878hthr9ecp' );
     battleNetConfigProvider.setDefaultRegion('us');
     angular.extend(toastrConfig, {

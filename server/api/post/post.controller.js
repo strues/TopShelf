@@ -5,7 +5,7 @@ var Post = require('./post.model');
 
 // Get list of posts
 exports.index = function(req, res, next) {
-Post.find().sort('date').populate('author', 'name').exec(function(err, posts) {
+Post.find().populate('author', 'name').exec(function(err, posts) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(posts);
   });
@@ -39,7 +39,7 @@ exports.update = function(req, res) {
     var updated = _.extend(post, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
-      return res.json(200, post);
+      return res.status(200).json(post);
     });
   });
 };

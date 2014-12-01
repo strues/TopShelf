@@ -12,7 +12,7 @@
     .module('topshelf.user')
     .factory('Auth', Auth);
 
-   function Auth($location, $rootScope, $http, User, $localStorage, $sessionStorage, $q) {
+   function Auth($location, $rootScope, $http, User, $localStorage, socket, $sessionStorage, $q) {
       var currentUser = $localStorage.token ? User.get() : {};
 
     return {
@@ -119,21 +119,6 @@
       },
 
       /**
-       * Waits for currentUser to resolve before checking if user is logged in
-       */
-      isLoggedInAsync: function(cb) {
-        if(currentUser.hasOwnProperty('$promise')) {
-          currentUser.$promise.then(function() {
-            cb(true);
-          }).catch(function() {
-            cb(false);
-          });
-        } else if(currentUser.hasOwnProperty('role')) cb(true); else {
-          cb(false);
-        }
-      },
-
-      /**
        * Check if a user is an admin
        *
        * @return {Boolean}
@@ -149,6 +134,19 @@
         return $localStorage.token;
       },
 
+      socketAuthInit: function() {
+
+      socket.on('connect', socketEmitAuthToken);
+
+
+    },
+
+     socketEmitAuthToken: function() {
+       if (isLoggedIn()) {
+         socket.emit('authenticate', {token: $localStorage.token});
+       }
+
+     },
       /**
        * Set session token
        *

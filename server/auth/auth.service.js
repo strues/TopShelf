@@ -9,7 +9,7 @@ var expressJwt = require('express-jwt');
 var compose = require('composable-middleware');
 var User = require('../api/user/user.model');
 var validateJwt = expressJwt({ secret: config.secrets.session });
-var expires = moment().add(7, 'days').valueOf();
+
 
 /**
  * Attaches the user object to the request if authenticated
@@ -58,9 +58,11 @@ function hasRole(roleRequired) {
 /**
  * Returns a jwt token signed by the app secret
  */
-function signToken(id, role, expiresInMinutes) {
+function signToken(id, role) {
+  var payload = { _id: id };
+  if (role !== null) payload.role = role;
 
-  return jwt.sign({ _id: id, role : role }, config.secrets.session, { expiresInMinutes: expires });
+  return jwt.sign(payload, config.secrets.session, { expiresInMinutes: 30 * 24 * 60 });
 }
 
 /**
@@ -68,8 +70,13 @@ function signToken(id, role, expiresInMinutes) {
  */
 function setToken(req, res) {
   if (!req.user) return res.json(404, { message: 'Something went wrong, please try again.'});
-  var token = signToken(req.user._id, req.user.role, config.tokenDuration.session);
-  res.redirect('/login/'+token);
+
+  var token = signToken(req.user._id, req.user.role, { expiresInMinutes: 30 * 24 * 60 });
+  res.send({
+    token: token,
+    user: user,
+    role: user.role
+  });
 }
 
 exports.isAuthenticated = isAuthenticated;

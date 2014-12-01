@@ -97,7 +97,7 @@ exports.create = function (req, res, next) {
     }
     // Create the token with the session length
   var token = jwt.sign({_id: user._id }, config.secrets.session,
-    { expiresInMinutes: config.tokenDuration.session });
+    { expiresInMinutes: 30 * 24 * 60 });
   // Return the user token and log to console upon success
     res.json({ token: token });
     console.log('user ' + req.body.name + ' created');

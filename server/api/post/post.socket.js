@@ -6,19 +6,11 @@
 
 var Post = require('./post.model');
 
-exports.register = function(socket) {
+exports.register = function(socketio) {
   Post.schema.post('save', function (doc) {
-    onSave(socket, doc);
+    socketio.to('post').emit('post:save', doc);
   });
   Post.schema.post('remove', function (doc) {
-    onRemove(socket, doc);
+    socketio.to('post').emit('post:remove', doc);
   });
-}
-
-function onSave(socket, doc, cb) {
-  socket.emit('post:save', doc);
-}
-
-function onRemove(socket, doc, cb) {
-  socket.emit('post:remove', doc);
-}
+};

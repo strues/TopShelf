@@ -6,21 +6,21 @@
 
 var application = require('./application.model');
 
-exports.register = function(socket) {
+exports.register = function(socketio) {
   application.schema.post('save', function (doc) {
-    onSave(socket, doc);
+    onSave(socketio, doc);
   });
   application.schema.post('remove', function (doc) {
-    onRemove(socket, doc);
+    onRemove(socketio, doc);
   });
 };
 
-function onSave(socket, doc, cb) {
+function onSave(socketio, doc, cb) {
   application.populate(doc, {path:'author', select: 'name'}, function(err, application) {
-    socket.emit('application:save', application);
+    socketio.emit('application:save', application);
   });
 }
 
-function onRemove(socket, doc, cb) {
-  socket.emit('application:remove', doc);
+function onRemove(socketio, doc, cb) {
+  socketio.emit('application:remove', doc);
 }

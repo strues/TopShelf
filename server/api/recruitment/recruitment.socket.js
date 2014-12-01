@@ -6,19 +6,19 @@
 
 var Recruitment = require('./recruitment.model');
 
-exports.register = function(socket) {
+exports.register = function(socketio) {
   Recruitment.schema.post('save', function (doc) {
-    onSave(socket, doc);
+    onSave(socketio, doc);
   });
   Recruitment.schema.post('remove', function (doc) {
-    onRemove(socket, doc);
+    onRemove(socketio, doc);
   });
+};
+
+function onSave(socketio, doc, cb) {
+  socketio.emit('recruitment:save', doc);
 }
 
-function onSave(socket, doc, cb) {
-  socket.emit('recruitment:save', doc);
-}
-
-function onRemove(socket, doc, cb) {
-  socket.emit('recruitment:remove', doc);
+function onRemove(socketio, doc, cb) {
+  socketio.emit('recruitment:remove', doc);
 }

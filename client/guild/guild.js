@@ -27,8 +27,8 @@
       })
 
       .state('apply', {
-        url: '/guild/apply',
-        templateUrl: 'guild/recruitment/application/application.tpl.html',
+        url: '/guild/application',
+        templateUrl: 'guild/application/application.tpl.html',
         controller: 'ApplicationCtrl',
         authenticate: true
       })

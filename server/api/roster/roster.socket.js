@@ -6,19 +6,19 @@
 
 var roster = require('./roster.model');
 
-exports.register = function(socket) {
+exports.register = function(socketio) {
   roster.schema.post('save', function (doc) {
-    onSave(socket, doc);
+    onSave(socketio, doc);
   });
   roster.schema.post('remove', function (doc) {
-    onRemove(socket, doc);
+    onRemove(socketio, doc);
   });
+};
+
+function onSave(socketio, doc, cb) {
+  socketio.emit('roster:save', doc);
 }
 
-function onSave(socket, doc, cb) {
-  socket.emit('roster:save', doc);
-}
-
-function onRemove(socket, doc, cb) {
-  socket.emit('roster:remove', doc);
+function onRemove(socketio, doc, cb) {
+  socketio.emit('roster:remove', doc);
 }
