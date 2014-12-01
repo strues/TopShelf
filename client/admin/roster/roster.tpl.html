@@ -2,11 +2,6 @@
 <div class="row" ng-controller="RosterCtrl">
 <div class="col-sm-12">
 <h1>Roster</h1>
-
-      <strong>Data Length:</strong> {{ gridOptions.data.length | number }}
-      <br>
-      <strong>Last Cell Edited:</strong> {{msg.lastCellEdited}}
-      <br>
      <button type="button" id="addMember" class="btn btn-success" ng-click="addMember()">Add Member</button>
       <div ui-grid="gridOptions" ui-grid-edit ui-grid-selection class="grid"></div>
     </div>

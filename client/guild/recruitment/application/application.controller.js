@@ -10,7 +10,7 @@
    */
 
 
-  function ApplicationCtrl($scope, $http, $location, socket, ngToast) {
+  function ApplicationCtrl($scope, $http, $location, socket, toastr) {
    // var vm = this;
     this.data = {};
     var self = this;
@@ -80,7 +80,7 @@
 
         $http.post('/api/applications', self.data).then(function() {
           self.data = {};
-          ngToast.create('Application submitted');
+          toastr.success('Application submitted');
           console.log('form submitted:', self.data);
           $location.path('/completed');
         }, function(response) {

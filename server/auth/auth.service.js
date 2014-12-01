@@ -10,6 +10,7 @@ var compose = require('composable-middleware');
 var User = require('../api/user/user.model');
 var validateJwt = expressJwt({ secret: config.secrets.session });
 var expires = moment().add(7, 'days').valueOf();
+
 /**
  * Attaches the user object to the request if authenticated
  * Otherwise returns 403

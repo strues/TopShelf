@@ -6,11 +6,8 @@
 (function () {
   'use strict';
 
-  angular
-    .module('topshelf.admin')
-    .controller('NewsListCtrl', NewsListCtrl);
 
-    function NewsListCtrl($scope, PostFactory, socket, Auth) {
+    function NewsListCtrl($scope, PostFactory, socket, Auth, toastr) {
         // get all posts which will display below editor area
     PostFactory.getAllPosts()
     .success(function (posts) {
@@ -55,11 +52,13 @@
       PostFactory.createPost(post)
         .success(function () {
           $scope.status = 'Created Post! Refreshing Post List.';
+          toastr.info('Created post! Refreshing the post list');
           //console.log('$scope.status', $scope.status);
           // $scope.posts.push(post);
         }).
         error(function (error) {
           $scope.status = 'Unable to Create Post: ' + error.message;
+          toastr.error('Unable to Create Post: ' + error.message);
           //console.log('$scope.status', $scope.status);
         });
 
@@ -78,4 +77,8 @@
       postsFactory.deletePost(postID);
     };
     }
+
+  angular
+    .module('topshelf.admin')
+    .controller('NewsListCtrl', NewsListCtrl);
 })();

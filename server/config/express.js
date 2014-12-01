@@ -35,15 +35,15 @@ module.exports = function(app) {
   next();
 });
 
-
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
   app.use(compression());
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json({ type: 'vnd.api+json' })); // parse application/vnd.api+json as json
+  app.use(bodyParser.urlencoded({ extended: 'true' })); // parse application/x-www-form-urlencoded
 
-  app.use(methodOverride());
+  app.use(methodOverride('X-HTTP-Method-Override'));
   app.use(cookieParser());
   app.use(passport.initialize());
 
@@ -54,8 +54,6 @@ module.exports = function(app) {
     saveUninitialized: true,
     store: new mongoStore({ mongoose_connection: mongoose.connection })
   }));
-
-
 
   app.set('appPath', path.join(config.root, 'client'));
 

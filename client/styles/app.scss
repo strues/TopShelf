@@ -51,7 +51,11 @@
 .help-block {
   color: $brand-success;
 }
-
+.chart {
+ width: 850px;
+ height: 500px;
+ color: $brand-primary;
+}
 .editorPanel{
   margin-bottom: 25px;
   padding: 20px 20px 20px 20px;

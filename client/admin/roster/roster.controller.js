@@ -10,7 +10,7 @@
    */
 
 
-  function RosterCtrl($scope, $http, socket, $log, wowApi) {
+  function RosterCtrl($scope, $http, socket, $log) {
 
     $scope.gridOptions = {
       enableGridMenu: true,
@@ -26,7 +26,6 @@
     { name: 'role', displayName: 'Role' , width: '10%' },
     { name: 'ilvl', displayName: 'iLvl' , width: '5%'},
     { name: 'rank', displayName: 'Rank', width: '10%' }
-
   ]
 
 };
@@ -85,6 +84,7 @@
   };
 
 $scope.saveRow = function( rowEntity ) {
+  socket.syncUpdates('roster', $scope.roster);
     $http.put('/api/roster/' + rowEntity._id, rowEntity).success(function(){
       console.log('Saved!!');
     }).error(function() {
@@ -109,12 +109,11 @@ $scope.saveRow = function( rowEntity ) {
                 'spec': 'Resto'+ n,
                 'race': 'rekt'+ n,
                 'ilvl':'0'+ n,
-                'thumbnail' : 'temp'+ n,
                 'rank': 'bad'+ n
               });
   };
 
-$scope.removeMember = function( rowEntity ) {
+$scope.removeSelection = function( rowEntity ) {
     $http.delete('/api/roster/' + rowEntity._id, rowEntity).success(function(){
       console.log('Deleted!!');
     }).error(function() {

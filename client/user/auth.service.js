@@ -51,7 +51,6 @@
       /**
        * Delete access token and user info
        *
-       * @param  {Function}
        */
       logout: function() {
         delete $localStorage.token;
@@ -129,9 +128,7 @@
           }).catch(function() {
             cb(false);
           });
-        } else if(currentUser.hasOwnProperty('role')) {
-          cb(true);
-        } else {
+        } else if(currentUser.hasOwnProperty('role')) cb(true); else {
           cb(false);
         }
       },
@@ -155,8 +152,9 @@
       /**
        * Set session token
        *
-       * @param  {String}   session token
        * @return {Promise}
+       * @param sessionToken
+       * @param callback
        */
       setSessionToken: function(sessionToken, callback) {
         var cb = callback || angular.noop;

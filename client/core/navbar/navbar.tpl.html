@@ -41,7 +41,9 @@
                           <a href="#"
                             class="dropdown-toggle"
                             data-toggle="dropdown" role="button"
-                          aria-expanded="false">{{ Auth.getCurrentUser().name }} <i class="ico-user"></i> <span class="caret"></span></a>
+                            aria-expanded="false">{{ Auth.getCurrentUser().name }} <i class="ico-user"></i>
+                            <span class="caret"></span>
+                          </a>
                           <ul class="dropdown-menu page_nav_last" role="menu">
                             <li ng-show="Auth.isLoggedIn()" ui-sref-active="active">
                               <a ui-sref="user.settings"><i class="ico-tools"></i> Settings</a>

@@ -6,6 +6,7 @@
 
 var errors = require('./components/errors');
 var path = require('path');
+
 module.exports = function(app) {
 
 // Routes
@@ -16,6 +17,7 @@ module.exports = function(app) {
   app.use('/api/roster', require('./api/roster'));
   app.use('/api/characters', require('./api/character'));
   app.use('/api/raids', require('./api/raid'));
+
   app.use('/auth', require('./auth'));
 
   // All undefined asset or api routes should return a 404

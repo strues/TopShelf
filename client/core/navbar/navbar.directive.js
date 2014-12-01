@@ -10,11 +10,6 @@
    * @description
    *
    * @example
-     <example module="core">
-       <file name="index.html">
-        <navbar></navbar>
-       </file>
-     </example>
    *
    */
 

@@ -26,8 +26,10 @@ angular.module('topshelf.admin', []);
       'ui.grid.edit',
       'ui.grid.selection',
       'textAngular',
+      'angularCharts',
       'formly',
       'ngToast',
+      'toastr',
       'httpi',
       'ngBattleNet',
       'topshelf.core',
@@ -36,7 +38,7 @@ angular.module('topshelf.admin', []);
       'topshelf.user'
     ]);
 
-  function config($urlRouterProvider, $locationProvider, $httpProvider, battleNetConfigProvider) {
+  function config($urlRouterProvider, $locationProvider, $httpProvider, battleNetConfigProvider, toastrConfig) {
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);
@@ -44,21 +46,32 @@ angular.module('topshelf.admin', []);
 
     battleNetConfigProvider.setApiKey( 'h3enxjtkv2fvgcvts4qbx878hthr9ecp' );
     battleNetConfigProvider.setDefaultRegion('us');
-  }
-
-  function run($rootScope, $state, $stateParams, $location, Auth) {
-     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
-          $location.path('/');
-        }
-      });
+    angular.extend(toastrConfig, {
+      allowHtml: true,
+      closeButton: false,
+      closeHtml: '<button>&times;</button>',
+      containerId: 'toast-container',
+      extendedTimeOut: 1000,
+      iconClasses: {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning'
+      },
+      messageClass: 'toast-message',
+      positionClass: 'toast-top-right',
+      tapToDismiss: true,
+      timeOut: 5000,
+      titleClass: 'toast-title',
+      toastClass: 'toast'
     });
   }
+
 
   angular
     .module('topshelf')
     .config(config)
-    .run(run);
+    .run( ['appStart', function ( appStart ) {
+      appStart.start();
+    }]);
 })();

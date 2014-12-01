@@ -19,7 +19,7 @@
    */
 
 
-  function loginForm(Auth, $location, $window, ngToast) {
+  function loginForm(Auth, $location, $window, toastr) {
     return {
       templateUrl: 'user/login/loginForm.tpl.html',
       restrict: 'EA',
@@ -36,12 +36,13 @@
             password: scope.user.password
           })
           .then( function() {
-            ngToast.create('Successfully logged in!');
+            toastr.success('Successfully logged in!');
             // Logged in, redirect to home
             $location.path('/');
           })
           .catch( function(err) {
             scope.errors.other = err.message;
+              toastr.error(errors.other);
           });
         }
       };

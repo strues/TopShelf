@@ -14,7 +14,7 @@
       .state('home', {
         url: '/',
         templateUrl: 'core/home/home.tpl.html',
-        controller: 'HomeCtrl as home'
+        controller: 'HomeCtrl as vm'
       });
   }
 

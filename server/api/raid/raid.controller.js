@@ -3,12 +3,26 @@
 var _ = require('lodash');
 var Raid = require('./raid.model');
 var User = require('../user/user.model');
+
+/*// Creates a new raid in the DB.
+*/
+
 // Get list of raids
-exports.index = function(req, res) {
-  Raid.find(function (err, raids) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, raids);
-  });
+exports.index = function(req, res, next) {
+  if (res.user) {
+  return Raid.find({ creator: res.user._id })
+    .populate('creator logs.user signups.user')
+    .execAsync()
+    .then(function(raids) {
+      res.model = { raids: raids };
+      next();
+    }).catch(function(err) {
+      next(err);
+    });
+  } else {
+    res.model = { raids: [] };
+    return next();
+  }
 };
 
 // Get a single raid
@@ -20,7 +34,6 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new raid in the DB.
 exports.create = function(req, res) {
   Raid.create(_.merge({ raidLead: req.user._id },req.body, function(err, raid) {
     if(err) { return handleError(res, err); }

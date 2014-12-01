@@ -8,7 +8,7 @@
    * @description
    *
    */
-function HomeCtrl($http, PostFactory, socket) {
+function HomeCtrl(PostFactory, socket) {
 
     var vm = this;
     vm.ctrlName = 'HomeCtrl';

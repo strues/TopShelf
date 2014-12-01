@@ -21,7 +21,7 @@
     .module('topshelf.user')
     .directive('signupForm', signupForm);
 
-    function signupForm (Auth, $location, $window, ngToast) {
+    function signupForm (Auth, $location, $window, toastr) {
         return {
           templateUrl: 'user/signup/signupForm.tpl.html',
           restrict: 'EA',
@@ -39,7 +39,7 @@
                 password: scope.user.password
               })
               .then( function() {
-                ngToast.create('Your account has been created!');
+                toastr.success('Your account has been created!');
                 // Account created, redirect to home
                 $location.path('/');
               })

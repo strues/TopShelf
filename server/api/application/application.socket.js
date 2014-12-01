@@ -13,7 +13,7 @@ exports.register = function(socket) {
   application.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
-}
+};
 
 function onSave(socket, doc, cb) {
   application.populate(doc, {path:'author', select: 'name'}, function(err, application) {

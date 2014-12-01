@@ -18,7 +18,7 @@ var openOpts = {
 };
 
 var toInject = [
-  'client/app.js',
+  'client/app.js','client/appStart.js',
   'client/**/*.directive.js', '!client/**/*.directive.spec.js',
   'client/core/filters/**/*.js', '!client/core/filters/**/*.spec.js',
   'client/**/*.service.js', '!client/**/*.service.spec.js',
