@@ -27,42 +27,42 @@ exports.show = function(req, res) {
   var author = req.user.name;
   Application.findById(req.params.id).populate('user', 'name').exec(function (err, application) {
     if(err) { return handleError(res, err); }
-    if(!application) { return res.send(404); }
+    if(!application) { return res.sendStatus(404); }
     return res.json(application);
   });
 };
 
 exports.like = function(req, res) {
-  var id = req.body._id || '';
+  var id = req.params.id || '';
   if (id == '') {
-    return res.send(400);
+    return res.sendStatus(400);
   }
 
 
   Application.update({_id: id}, { $inc: { likes: 1 } }, function(err, nbRows, raw) {
     if (err) {
       console.log(err);
-      return res.send(400);
+      return res.sendStatus(400);
     }
 
-    return res.send(200);
+    return res.sendStatus(200);
   });
 };
 
 exports.unlike = function(req, res) {
-  var id = req.body._id || '';
+  var id = req.params.id || '';
   if (id == '') {
-    return res.send(400);
+    return res.sendStatus(400)
   }
 
 
   Application.update({_id: id}, { $inc: { likes: -1 } }, function(err, nbRows, raw) {
     if (err) {
       console.log(err);
-      return res.send(400);
+      return res.sendStatus(400)
     }
 
-    return res.send(200);
+    return res.sendStatus(200);
   });
 };
 

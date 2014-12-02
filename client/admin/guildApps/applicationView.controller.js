@@ -10,7 +10,7 @@
    */
 
 
-  function ApplicationViewCtrl($scope, $http, $stateParams, $location, wowApi) {
+  function ApplicationViewCtrl($scope, $http, $stateParams, ApplicationFactory, LikeService, $location, wowApi) {
   //  var vm = this;
     //vm.ctrlName = 'ApplicationEditCtrl';
 
@@ -33,7 +33,33 @@
         );});
         }
 
+    //Like a post
+    $scope.likeApplication = function likeApplication() {
+      if (!LikeService.isAlreadyLiked(applicationId)) {
+        ApplicationFactory.likeApplication(applicationId).success(function(data) {
+          $scope.application.likes++;
+          LikeService.like(applicationId);
+          $scope.isAlreadyLiked = true;
+        }).error(function(data, status) {
+          console.log(status);
+          console.log(data);
+        });
+      }
+    };
 
+    //Unlike a post
+    $scope.unlikeApplication = function unlikeApplication() {
+      if (LikeService.isAlreadyLiked(applicationId)) {
+        ApplicationFactory.unlikeApplication(applicationId).success(function (data) {
+          $scope.application.likes--;
+          LikeService.unlike(applicationId);
+          $scope.isAlreadyLiked = false;
+        }).error(function (data, status) {
+          console.log(status);
+          console.log(data);
+        });
+      }
+    };
     $scope.saveApplication = function() {
         if(applicationId && applicationId.length > 0) {
             $http.put('/api/applications/' + applicationId,

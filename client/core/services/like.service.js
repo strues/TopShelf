@@ -17,10 +17,10 @@
 
 
   return {
-    isAlreadyLiked: function(id) {
-      if (id != null) {
+    isAlreadyLiked: function(applicationId) {
+      if (applicationId != null) {
         for (var i in applicationLiked) {
-          if (applicationLiked[i] == id) {
+          if (applicationLiked[i] == applicationId) {
             return true;
           }
         }
@@ -31,17 +31,18 @@
       return false;
     },
 
-    like: function(id) {
-      if (!this.isAlreadyLiked(id)) {
-        applicationLiked.push(id);
+    like: function(applicationId) {
+      if (!this.isAlreadyLiked(applicationId)) {
+        applicationLiked.push(applicationId);
         $window.sessionStorage.applicationLiked = applicationLiked;
       }
     },
 
-    unlike: function(id) {
-      if (this.isAlreadyLiked(id)) {
+    unlike: function(applicationId) {
+      if (this.isAlreadyLiked(applicationId)) {
         for (var i in applicationLiked) {
-          if (applicationLiked[i] == id) {
+          if (applicationLiked[i] != applicationId) {
+          } else {
             applicationLiked.splice(i, 1);
             $window.sessionStorage.applicationLiked = applicationLiked;
 

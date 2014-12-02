@@ -31,11 +31,11 @@
     };
 
     exports.likeApplication = function(applicationId) {
-      return $http.post(urlBase + '/' + 'like' + '/' + applicationId);
+      return $http.post(urlBase + '/' + applicationId);
     };
 
     exports.unlikeApplication = function(applicationId) {
-      return $http.post(urlBase + '/' + 'unlike' + '/' + applicationId);
+      return $http.put(urlBase + '/' + applicationId);
     };
 
     return exports;
