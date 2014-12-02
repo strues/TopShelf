@@ -31,15 +31,15 @@
 <ng-toast></ng-toast>
     <!-- build:js app.js -->
       <!-- bower:js -->
-      <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/ngstorage/ngStorage.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-formly/dist/formly.min.js"></script>
       <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
@@ -47,9 +47,9 @@
       <script src="bower_components/d3/d3.js"></script>
       <script src="bower_components/angular-toastr/dist/angular-toastr.js"></script>
       <script src="bower_components/tinymce/tinymce.min.js"></script>
+      <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
       <script src="bower_components/ng-battlenet/src/ng-battlenet.js"></script>
       <script src="bower_components/angular-charts/dist/angular-charts.js"></script>
-      <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
       <!-- endinject -->
 
       <script src="bower_components/angular-httpi/lib/httpi.js"></script>
@@ -63,14 +63,16 @@
       <script src="user/login/loginForm.directive.js"></script>
       <script src="user/signup/signupForm.directive.js"></script>
       <script src="core/filters/characterclass/characterclass.js"></script>
-      <script src="core/filters/characterrace/characterrace.js"></script>
       <script src="core/filters/guildrank/guildrank.js"></script>
+      <script src="core/filters/characterrace/characterrace.js"></script>
       <script src="core/filters/posttagsformat/posttagsformat.js"></script>
       <script src="user/auth.service.js"></script>
       <script src="user/user.service.js"></script>
       <script src="core/navbar/navbar.service.js"></script>
+      <script src="core/services/application.service.js"></script>
       <script src="core/services/authInterceptor.service.js"></script>
       <script src="core/services/config.service.js"></script>
+      <script src="core/services/like.service.js"></script>
       <script src="core/services/logger.service.js"></script>
       <script src="core/services/post.service.js"></script>
       <script src="core/services/socket.service.js"></script>

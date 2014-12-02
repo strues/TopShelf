@@ -10,17 +10,17 @@
    */
 
 
-  function ApplicationCtrl($scope, $http, $location, socket, toastr) {
-   // var vm = this;
-    this.data = {};
-    var self = this;
-        this.genders = [
+  function ApplicationCtrl($location, ApplicationFactory, toastr) {
+    var vm = this;
+    vm.data = {};
+
+    vm.genders = [
                   {label: 'Male', value: 'Dude'},
                   {label: 'Female', value: 'Bitch'},
                   {label: 'Unspecified', value: 'Tranny'}
                 ];
 
-        this.classOptions = [
+        vm.classOptions = [
             {value: 'deathKnight', label: 'Death Knight'},
             {value: 'druid', label: 'Druid'},
             {value: 'mage', label: 'Mage'},
@@ -32,7 +32,7 @@
             {value: 'warlock', label: 'Warlock'},
             {value: 'warrior', label: 'Warrior'}
         ];
-        this.specOptions = [
+        vm.specOptions = [
             {value: 'affliction', label: 'Affliction'},
             {value: 'arcane', label: 'Arcane'},
             {value: 'arms', label:'Arms'},
@@ -65,41 +65,42 @@
             {value:'windwalker', label:'Windwalker'}
         ];
 
-        this.yesNo = [
+        vm.yesNo = [
             {value: 'yes', label: 'Yes'},
             {value: 'no', label: 'No'}
         ];
 
-
-  this.submit = function(valid) {
+  vm.submit = function(valid) {
         if(!valid) {
            return;
         }
 
-        self.submitting = true;
+        vm.submitting = true;
 
-        $http.post('/api/applications', self.data).then(function() {
-          self.data = {};
-          toastr.success('Application submitted');
-          console.log('form submitted:', self.data);
-          $location.path('/completed');
-        }, function(response) {
-          self.submitting = false;
-        });
-      };
+        ApplicationFactory.createApplication(vm.data)
+          .then( function () {
+              vm.data = {};
+              toastr.success('Application submitted');
+              console.log('form submitted:', vm.data);
+              $location.path('/completed');
+          },
+            function(response) {
+              vm.submitting = false;
+            });
+        };
 
-      this.goBack = function () {
+      vm.goBack = function () {
         $location.path('/');
       };
 
- this.alerts = [
+ vm.alerts = [
     { type: 'danger', msg: 'All fields are required for your application. If you cannot see what youve written' +
     ' in the preview area, it contains an error and we will not receive your application.' +
     ' Make sure all URLs are valid, ie http://topshelfguild.com' }
   ];
 
-  this.closeAlert = function(index) {
-    this.alerts.splice(index, 1);
+  vm.closeAlert = function(index) {
+    vm.alerts.splice(index, 1);
   };
 }
   angular

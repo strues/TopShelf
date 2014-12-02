@@ -13,7 +13,14 @@ var express     = require('express'),
 
 
 // Connect to database
-mongoose.connect(config.mongo.uri, config.mongo.options);
+mongoose.connect(config.mongo.uri, config.mongo.options, function (err, res) {
+  if (err) {
+    console.log('Connection refused to ' + config.mongo.uri);
+    console.log(err);
+  } else {
+    console.log('Connection successful to: ' + config.mongo.uri);
+  }
+});
 
 /*
  * Disable these in production and replace with new values.
@@ -30,16 +37,27 @@ if(config.seedDB) { require('./config/seed'); }
 // Setup server
 var app         = express();
 var server      = require('http').createServer(app);
-var socketio    = require('socket.io')(server, {
+var io    = require('socket.io')(server, {
     serveClient: (config.env !== 'production'),
     path: '/socket.io-client'
   });
 
-require('./config/socketio')(socketio);
+require('./config/socketio')(io);
 require('./config/express')(app);
 require('./routes')(app);
 //require('./battle')(app);
 
+app.all('*', function(req, res, next) {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Credentials', true);
+  res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+  res.set('Access-Control-Allow-Headers',
+    'X-Requested-With, Content-Type, Authorization');
+  if ('OPTIONS' === req.method) {
+    return res.send(200);
+  }
+  next();
+});
 
 app.get('*', function(req, res) {
   res.redirect('/#' + req.originalUrl);

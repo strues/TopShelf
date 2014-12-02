@@ -45,7 +45,7 @@
            views: {
               'content@admin': {
                 controller: 'ApplicationViewCtrl',
-                templateUrl: 'admin/guildApps/applicationView.tpl.html',
+                templateUrl: 'admin/guildApps/applicationView.tpl.html'
               }
           }
        })
@@ -54,7 +54,7 @@
          views: {
           'content@admin': {
             controller: 'ApplicationViewCtrl',
-            templateUrl: 'admin/guildApps/applicationView.tpl.html',
+            templateUrl: 'admin/guildApps/applicationView.tpl.html'
           }
         }
       })
@@ -63,7 +63,7 @@
          views: {
           'content@admin': {
             controller: 'NewsCtrl',
-            templateUrl: 'admin/news/newsPost.tpl.html',
+            templateUrl: 'admin/news/newsPost.tpl.html'
           }
         }
       })
@@ -72,7 +72,7 @@
          views: {
           'content@admin': {
             controller: 'NewsListCtrl',
-            templateUrl: 'admin/news/newsList.tpl.html',
+            templateUrl: 'admin/news/newsList.tpl.html'
           }
         }
       })
@@ -99,7 +99,7 @@
          views: {
           'content@admin': {
             controller: 'AddRaidCtrl',
-            templateUrl: 'admin/raids/addRaid.tpl.html',
+            templateUrl: 'admin/raids/addRaid.tpl.html'
           }
         }
       });

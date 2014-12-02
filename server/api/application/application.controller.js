@@ -32,6 +32,40 @@ exports.show = function(req, res) {
   });
 };
 
+exports.like = function(req, res) {
+  var id = req.body._id || '';
+  if (id == '') {
+    return res.send(400);
+  }
+
+
+  Application.update({_id: id}, { $inc: { likes: 1 } }, function(err, nbRows, raw) {
+    if (err) {
+      console.log(err);
+      return res.send(400);
+    }
+
+    return res.send(200);
+  });
+};
+
+exports.unlike = function(req, res) {
+  var id = req.body._id || '';
+  if (id == '') {
+    return res.send(400);
+  }
+
+
+  Application.update({_id: id}, { $inc: { likes: -1 } }, function(err, nbRows, raw) {
+    if (err) {
+      console.log(err);
+      return res.send(400);
+    }
+
+    return res.send(200);
+  });
+};
+
 // Creates a new application in the DB.
 exports.create = function(req, res) {
   Application.create(req.body, function(err, application) {

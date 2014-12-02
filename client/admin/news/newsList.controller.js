@@ -9,7 +9,14 @@
 
     function NewsListCtrl($scope, PostFactory, socket, Auth, toastr) {
         // get all posts which will display below editor area
-    PostFactory.getAllPosts()
+      $scope.tinymceOptions = {
+        resize: false,
+        height: 400,
+        plugins: 'print textcolor image link hr wordcount code', // removed spellchecker for now
+        toolbar: 'undo redo | styleselect | bold italic | print | forecolor backcolor | hr | bullist | image link | code'
+      };
+
+      PostFactory.getAllPosts()
     .success(function (posts) {
 
       $scope.posts = posts;
