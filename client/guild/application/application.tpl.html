@@ -1,3 +1,4 @@
+<div navbar></div>
 <div class="container frontendWrap">
 <div class="row" ng-controller="ApplicationCtrl as form">
  <alert ng-repeat="alert in form.alerts" type="{{alert.type}}" close="form.closeAlert($index)">{{alert.msg}}</alert>

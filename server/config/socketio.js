@@ -37,7 +37,7 @@
         socket.address = socket.handshake.address !== null ?
         socket.handshake.address.address + ':' + socket.handshake.address.port :
           process.env.DOMAIN;
-
+        console.log('connect', socket.id);
         socket.connectedAt = new Date();
 
         // Call onDisconnect.

@@ -10,8 +10,10 @@
    */
 
 
-  function NavbarCtrl($scope, Navbar, Auth) {
-    $scope.Auth = Auth;
+  function NavbarCtrl(Navbar, Auth) {
+    var vm = this;
+
+    vm.Auth = Auth;
 
     return Navbar;
   }

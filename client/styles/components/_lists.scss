@@ -2,13 +2,15 @@ ul.posts {
   list-style: none;
   padding: 20px 5px 20px 20px;
   margin-bottom: 10px;
-  list-style-type: none;
   border-radius: 10px;
-  //break-inside: avoid;  /*prevents individual posts from breaking to next column*/
+  break-inside: avoid;
+  word-wrap: break-word;/*prevents individual posts from breaking to next column*/
 }
 li.posts {
   margin: 10px 0;
   cursor: default;
+  break-inside: avoid;
+  word-wrap: break-word;
 }
 
 .recruitmentPanel ul {

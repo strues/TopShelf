@@ -41,12 +41,7 @@
         </div><!--./row-->
 
     <div class="row">
-    <text-angular name="htmlcontent"
-          ng-model="newPost.content"
-          ta-text-editor-class="form-content editorPanel"
-          ta-html-editor-class="form-content"
-          ta-focussed-class="focussed"></text-angular>
-
+      <textarea ui-tinymce="tinymceOptions" ng-model="newPost.content"></textarea>
     </div>
      <!-- newPost.tags input-->
     <div class="row">

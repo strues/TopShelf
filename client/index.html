@@ -14,9 +14,7 @@
     <!-- build:css app.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
-      <link rel="stylesheet" href="bower_components/ngtoast/dist/ngToast.min.css">
       <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css">
-      <link rel="stylesheet" href="bower_components/toastr/toastr.css">
       <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css">
       <!-- endinject -->
       <style>.ng-hide {display: none!important; }</style>
@@ -28,7 +26,7 @@
   </head>
   <body>
 
-<div navbar></div>
+
 <div ui-view="" class="fadeZoom"></div>
 <ng-toast></ng-toast>
     <!-- build:js app.js -->
@@ -45,14 +43,15 @@
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-formly/dist/formly.min.js"></script>
       <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
-      <script src="bower_components/ngtoast/dist/ngToast.min.js"></script>
       <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
       <script src="bower_components/d3/d3.js"></script>
-      <script src="bower_components/toastr/toastr.js"></script>
       <script src="bower_components/angular-toastr/dist/angular-toastr.js"></script>
+      <script src="bower_components/tinymce/tinymce.min.js"></script>
       <script src="bower_components/ng-battlenet/src/ng-battlenet.js"></script>
       <script src="bower_components/angular-charts/dist/angular-charts.js"></script>
+      <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
       <!-- endinject -->
+
       <script src="bower_components/angular-httpi/lib/httpi.js"></script>
             <!-- inject:js -->
       <script src="app.js"></script>
@@ -109,7 +108,6 @@
       <!-- endinject -->
     <!-- endbuild -->
     <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
-          <script src='//cdn.jsdelivr.net/g/angular.textangular@1.2.2(textAngular-sanitize.min.js+textAngular.min.js)'></script>
       <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

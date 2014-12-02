@@ -1,6 +1,5 @@
 <div class="container" style="margin-bottom:60px;">
-<div class="navbar navbar-default navbar-fixed-top container">
-  <div class="container-fluid">
+<div class="navbar navbar-default navbar-fixed-top container" ng-controller="NavbarCtrl as vm">
     <div class="navbar-header">
       <button type="button"
       ng-click="Navbar.isCollapsed = !Navbar.isCollapsed"
@@ -25,30 +24,27 @@
                 <li>
                   <a href="https://topshelfguild.com/forums" target="_blank">
                   <i class="ico-bubbles2"></i> Forums</a></li>
-                  <li ng-show="Auth.isAdmin()" ui-sref-active="active">
+                  <li ng-show="vm.Auth.isAdmin()" ui-sref-active="active">
                     <a ui-sref="admin"><i class="ico-shocked"></i> Admin</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                    <li ng-hide="Auth.isLoggedIn()" ui-sref-active="active">
+                    <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
                       <a ui-sref="user.signup">
                         <i class="ico-user-plus"></i> Sign up</a>
                     </li>
-                      <li ng-hide="Auth.isLoggedIn()" ui-sref-active="active">
+                      <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
                         <a ui-sref="user.login" style="border-right: none;"><i class="ico-key"></i> Login</a>
                       </li>
                         <!-- dropdown user -->
-                        <li class="dropdown" ng-show="Auth.isLoggedIn()">
-                          <a href="#"
-                            class="dropdown-toggle"
-                            data-toggle="dropdown" role="button"
-                            aria-expanded="false">{{ Auth.getCurrentUser().name }} <i class="ico-user"></i>
-                            <span class="caret"></span>
-                          </a>
-                          <ul class="dropdown-menu page_nav_last" role="menu">
-                            <li ng-show="Auth.isLoggedIn()" ui-sref-active="active">
+                    <li class="dropdown" ng-show="vm.Auth.isLoggedIn()" dropdown>
+                      <a role="button" class="dropdown-toggle" dropdown-toggle>
+                        {{ vm.Auth.getCurrentUser().name }} <i class="ico-user"></i> <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu">
+                            <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
                               <a ui-sref="user.settings"><i class="ico-tools"></i> Settings</a>
                             </li>
-                            <li ng-show="Auth.isLoggedIn()" ui-sref-active="active">
+                            <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
                               <a ui-sref="user.logout"><i class="ico-user-minus"></i> Logout</a>
                             </li>
                           </ul>
@@ -56,6 +52,5 @@
                         </li>
                       </ul>
                     </div>
-                  </div>
                 </div>
 </div>
