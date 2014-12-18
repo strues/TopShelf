@@ -34,7 +34,7 @@ exports.show = function(req, res) {
 
 exports.like = function(req, res) {
   var id = req.params.id || '';
-  if (id == '') {
+  if (id === '') {
     return res.sendStatus(400);
   }
 
@@ -51,7 +51,7 @@ exports.like = function(req, res) {
 
 exports.unlike = function(req, res) {
   var id = req.params.id || '';
-  if (id == '') {
+  if (id === '') {
     return res.sendStatus(400)
   }
 

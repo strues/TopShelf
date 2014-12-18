@@ -74,8 +74,8 @@ function setToken(req, res) {
   var token = signToken(req.user._id, req.user.role, { expiresInMinutes: 30 * 24 * 60 });
   res.send({
     token: token,
-    user: user,
-    role: user.role
+    user: User,
+    role: User.role
   });
 }
 

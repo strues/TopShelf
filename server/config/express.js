@@ -4,20 +4,22 @@
 
 'use strict';
 
-var express        = require('express');
-var favicon        = require('serve-favicon');
-var morgan         = require('morgan');
-var compression    = require('compression');
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
-var cookieParser   = require('cookie-parser');
-var errorHandler   = require('errorhandler');
-var path           = require('path');
-var config         = require('./environment');
-var passport       = require('passport');
-var session        = require('express-session');
-var mongoStore     = require('connect-mongo')(session);
-var mongoose       = require('mongoose');
+var express        = require('express'),
+    favicon        = require('serve-favicon'),
+    morgan         = require('morgan'),
+    compression    = require('compression'),
+    bodyParser     = require('body-parser'),
+    methodOverride = require('method-override'),
+    cookieParser   = require('cookie-parser'),
+    errorHandler   = require('errorhandler'),
+    path           = require('path'),
+    cors           = require('cors'),
+    config         = require('./environment'),
+    passport       = require('passport'),
+    session        = require('express-session'),
+    mongoStore     = require('connect-mongo')(session),
+    mongoose       = require('mongoose'),
+    flash          = require('express-flash');
 
 
 module.exports = function(app) {
@@ -33,20 +35,58 @@ module.exports = function(app) {
 
   app.use(methodOverride('X-HTTP-Method-Override'));
   app.use(cookieParser());
-  app.use(passport.initialize());
+
+
+  // Enable jsonp
+  app.enable('jsonp callback');
 
   // Persist sessions with mongoStore
   app.use(session({
     secret: config.secrets.session,
     resave: true,
     saveUninitialized: true,
-    store: new mongoStore({ mongoose_connection: mongoose.connection })
+    store: new mongoStore({ mongoose_connection: mongoose.connection, auto_reconnect: true })
   }));
+  app.use(cors());
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
 
   app.set('appPath', path.join(config.root, 'client'));
 
+  app.all('*', function(req, res, next) {
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Credentials', true);
+    res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+    res.set('Access-Control-Allow-Headers',
+      'X-Requested-With, Content-Type, Authorization');
+    if ('OPTIONS' === req.method) {
+      return res.sendStatus(200);
+    }
+    next();
+  });
+
+  // Serialize sessions
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  // Deserialize sessions
+  passport.deserializeUser(function(user, id, done) {
+    user.findOne({
+      _id: id
+    }, '-salt -password', function(err, user) {
+      done(err, user);
+    });
+  });
+
+// error handling
+  app.use(function(err, req, res, next) {
+    res.sendStatus(500).body({ message: err.message });
+  });
+
   if ('production' === env) {
-    app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
+    app.use(favicon(path.join(config.root, 'client', 'assets/favicon.ico')));
     app.use(express.static(app.get('appPath')));
     app.use(morgan('dev'));
   }

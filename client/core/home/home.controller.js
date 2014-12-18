@@ -11,7 +11,6 @@
 function HomeCtrl(PostFactory, socket) {
 
     var vm = this;
-    vm.ctrlName = 'HomeCtrl';
 
       PostFactory.getAllPosts().success(function (posts) {
         console.log('getting posts', posts);

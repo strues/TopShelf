@@ -8,9 +8,7 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.user')
-    .factory('User', User);
+
 
      function User ($resource) {
             return $resource('/api/users/:id/:controller', {
@@ -30,9 +28,12 @@
                 }
               },
               update: {
-                method:'PUT',
+                method:'PUT'
 
               }
             });
           }
+  angular
+    .module('topshelf.user')
+    .factory('User', User);
 })();

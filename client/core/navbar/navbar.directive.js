@@ -16,7 +16,7 @@
   function navbar() {
      return {
       controller: 'NavbarCtrl',
-      controllerAs: 'Navbar',
+      controllerAs: 'vm',
       templateUrl: 'core/navbar/navbar.tpl.html',
       restrict: 'EA'
     };

@@ -26,7 +26,6 @@ angular.module('topshelf.admin', []);
       'ui.grid',
       'ui.grid.edit',
       'ui.grid.selection',
-      'angularCharts',
       'formly',
       'toastr',
       'httpi',

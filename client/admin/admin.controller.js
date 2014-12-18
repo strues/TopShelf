@@ -21,3 +21,4 @@
     .module('topshelf.admin')
     .controller('AdminCtrl', AdminCtrl);
 })();
+

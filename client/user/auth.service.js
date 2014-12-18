@@ -8,11 +8,8 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.user')
-    .factory('Auth', Auth);
 
-   function Auth($location, $rootScope, $http, User, $localStorage, socket, $sessionStorage, $q) {
+   function Auth($http, User, $localStorage, socket, $q) {
       var currentUser = $localStorage.token ? User.get() : {};
 
     return {
@@ -137,8 +134,6 @@
       socketAuthInit: function() {
 
       socket.on('connect', socketEmitAuthToken);
-
-
     },
 
      socketEmitAuthToken: function() {
@@ -159,6 +154,9 @@
         $localStorage.token = sessionToken;
         currentUser = User.get(cb);
       }
-    }
+    };
   }
+    angular
+    .module('topshelf.user')
+    .factory('Auth', Auth);
 })();

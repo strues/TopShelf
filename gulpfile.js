@@ -8,6 +8,7 @@ var runSequence = require('run-sequence');
 var sq          = require('streamqueue');
 var path        = require('path');
 var $           = require('gulp-load-plugins')();
+var stylish     = require('jshint-stylish');
 
 process.env.NODE_ENV = $.util.env.env || 'development';
 
@@ -18,12 +19,19 @@ var openOpts = {
 };
 
 var toInject = [
-  'client/app.js','client/appStart.js',
-  'client/**/*.directive.js', '!client/**/*.directive.spec.js',
-  'client/core/filters/**/*.js', '!client/core/filters/**/*.spec.js',
-  'client/**/*.service.js', '!client/**/*.service.spec.js',
-  'client/**/*.js', '!client/**/*.spec.js', '!client/bower_components/**/*',
-  'client/**/*.controller.js', '!client/**/*.controller.spec.js',
+  'client/app.js',
+  'client/appStart.js',
+  'client/**/*.directive.js',
+    '!client/**/*.directive.spec.js',
+  'client/core/filters/**/*.js',
+    '!client/core/filters/**/*.spec.js',
+  'client/**/*.service.js',
+    '!client/**/*.service.spec.js',
+  'client/**/*.js',
+    '!client/**/*.spec.js',
+    '!client/bower_components/**/*',
+  'client/**/*.controller.js',
+    '!client/**/*.controller.spec.js',
   'client/styles/css/app.css'
 ];
 
@@ -102,16 +110,16 @@ gulp.task('watch', ['inject'], function () {
     'client/',
     'client/**/*.html',
     'client/**/*.js',
-    '!client/**/*.spec.js',
+      '!client/**/*.spec.js',
     'client/**/*.directive.js',
     'client/**/*.tpl.html',
     'client/**/*.controller.js',
-    '!client/bower_components/**/*',
+      '!client/bower_components/**/*',
     'client/**/*.service.js',
-    '!client/**/*.service.spec.js',
+      '!client/**/*.service.spec.js',
     'client/core/filters',
     'client/core/filters/**/*.js',
-    '!client/core/filters/**/*.spec.js'
+      '!client/core/filters/**/*.spec.js'
   ], function () {
     gulp.src('client/index.html')
       .pipe($.inject(gulp.src(toInject), { relative: true }))
@@ -127,10 +135,10 @@ gulp.task('control', function () {
   return gulp.src([
     'client/**/**/*.js',
     'server/**/**/*.js',
-    '!client/bower_components/**'
+      '!client/bower_components/**'
   ])
     .pipe($.jshint())
-    .pipe($.jshint.reporter('default'));
+    .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 /**
@@ -202,7 +210,7 @@ gulp.task('serve', ['watch'], function () {
   return $.nodemon({ script: 'server/server.js', ext: 'js', ignore: ['client', 'dist', 'node_modules'] })
     .on('restart',  function () {
       gulp.src('client/index.html')
-        .pipe($.wait(250))
+        .pipe($.wait(50))
         .pipe($.livereload());
     });
 });
@@ -273,7 +281,7 @@ gulp.task('replace', function () {
 gulp.task('rev', function () {
   return gulp.src('dist/client/**')
     .pipe($.revAll({
-      ignore: ['favicon.ico', '.html'],
+      ignore: ['favicon.ico','.png', '.html'],
       quiet: true,
       transformFilename: function (file, hash) {
         toDelete.push(path.resolve(file.path));
@@ -281,7 +289,7 @@ gulp.task('rev', function () {
         return path.basename(file.path, ext) + '.' + hash.substr(0, 8) + ext;
       }
     }))
-    .pipe(gulp.dest('dist/client/'))
+    .pipe(gulp.dest('dist/client/'));
 });
 
 gulp.task('build', function (cb) {

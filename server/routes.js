@@ -1,5 +1,6 @@
 /**
  * Route includes for API calls
+ * http://192.168.33.10/xf/api/index.php?oauth/authorize&?scope=read+post&client_id=dev123&response_type=code&redirect_uri=http://192.168.33.10/xf/
  */
 
 'use strict';

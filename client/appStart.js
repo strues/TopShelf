@@ -7,11 +7,9 @@
  * during testing or tested independently
  */
 (function( angular  ) {
+'use strict';
 
-  angular.module('topshelf').factory('appStart',
-    ['$rootScope', 'util', factory]);
-
-  function factory ($rootScope, util, Auth){
+  function factory ($rootScope, util){
     var config = util.config;
     var logger = util.logger;
 
@@ -22,7 +20,7 @@
     return appStart;
     //////////////
     function start ( ) {
-      logger.info( "Top Shelf Guild is loaded and running on " + util.config.server );
+      logger.info( 'Top Shelf Guild is loaded and running on ' + util.config.server );
 
       // Trigger initial loading of data from server
       // The app may appear to be more responsive if loading happens in background
@@ -30,6 +28,7 @@
 
       reportStateChanges();
     }
+
 
     // report to console when UI-Router state changes
     function reportStateChanges(){
@@ -54,4 +53,6 @@
       }
     }
   }
+    angular.module('topshelf').factory('appStart',
+    ['$rootScope', 'util', factory]);
 })( this.angular );

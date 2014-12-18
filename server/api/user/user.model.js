@@ -1,12 +1,14 @@
 'use strict';
 
-var mongoose = require('mongoose');
-
-var crypto = require('crypto');
-var _ = require('lodash');
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema,
+  crypto = require('crypto');
 var authTypes = ['bnet'];
 
-var UserSchema = new mongoose.Schema({
+/**
+ * User Schema
+ */
+var UserSchema = new Schema({
   name: String,
   email: {
     type: String,
@@ -20,9 +22,15 @@ var UserSchema = new mongoose.Schema({
   },
   password: String,
   provider: String,
+  providerData: {},
   salt: String,
-  battletag: String,
-  bnet: {}
+  updated: {
+    type: Date
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 
@@ -123,10 +131,11 @@ UserSchema.methods = {
   /**
    * Authenticate - check if the passwords are the same
    *
-   * @param {String} plainText
    * @callback {callback} Optional callback
    * @return {Boolean}
    * @api public
+   * @param password
+   * @param callback
    */
   authenticate: function(password, callback) {
     if (!callback)
@@ -206,5 +215,6 @@ hasRole: function(role) {
     });
   }
 };
+
 
 module.exports = mongoose.model('User', UserSchema);

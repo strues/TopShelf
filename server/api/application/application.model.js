@@ -17,11 +17,11 @@ var ApplicationSchema = new Schema({
   pastGuilds: {type: String},
   screenshot: {type: String},
   whyTS: {type: String},
-  created: { type: Date, default: Date.now },
+  created: { type: Date, default: Date },
   updated: { type: Date, default: Date.now },
   read: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
-  author: {
+  applicant: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }
@@ -30,7 +30,7 @@ var ApplicationSchema = new Schema({
 ApplicationSchema.statics = {
   loadRecent: function(cb) {
     this.find({})
-      .populate({path:'Author', select: 'name'})
+      .populate({path:'applicant', select: 'name'})
       .sort('-date')
       .limit(20)
       .exec(cb);
