@@ -15,14 +15,15 @@ var express        = require('express'),
     path           = require('path'),
     cors           = require('cors'),
     config         = require('./environment'),
+    redis          = require('redis'),
     passport       = require('passport'),
     session        = require('express-session'),
-    mongoStore     = require('connect-mongo')(session),
-    mongoose       = require('mongoose'),
+    redisStore     = require('connect-redis')(session),
     flash          = require('express-flash');
 
 
 module.exports = function(app) {
+  var client = redis.createClient(); // Redis
   var env = app.get('env');
 
   app.set('views', config.root + '/server/views');
@@ -39,14 +40,14 @@ module.exports = function(app) {
 
   // Enable jsonp
   app.enable('jsonp callback');
-
-  // Persist sessions with mongoStore
-  app.use(session({
+  app.use(session(
+  {
     secret: config.secrets.session,
-    resave: true,
-    saveUninitialized: true,
-    store: new mongoStore({ mongoose_connection: mongoose.connection, auto_reconnect: true })
-  }));
+    store: new redisStore({ host: 'localhost', port: 6379, client: client }),
+    saveUninitialized: false, // don't create session until something stored,
+    resave: false // don't save session if unmodified
+  }
+));
   app.use(cors());
   app.use(passport.initialize());
   app.use(passport.session());
@@ -66,6 +67,7 @@ module.exports = function(app) {
     next();
   });
 
+
   // Serialize sessions
   passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -83,6 +85,7 @@ module.exports = function(app) {
 // error handling
   app.use(function(err, req, res, next) {
     res.sendStatus(500).body({ message: err.message });
+    next();
   });
 
   if ('production' === env) {

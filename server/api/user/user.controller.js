@@ -2,7 +2,6 @@
 
 var _        = require('lodash');
 var User     = require('./user.model');
-var passport = require('passport');
 var config   = require('../../config/environment');
 var jwt      = require('jsonwebtoken');
 
@@ -11,29 +10,63 @@ var jwt      = require('jsonwebtoken');
  * Get list of users
  * restriction: 'admin'
  */
+exports.handleError = function (res, err) {
+  return res.status(500).json(err);
+};
+
+exports.validationError = function(res, err) {
+  return res.status(422).json(err);
+};
+
 exports.index = function(req, res) {
   User.find({}, '-salt -password', function (err, users) {
-    if(err) return res.send(500, err);
+    if(err) {
+      return res.status(500).json(err);
+    }
     res.status(200).json(users);
   });
 };
 
-exports.getUsers = function(req, res) {
-    User.find({}).exec(function(err, collection) {
-        res.send(collection);
-    })
+exports.getUsers = function (req, res, next) {
+    User.find(function (err, users) {
+        if (err) {
+            return next(err);
+        }
+        res.send(users);
+    });
+};
+
+// Checks if the email is already taken TODO: protect with fail2ban
+// GET /api/users :email
+exports.checkEmailAvailable = function (req, res, next) {
+    if (!req.query.email) {
+        return res.send(400, {
+            message: 'Email parameter is required.'
+        });
+    }
+
+    User.findOne({
+        email: req.query.email
+    }, function (err, user) {
+        if (err) {
+            return next(err);
+        }
+        res.send({
+            available: !user
+        });
+    });
 };
 
 exports.getUserById = function(req, res) {
     User.findOne({_id:req.params.id}).exec(function(err, user) {
         res.send(user);
-    })
+    });
 };
 
 exports.updateCurrentUser = function(req, res) {
     var userUpdates = req.body;
 
-    if(req.user._id != userUpdates._id && !req.user.hasRole('admin')) {
+    if(req.user._id !== userUpdates._id && !req.user.hasRole('admin')) {
         res.sendStatus(403);
         return res.end();
     }
@@ -51,7 +84,7 @@ exports.updateCurrentUser = function(req, res) {
             return res.send({reason:err.toString()});
         }
         res.send(req.user);
-    })
+    });
 };
 
 exports.updateUser = function(req, res) {
@@ -74,8 +107,8 @@ exports.updateUser = function(req, res) {
                 return res.send({reason:err.toString()});
             }
             res.send(userToEdit);
-        })
-    })
+        });
+    });
 };
 
 /**
@@ -99,6 +132,7 @@ exports.create = function (req, res, next) {
     res.json({ token: token });
     console.log('user ' + req.body.name + ' created');
   });
+  next();
 };
 
 // Updates an existing user in the DB.
@@ -123,7 +157,9 @@ exports.show = function (req, res, next) {
   var userId = req.params.id;
 
   User.findById(userId, function (err, user) {
-    if (err) return next(err);
+    if (err) {
+      return next(err);
+    }
  //   if (!user) return res.send(401);
     res.json(user.profile);
   });
@@ -135,8 +171,10 @@ exports.show = function (req, res, next) {
  */
 exports.destroy = function(req, res) {
   User.findByIdAndRemove(req.params.id, function(err, user) {
-    if(err) return res.send(500, err);
-    return res.send(204);
+    if(err) {
+      return res.status(500).json(err);
+    }
+    return res.sendStatus(204);
   });
 };
 
@@ -150,19 +188,24 @@ exports.changePassword = function(req, res, next) {
 
   User.findById(userId, function (err, user) {
     user.authenticate(oldPass, function(authErr, authenticated) {
-      if (authErr) res.send(403);
+      if (authErr) {
+        res.sendStatus(403);
+      }
 
       if (authenticated) {
         user.password = newPass;
         user.save(function(err) {
-          if (err) return validationError(res, err);
-          res.send(200);
+          if (err) {
+            return validationError(res, err);
+          }
+          res.sendStatus(200);
         });
       } else {
-        res.send(403);
+        res.sendStatus(403);
       }
     });
   });
+  next();
 };
 
 /**
@@ -173,19 +216,14 @@ exports.me = function(req, res, next) {
   User.findOne({
     _id: userId
   }, '-salt -password', function(err, user) { // don't ever give out the password or salt
-    if (err) return next(err);
-    if (!user) return res.json(401);
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.json(401);
+    }
     res.json(user);
   });
-};
-
-function handleError(res, err) {
-  return res.status(500).json(err);
-}
-
-
-var validationError = function(res, err) {
-  return res.status(422).json(err);
 };
 
 /**
@@ -193,4 +231,5 @@ var validationError = function(res, err) {
  */
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
+  next();
 };

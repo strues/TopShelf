@@ -1,8 +1,5 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var passport = require('passport');
-var moment = require('moment');
 var config = require('../config/environment');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
@@ -28,9 +25,12 @@ function isAuthenticated() {
     // Attach user to request
     .use(function(req, res, next) {
       User.findById(req.user._id, function (err, user) {
-        if (err) return next(err);
-        if (!user) return res.sendStatus(401);
-
+        if (err) {
+          return next(err);
+        }
+        if (!user) {
+          return res.sendStatus(401);
+        }
         req.user = user;
         next();
       });
@@ -41,8 +41,9 @@ function isAuthenticated() {
  * Checks if the user role meets the minimum requirements of the route
  */
 function hasRole(roleRequired) {
-  if (!roleRequired) throw new Error('Required role needs to be set');
-
+  if (!roleRequired) {
+    throw new Error('Required role needs to be set');
+  }
   return compose()
     .use(isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
@@ -50,7 +51,7 @@ function hasRole(roleRequired) {
         next();
       }
       else {
-        res.send(403);
+        res.sendStatus(403);
       }
     });
 }
@@ -60,8 +61,9 @@ function hasRole(roleRequired) {
  */
 function signToken(id, role) {
   var payload = { _id: id };
-  if (role !== null) payload.role = role;
-
+  if (role !== null) {
+    payload.role = role;
+  }
   return jwt.sign(payload, config.secrets.session, { expiresInMinutes: 30 * 24 * 60 });
 }
 
@@ -69,8 +71,9 @@ function signToken(id, role) {
  * Set token cookie directly for oAuth strategies
  */
 function setToken(req, res) {
-  if (!req.user) return res.json(404, { message: 'Something went wrong, please try again.'});
-
+  if (!req.user) {
+    return res.json(404, { message: 'Something went wrong, please try again.'});
+  }
   var token = signToken(req.user._id, req.user.role, { expiresInMinutes: 30 * 24 * 60 });
   res.send({
     token: token,

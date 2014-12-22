@@ -4,13 +4,11 @@
 
 'use strict';
 
-// Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express     = require('express'),
     mongoose    = require('mongoose'),
     config      = require('./config/environment');
-
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
@@ -21,16 +19,6 @@ mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
     console.log('Connection successful to: ' + config.mongo.uri);
   }
 });
-
-/*
- * Disable these in production and replace with new values.
-	 	var https       = require('https');
-	 	var fs = require('fs');
-		var pkey        = fs.readFileSync('./server/config/keys/key.pem');
-		var pcert       = fs.readFileSync('./server/config/keys/cert.pem');
-		var credentials = {key: pkey, cert: pcert};
- *
- */
 
 if(config.seedDB) { require('./config/seed'); }
 
@@ -51,12 +39,10 @@ require('./routes')(app);
 /*
  * Start the server
  */
-//var httpsServer = https.createServer(credentials, app);
+
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode',
     config.port, app.get('env'));
 });
-// Expose app
-//httpsServer.listen(8443); // Disable unless testing oauth
 
 exports = module.exports = app;

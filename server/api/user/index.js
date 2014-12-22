@@ -16,6 +16,7 @@ router.put('/:id', auth.isAuthenticated(), controller.update);
 router.put('/', controller.updateCurrentUser);
 router.get('/:id', controller.getUserById);
 router.put('/:id', auth.hasRole('admin'), controller.updateUser);
+router.get('/', controller.checkEmailAvailable);
 
 module.exports = router;
 
