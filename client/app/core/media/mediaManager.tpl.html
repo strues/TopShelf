@@ -1,0 +1,140 @@
+<div class="panel panel-default">
+  <!-- Navigation Buttons in Panel Header -->
+  <div class="panel-heading">
+    <div class="btn-group btn-group-justified">
+      <div class="btn-group">
+        <button ng-click="showMediaLibrary=true" ng-class="{'btn-success':showMediaLibrary}" class="btn btn-default">Media Library</button>
+      </div>
+      <div class="btn-group">
+        <button ng-click="showMediaLibrary=false" ng-class="{'btn-success':!showMediaLibrary}"class="btn btn-default">Upload Images</button>
+      </div>
+    </div>
+  </div>
+  <!-- Conditional Display in the Panel Body -->
+  <div class="panel-body">
+    <!-- Shows existing images in the media library -->
+    <div ng-show="showMediaLibrary">
+      <div class="row">
+        <div class="input-group text-right col-sm-4 col-sm-offset-7">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+          <input class="form-control" type="search" ng-model="search" placeholder="Search Images">
+        </div>
+      </div>
+      <hr>
+      <div class="row media-library-bucket">
+        <ul class="list-group">
+          <li
+            ng-repeat="image in images | filter:search"
+            ng-init="selectedImages[image.serverPath] = current.images.indexOf(image.serverPath) > -1"
+            ng-class="{'active' : selectedImages[image.serverPath]}"
+            class="list-group-item col-sm-3 media-image-item">
+
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"
+                  ng-model="selectedImages[image.serverPath]"
+                  ng-checked="selectedImages[image.serverPath]">Add
+                </label>
+              </div>
+
+              <img ng-src="{{image.serverPath}}" alt="{{image.originalFilename}}">
+              <h6>{{image.originalFilename | limitTo : 25}}</h6>
+              <a href="#" ng-click="removeImage(image._id)">Delete</a>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="form-group col-sm-4 col-sm-offset-8">
+        <button ng-click="saveImagesToCurrent(current._id, current.type)" class="btn btn-success">Save Checked Images</button>
+      </div>
+    </div>
+  </div>
+  <!-- Shows the upload options -->
+  <div ng-hide="showMediaLibrary">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Select files</h3>
+        <div ng-show="uploader.isHTML5">
+          <!-- 3. nv-file-over uploader="link" over-class="className" -->
+          <div class="well upload-drop-zone" nv-file-over="" uploader="uploader">
+            Base drop zone
+          </div>
+          <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+          <span class="btn btn-primary btn-file">
+          Browse Photos<input type="file" nv-file-select="" uploader="uploader" multiple  />
+          </span>
+        </div>
+        <div class="col-md-12" style="margin-bottom: 40px">
+          <table class="table">
+            <thead>
+              <tr>
+                <th width="50%">Name</th>
+                <th ng-show="uploader.isHTML5">Size</th>
+                <th ng-show="uploader.isHTML5">Progress</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in uploader.queue">
+                <td>
+                  <strong>{{ item.file.name }}</strong>
+                  <!-- Image preview -->
+                  <!--auto height-->
+                  <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+                  <!--auto width-->
+                  <div ng-show="uploader.isHTML5" thumb-preview="{ file: item._file, height: 100 }"></div>
+                  <!--fixed width and height -->
+                  <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+                </td>
+                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                <td ng-show="uploader.isHTML5">
+                  <div class="progress" style="margin-bottom: 0;">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                  <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                  <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                </td>
+                <td nowrap>
+                  <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                  <span class="glyphicon glyphicon-upload"></span> Upload
+                  </button>
+                  <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                  <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                  </button>
+                  <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                  <span class="glyphicon glyphicon-trash"></span> Remove
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <div>
+              Queue progress:
+              <div class="progress" style="">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+            <span class="glyphicon glyphicon-upload"></span> Upload all
+            </button>
+            <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+            <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+            </button>
+            <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+            <span class="glyphicon glyphicon-trash"></span> Remove all
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,8 @@
     "angular-formly-templates-bootstrap": "~0.0.2",
     "angular-ui-grid": "~3.0.0-rc.16",
     "angular-toastr": "~0.5.2",
-    "textAngular": "~1.2.2"
+    "textAngular": "~1.2.2",
+    "angular-file-upload": "~1.1.5"
   },
   "overrides": {
     "bootstrap-sass-official": {

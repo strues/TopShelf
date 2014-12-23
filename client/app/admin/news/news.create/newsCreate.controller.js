@@ -6,12 +6,9 @@
 (function () {
   'use strict';
 
-
-
-    function NewsCreateCtrl($scope, PostFactory, toastr, socket, Auth) {
+  function NewsCreateCtrl($scope, PostFactory, toastr, socket, Auth) {
     // when Save is clicked
     $scope.createPost = function () {
-
       var post = {
         date: $scope.newPost.date,
         title: $scope.newPost.title,
