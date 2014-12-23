@@ -119,6 +119,8 @@ exports.create = function (req, res, next) {
   var newUser      = new User(req.body);
   newUser.provider = 'local';
   newUser.role     = 'user';
+  newUser.createdAt = new Date();
+  newUser.updatedAt = new Date();
   newUser.save(function(err, user) {
 
     if (err) {

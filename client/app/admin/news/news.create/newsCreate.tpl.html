@@ -1,0 +1,64 @@
+<div class="backendWrap">
+<div class="row" ng-controller="NewsCreateCtrl">
+<div class="col-sm-8 col-sm-offset-2">
+    <form novalidate ng-submit="createPost()">
+
+       <div class="row">
+
+                 <!-- newPost.title input-->
+            <div class="col-md-8">
+         <span style="padding-left: 10px;">
+         <h1>New Post</h1>
+         <h6>Create a new post that displays on the homepage</h6></span>
+                <input type="text"
+                      class="form-control"
+                      placeholder="Post title"
+                      ng-minLength=3
+                      ng-maxLength=75
+                      ng-model="newPost.title"
+                      required/>
+              </div>
+         <div class="col-md-3">
+                <div class="input-group" ng-controller="DatepickerCtrl">
+                  <input type="text"
+                         class="form-control"
+                         datepicker-popup="{{format}}"
+                         ng-model="newPost.date"
+                         is-open="opened"
+                         min-date="minDate"
+                         max-date="'2015-06-22'"
+                         datepicker-options="dateOptions"
+                         placeholder="Date"
+                         date-disabled="disabled(date, mode)"
+                         close-text="Close"
+                         required/>
+
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><span class="glyphicon glyphicon-calendar"></span></button>
+                  </span>
+                </div>
+            </div>
+        </div><!--./row-->
+
+    <div class="row">
+    <text-angular class="textEditor" ng-model="newPost.content"></text-angular>
+    </div>
+     <!-- newPost.tags input-->
+    <div class="row">
+    <div class="col-md-6">
+        <input type="text"
+               class="form-control"
+               placeholder="tags"
+               ng-model="newPost.tags"
+               ng-list=", "
+               required/>
+    </div>
+            <!-- Save Btn-->
+    <div class="col-md-6">
+      <input type="submit" class="btn btn-primary" value="Save Post" />
+    </div>
+    </div> <!--./row-->
+  </form>
+</div>
+</div>
+

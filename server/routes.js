@@ -14,6 +14,7 @@ module.exports = function(app) {
 // Routes
   app.use('/api/users', require('./api/user'));
   app.use('/api/posts', require('./api/post'));
+  app.use('/api/images', require('./api/image'));
   app.use('/api/applications', require('./api/application'));
   app.use('/api/recruitment', require('./api/recruitment'));
   app.use('/api/roster', require('./api/roster'));

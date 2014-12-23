@@ -19,19 +19,19 @@ var openOpts = {
 };
 
 var toInject = [
-  'client/app.js',
-  'client/appStart.js',
-  'client/**/*.directive.js',
-    '!client/**/*.directive.spec.js',
-  'client/core/filters/**/*.js',
-    '!client/core/filters/**/*.spec.js',
-  'client/**/*.service.js',
-    '!client/**/*.service.spec.js',
-  'client/**/*.js',
-    '!client/**/*.spec.js',
+  'client/app/app.js',
+  'client/app/appStart.js',
+  'client/app/**/*.directive.js',
+    '!client/app/**/*.directive.spec.js',
+  'client/app/core/filters/**/*.js',
+    '!client/app/core/filters/**/*.spec.js',
+  'client/app/**/*.service.js',
+    '!client/app/**/*.service.spec.js',
+  'client/app/**/*.js',
+    '!client/app/**/*.spec.js',
     '!client/bower_components/**/*',
-  'client/**/*.controller.js',
-    '!client/**/*.controller.spec.js',
+  'client/app/**/*.controller.js',
+    '!client/app/**/*.controller.spec.js',
   'client/styles/css/app.css'
 ];
 
@@ -165,7 +165,7 @@ function testClient (done) {
     'client/bower_components/angular-mocks/angular-mocks.js',
     'client/bower_components/angular-route/angular-route.js',
     'client/bower_components/angular-resource/angular-resource.js',
-    'client/app.js',
+    'client/app/app.js',
     'client/views/**/*.js',
     'client/services/**/*.js',
     'client/directives/**/*.js',
