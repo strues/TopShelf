@@ -48,5 +48,15 @@
       </div>  <!-- END OF input-group -->
 
     </form>
+    <ul class="list-group row">
+  <li
+  ng-repeat="image in post.images"
+  class="list-group-item col-sm-3">
+    <img ng-src="{{image}}" alt="{{image}}">
+    <h6>{{image}}</h6>
+  </li>
+</ul>
+<!-- Media Manager -->
+<media-manager current="post" show="showMedia"></media-manager>
   </div>
 </div>

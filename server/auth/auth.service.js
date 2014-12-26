@@ -75,6 +75,7 @@ function setToken(req, res) {
     return res.json(404, { message: 'Something went wrong, please try again.'});
   }
   var token = signToken(req.user._id, req.user.role, { expiresInMinutes: 30 * 24 * 60 });
+  res.cookie('token', JSON.stringify(token));
   res.send({
     token: token,
     user: User,

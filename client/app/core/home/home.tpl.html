@@ -19,7 +19,9 @@
             </div>
             <div class="cal">
               <h4><i class="ico-calendar2"></i> {{post.date | date:'MM/dd/yyyy'}}</h4>
-            </div>
+            </div><div
+              ng-show="post.images.length > 0">
+                  <div class="image" style="background:url('{{post.images[0]}}') no-repeat center center"></div></div>
             <div class="postContent">
               <p ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></p>
               <p ng-hide="!showMode" ng-bind-html="post.content"></p>
@@ -28,8 +30,7 @@
               <p>Posted by {{post.author.name}}</p>
               <span class="taggedEM"><i class="ico-tags2"></i></span>
               <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span>
-                  <button class="btn btn-primary" ng-click="openViewModal(post._id)" news-view-modal>View Entir</button>
-                  <h6>Read More</h6>
+                  <button class="btn btn-primary" ng-click="openViewModal(post._id)" news-view-modal>Read More</button>
                 </a>
             </div>
           </div>
@@ -74,4 +75,3 @@
       <a href="http://steventruesdell.com">Website</a></p>
     </footer>
     </div>
-

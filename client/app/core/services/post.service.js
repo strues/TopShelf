@@ -19,6 +19,10 @@
       return $http.post(urlBase, newPost);
     };
 
+    exports.addImageToPost = function(postId){
+      return $http.put(urlBase + '/addImages/'+postId);
+    };
+
     exports.updatePost = function(updatedPost){
       return $http.put(urlBase + '/' + updatedPost._id, updatedPost);
     };

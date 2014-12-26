@@ -35,6 +35,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "client/app/core/directives/media-manager/media-manager.directive.js",
+			"settings":
+			{
+				"buffer_size": 1779,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -43,8 +51,8 @@
 		"selected_items":
 		[
 			[
-				"tra",
-				"Trailing Spaces: Delete Trailing Spaces"
+				"themr",
+				"Themr: List themes"
 			],
 			[
 				"install",
@@ -53,6 +61,10 @@
 			[
 				"comm",
 				"Toggle Comment"
+			],
+			[
+				"tra",
+				"Trailing Spaces: Delete Trailing Spaces"
 			],
 			[
 				"comme",
@@ -77,10 +89,6 @@
 			[
 				"comment",
 				"Toggle Block Comment"
-			],
-			[
-				"themr",
-				"Themr: List themes"
 			],
 			[
 				"com",
@@ -148,10 +156,121 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/steventruesdell/Webdev/TopShelf/web"
+		"/Users/steventruesdell/Webdev/TopShelf/web",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.create",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.edit",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/common",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/fileModel",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/imageShower",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/media-manager",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/thumbPreview",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/user/login",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/user/signup",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/bower_components/angular-file-upload",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/components",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/sections",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/config"
 	],
 	"file_history":
 	[
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/post.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.create/newsCreate.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.edit/editModal.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/thumbPreview/thumbPreview.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/routes.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/socketio.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/image.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/imageShower/imageShower.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/media-manager/media-manager.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/imageShower/imageShower.less",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/fileModel/fileModel.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/fileUpload.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/post.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/image/image.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/image/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/express.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/auth.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/package.json",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/upload/upload.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/media/fileModel.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/media/mediaManager.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/post.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/media/mediaManager.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/app.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.create/newsCreate.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/components/_mediaManager.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/app.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/image/image.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/user.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/user.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/common/tsFormGroup.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.edit/newsEditModal.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/bower.json",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view/viewModal.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/index.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/admin.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/appStart.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.viewPost.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.viewPost.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/core.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view/newsView.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/sidebar.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/sidebarModal.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/newsList.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/sidebar.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view/editModal.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view/newsEditModal.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/applications/applicationView.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/applications/applicationView.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/newsEditModal.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/admin.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/adminSidebar.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/config.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/application/application.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/recruitmentPanel.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/recruitmentPanelModal.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/recruitmentPanel.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/recruitmentPanelModal.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/navbar/navbar.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/user/signup/signupForm.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/user/login/loginForm.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/user/user.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/guild.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.controller.spec.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulpfile.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/appStart.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/comment/comment.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/comment/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/category/category.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/category/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/comment/comment.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/server.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/category.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/local/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/local/passport.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/environment/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/.jshintrc-spec",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/.jshintrc",
 		"/Users/steventruesdell/Webdev/Boxes/dev1/data/app/config/database.php",
 		"/Users/steventruesdell/Webdev/Boxes/dev1/data/composer.lock",
 		"/Users/steventruesdell/Webdev/Boxes/dev1/data/composer.json",
@@ -194,96 +313,11 @@
 		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/static/javascripts/topshelf.js",
 		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/authentication/views.py",
 		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/authentication/permissions.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/authentication/admin.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/topshelf_guild/views.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/authentication/serializers.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/authentication/permission.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/static/templates/authentication/register.html",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/topshelf_guild/wsgi.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/manage.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/topshelf/wsgi.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/topshelf/settings.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/topshelf/urls.py",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/scripts/postInstall.sh",
-		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/Procfile",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/collections/users.js",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/client/views/users/profile/user_info.html",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/client/views/users/profile/user_info.js",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/lib/helpers.js",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/lib/router/users.js",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/i18n/en.i18n.json",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/lib/users.js",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/client/views/users/account/user_account.js",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/client/views/users/user_profile.js",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/client/views/users/user_profile.html",
-		"/Users/steventruesdell/Webdev/meteor/Telescope/server/users.js",
-		"/Users/steventruesdell/Webdev/meteor/guildr/client/raids/filters/displayName.js",
-		"/Users/steventruesdell/Webdev/meteor/guildr/client/raids/controllers/raidDetails.js",
-		"/Users/steventruesdell/Webdev/Experiments/fotmjs/monitorApp.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/server/controllers/user.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/server/models/roster.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/package.json",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/server/config/config.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/server/server.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/controllers/signup.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/server/lib/auth.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/server/models/user.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/controllers/add.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/server/config/secrets.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/server/lib/acl.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/services/auth.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/views/add_user.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/views/edit_user.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/views/manage.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/views/secure.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/views/signup.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/services/manage.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/public/controllers/edit.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/routes/api/v1/user/app.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/routes/api/v1/user/middleware/acl.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/core/services/core.errorHandler.factory.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/user/services/user.userModel.factory.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/run.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/user/states/register/user.register.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/user/states/resetPassword/user.resetPassword.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/user/states/resetPasswordRequest/user.resetPasswordRequest.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/user/states/login/user.login.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/user/states/home/user.home.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/core/directives/navbar/core.navbar.html",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/user/directives/passwordRepeat/user.passwordRepeat.directive.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/user/directives/emailAvailable/user.emailAvailable.directive.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/core/directives/loadingBtn/core.loadingBtn.directive.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/services/app/models/user/statics.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/routes/api/v1/app/app.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/module.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/config.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend/development/app/decorators.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/routes/api/v1/user/actions/update.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/services/app/models/user/schema.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/services/app/models/index.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/services/app/fileHandler/index.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/services/app/errors/user.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/services/app/config/development.json",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/services/app/config/all.json",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/application/middlewareLoaders/final.js",
-		"/Users/steventruesdell/Webdev/Experiments/topshelf/backend/application/middlewareLoaders/initial.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/server/middleware/final.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/server/di.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/server/api/user/model/user.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/server.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/controllers/user.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/config/config.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/.jshintrc",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/config/secrets.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/models/user.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/public/controllers/add.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/public/controllers/signup.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/public/services/auth.js",
-		"/Users/steventruesdell/Webdev/Experiments/tsg/public/views/manage.html"
+		"/Users/steventruesdell/Webdev/Tutorials/django/TopShelf/authentication/admin.py"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -301,6 +335,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"multi",
+			"tag",
+			"\"",
 			"web",
 			"thinkster",
 			"thinkster_django_angular_boilerplate",
@@ -407,6 +444,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"'",
 			"topshelf",
 			"topshelf_guild",
 			"topshelf",
@@ -459,8 +497,205 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "client/app/core/directives/media-manager/media-manager.directive.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1779,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								966,
+								966
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 293.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -502,7 +737,7 @@
 	"project": "topshelf.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":

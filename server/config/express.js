@@ -35,7 +35,7 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({ extended: 'true' })); // parse application/x-www-form-urlencoded
 
   app.use(methodOverride('X-HTTP-Method-Override'));
-  app.use(cookieParser());
+
 
 
   // Enable jsonp
@@ -49,8 +49,9 @@ module.exports = function(app) {
   }
 ));
   app.use(cors());
+  app.use(cookieParser());
   app.use(passport.initialize());
-  app.use(passport.session());
+
   app.use(flash());
 
   app.set('appPath', path.join(config.root, 'client'));
@@ -65,21 +66,6 @@ module.exports = function(app) {
       return res.sendStatus(200);
     }
     next();
-  });
-
-
-  // Serialize sessions
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  // Deserialize sessions
-  passport.deserializeUser(function(user, id, done) {
-    user.findOne({
-      _id: id
-    }, '-salt -password', function(err, user) {
-      done(err, user);
-    });
   });
 
 // error handling
