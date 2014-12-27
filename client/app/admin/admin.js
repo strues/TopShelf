@@ -83,15 +83,6 @@
           }
         }
       })
-      .state('admin.roster', {
-        url: '/roster',
-        views: {
-          'content@admin': {
-            controller: 'RosterCtrl',
-            templateUrl: 'app/admin/roster/roster.tpl.html'
-          }
-        }
-      })
       .state('admin.addRaid', {
         url: '/raids',
          views: {

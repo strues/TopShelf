@@ -10,7 +10,7 @@
    */
 
 
- function RecruitmentCtrl ($scope, $http, $location, socket, recruitmentFactory) {
+ function RecruitmentCtrl ($scope, $http) {
 
       $scope.formData = {};
       $scope.formFields = [
@@ -155,7 +155,6 @@
           //Set the id of the form
           uniqueFormId: 'recruitment'
       };
-socket.syncUpdates('recruitment', $scope.recruitments);
       $scope.onSubmit = function() {
           $http.post('/api/recruitment', $scope.formData);
           console.log('recruitment status submitted:', $scope.formData);

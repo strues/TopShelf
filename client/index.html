@@ -14,7 +14,6 @@
     <!-- build:css app.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
-      <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css">
       <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css">
       <!-- endinject -->
       <style>.ng-hide {display: none!important; }</style>
@@ -43,18 +42,16 @@
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-formly/dist/formly.min.js"></script>
       <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
-      <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
       <script src="bower_components/angular-toastr/dist/angular-toastr.js"></script>
       <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
-      <script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
       <!-- endinject -->
             <!-- inject:js -->
       <script src="app/app.js"></script>
       <script src="app/appStart.js"></script>
       <script src="app/core/common/mongoose-error.directive.js"></script>
       <script src="app/core/common/tsFormGroup.directive.js"></script>
-      <script src="app/core/navbar/navbar.directive.js"></script>
       <script src="app/core/home/sidebar.directive.js"></script>
+      <script src="app/core/navbar/navbar.directive.js"></script>
       <script src="app/user/login/loginForm.directive.js"></script>
       <script src="app/user/signup/signupForm.directive.js"></script>
       <script src="app/admin/news/news.edit/newsEditModal.directive.js"></script>
@@ -72,6 +69,7 @@
       <script src="app/core/services/logger.service.js"></script>
       <script src="app/core/services/post.service.js"></script>
       <script src="app/core/services/realmList.service.js"></script>
+      <script src="app/core/services/recruitment.service.js"></script>
       <script src="app/core/services/socket.service.js"></script>
       <script src="app/core/services/util.service.js"></script>
       <script src="app/guild/application/application.service.js"></script>
@@ -86,14 +84,12 @@
       <script src="app/user/user.js"></script>
       <script src="app/admin/applications/applicationList.controller.js"></script>
       <script src="app/admin/applications/applicationView.controller.js"></script>
+      <script src="app/admin/raids/addRaid.controller.js"></script>
       <script src="app/admin/news/datePicker.controller.js"></script>
       <script src="app/admin/news/newsList.controller.js"></script>
-      <script src="app/admin/raids/addRaid.controller.js"></script>
       <script src="app/admin/recruitment/recruitment.controller.js"></script>
-      <script src="app/admin/recruitment/recruitmentList.controller.js"></script>
-      <script src="app/admin/roster/roster.controller.js"></script>
-      <script src="app/core/navbar/navbar.controller.js"></script>
       <script src="app/core/home/home.controller.js"></script>
+      <script src="app/core/navbar/navbar.controller.js"></script>
       <script src="app/guild/application/application.controller.js"></script>
       <script src="app/guild/raid/raid.controller.js"></script>
       <script src="app/guild/raid/raidList.controller.js"></script>
@@ -101,8 +97,8 @@
       <script src="app/guild/recruitment/recruitment.controller.js"></script>
       <script src="app/guild/streams/stream.controller.js"></script>
       <script src="app/user/login/login.controller.js"></script>
-      <script src="app/user/settings/settings.controller.js"></script>
       <script src="app/user/signup/signup.controller.js"></script>
+      <script src="app/user/settings/settings.controller.js"></script>
       <script src="app/admin/news/news.create/newsCreate.controller.js"></script>
       <!-- endinject -->
     <!-- endbuild -->

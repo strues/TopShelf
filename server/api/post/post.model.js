@@ -7,6 +7,7 @@ var PostSchema = new Schema({
   title: String,
   content: String,
   tags: Array,
+  category    : Array,
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User'

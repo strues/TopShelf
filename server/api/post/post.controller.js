@@ -2,6 +2,9 @@
 
 var _ = require('lodash');
 var Post = require('./post.model');
+var multiparty = require('multiparty');
+var fs = require('fs');
+var path = require('path');
 
 // Get list of posts
 exports.index = function(req, res) {
@@ -38,27 +41,69 @@ exports.create = function(req, res) {
 
 // Updates an existing post in the DB.
 exports.update = function(req, res) {
-  if(req.body._id) {
-    delete req.body._id;
-  }
-  Post.findById(req.params.id, function (err, post) {
-    if (err) {
-      return handleError(res, err);
+    if (req.body._id) {
+        delete req.body._id;
     }
-    if (!post) {
-      return res.sendStatus(404);
-    }
-    // var updated = _.merge(post, req.body);
-    var updated = _.extend(post, req.body);
-    updated.save(function (err) {
-      if (err) {
-        return handleError(res, err);
-      }
-      return res.status(200).json(post);
+    Post.findById(req.params.id, function(err, post) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!post) {
+            return res.sendStatus(404);
+        }
+
+        var updated = _.merge(post, req.body);
+        console.log(updated.category);
+        updated.save(function(err) {
+            if (err) {
+                return handleError(res, err);
+            }
+            console.log(updated.category);
+            return res.status(200).json(updated);
+        });
     });
-  });
 };
 
+exports.addImages = function(req, res) {
+
+    Post.findById(req.params.id, function(err, post) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!post) {
+            return res.send(404);
+        }
+
+        post.images = req.body;
+        post.save(function(err) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, post);
+        });
+    });
+};
+
+exports.addCategory = function(req, res) {
+    console.log(req.body);
+    Post.findById(req.params.id, function(err, post) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!post) {
+            return res.send(404);
+        }
+
+        post.category = req.body;
+
+        post.save(function(err) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, post);
+        });
+    });
+};
 
 // Deletes a post from the DB.
 exports.destroy = function(req, res) {

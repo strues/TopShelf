@@ -56,23 +56,7 @@ module.exports = function(app) {
 
   app.set('appPath', path.join(config.root, 'client'));
 
-  app.all('*', function(req, res, next) {
-    res.set('Access-Control-Allow-Origin', '*');
-    res.set('Access-Control-Allow-Credentials', true);
-    res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
-    res.set('Access-Control-Allow-Headers',
-      'X-Requested-With, Content-Type, Authorization');
-    if ('OPTIONS' === req.method) {
-      return res.sendStatus(200);
-    }
-    next();
-  });
 
-// error handling
-  app.use(function(err, req, res, next) {
-    res.sendStatus(500).body({ message: err.message });
-    next();
-  });
 
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'client', 'assets/favicon.ico')));

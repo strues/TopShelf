@@ -11,6 +11,7 @@
 function HomeCtrl(PostFactory, socket) {
 
     var vm = this;
+    vm.posts = {};
 
       PostFactory.getAllPosts().success(function (posts) {
         console.log('getting posts', posts);
@@ -32,7 +33,8 @@ function HomeCtrl(PostFactory, socket) {
         vm.showMorePosts = function() {
           view = view + 1;
         };
-    })
+    }
+    )
     .error(function (error) {
       vm.status = 'Unable to Retrieve Posts: ' + error.message;
     });
