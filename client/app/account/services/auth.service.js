@@ -157,6 +157,6 @@
     };
   }
     angular
-    .module('topshelf.user')
+    .module('topshelf.account')
     .factory('Auth', Auth);
 })();

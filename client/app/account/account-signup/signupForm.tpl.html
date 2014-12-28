@@ -1,0 +1,41 @@
+<section>
+ <div class="center-form panel">
+      <div class="panel-body">
+        <h2 class="text-center">Sign up</h2>
+        <form ng-submit="register(form)" name="form" novalidate>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : form.username.$invalid && form.username.$dirty }">
+            <input class="form-control input-lg" type="text" name="username" ng-model="user.name" placeholder="Username" required autofocus>
+            <span class="ion-person form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="form.username.$dirty" ng-messages="form.username.$error">
+              <div ng-message="required">You must enter your username.</div>
+            </div>
+          </div>
+
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : form.email.$invalid && form.email.$dirty }">
+            <input class="form-control input-lg" type="email" id="email" name="email" ng-model="user.email" placeholder="Email" required
+            ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+            <span class="ion-at form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="form.email.$dirty" ng-messages="form.email.$error">
+              <div ng-message="required">Your email address is required.</div>
+              <div ng-message="pattern">Your email address is invalid.</div>
+            </div>
+          </div>
+
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : form.password.$invalid && form.password.$dirty }">
+            <input password-strength class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
+            <span class="ion-key form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="form.password.$dirty" ng-messages="form.password.$error">
+              <div ng-message="required">Password is required.</div>
+            </div>
+          </div>
+
+          <p class="text-center text-muted"><small>By clicking on Sign up, you agree to <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></small></p>
+
+          <button type="submit" ng-disabled="form.$invalid" class="btn btn-lg btn-block btn-primary">Sign up</button>
+          <br/>
+
+          <p class="text-center text-muted">Already have an account? <a ui-sref="login">Login</a></p>
+        </form>
+      </div>
+    </div>
+</section>

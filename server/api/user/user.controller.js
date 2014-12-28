@@ -10,13 +10,6 @@ var jwt      = require('jsonwebtoken');
  * Get list of users
  * restriction: 'admin'
  */
-exports.handleError = function (res, err) {
-  return res.status(500).json(err);
-};
-
-exports.validationError = function(res, err) {
-  return res.status(422).json(err);
-};
 
 exports.index = function(req, res) {
   User.find({}, '-salt -password', function (err, users) {
@@ -114,7 +107,7 @@ exports.updateUser = function(req, res) {
 /**
  * Creates a new user
  */
-exports.create = function (req, res, next) {
+exports.create = function (req, res) {
 
   var newUser      = new User(req.body);
   newUser.provider = 'local';
@@ -134,7 +127,6 @@ exports.create = function (req, res, next) {
     res.json({ token: token });
     console.log('user ' + req.body.name + ' created');
   });
-  next();
 };
 
 // Updates an existing user in the DB.
@@ -227,6 +219,14 @@ exports.me = function(req, res, next) {
     res.json(user);
   });
 };
+exports.handleError = function (res, err) {
+  return res.status(500).json(err);
+};
+
+exports.validationError = function(res, err) {
+  return res.status(422).json(err);
+};
+
 
 /**
  * Authentication callback

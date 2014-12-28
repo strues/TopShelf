@@ -13,34 +13,32 @@ function HomeCtrl(PostFactory, socket) {
     var vm = this;
     vm.posts = {};
 
-      PostFactory.getAllPosts().success(function (posts) {
-        console.log('getting posts', posts);
+    PostFactory.getAllPosts().success(function(posts) {
 
-        vm.posts = posts;
-        socket.syncUpdates('post', vm.posts);
+      vm.posts = posts;
+      socket.syncUpdates('post', vm.posts);
 
-        // display more posts
-        vm.postsLength = posts.length;
-        var view = 1;
-        var postsQty = 6;
-
-        vm.postsShownPerView = function() {
-          return view * postsQty;
-        };
-        vm.getAdditionalPosts = function() {
-          return view < (vm.postsLength / postsQty);
-        };
-        vm.showMorePosts = function() {
-          view = view + 1;
-        };
-    }
-    )
-    .error(function (error) {
+      vm.postsLength = posts.length;
+      var view = 1;
+      var postsQty = 4;
+      vm.postsShownPerView = function() {
+        return view * postsQty;
+      };
+      vm.getAdditionalPosts = function() {
+        return view < (vm.postsLength / postsQty);
+      };
+      vm.showMorePosts = function() {
+        view = view + 1;
+      };
+    }).
+    error(function (error) {
       vm.status = 'Unable to Retrieve Posts: ' + error.message;
+      // console.log($scope.status);
     });
 
     // ng-show/ng-hide
     vm.showMode = false;
+
   }
 
     angular

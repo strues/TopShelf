@@ -2,7 +2,7 @@
   'use strict';
 
   /* @ngdoc object
-   * @name user
+   * @name topshelf.account
    * @requires $stateProvider
    *
    * @description
@@ -12,17 +12,17 @@
 
   function config($stateProvider) {
      $stateProvider
-     .state('user', {
+     .state('account', {
         abstract: true,
-        url:'/user',
+        url:'/account',
         template: '<ui-view />'
      })
-      .state('user.login', {
+      .state('account.login', {
         url: '/login',
-        templateUrl: 'app/user/login/login.tpl.html',
+        templateUrl: 'app/account/account-login/login.tpl.html',
         controller: 'LoginCtrl'
       })
-      .state('user.loginWithToken', {
+      .state('account.loginWithToken', {
         url: '/login/:sessionToken',
         template: ' ',
         controller: function($stateParams, Auth, $location){
@@ -31,7 +31,7 @@
           }
         }
       })
-      .state('user.logout', {
+      .state('account.logout', {
         url: '/logout?referrer',
         referrer: 'home',
         controller: function($state, Auth) {
@@ -40,20 +40,20 @@
           $state.go(referrer);
         }
       })
-      .state('user.signup', {
+      .state('account.signup', {
         url: '/signup',
-        templateUrl: 'app/user/signup/signup.tpl.html',
+        templateUrl: 'app/account/account-signup/signup.tpl.html',
         controller: 'SignupCtrl'
       })
-      .state('user.settings', {
+      .state('account.settings', {
         url: '/user/settings',
-        templateUrl: 'app/user/settings/settings.tpl.html',
+        templateUrl: 'app/account/account-settings/settings.tpl.html',
         controller: 'SettingsCtrl',
         authenticate: true
       });
   }
 
   angular
-    .module('topshelf.user')
+    .module('topshelf.account')
     .config(config);
 })();

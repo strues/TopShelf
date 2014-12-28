@@ -18,9 +18,9 @@
 
   return {
     isAlreadyLiked: function(applicationId) {
-      if (applicationId != null) {
+      if (applicationId !== null) {
         for (var i in applicationLiked) {
-          if (applicationLiked[i] == applicationId) {
+          if (applicationLiked[i] === applicationId) {
             return true;
           }
         }
@@ -41,7 +41,7 @@
     unlike: function(applicationId) {
       if (this.isAlreadyLiked(applicationId)) {
         for (var i in applicationLiked) {
-          if (applicationLiked[i] != applicationId) {
+          if (applicationLiked[i] !== applicationId) {
           } else {
             applicationLiked.splice(i, 1);
             $window.sessionStorage.applicationLiked = applicationLiked;

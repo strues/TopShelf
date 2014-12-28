@@ -29,11 +29,11 @@
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
                     <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                      <a ui-sref="user.signup">
+                      <a ui-sref="account.signup">
                         <i class="ico-user-plus"></i> Sign up</a>
                     </li>
                       <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                        <a ui-sref="user.login" style="border-right: none;"><i class="ico-key"></i> Login</a>
+                        <a ui-sref="account.login" style="border-right: none;"><i class="ico-key"></i> Login</a>
                       </li>
                         <!-- dropdown user -->
                     <li class="dropdown" ng-show="vm.Auth.isLoggedIn()" dropdown>
@@ -42,10 +42,10 @@
                       </a>
                       <ul class="dropdown-menu">
                             <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                              <a ui-sref="user.settings"><i class="ico-tools"></i> Settings</a>
+                              <a ui-sref="account.settings"><i class="ico-tools"></i> Settings</a>
                             </li>
                             <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                              <a ui-sref="user.logout"><i class="ico-user-minus"></i> Logout</a>
+                              <a ui-sref="account.logout"><i class="ico-user-minus"></i> Logout</a>
                             </li>
                           </ul>
                           <!--./dropdown user -->

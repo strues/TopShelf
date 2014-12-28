@@ -3,18 +3,19 @@
 
   /**
    * @ngdoc object
-   * @name user.signup.controller:SignupCtrl
+   * @name account.signup.controller:SignupCtrl
    *
    * @description
    *
    */
-  angular
-    .module('topshelf.user')
-    .controller('SignupCtrl', SignupCtrl);
+
 
   function SignupCtrl() {
     var vm = this;
     vm.ctrlName = 'SignupCtrl';
   }
 
+  angular
+    .module('topshelf.account')
+    .controller('SignupCtrl', SignupCtrl);
 })();

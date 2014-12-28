@@ -21,11 +21,11 @@
 
   function loginForm(Auth, $location, $window, toastr) {
     return {
-      templateUrl: 'app/user/login/loginForm.tpl.html',
+      templateUrl: 'app/account/account-login/loginForm.tpl.html',
       restrict: 'EA',
       link: function (scope, element, attrs) {
         scope.user = {};
-      scope.errors = {};
+        scope.errors = {};
 
       scope.login = function(form) {
         scope.submitted = true;
@@ -54,6 +54,6 @@
     };
   }
     angular
-    .module('topshelf.user')
+    .module('topshelf.account')
     .directive('loginForm', loginForm);
 })();

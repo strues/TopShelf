@@ -9,7 +9,7 @@
    *
    */
   angular
-    .module('topshelf.user')
+    .module('topshelf.account')
     .controller('LoginCtrl', LoginCtrl);
 
   function LoginCtrl() {

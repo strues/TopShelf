@@ -18,12 +18,12 @@
    *
    */ /*jshint unused:false */
   angular
-    .module('topshelf.user')
+    .module('topshelf.account')
     .directive('signupForm', signupForm);
 
     function signupForm (Auth, $location, $window, toastr) {
         return {
-          templateUrl: 'app/user/signup/signupForm.tpl.html',
+          templateUrl: 'app/account/account-signup/signupForm.tpl.html',
           restrict: 'EA',
           link: function (scope, element, attrs) {
             scope.user = {};

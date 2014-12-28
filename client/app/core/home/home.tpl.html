@@ -1,14 +1,31 @@
 <div navbar></div>
 <div class="container frontendWrap">
-  <div class="row heroContainer">
-    <div class="col-sm-12 col-lg-9" style="padding-top:10px;">
-      <img src="assets/images/hero.jpg">
 
+<div class="row" ng-controller="HomeCarouselCtrl as vm">
+    <carousel interval="vm.myInterval">
+      <slide ng-repeat="slide in vm.slides" active="slide.active">
+        <img ng-src="{{slide.image}}" width="1170px"style="margin:auto;">
+      </slide>
+    </carousel>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+      <h3>Guild Streams</h3>
+      <a ui-sref="streams"><img src="assets/images/twitch.jpg"></a>
     </div>
-    <sidebar class="recruitmentPanel col-sm-12 col-lg-3"></sidebar>
-  </div>
+    <div class="col-lg-3">
+      <h3>Recent Logs</h3>
+      <hr />
+      <iframe src="https://www.warcraftlogs.com/guilds/recent_reports/7658/"></iframe>
+    </div>
+    <div class="col-lg-3">
+      <sidebar class="recruitmentPanel"></sidebar>
+    </div>
+</div>
+
     <div class="row" ng-controller="HomeCtrl as vm">
-      <div class="col-sm-12 col-lg-6">
+      <div class="col-sm-12 col-lg-12">
       <div class="homeNews"
         style="word-wrap: break-word;"
         ng-repeat="post in vm.posts | orderBy:'-date' | limitTo: vm.postsShownPerView() | filter:searchText">
@@ -37,32 +54,9 @@
            <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>
       </div>
 
-      <div class="col-sm-12 col-lg-5" style="text-align: right;">
         <div class="row">
           <div class="col-sm-12">
-          <h3>Guild Streams</h3>
-          <a ui-sref="streams"><img src="assets/images/twitch.jpg"></a>
-          </div><!-- ./col-sm-12 -->
-        </div><!-- ./row -->
-        <div class="row">
-        <div class="col-sm-12">
-          <h3>Heroic Garrosh Down</h3>
-            <img src="assets/images/hcgary.png">
-             <br />
-          </div><!-- ./col-sm-12 -->
-        </div><!-- ./row -->
-        <div class="row">
-          <div class="col-sm-12">
-          <h3>Find out more</h3>
-            <img src="assets/images/ts.jpg">
-             <br />
-          </div><!-- ./col-sm-12 -->
-        </div><!-- ./row -->
-        <div class="row">
-          <div class="col-sm-12">
-            <h3>Recent Logs</h3>
-            <hr />
-            <iframe src="https://www.warcraftlogs.com/guilds/recent_reports/7658/"></iframe>
+
           </div>
         </div>
       </div><!-- ./col -->

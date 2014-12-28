@@ -15,10 +15,10 @@
 
   function navbar() {
      return {
+      restrict: 'EA',
+      templateUrl: 'app/core/directives/navbar/core.navbar.tpl.html',
       controller: 'NavbarCtrl',
-      controllerAs: 'vm',
-      templateUrl: 'app/core/navbar/navbar.tpl.html',
-      restrict: 'EA'
+      controllerAs: 'vm'
     };
   }
 

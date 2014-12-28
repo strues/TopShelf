@@ -10,12 +10,10 @@
    */
 
 
-  function NavbarCtrl(Navbar, Auth) {
+  function NavbarCtrl(Auth) {
     var vm = this;
 
     vm.Auth = Auth;
-
-    return Navbar;
   }
 
   angular

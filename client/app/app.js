@@ -10,13 +10,15 @@
    */
 angular.module('topshelf.core', []);
 angular.module('topshelf.guild', []);
-angular.module('topshelf.user', []);
+angular.module('topshelf.account', []);
 angular.module('topshelf.admin', []);
 
   angular
     .module('topshelf', [
       'ngStorage',
       'ngResource',
+      'ngMessages',
+      'ngCookies',
       'ngSanitize',
       'ngAnimate',
       'btford.socket-io',
@@ -28,7 +30,7 @@ angular.module('topshelf.admin', []);
       'topshelf.core',
       'topshelf.guild',
       'topshelf.admin',
-      'topshelf.user'
+      'topshelf.account'
     ]);
 
   function config($urlRouterProvider, $locationProvider, $httpProvider, toastrConfig) {
