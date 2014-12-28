@@ -1,21 +1,31 @@
-'use strict';
+var args        = require('yargs').argv,
+    gulp        = require('gulp'),
+    del         = require('del'),
+    glob        = require('glob'),
 
-var gulp        = require('gulp');
-var del         = require('del');
-var chalk       = require('chalk');
-var bowerFiles  = require('main-bower-files');
-var runSequence = require('run-sequence');
-var sq          = require('streamqueue');
-var path        = require('path');
-var $           = require('gulp-load-plugins')();
-var stylish     = require('jshint-stylish');
+    chalk       = require('chalk'),
+    bowerFiles  = require('main-bower-files'),
+    runSequence = require('run-sequence'),
+    sq          = require('streamqueue'),
+    path        = require('path'),
+    _           = require('lodash'),
+    $           = require('gulp-load-plugins')({
+                    lazy: true
+                    });
 
+var  config         = require('./gulp.config')();
+
+var colors = $.util.colors,
+    envenv = $.util.env;
 process.env.NODE_ENV = $.util.env.env || 'development';
 
-var config = require('./server/config/environment');
+
+gulp.task('help', $.taskListing);
+
+
 
 var openOpts = {
-  url: 'http://localhost:' + config.port
+  url: 'http://localhost:' + config.defaultPort
 };
 
 var toInject = [
@@ -53,19 +63,76 @@ function log (msg, options) {
 }
 
 /**
+ * Lint the code and create coverage report
+ * @return {Stream}
+ */
+gulp.task('analyze', ['plato'], function() {
+    log('Analyzing source with JSHint and JSCS');
+
+    return gulp
+        .src(config.js)
+        .pipe($.if(args.verbose, $.print()))
+        .pipe($.jshint())
+        .pipe($.jshint.reporter('jshint-stylish'))
+        .pipe($.jshint.reporter('fail'))
+        .pipe($.jscs());
+});
+
+/**
+ * Create a visualizer report
+ */
+gulp.task('plato', function(done) {
+    log('Analyzing source with Plato');
+
+    startPlatoVisualizer(done);
+});
+
+/**
+ * Start Plato inspector and visualizer
+ */
+function startPlatoVisualizer(done) {
+    log('Running Plato');
+
+    var files = glob.sync(config.plato.js);
+    var excludeFiles = /.*\.spec\.js/;
+    var plato = require('plato');
+
+    var options = {
+        title: 'Plato Inspections Report',
+        exclude: excludeFiles
+    };
+    var outputDir = config.report + '/plato';
+
+    plato.inspect(files, outputDir, options, platoCompleted);
+
+    function platoCompleted(report) {
+        var overview = plato.getOverviewReport(report);
+        if (args.verbose) {
+            log(overview.summary);
+        }
+        if (done) { done(); }
+    }
+}
+/**
  * Compile sass
  */
 gulp.task('sass', function () {
+      log('Compiling Sass files to CSS');
   return gulp.src('client/styles/app.scss')
     .pipe($.plumber())
     .pipe($.sass({style: 'expanded'}))
-    .pipe(gulp.dest('client/styles/css'));
+    .pipe($.autoprefixer('last 1 version', '> 2%'))
+    .pipe($.csso())
+    .pipe(gulp.dest('client/styles/css'))
+    .pipe($.livereload());
 });
 
 /**
  * Inject css/js files in index.html
  */
 gulp.task('inject', ['sass'], function () {
+      log('Injecting CSS files');
+
   var sources = gulp.src(toInject, { read: false });
 
   return gulp.src('client/index.html')
@@ -74,8 +141,34 @@ gulp.task('inject', ['sass'], function () {
       relative: 'true'
     }))
     .pipe($.inject(sources, { relative: true }))
-    .pipe(gulp.dest('client'));
+    .pipe(gulp.dest(config.client))
+    .pipe($.livereload());
 });
+
+/**
+ * Copy fonts
+ * @return {Stream}
+ */
+gulp.task('fonts', ['clean-fonts'], function() {
+    log('Copying fonts');
+    return gulp.src(config.fonts)
+        .pipe(gulp.dest(config.build + 'fonts'));
+});
+
+/**
+ * Compress images
+ * @return {Stream}
+ */
+gulp.task('images', ['clean-images'], function() {
+    var dest = config.build + 'images';
+    log('Compressing and copying images');
+    return gulp.src(config.images)
+        .pipe($.imagemin({
+            optimizationLevel: 6
+        }))
+        .pipe(gulp.dest(dest));
+});
+
 
 /**
  * Watch files and reload page.
@@ -83,6 +176,7 @@ gulp.task('inject', ['sass'], function () {
  * Reinject files
  */
 gulp.task('watch', ['inject'], function () {
+    log('Watching files for changes.');
 
   $.livereload.listen();
 
@@ -95,7 +189,7 @@ gulp.task('watch', ['inject'], function () {
       .pipe(gulp.dest('client'));
   });
 
-  gulp.watch(['client/index.html', 'client/app.js'])
+  gulp.watch(['client/index.html', 'client/app/app.js'])
     .on('change', $.livereload.changed);
 
   $.watch('client/styles/**/*.scss', function () {
@@ -106,40 +200,13 @@ gulp.task('watch', ['inject'], function () {
       .pipe($.livereload());
   });
 
-  $.watch([
-    'client/',
-    'client/**/*.html',
-    'client/**/*.js',
-      '!client/**/*.spec.js',
-    'client/**/*.directive.js',
-    'client/**/*.tpl.html',
-    'client/**/*.controller.js',
-      '!client/bower_components/**/*',
-    'client/**/*.service.js',
-      '!client/**/*.service.spec.js',
-    'client/core/filters',
-    'client/core/filters/**/*.js',
-      '!client/core/filters/**/*.spec.js'
-  ], function () {
+  $.watch(config.js, function () {
     gulp.src('client/index.html')
       .pipe($.inject(gulp.src(toInject), { relative: true }))
       .pipe(gulp.dest('client'));
   });
-
 });
 
-/**
- * Control things
- */
-gulp.task('control', function () {
-  return gulp.src([
-    'client/**/**/*.js',
-    'server/**/**/*.js',
-      '!client/bower_components/**'
-  ])
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'));
-});
 
 /**
  * Tests
@@ -207,7 +274,11 @@ gulp.task('test', function (done) {
  * Launch server
  */
 gulp.task('serve', ['watch'], function () {
-  return $.nodemon({ script: 'server/server.js', ext: 'js', ignore: ['client', 'dist', 'node_modules'] })
+  return $.nodemon({
+        script: 'server/server.js',
+        ext: 'js',
+        ignore: ['client', 'dist', 'node_modules']
+      })
     .on('restart',  function () {
       gulp.src('client/index.html')
         .pipe($.wait(50))
@@ -222,18 +293,56 @@ gulp.task('preview', ['build'], function () {
     .pipe($.open('', openOpts));
 });
 
+
 /**
- * Build
+ * Remove all files from the build, temp, and reports folders
+ * @param  {Function} done - callback when complete
  */
-gulp.task('clean:dist', function (cb) {
-  del(['dist/**', '!dist', '!dist/.git{,/**}'], cb);
+gulp.task('clean', function(done) {
+    var delconfig = [].concat(config.build, config.dist, config.temp, config.report);
+    log('Cleaning: ' + $.util.colors.blue(delconfig));
+    del(delconfig, done);
 });
 
-gulp.task('clean:finish', function (cb) {
-  del([
-    '.tmp/**',
-    'dist/client/app.{css,js}'
-  ].concat(toDelete), cb);
+/**
+ * Remove all fonts from the build folder
+ * @param  {Function} done - callback when complete
+ */
+gulp.task('clean-fonts', function(done) {
+    clean([].concat(config.build + 'fonts/**/*.*'), done);
+});
+
+/**
+ * Remove all images from the build folder
+ * @param  {Function} done - callback when complete
+ */
+gulp.task('clean-images', function(done) {
+    clean([].concat(config.build + 'images/**/*.*'), done);
+});
+
+/**
+ * Remove all styles from the build and temp folders
+ * @param  {Function} done - callback when complete
+ */
+gulp.task('clean-styles', function(done) {
+    var files = [].concat(
+        config.temp + '**/*.css',
+        config.build + 'styles/**/*.css'
+    );
+    clean(files, done);
+});
+
+/**
+ * Remove all js and html from the build and temp folders
+ * @param  {Function} done - callback when complete
+ */
+gulp.task('clean-code', function(done) {
+    var files = [].concat(
+        config.temp + '**/*.js',
+        config.build + 'js/**/*.js',
+        config.build + '**/*.html'
+    );
+    clean(files, done);
 });
 
 gulp.task('copy:dist', function () {
@@ -258,17 +367,25 @@ gulp.task('cssmin', function () {
 });
 
 gulp.task('scripts', function () {
+      log('Optimizing the js');
+
   var tpl = gulp.src('client/**/*.tpl.html')
-    .pipe($.angularTemplatecache({
-      module: 'topshelf'
-    }));
+    .pipe($.bytediff.start())
+            .pipe($.minifyHtml({empty: true}))
+            .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
+            .pipe($.angularTemplatecache(config.templateCache.file, {
+                module: config.templateCache.module,
+                standalone: false,
+                root: config.templateCache.root
+            }));
 
   var app = gulp.src('dist/client/app.js');
-
+      log('Optimizing the js');
   return sq({ objectMode: true }, app, tpl)
     .pipe($.concat('app.js'))
-    .pipe($.ngAnnotate())
+    .pipe($.ngAnnotate({add: true}))
     .pipe($.uglify())
+    .pipe(getHeader())
     .pipe(gulp.dest('dist/client/'));
 });
 
@@ -281,7 +398,7 @@ gulp.task('replace', function () {
 gulp.task('rev', function () {
   return gulp.src('dist/client/**')
     .pipe($.revAll({
-      ignore: ['favicon.ico','.png', '.html'],
+      ignore: ['favicon.ico','.html'],
       quiet: true,
       transformFilename: function (file, hash) {
         toDelete.push(path.resolve(file.path));
@@ -289,16 +406,16 @@ gulp.task('rev', function () {
         return path.basename(file.path, ext) + '.' + hash.substr(0, 8) + ext;
       }
     }))
+    .pipe($.revReplace())
     .pipe(gulp.dest('dist/client/'));
 });
 
 gulp.task('build', function (cb) {
   runSequence(
-    ['clean:dist', 'sass'],
+    ['clean', 'sass', 'images', 'fonts'],
     ['usemin', 'copy:dist'],
     ['replace', 'scripts', 'cssmin'],
     'rev',
-    'clean:finish',
     cb);
 });
 
@@ -308,3 +425,116 @@ gulp.task('open', ['serve'], function () {
 });
 
 gulp.task('default', ['open']);
+
+/**
+ * When files change, log it
+ * @param  {Object} event - event that fired
+ */
+function changeEvent(event) {
+    var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
+    log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
+}
+
+/**
+ * Delete all files in a given path
+ * @param  {Array}   path - array of paths to delete
+ * @param  {Function} done - callback when complete
+ */
+function clean(path, done) {
+    log('Cleaning: ' + $.util.colors.blue(path));
+    del(path, done);
+}
+
+/**
+ * Formatter for bytediff to display the size changes after processing
+ * @param  {Object} data - byte data
+ * @return {String}      Difference in bytes, formatted
+ */
+function bytediffFormatter(data) {
+    var difference = (data.savings > 0) ? ' smaller.' : ' larger.';
+    return data.fileName + ' went from ' +
+        (data.startSize / 1000).toFixed(2) + ' kB to ' +
+        (data.endSize / 1000).toFixed(2) + ' kB and is ' +
+        formatPercent(1 - data.percent, 2) + '%' + difference;
+}
+
+/**
+ * Log an error message and emit the end of a task
+ */
+function errorLogger(error) {
+    log('*** Start of Error ***');
+    log(error);
+    log('*** End of Error ***');
+    this.emit('end');
+}
+
+/**
+ * Format a number as a percentage
+ * @param  {Number} num       Number to format as a percent
+ * @param  {Number} precision Precision of the decimal
+ * @return {String}           Formatted perentage
+ */
+function formatPercent(num, precision) {
+    return (num * 100).toFixed(precision);
+}
+
+/**
+ * Format and return the header for files
+ * @return {String}           Formatted file header
+ */
+function getHeader() {
+    var pkg = require('./package.json');
+    var template = ['/**',
+        ' * <%= pkg.name %> - <%= pkg.description %>',
+        ' * @authors <%= pkg.authors %>',
+        ' * @version v<%= pkg.version %>',
+        ' * @link <%= pkg.homepage %>',
+        ' * @license <%= pkg.license %>',
+        ' */',
+        ''
+    ].join('\n');
+    return $.header(template, {
+        pkg: pkg
+    });
+}
+
+/**
+ * Get the default options for wiredep
+ */
+function getWiredepDefaultOptions() {
+    var options = {
+        bowerJson: require('./bower.json'),
+        directory: config.bower.directory,
+        ignorePath: config.bower.ignorePath
+    };
+    return options;
+}
+
+/**
+ * Log a message or series of messages using chalk's blue color.
+ * Can pass in a string, object or array.
+ */
+function log(msg) {
+    if (typeof(msg) === 'object') {
+        for (var item in msg) {
+            if (msg.hasOwnProperty(item)) {
+                $.util.log($.util.colors.blue(msg[item]));
+            }
+        }
+    } else {
+        $.util.log($.util.colors.blue(msg));
+    }
+}
+
+/**
+ * Show OS level notification using node-notifier
+ */
+function notify(options) {
+    var notifier = require('node-notifier');
+    var notifyOptions = {
+        sound: 'Bottle'
+    };
+    _.assign(notifyOptions, options);
+    notifier.notify(notifyOptions);
+}
+

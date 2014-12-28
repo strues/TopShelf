@@ -9,61 +9,47 @@
     </carousel>
 </div>
 
-<div class="row">
-    <div class="col-lg-6">
-      <h3>Guild Streams</h3>
-      <a ui-sref="streams"><img src="assets/images/twitch.jpg"></a>
-    </div>
-    <div class="col-lg-3">
-      <h3>Recent Logs</h3>
-      <hr />
-      <iframe src="https://www.warcraftlogs.com/guilds/recent_reports/7658/"></iframe>
-    </div>
-    <div class="col-lg-3">
-      <sidebar class="recruitmentPanel"></sidebar>
-    </div>
-</div>
-
-    <div class="row" ng-controller="HomeCtrl as vm">
-      <div class="col-sm-12 col-lg-12">
-      <div class="homeNews"
-        style="word-wrap: break-word;"
+<div class="row" ng-controller="HomeCtrl as vm">
+  <div class="col-sm-12 col-lg-9">
+    <div class="homeNews"
         ng-repeat="post in vm.posts | orderBy:'-date' | limitTo: vm.postsShownPerView() | filter:searchText">
-        <div class="row">
-        <div class="well">
-            <div class="postTitle">
-              <h1 class="post-title">{{post.title}}</h1>
-            </div>
-            <div class="cal">
-              <h4><i class="ico-calendar2"></i> {{post.date | date:'MM/dd/yyyy'}}</h4>
-            </div>
-            <div class="postContent">
-              <p ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></p>
-              <p ng-hide="!showMode" ng-bind-html="post.content"></p>
-            </div>
-            <div class="postFooter">
-              <p>Posted by {{post.author.name}}</p>
-              <span class="taggedEM"><i class="ico-tags2"></i></span>
-              <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span>
-                  <button class="btn btn-primary" ng-click="openViewModal(post._id)" news-view-modal>Read More</button>
-                </a>
-            </div>
-          </div>
-        </div><!-- ./well-->
-      </div><!-- ./homeNews-->
-           <p class="more" ng-show="getAdditionalPosts()" ng-click="showMorePosts()">View More Posts...</p>
+      <div class="postTitle">
+        <h1 class="post-title">{{post.title}}</h1>
       </div>
+      <div class="cal">
+        <h4><i class="ico-calendar2"></i> {{post.date | date:'MM/dd/yyyy'}}</h4>
+      </div>
+      <div class="postContent">
+        <p ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></p>
+        <p ng-hide="!showMode" ng-bind-html="post.content"></p>
+      </div>
+      <div class="postFooter">
+        <p>Posted by {{post.author.name}}</p>
+        <span class="taggedEM"><i class="ico-tags2"></i></span>
+        <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span>
+          <button class="btn btn-primary" ng-click="openViewModal(post._id)" news-view-modal>Read More</button>
+      </div>
+    </div><!-- end homeNews-->
+  </div><!-- end news column-->
+  <div class="col-lg-3">
+      <sidebar class="recruitmentPanel"></sidebar>
+  </div>
+</div><!-- end news / recruiting row-->
 
-        <div class="row">
-          <div class="col-sm-12">
-
-          </div>
-        </div>
-      </div><!-- ./col -->
-    </div><!-- ./row -->
+<div class="row">
+  <div class="col-lg-6">
+    <h3>Guild Streams</h3>
+    <a ui-sref="streams"><img src="assets/images/twitch.jpg"></a>
+  </div>
+  <div class="col-lg-3">
+    <h3>Recent Logs</h3>
+    <hr />
+    <iframe src="https://www.warcraftlogs.com/guilds/recent_reports/7658/"></iframe>
+  </div>
+</div><!-- ./row -->
     <footer class="footer">
       <p>Top Shelf Guild | by
       <a href="https://twitter.com/itsSoop">@itsSoop</a> |
       <a href="http://steventruesdell.com">Website</a></p>
     </footer>
-    </div>
+</div>
