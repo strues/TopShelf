@@ -34,7 +34,7 @@ var socket    = require('socket.io')(server, {
 require('./config/socketio')(socket);
 require('./config/express')(app);
 require('./routes')(app);
-
+//require('./battle')(app);
 
 /*
  * Start the server

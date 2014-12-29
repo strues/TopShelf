@@ -3,7 +3,7 @@
 
   /**
    * @ngdoc directive
-   * @name user.directive:signupForm
+   * @name account.directive:signupForm
    * @restrict EA
    * @element
    *
@@ -17,9 +17,7 @@
      </example>
    *
    */ /*jshint unused:false */
-  angular
-    .module('topshelf.account')
-    .directive('signupForm', signupForm);
+
 
     function signupForm (Auth, $location, $window, toastr) {
         return {
@@ -61,8 +59,11 @@
           };
           }
         };
-      };
+      }
 
+  angular
+    .module('topshelf.account')
+    .directive('signupForm', signupForm);
 })();
 
 

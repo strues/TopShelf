@@ -44,8 +44,8 @@ module.exports = function(app) {
   {
     secret: config.secrets.session,
     store: new redisStore({ host: 'localhost', port: 6379, client: client }),
-    saveUninitialized: false, // don't create session until something stored,
-    resave: false // don't save session if unmodified
+    saveUninitialized: true, // don't create session until something stored,
+    resave: true // don't save session if unmodified
   }
 ));
   app.use(cors());

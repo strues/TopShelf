@@ -4,23 +4,45 @@ var mongoose = require('mongoose');
 
 var crypto = require('crypto');
 var _ = require('lodash');
-var authTypes = ['bnet', 'twitter', 'facebook', 'google'];
+var authTypes = ['bnet', 'twitter', 'facebook'];
 
 var UserSchema = new mongoose.Schema({
-  name: String,
-  email: { type: String, lowercase: true },
-  role: {
-    type: String,
-    default: 'user'
-  },
+  name: { type: String, unique: true, index: true },
+  email: { type: String, unique: true, index: true },
+  role: {type: String, default : 'user', enum: ['admin', 'user']},
   password: String,
   provider: String,
   salt: String,
-  battletag: String,
-  facebook: {},
-  twitter: {},
-  google: {},
-  bnet: {}
+  facebook: { type: String, unique: true, sparse: true },
+  twitter: { type: String, unique: true, sparse: true },
+  bnet: { type: String, unique: true, sparse: true },
+  tokens: Array,
+  profileDetails: {
+    firstName: { type: String, default: '' },
+    gender: { type: String, default: '' },
+    location: { type: String, default: '' },
+    website: { type: String, default: '' },
+    picture: { type: String, default: '' },
+    battletag: { type: String, default: '' }
+  },
+  characterDetails: {
+      lastModified: { type: Number, default: '' },
+      name: { type: String, default: '' },
+      realm: { type: String, default: '' },
+      battlegroup: { type: String, default: '' },
+      class: { type: Number, default: '' },
+      race: { type: Number, default: '' },
+      gender: { type: Number, default: '' },
+      level: { type: Number, default: '' },
+      achievementPoints: { type: Number, default: '' },
+      thumbnail: { type: String, default: '' },
+      calcClass: { type: Number, default: '' },
+  },
+  activity: {
+    date_created: { type: Date, default: Date.now },
+    last_logon: { type: Date, default: Date.now },
+    last_updated: { type: Date },
+  }
 });
 
 
@@ -29,8 +51,7 @@ var UserSchema = new mongoose.Schema({
  */
 
 // Public profile information
-UserSchema
-  .virtual('profile')
+UserSchema.virtual('profile')
   .get(function() {
     return {
       'name': this.name,

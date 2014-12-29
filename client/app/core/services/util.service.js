@@ -39,7 +39,7 @@
       return $rootScope.$broadcast.apply($rootScope, arguments);
     }
 
-    // Assist in adding an ECMAScript 5 "definedProperty" to a class
+    // Assist in adding an ECMAScript 5 'definedProperty' to a class
     function defineProperty(klass, propertyName, getter, setter){
       var config = {
         enumerable: true,
@@ -56,7 +56,7 @@
      *********************************************************/
     function filterById(array) {
       return function (id) {
-        var item = array.filter(function (x) { return x.id == id; });//"==" ok; want coercion
+        var item = array.filter(function (x) { return x.id === id; });//'==' ok; want coercion
         return item[0] || null;
       };
     }
@@ -95,11 +95,11 @@
       var stringFn = String.prototype;
       if (stringFn.format) { return; } // already extended
 
-      // Ex: "{0} returned {1} item(s)".format(queryName, count));
+      // Ex: '{0} returned {1} item(s)'.format(queryName, count));
       stringFn.format = stringFn.format || function () {
         var s = this;
         for (var i = 0, len = arguments.length; i < len; i++) {
-          var reg = new RegExp("\\{" + i + "\\}", "gm");
+          var reg = new RegExp('\\{' + i + '\\}', 'gm');
           s = s.replace(reg, arguments[i]);
         }
 
@@ -120,7 +120,7 @@
     }
 
     /*********************************************************
-     * Deal an array of things into "hands" as if dealing cards.
+     * Deal an array of things into 'hands' as if dealing cards.
      * e.g. deal([1,2,3,4,5,6,7], 3) -> [[1,4,7],[2,5],[3,6]]
      *********************************************************/
     function deal(arr, numHands) {
@@ -183,11 +183,11 @@
       return map;
     }
 
-    // Turn identifiers 'somethingLikeThis' into a title "Something Like This'
+    // Turn identifiers 'somethingLikeThis' into a title 'Something Like This'
     // Example in Zza: orderItem.html uses it to build tab headers from
     // product option types (e.g., 'saladDressing' -> 'Salad Dressing')
     function toTitle(text) {
-      return text ? convert() : "";
+      return text ? convert() : '';
       function convert(){
         // space before leading caps & uppercase the 1st character
         // runs of caps are their own word, e.g., 'anHTMLstring' -> 'An HTML String'

@@ -50,7 +50,7 @@ $scope.applications = applications;
 
 
     $scope.addNew = function() {
-        $location.path('/admin/applications/view')
+        $location.path('/admin/applications/view');
     };
   }
   angular

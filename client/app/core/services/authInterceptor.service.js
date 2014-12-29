@@ -10,7 +10,7 @@
    */
 
 
-     function authInterceptor($rootScope, $q, $localStorage, $location) {
+  function authInterceptor($rootScope, $q, $localStorage, $location) {
 
     return {
       // Add authorization token to headers

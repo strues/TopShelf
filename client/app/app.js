@@ -33,7 +33,7 @@ angular.module('topshelf.admin', []);
       'topshelf.account'
     ]);
 
-  function config($urlRouterProvider, $locationProvider, $httpProvider, toastrConfig) {
+  function config ($urlRouterProvider, $locationProvider, $httpProvider, toastrConfig) {
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);

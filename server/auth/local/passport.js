@@ -11,12 +11,11 @@ exports.setup = function (User) {
       User.findOne({
         email: email.toLowerCase()
       }, function(err, user) {
-        if (err) {
-          return done(err);
-        }
+
         if (!user) {
           return done(null, false, { message: 'This email is not registered.' });
         }
+
         user.authenticate(password, function(authError, authenticated) {
           if (authError) {
             return done(authError);
@@ -24,6 +23,8 @@ exports.setup = function (User) {
           if (!authenticated) {
             return done(null, false, { message: 'This password is not correct.' });
           } else {
+  // update the user's record with login timestamp
+          user.activity.last_logon = Date.now();
             return done(null, user);
           }
         });

@@ -2,7 +2,8 @@
   'use strict';
 
 
-  function socket(socketFactory) {
+
+  function socket (socketFactory) {
 
       // socket.io now auto-configures its connection when we ommit a connection url
       var ioSocket = io('', {

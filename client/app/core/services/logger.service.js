@@ -21,22 +21,22 @@
     /////////////////////
     function error(message, title) {
       toastr.error(message, title);
-      $log.error("Error: " + message);
+      $log.error('Error: ' + message);
     }
 
     function info(message, title) {
       toastr.info(message, title);
-      $log.info("Info: " + message);
+      $log.info('Info: ' + message);
     }
 
     function success(message, title) {
       toastr.success(message, title);
-      $log.info("Success: " + message);
+      $log.info('Success: ' + message);
     }
 
     function warning(message, title) {
       toastr.warning(message, title);
-      $log.warn("Warning: " + message);
+      $log.warn('Warning: ' + message);
     }
 
   }

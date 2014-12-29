@@ -131,17 +131,18 @@
         return $localStorage.token;
       },
 
-      socketAuthInit: function() {
-
-      socket.on('connect', socketEmitAuthToken);
-    },
-
      socketEmitAuthToken: function() {
-       if (isLoggedIn()) {
+       if (currentUser.hasOwnProperty('role')) {
          socket.emit('authenticate', {token: $localStorage.token});
        }
 
      },
+      socketAuthInit: function() {
+
+      socket.on('connect',{token: $localStorage.token});
+    },
+
+
       /**
        * Set session token
        *
