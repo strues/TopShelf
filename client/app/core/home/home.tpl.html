@@ -16,22 +16,25 @@
       <div class="postTitle">
         <h1 class="post-title">{{post.title}}</h1>
       </div>
-      <div class="cal">
-        <h4><i class="ico-calendar2"></i> {{post.date | date:'MM/dd/yyyy'}}</h4>
+      <div class="postMeta">
+       <h5><i class="ico-calendar2"></i>
+       {{post.date | date:'MM/dd/yyyy'}}<span class="sep">|</span>
+        Posted by {{post.author.name}}</h5>
       </div>
+      <hr />
       <div class="postContent">
         <p ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></p>
         <p ng-hide="!showMode" ng-bind-html="post.content"></p>
       </div>
       <div class="postFooter">
-        <p>Posted by {{post.author.name}}</p>
+
         <span class="taggedEM"><i class="ico-tags2"></i></span>
         <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span>
           <button class="btn btn-primary" ng-click="openViewModal(post._id)" news-view-modal>Read More</button>
       </div>
     </div><!-- end homeNews-->
   </div><!-- end news column-->
-  <div class="col-lg-3">
+  <div class="col-lg-3 recruitingP">
       <sidebar class="recruitmentPanel"></sidebar>
   </div>
 </div><!-- end news / recruiting row-->

@@ -1,5 +1,5 @@
 body {
-  background-image: url(../assets/images/bg.jpg);
+  background-image: url(../../assets/images/bg.jpg);
 
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -9,7 +9,23 @@ body {
   padding-bottom: none !important;
 }
 
+.sep {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.postMeta {
 
+}
+.recruitingP {
+  padding-top: 30px;
+}
+.recruitmentHeader {
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+.recruitmentWhite {
+  color: #fff;
+}
 .frontendWrap {
   padding-top: 15px;
   background: #222222;

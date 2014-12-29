@@ -4,7 +4,7 @@
 function HomeCarouselCtrl () {
     var vm = this;
 
-    vm.myInterval = 2000;
+    vm.myInterval = 3000;
     vm.slides = [
         {
             image: 'assets/images/hero.jpg'

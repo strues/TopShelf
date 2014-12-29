@@ -24,9 +24,8 @@
   "components/buttons",
   "components/forms",
   "components/hero",
-  "components/lists",
-  "components/table",
-  "components/mediaManager";
+  "components/lists";
+
 
 
 //
@@ -52,11 +51,7 @@
 .help-block {
   color: $brand-success;
 }
-.chart {
- width: 850px;
- height: 500px;
- color: $brand-primary;
-}
+
 .textEditor {
   min-height: 300px;
   height: auto;

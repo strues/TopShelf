@@ -2,15 +2,18 @@
 
 var errors = require('./components/errors');
 var path = require('path');
+var bnet = require('battlenet-api')();
+var config      = require('./config/environment');
 
 module.exports = function(app) {
 
 // Routes
+
   app.use('/api/users', require('./api/user'));
   app.use('/api/posts', require('./api/post'));
   app.use('/api/applications', require('./api/application'));
   app.use('/api/recruitment', require('./api/recruitment'));
- // app.use('/api/accounts', require('./api/account'));
+//  app.use('/api/guild', require('./api/guild'));
   app.use('/auth', require('./auth'));
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

@@ -4,6 +4,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
+  type: {
+    type : String,
+    default : 'posts'
+  },
   title: String,
   content: String,
   tags: Array,

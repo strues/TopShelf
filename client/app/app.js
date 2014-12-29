@@ -27,6 +27,7 @@ angular.module('topshelf.admin', []);
       'textAngular',
       'formly',
       'toastr',
+      'angularFileUpload',
       'topshelf.core',
       'topshelf.guild',
       'topshelf.admin',

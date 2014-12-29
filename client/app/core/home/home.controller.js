@@ -36,8 +36,12 @@ function HomeCtrl(PostFactory, socket) {
       // console.log($scope.status);
     });
 
-    // ng-show/ng-hide
-    vm.showMode = false;
+
+    // GuildFactory.getGuildProfile().success(function(response) {
+    //   vm.guildProfile = response;
+    //   console.log(vm.guildProfile);
+
+    // });
 
   }
 

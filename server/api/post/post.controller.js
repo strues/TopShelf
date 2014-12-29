@@ -2,9 +2,7 @@
 
 var _ = require('lodash');
 var Post = require('./post.model');
-var multiparty = require('multiparty');
-var fs = require('fs');
-var path = require('path');
+
 
 // Get list of posts
 exports.index = function(req, res) {
@@ -60,47 +58,6 @@ exports.update = function(req, res) {
             }
             console.log(updated.category);
             return res.status(200).json(updated);
-        });
-    });
-};
-
-exports.addImages = function(req, res) {
-
-    Post.findById(req.params.id, function(err, post) {
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!post) {
-            return res.send(404);
-        }
-
-        post.images = req.body;
-        post.save(function(err) {
-            if (err) {
-                return handleError(res, err);
-            }
-            return res.json(200, post);
-        });
-    });
-};
-
-exports.addCategory = function(req, res) {
-    console.log(req.body);
-    Post.findById(req.params.id, function(err, post) {
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!post) {
-            return res.send(404);
-        }
-
-        post.category = req.body;
-
-        post.save(function(err) {
-            if (err) {
-                return handleError(res, err);
-            }
-            return res.json(200, post);
         });
     });
 };
