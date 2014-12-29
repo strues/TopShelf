@@ -1,72 +1,48 @@
 .btn .btn-primary {
-    background: #008ffc;
-    border: 0;
-    border-radius: 0;
-    -webkit-transition: all .3s ease 0s;
-    -moz-transition: all .3s ease 0s;
-    -ms-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
-    transition: all .3s ease 0s;
+  transition: all .3s ease 0s;
+  font-weight: bold;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+
 }
+
 .btn-toolbar{
 margin-left: 10px;
 padding-top: 15px;
 }
 
-.btn {
-  font-weight: bold;
-  border-radius: 2px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+#button-effect{
+  cursor:pointer;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-.btn-primary {
-  background-color: #4285f4;
+#button-effect:hover{
+  background-color: rgba(0,0,0,0);
+  color: #0493bd;
 }
 
-.btn-primary:hover {
-  background-color: #3367d6;
+.submit:hover {
+  color: #3498db;
 }
 
-.btn-success {
-  background-color: #0f9d58;
+.ease {
+  width: 0px;
+  height: 74px;
+  background-color: #fbfbfb;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -o-transition: .3s ease;
+  -ms-transition: .3s ease;
+  transition: .3s ease;
 }
 
-.btn-success:hover {
-  background-color: #196c4a;
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
 }
 
-.btn-danger {
-  background-color: rgb(210, 77, 87);
-}
-
-
-.btn-group-vertical .btn {
-  margin-bottom: 10px;
-}
-
-.btn-group-vertical > .btn:first-child:not(:last-child) {
-  border-radius: 2px;
-}
-
-.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
-  border-radius: 2px;
-}
-
-.btn-group-vertical > .btn:last-child:not(:first-child) {
-  border-radius: 2px;
-}
-
-.btn-lg {
-  font-size: 14px;
-}
-
-.btn [class^='ion-'] {
-  margin-right: 25px;
-}
-
-.btn .fa {
-  margin-right: 5px;
-}
 
 /*********************
 * Social Buttons
@@ -154,4 +130,15 @@ padding-top: 15px;
 .btn-yahoo:focus {
   color: #fff;
   background-color: #303030;
+}
+
+.btn-live {
+  color: #fff;
+  background-color: #2672ec;
+}
+
+.btn-live:hover,
+.btn-live:focus {
+  color: #fff;
+  background-color: #125acd;
 }

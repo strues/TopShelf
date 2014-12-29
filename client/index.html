@@ -14,7 +14,6 @@
     <!-- build:css app.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
-      <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css">
       <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css">
       <!-- endinject -->
       <style>.ng-hide {display: none!important; }</style>
@@ -29,7 +28,6 @@
 
 
 <div ui-view="" class="fadeZoom"></div>
-<ng-toast></ng-toast>
     <!-- build:js app.js -->
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -42,9 +40,6 @@
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
-      <script src="bower_components/angular-formly/dist/formly.min.js"></script>
-      <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
-      <script src="bower_components/angular-toastr/dist/angular-toastr.js"></script>
       <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
       <script src="bower_components/angular-messages/angular-messages.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -60,6 +55,7 @@
       <script src="app/account/account-signup/signupForm.directive.js"></script>
       <script src="app/core/home/sidebar.directive.js"></script>
       <script src="app/admin/news/news.edit/newsEditModal.directive.js"></script>
+      <script src="app/core/directives/footer/core.footer.directive.js"></script>
       <script src="app/core/directives/mongoose/mongoose-error.directive.js"></script>
       <script src="app/core/directives/navbar/core.navbar.directive.js"></script>
       <script src="app/core/home/news.view/newsView.directive.js"></script>
@@ -99,6 +95,7 @@
       <script src="app/guild/recruitment/recruitment.controller.js"></script>
       <script src="app/guild/streams/stream.controller.js"></script>
       <script src="app/admin/news/news.create/newsCreate.controller.js"></script>
+      <script src="app/core/directives/footer/core.footer.controller.js"></script>
       <script src="app/core/directives/navbar/core.navbar.controller.js"></script>
       <!-- endinject -->
     <!-- endbuild -->

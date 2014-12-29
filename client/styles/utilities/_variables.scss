@@ -12,7 +12,7 @@ $gray:                   lighten(#000, 33.5%) !default; // #555
 $gray-light:             lighten(#000, 60%) !default;   // #999
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
-$brand-primary:         #4b77be !default; // chambray blue #3A539B
+$brand-primary:         #3498db !default; // chambray blue #3A539B
 $brand-success:         rgb(27, 188, 155) !default; // mountain meadow #1BBC9B
 $brand-info:            #66B5D7 !default;
 $brand-info-alt:        #8170CA !default;
@@ -31,7 +31,7 @@ $skin-light:            #5BDDDC;
 $dark:                  #060A0F;
 $bright:                #fafafa;
 $reverse:               #fff;
-
+$porcelain: rgb(236,236,236);
 $state-default-bg:              #f6f6f6; // also: pagination bg
 $state-default-border:          darken(adjust-hue($state-default-bg, -10), 5%);
 $state-default-border-light:    #f3f3f3;

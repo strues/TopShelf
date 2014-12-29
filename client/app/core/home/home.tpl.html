@@ -9,7 +9,7 @@
     </carousel>
 </div>
 
-<div class="row" ng-controller="HomeCtrl as vm">
+<div class="row newsContainer" ng-controller="HomeCtrl as vm">
   <div class="col-sm-12 col-lg-9">
     <div class="homeNews"
         ng-repeat="post in vm.posts | orderBy:'-date' | limitTo: vm.postsShownPerView() | filter:searchText">
@@ -38,21 +38,6 @@
       <sidebar class="recruitmentPanel"></sidebar>
   </div>
 </div><!-- end news / recruiting row-->
+<the-footer></the-footer>
 
-<div class="row">
-  <div class="col-lg-6">
-    <h3>Guild Streams</h3>
-    <a ui-sref="streams"><img src="assets/images/twitch.jpg"></a>
-  </div>
-  <div class="col-lg-3">
-    <h3>Recent Logs</h3>
-    <hr />
-    <iframe src="https://www.warcraftlogs.com/guilds/recent_reports/7658/"></iframe>
-  </div>
-</div><!-- ./row -->
-    <footer class="footer">
-      <p>Top Shelf Guild | by
-      <a href="https://twitter.com/itsSoop">@itsSoop</a> |
-      <a href="http://steventruesdell.com">Website</a></p>
-    </footer>
 </div>

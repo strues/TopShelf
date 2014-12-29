@@ -3,8 +3,10 @@
 //
 
 @import
-  "bases/fonts",
-  "bases/icons";
+  "base/fonts",
+  "base/icons",
+  "base/normalize",
+  "base/html5bp";
 
 //
 // Utilities
@@ -34,6 +36,7 @@
 
 @import
   "sections/global",
+  "sections/homepage",
   "sections/streams",
   "sections/navbar",
   "sections/loginSignup",
