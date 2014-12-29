@@ -19,7 +19,7 @@
    */
 
 
-  function loginForm(Auth, $location, $window, toastr) {
+  function loginForm(Auth, $location, $window, sweet) {
     return {
       templateUrl: 'app/account/account-login/loginForm.tpl.html',
       restrict: 'EA',
@@ -35,14 +35,14 @@
             email: scope.user.email,
             password: scope.user.password
           })
-          .then( function() {
-            toastr.success('Successfully logged in!');
+          .then( function success() {
+            sweet.show('Welcome Back', 'You\'ve successfully logged in', 'success');
             // Logged in, redirect to home
             $location.path('/');
           })
           .catch( function(err) {
             scope.errors.other = err.message;
-              toastr.error(errors.other);
+              sweet.show(err.other);
           });
         }
       };

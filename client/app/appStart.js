@@ -15,19 +15,6 @@
     var config = util.config;
     var logger = util.logger;
 
-    var appStart = {
-      start: start
-    };
-
-    return appStart;
-    //////////////
-    function start ( ) {
-      logger.info( 'Top Shelf Guild is loaded and running on ' + util.config.server );
-
-      // Trigger initial loading of data from server
-      // The app may appear to be more responsive if loading happens in background
-      // while the app launches on a splash page that doesn't actually need data.
-    }
 
 
   }

@@ -10,7 +10,7 @@
 
   'use strict';
 
-  function logger( $log, toastr ) {
+  function logger( $log, sweet ) {
     return {
       error   : error,
       info    : info,
@@ -20,22 +20,22 @@
     };
     /////////////////////
     function error(message, title) {
-      toastr.error(message, title);
+      sweet.show(message, title, 'error');
       $log.error('Error: ' + message);
     }
 
     function info(message, title) {
-      toastr.info(message, title);
+     sweet.show(message, title);
       $log.info('Info: ' + message);
     }
 
     function success(message, title) {
-      toastr.success(message, title);
-      $log.info('Success: ' + message);
+      sweet.show(message, title);
+      $log.info('Success: ' + message, 'success');
     }
 
     function warning(message, title) {
-      toastr.warning(message, title);
+      sweet.show(message, title);
       $log.warn('Warning: ' + message);
     }
 

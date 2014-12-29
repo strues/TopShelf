@@ -10,7 +10,7 @@
    */
 
 
-  function ApplicationCtrl($location, ApplicationFactory, toastr) {
+  function ApplicationCtrl($location, ApplicationFactory, sweet) {
     var vm = this;
     vm.data = {};
 
@@ -85,7 +85,7 @@
         ApplicationFactory.createApplication(vm.data)
           .then( function () {
               vm.data = {};
-              toastr.success('Application submitted');
+              sweet.show('Your application was submitted', 'Expect to hear from us soon!');
               console.log('form submitted:', vm.data);
               $location.path('/completed');
           },

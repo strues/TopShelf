@@ -12,8 +12,8 @@
     .module('topshelf.guild')
     .controller('StreamCtrl', StreamCtrl);
 
-  function StreamCtrl($scope, $rootScope, toastr, Streams) {
-    toastr.info('Streams are offline if the page is empty');
+  function StreamCtrl($scope, $rootScope, sweet, Streams) {
+    sweet.show('Streams are offline if the page is empty');
 
     $scope.allStreams = [
       // List of stream names of TI streams.

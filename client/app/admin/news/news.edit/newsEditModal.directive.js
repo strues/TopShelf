@@ -34,7 +34,7 @@
             });
 
            };
-          var ModalInstanceCtrl = function ($scope, $modalInstance, PostFactory, toastr) {
+          var ModalInstanceCtrl = function ($scope, $modalInstance, PostFactory, sweet) {
 
             $scope.updatePost = function (updatedPost) {
               // console.log('ModalInstanceController - $scope.updatePost - postID: ', postID);
@@ -51,7 +51,7 @@
 
               $scope.status = 'Updated Post by ID ! Refreshing Post List.';
               console.log('$scope.status', $scope.status);
-              toastr.success('Post Updated');
+              sweet.show('Post Changed', 'For better or worse, your changes are saved', 'success');
               // $scope.posts.push(post);
               console.log('newsEditModal.directive.js - PostFactory.updatePost(postID, post)', post.tags);
               }).

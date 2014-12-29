@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  function NewsCreateCtrl($scope, PostFactory, toastr, socket, Auth) {
+  function NewsCreateCtrl($scope, PostFactory, sweet, socket, Auth) {
     // when Save is clicked
     $scope.createPost = function () {
       var post = {
@@ -20,11 +20,11 @@
       // data to postsFactory service
       PostFactory.createPost(post)
         .success(function () {
-          toastr.success('News entry submitted');
+          sweet.show('Amazing', 'You\'ve written a new post', 'success');
           $scope.status = 'Created Post! Refreshing Post List.';
         }).
         error(function (error) {
-          toastr.error('An erorr has occured:' + error.message);
+         sweet.show('Oops...', 'Something broke', 'error');
           $scope.status = 'Unable to Create Post: ' + error.message;
           //console.log('$scope.status', $scope.status);
         });
