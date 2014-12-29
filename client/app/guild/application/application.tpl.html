@@ -17,7 +17,7 @@
                    ng-model="vm.data.charName"
                    placeholder="Laerel"
                    required>
-            <span class="ion-android-contact form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.charName.$touched"
                 ng-messages="applicationForm.charName.$error" class="text-danger">
               <div ng-message="required" ng-show="applicationForm.charName.$error.required">Your character's name is required.</div>
@@ -33,7 +33,7 @@
                    ng-model="vm.data.charClass"
                    placeholder="Monk"
                    required>
-            <span class="ion-android-friends form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.charClass.$touched"
                 ng-messages="applicationForm.charClass.$error" class="text-danger">
               <div ng-message="required" ng-show="applicationForm.charClass.$error.required">Your class type is required.</div>
@@ -49,7 +49,7 @@
                    ng-model="vm.data.charSpec"
                    placeholder="Brewmaster"
                    required>
-            <span class="ion-ios7-glasses-outline form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
           <div ng-if="applicationForm.$submitted || applicationForm.charSpec.$touched"
                 ng-messages="applicationForm.charSpec.$error" class="text-danger">
               <div ng-message="required" ng-show="applicationForm.charSpec.$error.required">Your class spec required.</div>
@@ -67,7 +67,7 @@
                    ng-model="vm.data.charServer"
                    placeholder="Sargeras"
                    required>
-            <span class="ion-planet form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
 
             <div ng-if="applicationForm.$submitted || applicationForm.charServer.$touched"
                  ng-messages="applicationForm.charServer.$error" class="text-danger">
@@ -100,7 +100,7 @@
                    ng-model="vm.data.applicantName"
                    placeholder="John"
                    required>
-            <span class="ion-person form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
 
             <div ng-if="applicationForm.$submitted || applicationForm.applicantName.$touched"
                  ng-messages="applicationForm.applicantName.$error" class="text-danger">
@@ -120,7 +120,7 @@
                    placeholder="18"
                    min="18"
                    required>
-            <span class="ion-calendar form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
 
             <div ng-if="applicationForm.$submitted || applicationForm.applicantAge.$touched"
                  ng-messages="applicationForm.applicantAge.$error" class="text-danger">
@@ -139,7 +139,7 @@
                    ng-model="vm.data.applicantRealId"
                    placeholder="Example#2123"
                    required>
-            <span class="ion-person form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
 
             <div ng-if="applicationForm.$submitted || applicationForm.realID.$touched"
                  ng-messages="applicationForm.realID.$error" class="text-danger">
@@ -151,7 +151,7 @@
         <div class="form-group has-feedback" ng-class="{ 'has-error' : applicationForm.charLogs.$invalid && applicationForm.charLogs.$dirty }">
           <label>Warcraft Logs</label>
             <input class="form-control input-lg" type="url" id="charLogs" name="charLogs" ng-model="vm.data.charLogs" placeholder="http://www.warcraftlogs.com" required>
-            <span class="ion-link form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
               <div ng-if="applicationForm.$submitted || applicationForm.charLogs.$touched"
                 ng-messages="applicationForm.charLogs.$error" class="text-danger">
               <div ng-message="required" ng-show="applicationForm.charLogs.$error.required">Logs are required for your application.</div>
@@ -201,7 +201,7 @@
                    ng-model="vm.data.screenshot"
                    placeholder="http://imgur.com"
                    required>
-            <span class="ion-image form-control-feedback"></span>
+            <span class="form-control-feedback"></span>
            <div ng-if="applicationForm.$submitted || applicationForm.screenshot.$touched"
                 ng-messages="applicationForm.screenshot.$error" class="text-danger">
               <div ng-message="required" ng-show="applicationForm.screenshot.$error.required">A UI screenshot is required.</div>

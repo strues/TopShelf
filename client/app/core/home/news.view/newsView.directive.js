@@ -9,13 +9,11 @@
           controller: function($scope, PostFactory, $modal, $log) {
 
           $scope.openViewModal = function (postID) {
-            // the following creates an instance of modal with templateURL, controller, size, and resolve - there are other options listed on UI-Bootstrap Modal site
             var modalInstance = $modal.open({
               templateUrl: 'app/core/home/news.view/viewModal.tpl.html',
               scope: $scope,
-              controller: ModalInstanceCtrl,  //controller - a controller for a modal instance - it can initialize scope used by modal. Accepts the "controller-as" syntax, and can be injected with $modalInstance
-              size: 'lg',  // changed size: size to size: 'lg', size - optional size of modal window. Allowed values: 'sm' (small) or 'lg' (large). Requires Bootstrap 3.1.0 or later
-              // resolve - members that will be resolved and passed to the controller as locals; it is equivalent of the resolve property for AngularJS routes
+              controller: ModalInstanceCtrl,
+              size: 'lg',
 
               resolve: {
                 post: function () {

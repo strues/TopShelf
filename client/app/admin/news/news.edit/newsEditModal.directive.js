@@ -9,13 +9,11 @@
           controller: function($scope, PostFactory, $modal, $log) {
 
           $scope.openEditorModal = function (postID) {
-            // the following creates an instance of modal with templateURL, controller, size, and resolve - there are other options listed on UI-Bootstrap Modal site
             var modalInstance = $modal.open({
               templateUrl: 'app/admin/news/news.edit/editModal.tpl.html',
               scope: $scope,
-              controller: ModalInstanceCtrl,  //controller - a controller for a modal instance - it can initialize scope used by modal. Accepts the "controller-as" syntax, and can be injected with $modalInstance
-              size: 'lg',  // changed size: size to size: 'lg', size - optional size of modal window. Allowed values: 'sm' (small) or 'lg' (large). Requires Bootstrap 3.1.0 or later
-              // resolve - members that will be resolved and passed to the controller as locals; it is equivalent of the resolve property for AngularJS routes
+              controller: ModalInstanceCtrl,
+              size: 'lg',
 
               resolve: {
                 post: function () {
@@ -36,7 +34,7 @@
             });
 
            };
-          var ModalInstanceCtrl = function ($scope, $modalInstance, post, PostFactory) {
+          var ModalInstanceCtrl = function ($scope, $modalInstance, PostFactory, toastr) {
 
             $scope.updatePost = function (updatedPost) {
               // console.log('ModalInstanceController - $scope.updatePost - postID: ', postID);
@@ -53,9 +51,9 @@
 
               $scope.status = 'Updated Post by ID ! Refreshing Post List.';
               console.log('$scope.status', $scope.status);
-              alert('Post Updated');
+              toastr.success('Post Updated');
               // $scope.posts.push(post);
-              console.log('newsEditModal.directive.js - ModalInstanceController - PostFactory.updatePost(postID, post)', post.tags);
+              console.log('newsEditModal.directive.js - PostFactory.updatePost(postID, post)', post.tags);
               }).
                 error(function (error) {
                 $scope.status = 'Unable to Update Post: ' + error.message;
