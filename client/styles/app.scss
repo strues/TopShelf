@@ -25,8 +25,7 @@
 @import
   "components/buttons",
   "components/forms",
-  "components/hero",
-  "components/lists";
+  "components/navbar";
 
 
 
@@ -38,22 +37,9 @@
   "sections/global",
   "sections/homepage",
   "sections/streams",
-  "sections/navbar",
   "sections/loginSignup",
+  "sections/recruitingPanel",
   "sections/admin/sidebar";
-
-//
-// Non-modular
-//
-
-.appPreview {
-  font-weight: 700;
-}
-
-
-.help-block {
-  color: $brand-success;
-}
 
 .textEditor {
   min-height: 300px;
@@ -67,8 +53,3 @@
   padding: 20px 20px 20px 20px;
 }
 
-
-.taggedEM {
-  margin-right: 10px;
-  font-style: italic;
-}

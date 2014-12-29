@@ -1,38 +1,28 @@
 body {
   background-image: url(../../assets/images/bg.jpg);
-
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 .navbar-nav > li > a {
   padding-top: 35px !important;
   padding-bottom: none !important;
 }
 
+// Separator | <--- with padding lol
 .sep {
   padding-left: 6px;
   padding-right: 6px;
 }
-.postMeta {
 
-}
-.recruitingP {
-  padding-top: 30px;
-}
-.recruitmentHeader {
-  text-align: center;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-}
-.recruitmentWhite {
-  color: #fff;
-}
 .frontendWrap {
   padding-top: 15px;
   background: #222222;
-  border: 1px solid darken(#1d1d1d, 15%);;
+  border: 1px solid darken(#1d1d1d, 15%);
   border-radius: 2px;
-
 }
+
 .backendWrap {
   background: #1d1d1d;
   border: 1px solid darken(#1d1d1d, 15%);;
@@ -42,11 +32,11 @@ body {
   overflow-x:hidden;
 
 }
+
 .no-gutter > [class*='col-'] {
     padding-right:0;
     padding-left:0;
 }
-
 
 hr {
     border: 0;
