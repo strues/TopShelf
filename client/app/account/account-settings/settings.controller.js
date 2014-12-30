@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc object
@@ -8,31 +8,29 @@
    * @description
    *
    */
-  angular
-    .module('topshelf.account')
-    .controller('SettingsCtrl', SettingsCtrl);
+    angular
+        .module('topshelf.account')
+        .controller('SettingsCtrl', SettingsCtrl);
 
-  function SettingsCtrl($scope, Auth) {
-
+    function SettingsCtrl($scope, Auth) {
 
    // var vm = this;
-     $scope.errors = {};
+        $scope.errors = {};
 
-    $scope.changePassword = function(form) {
-      $scope.submitted = true;
-      if(form.$valid) {
-        Auth.changePassword( $scope.user.oldPassword, $scope.user.newPassword )
-        .then( function() {
-          $scope.message = 'Password successfully changed.';
+        $scope.changePassword = function(form) {
+        $scope.submitted = true;
+        if (form.$valid) {
+            Auth.changePassword($scope.user.oldPassword, $scope.user.newPassword)
+        .then(function() {
+            $scope.message = 'Password successfully changed.';
         })
-        .catch( function() {
-          form.password.$setValidity('mongoose', false);
-          $scope.errors.other = 'Incorrect password';
-          $scope.message = '';
+        .catch(function() {
+            form.password.$setValidity('mongoose', false);
+            $scope.errors.other = 'Incorrect password';
+            $scope.message = '';
         });
-      }
+        }
     };
-  }
-
+    }
 
 })();

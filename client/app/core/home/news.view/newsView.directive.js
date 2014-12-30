@@ -1,15 +1,14 @@
 (function () {
-'use strict';
-
+    'use strict';
 
     function newsViewModal() {
-      return {
+        return {
           templateUrl: '',
           restrict: 'EA',
           controller: function($scope, PostFactory, $modal, $log) {
 
-          $scope.openViewModal = function (postID) {
-            var modalInstance = $modal.open({
+            $scope.openViewModal = function (postID) {
+                var modalInstance = $modal.open({
               templateUrl: 'app/core/home/news.view/viewModal.tpl.html',
               scope: $scope,
               controller: ModalInstanceCtrl,
@@ -17,52 +16,46 @@
 
               resolve: {
                 post: function () {
-                PostFactory.getPostById(postID)
-                .success(function (data) {
-                  $scope.status = 'Retrieved Recruitment by ID';
-                  // console.log($scope.status);
-                  console.log('sidebar.directive.js - resolve - getting data', data);
-                  $scope.post = data;
-                  console.log('sidebar.directive.js - resolve - assigning data to $scope.recruitment: ',
-                    $scope.post);
+                    PostFactory.getPostById(postID)
+                    .success(function (data) {
+                    $scope.status = 'Retrieved Recruitment by ID';
                 }).
                 error(function (error) {
-                  $scope.status = 'Cannot get current recruitment status: ' + error.message;
+                    $scope.status = 'Cannot get current recruitment status: ' + error.message;
                   /// console.log($scope.status);
                 });  // end of recruitmentFactory.showPost(postID)
 
-                return $scope.post;
-              }
+                    return $scope.post;
+                }
               }
             });
 
-            modalInstance.result.then(function () {
+                modalInstance.result.then(function () {
               // console.log('in modalInstance.result.then #2');
-              $log.info('Modal dismissed at: ' + new Date());
-            });
+                    $log.info('Modal dismissed at: ' + new Date());
+                });
 
-           };
-          var ModalInstanceCtrl = function ($scope, $modalInstance, PostFactory) {
-
+            };
+            var ModalInstanceCtrl = function ($scope, $modalInstance, PostFactory) {
 
             $scope.ok = function () {
             // $modalInstance.close($scope.selected.item);
-            $modalInstance.close();
+                $modalInstance.close();
             };
             // };
 
             $scope.cancel = function () {
-              $modalInstance.dismiss('cancel');
+                $modalInstance.dismiss('cancel');
             };
 
-          };
+        };
 
         }
 
       };
     }
 
-  angular
-    .module('topshelf.core')
-    .directive('newsViewModal', newsViewModal);
+    angular
+        .module('topshelf.core')
+        .directive('newsViewModal', newsViewModal);
 })();

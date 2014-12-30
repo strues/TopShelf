@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc object
@@ -9,14 +9,13 @@
    *
    */
 
+    function FooterCtrl(Auth) {
+        var vm = this;
 
-  function FooterCtrl(Auth) {
-    var vm = this;
+        vm.Auth = Auth;
+    }
 
-    vm.Auth = Auth;
-  }
-
-  angular
-    .module('topshelf.core')
-    .controller('FooterCtrl', FooterCtrl);
+    angular
+        .module('topshelf.core')
+        .controller('FooterCtrl', FooterCtrl);
 })();

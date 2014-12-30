@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc service
@@ -9,10 +9,10 @@
    *
    */
 
-   function Auth($http, User, $localStorage, socket, $q) {
+    function Auth($http, User, $localStorage, socket, $q) {
       var currentUser = $localStorage.token ? User.get() : {};
 
-    return {
+      return {
 
       /**
        * Authenticate user and save token
@@ -22,27 +22,27 @@
        * @return {Promise}
        */
       login: function(user, callback) {
-        var cb = callback || angular.noop;
-        var deferred = $q.defer();
+          var cb = callback || angular.noop;
+          var deferred = $q.defer();
 
-        $http.post('/auth/local', {
-          email: user.email,
-          password: user.password,
-          rememberme : user.rememberme
+          $http.post('/auth/local', {
+            email: user.email,
+            password: user.password,
+            rememberme : user.rememberme
         }).
         success(function(data) {
-          $localStorage.token = data.token;
-          currentUser = User.get();
-          deferred.resolve(data);
-          return cb();
+            $localStorage.token = data.token;
+            currentUser = User.get();
+            deferred.resolve(data);
+            return cb();
         }).
         error(function(err) {
-          this.logout();
-          deferred.reject(err);
-          return cb(err);
+            this.logout();
+            deferred.reject(err);
+            return cb(err);
         }.bind(this));
 
-        return deferred.promise;
+          return deferred.promise;
       },
 
       /**
@@ -50,8 +50,8 @@
        *
        */
       logout: function() {
-        delete $localStorage.token;
-        currentUser = {};
+          delete $localStorage.token;
+          currentUser = {};
       },
 
       /**
@@ -62,17 +62,17 @@
        * @return {Promise}
        */
       createUser: function(user, callback) {
-        var cb = callback || angular.noop;
+          var cb = callback || angular.noop;
 
-        return User.save(user,
+          return User.save(user,
           function(data) {
-            $localStorage.token = data.token;
-            currentUser = User.get();
-            return cb(user);
+              $localStorage.token = data.token;
+              currentUser = User.get();
+              return cb(user);
           },
           function(err) {
-            this.logout();
-            return cb(err);
+              this.logout();
+              return cb(err);
           }.bind(this)).$promise;
       },
 
@@ -85,15 +85,15 @@
        * @return {Promise}
        */
       changePassword: function(oldPassword, newPassword, callback) {
-        var cb = callback || angular.noop;
+          var cb = callback || angular.noop;
 
-        return User.changePassword({ id: currentUser._id }, {
+          return User.changePassword({id: currentUser._id}, {
           oldPassword: oldPassword,
           newPassword: newPassword
         }, function(user) {
-          return cb(user);
+            return cb(user);
         }, function(err) {
-          return cb(err);
+            return cb(err);
         }).$promise;
       },
 
@@ -103,7 +103,7 @@
        * @return {Object} user
        */
       getCurrentUser: function() {
-        return currentUser;
+          return currentUser;
       },
 
       /**
@@ -112,7 +112,7 @@
        * @return {Boolean}
        */
       isLoggedIn: function() {
-        return currentUser.hasOwnProperty('role');
+          return currentUser.hasOwnProperty('role');
       },
 
       /**
@@ -121,39 +121,31 @@
        * @return {Boolean}
        */
       isAdmin: function() {
-        return currentUser.role === 'admin';
+          return currentUser.role === 'admin';
       },
 
       /**
        * Get auth token
        */
       getToken: function() {
-        return $localStorage.token;
+          return $localStorage.token;
       },
 
      socketEmitAuthToken: function() {
-       if (currentUser.hasOwnProperty('role')) {
-         socket.emit('authenticate', {token: $localStorage.token});
-       }
+         if (currentUser.hasOwnProperty('role')) {
+             socket.emit('authenticate', {token: $localStorage.token});
+         }
 
      },
       socketAuthInit: function() {
 
-      socket.on('connect',{token: $localStorage.token});
+        socket.on('connect', {token: $localStorage.token});
     },
 
-
-      /**
-       * Set session token
-       *
-       * @return {Promise}
-       * @param sessionToken
-       * @param callback
-       */
       setSessionToken: function(sessionToken, callback) {
-        var cb = callback || angular.noop;
-        $localStorage.token = sessionToken;
-        currentUser = User.get(cb);
+          var cb = callback || angular.noop;
+          $localStorage.token = sessionToken;
+          currentUser = User.get(cb);
       }
     };
   }

@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /* @ngdoc object
    * @name core
@@ -9,10 +9,10 @@
    *
    */
 
-  function config($stateProvider) {
+    function config($stateProvider) {
 
-    $stateProvider
-      .state('home', {
+        $stateProvider
+        .state('home', {
         url: '/',
         templateUrl: 'app/core/home/home.tpl.html',
         controller: 'HomeCtrl as vm'
@@ -22,9 +22,9 @@
         templateUrl: 'app/core/home/home.viewPost.tpl.html',
         controller: 'HomeViewPostCtrl as vm'
       });
-  }
+    }
 
-  angular
-    .module('topshelf.core')
-    .config(config);
+    angular
+        .module('topshelf.core')
+        .config(config);
 })();

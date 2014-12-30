@@ -8,10 +8,10 @@
 
 (function() {
 
-  'use strict';
+    'use strict';
 
-  function logger( $log, sweet ) {
-    return {
+    function logger($log, sweet) {
+        return {
       error   : error,
       info    : info,
       success : success,
@@ -19,30 +19,30 @@
       log     : $log.log
     };
     /////////////////////
-    function error(message, title) {
-      sweet.show(message, title, 'error');
-      $log.error('Error: ' + message);
+        function error(message, title) {
+            sweet.show(message, title, 'error');
+            $log.error('Error: ' + message);
+        }
+
+        function info(message, title) {
+            sweet.show(message, title);
+            $log.info('Info: ' + message);
+        }
+
+        function success(message, title) {
+            sweet.show(message, title);
+            $log.info('Success: ' + message, 'success');
+        }
+
+        function warning(message, title) {
+            sweet.show(message, title);
+            $log.warn('Warning: ' + message);
+        }
+
     }
 
-    function info(message, title) {
-     sweet.show(message, title);
-      $log.info('Info: ' + message);
-    }
+    angular
+        .module('topshelf.core')
+        .factory('logger', logger);
 
-    function success(message, title) {
-      sweet.show(message, title);
-      $log.info('Success: ' + message, 'success');
-    }
-
-    function warning(message, title) {
-      sweet.show(message, title);
-      $log.warn('Warning: ' + message);
-    }
-
-  }
-
-angular
-  .module('topshelf.core')
-  .factory('logger', logger);
-
-}( this.angular ));
+}(this.angular));

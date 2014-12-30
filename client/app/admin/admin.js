@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /* @ngdoc object
    * @name admin
@@ -9,7 +9,7 @@
    *
    */
 
-  function config($stateProvider) {
+    function config($stateProvider) {
     $stateProvider
       .state('admin', {
         url: '/admin',
@@ -94,7 +94,7 @@
       });
 }
 
-  angular
-    .module('topshelf.admin')
-    .config(config);
+    angular
+        .module('topshelf.admin')
+        .config(config);
 })();

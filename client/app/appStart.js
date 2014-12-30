@@ -1,5 +1,5 @@
-(function( angular  ) {
-'use strict';
+(function(angular) {
+    'use strict';
 
   /* @ngdoc object
    * @name appStart
@@ -11,13 +11,11 @@
    * during testing or tested independently
    */
 
-  function factory ($rootScope, util){
-    var config = util.config;
-    var logger = util.logger;
+    function factory ($rootScope, util) {
+        var config = util.config;
+        var logger = util.logger;
 
-
-
-  }
-  angular
-    .module('topshelf').factory('appStart', ['$rootScope', 'util', factory]);
-})( this.angular );
+    }
+    angular
+        .module('topshelf').factory('appStart', ['$rootScope', 'util', factory]);
+})(this.angular);

@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /* @ngdoc object
    * @name topshelf.account
@@ -9,13 +9,12 @@
    *
    */
 
-
-  function config($stateProvider) {
-     $stateProvider
-     .state('account', {
-        abstract: true,
-        url:'/account',
-        template: '<ui-view />'
+    function config($stateProvider) {
+        $stateProvider
+        .state('account', {
+            abstract: true,
+            url:'/account',
+            template: '<ui-view />'
      })
       .state('account.login', {
         url: '/login',
@@ -25,19 +24,19 @@
       .state('account.loginWithToken', {
         url: '/login/:sessionToken',
         template: ' ',
-        controller: function($stateParams, Auth, $location){
-          if ($stateParams.sessionToken) {
-            Auth.setSessionToken($stateParams.sessionToken, function(){$location.path('/');});
-          }
+        controller: function($stateParams, Auth, $location) {
+            if ($stateParams.sessionToken) {
+                Auth.setSessionToken($stateParams.sessionToken, function() {$location.path('/');});
+            }
         }
       })
       .state('account.logout', {
         url: '/logout?referrer',
         referrer: 'home',
         controller: function($state, Auth) {
-          var referrer = $state.params.referrer || $state.current.referrer;
-          Auth.logout();
-          $state.go(referrer);
+            var referrer = $state.params.referrer || $state.current.referrer;
+            Auth.logout();
+            $state.go(referrer);
         }
       })
       .state('account.signup', {
@@ -51,9 +50,9 @@
         controller: 'SettingsCtrl',
         authenticate: true
       });
-  }
+    }
 
-  angular
-    .module('topshelf.account')
-    .config(config);
+    angular
+        .module('topshelf.account')
+        .config(config);
 })();

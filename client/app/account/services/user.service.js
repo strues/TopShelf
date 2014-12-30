@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc service
@@ -8,10 +8,8 @@
    * @description
    *
    */
-
-
-     function User ($resource) {
-            return $resource('/api/users/:id/:controller', {
+    function User ($resource) {
+        return $resource('/api/users/:id/:controller', {
               id: '@_id'
             },
             {
@@ -32,8 +30,8 @@
 
               }
             });
-          }
-  angular
-    .module('topshelf.account')
-    .factory('User', User);
+    }
+    angular
+        .module('topshelf.account')
+        .factory('User', User);
 })();

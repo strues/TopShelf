@@ -2,47 +2,47 @@
  * application.service.js in web
  */
 (function () {
-  'use strict';
+    'use strict';
 
-  function ApplicationFactory ($http) {
-    console.log('application.service.js');
+    function ApplicationFactory ($http) {
+        console.log('application.service.js');
 
-    var urlBase = 'api/applications';
-    var exports = {};
+        var urlBase = 'api/applications';
+        var exports = {};
 
-    exports.getAllApplications = function(){
-      return $http.get(urlBase);
-    };
+        exports.getAllApplications = function () {
+            return $http.get(urlBase);
+        };
 
-    exports.getApplicationById = function(applicationId){
-      return $http.get(urlBase + '/' + applicationId);
-    };
+        exports.getApplicationById = function(applicationId) {
+            return $http.get(urlBase + '/' + applicationId);
+        };
 
-    exports.createApplication = function(newApplication){
-      return $http.post(urlBase, newApplication);
-    };
+        exports.createApplication = function(newApplication) {
+            return $http.post(urlBase, newApplication);
+        };
 
-    exports.updateApplication = function(updatedApplication){
-      return $http.put(urlBase + '/' + updatedApplication._id, updatedApplication);
-    };
+        exports.updateApplication = function(updatedApplication) {
+            return $http.put(urlBase + '/' + updatedApplication._id, updatedApplication);
+        };
 
-    exports.removePost = function(applicationId){
-      return $http.delete(urlBase + '/' + applicationId);
-    };
+        exports.removePost = function(applicationId) {
+            return $http.delete(urlBase + '/' + applicationId);
+        };
 
-    exports.likeApplication = function(applicationId) {
-      return $http.post(urlBase + '/' + applicationId);
-    };
+        exports.likeApplication = function(applicationId) {
+            return $http.post(urlBase + '/' + applicationId);
+        };
 
-    exports.unlikeApplication = function(applicationId) {
-      return $http.put(urlBase + '/' + applicationId);
-    };
+        exports.unlikeApplication = function(applicationId) {
+            return $http.put(urlBase + '/' + applicationId);
+        };
 
-    return exports;
+        return exports;
 
-  }
+    }
 
-  angular
-    .module('topshelf.guild')
-    .factory('ApplicationFactory', ApplicationFactory);
+    angular
+        .module('topshelf.guild')
+        .factory('ApplicationFactory', ApplicationFactory);
 })();

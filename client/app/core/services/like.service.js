@@ -3,53 +3,52 @@
  */
 
 (function () {
-  'use strict';
+    'use strict';
 
-  function LikeService ($window) {
+    function LikeService ($window) {
     console.log('like.service.js');
 
   //Contains application ids already liked by the user
-  var applicationLiked = [];
+    var applicationLiked = [];
 
-  if ($window.sessionStorage && $window.sessionStorage.applicationLiked) {
-    applicationLiked.push($window.sessionStorage.applicationLiked);
-  }
+    if ($window.sessionStorage && $window.sessionStorage.applicationLiked) {
+        applicationLiked.push($window.sessionStorage.applicationLiked);
+    }
 
-
-  return {
+    return {
     isAlreadyLiked: function(applicationId) {
-      if (applicationId !== null) {
-        for (var i in applicationLiked) {
-          if (applicationLiked[i] === applicationId) {
-            return true;
-          }
+        if (applicationId !== null) {
+            for (var i in applicationLiked) {
+                if (applicationLiked[i] === applicationId) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         return false;
-      }
-
-      return false;
     },
 
     like: function(applicationId) {
-      if (!this.isAlreadyLiked(applicationId)) {
-        applicationLiked.push(applicationId);
-        $window.sessionStorage.applicationLiked = applicationLiked;
-      }
+        if (!this.isAlreadyLiked(applicationId)) {
+            applicationLiked.push(applicationId);
+            $window.sessionStorage.applicationLiked = applicationLiked;
+        }
     },
 
     unlike: function(applicationId) {
-      if (this.isAlreadyLiked(applicationId)) {
-        for (var i in applicationLiked) {
-          if (applicationLiked[i] !== applicationId) {
-          } else {
-            applicationLiked.splice(i, 1);
-            $window.sessionStorage.applicationLiked = applicationLiked;
+        if (this.isAlreadyLiked(applicationId)) {
+            for (var i in applicationLiked) {
+                if (applicationLiked[i] !== applicationId) {
 
-            break;
-          }
+                    applicationLiked.splice(i, 1);
+                    $window.sessionStorage.applicationLiked = applicationLiked;
+
+                    break;
+                }
+            }
         }
-      }
     }
   };
 
@@ -58,4 +57,4 @@
     angular
       .module('topshelf.core')
       .factory('LikeService', LikeService);
-  })();
+})();

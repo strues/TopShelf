@@ -1,18 +1,18 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  function AdminSidebarCtrl() {
-    var vm = this;
+    function AdminSidebarCtrl() {
+        var vm = this;
 
-    vm.oneAtATime = true;
+        vm.oneAtATime = true;
 
-    vm.status = {
+        vm.status = {
       isFirstOpen: true,
       isFirstDisabled: false
     };
-  }
+    }
 
-  angular
-    .module('topshelf.admin')
-    .controller('AdminSidebarCtrl', AdminSidebarCtrl);
+    angular
+        .module('topshelf.admin')
+        .controller('AdminSidebarCtrl', AdminSidebarCtrl);
 })();

@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc object
@@ -8,13 +8,13 @@
    * @description
    *
    */
-  angular
+    angular
     .module('topshelf.guild')
     .controller('RecruitmentCtrl', RecruitmentCtrl);
 
-  function RecruitmentCtrl($scope, $modal, $log) {
+    function RecruitmentCtrl($scope, $modal, $log) {
 
-var vm= this;
-}
+        var vm = this;
+    }
 
 })();

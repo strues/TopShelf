@@ -1,26 +1,25 @@
 (function () {
 
-'use strict';
+    'use strict';
 
 /**
  * Removes server error when user updates input
  */
 
-  function mongooseError () {
-    return {
+    function mongooseError () {
+        return {
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attrs, ngModel) {
-        element.on('keydown', function() {
-          return ngModel.$setValidity('mongoose', true);
+          element.on('keydown', function() {
+            return ngModel.$setValidity('mongoose', true);
         });
       }
     };
-  }
+    }
 
-
-angular
-  .module('topshelf.core')
-  .directive('mongooseError', mongooseError);
+    angular
+    .module('topshelf.core')
+    .directive('mongooseError', mongooseError);
 
 })();

@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc object
@@ -9,8 +9,7 @@
    *
    */
 
-
-  function ApplicationCtrl($location, ApplicationFactory, sweet) {
+    function ApplicationCtrl($location, ApplicationFactory, sweet) {
     var vm = this;
     vm.data = {};
 
@@ -65,42 +64,41 @@
         {value:'windwalker', label:'Windwalker'}
     ];
 
- vm.alerts = [
-    { type: 'danger', msg: 'All fields are required for your application. If you cannot see what youve written' +
-    ' in the preview area, it contains an error and we will not receive your application.' +
-    ' Make sure all URLs are valid, ie http://topshelfguild.com' }
+    vm.alerts = [
+    {type: 'danger', msg: 'All fields are required for your application. If you cannot see' +
+    ' what youve written in the preview area, it contains an error and we will not receive' +
+    ' your application. Make sure all URLs are valid, ie http://topshelfguild.com'}
   ];
 
-  vm.closeAlert = function(index) {
-    vm.alerts.splice(index, 1);
-  };
+    vm.closeAlert = function(index) {
+        vm.alerts.splice(index, 1);
+    };
 
-  vm.submit = function(valid) {
-        if(!valid) {
-           return;
+    vm.submit = function(valid) {
+        if (!valid) {
+            return;
         }
 
         vm.submitting = true;
 
         ApplicationFactory.createApplication(vm.data)
-          .then( function () {
+          .then(function () {
               vm.data = {};
               sweet.show('Your application was submitted', 'Expect to hear from us soon!');
               console.log('form submitted:', vm.data);
               $location.path('/completed');
           },
             function() {
-              vm.submitting = false;
+                vm.submitting = false;
             });
-        };
+    };
 
-      vm.goBack = function () {
+    vm.goBack = function () {
         $location.path('/');
-      };
-
+    };
 
 }
-  angular
-    .module('topshelf.guild')
-    .controller('ApplicationCtrl', ApplicationCtrl);
+    angular
+        .module('topshelf.guild')
+        .controller('ApplicationCtrl', ApplicationCtrl);
 })();

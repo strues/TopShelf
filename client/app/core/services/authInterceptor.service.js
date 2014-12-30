@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc service
@@ -9,36 +9,35 @@
    *
    */
 
+    function authInterceptor($rootScope, $q, $localStorage, $location) {
 
-  function authInterceptor($rootScope, $q, $localStorage, $location) {
-
-    return {
+        return {
       // Add authorization token to headers
       request: function (config) {
-        config.headers = config.headers || {};
-        if ($localStorage.token) {
-          config.headers.Authorization = 'Bearer ' + $localStorage.token;
-        }
-        return config;
+          config.headers = config.headers || {};
+          if ($localStorage.token) {
+              config.headers.Authorization = 'Bearer ' + $localStorage.token;
+          }
+          return config;
       },
 
       // Intercept 401s and redirect you to login
       responseError: function(response) {
-        if(response.status === 401) {
-          $location.path('/');
+          if (response.status === 401) {
+              $location.path('/');
           // remove any stale tokens
-          delete $localStorage.token;
-          return $q.reject(response);
+              delete $localStorage.token;
+              return $q.reject(response);
         }
-        else {
-          return $q.reject(response);
-        }
+          else {
+              return $q.reject(response);
+          }
       }
     };
-  }
+    }
 
-angular
-  .module('topshelf.core')
-  .factory('authInterceptor', authInterceptor);
+    angular
+        .module('topshelf.core')
+        .factory('authInterceptor', authInterceptor);
 
 })();

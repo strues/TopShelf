@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc object
@@ -9,11 +9,10 @@
    *
    */
 
+    function RecruitmentCtrl ($scope, $http) {
 
- function RecruitmentCtrl ($scope, $http) {
-
-      $scope.formData = {};
-      $scope.formFields = [
+        $scope.formData = {};
+        $scope.formFields = [
          {
         key: 'classType',
         type: 'select',
@@ -151,16 +150,16 @@
           }
       ];
 
-      $scope.formOptions = {
+        $scope.formOptions = {
           //Set the id of the form
           uniqueFormId: 'recruitment'
       };
-      $scope.onSubmit = function() {
+        $scope.onSubmit = function() {
           $http.post('/api/recruitment', $scope.formData);
           console.log('recruitment status submitted:', $scope.formData);
       };
-}
-  angular
-    .module('topshelf.admin')
-    .controller('RecruitmentCtrl', RecruitmentCtrl);
+    }
+    angular
+        .module('topshelf.admin')
+        .controller('RecruitmentCtrl', RecruitmentCtrl);
 })();

@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc directive
@@ -16,54 +16,52 @@
        </file>
      </example>
    *
-   */ /*jshint unused:false */
-
+   */
+  /*jshint unused:false */
 
     function signupForm (Auth, $location, $window, sweet) {
         return {
           templateUrl: 'app/account/account-signup/signupForm.tpl.html',
           restrict: 'EA',
           link: function (scope, element, attrs) {
-            scope.user = {};
-            scope.errors = {};
+              scope.user = {};
+              scope.errors = {};
 
-          scope.register = function(form) {
-            scope.submitted = true;
+              scope.register = function(form) {
+                  scope.submitted = true;
 
-            if(form.$valid) {
-              Auth.createUser({
-                name: scope.user.name,
-                email: scope.user.email,
-                password: scope.user.password
+                  if (form.$valid) {
+                      Auth.createUser({
+                        name: scope.user.name,
+                        email: scope.user.email,
+                        password: scope.user.password
               })
-              .then( function() {
-                 sweet.show('Success!', 'You\'re account has been created', 'success');
+              .then(function() {
+                  sweet.show('Success!', 'You\'re account has been created', 'success');
                 // Account created, redirect to home
-                $location.path('/');
+                  $location.path('/');
               })
-              .catch( function(err) {
-                err = err.data;
-                scope.errors = {};
+              .catch(function(err) {
+                  err = err.data;
+                  scope.errors = {};
 
                 // Update validity of form fields that match the mongoose errors
-                angular.forEach(err.errors, function(error, field) {
-                  form[field].$setValidity('mongoose', false);
-                  scope.errors[field] = error.message;
-                });
+                  angular.forEach(err.errors, function(error, field) {
+                      form[field].$setValidity('mongoose', false);
+                      scope.errors[field] = error.message;
+                  });
               });
-            }
-          };
+                  }
+              };
 
-          scope.loginOauth = function(provider) {
-            $window.location.href = '/auth/' + provider;
-          };
+              scope.loginOauth = function(provider) {
+                 $window.location.href = '/auth/' + provider;
+             };
           }
         };
-      }
+    }
 
-  angular
-    .module('topshelf.account')
-    .directive('signupForm', signupForm);
+    angular
+        .module('topshelf.account')
+        .directive('signupForm', signupForm);
 })();
-
-

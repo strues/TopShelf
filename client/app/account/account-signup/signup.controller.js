@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc object
@@ -9,13 +9,12 @@
    *
    */
 
+    function SignupCtrl() {
+        var vm = this;
+        vm.ctrlName = 'SignupCtrl';
+    }
 
-  function SignupCtrl() {
-    var vm = this;
-    vm.ctrlName = 'SignupCtrl';
-  }
-
-  angular
-    .module('topshelf.account')
-    .controller('SignupCtrl', SignupCtrl);
+    angular
+        .module('topshelf.account')
+        .controller('SignupCtrl', SignupCtrl);
 })();

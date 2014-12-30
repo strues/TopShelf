@@ -1,22 +1,21 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  function GuildFactory ($http) {
-     console.log('guild.service.js');
+    function GuildFactory ($http) {
+        console.log('guild.service.js');
 
-    var urlBase = 'api/guild';
-    var exports = {};
+        var urlBase = 'api/guild';
+        var exports = {};
 
-    exports.getGuildProfile = function(){
-      return $http.get(urlBase);
-    };
+        exports.getGuildProfile = function () {
+            return $http.get(urlBase);
+        };
 
+        return exports;
 
-    return exports;
+    }
 
-  }
-
-  angular
-  .module('topshelf.core')
-  .factory('GuildFactory', GuildFactory);
+    angular
+        .module('topshelf.core')
+        .factory('GuildFactory', GuildFactory);
 })();

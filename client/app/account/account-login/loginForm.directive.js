@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+    'use strict';
 
   /**
    * @ngdoc directive
@@ -18,42 +18,41 @@
    *
    */
 
-
-  function loginForm(Auth, $location, $window, sweet) {
-    return {
+    function loginForm(Auth, $location, $window, sweet) {
+        return {
       templateUrl: 'app/account/account-login/loginForm.tpl.html',
       restrict: 'EA',
       link: function (scope, element, attrs) {
-        scope.user = {};
-        scope.errors = {};
+          scope.user = {};
+          scope.errors = {};
 
-      scope.login = function(form) {
-        scope.submitted = true;
+          scope.login = function(form) {
+              scope.submitted = true;
 
-        if(form.$valid) {
-          Auth.login({
-            email: scope.user.email,
-            password: scope.user.password
+              if (form.$valid) {
+                  Auth.login({
+                email: scope.user.email,
+                password: scope.user.password
           })
-          .then( function success() {
-            sweet.show('Welcome Back', 'You\'ve successfully logged in', 'success');
+          .then(function success() {
+              sweet.show('Welcome Back', 'You\'ve successfully logged in', 'success');
             // Logged in, redirect to home
-            $location.path('/');
+              $location.path('/');
           })
-          .catch( function(err) {
-            scope.errors.other = err.message;
+          .catch(function(err) {
+              scope.errors.other = err.message;
               sweet.show(err.other);
           });
-        }
-      };
+              }
+          };
 
-      scope.loginOauth = function(provider) {
-        $window.location.href = '/auth/' + provider;
-      };
+          scope.loginOauth = function(provider) {
+              $window.location.href = '/auth/' + provider;
+          };
       }
     };
-  }
+    }
     angular
-    .module('topshelf.account')
-    .directive('loginForm', loginForm);
+        .module('topshelf.account')
+        .directive('loginForm', loginForm);
 })();
