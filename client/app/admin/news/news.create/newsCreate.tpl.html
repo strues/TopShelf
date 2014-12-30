@@ -1,50 +1,50 @@
-<div class="backendWrap">
-<div class="row" ng-controller="NewsCreateCtrl">
-<div class="col-sm-8 col-sm-offset-2">
+<div ng-controller="NewsCreateCtrl">
     <form novalidate ng-submit="createPost()">
-
-       <div class="row">
-
-                 <!-- newPost.title input-->
-            <div class="col-md-8">
-         <span style="padding-left: 10px;">
+  <div class="row">
+  <div class="col-sm-10">
          <h1>New Post</h1>
-         <h6>Create a new post that displays on the homepage</h6></span>
+         <h5>Create a new post that displays on the homepage</h5></span>
+  </div>
+  </div>
+<div class="row">
+<div class="col-sm-10">
                 <input type="text"
                       class="form-control"
-                      placeholder="Post title"
+                      placeholder="Post Title"
                       ng-minLength=3
                       ng-maxLength=75
                       ng-model="newPost.title"
                       required/>
               </div>
-         <div class="col-md-3">
-                <div class="input-group" ng-controller="DatepickerCtrl">
-                  <input type="text"
-                         class="form-control"
-                         datepicker-popup="{{format}}"
-                         ng-model="newPost.date"
-                         is-open="opened"
-                         min-date="minDate"
-                         max-date="'2015-06-22'"
-                         datepicker-options="dateOptions"
-                         placeholder="Date"
-                         date-disabled="disabled(date, mode)"
-                         close-text="Close"
+   <div class="col-sm-2">
+          <div class="input-group" ng-controller="DatepickerCtrl">
+            <input type="text"
+                   class="form-control"
+                   datepicker-popup="{{format}}"
+                   ng-model="newPost.date"
+                   is-open="opened"
+                   min-date="minDate"
+                   max-date="'2016-06-22'"
+                   datepicker-options="dateOptions"
+                   placeholder="Date"
+                   date-disabled="disabled(date, mode)"
+                   close-text="Close"
                          required/>
 
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><span class="glyphicon glyphicon-calendar"></span></button>
-                  </span>
-                </div>
-            </div>
-        </div><!--./row-->
+  <span class="input-group-btn">
+    <button type="button" class="btn btn-default" ng-click="open($event)">
+    <span class="glyphicon glyphicon-calendar"></span>
+    </button>
+  </span>
+  </div>
+</div>
+</div><!--./row-->
 
     <div class="row">
-    <text-angular class="textEditor" ng-model="newPost.content"></text-angular>
+    <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage']]" class="textEditor" ng-model="newPost.content"></text-angular>
     </div>
      <!-- newPost.tags input-->
-    <div class="row">
+    <div class="row" style="padding-top:15px;">
     <div class="col-md-6">
         <input type="text"
                class="form-control"
@@ -54,11 +54,9 @@
                required/>
     </div>
             <!-- Save Btn-->
-    <div class="col-md-6">
+    <div class="col-sm-4">
       <input type="submit" class="btn btn-primary" value="Save Post" />
     </div>
     </div> <!--./row-->
   </form>
 </div>
-</div>
-

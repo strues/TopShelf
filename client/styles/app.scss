@@ -42,9 +42,7 @@
   "sections/admin/sidebar";
 
 .textEditor {
-  min-height: 300px;
-  height: auto;
-  overflow: auto;
+  overflow: hidden;
   font-family: inherit;
   font-size: 100%;
 }
