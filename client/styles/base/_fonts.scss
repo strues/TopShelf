@@ -8,12 +8,12 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
 }
 @font-face {
     font-family: 'sourcesans';
-    src: url('../assets/fonts/sourcesanspro-regular-webfont.eot');
-    src: url('../assets/fonts/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../assets/fonts/sourcesanspro-regular-webfont.woff2') format('woff2'),
-         url('../assets/fonts/sourcesanspro-regular-webfont.woff') format('woff'),
-         url('../assets/fonts/sourcesanspro-regular-webfont.ttf') format('truetype'),
-         url('../assets/fonts/sourcesanspro-regular-webfont.svg#source_sans_proregular') format('svg');
+    src: url('../../assets/fonts/sourcesanspro-regular-webfont.eot');
+    src: url('../../assets/fonts/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/sourcesanspro-regular-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/sourcesanspro-regular-webfont.woff') format('woff'),
+         url('../../assets/fonts/sourcesanspro-regular-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/sourcesanspro-regular-webfont.svg#source_sans_proregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -24,12 +24,12 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
 
 @font-face {
     font-family: 'bebasneue';
-    src: url('../assets/fonts/bebasneue-webfont-webfont.eot');
-    src: url('../assets/fonts/bebasneue-webfont-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../assets/fonts/bebasneue-webfont-webfont.woff2') format('woff2'),
-         url('../assets/fonts/bebasneue-webfont-webfont.woff') format('woff'),
-         url('../assets/fonts/bebasneue-webfont-webfont.ttf') format('truetype'),
-         url('../assets/fonts/bebasneue-webfont-webfont.svg#_.regular') format('svg');
+    src: url('../../assets/fonts/bebasneue-webfont-webfont.eot');
+    src: url('../../assets/fonts/bebasneue-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/bebasneue-webfont-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/bebasneue-webfont-webfont.woff') format('woff'),
+         url('../../assets/fonts/bebasneue-webfont-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/bebasneue-webfont-webfont.svg#_.regular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -37,11 +37,11 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
 
 @font-face {
   font-family: 'ico-font';
-  src:url('../assets/fonts/ico-font.eot');
-  src:url('../assets/fonts/ico-font.eot?#iefix') format('embedded-opentype'),
-    url('../assets/fonts/ico-font.woff') format('woff'),
-    url('../assets/fonts/ico-font.ttf') format('truetype'),
-    url('../assets/fonts/ico-font.svg#ico-font') format('svg');
+  src:url('../../assets/fonts/ico-font.eot');
+  src:url('../../assets/fonts/ico-font.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/ico-font.woff') format('woff'),
+    url('../../assets/fonts/ico-font.ttf') format('truetype'),
+    url('../../assets/fonts/ico-font.svg#ico-font') format('svg');
   font-weight: normal;
   font-style: normal;
 }

@@ -58,8 +58,7 @@ module.exports = function() {
         defaultPort: '9000',
         templateCache: {
             module: 'topshelf.core',
-            file: 'templates.js',
-            root: 'app/'
+            file: 'templates.js'
         },
         bower: {
             directory: './lib/',
