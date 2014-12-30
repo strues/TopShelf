@@ -1,6 +1,7 @@
 Top Shelf Guild
 ===========
-
+![Travis CI](https://travis-ci.org/strues/TopShelf.svg?branch=master)
+  
 A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.js, Express.js, and Node.js. 
 
 #### Intro  
