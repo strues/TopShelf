@@ -26,6 +26,7 @@
                   'ui.bootstrap',
                   'textAngular',
                   'hSweetAlert',
+                  'angular-loading-bar',
                   'topshelf.core',
                   'topshelf.guild',
                   'topshelf.admin',

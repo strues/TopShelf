@@ -45,16 +45,26 @@
     </div>
      <!-- newPost.tags input-->
     <div class="row" style="padding-top:15px;">
-    <div class="col-md-6">
+    <div class="col-md-3">
         <input type="text"
                class="form-control"
                placeholder="tags"
                ng-model="newPost.tags"
                ng-list=", "
                required/>
+                   </div>
+                   <div class="col-md-7">
+            <input type="text"
+                      class="form-control"
+                      placeholder="Image URL"
+                      ng-model="newPost.image"
+                      style="padding-left: 15px;"
+                      />
+</div>
     </div>
             <!-- Save Btn-->
-    <div class="col-sm-4">
+            <div class="row">
+    <div class="col-sm-3 col-sm-offset-8" style="padding-top: 15px;">
       <input type="submit" class="btn btn-primary" value="Save Post" />
     </div>
     </div> <!--./row-->

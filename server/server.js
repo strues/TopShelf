@@ -12,15 +12,15 @@ var express     = require('express'),
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
-  if (err) {
-    console.log('Connection refused to ' + config.mongo.uri);
-    console.log(err);
-  } else {
-    console.log('Connection successful to: ' + config.mongo.uri);
-  }
+    if (err) {
+        console.log('Connection refused to ' + config.mongo.uri);
+        console.log(err);
+    } else {
+        console.log('Connection successful to: ' + config.mongo.uri);
+    }
 });
 
-if(config.seedDB) { require('./config/seed'); }
+if (config.seedDB) { require('./config/seed'); }
 
 // Setup server
 var app         = express();
@@ -41,7 +41,7 @@ require('./routes')(app);
  */
 
 server.listen(config.port, config.ip, function () {
-  console.log('Express server listening on %d, in %s mode',
+    console.log('Express server listening on %d, in %s mode',
     config.port, app.get('env'));
 });
 

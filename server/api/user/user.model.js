@@ -7,44 +7,43 @@ var _ = require('lodash');
 var authTypes = ['bnet', 'twitter', 'facebook'];
 
 var UserSchema = new mongoose.Schema({
-  name: { type: String, unique: true, index: true },
-  email: { type: String, unique: true, index: true },
+  name: {type: String, unique: true, index: true},
+  email: {type: String, unique: true, index: true},
   role: {type: String, default : 'user', enum: ['admin', 'user']},
   password: String,
   provider: String,
   salt: String,
-  facebook: { type: String, unique: true, sparse: true },
-  twitter: { type: String, unique: true, sparse: true },
-  bnet: { type: String, unique: true, sparse: true },
+  facebook: {type: String, unique: true, sparse: true},
+  twitter: {type: String, unique: true, sparse: true},
+  bnet: {type: String, unique: true, sparse: true},
   tokens: Array,
   profileDetails: {
-    firstName: { type: String, default: '' },
-    gender: { type: String, default: '' },
-    location: { type: String, default: '' },
-    website: { type: String, default: '' },
-    picture: { type: String, default: '' },
-    battletag: { type: String, default: '' }
-  },
+    firstName: {type: String, default: ''},
+    gender: {type: String, default: ''},
+    location: {type: String, default: ''},
+    website: {type: String, default: ''},
+    picture: {type: String, default: ''},
+    battletag: {type: String, default: ''}
+ },
   characterDetails: {
-      lastModified: { type: Number, default: '' },
-      name: { type: String, default: '' },
-      realm: { type: String, default: '' },
-      battlegroup: { type: String, default: '' },
-      class: { type: Number, default: '' },
-      race: { type: Number, default: '' },
-      gender: { type: Number, default: '' },
-      level: { type: Number, default: '' },
-      achievementPoints: { type: Number, default: '' },
-      thumbnail: { type: String, default: '' },
-      calcClass: { type: Number, default: '' },
-  },
+      lastModified: {type: Number, default: ''},
+      name: {type: String, default: ''},
+      realm: {type: String, default: ''},
+      battlegroup: {type: String, default: ''},
+      class: {type: Number, default: ''},
+      race: {type: Number, default: ''},
+      gender: {type: Number, default: ''},
+      level: {type: Number, default: ''},
+      achievementPoints: {type: Number, default: ''},
+      thumbnail: {type: String, default: ''},
+      calcClass: {type: Number, default: ''},
+ },
   activity: {
-    date_created: { type: Date, default: Date.now },
-    last_logon: { type: Date, default: Date.now },
-    last_updated: { type: Date },
-  }
+    date_created: {type: Date, default: Date.now},
+    last_logon: {type: Date, default: Date.now},
+    last_updated: {type: Date},
+ }
 });
-
 
 /**
  * Virtuals
@@ -56,8 +55,8 @@ UserSchema.virtual('profile')
     return {
       'name': this.name,
       'role': this.role
-    };
-  });
+   };
+ });
 
 // Non-sensitive info we'll be putting in the token
 UserSchema
@@ -66,8 +65,8 @@ UserSchema
     return {
       '_id': this._id,
       'role': this.role
-    };
-  });
+   };
+ });
 
 /**
  * Validations
@@ -79,7 +78,7 @@ UserSchema
   .validate(function(email) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
     return email.length;
-  }, 'Email cannot be blank');
+ }, 'Email cannot be blank');
 
 // Validate empty password
 UserSchema
@@ -87,7 +86,7 @@ UserSchema
   .validate(function(password) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
     return password.length;
-  }, 'Password cannot be blank');
+ }, 'Password cannot be blank');
 
 // Validate email is not taken
 UserSchema
@@ -99,9 +98,9 @@ UserSchema
       if(user) {
         if(self.id === user.id) return respond(true);
         return respond(false);
-      }
+     }
       respond(true);
-    });
+   });
 }, 'The specified email address is already in use.');
 
 var validatePresenceOf = function(value) {
@@ -128,12 +127,12 @@ UserSchema
           if (encryptErr) next(encryptErr);
           _this.password = hashedPassword;
           next();
-        });
-      });
-    } else {
+       });
+     });
+   } else {
       next();
-    }
-  });
+   }
+ });
 
 /**
  * Methods
@@ -157,11 +156,11 @@ UserSchema.methods = {
 
       if (_this.password === pwdGen) {
         callback(null, true);
-      } else {
+     } else {
         callback(null, false);
-      }
-    });
-  },
+     }
+   });
+ },
 
   /**
    * Make salt
@@ -177,23 +176,23 @@ UserSchema.methods = {
     if (typeof arguments[0] === 'function') {
       callback = arguments[0];
       byteSize = defaultByteSize;
-    } else if (typeof arguments[1] === 'function') {
+   } else if (typeof arguments[1] === 'function') {
       callback = arguments[1];
-    }
+   }
 
     if (!byteSize) {
       byteSize = defaultByteSize;
-    }
+   }
 
     if (!callback) {
       return crypto.randomBytes(byteSize).toString('base64');
-    }
+   }
 
     return crypto.randomBytes(byteSize, function(err, salt) {
       if (err) callback(err);
       return callback(null, salt.toString('base64'));
-    });
-  },
+   });
+ },
 
   /**
    * Encrypt password
@@ -206,7 +205,7 @@ UserSchema.methods = {
   encryptPassword: function(password, callback) {
     if (!password || !this.salt) {
       return null;
-    }
+   }
 
     var defaultIterations = 10000;
     var defaultKeyLength = 64;
@@ -218,8 +217,8 @@ UserSchema.methods = {
     return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, function(err, key) {
       if (err) callback(err);
       return callback(null, key.toString('base64'));
-    });
-  }
+   });
+ }
 };
 
 module.exports = mongoose.model('User', UserSchema);

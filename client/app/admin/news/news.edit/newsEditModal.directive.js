@@ -42,7 +42,8 @@
                     date: $scope.post.date,
                     content:  $scope.post.content,
                     author: $scope.post.author,
-                    tags: $scope.post.tags
+                    tags: $scope.post.tags,
+                    image: $scope.post.image
                 };
                 PostFactory.updatePost($scope.post)
                 .success(function (updatedPost) {

@@ -1,7 +1,7 @@
 {
   "name": "TopShelf",
   "version": "0.4.0",
-  "authors":[
+  "authors": [
     "Steve Truesdell"
   ],
   "license": "MIT",
@@ -16,11 +16,12 @@
   },
   "dependencies": {
     "async": "^0.9.0",
-    "battlenet-api": "^0.6.1",
+    "battlenet-api": "^0.6.3",
     "body-parser": "^1.10.0",
     "composable-middleware": "^0.3.0",
     "compression": "^1.2.2",
     "connect-mongo": "^0.5.2",
+    "connect-multiparty": "^1.2.5",
     "connect-redis": "^2.1.0",
     "cookie-parser": "^1.3.3",
     "cors": "^2.5.2",
@@ -39,11 +40,13 @@
     "method-override": "^2.3.0",
     "moment": "^2.8.4",
     "mongoose": "^3.8.21",
+    "mongoose-relationship": "0.0.8",
     "mongoose-to-ui-grid": "^0.1.14",
     "morgan": "^1.5.0",
     "multer": "^0.1.6",
     "multiparty": "^4.1.0",
     "passport": "^0.2.1",
+    "passport-bnet": "^1.0.2",
     "passport-local": "^1.0.0",
     "redis": "^0.12.1",
     "request": "^2.51.0",

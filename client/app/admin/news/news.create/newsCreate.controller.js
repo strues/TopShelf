@@ -9,7 +9,8 @@
                 title: $scope.newPost.title,
                 content:  $scope.newPost.content,
                 author: Auth.currentUser,
-                tags: $scope.newPost.tags
+                tags: $scope.newPost.tags,
+                image: $scope.newPost.image
             };
 
         // data to postsFactory service
@@ -30,6 +31,7 @@
             $scope.newPost.content = '';
             $scope.newPost.author = '';
             $scope.newPost.tags = '';
+            $scope.newPost.image = '';
 
         }; // end of $scope.createPost
 

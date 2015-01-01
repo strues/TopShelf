@@ -13,7 +13,7 @@ exports.setup = function (User) {
       }, function(err, user) {
 
         if (!user) {
-          return done(null, false, { message: 'This email is not registered.' });
+          return done(null, false, {message: 'This email is not registered.'});
         }
 
         user.authenticate(password, function(authError, authenticated) {
@@ -21,7 +21,7 @@ exports.setup = function (User) {
             return done(authError);
           }
           if (!authenticated) {
-            return done(null, false, { message: 'This password is not correct.' });
+            return done(null, false, {message: 'This password is not correct.'});
           } else {
   // update the user's record with login timestamp
           user.activity.last_logon = Date.now();

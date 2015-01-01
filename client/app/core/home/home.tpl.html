@@ -11,11 +11,17 @@
 
 <div class="row newsContainer" ng-controller="HomeCtrl as vm">
   <div class="col-sm-12 col-lg-9">
-    <div class="homeNews"
+    <div class="row homeNews"
         ng-repeat="post in vm.posts | orderBy:'-date' | limitTo: vm.postsShownPerView() | filter:searchText">
-      <div class="postTitle">
-        <h1 class="post-title">{{post.title}}</h1>
-      </div>
+
+      <div class="col-lg-3">
+
+        <img class="postImage" ng-src="{{post.image}}"/>
+        </div>
+      <div class="col-lg-9">
+        <div class="postTitle">
+            <h1 class="post-title">{{post.title}}</h1>
+        </div>
       <div class="postMeta">
        <h5><i class="ico-calendar2"></i>
        {{post.date | date:'MM/dd/yyyy'}}<span class="sep">|</span>
@@ -27,15 +33,16 @@
         <p ng-hide="!showMode" ng-bind-html="post.content"></p>
       </div>
       <div class="postFooter">
-
         <span class="taggedEM"><i class="ico-tags2"></i></span>
         <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span>
-          <button class="btn btn-primary" ng-click="openViewModal(post._id)" news-view-modal>Read More</button>
+        <button class="btn btn-primary pull-right" ng-click="openViewModal(post._id)" news-view-modal>Read More</button>
       </div>
+      </div>
+
     </div><!-- end homeNews-->
   </div>
   <div class="col-lg-3 recruitingP">
-      <recruiting-panel class="recruitmentPanel"></recruiting-panel>
+      <recruiting-panel></recruiting-panel>
   </div>
 </div><!-- end news / recruiting row-->
 <the-footer></the-footer>

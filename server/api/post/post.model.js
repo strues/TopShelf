@@ -11,14 +11,12 @@ var PostSchema = new Schema({
   title: String,
   content: String,
   tags: Array,
-  category    : Array,
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  comments : [{ body: String, date: Date }],
-  date     : { type: Date, default: Date.now },
-  images   : Array
+  date: {type: Date, default: Date.now},
+  image: String
 });
 
 PostSchema.statics = {

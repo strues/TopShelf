@@ -6,8 +6,6 @@ var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
-router.get('/',  controller.getGuild);
-
+router.get('/realm', controller.show);
 
 module.exports = router;
-

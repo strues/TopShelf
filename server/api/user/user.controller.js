@@ -1,10 +1,9 @@
 'use strict';
 
-var _        = require('lodash');
-var User     = require('./user.model');
-var config   = require('../../config/environment');
-var jwt      = require('jsonwebtoken');
-
+var _          = require('lodash'),
+    User       = require('./user.model'),
+    config     = require('../../config/environment'),
+    jwt        = require('jsonwebtoken');
 
 /**
  * Get list of users
@@ -83,7 +82,7 @@ exports.updateCurrentUser = function(req, res) {
 exports.updateUser = function(req, res) {
     var userUpdates = req.body;
 
-    if(!req.user.hasRole('admin')) {
+    if (!req.user.hasRole('admin')) {
         res.status(403);
         return res.end();
     }
@@ -95,7 +94,7 @@ exports.updateUser = function(req, res) {
         userToEdit.battletag = userUpdates.battletag;
 
         userToEdit.save(function(err) {
-            if(err) {
+            if (err) {
                 res.sendStatus(400);
                 return res.send({reason:err.toString()});
             }
@@ -109,24 +108,23 @@ exports.updateUser = function(req, res) {
  */
 exports.create = function (req, res) {
 
-  var newUser      = new User(req.body);
-  newUser.provider = 'local';
-  newUser.role     = 'user';
-  newUser.createdAt = new Date();
-  newUser.updatedAt = new Date();
-  newUser.save(function(err, user) {
+    var newUser      = new User(req.body);
+    newUser.provider = 'local';
+    newUser.role     = 'user';
+    newUser.createdAt = new Date();
+    newUser.updatedAt = new Date();
+    newUser.save(function(err, user) {
 
-    if (err) {
-      return validationError(res, err);
-
-    }
+        if (err) {
+            return validationError(res, err);
+        }
     // Create the token with the session length
-  var token = jwt.sign({_id: user._id }, config.secrets.session,
-    { expiresInMinutes: 30 * 24 * 60 });
+        var token = jwt.sign({_id: user._id}, config.secrets.session,
+    {expiresInMinutes: 30 * 24 * 60});
   // Return the user token and log to console upon success
-    res.json({ token: token });
-    console.log('user ' + req.body.name + ' created');
-  });
+        res.json({token: token});
+        console.log('user ' + req.body.name + ' created');
+    });
 };
 
 // Updates an existing user in the DB.

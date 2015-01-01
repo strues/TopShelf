@@ -22,6 +22,7 @@ var express        = require('express'),
     flash          = require('express-flash');
 
 
+
 module.exports = function(app) {
   var client = redis.createClient(); // Redis
   var env = app.get('env');
@@ -51,8 +52,8 @@ module.exports = function(app) {
   app.use(cors());
   app.use(cookieParser());
   app.use(passport.initialize());
+  app.use(passport.session());
 
-  app.use(flash());
 
   app.set('appPath', path.join(config.root, 'client'));
 
