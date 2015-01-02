@@ -7,7 +7,7 @@ var CommentSchema = new Schema({
   body: String,
   upvotes: {type: Number, default: 0},
   post: {type: Schema.Types.ObjectId, ref: 'Post'},
-  author: {
+  commenter: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },

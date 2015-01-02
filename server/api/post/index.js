@@ -7,12 +7,27 @@ var auth = require('../../auth/auth.service');
 var Post = require('./post.model');
 var router = express.Router();
 
+router.param('post', function(req, res, next, id) {
+    var query = Post.findById(id);
+
+    query.exec(function (err, post) {
+        if (err) {
+            return next(err);
+        }
+        if (!post) {
+            return next(new Error('cant find post'));
+        }
+
+        req.post = post;
+        return next();
+    });
+});
 router.param('comment', function(req, res, next, id) {
     var query = Comment.findById(id);
 
     query.exec(function (err, comment) {
         if (err) { return next(err); }
-        if (!comment) { return next(new Error('can\'t find comment')); }
+        if (!comment) { return next(new Error('cant find comment')); }
 
         req.comment = comment;
         return next();
@@ -21,6 +36,7 @@ router.param('comment', function(req, res, next, id) {
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
+router.post('/:id/comments', controller.createComment);
 router.put('/:id', auth.hasRole('admin'), controller.update);
 router.patch('/:id', auth.hasRole('admin'), controller.update);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
@@ -38,26 +54,6 @@ router.put('/:id/upvote', function(req, res, next) {
         if (err) { return next(err); }
 
         res.json(post);
-    });
-});
-
-router.post('/:id/comments', function(req, res, next) {
-    var comment = new Comment(req.body);
-    comment.post = req.post;
-
-    comment.save(function(err, comment) {
-        if (err) {
-            return next(err);
-        }
-
-        req.post.comments.push(comment);
-        req.post.save(function(err, post) {
-        if (err) {
-            return next(err);
-        }
-
-        res.json(comment);
-    });
     });
 });
 
