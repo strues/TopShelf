@@ -15,7 +15,10 @@ exports.index = function(req, res) {
 
 // Get a single post
 exports.show = function(req, res) {
-    Post.findById(req.params.id).populate('author', 'name').exec(function (err, post) {
+    Post.findById(req.params.id)
+    .populate('author', 'name')
+    .populate('comments')
+    .exec(function (err, post) {
         if (err) {
             return handleError(res, err);
         }
