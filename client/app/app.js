@@ -26,6 +26,7 @@
                   'ui.bootstrap',
                   'textAngular',
                   'hSweetAlert',
+                  'angular-locker',
                   'angular-loading-bar',
                   'topshelf.core',
                   'topshelf.guild',
@@ -33,13 +34,16 @@
                   'topshelf.account'
     ]);
 
-    function config ($urlRouterProvider, $locationProvider, $httpProvider) {
+    function config ($urlRouterProvider, $locationProvider, $httpProvider, lockerProvider) {
         $urlRouterProvider.otherwise('/');
 
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.useApplyAsync(true);
 
+        lockerProvider.setDefaultDriver('session')
+                  .setDefaultNamespace('topshelf')
+                  .setEventsEnabled(false);
     }
 
     angular

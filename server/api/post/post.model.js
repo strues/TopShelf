@@ -16,7 +16,9 @@ var PostSchema = new Schema({
     ref: 'User'
   },
   date: {type: Date, default: Date.now},
-  image: String
+  image: String,
+  upvotes: {type: Number, default: 0},
+  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
 
 PostSchema.statics = {
@@ -27,6 +29,11 @@ PostSchema.statics = {
       .limit(20)
       .exec(cb);
   }
+};
+
+PostSchema.methods.upvote = function(cb) {
+    this.upvotes += 1;
+    this.save(cb);
 };
 
 module.exports = mongoose.model('Post', PostSchema);
