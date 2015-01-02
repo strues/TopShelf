@@ -32,6 +32,11 @@
             controller: 'ApplicationCtrl',
             authenticate: true
       })
+       .state('roster', {
+            url: '/guild/roster',
+            templateUrl: 'app/guild/roster/roster.tpl.html',
+            controller: 'GuildRosterCtrl as vm'
+       })
        .state('streams', {
             url: '/guild/streams',
             templateUrl: 'app/guild/streams/streams.tpl.html',
