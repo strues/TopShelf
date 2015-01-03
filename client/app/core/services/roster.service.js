@@ -13,6 +13,7 @@
             setGuildName: setGuildName,
             getCharacters: getCharacters,
             getTopShelf: getTopShelf,
+            getTShelf: getTShelf,
             asError: asError,
             saveInStorage: saveInStorage
         };
@@ -55,7 +56,10 @@
         }
         function getTopShelf () {
             return $http.jsonp('https://us.battle.net/api/wow/guild/sargeras' +
-                'top%20shelf' + '?fields=members&jsonp=JSON_CALLBACK&callback=JSON_CALLBACK');
+                '/top%20shelf' + '?fields=members&jsonp=JSON_CALLBACK&callback=JSON_CALLBACK');
+        }
+        function getTShelf () {
+            return $http.get('/api/guild/roster/battlenet');
         }
         function asError (status, statusText) {
             return 'Unable to fetch data from armory (Code ' + status + ') : ' + '\n' + statusText;

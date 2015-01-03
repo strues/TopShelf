@@ -6,6 +6,6 @@ var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
-router.get('/realm', controller.show);
+router.get('/roster/battlenet', controller.qBattlenet);
 
 module.exports = router;

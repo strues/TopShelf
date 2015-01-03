@@ -20,16 +20,18 @@ bnet.wow.guild.profile({ origin: 'us', realm: 'sargeras', name: 'top shelf' },
 }
 
  */
-exports.show = function(req, res) {
-bnet.wow.guild.profile({origin: 'us', realm: 'sargeras', name: 'top shelf'},
-  {apikey: config.bnet.clientID}, function(err, realmStat) {
+exports.qBattlenet = function(req, res) {
+    bnet.wow.guild.members({
+        origin: 'us',
+        realm: 'sargeras',
+        name: 'top shelf'
+    }, {apikey: config.bnet.clientID}, function(err, response) {
 
-  console.log(realmStat);
+        console.log(res);
 
-    if(err) {
-      return res.status(500);
-    }
-    return res.status(200).json(realmStat);
-})
-
+        if (err) {
+            return res.status(500);
+        }
+        return res.status(200).json(response);
+    })
 }

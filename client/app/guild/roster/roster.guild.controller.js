@@ -41,41 +41,26 @@
             return $scope.getFilteredCharacters().length;
         };
 
-        $scope.$on('fetch-characters', function(event, args) {
-            $scope.fetchCharacters();
-        });
+            $scope.lastError = null;
+            $scope.characters = [];
 
-        $scope.fetchCharacters = function () {
-                $scope.lastError = null;
-                $scope.characters = [];
-
-                if (RosterService.getRegion().trim() === '' ||
-                    RosterService.getRealm().trim() === '' ||
-                    RosterService.getGuildName().trim() === '') {
-                    sweet.show('warning', 'You have to fill all three fields');
-                } else {
-
-                    RosterService.getCharacters()
-                        .success(function (data) {
+            RosterService.getTShelf()
+                        .success(function (characters) {
+                            console.log(characters)
                             // Convert to a character list
-                            storeCharacters(data);
+                            storeCharacters(characters);
                             // Save these new correct values
                             RosterService.saveInStorage();
-                            $scope.guildName = RosterService.getGuildName() +
-                             '/' + RosterService.getRealm();
-
                         }).error(function (data, status, headers, config, statusText) {
                             if (status === '404') {
                                 sweet.show('warning', 'No guild named ' +
-                                    RosterService.getGuildName() + ' was found on ' +
-                                    RosterService.getRealm() + '(' +
-                                    RosterService.getRegion() + ')');
+                                    RosterService.getTShelf() + ' was found on ');
                             } else {
                                 sweet.show('danger', RosterService.asError(status, statusText));
                             }
 
                         });
-                    function storeCharacters(data) {
+            function storeCharacters(data) {
                         angular.forEach(data.members, function (value) {
                             var member = {
                                 name: value.character.name,
@@ -88,8 +73,7 @@
                             $scope.characters.push(member);
                         });
                     }
-                }
-            };
+
 
             // Roster
         $scope.roster = {};

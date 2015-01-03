@@ -1,60 +1,9 @@
-<div class="container">
-<div id="armory-config" ng-controller="SearchArmoryCtrl">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h4>Select your guild...</h4></div>
-            <div class="panel-body">
-                <!-- Spinner and alerts -->
-
-    <form action="" method="POST" role="form">
-        <div class="row">
-            <!-- Region -->
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="region-select">Region</label>
-                    <select name="region" id="region-select" class="form-control" ng-options="region.value as region.label for region in regions"
-                            ng-model="region">
-                        <option value='' disabled selected>- Please Choose -</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Realm -->
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="realm-typeahead">Realm</label>
-                    <input id="realm-typeahead" type="text" ng-model="realm" typeahead="realm.value for realm in realms | filter:$viewValue | limitTo:8" class="form-control">
-                </div>
-            </div>
-
-            <!-- Guild name -->
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="guild-name">Guild name</label>
-                    <input type="text" class="form-control" name="guild-name" id="guild-name" placeholder="Guild name..."
-                           ng-model="guildName" tooltip="Please type the exact name of your guild" tooltip-trigger="focus" tooltip-placement="bottom">
-                </div>
-            </div>
-        </div>
-        <!-- submit -->
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-primary" ng-click="notifyFetchCharacters()">Submit</button>
-                </div>
-            </div>
-        </div>
-    </form> <!-- End Form -->
-
-</div>
-</div>
-</div>
-</div>
+<div class="container rosterHolder">
 
 <!-- Character List & Roster -->
 <div id="character-roster" ng-controller="GuildRosterCtrl">
 
-    <div id="characters-div" ng-show="characters.length > 0">
+    <div id="characters-div">
         <div class="clearfix"></div>
 
         <!-- Armory character list -->
@@ -90,7 +39,7 @@
                             <tr ng-repeat="character in getFilteredCharacters() | filter:search:strict | startFrom:(currentPage-1)*pageSize | limitTo:pageSize">
                                 <td class="text-center">{{character.name}}</td>
                                 <td class="text-center">{{character.level}}</td>
-                                <td class="text-center"><img class="class-icon img-circle" ng-src="images/{{character.wowClass.name}}.png"> {{character.class.name}}</td>
+                                <td class="text-center"><img class="class-icon img-circle" ng-src="assets/images/{{character.wowClass.name}}.png"> {{character.class.name}}</td>
                                 <td class="text-center">{{character.spec}}</td>
                                 <td class="text-center">
                                     <button type="button" class="btn btn-default btn-sm" ng-click="addToRoster(character)"
