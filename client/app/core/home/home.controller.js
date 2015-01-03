@@ -8,7 +8,7 @@
    * @description
    *
    */
-    function HomeCtrl(PostFactory, socket) {
+    function HomeCtrl(PostFactory) {
 
         var vm = this;
         vm.posts = {};
@@ -16,7 +16,6 @@
         PostFactory.getAllPosts().success(function(posts) {
 
             vm.posts = posts;
-            socket.syncUpdates('post', vm.posts);
 
             vm.postsLength = posts.length;
             var view = 1;

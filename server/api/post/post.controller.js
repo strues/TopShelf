@@ -42,15 +42,13 @@ exports.create = function(req, res) {
 
 // Creates a new comment in the DB.
 exports.createComment = function(req, res, next) {
-    var comment = new Comment(req.body);
-    comment.post = req.post;
-
-    comment.save(function(err, comment) {
-     if (err) {
-            return handleError(res, err);
-        }
-        return res.status(201).json(comment);
-    });
+    Comment.create(_.merge({author: req.user._id}, req.body),
+function(err, comment) {
+    if (err) {
+        return handleError(res, err);
+    }
+    return res.status(201).json(comment);
+});
 };
 
 // Updates an existing post in the DB.

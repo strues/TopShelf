@@ -13,10 +13,6 @@
             {
                 label:'US',
                 value: 'us'
-            },
-            {
-                label:'Europe',
-                value: 'eu'
             }
         ];
 

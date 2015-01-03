@@ -5,12 +5,12 @@
         return {
       templateUrl: 'app/core/home/home.recruitingPanel/recruitingPanel.tpl.html',
       restrict: 'EA',
-      controller: function($scope, recruitmentFactory, socket, $log) {
+      controller: function($scope, recruitmentFactory, $log) {
           recruitmentFactory.getRecruitment()
             .success(function (recruitments) {
             $scope.recruitments = recruitments;
           //console.log('aside - postsFactory.getPosts()', posts);
-            socket.syncUpdates('recruitment', $scope.recruitments);
+           // socket.syncUpdates('recruitment', $scope.recruitments);
         }).
         error(function (error) {
             $scope.status = 'Unable to Retrieve Recruitment Status: ' + error.message;

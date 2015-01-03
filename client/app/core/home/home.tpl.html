@@ -32,6 +32,12 @@
         <p ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></p>
         <p ng-hide="!showMode" ng-bind-html="post.content"></p>
       </div>
+       <div ng-repeat="comment in post.comments">
+    {{comment.upvotes}} - by {{comment.author}}
+    <span style="font-size:20px; margin-left:10px;">
+      {{comment.body}}
+    </span>
+  </div>
       <div class="postFooter">
         <span class="taggedEM"><i class="ico-tags2"></i></span>
         <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span>

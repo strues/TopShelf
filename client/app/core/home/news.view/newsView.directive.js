@@ -22,7 +22,6 @@
                 }).
                 error(function (error) {
                     $scope.status = 'Cannot get current recruitment status: ' + error.message;
-                  /// console.log($scope.status);
                 });  // end of recruitmentFactory.showPost(postID)
 
                     return $scope.post;

@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/angularfullstack-dev'
+    uri: 'mongodb://localhost/topshelf-dev'
   },
  bnet: {
     clientID:     process.env.BNET_ID || '4gfahazrsuk3qaw4ja4ddhxcreg4qwy7',

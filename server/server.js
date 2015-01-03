@@ -20,18 +20,16 @@ mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
     }
 });
 
-if (config.seedDB) { require('./config/seed'); }
-
 // Setup server
 var app         = express();
 var server      = require('http').createServer(app);
 
-var socket    = require('socket.io')(server, {
-    serveClient: (config.env !== 'production'),
-    path: '/socket.io-client'
-  });
+// var socket    = require('socket.io')(server, {
+//     serveClient: (config.env !== 'production'),
+//     path: '/socket.io-client'
+//   });
 
-require('./config/socketio')(socket);
+//require('./config/socketio')(socket);
 require('./config/express')(app);
 require('./routes')(app);
 //require('./battle')(app);

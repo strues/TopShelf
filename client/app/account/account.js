@@ -16,7 +16,7 @@
             url:'/account',
             template: '<ui-view />'
      })
-      .state('account.login', {
+     .state('account.login', {
         url: '/login',
         templateUrl: 'app/account/account-login/login.tpl.html',
         controller: 'LoginCtrl'
@@ -44,11 +44,21 @@
         templateUrl: 'app/account/account-signup/signup.tpl.html',
         controller: 'SignupCtrl'
       })
+      .state('account.profile', {
+        url: '/profile',
+        templateUrl: 'app/account/account-profile/profile.tpl.html',
+        controller: 'ProfileCtrl'
+      })
+      .state('account.profile-edit', {
+        url: '/profile/edit',
+        templateUrl: 'app/account/account-profile/profile.edit/profile.edit.tpl.html',
+        controller: 'ProfileEditCtrl'
+      })
       .state('account.settings', {
         url: '/user/settings',
         templateUrl: 'app/account/account-settings/settings.tpl.html',
-        controller: 'SettingsCtrl',
-        authenticate: true
+        controller: 'SettingsCtrl'
+
       });
     }
 

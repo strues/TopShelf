@@ -21,10 +21,10 @@
                   'ngCookies',
                   'ngSanitize',
                   'ngAnimate',
-                  'btford.socket-io',
                   'ui.router',
                   'ui.bootstrap',
                   'textAngular',
+                  'formly',
                   'hSweetAlert',
                   'angular-loading-bar',
                   'topshelf.core',
@@ -39,8 +39,6 @@
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.useApplyAsync(true);
-
-
     }
 
     angular

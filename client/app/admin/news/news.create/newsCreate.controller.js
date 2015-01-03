@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function NewsCreateCtrl($scope, PostFactory, sweet, socket, Auth) {
+    function NewsCreateCtrl($scope, PostFactory, sweet, Auth) {
     // when Save is clicked
         $scope.createPost = function () {
             var post = {

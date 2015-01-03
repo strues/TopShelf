@@ -9,7 +9,7 @@
    *
    */
 
-    function Auth($http, User, $localStorage, socket, $q) {
+    function Auth($http, User, $localStorage, $q) {
       var currentUser = $localStorage.token ? User.get() : {};
 
       return {
@@ -130,17 +130,6 @@
       getToken: function() {
           return $localStorage.token;
       },
-
-     socketEmitAuthToken: function() {
-         if (currentUser.hasOwnProperty('role')) {
-             socket.emit('authenticate', {token: $localStorage.token});
-         }
-
-     },
-      socketAuthInit: function() {
-
-        socket.on('connect', {token: $localStorage.token});
-    },
 
       setSessionToken: function(sessionToken, callback) {
           var cb = callback || angular.noop;

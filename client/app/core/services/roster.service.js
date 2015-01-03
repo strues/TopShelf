@@ -2,7 +2,7 @@
     'use strict';
 
     /* @ngInject */
-    function RosterService ($http) {
+    function RosterService ($http, $localStorage) {
         var ArmoryService = {
             getRealms: getRealms,
             getRegion: getRegion,
@@ -12,7 +12,9 @@
             getGuildName: getGuildName,
             setGuildName: setGuildName,
             getCharacters: getCharacters,
-            asError: asError
+            getTopShelf: getTopShelf,
+            asError: asError,
+            saveInStorage: saveInStorage
         };
         var vm = this;
         var data = {
@@ -50,6 +52,10 @@
             return $http.jsonp('https://' + getRegion().toLowerCase() +
                 '.battle.net/api/wow/guild/' + getRealm() + '/' +
                 getGuildName() + '?fields=members&jsonp=JSON_CALLBACK&callback=JSON_CALLBACK');
+        }
+        function getTopShelf () {
+            return $http.jsonp('https://us.battle.net/api/wow/guild/sargeras' +
+                'top%20shelf' + '?fields=members&jsonp=JSON_CALLBACK&callback=JSON_CALLBACK');
         }
         function asError (status, statusText) {
             return 'Unable to fetch data from armory (Code ' + status + ') : ' + '\n' + statusText;

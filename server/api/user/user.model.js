@@ -30,7 +30,7 @@ var UserSchema = new mongoose.Schema({
       name: {type: String, default: ''},
       realm: {type: String, default: ''},
       battlegroup: {type: String, default: ''},
-      class: {type: Number, default: ''},
+      classDef: {type: Number, default: ''},
       race: {type: Number, default: ''},
       gender: {type: Number, default: ''},
       level: {type: Number, default: ''},
@@ -52,21 +52,21 @@ var UserSchema = new mongoose.Schema({
 // Public profile information
 UserSchema.virtual('profile')
   .get(function() {
-    return {
-      'name': this.name,
-      'role': this.role
+      return {
+        'name': this.name,
+        'role': this.role
    };
- });
+  });
 
 // Non-sensitive info we'll be putting in the token
 UserSchema
   .virtual('token')
   .get(function() {
-    return {
-      '_id': this._id,
-      'role': this.role
+      return {
+        '_id': this._id,
+        'role': this.role
    };
- });
+  });
 
 /**
  * Validations
@@ -76,9 +76,11 @@ UserSchema
 UserSchema
   .path('email')
   .validate(function(email) {
-    if (authTypes.indexOf(this.provider) !== -1) return true;
-    return email.length;
- }, 'Email cannot be blank');
+      if (authTypes.indexOf(this.provider) !== -1) {
+          return true;
+      }
+      return email.length;
+  }, 'Email cannot be blank');
 
 // Validate empty password
 UserSchema

@@ -5,7 +5,7 @@
         .controller('GuildRosterCtrl', GuildRosterCtrl);
 
     /* @ngInject */
-    function GuildRosterCtrl(RosterService, sweet, $scope, $filter) {
+    function GuildRosterCtrl(RosterService, sweet, $scope, $filter, $localStorage) {
         /*jshint validthis: true */
 
         // Pagination
@@ -46,33 +46,36 @@
         });
 
         $scope.fetchCharacters = function () {
-            $scope.lastError = null;
-            $scope.characters = [];
+                $scope.lastError = null;
+                $scope.characters = [];
 
-            if (RosterService.getRegion().trim() === '' || RosterService.getRealm().trim() === '' ||
-                RosterService.getGuildName().trim() === '') {
-                sweet.show('Warning!', 'You have to fill out all three fields');
-            } else {
+                if (RosterService.getRegion().trim() === '' ||
+                    RosterService.getRealm().trim() === '' ||
+                    RosterService.getGuildName().trim() === '') {
+                    sweet.show('warning', 'You have to fill all three fields');
+                } else {
 
-                RosterService.getCharacters()
-                    .success(function (data) {
-                        // Convert to a character list
-                        storeCharacters(data);
-                        // Save these new correct values
-                        RosterService.saveInStorage();
-                        $scope.guildName = RosterService.getRealm() + '/' +
-                        RosterService.getGuildName();
+                    RosterService.getCharacters()
+                        .success(function (data) {
+                            // Convert to a character list
+                            storeCharacters(data);
+                            // Save these new correct values
+                            RosterService.saveInStorage();
+                            $scope.guildName = RosterService.getGuildName() +
+                             '/' + RosterService.getRealm();
 
-                    }).error(function (data, status, headers, config, statusText) {
-                        if (status === '404') {
-                            sweet.show('Warning!', 'No guild named ' +
-                                RosterService.getGuildName() + ' was found on ' +
-                                RosterService.getRealm() + '(' + RosterService.getRegion() + ')');
-                        } else {
-                            sweet.show('Error!', RosterService.asError(status, statusText));
-                        }
-                    });
-                function storeCharacters(data) {
+                        }).error(function (data, status, headers, config, statusText) {
+                            if (status === '404') {
+                                sweet.show('warning', 'No guild named ' +
+                                    RosterService.getGuildName() + ' was found on ' +
+                                    RosterService.getRealm() + '(' +
+                                    RosterService.getRegion() + ')');
+                            } else {
+                                sweet.show('danger', RosterService.asError(status, statusText));
+                            }
+
+                        });
+                    function storeCharacters(data) {
                         angular.forEach(data.members, function (value) {
                             var member = {
                                 name: value.character.name,
@@ -85,8 +88,8 @@
                             $scope.characters.push(member);
                         });
                     }
-            }
-        };
+                }
+            };
 
             // Roster
         $scope.roster = {};

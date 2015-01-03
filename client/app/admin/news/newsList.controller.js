@@ -1,12 +1,11 @@
 (function () {
     'use strict';
 
-    function NewsListCtrl($scope, PostFactory, socket) {
+    function NewsListCtrl($scope, PostFactory) {
 
         PostFactory.getAllPosts().success(function (posts) {
 
         $scope.posts = posts;
-        socket.syncUpdates('post', $scope.posts);
 
       // display more posts
         $scope.postsLength = posts.length;

@@ -19,4 +19,3 @@ router.put('/:id', auth.hasRole('admin'), controller.updateUser);
 router.get('/', controller.checkEmailAvailable);
 
 module.exports = router;
-

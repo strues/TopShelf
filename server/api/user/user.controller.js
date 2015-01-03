@@ -58,20 +58,20 @@ exports.getUserById = function(req, res) {
 exports.updateCurrentUser = function(req, res) {
     var userUpdates = req.body;
 
-    if(req.user._id !== userUpdates._id && !req.user.hasRole('admin')) {
+    if (req.params.id !== userUpdates._id && !req.user.hasRole('admin')) {
         res.sendStatus(403);
         return res.end();
     }
 
     req.user.name = userUpdates.name;
 
-    if(userUpdates.password && userUpdates.password.length > 0) {
+    if (userUpdates.password && userUpdates.password.length > 0) {
         req.user.salt = encryption.createSalt();
         req.user.hashed_pwd = encryption.hashPwd(req.user.salt, userUpdates.password);
     }
 
     req.user.save(function(err) {
-        if(err) {
+        if (err) {
             res.status(400);
             return res.send({reason:err.toString()});
         }
@@ -116,7 +116,7 @@ exports.create = function (req, res) {
     newUser.save(function(err, user) {
 
         if (err) {
-            return validationError(res, err);
+            return validationError (res, err);
         }
     // Create the token with the session length
         var token = jwt.sign({_id: user._id}, config.secrets.session,
