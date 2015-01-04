@@ -1,15 +1,16 @@
-angular.module('topshelf.guild.models', [
+angular
+    .module('topshelf.guild.models', [])
+    .service('ClassDefModel', ClassDefModel);
 
-])
-    .service('ClassDefModel', function () {
-        var roles = {
+function ClassDefModel () {
+    var roles = {
             Tank: {role: 'Tank', id: 'Tank', label: 'Tanks'},
             RangedDPS: {role: 'DPS', id: 'RangedDPS', label: 'Ranged DPS'},
             MeleeDPS: {role: 'DPS', id: 'MeleeDPS', label: 'Melee DPS'},
             Heal: {role: 'Heal', id: 'Heal', label: 'Heals'}
         };
 
-        var buffs = {
+    var buffs = {
             StatsMultiply: {
                 id: 'stats',
                 name: '+5% Strength, Agility, and Intellect'
@@ -56,7 +57,7 @@ angular.module('topshelf.guild.models', [
             }
         };
 
-        var classes = {
+    var classes = {
             1: {
                 name: 'Warrior',
                 color: '#C79C6E',
@@ -260,4 +261,4 @@ angular.module('topshelf.guild.models', [
                 }
             }
         };
-    });
+}

@@ -1,13 +1,14 @@
 <div class="container rosterHolder">
 <div class="row" ng-controller="GuildRosterCtrl as roster">
 <div>
- <table class="table table-bordered">
+<ng-react-grid grid="grid"></ng-react-grid>
+ <!-- <table class="table table-bordered">
     <tr ng-repeat="character in roster.topshelf.data.members">
       <td>
         {{ character.character.name }}
       </td>
     </tr>
-  </table>
+  </table> -->
 </div>
 
 </div>
