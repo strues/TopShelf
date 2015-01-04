@@ -200,6 +200,6 @@
 
     }
     angular
-        .module('topshelf.core')
+        .module('topshelf.core.services')
         .factory('util', util);
 })();

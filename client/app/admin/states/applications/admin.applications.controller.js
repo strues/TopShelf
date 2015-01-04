@@ -38,6 +38,6 @@
   }
 
     angular
-      .module('topshelf.admin')
+      .module('topshelf.admin.states')
       .controller('ApplicationListCtrl', ApplicationListCtrl);
 })();

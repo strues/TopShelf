@@ -73,6 +73,6 @@
 
 }
     angular
-        .module('topshelf.admin')
+        .module('topshelf.admin.states')
         .controller('ApplicationViewCtrl', ApplicationViewCtrl);
 })();

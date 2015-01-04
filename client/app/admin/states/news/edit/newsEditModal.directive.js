@@ -9,7 +9,7 @@
 
             $scope.openEditorModal = function (postID) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/admin/news/news.edit/editModal.tpl.html',
+                    templateUrl: 'app/admin/states/news/edit/admin.news-edit.modal.tpl.html',
                     scope: $scope,
                     controller: ModalInstanceCtrl,
                     size: 'lg',
@@ -80,6 +80,6 @@
     }
 
     angular
-        .module('topshelf.admin')
+        .module('topshelf.admin.states')
         .directive('newsEditModal', newsEditModal);
 })();

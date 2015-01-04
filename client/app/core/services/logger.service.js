@@ -42,7 +42,7 @@
     }
 
     angular
-        .module('topshelf.core')
+        .module('topshelf.core.services')
         .factory('logger', logger);
 
 }(this.angular));

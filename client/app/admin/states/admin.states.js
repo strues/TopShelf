@@ -34,7 +34,7 @@
           },
           'content@admin': {
             controller: 'ApplicationListCtrl',
-            templateUrl: 'app/admin/applications/applicationList.tpl.html'
+            templateUrl: 'app/admin/states/applications/admin.applications.tpl.html'
           }
         }
       })
@@ -43,7 +43,7 @@
            views: {
               'content@admin': {
                 controller: 'ApplicationViewCtrl',
-                templateUrl: 'app/admin/applications/applicationView.tpl.html'
+                templateUrl: 'app/admin/states/applications/details/application-details.tpl.html'
               }
           }
        })
@@ -52,7 +52,7 @@
          views: {
           'content@admin': {
             controller: 'ApplicationViewCtrl',
-            templateUrl: 'app/admin/applications/applicationView.tpl.html'
+            templateUrl: 'app/admin/states/applications/details/application-details.tpl.html'
           }
         }
       })
@@ -61,7 +61,7 @@
          views: {
           'content@admin': {
             controller: 'NewsCreateCtrl',
-            templateUrl: 'app/admin/news/news.create/newsCreate.tpl.html'
+            templateUrl: 'app/admin/states/news/create/admin.news-create.tpl.html'
           }
         }
       })
@@ -70,7 +70,7 @@
          views: {
           'content@admin': {
             controller: 'NewsListCtrl',
-            templateUrl: 'app/admin/news/newsList.tpl.html'
+            templateUrl: 'app/admin/states/news/admin.news.tpl.html'
           }
         }
       })
@@ -79,20 +79,11 @@
         views: {
           'content@admin': {
             controller: 'RecruitmentCtrl',
-            templateUrl: 'app/admin/recruitment/recruitment.tpl.html'
-          }
-        }
-      })
-      .state('admin.addRaid', {
-        url: '/raids',
-         views: {
-          'content@admin': {
-            controller: 'AddRaidCtrl',
-            templateUrl: 'app/admin/raids/addRaid.tpl.html'
+            templateUrl: 'app/admin/states/recruitment/admin.recruitment.tpl.html'
           }
         }
       });
-}
+    }
 
     angular
         .module('topshelf.admin')
