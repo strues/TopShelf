@@ -2,8 +2,8 @@
     'use strict';
 
     /* @ngInject */
-    function RosterService ($http, $localStorage) {
-        var ArmoryService = {
+    function ArmoryService ($http, $localStorage) {
+        var armoryData = {
             getRealms: getRealms,
             getRegion: getRegion,
             setRegion: setRegion,
@@ -24,7 +24,7 @@
             guildName: ''
         };
 
-        return ArmoryService;
+        return armoryData;
 
         ////////////////
         function getRealms () {
@@ -74,5 +74,5 @@
     }
     angular
         .module('topshelf.core')
-        .factory('RosterService', RosterService);
+        .factory('ArmoryService', ArmoryService);
 })();

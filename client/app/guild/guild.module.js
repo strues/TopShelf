@@ -14,6 +14,5 @@ angular.module('topshelf.guild', [
   'topshelf.guild.states',
   'topshelf.guild.services',
   'topshelf.guild.filters',
-  'topshelf.guild.models',
   'topshelf.guild.directives'
 ]);

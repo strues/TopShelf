@@ -7,48 +7,48 @@ var roles = {
 
 var buffs = {
     StatsMultiply: {
-        id: "stats",
-        name: "+5% Strength, Agility, and Intellect"
+        id: 'stats',
+        name: '+5% Strength, Agility, and Intellect'
     },
     Stamina: {
         id: 'stamina',
-        name: "+10% Stamina"
+        name: '+10% Stamina'
     },
     AttackPower: {
         id: 'atkpower',
-        name: "+10% Attack Power"
+        name: '+10% Attack Power'
     },
     SpellPower: {
         id: 'spellpower',
-        name: "+10% Spell Power"
+        name: '+10% Spell Power'
     },
     BurstHaste: {
         id: 'bl',
-        name: "Temporary +30% Haste (Bloodlust/Heroism/Time warp)"
+        name: 'Temporary +30% Haste (Bloodlust/Heroism/Time warp)'
     },
     Mastery: {
         id: 'mastery',
-        name: "+550 Mastery"
+        name: '+550 Mastery'
     },
     Haste: {
         id: 'haste',
-        name: "+5% Haste"
+        name: '+5% Haste'
     },
     CriticalStrike: {
         id: 'crit',
-        name: "+5% Critical Strike Chance"
+        name: '+5% Critical Strike Chance'
     },
     MultiStrike: {
         id: 'mstrike',
-        name: "+5% Multistrike Chance"
+        name: '+5% Multistrike Chance'
     },
     Versatility: {
         id: 'versatility',
-        name: "+3% Versatility"
+        name: '+3% Versatility'
     },
     MortalWounds: {
         id: 'mortalwounds',
-        name: "-25% Healing Received (boss)"
+        name: '-25% Healing Received (boss)'
     }
 };
 

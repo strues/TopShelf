@@ -5,42 +5,49 @@
         .controller('GuildRosterCtrl', GuildRosterCtrl);
 //http://us.battle.net/static-render/us/
 
-    function GuildRosterCtrl(RosterService, sweet, $filter, $localStorage) {
-        var roster = this;
+    function GuildRosterCtrl(ArmoryService, GameDS, sweet, $filter, $localStorage) {
+        var guildRoster = this;
 
-        roster.currentPage = 1;
-        roster.pageSize = 10;
+        guildRoster.findInStorage = function (storageKey) {
+                    if (typeof(Storage) !== 'undefined') {
+                        return localStorage.getItem(storageKey);
+                    }
+                    return null;
+                };
 
-        roster.classes = [];
-        roster.specializations = [];
+        guildRoster.classes = [];
+        guildRoster.specializations = [];
+        var classes = GameDS.getClasses();
         for (var index in classes) {
-            roster.classes.push(classes[index].name);
+            guildRoster.classes.push(classes[index].name);
             var classSpecs = classes[index].specialization;
             for (var wowClass in classSpecs) {
-                roster.specializations.push(wowClass);
+                guildRoster.specializations.push(wowClass);
             }
         }
 
-        roster.characters = [];
-        roster.getFilteredCharacters = function () {
-                var sortedCharacters = $filter('orderBy')(roster.characters, 'name');
-                if (roster.maxLevelOnly) {
+            // Members
+        guildRoster.characters = [];
+
+        guildRoster.getFilteredCharacters = function () {
+                var sortedCharacters = $filter('orderBy')(guildRoster.characters, 'name');
+                if (guildRoster.maxLevelOnly) {
                     sortedCharacters = $filter('filter')(sortedCharacters, {level: 100});
                 }
                 return sortedCharacters;
             };
 
-        roster.getCharacterCount = function () {
-                return roster.getFilteredCharacters().length;
+        guildRoster.getCharacterCount = function () {
+                return guildRoster.getFilteredCharacters().length;
             };
 
-        RosterService.getTopShelf()
+        ArmoryService.getTopShelf()
             .success(function (data) {
                 storeCharacters(data);
             });
 
         function storeCharacters(data) {
-                        angular.forEach(data.members, function (value) {
+            angular.forEach(data.members, function (value) {
                             var member = {
                                 name: value.character.name,
                                 level: value.character.level,
@@ -49,8 +56,8 @@
                                 wowClass: classes[value.character.class],
                                 classLabel: classes[value.character.class].name
                             };
-                            roster.characters.push(member);
+                            guildRoster.characters.push(member);
                         });
-                    }
+        }
     }
 })();

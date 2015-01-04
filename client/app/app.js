@@ -24,8 +24,6 @@
                   'ui.router',
                   'ui.bootstrap',
                   'textAngular',
-                  'react',
-                  'ngReactGrid',
                   'formly',
                   'hSweetAlert',
                   'angular-loading-bar',
