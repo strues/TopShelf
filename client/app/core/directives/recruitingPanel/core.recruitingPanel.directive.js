@@ -3,7 +3,7 @@
 
     function recruitingPanel() {
         return {
-      templateUrl: 'app/core/home/home.recruitingPanel/recruitingPanel.tpl.html',
+      templateUrl: 'app/core/directives/recruitingPanel/core.recruitingPanel.tpl.html',
       restrict: 'EA',
       controller: function($scope, recruitmentFactory, $log) {
           recruitmentFactory.getRecruitment()
