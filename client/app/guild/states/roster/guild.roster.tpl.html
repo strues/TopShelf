@@ -1,14 +1,46 @@
-<div class="container rosterHolder">
+<navbar></navbar>
+<div class="container frontendWrap">
 <div class="row" ng-controller="GuildRosterCtrl as roster">
-<div>
-<ng-react-grid grid="grid"></ng-react-grid>
- <!-- <table class="table table-bordered">
-    <tr ng-repeat="character in roster.topshelf.data.members">
-      <td>
-        {{ character.character.name }}
-      </td>
+<div class="panel-body">
+<div class="table-responsive">
+   <div class="panel-body">
+<div class="table-responsive">
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Character</th><th>Level</th><th>Class</th><th>Specialization</th><th>Actions</th>
     </tr>
-  </table> -->
+    <tr>
+        <th class="text-center"><input class="form-control" placeholder="Name..." type="text" ng-model="search.name"/></th>
+        <th class="text-center"><input class="form-control" placeholder="Level..." type="text" ng-model="search.level"/></th>
+        <th class="text-center"><input class="form-control" placeholder="Class..." type="text" ng-model="search.classLabel"
+                                       typeahead="class for class in classes | filter:$viewValue | limitTo:5"/></th>
+        <th class="text-center"><input class="form-control" placeholder="Spec..." type="text" ng-model="search.spec"
+                                       typeahead="spec for spec in specializations | filter:$viewValue | limitTo:5"></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody style="min-height: 500px;">
+    <tr ng-repeat="character in roster.getFilteredCharacters() | filter:search:strict | startFrom:(currentPage-1)*pageSize | limitTo:pageSize">
+        <td class="text-center">{{character.name}}</td>
+        <td class="text-center">{{character.level}}</td>
+        <td class="text-center"><img class="class-icon img-circle" ng-src="assets/images/{{character.wowClass.name}}.png"> {{character.class.name}}</td>
+        <td class="text-center">{{character.spec}}</td>
+        <td class="text-center">
+            <button type="button" class="btn btn-default btn-sm" ng-click="addToRoster(character)" ng-hide="hasBeenAddedToRoster(character)">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="text-center">
+                                        <pagination total-items="roster.getCharacterCount()" ng-model="roster.currentPage" boundary-links="true"
+                                                rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                                last-text="&raquo;" num-pages="numPages"></pagination>
+                                        </div>
 </div>
 
+</div>
+</div>
 </div>
