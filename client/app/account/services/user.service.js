@@ -32,6 +32,6 @@
             });
     }
     angular
-        .module('topshelf.account')
+        .module('topshelf.account.services')
         .factory('User', User);
 })();

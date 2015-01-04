@@ -20,7 +20,7 @@
           },
           'content@admin': {
             controller: 'AdminDashboardCtrl',
-            controllerAs: 'vm',
+            controllerAs: 'dash',
             templateUrl: 'app/admin/dashboard.tpl.html'
           }
         }

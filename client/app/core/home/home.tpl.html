@@ -1,18 +1,18 @@
 <div navbar></div>
 <div class="container frontendWrap">
 
-<div class="row" ng-controller="HomeCarouselCtrl as vm">
-    <carousel interval="vm.myInterval">
-      <slide ng-repeat="slide in vm.slides" active="slide.active">
+<div class="row" ng-controller="HomeCarouselCtrl as carousel">
+    <carousel interval="carousel.myInterval">
+      <slide ng-repeat="slide in carousel.slides" active="slide.active">
         <img ng-src="{{slide.image}}" width="1170px"style="margin:auto;">
       </slide>
     </carousel>
 </div>
 
-<div class="row newsContainer" ng-controller="HomeCtrl as vm">
+<div class="row newsContainer" ng-controller="HomeCtrl as home">
   <div class="col-sm-12 col-lg-9">
     <div class="row homeNews"
-        ng-repeat="post in vm.posts | orderBy:'-date' | limitTo: vm.postsShownPerView() | filter:searchText">
+        ng-repeat="post in home.posts | orderBy:'-date' | limitTo: home.postsShownPerView() | filter:searchText">
 
       <div class="col-lg-3">
 
@@ -32,12 +32,6 @@
         <p ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></p>
         <p ng-hide="!showMode" ng-bind-html="post.content"></p>
       </div>
-       <div ng-repeat="comment in post.comments">
-    {{comment.upvotes}} - by {{comment.author}}
-    <span style="font-size:20px; margin-left:10px;">
-      {{comment.body}}
-    </span>
-  </div>
       <div class="postFooter">
         <span class="taggedEM"><i class="ico-tags2"></i></span>
         <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span>

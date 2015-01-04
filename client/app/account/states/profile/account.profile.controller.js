@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('topshelf.account')
+        .module('topshelf.account.states')
         .controller('ProfileCtrl', ProfileCtrl);
 
     /* @ngInject */

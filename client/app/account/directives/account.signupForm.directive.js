@@ -21,7 +21,7 @@
 
     function signupForm (Auth, $location, $window, sweet) {
         return {
-          templateUrl: 'app/account/account-signup/signupForm.tpl.html',
+          templateUrl: 'app/account/states/signup/signupForm.tpl.html',
           restrict: 'EA',
           link: function (scope, element, attrs) {
               scope.user = {};
@@ -62,6 +62,6 @@
     }
 
     angular
-        .module('topshelf.account')
+        .module('topshelf.account.directives')
         .directive('signupForm', signupForm);
 })();

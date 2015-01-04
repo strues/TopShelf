@@ -21,7 +21,7 @@
                     $scope.status = 'Retrieved Recruitment by ID';
                 }).
                 error(function (error) {
-                    $scope.status = 'Cannot get current recruitment status: ' + error.message;
+                    $scope.status = 'Cannot get current posts: ' + error.message;
                 });  // end of recruitmentFactory.showPost(postID)
 
                     return $scope.post;

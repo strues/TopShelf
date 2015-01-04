@@ -2,10 +2,10 @@
     'use strict';
 
     function HomeCarouselCtrl () {
-        var vm = this;
+        var carousel = this;
 
-        vm.myInterval = 3000;
-        vm.slides = [
+        carousel.myInterval = 3000;
+        carousel.slides = [
             {
                 image: 'assets/images/hero.jpg'
             },

@@ -10,16 +10,16 @@
    */
 
     function ApplicationCtrl($location, ApplicationFactory, sweet) {
-    var vm = this;
-    vm.data = {};
+    var application = this;
+    application.data = {};
 
-    vm.genders = [
+    application.genders = [
                   {label: 'Male', value: 'Dude'},
                   {label: 'Female', value: 'Bitch'},
                   {label: 'Unspecified', value: 'Tranny'}
                 ];
 
-    vm.classOptions = [
+    application.classOptions = [
         {value: 'deathKnight', label: 'Death Knight'},
         {value: 'druid', label: 'Druid'},
         {value: 'mage', label: 'Mage'},
@@ -31,7 +31,7 @@
         {value: 'warlock', label: 'Warlock'},
         {value: 'warrior', label: 'Warrior'}
     ];
-    vm.specOptions = [
+    application.specOptions = [
         {value: 'affliction', label: 'Affliction'},
         {value: 'arcane', label: 'Arcane'},
         {value: 'arms', label:'Arms'},
@@ -64,36 +64,36 @@
         {value:'windwalker', label:'Windwalker'}
     ];
 
-    vm.alerts = [
+    application.alerts = [
     {type: 'danger', msg: 'All fields are required for your application. If you cannot see' +
     ' what youve written in the preview area, it contains an error and we will not receive' +
     ' your application. Make sure all URLs are valid, ie http://topshelfguild.com'}
   ];
 
-    vm.closeAlert = function(index) {
-        vm.alerts.splice(index, 1);
+    application.closeAlert = function(index) {
+        application.alerts.splice(index, 1);
     };
 
-    vm.submit = function(valid) {
+    application.submit = function(valid) {
         if (!valid) {
             return;
         }
 
-        vm.submitting = true;
+        application.submitting = true;
 
-        ApplicationFactory.createApplication(vm.data)
+        ApplicationFactory.createApplication(application.data)
           .then(function () {
-              vm.data = {};
+              application.data = {};
               sweet.show('Your application was submitted', 'Expect to hear from us soon!');
-              console.log('form submitted:', vm.data);
+              console.log('form submitted:', application.data);
               $location.path('/completed');
           },
             function() {
-                vm.submitting = false;
+                application.submitting = false;
             });
     };
 
-    vm.goBack = function () {
+    application.goBack = function () {
         $location.path('/');
     };
 

@@ -2,7 +2,7 @@
     'use strict';
 
     function AdminDashboardCtrl() {
-        var vm = this;
+        var dash = this;
 
     }
     angular

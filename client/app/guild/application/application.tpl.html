@@ -1,11 +1,11 @@
 <div navbar></div>
 <div class="container frontendWrap">
-<div class="row" ng-controller="ApplicationCtrl as vm">
- <alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="vm.closeAlert($index)">{{alert.msg}}</alert>
+<div class="row" ng-controller="ApplicationCtrl as application">
+ <alert ng-repeat="alert in application.alerts" type="{{alert.type}}" close="application.closeAlert($index)">{{alert.msg}}</alert>
 
     <div class="col-sm-12 col-lg-8">
   <h1 class="text-light">Top Shelf <span class="recruitmentWhite">Guild Application</span></h1>
-      <form name="applicationForm" novalidate ng-submit="vm.submit(applicationForm.$valid, data)">
+      <form name="applicationForm" novalidate ng-submit="application.submit(applicationForm.$valid, data)">
   <!-- Char Name -->
   <div class="row">
   <div class="col-md-4 form-group has-feedback"
@@ -14,7 +14,7 @@
             <input class="form-control input-lg"
                    type="text"
                    name="charName"
-                   ng-model="vm.data.charName"
+                   ng-model="application.data.charName"
                    placeholder="Laerel"
                    required>
              <span class="ion-android-contact form-control-feedback"></span>
@@ -30,7 +30,7 @@
             <input class="form-control input-lg"
                    type="text"
                    name="charClass"
-                   ng-model="vm.data.charClass"
+                   ng-model="application.data.charClass"
                    placeholder="Monk"
                    required>
              <span class="ion-flag form-control-feedback"></span>
@@ -46,7 +46,7 @@
             <input class="form-control input-lg"
                    type="text"
                    name="charSpec"
-                   ng-model="vm.data.charSpec"
+                   ng-model="application.data.charSpec"
                    placeholder="Brewmaster"
                    required>
             <span class="ion-ios-cog-outline form-control-feedback"></span>
@@ -64,7 +64,7 @@
             <input class="form-control input-lg"
                    type="text"
                    name="charServer"
-                   ng-model="vm.data.charServer"
+                   ng-model="application.data.charServer"
                    placeholder="Sargeras"
                    required>
             <span class="ion-planet form-control-feedback"></span>
@@ -79,7 +79,7 @@
           <div class="col-md-8 form-group has-feedback"
                ng-class="{ 'has-error' : applicationForm.charArmory.$invalid && applicationForm.charArmory.$dirty }">
             <label>Armory</label>
-            <input class="form-control input-lg" type="url" name="armory" ng-model="vm.data.charArmory"
+            <input class="form-control input-lg" type="url" name="armory" ng-model="application.data.charArmory"
                    placeholder="http://us.battle.net/" required autofocus>
             <span class="ion-android-clipboard form-control-feedback"></span>
 
@@ -97,7 +97,7 @@
             <input class="form-control input-lg"
                    type="text"
                    name="applicantName"
-                   ng-model="vm.data.applicantName"
+                   ng-model="application.data.applicantName"
                    placeholder="John"
                    required>
             <span class="ion-ios-person form-control-feedback"></span>
@@ -116,7 +116,7 @@
             <input class="form-control input-lg"
                    type="number"
                    name="applicantAge"
-                   ng-model="vm.data.applicantAge"
+                   ng-model="application.data.applicantAge"
                    placeholder="18"
                    min="18"
                    required>
@@ -136,7 +136,7 @@
             <input class="form-control input-lg"
                    type="text"
                    name="applicantRealId"
-                   ng-model="vm.data.applicantRealId"
+                   ng-model="application.data.applicantRealId"
                    placeholder="Example#2123"
                    required>
             <span class="ion-ios-flame form-control-feedback"></span>
@@ -150,7 +150,7 @@
         </div>
         <div class="form-group has-feedback" ng-class="{ 'has-error' : applicationForm.charLogs.$invalid && applicationForm.charLogs.$dirty }">
           <label>Warcraft Logs</label>
-            <input class="form-control input-lg" type="url" id="charLogs" name="charLogs" ng-model="vm.data.charLogs" placeholder="http://www.warcraftlogs.com" required>
+            <input class="form-control input-lg" type="url" id="charLogs" name="charLogs" ng-model="application.data.charLogs" placeholder="http://www.warcraftlogs.com" required>
             <span class="ion-android-list form-control-feedback"></span>
               <div ng-if="applicationForm.$submitted || applicationForm.charLogs.$touched"
                 ng-messages="applicationForm.charLogs.$error" class="text-danger">
@@ -164,7 +164,7 @@
             <textarea class="form-control input-lg"
                    type="text"
                    name="heroicXP"
-                   ng-model="vm.data.heroicXP"
+                   ng-model="application.data.heroicXP"
                    placeholder="Tell us about your heroic progression experience"
                    required>
           </textarea>
@@ -181,7 +181,7 @@
             <textarea class="form-control input-lg"
                    type="text"
                    name="pastGuilds"
-                   ng-model="vm.data.pastGuilds"
+                   ng-model="application.data.pastGuilds"
                    placeholder="Please tell us the most recent guilds you have been a part of. Why did you leave?"
                    required>
           </textarea>
@@ -198,7 +198,7 @@
             <input class="form-control input-lg"
                    type="text"
                    name="screenshot"
-                   ng-model="vm.data.screenshot"
+                   ng-model="application.data.screenshot"
                    placeholder="http://imgur.com"
                    required>
             <span class="ion-image form-control-feedback"></span>
@@ -215,7 +215,7 @@
             <textarea class="form-control input-lg"
                      type="text"
                      name="whyTS"
-                     ng-model="vm.data.whyTS"
+                     ng-model="application.data.whyTS"
                      placeholder="Please tell us why you want to join Top Shelf? Why should we consider your application over all the others?"
                      required>
           </textarea>
@@ -236,19 +236,19 @@
     </div>
     <div class="col-lg-4">
     <div class="well">
-    <h5 class="appPreview">Character Name:</h5><span ng-bind="vm.data.charName"></span>
-    <h5 class="appPreview">Character Class:</h5><span ng-bind="vm.data.charClass"></span>
-    <h5 class="appPreview">Character Spec:</h5><span ng-bind="vm.data.charSpec"></span>
-    <h5 class="appPreview">Character Server:</h5><span ng-bind="vm.data.charServer"></span>
-    <h5 class="appPreview">Armory:</h5><span ng-bind="vm.data.charArmory"></span>
-    <h5 class="appPreview">First Name:</h5><span ng-bind="vm.data.applicantName"></span>
-    <h5 class="appPreview">Age:</h5><span ng-bind="vm.data.applicantAge"></span>
-    <h5 class="appPreview">RealId:</h5><span ng-bind="vm.data.applicantRealId"></span>
-    <h5 class="appPreview">Logs:</h5><span ng-bind="vm.data.charLogs"></span>
-    <h5 class="appPreview">Heroic Experience:</h5><span ng-bind="vm.data.heroicXP"></span>
-    <h5 class="appPreview">Guild History:</h5><span ng-bind="vm.data.pastGuilds"></span>
-    <h5 class="appPreview">UI Screenshot:</h5><span ng-bind="vm.data.screenshot"></span>
-    <h5 class="appPreview">Why Top Shelf:</h5><span ng-bind="vm.data.whyTS"></span>
+    <h5 class="appPreview">Character Name:</h5><span ng-bind="application.data.charName"></span>
+    <h5 class="appPreview">Character Class:</h5><span ng-bind="application.data.charClass"></span>
+    <h5 class="appPreview">Character Spec:</h5><span ng-bind="application.data.charSpec"></span>
+    <h5 class="appPreview">Character Server:</h5><span ng-bind="application.data.charServer"></span>
+    <h5 class="appPreview">Armory:</h5><span ng-bind="application.data.charArmory"></span>
+    <h5 class="appPreview">First Name:</h5><span ng-bind="application.data.applicantName"></span>
+    <h5 class="appPreview">Age:</h5><span ng-bind="application.data.applicantAge"></span>
+    <h5 class="appPreview">RealId:</h5><span ng-bind="application.data.applicantRealId"></span>
+    <h5 class="appPreview">Logs:</h5><span ng-bind="application.data.charLogs"></span>
+    <h5 class="appPreview">Heroic Experience:</h5><span ng-bind="application.data.heroicXP"></span>
+    <h5 class="appPreview">Guild History:</h5><span ng-bind="application.data.pastGuilds"></span>
+    <h5 class="appPreview">UI Screenshot:</h5><span ng-bind="application.data.screenshot"></span>
+    <h5 class="appPreview">Why Top Shelf:</h5><span ng-bind="application.data.whyTS"></span>
     </div>
     </div>
   </div>

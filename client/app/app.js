@@ -28,14 +28,14 @@
                   'hSweetAlert',
                   'angular-loading-bar',
                   'topshelf.core',
+                  'topshelf.account',
                   'topshelf.guild',
-                  'topshelf.admin',
-                  'topshelf.account'
+                  'topshelf.admin'
+
     ]);
 
     function config ($urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/');
-
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.useApplyAsync(true);

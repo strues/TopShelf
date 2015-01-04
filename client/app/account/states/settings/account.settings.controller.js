@@ -9,7 +9,7 @@
    *
    */
     angular
-        .module('topshelf.account')
+        .module('topshelf.account.states')
         .controller('SettingsCtrl', SettingsCtrl);
 
     function SettingsCtrl($scope, Auth) {

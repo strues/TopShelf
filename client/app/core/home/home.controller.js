@@ -3,42 +3,36 @@
 
   /**
    * @ngdoc object
-   * @name home.controller:HomeCtrl
+   * @name home.controller:HomeCtrl as home
    *
    * @description
    *
    */
     function HomeCtrl(PostFactory) {
 
-        var vm = this;
-        vm.posts = {};
+        var home = this;
+        home.posts = {};
 
         PostFactory.getAllPosts().success(function(posts) {
 
-            vm.posts = posts;
+            home.posts = posts;
 
-            vm.postsLength = posts.length;
+            home.postsLength = posts.length;
             var view = 1;
             var postsQty = 4;
-            vm.postsShownPerView = function() {
+            home.postsShownPerView = function() {
                 return view * postsQty;
             };
-            vm.getAdditionalPosts = function() {
-                return view < (vm.postsLength / postsQty);
+            home.getAdditionalPosts = function() {
+                return view < (home.postsLength / postsQty);
             };
-            vm.showMorePosts = function() {
+            home.showMorePosts = function() {
                 view = view + 1;
             };
         }).
         error(function (error) {
-        vm.status = 'Unable to Retrieve Posts: ' + error.message;
-      // console.log($scope.status);
+        home.status = 'Unable to Retrieve Posts: ' + error.message;
     });
-    // GuildFactory.getGuildProfile().success(function(response) {
-    //   vm.guildProfile = response;
-    //   console.log(vm.guildProfile);
-
-    // });
 
     }
 

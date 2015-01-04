@@ -2,7 +2,7 @@ var args        = require('yargs').argv,
     gulp        = require('gulp'),
     del         = require('del'),
     glob        = require('glob'),
-    config      = require('./gulp/gulp.config')(),
+    config      = require('./gulp.config')(),
     chalk       = require('chalk'),
     bowerFiles  = require('main-bower-files'),
     runSequence = require('run-sequence'),
@@ -13,7 +13,6 @@ var args        = require('yargs').argv,
     colors      = $.util.colors,
     envenv      = $.util.env;
 
-
 process.env.NODE_ENV = $.util.env.env || 'development';
 
 gulp.task('help', $.taskListing);
@@ -22,22 +21,7 @@ var openOpts = {
   url: 'http://localhost:' + config.defaultPort
 };
 
-var toInject = [
-  'client/app/app.js',
-  'client/app/*.js',
-  'client/app/**/*.directive.js',
-    '!client/app/**/*.directive.spec.js',
-  'client/app/core/filters/**/*.js',
-    '!client/app/core/filters/**/*.spec.js',
-  'client/app/**/*.service.js',
-    '!client/app/**/*.service.spec.js',
-  'client/app/**/*.js',
-    '!client/app/**/*.spec.js',
-    '!client/bower_components/**/*',
-  'client/app/**/*.controller.js',
-    '!client/app/**/*.controller.spec.js',
-  'client/styles/css/app.css'
-];
+var toInject = config.js;
 
 var toDelete = [];
 
@@ -45,50 +29,41 @@ var toDelete = [];
  * Compile Sass
  */
 gulp.task('sass', function () {
-      log('Compiling Sass files to CSS');
-  return gulp.src('client/styles/app.scss')
-    .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-    .pipe($.sass())
-    .pipe($.autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: true
-        }))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('client/styles/css'))
-    .pipe($.livereload());
+    log('Compiling Sass files to CSS');
+    return gulp
+        .src('client/styles/app.scss')
+        .pipe($.plumber())
+        .pipe($.sourcemaps.init())
+        .pipe($.sass())
+        .pipe($.autoprefixer({
+                browsers: ['last 2 versions'],
+                cascade: true
+            }))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest('client/styles/css'))
+        .pipe($.livereload());
 });
 
-
-gulp.task('uncss', function () {
-        log('Removing unncessary CSS');
-  return gulp.src('client/styles/css/app.css')
-    .pipe($.plumber())
-    .pipe($.uncss({
+gulp.task('optimize-css', ['sass'], function () {
+    log('Optimizing the CSS for dist');
+    return gulp
+        .src('client/styles/css/app.css')
+        .pipe($.plumber())
+        .pipe($.uncss({
            html: glob.sync('client/**/*.tpl.html')
-    }))
-    .pipe(gulp.dest('client/styles/css'));
-});
-
-/*
- * CSSMIN
- */
-gulp.task('cssmin', ['uncss'], function () {
-        log('Minifying CSS');
-  return gulp.src('dist/client/app.css')
-    .pipe($.csso())
+        }))
+        .pipe($.csso())
     .pipe(gulp.dest('dist/client/'));
 });
-
 /**
  * BUILD JS FILES
  */
 
 gulp.task('scripts', function () {
-      log('Creating Angular templatecache');
+    log('Creating Angular templatecache');
 
-  var tpl = gulp.src('client/**/*.tpl.html')
-    .pipe($.bytediff.start())
+    var tpl = gulp.src('client/**/*.tpl.html')
+            .pipe($.bytediff.start())
             .pipe($.minifyHtml({empty: true}))
             .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
             .pipe($.angularTemplatecache(config.templateCache.file, {
@@ -97,32 +72,36 @@ gulp.task('scripts', function () {
                 root: config.templateCache.root
             }));
 
-  var app = gulp.src('dist/client/app.js');
-      log('Running Concat, ngAnotate and Uglifying JS');
-  return sq({ objectMode: true }, app, tpl)
+    var app = gulp.src('dist/client/app.js');
+    log('Running Concat, ngAnotate and Uglifying JS');
+    return sq({
+        objectMode: true
+        }, app, tpl
+    )
     .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
+    .pipe($.sourcemaps.init())
     .pipe($.concat('app.js'))
     .pipe($.ngAnnotate({add: true}))
     .pipe($.uglify())
     .pipe(getHeader())
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist/client/'));
 });
-
 
 /**
  * Inject css/js files in index.html
  */
 gulp.task('inject', ['sass'], function () {
-      log('Injecting CSS files');
+    log('Injecting CSS files');
 
-  var sources = gulp.src(toInject, { read: false });
+    var sources = gulp.src(toInject, {read: false});
 
-  return gulp.src('client/index.html')
-    .pipe($.inject(gulp.src(bowerFiles(), { read: false }), {
+    return gulp.src('client/index.html')
+    .pipe($.inject(gulp.src(bowerFiles(), {read: false}), {
       name: 'bower',
       relative: 'true'
     }))
-    .pipe($.inject(sources, { relative: true }))
+    .pipe($.inject(sources, {relative: true}))
     .pipe(gulp.dest(config.client))
     .pipe($.livereload());
 });
@@ -134,7 +113,7 @@ gulp.task('inject', ['sass'], function () {
 gulp.task('fonts', ['clean-fonts'], function() {
     log('Copying fonts');
     return gulp.src(config.fonts)
-        .pipe(gulp.dest(config.build + 'assets/fonts'));
+        .pipe(gulp.dest(config.dist + 'client/assets/fonts'));
 });
 
 /**
@@ -142,52 +121,55 @@ gulp.task('fonts', ['clean-fonts'], function() {
  * @return {Stream}
  */
 gulp.task('images', ['clean-images'], function() {
-    var dest = config.build + 'assets/images';
+    var dest = config.dist + 'client/assets/images';
     log('Compressing and copying images');
     return gulp.src(config.images)
         .pipe($.imagemin({
-            optimizationLevel: 6
+            optimizationLevel: 4
         }))
         .pipe(gulp.dest(dest));
 });
 
-
 gulp.task('copy:dist', function () {
-  var main = gulp.src(['server/**/*', 'package.json'], { base: './' });
-  var assets = gulp.src('client/assets/**/*', { base: './' });
+    var main = gulp.src(['server/**/*', 'package.json'], {base: './'});
+    var assets = gulp.src('client/assets/**/*', {base: './'});
 
-  return sq({ objectMode: true }, main, assets)
+    return sq({
+        objectMode: true
+        }, main, assets
+    )
     .pipe(gulp.dest('dist/'));
 });
 
-
 gulp.task('usemin', ['inject'], function () {
-  return gulp.src('client/index.html')
-    .pipe($.plumber())
-    .pipe($.usemin())
-    .pipe(gulp.dest('dist/client/'));
+    return gulp
+        .src('client/index.html')
+        .pipe($.plumber())
+        .pipe($.usemin())
+        .pipe(gulp.dest('dist/client/'));
 });
 
-
 gulp.task('replace', function () {
-  return gulp.src('dist/client/index.html')
-    .pipe($.replace(/<script.*livereload.*><\/script>\n*/, ''))
-    .pipe(gulp.dest('dist/client'));
+    return gulp
+        .src('dist/client/index.html')
+        .pipe($.replace(/<script.*livereload.*><\/script>\n*/, ''))
+        .pipe(gulp.dest('dist/client'));
 });
 
 gulp.task('rev', function () {
-  return gulp.src('dist/client/**')
-    .pipe($.revAll({
-      ignore: ['favicon.ico','.html'],
-      quiet: true,
-      transformFilename: function (file, hash) {
-        toDelete.push(path.resolve(file.path));
-        var ext = path.extname(file.path);
-        return path.basename(file.path, ext) + '.' + hash.substr(0, 8) + ext;
-      }
-    }))
-    .pipe($.revReplace())
-    .pipe(gulp.dest('dist/client/'));
+    return gulp
+        .src('dist/client/**')
+        .pipe($.revAll({
+          ignore: ['favicon.ico', '.html'],
+          quiet: true,
+          transformFilename: function (file, hash) {
+              toDelete.push(path.resolve(file.path));
+              var ext = path.extname(file.path);
+              return path.basename(file.path, ext) + '.' + hash.substr(0, 8) + ext;
+          }
+        }))
+        .pipe($.revReplace())
+        .pipe(gulp.dest('dist/client/'));
 });
 
 /**
@@ -195,18 +177,18 @@ gulp.task('rev', function () {
  */
 
 gulp.task('build', function (cb) {
-  runSequence(
-    ['clean', 'sass', 'images', 'fonts'],
+    runSequence(
+    ['clean', 'images', 'fonts'],
     ['usemin', 'copy:dist'],
-    ['replace', 'scripts', 'cssmin'],
+    ['replace', 'scripts', 'optimize-css'],
     'rev',
     cb);
 });
 
-
 gulp.task('open', ['serve'], function () {
-  gulp.src('client/index.html')
-    .pipe($.open('', openOpts));
+    gulp
+        .src('client/index.html')
+        .pipe($.open('', openOpts));
 });
 
 /**
@@ -217,59 +199,65 @@ gulp.task('open', ['serve'], function () {
 gulp.task('watch', ['inject'], function () {
     log('Watching files for changes.');
 
-  $.livereload.listen();
+    $.livereload.listen();
 
-  gulp.watch('bower.json', function () {
-    gulp.src('client/index.html')
-      .pipe($.inject(gulp.src(bowerFiles(), { read: false }), {
-        name: 'bower',
-        relative: 'true'
-      }))
-      .pipe(gulp.dest('client'))
-      .pipe($.livereload());
-  });
+    gulp.watch('bower.json', function () {
+        gulp
+            .src('client/index.html')
+              .pipe($.inject(gulp.src(bowerFiles(), {
+                read: false
+                }), {
+                name: 'bower',
+                relative: 'true'
+                }))
+              .pipe(gulp.dest('client'))
+              .pipe($.livereload());
+    });
 
-  gulp.watch(['client/index.html', 'client/app/app.js', 'client/app/**/*.*.js', 'client/app/**/*.tpl.html'])
+    gulp
+        .watch([config.index, config.js, config.htmltemplates])
         .on('change', $.livereload.changed);
 
-  $.watch('client/styles/**/*.scss', function () {
-    gulp.src('client/styles/app.scss')
-      .pipe($.plumber())
-      .pipe($.sass())
-      .pipe(gulp.dest('client/styles/css'))
-      .pipe($.livereload());
-  });
+    $.watch(config.sass, function () {
+        gulp
+            .src('client/styles/app.scss')
+              .pipe($.plumber())
+              .pipe($.sass())
+              .pipe(gulp.dest('client/styles/css'))
+              .pipe($.livereload());
+    });
 
-  $.watch(config.js, function () {
-    gulp.src('client/index.html')
-      .pipe($.inject(gulp.src(toInject), { relative: true }))
-      .pipe(gulp.dest('client'));
-  });
+    $.watch(config.js, function () {
+        gulp
+            .src('client/index.html')
+              .pipe($.inject(gulp.src(toInject), {relative: true}))
+              .pipe(gulp.dest('client'));
+    });
 });
-
 
 /**
  * LAUNCH EXPRESS SERVER W/ NODEMON
  */
 gulp.task('serve', ['watch'], function (cb) {
 
-  var called = false; // callback variable
-  return $.nodemon({
+    var called = false; // callback variable
+    return $.nodemon({
         script: 'server/server.js',
         ext: 'js',
         ignore: ['client', 'dist', 'node_modules'],
         watch: ['server.js', 'server/**/*.*']
       })
     .on('start', function onStart() {
-      if (!called) {
-        cb();
-      }
-      called = true;
+        if (!called) {
+            cb();
+        }
+        called = true;
     })
     .on('restart', function onRestart () {
-      gulp.src('client/index.html')
-        .pipe($.wait(50))
-        .pipe($.livereload());
+        gulp
+            .src('client/index.html')
+            .pipe($.wait(50))
+            .pipe($.livereload());
     });
 });
 
@@ -283,7 +271,6 @@ function changeEvent(event) {
     var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
     log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }
-
 
 /**
  * Formatter for bytediff to display the size changes after processing
@@ -305,8 +292,8 @@ function bytediffFormatter(data) {
  * @param {Object} options
  */
 function log (msg, options) {
-  options = options || {};
-  console.log(
+    options = options || {};
+    console.log(
     (options.padding ? '\n' : '') +
     chalk.yellow(' > ' + msg) +
     (options.padding ? '\n' : '')
@@ -393,13 +380,11 @@ function notify(options) {
     notifier.notify(notifyOptions);
 }
 
-
 /**
  *
  * **** CLEANING TASKS ****
  *
  ************************************/
-
 
 /**
  * Delete all files in a given path
@@ -411,59 +396,56 @@ function clean(path, done) {
     del(path, done);
 }
 
-
 /**
- * Remove all files from the build, temp, and reports folders
+ * Remove all files from the dist, temp, and reports folders
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean', function(done) {
-    var delconfig = [].concat(config.build, config.dist, config.temp, config.report);
+    var delconfig = [].concat(config.dist, config.temp, config.report);
     log('Cleaning: ' + $.util.colors.blue(delconfig));
     del(delconfig, done);
 });
 
 /**
- * Remove all fonts from the build folder
+ * Remove all fonts from the dist folder
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-fonts', function(done) {
-    clean([].concat(config.build + 'fonts/**/*.*'), done);
+    clean([].concat(config.dist + 'client/assets/fonts/**/*.*'), done);
 });
 
 /**
- * Remove all images from the build folder
+ * Remove all images from the dist folder
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-images', function(done) {
-    clean([].concat(config.build + 'images/**/*.*'), done);
+    clean([].concat(config.dist + 'client/assets/images/**/*.*'), done);
 });
 
 /**
- * Remove all styles from the build and temp folders
+ * Remove all styles from the dist and temp folders
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-styles', function(done) {
     var files = [].concat(
         config.temp + '**/*.css',
-        config.build + 'styles/**/*.css'
+        config.dist + 'styles/**/*.css'
     );
     clean(files, done);
 });
 
 /**
- * Remove all js and html from the build and temp folders
+ * Remove all js and html from the dist and temp folders
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-code', function(done) {
     var files = [].concat(
         config.temp + '**/*.js',
-        config.build + 'js/**/*.js',
-        config.build + '**/*.html'
+        config.dist + 'js/**/*.js',
+        config.dist + '**/*.html'
     );
     clean(files, done);
 });
-
-
 
 /**
  *
@@ -526,61 +508,50 @@ gulp.task('analyze', ['plato'], function() {
 /**
  * Tests
  */
-function testServer (done) {
+/**
+ * Start the tests using karma.
+ * @param  {boolean} singleRun - True means run once and end (CI), or keep running (dev)
+ * @param  {Function} done - Callback to fire when karma is done
+ * @return {undefined}
+ */
+function startTests(singleRun, done) {
+    var child;
+    var excludeFiles = [];
+    var fork = require('child_process').fork;
+    var karma = require('karma').server;
+    var serverSpecs = config.serverIntegrationSpecs;
 
-  log('Running server test...', { padding: true });
+    if (args.startServers) {
+        log('Starting servers');
+        var savedEnv = process.env;
+        savedEnv.NODE_ENV = 'dev';
+        savedEnv.PORT = 8888;
+        child = fork(config.nodeServer);
+    } else {
+        if (serverSpecs && serverSpecs.length) {
+            log('excluding server-integration tests: ' + serverSpecs);
+            excludeFiles = serverSpecs;
+        }
+    }
 
-  gulp.src('server/**/*.spec.js', { read: false })
-    .pipe($.plumber())
-    .pipe($.mocha({ reporter: 'spec' }))
-    .once('end', function () {
-      done();
-    });
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        exclude: excludeFiles,
+        singleRun: !!singleRun
+    }, karmaCompleted);
+
+    ////////////////
+
+    function karmaCompleted(karmaResult) {
+        log('Karma completed');
+        if (child) {
+            log('shutting down the child process');
+            child.kill();
+        }
+        if (karmaResult === 1) {
+            done('karma: tests failed with code ' + karmaResult);
+        } else {
+            done();
+        }
+    }
 }
-
-function testClient (done) {
-
-  log('Running client test...', { padding: true });
-
-  gulp.src([
-    'client/bower_components/angular/angular.js',
-    'client/bower_components/angular-mocks/angular-mocks.js',
-    'client/bower_components/angular-route/angular-route.js',
-    'client/bower_components/angular-resource/angular-resource.js',
-    'client/app/app.js',
-    'client/views/**/*.js',
-    'client/services/**/*.js',
-    'client/directives/**/*.js',
-    'client/filters/**/*.js'
-  ])
-    .pipe($.karma({
-      action: 'run',
-      configFile: 'client/karma.conf.js'
-    }))
-    .on('error', function (err) {
-      console.log(err);
-      this.emit('end');
-    })
-    .once('end', function () {
-      done();
-    });
-}
-
-gulp.task('test', function (done) {
-  process.env.NODE_ENV = 'test';
-  var filter = process.argv[3] ? process.argv[3].substr(2) : false;
-  if (filter === 'client') {
-    return testClient(function () { process.exit(); done(); });
-  } else if (filter === 'server') {
-    return testServer(function () { process.exit(); done(); });
-  } else if (filter === false) {
-    return testClient(function () {
-      testServer(function () {
-        process.exit();
-        done();
-      });
-    });
-  } else {
-    console.log('Wrong parameter [%s], availables : --client, --server', filter);
-  }
-});

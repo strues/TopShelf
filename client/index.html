@@ -37,7 +37,6 @@
       <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/ngstorage/ngStorage.js"></script>
-      <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -55,17 +54,32 @@
 
             <!-- inject:js -->
       <script src="app/app.js"></script>
-      <script src="app/appStart.js"></script>
-      <script src="app/account/account-login/loginForm.directive.js"></script>
-      <script src="app/account/account-signup/signupForm.directive.js"></script>
-      <script src="app/core/directives/footer/core.footer.directive.js"></script>
-      <script src="app/core/directives/mongoose/mongoose-error.directive.js"></script>
-      <script src="app/core/directives/navbar/core.navbar.directive.js"></script>
-      <script src="app/core/home/home.recruitingPanel/recruitingPanel.directive.js"></script>
-      <script src="app/core/home/news.view/newsView.directive.js"></script>
-      <script src="app/admin/news/news.edit/newsEditModal.directive.js"></script>
-      <script src="app/core/filters/startFrom.filter.js"></script>
-      <script src="app/core/filters/posttagsformat/posttagsformat.js"></script>
+      <script src="app/account/account.module.js"></script>
+      <script src="app/admin/adminDashboard.controller.js"></script>
+      <script src="app/admin/adminSidebar.controller.js"></script>
+      <script src="app/admin/applications/applicationList.controller.js"></script>
+      <script src="app/admin/applications/applicationView.controller.js"></script>
+      <script src="app/admin/news/datePicker.controller.js"></script>
+      <script src="app/admin/news/newsList.controller.js"></script>
+      <script src="app/admin/recruitment/recruitment.controller.js"></script>
+      <script src="app/admin/recruitment/recruitmentList.controller.js"></script>
+      <script src="app/core/home/home.controller.js"></script>
+      <script src="app/core/home/homeCarousel.controller.js"></script>
+      <script src="app/guild/application/application.controller.js"></script>
+      <script src="app/guild/recruitment/recruitment.controller.js"></script>
+      <script src="app/guild/roster/roster.guild.controller.js"></script>
+      <script src="app/guild/roster/roster.searchArmory.controller.js"></script>
+      <script src="app/guild/streams/stream.controller.js"></script>
+      <script src="app/account/states/login/account.login.controller.js"></script>
+      <script src="app/account/states/profile/account.profile.controller.js"></script>
+      <script src="app/account/states/settings/account.settings.controller.js"></script>
+      <script src="app/account/states/signup/account.signup.controller.js"></script>
+      <script src="app/admin/news/news.create/newsCreate.controller.js"></script>
+      <script src="app/admin/raid/raid-comp/raid.rosterComp.controller.js"></script>
+      <script src="app/admin/raid/raid-comp/raid.searchArmory.controller.js"></script>
+      <script src="app/core/directives/footer/core.footer.controller.js"></script>
+      <script src="app/core/directives/navbar/core.navbar.controller.js"></script>
+      <script src="app/account/states/profile/edit/account.profile-edit.controller.js"></script>
       <script src="app/account/services/auth.service.js"></script>
       <script src="app/account/services/user.service.js"></script>
       <script src="app/core/services/authInterceptor.service.js"></script>
@@ -81,51 +95,23 @@
       <script src="app/guild/application/application.service.js"></script>
       <script src="app/guild/recruitment/recruitment.service.js"></script>
       <script src="app/guild/streams/streams.service.js"></script>
-      <script src="app/account/account.js"></script>
-      <script src="app/core/core.js"></script>
+      <script src="app/account/directives/account.loginForm.directive.js"></script>
+      <script src="app/account/directives/account.signupForm.directive.js"></script>
+      <script src="app/admin/news/news.edit/newsEditModal.directive.js"></script>
+      <script src="app/core/directives/footer/core.footer.directive.js"></script>
+      <script src="app/core/directives/mongoose/mongoose-error.directive.js"></script>
+      <script src="app/core/directives/navbar/core.navbar.directive.js"></script>
+      <script src="app/core/home/home.recruitingPanel/recruitingPanel.directive.js"></script>
+      <script src="app/core/home/news.view/newsView.directive.js"></script>
+      <script src="app/appStart.js"></script>
       <script src="app/admin/admin.js"></script>
-      <script src="app/admin/adminDashboard.controller.js"></script>
-      <script src="app/admin/adminSidebar.controller.js"></script>
+      <script src="app/core/core.js"></script>
       <script src="app/guild/guild.js"></script>
-      <script src="app/account/account-login/login.controller.js"></script>
-      <script src="app/account/account-settings/settings.controller.js"></script>
-      <script src="app/account/account-profile/profile.controller.js"></script>
-      <script src="app/account/account-signup/signup.controller.js"></script>
-      <script src="app/core/home/home.controller.js"></script>
-      <script src="app/core/home/homeCarousel.controller.js"></script>
-      <script src="app/admin/applications/applicationList.controller.js"></script>
-      <script src="app/admin/applications/applicationView.controller.js"></script>
-      <script src="app/admin/recruitment/recruitment.controller.js"></script>
-      <script src="app/admin/recruitment/recruitmentList.controller.js"></script>
-      <script src="app/admin/news/datePicker.controller.js"></script>
-      <script src="app/admin/news/newsList.controller.js"></script>
-      <script src="app/guild/application/application.controller.js"></script>
-      <script src="app/guild/recruitment/recruitment.controller.js"></script>
+      <script src="app/account/states/account.states.js"></script>
+      <script src="app/core/filters/startFrom.filter.js"></script>
       <script src="app/guild/roster/roster.classDefinitions.provider.js"></script>
-      <script src="app/guild/roster/roster.guild.controller.js"></script>
-      <script src="app/guild/roster/roster.searchArmory.controller.js"></script>
-      <script src="app/guild/streams/stream.controller.js"></script>
-      <script src="app/account/account-profile/profile.edit/profile.edit.controller.js"></script>
-      <script src="app/core/directives/footer/core.footer.controller.js"></script>
-      <script src="app/core/directives/navbar/core.navbar.controller.js"></script>
-      <script src="app/admin/news/news.create/newsCreate.controller.js"></script>
-      <script src="app/admin/raid/raid-comp/raid.rosterComp.controller.js"></script>
-      <script src="app/admin/raid/raid-comp/raid.searchArmory.controller.js"></script>
+      <script src="app/core/filters/posttagsformat/posttagsformat.js"></script>
       <!-- endinject -->
     <!-- endbuild -->
-    <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
-      <script>/* jshint ignore:start */
-// jscs:disable
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-28905817-3');ga('send','pageview');
-            // jscs:enable
-/* jshint ignore:end */
-</script>
-
-
   </body>
 </html>

@@ -14,7 +14,7 @@
 
     function RecruitmentCtrl($scope, $modal, $log) {
 
-        var vm = this;
+        var recruitment = this;
     }
 
 })();
