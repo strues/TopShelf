@@ -84,11 +84,11 @@
 .streamContainer {
   position: fixed;
   background-color: rgba(16,16,16,0.8);
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   top: 0;
   left: 0;
-  z-index: 4;
+  z-index: 1040;
 }
 .streamContainer .fa-times {
   position: absolute;
@@ -104,10 +104,11 @@
 
 object {
   position: fixed;
-  width: 95%;
-  height: 95%;
-  top: 2%;
-  left: 2.5%;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  z-index: 1040;
 }
 
 

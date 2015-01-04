@@ -1,24 +1,21 @@
 <div navbar></div>
 <div class="container frontendWrap">
-
-
- <div class="streams" ng-repeat="stream in streamsList">
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-
-        <p class="streamName">
-        <h4>{{ stream.stream.channel.name }}</h4>
-          <a href="//twitch.tv/{{ stream.stream.channel.display_name }}/"><h5>Status:</h5> {{ stream.stream.channel.status }}</a>
-        </p>
-        <h5>Current Viewers:</h5>{{ stream.stream.viewers }}
+<div class="streams" ng-repeat="stream in streamsList">
+<div class="well">
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+        <a href="//twitch.tv/{{ stream.stream.channel.display_name }}/">
+            <h1>{{ stream.stream.channel.name }}</h1>
+        </a>
+        <hr />
+          <h4 style="color: white;">Status:</h4><p>{{ stream.stream.channel.status }}</p>
+            <h4 style="color: white;">Current Viewers:</h4><p>{{ stream.stream.viewers }}</p>
        </div>
+       <div class="col-sm-6">
+       <img style="padding-top: 30px;"ng-click="showDetails = ! showDetails" src="{{ stream.stream.preview.medium }}">
         </div>
-<div class="row">
-<div class="col-sm-10 col-sm-offset-1">
-        <img ng-click="showDetails = ! showDetails" src="{{ stream.stream.preview.large }}">
 </div>
 </div>
-
 
     <!-- goes full screen-->
 <div class="streamContainer" ng-show="showDetails">
@@ -40,4 +37,5 @@
                 value="https://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" />
     </object>
     <i ng-click="closeStream()" class="fa fa-times"></i>
+</div>
 </div>

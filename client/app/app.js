@@ -41,7 +41,13 @@
         $httpProvider.useApplyAsync(true);
     }
 
+    function run ($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+    }
+
     angular
         .module('topshelf')
-        .config(config);
+        .config(config)
+        .run(run);
 })();

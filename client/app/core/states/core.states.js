@@ -19,11 +19,10 @@
         })
         .state('home.view-post', {
             url: 'view-post/:postId',
-            templateUrl: 'app/core/states/home/core.home.viewPost.tpl.html',
+            templateUrl: 'app/core/states/home/view-post/core.home.viewPost.tpl.html',
             controller: 'HomeViewPostCtrl as viewPost'
-      });
+        });
     }
-
     angular
         .module('topshelf.core.states')
         .config(config);

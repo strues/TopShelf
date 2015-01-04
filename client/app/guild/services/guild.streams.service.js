@@ -23,11 +23,31 @@
       getStreamSoopie: function() {
           return $http({
           method: 'jsonp',
-          url: 'https://api.twitch.tv/kraken/streams/Soopie?callback=JSON_CALLBACK'
+          url: 'https://api.twitch.tv/kraken/streams/soopie?callback=JSON_CALLBACK'
         })
          .success(function(data) {
              $rootScope.$broadcast('event', data);
              console.log('Soopie stream is working, yo!', data, status);
+         });
+      },
+    getStreamTeo: function() {
+          return $http({
+          method: 'jsonp',
+          url: 'https://api.twitch.tv/kraken/streams/teomorassalt?callback=JSON_CALLBACK'
+        })
+         .success(function(data) {
+             $rootScope.$broadcast('event', data);
+             console.log('Teos stream is working, yo!', data, status);
+         });
+      },
+      getStreamValk: function() {
+         return $http({
+          method: 'jsonp',
+          url: 'https://api.twitch.tv/kraken/streams/valkyrie89?callback=JSON_CALLBACK'
+        })
+         .success(function(data) {
+             $rootScope.$broadcast('event', data);
+             console.log('Teos stream is working, yo!', data, status);
          });
       },
        getStreamToxic: function() {

@@ -8,7 +8,7 @@
    * @description
    *
    */
-    function HomeCtrl(PostFactory) {
+    function HomeCtrl(PostFactory, $location) {
 
         var home = this;
         home.posts = {};
@@ -33,6 +33,9 @@
         error(function (error) {
         home.status = 'Unable to Retrieve Posts: ' + error.message;
     });
+        home.viewMore = function(post) {
+            $location.path('/view-post/' + post._id);
+        };
 
     }
 
