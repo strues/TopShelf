@@ -23,6 +23,6 @@
     }
 
     angular
-        .module('topshelf.core')
+        .module('topshelf.core.directives')
         .directive('navbar', navbar);
 })();

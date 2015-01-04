@@ -18,7 +18,7 @@
      })
      .state('account.login', {
             url: '/login',
-            templateUrl: 'app/account/states/login/login.tpl.html',
+            templateUrl: 'app/account/states/login/account.login.tpl.html',
             controller: 'LoginCtrl'
       })
       .state('account.loginWithToken', {
@@ -41,12 +41,12 @@
       })
       .state('account.signup', {
             url: '/signup',
-            templateUrl: 'app/account/states/signup/signup.tpl.html',
+            templateUrl: 'app/account/states/signup/account.signup.tpl.html',
             controller: 'SignupCtrl'
       })
       .state('account.profile', {
             url: '/profile',
-            templateUrl: 'app/account/states/profile/profile.tpl.html',
+            templateUrl: 'app/account/states/profile/account.profile.tpl.html',
             controller: 'ProfileCtrl'
       })
       .state('account.profile-edit', {
@@ -56,7 +56,7 @@
       })
       .state('account.settings', {
             url: '/user/settings',
-            templateUrl: 'app/account/states/settings/settings.tpl.html',
+            templateUrl: 'app/account/states/settings/account.settings.tpl.html',
             controller: 'SettingsCtrl'
       });
     }

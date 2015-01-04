@@ -17,6 +17,6 @@
     }
 
     angular
-        .module('topshelf.core')
+        .module('topshelf.core.states')
         .controller('HomeCarouselCtrl', HomeCarouselCtrl);
 })();

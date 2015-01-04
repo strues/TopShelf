@@ -37,6 +37,6 @@
     }
 
     angular
-        .module('topshelf.core')
+        .module('topshelf.core.states')
         .controller('HomeCtrl', HomeCtrl);
 })();

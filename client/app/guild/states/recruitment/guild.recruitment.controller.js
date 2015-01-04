@@ -9,7 +9,7 @@
    *
    */
     angular
-    .module('topshelf.guild')
+    .module('topshelf.guild.states')
     .controller('RecruitmentCtrl', RecruitmentCtrl);
 
     function RecruitmentCtrl($scope, $modal, $log) {

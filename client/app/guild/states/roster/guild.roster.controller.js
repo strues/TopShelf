@@ -1,7 +1,7 @@
 (function() {
 
     angular
-        .module('topshelf.guild')
+        .module('topshelf.guild.states')
         .controller('GuildRosterCtrl', GuildRosterCtrl);
 
     /* @ngInject */

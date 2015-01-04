@@ -16,6 +16,6 @@
     }
 
     angular
-        .module('topshelf.core')
+        .module('topshelf.core.directives')
         .controller('NavbarCtrl', NavbarCtrl);
 })();

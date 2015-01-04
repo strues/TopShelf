@@ -9,7 +9,7 @@
 
             $scope.openViewModal = function (postID) {
                 var modalInstance = $modal.open({
-              templateUrl: 'app/core/home/news.view/viewModal.tpl.html',
+              templateUrl: 'app/core/directives/newsView/core.viewModal.tpl.html',
               scope: $scope,
               controller: ModalInstanceCtrl,
               size: 'lg',
@@ -55,6 +55,6 @@
     }
 
     angular
-        .module('topshelf.core')
+        .module('topshelf.core.directives')
         .directive('newsViewModal', newsViewModal);
 })();
