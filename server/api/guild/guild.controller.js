@@ -25,13 +25,7 @@ exports.qBattlenet = function(req, res) {
         origin: 'us',
         realm: 'sargeras',
         name: 'top shelf'
-    }, {apikey: config.bnet.clientID}, function(err, response) {
-
-        console.log(res);
-
-        if (err) {
-            return res.status(500);
-        }
-        return res.status(200).json(response);
-    })
+    }, {apikey: config.bnet.clientID}, function(err, resp) {
+  console.log(resp);
+});
 }

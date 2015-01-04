@@ -24,7 +24,7 @@
        .state('roster', {
             url: '/guild/roster',
             templateUrl: 'app/guild/states/roster/guild.roster.tpl.html',
-            controller: 'GuildRosterCtrl as vm'
+            controller: 'GuildRosterCtrl as roster'
        })
        .state('streams', {
             url: '/guild/streams',

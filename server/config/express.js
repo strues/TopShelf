@@ -36,7 +36,6 @@ module.exports = function(app) {
     app.use(methodOverride('X-HTTP-Method-Override'));
 
   // Enable jsonp
-    app.enable('jsonp callback');
     app.use(session({
     secret: config.secrets.session,
     store: new redisStore({
