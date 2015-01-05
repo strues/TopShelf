@@ -55,9 +55,8 @@
               <div ng-message="required" ng-show="applicationForm.charSpec.$error.required">Your class spec required.</div>
             </div>
           </div>
-  </div>
+
 <!-- ./charClass -->
-        <div class="row">
           <div class="col-md-4 form-group has-feedback"
                ng-class="{ 'has-error' : applicationForm.charServer.$invalid && applicationForm.charServer.$dirty }">
             <label>Realm</label>
@@ -89,8 +88,9 @@
               </div>
             </div>
           </div>
+          </div>
           <!-- ./charArmory -->
-
+<div class="row">
           <div class="col-md-4 form-group has-feedback"
                ng-class="{ 'has-error' : applicationForm.applicantName.$invalid && applicationForm.applicantName.$dirty }">
             <label>First Name</label>
@@ -232,7 +232,7 @@
 
           <button type="submit" ng-disabled="applicationForm.$invalid" class="btn btn-lg btn-block btn-primary">Apply</button>
           <br/>
-        </form>
+    </form>
     </div>
     <div class="col-lg-4">
     <div class="well">
@@ -255,5 +255,5 @@
 </div>
 
     </div>
-  </div>
-</div>
+
+

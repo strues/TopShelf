@@ -31,7 +31,7 @@ var toDelete = [];
 gulp.task('sass', function () {
     log('Compiling Sass files to CSS');
     return gulp
-        .src('client/styles/app.scss')
+        .src('client/styles/styles.scss')
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.sass())
@@ -178,9 +178,9 @@ gulp.task('rev', function () {
 
 gulp.task('build', function (cb) {
     runSequence(
-    ['clean', 'images', 'fonts'],
+    ['clean','optimize-css', 'images', 'fonts'],
     ['usemin', 'copy:dist'],
-    ['replace', 'scripts', 'optimize-css'],
+    ['replace', 'scripts'],
     'rev',
     cb);
 });
@@ -220,7 +220,7 @@ gulp.task('watch', ['inject'], function () {
 
     $.watch(config.sass, function () {
         gulp
-            .src('client/styles/app.scss')
+            .src('client/styles/styles.scss')
               .pipe($.plumber())
               .pipe($.sass())
               .pipe(gulp.dest('client/styles/css'))

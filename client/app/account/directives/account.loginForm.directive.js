@@ -20,7 +20,7 @@
 
     function loginForm(Auth, $location, $window, sweet) {
         return {
-      templateUrl: 'app/account/states/login/loginForm.tpl.html',
+      templateUrl: 'app/account/states/login/account.loginForm.tpl.html',
       restrict: 'EA',
       link: function (scope, element, attrs) {
           scope.user = {};

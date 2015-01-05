@@ -7,11 +7,11 @@ var User = require('../api/user/user.model');
 
 // Passport Configuration
 require('./local/passport').setup(User, config);
-require('./battlenet/passport').setup(User, config);
+require('./bnet/passport').setup(User, config);
 
 var router = express.Router();
 
 router.use('/local', require('./local'));
-router.use('/bnet', require('./battlenet'));
+router.use('/bnet', require('./bnet'));
 
 module.exports = router;
