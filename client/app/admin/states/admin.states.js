@@ -82,6 +82,15 @@
             templateUrl: 'app/admin/states/recruitment/admin.recruitment.tpl.html'
           }
         }
+      })
+    .state('admin.roster', {
+        url: '/roster',
+        views: {
+          'content@admin': {
+            controller: 'AdminRosterCtrl as adminRoster',
+            templateUrl: 'app/admin/states/roster/admin.roster.tpl.html'
+          }
+        }
       });
     }
 

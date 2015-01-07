@@ -21,7 +21,7 @@
 
     function signupForm (Auth, $location, $window, sweet) {
         return {
-          templateUrl: 'app/account/states/signup/signupForm.tpl.html',
+          templateUrl: 'app/account/states/signup/account.signupForm.tpl.html',
           restrict: 'EA',
           link: function (scope, element, attrs) {
               scope.user = {};

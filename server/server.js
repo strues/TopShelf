@@ -10,14 +10,14 @@ var express     = require('express'),
     mongoose    = require('mongoose'),
     config      = require('./config/environment');
 
-var https      = require('https'),
-fs         = require('fs'),
-keyFile  = './server/config/keys/key.pem',
-certFile  = './server/config/keys/cert.pem';
-var ssl     = {
-  key: fs.readFileSync(keyFile),
- cert: fs.readFileSync(certFile)
-};
+// var https      = require('https'),
+// fs         = require('fs'),
+// keyFile  = './server/config/keys/key.pem',
+// certFile  = './server/config/keys/cert.pem';
+// var ssl     = {
+//   key: fs.readFileSync(keyFile),
+//  cert: fs.readFileSync(certFile)
+// };
 
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
@@ -46,7 +46,7 @@ require('./routes')(app);
 /*
  * Start the server
  */
-https.createServer(ssl, app).listen(8443);
+//https.createServer(ssl, app).listen(8443);
 server.listen(config.port, config.ip, function () {
     console.log('Express server listening on %d, in %s mode',
     config.port, app.get('env'));
