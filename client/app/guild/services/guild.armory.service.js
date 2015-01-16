@@ -27,8 +27,7 @@
 
         ////////////////
         function getRealms () {
-            return $http.jsonp('https://' + getRegion().toLowerCase() +
-                    '.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK');
+            return $http.jsonp('https://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK');
         }
         function getRegion() {
             return data.region;
@@ -62,13 +61,12 @@
         }
         function saveInStorage () {
             if (typeof (Storage) !== 'undefined') {
-                localStorage.setItem('wow-roster-region', data.region);
                 localStorage.setItem('wow-roster-realm', data.realm);
                 localStorage.setItem('wow-roster-guild-name', data.guildName);
             }
         }
     }
     angular
-        .module('topshelf.core')
+        .module('topshelf.guild.services')
         .factory('ArmoryService', ArmoryService);
 })();

@@ -35,6 +35,7 @@
       $scope.addNew = function() {
         $location.path('/admin/applications/view');
     };
+      var dateAsString = $filter('date')($scope.application, 'yyyy-MM-dd');
   }
 
     angular

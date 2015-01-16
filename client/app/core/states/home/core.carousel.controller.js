@@ -11,6 +11,9 @@
             },
             {
                 image: 'assets/images/banner1.jpg'
+            },
+            {
+                image: 'assets/images/mythicBrack.png'
             }
         ];
 

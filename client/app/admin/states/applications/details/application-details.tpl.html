@@ -32,11 +32,32 @@
                         <dt>Why Top Shelf?</dt>
                         <dd>{{application.whyTS}}</dd>
                       </dl>
+
                     </div>
   <button ng-click="likeApplication()" class="btn btn-xs btn-success" ng-hide="isAlreadyLiked">Like</button>
   <button ng-click="unlikeApplication()" class="btn btn-xs btn-success" ng-show="isAlreadyLiked">Unlike</button>
   {{application.likes}} <i class="fa fa-thumbs-up"></i>
+<table class="table table-striped table-hover" width="60%">
+    <thead>
+    <th><h4>{{charData.progression.raids[32].bosses[0].name}}</h4></th>
+    <th><h4>{{charData.progression.raids[32].bosses[1].name}}</h4></th>
+    <th><h4>{{charData.progression.raids[32].bosses[2].name}}</h4></th>
+    <th><h4>{{charData.progression.raids[32].bosses[3].name}}</h4></th>
+    <th><h4>{{charData.progression.raids[32].bosses[4].name}}</h4></th>
+    <th><h4>{{charData.progression.raids[32].bosses[5].name}}</h4></th>
+    <th><h4>{{charData.progression.raids[32].bosses[6].name}}</h4></th>
+    </thead>
+        <tr>
+           <td>Mythic: {{charData.progression.raids[32].bosses[0].mythicKills}}</td>
+           <td>Mythic: {{charData.progression.raids[32].bosses[1].mythicKills}}</td>
+           <td>Mythic: {{charData.progression.raids[32].bosses[2].mythicKills}}</td>
+           <td>Mythic: {{charData.progression.raids[32].bosses[3].mythicKills}}</td>
+           <td>Mythic: {{charData.progression.raids[32].bosses[4].mythicKills}}</td>
+           <td>Mythic: {{charData.progression.raids[32].bosses[5].mythicKills}}</td>
+           <td>Mythic: {{charData.progression.raids[32].bosses[6].mythicKills}}</td>
+        </tr>
 
-<!-- end 12 col -->
-    <!-- end row-->
-<!-- End container -->
+</table>
+
+</div>
+</div>

@@ -13,31 +13,28 @@ var UserSchema = new mongoose.Schema({
   password: String,
   provider: String,
   salt: String,
-  facebook: {type: String, unique: true, sparse: true},
-  twitter: {type: String, unique: true, sparse: true},
-  bnet: {type: String, unique: true, sparse: true},
-  tokens: Array,
-  profileDetails: {
-    firstName: {type: String, default: ''},
-    gender: {type: String, default: ''},
-    location: {type: String, default: ''},
-    website: {type: String, default: ''},
-    picture: {type: String, default: ''},
-    battletag: {type: String, default: ''}
- },
-  characterDetails: {
-      lastModified: {type: Number, default: ''},
-      name: {type: String, default: ''},
-      realm: {type: String, default: ''},
-      battlegroup: {type: String, default: ''},
-      classDef: {type: Number, default: ''},
-      race: {type: Number, default: ''},
-      gender: {type: Number, default: ''},
-      level: {type: Number, default: ''},
-      achievementPoints: {type: Number, default: ''},
-      thumbnail: {type: String, default: ''},
-      calcClass: {type: Number, default: ''},
- },
+bnetId    : Number,
+    battletag : String,
+
+    // characters
+    characters: [{
+        name: String,
+        realm: String,
+        battlegroup: String,
+        class: Number,
+        race: Number,
+        gender: Number,
+        level: Number,
+        achievementPoints: Number,
+        thumbnail: String
+    }],
+    mainCharacter: {
+        name  : String,
+        realm : String
+    },
+
+    // site settings
+    showBattletag : Boolean,
   activity: {
     date_created: {type: Date, default: Date.now},
     last_logon: {type: Date, default: Date.now},

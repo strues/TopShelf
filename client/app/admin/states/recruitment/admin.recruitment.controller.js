@@ -9,7 +9,7 @@
    *
    */
 
-    function RecruitmentCtrl ($scope, $http) {
+    function RecruitmentCtrl ($scope, $http, $state) {
 
         $scope.formData = {};
         $scope.formFields = [
@@ -157,6 +157,7 @@
         $scope.onSubmit = function() {
           $http.post('/api/recruitment', $scope.formData);
           console.log('recruitment status submitted:', $scope.formData);
+          $state.reload();
       };
     }
     angular

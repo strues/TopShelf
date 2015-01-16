@@ -17,10 +17,22 @@ var ApplicationSchema = new Schema({
   pastGuilds: {type: String},
   screenshot: {type: String},
   whyTS: {type: String},
-  created: { type: Date, default: Date },
-  updated: { type: Date, default: Date.now },
-  read: { type: Number, default: 0 },
-  likes: { type: Number, default: 0 },
+  created: {
+    type: Date,
+    default: Date
+    },
+  updated: {
+    type: Date,
+    default: Date.now
+    },
+  read: {
+    type: Number,
+    default: 0
+    },
+  likes: {
+    type: Number,
+    default: 0
+    },
   applicant: {
     type: Schema.Types.ObjectId,
     ref: 'User'

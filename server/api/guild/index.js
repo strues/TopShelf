@@ -6,6 +6,6 @@ var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
-router.get('/roster/battlenet', controller.qBattlenet);
+router.get('/roster', controller.getRoster);
 
 module.exports = router;

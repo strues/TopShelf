@@ -10,6 +10,9 @@ var express     = require('express'),
     mongoose    = require('mongoose'),
     config      = require('./config/environment');
 
+var battle = require('./battle');
+var Guild = require('./api/guild/guild.model');
+
 // var https      = require('https'),
 // fs         = require('fs'),
 // keyFile  = './server/config/keys/key.pem',
@@ -33,12 +36,6 @@ mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
 var app         = express();
 var server      = require('http').createServer(app);
 
-// var socket    = require('socket.io')(server, {
-//     serveClient: (config.env !== 'production'),
-//     path: '/socket.io-client'
-//   });
-
-//require('./config/socketio')(socket);
 require('./config/express')(app);
 require('./routes')(app);
 //require('./battle')(app);
@@ -50,6 +47,45 @@ require('./routes')(app);
 server.listen(config.port, config.ip, function () {
     console.log('Express server listening on %d, in %s mode',
     config.port, app.get('env'));
+    Guild.findOne({}, function(err, guild) {
+        battle.bnet(
+            'us.battle.net',
+            '/api/wow/guild/' + config.realm + '/' + encodeURIComponent(config.guild) +
+            '?fields=members',
+            function(data) {
+                var lastUpdated = new Date().getTime();
+                if (guild !== null) {
+                    for (var key in data) {
+                        guild[key] = data[key];
+                    }
+
+                    guild.lastUpdated = lastUpdated;
+                    guild.settings = {
+                        webAdminBattletag: ''
+                    };
+
+                    guild.save(function(err) {
+                        if (err) throw err;
+                    });
+                }
+                else {
+                    var newGuild = new Guild();
+                    for (var key in data) {
+                        newGuild[key] = data[key];
+                    }
+
+                    newGuild.lastUpdated = lastUpdated;
+                    newGuild.settings = {
+                        webAdminBattletag: ''
+                    };
+
+                    newGuild.save(function(err) {
+                        if(err) throw err;
+                    });
+                }
+            }
+        );
+    });
 });
 
 exports = module.exports = app;

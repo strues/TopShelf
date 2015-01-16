@@ -11,8 +11,6 @@
 
     function ApplicationViewCtrl
         ($scope, $http, $stateParams, ApplicationFactory, LikeService, $location) {
-  //  var vm = this;
-    //vm.ctrlName = 'ApplicationEditCtrl';
 
     var applicationId = $stateParams.id;
 
@@ -20,6 +18,14 @@
         $http.get('/api/applications/' + applicationId)
         .success(function(application) {
             $scope.application = application;
+    //https://us.api.battle.ne locale=en_US&jsonp=JSON_CALLBACK&apikey=4gfahazrsuk3qaw4ja4ddhxcreg4qwy7);
+            $http.jsonp('https://us.api.battle.net/wow/character/' + application.charServer + '/' +
+            application.charName +
+            '?fields=progression&locale=en_US&' +
+            'jsonp=JSON_CALLBACK&callback=JSON_CALLBACK&apikey=4gfahazrsuk3qaw4ja4ddhxcreg4qwy7')
+        .success(function(data) {
+        $scope.charData = data;
+    });
         });
     }
 
@@ -70,7 +76,6 @@
     $http.get('/api/applications').success(function(applications) {
         $scope.applicationList = applications;
     });
-
 }
     angular
         .module('topshelf.admin.states')

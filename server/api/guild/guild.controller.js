@@ -1,31 +1,24 @@
 'use strict';
 
-var _        = require('lodash');
-var User     = require('../user/user.model');
-var config   = require('../../config/environment');
-var auth     = require('../../auth/auth.service');
-var bnet = require('battlenet-api')();
-/**
-bnet.wow.guild.profile({ origin: 'us', realm: 'sargeras', name: 'top shelf' },
-  { apikey: config.bnet.clientID }, function(err, guildProfile) {
+var Guild = require('./guild.model');
+var __    = require('lodash');
 
-  console.log(guildProfile);
+module.exports = {
+    getRoster: function(req, res) {
+        Guild.findOne({}, function(err, guild) {
+            if(err) throw err;
 
-    if(err) {
-      return handleError(res, err);
+            guild.members =
+                __.filter(
+                    __.sortBy(guild.members,
+                        function(member) {
+                            return [member.rank, member.character.class, member.character.spec, member.character.name];
+                        }),
+                    function(member) {
+                        return member.character.level >= 91 && member.rank <= 7;
+                    });
+
+            res.send(guild.members);
+        });
     }
-    return res.status(200).json(guildProfile);
-})
-
-}
-
- */
-exports.qBattlenet = function(req, res) {
-    bnet.wow.guild.members({
-        origin: 'us',
-        realm: 'sargeras',
-        name: 'top shelf'
-    }, {apikey: config.bnet.clientID}, function(err, resp) {
-  console.log(resp);
-});
-}
+};

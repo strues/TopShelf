@@ -16,20 +16,20 @@ var User = require('../user/user.model');
 
 // Get list of applications
 exports.index = function(req, res) {
-  Application.loadRecent(function (err, applications) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(applications);
-  });
+    Application.loadRecent(function (err, applications) {
+        if (err) { return handleError(res, err); }
+        return res.status(200).json(applications);
+    });
 };
 
 // Get a single application
 exports.show = function(req, res) {
-  var author = req.user.name;
-  Application.findById(req.params.id).populate('user', 'name').exec(function (err, application) {
-    if(err) { return handleError(res, err); }
-    if(!application) { return res.sendStatus(404); }
-    return res.json(application);
-  });
+    var applicant = req.user.name;
+    Application.findById(req.params.id).populate('user', 'name').exec(function (err, application) {
+        if (err) { return handleError(res, err); }
+        if (!application) { return res.sendStatus(404); }
+        return res.json(application);
+    });
 };
 
 exports.like = function(req, res) {
@@ -68,10 +68,10 @@ exports.unlike = function(req, res) {
 
 // Creates a new application in the DB.
 exports.create = function(req, res) {
-  Application.create(req.body, function(err, application) {
-    if(err) { return handleError(res, err); }
-    return res.status(201).json(application);
-  });
+    Application.create(req.body, function(err, application) {
+        if (err) { return handleError(res, err); }
+        return res.status(201).json(application);
+    });
 };
 
 // Updates an existing application in the DB.
@@ -90,16 +90,16 @@ exports.update = function(req, res) {
 
 // Deletes a application from the DB.
 exports.destroy = function(req, res) {
-  Application.findById(req.params.id, function (err, application) {
-    if(err) { return handleError(res, err); }
-    if(!application) { return res.send(404); }
-    application.remove(function(err) {
-      if(err) { return handleError(res, err); }
-      return res.sendStatus(204);
+    Application.findById(req.params.id, function (err, application) {
+        if (err) { return handleError(res, err); }
+        if (!application) { return res.send(404); }
+        application.remove(function(err) {
+        if (err) { return handleError(res, err); }
+        return res.sendStatus(204);
     });
-  });
+    });
 };
 
 function handleError(res, err) {
-  return res.send(500, err);
+    return res.send(500, err);
 }

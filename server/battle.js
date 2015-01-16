@@ -1,14 +1,45 @@
-/**
- * Route includes for API calls
- */
+var https = require('https');
+var http  = require('http');
 
-'use strict';
+function responseHandler(res, done) {
+    var data = '';
 
-var errors = require('./components/errors');
-var path = require('path');
-var bnet = require('battlenet-api')();
-var config      = require('./config/environment');
+    res.on('data', function (chunk) {
+        data += chunk;
+    });
 
-module.exports = function(app) {
-
+    res.on('end', function () {
+        data = JSON.parse(data);
+        done(data);
+    });
 }
+
+module.exports = {
+    oauth: function(host, path, token, done) {
+        var battle = https.request({
+                host: host,
+                path: path + '?access_token=' + token,
+                port: 443,
+                method: 'GET',
+                headers: {
+                    Authorization: 'OAuth ' + token
+                }
+            },
+            function(res) {
+                responseHandler(res, done);
+            });
+        battle.end();
+    },
+    bnet: function(host, path, done) {
+        var battle = http.request({
+                host: host,
+                path: path,
+                port: 80,
+                method: 'GET'
+            },
+            function(res) {
+                responseHandler(res, done);
+            });
+        battle.end();
+    }
+};
