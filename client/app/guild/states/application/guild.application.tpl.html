@@ -1,9 +1,7 @@
-<div navbar></div>
 <div class="container frontendWrap">
+<div navbar></div>
 <div class="row" ng-controller="ApplicationCtrl as application">
- <alert ng-repeat="alert in application.alerts" type="{{alert.type}}" close="application.closeAlert($index)">{{alert.msg}}</alert>
-
-    <div class="col-sm-12 col-lg-8">
+<div class="col-sm-12 col-lg-8">
   <h1 class="text-light">Top Shelf <span class="recruitmentWhite">Guild Application</span></h1>
       <form name="applicationForm" novalidate ng-submit="application.submit(applicationForm.$valid, data)">
   <!-- Char Name -->

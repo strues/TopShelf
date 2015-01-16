@@ -11,7 +11,6 @@ var args        = require('yargs').argv,
     _           = require('lodash'),
     $           = require('gulp-load-plugins')({lazy: true}),
     colors      = $.util.colors,
-    sass        = require('gulp-ruby-sass'),
     envenv      = $.util.env;
 
 process.env.NODE_ENV = $.util.env.env || 'development';
@@ -32,10 +31,10 @@ var toDelete = [];
 gulp.task('sass', function () {
     log('Compiling Sass files to CSS');
     return gulp
-        .src(['client/styles/styles.scss', 'client/styles/**/*.scss'])
+        .src('client/styles/*.scss')
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
-        .pipe(sass())
+        .pipe($.sass())
         .pipe($.autoprefixer({
                 browsers: ['last 2 versions'],
                 cascade: true
@@ -216,14 +215,14 @@ gulp.task('watch', ['inject'], function () {
     });
 
     gulp
-        .watch([config.index, config.js, config.htmltemplates])
+        .watch([config.index, config.js, config.sass, config.htmltemplates])
         .on('change', $.livereload.changed);
 
     $.watch(config.sass, function () {
         gulp
-            .src(['client/styles/styles.scss', 'client/styles/**/_*.scss'])
+            .src(['client/styles/styles.scss', 'client/styles/**/*.scss'])
               .pipe($.plumber())
-              .pipe(sass())
+              .pipe($.sass())
               .pipe(gulp.dest('client/styles/css'))
               .pipe($.livereload());
     });

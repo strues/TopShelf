@@ -5,10 +5,7 @@ body {
   background-attachment: fixed;
   overflow-x: hidden;
 }
-.navbar-nav > li > a {
-  padding-top: 35px !important;
-  padding-bottom: none !important;
-}
+
 
 // Separator | <--- with padding lol
 .sep {
@@ -17,15 +14,18 @@ body {
 }
 
 .frontendWrap {
-  padding-top: 15px;
+  padding-top: 80px;
   background: #222222;
-  border: 1px solid darken(#1d1d1d, 15%);
-  border-radius: 2px;
+
+}
+
+.footer {
+    background: #222222;
 }
 
 .backendWrap {
   background: #1d1d1d;
-  border: 1px solid darken(#1d1d1d, 15%);;
+  border: 1px solid darken(#1d1d1d, 15%);
   padding: 20px;
   border-radius: 2px;
   min-height: 900px;

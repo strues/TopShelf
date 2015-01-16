@@ -12,22 +12,10 @@ $brand-primary:         #3498db !default;
   line-height: 1em;
 }
 .navbar-default {
-  margin-bottom: 60px;
-  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1);
-  transition: background 0.1s ease-in-out 0s;
-  background-color: #2f3b49;
-border-color: #282f38;
--webkit-border-radius: 1px; -moz-border-radius: 1px; -khtml-border-radius: 1px; border-radius: 1px;
--webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;
-background-clip: content-box;
--webkit-box-shadow: inset 0 1px rgba(255,255,255,.15), inset 0 -1px rgba(0,0,0,.2); -moz-box-shadow: inset 0 1px rgba(255,255,255,.15), inset 0 -1px rgba(0,0,0,.2); -khtml-box-shadow: inset 0 1px rgba(255,255,255,.15), inset 0 -1px rgba(0,0,0,.2); box-shadow: inset 0 1px rgba(255,255,255,.15), inset 0 -1px rgba(0,0,0,.2);
-
+    background-color: #2f3b49;
+    margin-bottom: 60px;
 }
 
-.navbar-fixed-top {
-  margin-bottom: 60px;
-  transform: translate3d(0, 0, 0);
-}
 .navbar-nav > li > a {
   font-family: $headings-font-family;
   font-size: $font-size-h4;
@@ -38,10 +26,9 @@ background-clip: content-box;
     border-bottom: 1px solid $brand-primary;
   }
 }
-.navbar-nav > li:last-child {
-  border-right: none;
+.navbar-nav li:last-child {
+    border-right: none;
 }
-.page_nav_last {border-right: none;}
 .navbar-text {
   padding-top: 15px;
 }
