@@ -1,22 +1,22 @@
-<div ng-controller="NewsCreateCtrl" class="backendWrap">
+<div ng-controller="NewsCreateCtrl" class="adminNews">
     <form novalidate ng-submit="createPost()">
-  <div class="row">
-  <div class="col-sm-10">
-         <h1>New Post</h1>
-         <h5>Create a new post that displays on the homepage</h5></span>
-  </div>
-  </div>
-<div class="row">
-<div class="col-sm-10">
-                <input type="text"
-                      class="form-control"
-                      placeholder="Post Title"
-                      ng-minLength=3
-                      ng-maxLength=75
-                      ng-model="newPost.title"
-                      required/>
-              </div>
-   <div class="col-sm-2">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1>New Post</h1>
+            <h5>Create a new post that displays on the homepage</h5></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <input type="text"
+                  class="form-control"
+                  placeholder="Post Title"
+                  ng-minLength=3
+                  ng-maxLength=75
+                  ng-model="newPost.title"
+                  required/>
+        </div>
+   <div class="col-sm-3">
           <div class="input-group" ng-controller="DatepickerCtrl">
             <input type="text"
                    class="form-control"
@@ -31,17 +31,18 @@
                    close-text="Close"
                          required/>
 
-  <span class="input-group-btn">
-    <button type="button" class="btn btn-default" ng-click="open($event)">
-    <span class="glyphicon glyphicon-calendar"></span>
-    </button>
-  </span>
-  </div>
-</div>
-</div><!--./row-->
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </button>
+            </span>
+        </div>
+    </div>
 
     <div class="row">
-    <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage']]" class="textEditor" ng-model="newPost.content"></text-angular>
+        <div class="col-sm-11">
+            <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage']]" class="textEditor" ng-model="newPost.content"></text-angular>
+        </div>
     </div>
      <!-- newPost.tags input-->
     <div class="row" style="padding-top:15px;">

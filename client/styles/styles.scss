@@ -2,29 +2,27 @@
 // Fonts
 //
 
-@import
-  "base/fonts",
-  "base/icons",
-  "base/normalize",
-  "base/html5bp";
+@import "base/fonts";
+@import "base/icons";
+@import "base/normalize";
+@import "base/html5bp";
 
 //
 // Utilities
 //
-@import
-  "utilities/variables",
-  "utilities/bootstrap",
-  "utilities/animations";
+@import "utilities/variables";
+@import "utilities/bootstrap";
+@import "utilities/animations";
 
 
 //
 // Components
 //
 
-@import
-  "components/buttons",
-  "components/forms",
-  "components/navbar";
+@import "components/buttons";
+@import "components/forms";
+@import "components/adminNews";
+@import "components/navbar";
 
 
 
@@ -32,13 +30,12 @@
 // Sections
 //
 
-@import
-  "sections/global",
-  "sections/homepage",
-  "sections/streams",
-  "sections/rosterHolder",
-  "sections/loginSignup",
-  "sections/recruitingPanel";
+@import "sections/global";
+@import "sections/homepage";
+@import "sections/streams";
+@import "sections/rosterHolder";
+@import "sections/loginSignup";
+@import "sections/recruitingPanel";
 
 .textEditor {
   overflow: hidden;

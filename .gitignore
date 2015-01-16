@@ -6,6 +6,7 @@ client/styles/css
 server/config/keys/
 dist/
 client/assets/
+.sass-cache/
 
 *.user
 *.gpState

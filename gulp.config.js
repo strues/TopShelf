@@ -16,7 +16,7 @@ module.exports = function() {
         server: server,
         htmltemplates: clientApp + '**/*.tpl.html',
         css: temp + '/app.css',
-        sass: client + '/styles/app.scss',
+        sass: client + ['/styles/styles.scss', '/styles/**/*.scss'],
         html: client + '/**/*.html',
         index: client + '/index.html',
         js: [
