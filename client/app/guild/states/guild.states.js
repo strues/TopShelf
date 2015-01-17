@@ -11,23 +11,18 @@
     function config($stateProvider) {
         $stateProvider
         .state('guildrecruitment', {
-            url: '/guild/recruitment',
+            url: '/recruitment',
             templateUrl: 'app/guild/states/recruitment/guild.recruitment.tpl.html',
             controller: 'RecruitmentCtrl as recruitment'
       })
        .state('apply', {
-            url: '/guild/application',
+            url: '/apply',
             templateUrl: 'app/guild/states/application/guild.application.tpl.html',
             controller: 'ApplicationCtrl',
             authenticate: true
       })
-       .state('roster', {
-            url: '/guild/roster',
-            templateUrl: 'app/guild/states/roster/guild.roster.tpl.html',
-            controller: 'GuildRosterCtrl as guildRoster'
-       })
        .state('streams', {
-            url: '/guild/streams',
+            url: '/streams',
             templateUrl: 'app/guild/states/streams/guild.streams.tpl.html',
             controller: 'StreamCtrl as vm'
       });

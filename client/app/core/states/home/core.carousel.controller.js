@@ -7,7 +7,7 @@
         carousel.myInterval = 3000;
         carousel.slides = [
             {
-                image: 'assets/images/hero.jpg'
+                image: 'assets/images/butcher.png'
             },
             {
                 image: 'assets/images/banner1.jpg'

@@ -13,6 +13,8 @@
         var home = this;
         home.posts = {};
 
+        home.butcherVideo = 'COa86-G8taI';
+
         PostFactory.getAllPosts().success(function(posts) {
 
             home.posts = posts;

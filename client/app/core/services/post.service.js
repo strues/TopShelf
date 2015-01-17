@@ -32,9 +32,6 @@
                     exports.upvotes += 1;
                 });
         };
-        exports.addComment = function(postId, comment) {
-            return $http.post(urlBase + '/' + postId + '/comments', comment);
-        };
 
         return exports;
 

@@ -31,13 +31,12 @@ var toDelete = [];
 gulp.task('sass', function () {
     log('Compiling Sass files to CSS');
     return gulp
-        .src('client/styles/*.scss')
+        .src(config.sass)
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.sass())
         .pipe($.autoprefixer({
-                browsers: ['last 2 versions'],
-                cascade: true
+                browsers: ['last 2 versions']
             }))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest('client/styles/css'))
@@ -47,7 +46,7 @@ gulp.task('sass', function () {
 gulp.task('optimize-css', ['sass'], function () {
     log('Optimizing the CSS for dist');
     return gulp
-        .src('client/styles/css/app.css')
+        .src('client/styles/css/styles.css')
         .pipe($.plumber())
         // .pipe($.uncss({
         //    html: glob.sync('client/**/*.tpl.html')
@@ -216,15 +215,14 @@ gulp.task('watch', ['inject'], function () {
 
     gulp
         .watch([config.index, config.js, config.sass, config.htmltemplates])
-        .on('change', $.livereload.changed);
+        .on('change', $.livereload);
 
     $.watch(config.sass, function () {
         gulp
             .src(['client/styles/styles.scss', 'client/styles/**/*.scss'])
               .pipe($.plumber())
               .pipe($.sass())
-              .pipe(gulp.dest('client/styles/css'))
-              .pipe($.livereload());
+              .pipe(gulp.dest('client/styles/css'));
     });
 
     $.watch(config.js, function () {

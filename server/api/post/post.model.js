@@ -17,8 +17,7 @@ var PostSchema = new Schema({
   },
   date: {type: Date, default: Date.now},
   image: String,
-  upvotes: {type: Number, default: 0},
-  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+  upvotes: {type: Number, default: 0}
 });
 
 PostSchema.statics = {

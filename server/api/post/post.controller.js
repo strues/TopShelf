@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var Post = require('./post.model');
-var Comment = require('../comment/comment.model');
 
 // Get list of posts
 exports.index = function(req, res) {
@@ -38,17 +37,6 @@ exports.create = function(req, res) {
         }
         return res.status(201).json(post);
     });
-};
-
-// Creates a new comment in the DB.
-exports.createComment = function(req, res, next) {
-    Comment.create(_.merge({author: req.user._id}, req.body),
-function(err, comment) {
-    if (err) {
-        return handleError(res, err);
-    }
-    return res.status(201).json(comment);
-});
 };
 
 // Updates an existing post in the DB.

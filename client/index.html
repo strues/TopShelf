@@ -15,7 +15,6 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
       <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css">
-      <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css">
       <link rel="stylesheet" href="bower_components/animate.css/animate.css">
       <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
       <!-- endinject -->
@@ -50,6 +49,7 @@
       <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
       <script src="bower_components/angular-formly/dist/formly.min.js"></script>
       <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
+      <script src="bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
       <!-- endinject -->
             <!-- inject:js -->
       <script src="app/app.js"></script>
@@ -61,14 +61,14 @@
       <script src="app/admin/adminSidebar.controller.js"></script>
       <script src="app/account/states/login/account.login.controller.js"></script>
       <script src="app/account/states/profile/account.profile.controller.js"></script>
-      <script src="app/account/states/signup/account.signup.controller.js"></script>
       <script src="app/account/states/settings/account.settings.controller.js"></script>
+      <script src="app/account/states/signup/account.signup.controller.js"></script>
       <script src="app/admin/directives/admin.navbar/admin.navbar.controller.js"></script>
       <script src="app/admin/states/applications/admin.applications.controller.js"></script>
-      <script src="app/admin/states/recruitment/admin.recruitment.controller.js"></script>
-      <script src="app/admin/states/recruitment/admin.recruitmentList.controller.js"></script>
       <script src="app/admin/states/news/admin.news-datePicker.controller.js"></script>
       <script src="app/admin/states/news/admin.news.controller.js"></script>
+      <script src="app/admin/states/recruitment/admin.recruitment.controller.js"></script>
+      <script src="app/admin/states/recruitment/admin.recruitmentList.controller.js"></script>
       <script src="app/admin/states/roster/admin.roster.controller.js"></script>
       <script src="app/core/directives/footer/core.footer.controller.js"></script>
       <script src="app/core/directives/navbar/core.navbar.controller.js"></script>
@@ -76,7 +76,6 @@
       <script src="app/core/states/home/core.home.controller.js"></script>
       <script src="app/guild/states/application/guild.application.controller.js"></script>
       <script src="app/guild/states/recruitment/guild.recruitment.controller.js"></script>
-      <script src="app/guild/states/roster/guild.roster.controller.js"></script>
       <script src="app/guild/states/streams/guild.streams.controller.js"></script>
       <script src="app/account/states/profile/edit/account.profile-edit.controller.js"></script>
       <script src="app/admin/states/applications/details/application-details.controller.js"></script>
@@ -88,10 +87,8 @@
       <script src="app/core/services/config.service.js"></script>
       <script src="app/core/services/logger.service.js"></script>
       <script src="app/core/services/post.service.js"></script>
-      <script src="app/core/services/recruitment.service.js"></script>
       <script src="app/core/services/util.service.js"></script>
       <script src="app/guild/services/guild.application.service.js"></script>
-      <script src="app/guild/services/guild.armory.service.js"></script>
       <script src="app/guild/services/guild.gameData.service.js"></script>
       <script src="app/guild/services/guild.recruitment.service.js"></script>
       <script src="app/guild/services/guild.streams.service.js"></script>
@@ -106,7 +103,6 @@
       <script src="app/core/directives/recruitingPanel/core.recruitingPanel.directive.js"></script>
       <script src="app/admin/states/news/edit/newsEditModal.directive.js"></script>
       <script src="app/appStart.js"></script>
-      <script src="app/classes-def.js"></script>
       <script src="app/account/states/account.states.js"></script>
       <script src="app/admin/states/admin.states.js"></script>
       <script src="app/core/filters/startFrom.filter.js"></script>

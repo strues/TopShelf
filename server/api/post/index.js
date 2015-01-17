@@ -2,7 +2,6 @@
 
 var express = require('express');
 var controller = require('./post.controller');
-var Comment = require('../comment/comment.model');
 var auth = require('../../auth/auth.service');
 var Post = require('./post.model');
 var router = express.Router();
@@ -22,21 +21,10 @@ router.param('post', function(req, res, next, id) {
         return next();
     });
 });
-router.param('comment', function(req, res, next, id) {
-    var query = Comment.findById(id);
 
-    query.exec(function (err, comment) {
-        if (err) { return next(err); }
-        if (!comment) { return next(new Error('cant find comment')); }
-
-        req.comment = comment;
-        return next();
-    });
-});
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
-router.post('/:id/comments', controller.createComment);
 router.put('/:id', auth.hasRole('admin'), controller.update);
 router.patch('/:id', auth.hasRole('admin'), controller.update);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
