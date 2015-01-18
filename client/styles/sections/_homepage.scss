@@ -2,11 +2,25 @@
     margin-top: -10px;
 }
 .newsContainer {
-  background-color: $porcelain;
-  background-image: url(../../assets/images/cream-dust.png);
-  color: #141414;
+    background-color: rgb(20, 21, 23);
+    border: 1px none black;
+    color: rgb(237, 237, 237);
 }
+.homeNews {
+    padding-bottom: 2px;
+    min-height: 100px;
+    overflow: hidden;
+    background-color: rgb(20, 21, 23);
+    padding: 10px;
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 1px;
 
+    min-height: 147px;
+    zoom: 1;
+}
+.homeNews:nth-child(odd) {
+    background-color: rgb(16, 17, 18);
+}
 .postMeta {
   font-size: inherit;
 }

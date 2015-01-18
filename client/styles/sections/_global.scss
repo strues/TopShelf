@@ -12,15 +12,19 @@ body {
   padding-left: 6px;
   padding-right: 6px;
 }
-
+.spaceRow {
+    height: 20px;
+    background-color: rgba(52, 152, 219, .65);
+}
 .frontendWrap {
   padding-top: 80px;
-  background: #222222;
-
+  border: 1px solid rgba(59, 62, 64, 0.52);
+  background-color: rgba(26, 26, 26, .85);
 }
 
 .footer {
-    background: #222222;
+     background: rgba(26, 26, 26, .85);
+
 }
 
 .backendWrap {
