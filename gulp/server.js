@@ -9,16 +9,16 @@ var browserSync = require('browser-sync');
 var middleware = require('./proxy');
 
 function browserSyncInit(baseDir, files, browser) {
-  browser = browser === undefined ? 'default' : browser;
+    browser = browser === undefined ? 'default' : browser;
 
-  var routes = null;
-  if(baseDir === 'client' || (util.isArray(baseDir) && baseDir.indexOf('client') !== -1)) {
-    routes = {
-      '/bower_components': 'bower_components'
+    var routes = null;
+    if (baseDir === 'client' || (util.isArray(baseDir) && baseDir.indexOf('client') !== -1)) {
+        routes = {
+        '/bower_components': 'bower_components'
     };
-  }
+    }
 
-  browserSync.instance = browserSync.init(files, {
+    browserSync.instance = browserSync.init(files, {
     startPath: '/',
     server: {
       baseDir: baseDir,
@@ -31,54 +31,54 @@ function browserSyncInit(baseDir, files, browser) {
 }
 
 gulp.task('serve', ['watch', 'nodemon'], function () {
-  browserSyncInit([
+    browserSyncInit([
     '.tmp',
     'client'
   ], [
     '.tmp/{app,styles}/**/*.css',
-    'client/{app,components}/**/*.js',
+    'client/app/**/*.js',
     'client/assets/images/**/*',
     '.tmp/*.html',
-    '.tmp/{app,components}/**/*.tpl.html',
+    '.tmp/app/**/*.tpl.html',
     'client/*.html',
-    'client/{app,components}/**/*.tpl.html'
+    'client/app/**/*.tpl.html'
   ]);
 });
 
 gulp.task('serve:dist', ['build'], function () {
-  browserSyncInit('dist');
+    browserSyncInit('dist');
 });
 
 gulp.task('serve:e2e', ['wiredep', 'injector:js', 'injector:css'], function () {
-  browserSyncInit(['.tmp', 'client'], null, []);
+    browserSyncInit(['.tmp', 'client'], null, []);
 });
 
 gulp.task('serve:e2e-dist', ['build'], function () {
-  browserSyncInit('dist/client', null, []);
+    browserSyncInit('dist/client', null, []);
 });
 
 gulp.task('nodemon', function(cb) {
-  var nodemon = require('gulp-nodemon');
+    var nodemon = require('gulp-nodemon');
 
   // We use this `called` variable to make sure the callback is only executed once
-  var called = false;
-  return nodemon({
-    script: 'server/server.js',
-    watch: ['server/server.js', 'server/**/*.*']
+    var called = false;
+    return nodemon({
+        script: 'server/server.js',
+        watch: ['server/server.js', 'server/**/*.*']
   })
   .on('start', function onStart() {
-    if (!called) {
-      cb();
-    }
-    called = true;
+      if (!called) {
+          cb();
+      }
+      called = true;
   })
   .on('restart', function onRestart() {
 
     // Also reload the browsers after a slight delay
-    setTimeout(function reload() {
-      browserSync.reload({
+      setTimeout(function reload() {
+          browserSync.reload({
         stream: false
       });
-    }, 500);
+      }, 500);
   });
 });

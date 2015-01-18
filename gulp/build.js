@@ -7,11 +7,12 @@ var $ = require('gulp-load-plugins')({
 });
 
 gulp.task('styles', ['wiredep', 'injector:css:preprocessor'], function () {
-  return gulp.src(['client/styles/styles.scss', 'client/styles/vendor.scss'])
+    return gulp
+    .src(['client/styles/styles.scss', 'client/styles/vendor.scss'])
     .pipe($.sass({style: 'expanded'}))
     .on('error', function handleError(err) {
-      console.error(err.toString());
-      this.emit('end');
+        console.error(err.toString());
+        this.emit('end');
     })
     .pipe($.autoprefixer())
     .pipe(gulp.dest('.tmp/styles/'));
@@ -39,7 +40,7 @@ gulp.task('injector:css:preprocessor', function () {
 gulp.task('injector:css', ['styles'], function () {
     return gulp.src('client/index.html')
     .pipe($.inject(gulp.src([
-        '.tmp/{styles, app}/**/*.css',
+        '.tmp/styles/**/*.css',
         '!.tmp/styles/vendor.css'
       ], {read: false}), {
       ignorePath: '.tmp',
@@ -96,11 +97,11 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
-    .pipe($.ngAnnotate())
+    .pipe($.ngAnnotate({add: true}))
     .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.replace('bower_components/bootstrap-sass-official/assets/fonts/bootstrap', 'fonts'))
+    .pipe($.replace('../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap', 'assets/fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -120,7 +121,7 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
 gulp.task('images', function () {
     return gulp.src('client/assets/images/**/*')
     .pipe($.imagemin({
-      optimizationLevel: 3,
+      optimizationLevel: 4,
       progressive: true,
       interlaced: true
     }))

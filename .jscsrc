@@ -2,7 +2,6 @@
     "excludeFiles": ["node_modules/**", "client/bower_components/**", "server/**/*.js"],
 
     "requireCurlyBraces": [
-        "if",
         "else",
         "for",
         "while",

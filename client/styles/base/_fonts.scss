@@ -1,18 +1,22 @@
-
 $fa-font-path: "../../../bower_components/font-awesome/fonts";
 @import "../../../bower_components/font-awesome/scss/font-awesome";
 
 @import url(//fonts.googleapis.com/css?family=Khand:400,500|Open+Sans:400,300);
 
-.text-light {
-  padding-bottom: 30px;
-}
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Khand", sans-serif;
     font-weight: 600;
 }
+body {
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
 .smCaps {
     font-variant: small-caps;
+}
+
+.text-light {
+  padding-bottom: 30px;
 }

@@ -20,7 +20,6 @@ $brand-primary:         #3498db;
 
 @import "components/buttons";
 @import "components/forms";
-@import "components/adminNews";
 @import "components/navbar";
 
 
@@ -34,6 +33,7 @@ $brand-primary:         #3498db;
 @import "sections/streams";
 @import "sections/rosterHolder";
 @import "sections/loginSignup";
+@import "sections/recruitmentPage";
 @import "sections/recruitingPanel";
 .panel {
     background: transparent;
