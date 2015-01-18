@@ -1,5 +1,5 @@
 /**
- * Main application file
+ * Main Server File
  */
 
 'use strict';
@@ -10,21 +10,10 @@ var express     = require('express'),
     mongoose    = require('mongoose'),
     config      = require('./config/environment');
 
-var battle = require('./battle');
-
-// var https      = require('https'),
-// fs         = require('fs'),
-// keyFile  = './server/config/keys/key.pem',
-// certFile  = './server/config/keys/cert.pem';
-// var ssl     = {
-//   key: fs.readFileSync(keyFile),
-//  cert: fs.readFileSync(certFile)
-// };
-
-// Connect to database
+// Establish Mongo Connection
 mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
     if (err) {
-        console.log('Connection refused to ' + config.mongo.uri);
+        console.log('Rekt, connection failed to: ' + config.mongo.uri);
         console.log(err);
     } else {
         console.log('Connection successful to: ' + config.mongo.uri);
@@ -37,16 +26,14 @@ var server      = require('http').createServer(app);
 
 require('./config/express')(app);
 require('./routes')(app);
-//require('./battle')(app);
 
 /*
  * Start the server
  */
 //https.createServer(ssl, app).listen(8443);
 server.listen(config.port, config.ip, function () {
-    console.log('Express server listening on %d, in %s mode',
+    console.log('Express is running on %d, in %s mode',
     config.port, app.get('env'));
-
 });
 
 exports = module.exports = app;

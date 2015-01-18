@@ -1,6 +1,6 @@
-$icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-$fa-font-path: "../../bower_components/font-awesome/fonts";
-@import "../../bower_components/font-awesome/scss/font-awesome";
+
+$fa-font-path: "../../../bower_components/font-awesome/fonts";
+@import "../../../bower_components/font-awesome/scss/font-awesome";
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 .text-light {

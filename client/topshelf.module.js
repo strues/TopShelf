@@ -12,7 +12,7 @@
     angular.module('topshelf.guild', []);
     angular.module('topshelf.account', []);
     angular.module('topshelf.admin', []);
-
+    angular.module('topshelf', []);
     angular
         .module('topshelf', [
                   'ngStorage',

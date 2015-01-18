@@ -22,7 +22,8 @@
     "angular-loading-bar": "~0.6.0",
     "angular-formly": "~1.0.0",
     "angular-formly-templates-bootstrap": "~0.0.2",
-    "angular-youtube-mb": "~0.1.6"
+    "angular-youtube-mb": "~0.1.6",
+    "modernizr": "~2.8.3"
   },
   "overrides": {
     "bootstrap-sass-official": {

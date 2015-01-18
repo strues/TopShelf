@@ -1,5 +1,5 @@
 /**
- * Express configuration
+ * Express Configuration
  */
 
 'use strict';
@@ -32,9 +32,10 @@ module.exports = function(app) {
     app.use(bodyParser.json());
     app.use(bodyParser.json({type: 'vnd.api+json'})); // parse application/vnd.api+json as json
     app.use(bodyParser.urlencoded({extended: 'true'})); // parse application/x-www-form-urlencoded
-
     app.use(methodOverride('X-HTTP-Method-Override'));
-
+    app.use(cors());
+    app.use(cookieParser());
+    app.use(passport.initialize());
   // Enable jsonp
     app.use(session({
     secret: config.secrets.session,
@@ -43,12 +44,10 @@ module.exports = function(app) {
         port: 6379,
         client: client
     }),
-        saveUninitialized: true, // don't create session until something stored,
+        saveUninitialized: false, // don't create session until something stored,
         resave: true // don't save session if unmodified
     }));
-    app.use(cors());
-    app.use(cookieParser());
-    app.use(passport.initialize());
+
     app.use(passport.session());
 
     app.set('appPath', path.join(config.root, 'client'));
@@ -60,8 +59,9 @@ module.exports = function(app) {
     }
 
     if ('development' === env || 'test' === env) {
-        app.use(require('connect-livereload')());
-        app.use(express.static(app.get('appPath')));
+        app.use(express.static(path.join(config.root, '.tmp')));
+        app.use(express.static(path.join(config.root, 'client')));
+        app.set('appPath', 'client');
         app.use(morgan('dev'));
         app.use(errorHandler()); // Error handler - has to be last
     }
