@@ -1,6 +1,10 @@
 .recruitingP {
   padding-top: 30px;
   color: #bebebe;
+  background-color: #2d2d2d;
+}
+.recruitmentHeader h2 {
+    color: $tsBlue;
 }
 .recruitmentHeader {
   text-align: center;
@@ -9,14 +13,16 @@
 .recruitmentWhite {
   color: #fff;
 }
-
+.recruitmentPanel {
+    background: #2d2d2d;
+}
 .class-icon {
     width: 24px;
     height: 24px;
 }
 
 .label-member {
-    paddding: 2px;
+    padding: 2px;
     margin: 2px;
     display: inline-block;
     font-size: 0.9em;

@@ -1,39 +1,51 @@
-$dark:                  #060A0F;
-$nav_bg:                $dark;
-$nav_border:            darken($nav_bg, 10%);
-$sub_nav_bg:            $nav_bg;
-$brand-primary:         #3498db !default;
-
 .navbar-brand {
-  padding-top: 10px;
-  padding-right: 15px;
-  max-height: 100%;
-  margin-right: 10px;
-  line-height: 1em;
+    max-height: 100%;
+    padding-right: 15px;
+    padding-top: 10px;
+    margin-right: 10px;
+
+    line-height: 1em;
 }
+
 .navbar-default {
-    background-color: #2f3b49;
-    background-image: url(../../assets/images/absurdity.png);
     margin-bottom: 60px;
+    border-bottom: darken($tsBlue, 20%);
+
+    background-color: $tsBlue;
+    background-image: url(../../assets/images/absurdity.png);
     box-shadow: inset 0 1px rgba(255,255,255,.15), inset 0 -1px rgba(0,0,0,.2);
 }
+
+.navbar-default .navbar-nav > li > a {
+    color: darken($tsBlue, 85%);
+    font-size: 18px;
+    font-weight: 500;
+}
+
 .navbar-default .navbar-nav > .active > a:focus {
     background-color: rgb(75,119,190);
 }
 
 .navbar-nav > li > a {
-  font-family: $headings-font-family;
-  font-size: $font-size-h4;
-  padding-top: 35px !important;
-  padding-bottom: none !important;
-  border-right: solid 1px rgba(255,255,255, .10);
-  &:hover {
-    border-bottom: 1px solid $brand-primary;
-  }
+    padding-bottom: none !important;
+    padding-top: 35px !important;
+    border-right: solid 1px rgba(255,255,255, .10);
+
+    font-family: 'Khand', sans-serif;
+    font-size: 20px;
+
+    &:hover {
+        color: #FFF;
+    }
+}
+.navbar-nav li:hover {
+    background-color: darken($tsBlue, 5%);
+    color: #FFF;
 }
 .navbar-nav li:last-child {
     border-right: none;
 }
+
 .navbar-text {
-  padding-top: 15px;
+    padding-top: 15px;
 }

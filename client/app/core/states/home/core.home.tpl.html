@@ -1,7 +1,7 @@
 
 <div class="container frontendWrap">
 <div navbar></div>
-<div class="row" ng-controller="HomeCarouselCtrl as carousel">
+<div class="row carouselArea" ng-controller="HomeCarouselCtrl as carousel">
     <carousel interval="carousel.myInterval" disable-animation="true">
       <slide ng-repeat="slide in carousel.slides" active="slide.active">
         <img ng-src="{{slide.image}}" width="1170px"style="margin:auto;">

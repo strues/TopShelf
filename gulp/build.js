@@ -18,16 +18,16 @@ gulp.task('styles', ['wiredep', 'injector:css:preprocessor'], function () {
 });
 
 gulp.task('injector:css:preprocessor', function () {
-  return gulp.src('client/styles/index.scss')
+    return gulp.src('client/styles/index.scss')
     .pipe($.inject(gulp.src([
         'client/{styles,app}/**/*.scss',
         '!client/styles/styles.scss',
         '!client/styles/vendor.scss'
       ], {read: false}), {
       transform: function(filePath) {
-        filePath = filePath.replace('client/styles/', '');
-        filePath = filePath.replace('client/app/', '../app/');
-        return '@import \'' + filePath + '\';';
+          filePath = filePath.replace('client/styles/', '');
+          filePath = filePath.replace('client/app/', '../app/');
+          return '@import \'' + filePath + '\';';
       },
       starttag: '// injector',
       endtag: '// endinjector',
@@ -37,7 +37,7 @@ gulp.task('injector:css:preprocessor', function () {
 });
 
 gulp.task('injector:css', ['styles'], function () {
-  return gulp.src('client/index.html')
+    return gulp.src('client/index.html')
     .pipe($.inject(gulp.src([
         '.tmp/{styles, app}/**/*.css',
         '!.tmp/styles/vendor.css'
