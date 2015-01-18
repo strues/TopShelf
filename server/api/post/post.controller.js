@@ -5,7 +5,8 @@ var Post = require('./post.model');
 
 // Get list of posts
 exports.index = function(req, res) {
-    Post.find().populate('author', 'name').exec(function(err, posts) {
+    Post.find().populate('author', 'name')
+    .exec(function(err, posts) {
         if (err) {
             return handleError(res, err);
         }
@@ -17,7 +18,6 @@ exports.index = function(req, res) {
 exports.show = function(req, res) {
     Post.findById(req.params.id)
     .populate('author', 'name')
-    .populate('comments')
     .exec(function (err, post) {
         if (err) {
             return handleError(res, err);
@@ -52,13 +52,13 @@ exports.update = function(req, res) {
             return res.sendStatus(404);
         }
 
-        var updated = _.merge(post, req.body);
-        console.log(updated.category);
+        var updated = _.merge(post, req.body._id);
+        console.log(updated.post);
         updated.save(function(err) {
             if (err) {
                 return handleError(res, err);
             }
-            console.log(updated.category);
+            console.log(updated.post);
             return res.status(200).json(updated);
         });
     });

@@ -35,11 +35,11 @@ bnetId    : Number,
 
     // site settings
     showBattletag : Boolean,
-  activity: {
+    activity: {
     date_created: {type: Date, default: Date.now},
     last_logon: {type: Date, default: Date.now},
-    last_updated: {type: Date},
- }
+    last_updated: {type: Date}
+    }
 });
 
 /**

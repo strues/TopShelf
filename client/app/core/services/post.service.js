@@ -26,12 +26,6 @@
         exports.removePost = function(postId) {
             return $http.delete(urlBase + '/' + postId);
         };
-        exports.upvote = function(updatedPost) {
-            return $http.put(urlBase + '/' + updatedPost._id + '/upvote')
-                .success(function(data) {
-                    exports.upvotes += 1;
-                });
-        };
 
         return exports;
 

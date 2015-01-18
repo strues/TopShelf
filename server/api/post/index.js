@@ -29,20 +29,4 @@ router.put('/:id', auth.hasRole('admin'), controller.update);
 router.patch('/:id', auth.hasRole('admin'), controller.update);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 
-router.put('/:id/comments/:comment/upvote', function(req, res, next) {
-    req.comment.upvote(function(err, comment) {
-        if (err) { return next(err); }
-
-        res.json(comment);
-    });
-});
-
-router.put('/:id/upvote', function(req, res, next) {
-    req.post.upvote(function(err, post) {
-        if (err) { return next(err); }
-
-        res.json(post);
-    });
-});
-
 module.exports = router;
