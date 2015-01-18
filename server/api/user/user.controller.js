@@ -195,30 +195,21 @@ exports.destroy = function(req, res) {
  * Change a users password
  */
 exports.changePassword = function(req, res, next) {
-    var userId = req.user._id;
-    var oldPass = String(req.body.oldPassword);
-    var newPass = String(req.body.newPassword);
+  var userId = req.user._id;
+  var oldPass = String(req.body.oldPassword);
+  var newPass = String(req.body.newPassword);
 
-    User.findById(userId, function(err, user) {
-        user.authenticate(oldPass, function(authErr, authenticated) {
-            if (authErr) {
-                res.sendStatus(403);
-            }
-
-            if (authenticated) {
-                user.password = newPass;
-                user.save(function(err) {
-                    if (err) {
-                        return validationError(res, err);
-                    }
-                    res.sendStatus(200);
-                });
-            } else {
-                res.sendStatus(403);
-            }
-        });
-    });
-    next();
+  User.findById(userId, function (err, user) {
+    if(user.authenticate(oldPass)) {
+      user.password = newPass;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+      });
+    } else {
+      res.send(403);
+    }
+  });
 };
 
 /**

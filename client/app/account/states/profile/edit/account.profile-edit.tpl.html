@@ -1,12 +1,42 @@
 <div navbar></div>
-<div class="container frontendWrap">
+<div class="container frontendWrap" ng-controller="ProfileEditCtrl as vm">
 
 <div class="panel panel-default">
     <div class="panel-heading">
 Hello, {{ vm.Auth.getCurrentUser().name }}</div>
     <div class="panel-body">
-      <legend><i class="ion-clipboard"></i> Edit My Profile</legend>
-      <!-- <form method="post" ng-submit="vm.updateProfile()">
+      <legend class="legendHeader"><i class="ion-clipboard"></i> Edit Your Profile</legend>
+      <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
+
+        <div class="form-group">
+          <label>Current Password</label>
+
+          <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>New Password</label>
+
+          <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
+                 ng-minlength="3"
+                 required/>
+          <p class="help-block"
+             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+            Password must be at least 3 characters.
+          </p>
+        </div>
+
+        <p class="help-block"> {{ message }} </p>
+
+        <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+      </form>
+
+
+      <form method="post" ng-submit="vm.updateProfile()">
         <div class="form-group">
           <label class="control-label"><i class="ion-person"></i> Battletag</label>
           <input type="text" class="form-control" ng-model="user.battletag" />
@@ -16,7 +46,7 @@ Hello, {{ vm.Auth.getCurrentUser().name }}</div>
           <input type="email" class="form-control" ng-model="user.email" />
         </div>
         <button class="btn btn-lg btn-success">Update Information</button>
-      </form> -->
+      </form>
     </div>
   </div>
 

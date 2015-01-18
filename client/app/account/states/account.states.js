@@ -52,7 +52,9 @@
       .state('account.profile-edit', {
             url: '/profile/edit',
             templateUrl: 'app/account/states/profile/edit/account.profile-edit.tpl.html',
-            controller: 'ProfileEditCtrl'
+            controller: 'ProfileEditCtrl',
+            controllerAs: 'vm',
+            authenticate: true
       })
       .state('account.settings', {
             url: '/user/settings',
