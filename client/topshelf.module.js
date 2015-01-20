@@ -26,6 +26,7 @@
                   'textAngular',
                   'formly',
                   'hSweetAlert',
+                  'ngReactGrid',
                   'angular-loading-bar',
                   'topshelf.core',
                   'topshelf.account',
