@@ -12,9 +12,13 @@
   width: 330px;
   margin: 12% auto;
 }
-
+.panel-default > .panel-heading {
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  background-color: $mdGray;
+}
 .panel-head {
   text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  background-color: $mdGray;
 }
 
 .has-feedback .form-control {

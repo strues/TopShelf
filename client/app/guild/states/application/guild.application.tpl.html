@@ -3,7 +3,7 @@
 <div class="row" ng-controller="ApplicationCtrl as application">
 <div class="col-sm-12 col-lg-8">
   <h1 class="text-light">Top Shelf <span class="recruitmentWhite">Guild Application</span></h1>
-      <form name="applicationForm" novalidate ng-submit="application.submit(applicationForm.$valid, data)">
+      <form class="applicationForm" name="applicationForm" novalidate ng-submit="application.submit(applicationForm.$valid, data)">
   <!-- Char Name -->
   <div class="row">
   <div class="col-md-4 form-group has-feedback"
@@ -226,27 +226,37 @@
 
 
 
-          <p class="text-center text-muted"><small>Your application will be reviewed within 1-2 days. All fields are required. If you dont see a notification telling you we received your application, it did not submit. You can preview your application as you type it.</small></p>
+          <p class="text-center applicationForm"><small>Your application will be reviewed within 1-2 days. All fields are required. If you dont see a notification telling you we received your application, it did not submit. You can preview your application as you type it.</small></p>
 
           <button type="submit" ng-disabled="applicationForm.$invalid" class="btn btn-lg btn-block btn-primary">Apply</button>
           <br/>
     </form>
     </div>
     <div class="col-lg-4">
+    <div class="panel applicationRightPanel">
+    <h4 class="blueText"><i class="fa fa-star"></i> Things to remember as you apply <i class="fa fa-star"></i></h4>
+        <ul class="list-unstyled applicationRightList">
+            <li> <i class="fa fa-plus"></i> The application must be filled out completely and correctly in order for it to submit. A preview
+                of your application is shown below.</li>
+            <li><i class="fa fa-plus"></i> We ask that your UI Screenshot be from a raid, please make sure it is.</li>
+            <li><i class="fa fa-plus"></i> Our raids days are Mon through Thurs from 8:00pm until 12:00am CST. Occasionally we go over,
+                but that is rare.</li>
+            </ul>
+    </div>
     <div class="well">
-    <h5 class="appPreview">Character Name:</h5><span ng-bind="application.data.charName"></span>
-    <h5 class="appPreview">Character Class:</h5><span ng-bind="application.data.charClass"></span>
-    <h5 class="appPreview">Character Spec:</h5><span ng-bind="application.data.charSpec"></span>
-    <h5 class="appPreview">Character Server:</h5><span ng-bind="application.data.charServer"></span>
-    <h5 class="appPreview">Armory:</h5><span ng-bind="application.data.charArmory"></span>
-    <h5 class="appPreview">First Name:</h5><span ng-bind="application.data.applicantName"></span>
-    <h5 class="appPreview">Age:</h5><span ng-bind="application.data.applicantAge"></span>
-    <h5 class="appPreview">RealId:</h5><span ng-bind="application.data.applicantRealId"></span>
-    <h5 class="appPreview">Logs:</h5><span ng-bind="application.data.charLogs"></span>
-    <h5 class="appPreview">Heroic Experience:</h5><span ng-bind="application.data.heroicXP"></span>
-    <h5 class="appPreview">Guild History:</h5><span ng-bind="application.data.pastGuilds"></span>
-    <h5 class="appPreview">UI Screenshot:</h5><span ng-bind="application.data.screenshot"></span>
-    <h5 class="appPreview">Why Top Shelf:</h5><span ng-bind="application.data.whyTS"></span>
+        <h5 class="appPreview">Character Name:</h5><span ng-bind="application.data.charName"></span>
+        <h5 class="appPreview">Character Class:</h5><span ng-bind="application.data.charClass"></span>
+        <h5 class="appPreview">Character Spec:</h5><span ng-bind="application.data.charSpec"></span>
+        <h5 class="appPreview">Character Server:</h5><span ng-bind="application.data.charServer"></span>
+        <h5 class="appPreview">Armory:</h5><span ng-bind="application.data.charArmory"></span>
+        <h5 class="appPreview">First Name:</h5><span ng-bind="application.data.applicantName"></span>
+        <h5 class="appPreview">Age:</h5><span ng-bind="application.data.applicantAge"></span>
+        <h5 class="appPreview">RealId:</h5><span ng-bind="application.data.applicantRealId"></span>
+        <h5 class="appPreview">Logs:</h5><span ng-bind="application.data.charLogs"></span>
+        <h5 class="appPreview">Heroic Experience:</h5><span ng-bind="application.data.heroicXP"></span>
+        <h5 class="appPreview">Guild History:</h5><span ng-bind="application.data.pastGuilds"></span>
+        <h5 class="appPreview">UI Screenshot:</h5><span ng-bind="application.data.screenshot"></span>
+        <h5 class="appPreview">Why Top Shelf:</h5><span ng-bind="application.data.whyTS"></span>
     </div>
     </div>
   </div>

@@ -11,12 +11,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 body {
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: #bebebe;
 }
-
+.blueText {
+    color: $tsBlue;
+}
 .smCaps {
     font-variant: small-caps;
 }
 
 .text-light {
   padding-bottom: 30px;
+  color: $tsBlue;
 }

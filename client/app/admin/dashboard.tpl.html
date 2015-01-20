@@ -1,9 +1,21 @@
-<div class="backendWrap" style="background: #efefef;">
 <div class="row">
 <!-- content of page -->
 <h1>Dashboard</h1>
-<div class="col-sm-12">
+<div class="col-sm-12" ng-controller="AdminDashboardCtrl as dash">
+<div ng-repeat="user in dash.users">
 
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{user.email}}</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="list-unstyled col-lg-6 ">
+          <li><strong>Name: </strong>{{user.name}}</li>
+          <li><strong>Email: </strong>{{user.email}}</li>
+          <li><strong>Role: </strong>{{user.role}}</li>
+        </ul>
+        </div>
+    </div>
 
 </div>
 </div>

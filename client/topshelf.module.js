@@ -24,7 +24,6 @@
                   'ui.router',
                   'ui.bootstrap',
                   'textAngular',
-                  'youtube-embed',
                   'formly',
                   'hSweetAlert',
                   'angular-loading-bar',

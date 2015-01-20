@@ -27,13 +27,10 @@ body {
 }
 
 .backendWrap {
-  background: #1d1d1d;
-  border: 1px solid darken(#1d1d1d, 15%);
-  padding: 20px;
-  border-radius: 2px;
-  min-height: 900px;
-  overflow-x:hidden;
-
+  border: 1px solid rgba(59, 62, 64, 0.52);
+  background-color: rgba(26, 26, 26, .85);
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .no-gutter > [class*='col-'] {

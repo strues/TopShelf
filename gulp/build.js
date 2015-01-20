@@ -1,12 +1,12 @@
 'use strict';
 
 var gulp = require('gulp');
-
+var config = require('./config');
 var $ = require('gulp-load-plugins')({
-  pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
+  pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'glob', 'del']
 });
 
-gulp.task('styles', ['wiredep', 'injector:css:preprocessor'], function () {
+gulp.task('styles', ['wiredep', 'injector:sass'], function () {
     return gulp
     .src(['client/styles/styles.scss', 'client/styles/vendor.scss'])
     .pipe($.sass({style: 'expanded'}))
@@ -15,11 +15,13 @@ gulp.task('styles', ['wiredep', 'injector:css:preprocessor'], function () {
         this.emit('end');
     })
     .pipe($.autoprefixer())
-    .pipe(gulp.dest('.tmp/styles/'));
+    .pipe(gulp.dest('.tmp/styles/'))
+    .pipe($.notify('Sass changed and reloaded'));
 });
 
-gulp.task('injector:css:preprocessor', function () {
-    return gulp.src('client/styles/index.scss')
+gulp.task('injector:sass', function () {
+    return gulp
+    .src('client/styles/index.scss')
     .pipe($.inject(gulp.src([
         'client/{styles,app}/**/*.scss',
         '!client/styles/styles.scss',
@@ -34,7 +36,8 @@ gulp.task('injector:css:preprocessor', function () {
       endtag: '// endinjector',
       addRootSlash: false
     }))
-    .pipe(gulp.dest('client/styles/'));
+    .pipe(gulp.dest('client/styles/'))
+    .pipe($.notify());
 });
 
 gulp.task('injector:css', ['styles'], function () {
@@ -46,17 +49,19 @@ gulp.task('injector:css', ['styles'], function () {
       ignorePath: '.tmp',
       addRootSlash: false
     }))
-    .pipe(gulp.dest('client/'));
+    .pipe(gulp.dest('client/'))
+    .pipe($.notify());
 });
 
-gulp.task('scripts', function () {
+gulp.task('lint', function () {
     return gulp.src(['client/app/**/*.js', '!client/app/**/*.spec.js'])
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('injector:js', ['scripts', 'injector:css'], function () {
-    return gulp.src(['client/index.html', '.tmp/index.html'])
+gulp.task('injector:js', ['lint', 'injector:css'], function () {
+    return gulp
+    .src(['client/index.html', '.tmp/index.html'])
     .pipe($.inject(gulp.src([
       'client/app/**/*.js',
       '!client/app/**/*.spec.js',
@@ -65,11 +70,14 @@ gulp.task('injector:js', ['scripts', 'injector:css'], function () {
       ignorePath: 'client',
       addRootSlash: false
     }))
-    .pipe(gulp.dest('client/'));
+    .pipe(gulp.dest('client/'))
+    .pipe($.notify());
 });
 
 gulp.task('partials', function () {
-    return gulp.src(['client/app/**/*.tpl.html', '.tmp/app/**/*.tpl.html'])
+
+    return gulp
+    .src('client/app/**/*.tpl.html')
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
@@ -77,9 +85,11 @@ gulp.task('partials', function () {
     }))
     .pipe($.angularTemplatecache('templates.js', {
       module: 'topshelf.core',
-      standalone: false
+      standalone: false,
+      root: 'app/'
     }))
-    .pipe(gulp.dest('.tmp/inject/'));
+    .pipe(gulp.dest('.tmp/'))
+    .pipe($.notify());
 });
 
 gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], function () {
@@ -87,9 +97,11 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
     var jsFilter = $.filter('**/*.js');
     var cssFilter = $.filter('**/*.css');
     var assets;
+    var templateCache = './.tmp/templates.js';
 
-    return gulp.src(['client/*.html', 'client/**/*.tpl.html', '.tmp/*.html'])
-    .pipe($.inject(gulp.src('.tmp/inject/templates.js', {read: false}), {
+    return gulp.src('client/index.html')
+    .pipe($.plumber())
+    .pipe($.inject(gulp.src(templateCache, {read: false}), {
       starttag: '<!-- inject:partials -->',
       ignorePath: '.tmp',
       addRootSlash: false
@@ -97,11 +109,13 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
+    .pipe($.sourcemaps.init())
     .pipe($.ngAnnotate({add: true}))
     .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
     .pipe(jsFilter.restore())
+    .pipe($.sourcemaps.write())
     .pipe(cssFilter)
-    .pipe($.replace('../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap', 'assets/fonts'))
+    .pipe($.replace(['../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap', '../../bower_components/font-awesome/fonts'], 'assets/fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -115,7 +129,8 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
     }))
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest('dist/client/'))
-    .pipe($.size({title: 'dist/client/', showFiles: true}));
+    .pipe($.size({title: 'dist/client/', showFiles: true}))
+    .pipe($.notify());
 });
 
 gulp.task('images', function () {
@@ -144,4 +159,4 @@ gulp.task('clean', function (done) {
     $.del(['dist/', '.tmp/'], done);
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'misc']);
+gulp.task('build', ['partials', 'html', 'images', 'fonts', 'misc']);

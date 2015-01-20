@@ -1,0 +1,13 @@
+.table > thead > tr > th {
+    border-color: $drkrGray;
+}
+
+.table-striped > tbody > tr:nth-child(odd) {
+    background-color: $drkGray;
+}
+.table-striped > tbody > tr:nth-child(even) {
+    background-color: $mdGray;
+}
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    border-color: $drkrGray;
+}
