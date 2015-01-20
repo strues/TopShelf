@@ -182,12 +182,21 @@ exports.show = function(req, res, next) {
  * Deletes a user
  * restriction: 'admin'
  */
+
 exports.destroy = function(req, res) {
-    User.findByIdAndRemove(req.params.id, function(err, user) {
+    User.findById(req.params.id, function(err, user) {
         if (err) {
-            return res.status(500).json(err);
+            return handleError(res, err);
         }
-        return res.sendStatus(204);
+        if (!user) {
+            return res.send(404);
+        }
+        user.remove(function(err) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.send(204);
+        });
     });
 };
 
