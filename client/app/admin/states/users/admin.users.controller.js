@@ -1,65 +1,44 @@
 (function () {
     'use strict';
 
-    function AdminUsersCtrl(Auth, $http, User, $log, $modal, $scope) {
-        //var adminUsers = this;
+  /**
+   * @ngdoc object
+   * @name admin.users.controller:AdminUsersCtrl
+   *
+   * @description
+   *
+   */
 
-        $scope.users = [];
+    function AdminUsersCtrl ($scope, $filter, $http, $location) {
+      $http.get('/api/users').success(function(users) {
+          $scope.users = users;
 
-        $scope.selectUser = function(user) {
-            $scope.user = user;
-
-        };
-        $scope.getUsers = function() {
-            $http.get('/api/users').then(function(res) {
-            $scope.users = res.data;
-        });
-        };
-        $scope.deleteUser = function(index, user) {
-            var ask;
-            ask = confirm('Delete ' + user.email + '?');
-            $http.delete('/api/users/' + user._id).success(function() {
+      });
+      $scope.selectUser = function(user) {
+        $location.path('/admin/users/details/' + user._id);
+    };
+      $scope.deleteUser = function(user) {
+          $http.delete('/api/users/' + user._id).success(function() {
             $http.get('/api/users').success(function(users) {
                 $scope.users = users;
             });
         });
-        };
-
-        $scope.open = function (size, userID) {
-
-        var modalInstance = $modal.open({
-          templateUrl: 'adminUsersModal.html',
-          controller: 'AdminUsersCtrl',
-           scope: $scope,
-        size: 'lg',
-          resolve: {
-                    user: function () {
-                        $scope.user = user._id;
-                        $http.get('/api/users/' + user._id).success(function() {
-
-                $scope.users = users;
-            });
-                        var i = 0;
-                        for (; i < $scope.users.length; i++) {
-                            if ($scope.users[i]._id === userID) {
-                                $scope.user = $scope.users[i];
-                                return $scope.user;
-                            }
-                        }
-                    }
-                  }
-    });
-
-        modalInstance.result.then(function (selectedUser) {
-          $scope.selected = selectedUser;
-        }, function () {
-          $log.info('Modal dismissed at: ' + new Date());
-        });
       };
 
-    }
+      $scope.getUserById = function(id) {
+            var results = jQuery.grep($scope.user, function(user, i) { // jshint ignore:line
+                return (user._id === id);
+            });
+            return results[0];
+        };
+
+      $scope.addNew = function() {
+        $location.path('/admin/users/view');
+    };
+      var dateAsString = $filter('date')($scope.user, 'yyyy-MM-dd');
+  }
 
     angular
-        .module('topshelf.admin')
-        .controller('AdminUsersCtrl', AdminUsersCtrl);
+      .module('topshelf.admin.states')
+      .controller('AdminUsersCtrl', AdminUsersCtrl);
 })();

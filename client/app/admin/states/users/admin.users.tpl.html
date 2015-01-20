@@ -29,31 +29,17 @@
              <td> {{user.updated_at | date:'medium'}}</td>
               <td class="actions">
               <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm" ng-click="open(userID)" data-toggle="user"
-                data-target="#adminUserModal.html">
+                <a ui-sref="admin.userDetails"
+                 ng-click="selectUser(user)"
+                class="btn btn-default btn-primary btn-sm">
                   <i class="fa fa-edit"></i>
-                </button>
-                <button type="button" class="btn btn-default btn-sm" ng-click="deleteUser($index, user);">
+                </a>
+                <a href="" ng-click="deleteApplication(application)" class="btn btn-default btn-danger btn-sm">
                   <i class="fa fa-trash-o"></i>
-                </button>
+                  </a>
               </div></td>
             </tr>
           </tbody>
         </table>
       </div>
-<script type="text/ng-template" id="adminUsersModal.html">
-        <div class="modal-header">
-            <h3 class="modal-title">{{ user.name }}</h3>
-        </div>
-        <div class="modal-body">
-          {{user.name }}
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
-
-      <!-- /.modal -->
-    </div>
 </div>

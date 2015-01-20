@@ -91,6 +91,15 @@
             templateUrl: 'app/admin/states/users/admin.users.tpl.html'
           }
         }
+      })
+      .state('admin.userDetails', {
+        url: '/users/details/:id',
+         views: {
+          'content@admin': {
+            controller: 'AdminUserDetailsCtrl',
+            templateUrl: 'app/admin/states/users/details/user-details.tpl.html'
+          }
+        }
       });
     }
 
