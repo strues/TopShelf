@@ -37,7 +37,7 @@
     <![endif]-->
 
 <div ui-view="" class="fadeZoom"></div>
-<script src="//fb.me/react-0.12.1.js"></script>
+<script src="http://fb.me/react-0.12.2.js"></script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -77,6 +77,8 @@
              <script src="app/guild/states/streams/guild.streams.controller.js"></script>
              <script src="app/guild/states/recruitment/guild.recruitment.controller.js"></script>
              <script src="app/guild/states/application/guild.application.controller.js"></script>
+             <script src="app/admin/directives/admin.navbar/admin.navbar.directive.js"></script>
+             <script src="app/admin/directives/admin.navbar/admin.navbar.controller.js"></script>
              <script src="app/core/core.module.js"></script>
              <script src="app/core/states/home/core.home.controller.js"></script>
              <script src="app/core/states/home/core.carousel.controller.js"></script>
@@ -95,33 +97,31 @@
              <script src="app/admin/states/news/admin.news.controller.js"></script>
              <script src="app/admin/states/news/admin.news-datePicker.controller.js"></script>
              <script src="app/admin/states/applications/admin.applications.controller.js"></script>
-             <script src="app/admin/directives/admin.navbar/admin.navbar.directive.js"></script>
-             <script src="app/admin/directives/admin.navbar/admin.navbar.controller.js"></script>
              <script src="app/account/states/signup/account.signup.controller.js"></script>
              <script src="app/account/states/settings/account.settings.controller.js"></script>
              <script src="app/account/states/profile/account.profile.controller.js"></script>
              <script src="app/account/states/login/account.login.controller.js"></script>
+             <script src="app/account/services/user.service.js"></script>
+             <script src="app/account/services/auth.service.js"></script>
+             <script src="app/guild/filters/guild.startFrom.filter.js"></script>
+             <script src="app/guild/filters/guild.classes.filter.js"></script>
              <script src="app/guild/states/guild.states.js"></script>
              <script src="app/guild/services/guild.streams.service.js"></script>
              <script src="app/guild/services/guild.recruitment.service.js"></script>
              <script src="app/guild/services/guild.gameData.service.js"></script>
              <script src="app/guild/services/guild.application.service.js"></script>
-             <script src="app/guild/filters/guild.startFrom.filter.js"></script>
-             <script src="app/guild/filters/guild.classes.filter.js"></script>
              <script src="app/core/states/core.states.js"></script>
+             <script src="app/core/filters/startFrom.filter.js"></script>
              <script src="app/core/services/util.service.js"></script>
              <script src="app/core/services/post.service.js"></script>
              <script src="app/core/services/logger.service.js"></script>
              <script src="app/core/services/config.service.js"></script>
              <script src="app/core/services/authInterceptor.service.js"></script>
-             <script src="app/core/filters/startFrom.filter.js"></script>
+             <script src="app/account/directives/account.signupForm.directive.js"></script>
+             <script src="app/account/directives/account.loginForm.directive.js"></script>
              <script src="app/admin/states/admin.states.js"></script>
              <script src="app/admin/services/like.service.js"></script>
              <script src="app/account/states/account.states.js"></script>
-             <script src="app/account/services/user.service.js"></script>
-             <script src="app/account/services/auth.service.js"></script>
-             <script src="app/account/directives/account.signupForm.directive.js"></script>
-             <script src="app/account/directives/account.loginForm.directive.js"></script>
              <script src="app/admin/adminSidebar.controller.js"></script>
              <script src="app/admin/adminDashboard.controller.js"></script>
              <!-- endinject -->

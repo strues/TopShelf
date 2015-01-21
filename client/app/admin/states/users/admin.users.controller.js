@@ -6,20 +6,18 @@
    * @name admin.users.controller:AdminUsersCtrl
    *
    * @description
-   *
+   *        ApplicationFactory.getAllApplications().then(function(response) {
+            $scope.appGrid.data = response.data;
+        });
    */
 
-    function AdminUsersCtrl ($scope, $filter, $timeout, $http, $location) {
-        $scope.users = [];
-        $http.get('/api/users').success(function(users) {
-            $scope.users = users;
-
-        });
-        $scope.grid = {
+    function AdminUsersCtrl ($scope, User, $filter, $timeout, $http, $location) {
+        $scope.userGrid = {
             data: [],
             columnDefs: [
             {
                 field: 'name',
+                columnFilter: true,
                 displayName: 'Username',
                 render: function(user) {
                       return React.DOM.a({href:'javascript:', onClick: function() {
@@ -34,23 +32,15 @@
             },
             {
                 field: 'role',
+                columnFilter: true,
                 displayName: 'Role'
             }
-            ],
-            localMode: false,
-            getData: function() {
-                var grid = this;
-                $timeout(function() {
-                    $http.get('/api/users').success(function(dataSet) {
-                        $scope.dataSet = dataSet;
-
-                        $scope.grid.data = dataSet.slice((grid.currentPage - 1) * grid.pageSize,
-                            (grid.pageSize * grid.currentPage));
-                        $scope.grid.totalCount = dataSet.length;
-                    }, 2000);
-                });
-            }
+            ]
         };
+
+          $http.get('/api/users').then(function(response) {
+            $scope.userGrid.data = response.data;
+        });
     }
 
     angular

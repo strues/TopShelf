@@ -2,36 +2,7 @@
 <div class="row" ng-controller="ApplicationListCtrl">
 
         <h1 class="blueText">Guild <span class="recruitmentWhite">Applications</span></h1>
-     <table class="table table-striped table-hover" width="100%">
-    <thead>
-    <th><h4>Name</h4></th>
-    <th><h4>Class</h4></th>
-    <th><h4>Spec</h4></th>
-    <th><h4>Armory</h4></th>
-    <th><h4>Posted</h4></th>
-    </thead>
-        <tr ng-repeat="application in applications">
-            <td data-field="name">{{application.charName}}</td>
-            <td data-field="class">{{application.charClass}}</td>
-            <td data-field="charSpec">{{application.charSpec}}</td>
-            <td data-field="charArmory">{{application.charArmory}}</td>
-            <td data-field="created">{{application.created | date:'MM/dd/yyyy'}}</td>
-            <td>
-              <div class="btn-group">
-              <a ui-sref="admin.applicationViewID"
-                 ng-click="selectApplication(application)"
-                class="btn btn-default btn-primary btn-sm">
-              <span class="glyphicon glyphicon-eye-open"></span></a>
-
-            </div></td>
-            <td><div class="btn-group">
-                <a href="" ng-click="deleteApplication(application)" class="btn btn-default btn-danger btn-sm">
-                    <span class="glyphicon glyphicon-trash"></span></a>
-
-            </div></td>
-        </tr>
-
-</table>
+     <ng-react-grid grid="appGrid"></ng-react-grid>
 
 </div>
 </div>
