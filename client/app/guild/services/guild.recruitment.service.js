@@ -12,6 +12,10 @@
             return $http.get(urlBase);
         };
 
+        exports.getRecruitmentById = function(recruitmentID) {
+            return $http.get(urlBase + '/' + recruitmentID);
+        };
+
         exports.createRecruitment = function (recruitment) {
           // console.log('recruitmentFactory.service.js - createPosts', post);
             return $http.post(urlBase, recruitment);
@@ -27,9 +31,8 @@
             return $http.get(urlBase + '/' + recruitmentID);
         };
 
-        exports.updateRecruitment = function (recruitmentID, recruitment) {
-          // console.log('recruitmentFactory.service.js - updatePost', postID, post);
-            return $http.put(urlBase + '/' + recruitmentID, recruitment);
+        exports.updateRecruitment = function (recruitmentID) {
+            return $http.put(urlBase + '/' + recruitmentID);
         };
 
         return exports;

@@ -100,6 +100,15 @@
             templateUrl: 'app/admin/states/users/details/user-details.tpl.html'
           }
         }
+      })
+      .state('admin.resources', {
+        url: '/resources',
+         views: {
+          'content@admin': {
+            controller: 'ResourceCreateCtrl',
+            templateUrl: 'app/admin/states/resources/create/admin.resources-create.tpl.html'
+          }
+        }
       });
     }
 

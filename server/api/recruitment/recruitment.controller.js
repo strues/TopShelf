@@ -38,23 +38,23 @@ exports.create = function(req, res) {
 
 // Updates an existing recruitment in the DB.
 exports.update = function(req, res) {
-    if (req.body._id) {
-        delete req.body._id;
-    }
-    Recruitment.findById(req.params.id, function(err, recruitment) {
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!recruitment) {
-            return res.send(404);
-        }
-        // var updated = _.merge(recruitment, req.body);
-        var updated = _.extend(recruitment, req.body);
-        updated.save(function(err) {
+ var recruitmentUpdates = req.body;
+
+    //get the original from db
+    Recruitment.findOne({
+        _id: req.params.id
+    }).exec(function(err, recruitmentToEdit) {
+        recruitmentToEdit.websiteName = recruitmentUpdates.websiteName;
+        recruitmentToEdit.websiteUrl = recruitmentUpdates.websiteUrl;
+
+        recruitmentToEdit.save(function(err) {
             if (err) {
-                return handleError(res, err);
+                res.sendStatus(400);
+                return res.send({
+                    reason: err.toString()
+                });
             }
-            return res.json(200, recruitment);
+            res.send(recruitmentToEdit);
         });
     });
 };

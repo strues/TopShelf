@@ -1,13 +1,18 @@
 <div class="row">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-4" ng-controller="RecruitmentListCtrl as vm">
         <h1>Recruitment <span class="recruitmentWhite">Posts</span></h1>
         <div class="well">
-        <ul class="list-unstyled">
-            <li><i style="padding-right: 5px" class="fa fa-pencil"></i><a href="#">MMO-Champion</a></li>
-            <li><i style="padding-right: 5px" class="fa fa-pencil"></i><a href="#">Realm Forums</a></li>
-            <li><i style="padding-right: 5px" class="fa fa-pencil"></i><a href="#">Guild Recruitment</a></li>
-        </ul>
+        <ul class="list-unstyled" ng-repeat="resource in vm.resources">
+          <li>
+            <a ng-href="{{resource.websiteUrl}}" target="_blank">{{resource.websiteName}}</a>
+            <button class="btn btn-primary" ng-click="openResourceModal(resourceId)" resource-edit-modal>Edit</button>
+      </li>
+    </ul>
+
+
         </div>
+
+</div>
     </div>
     <div class="col-sm-12 col-md-4" ng-controller="RecruitmentCtrl">
         <h1>Update <span class="recruitmentWhite">Recruitment</span></h1>

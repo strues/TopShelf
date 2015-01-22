@@ -30,7 +30,9 @@ var UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Post'
     }],
-    password: String,
+    password: {
+      type: String
+    },
     provider: String,
     salt: String,
     bnetId: Number,
@@ -67,7 +69,6 @@ var UserSchema = new Schema({
         }
     }
 });
-
 
 /**
  * Virtuals
@@ -169,7 +170,7 @@ UserSchema.methods = {
     /**
      * Authenticate - check if the passwords are the same
      *
-     * @param {String} plainText
+     * @param {authenticate} plainText
      * @callback {callback} Optional callback
      * @return {Boolean}
      * @api public
@@ -239,9 +240,11 @@ UserSchema.methods = {
         var salt = new Buffer(this.salt, 'base64');
 
         if (!callback)
-            return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength).toString('base64');
+            return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
+          .toString('base64');
 
-        return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, function(err, key) {
+        return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength,
+          function(err, key) {
             if (err) callback(err);
             return callback(null, key.toString('base64'));
         });

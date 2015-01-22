@@ -235,7 +235,7 @@ exports.me = function(req, res, next) {
         if (!user) {
             return res.json(401);
         }
-        res.json(user);
+        res.json(user.profile);
     });
 };
 exports.handleError = function(res, err) {
@@ -245,7 +245,6 @@ exports.handleError = function(res, err) {
 exports.validationError = function(res, err) {
     return res.status(422).json(err);
 };
-
 
 /**
  * Authentication callback

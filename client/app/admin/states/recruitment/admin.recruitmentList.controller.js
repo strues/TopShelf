@@ -5,11 +5,14 @@
         .module('topshelf.admin')
         .controller('RecruitmentListCtrl', RecruitmentListCtrl);
 
-    function RecruitmentListCtrl($http, recruitmentFactory) {
+    function RecruitmentListCtrl($http, recruitmentFactory, ResourceFactory) {
         var vm = this;
 
         recruitmentFactory.getRecruitment().success(function(recruitments) {
             vm.recruitments = recruitments;
+        });
+        ResourceFactory.getAllResources().success(function(resources) {
+            vm.resources = resources;
         });
         vm.deleteRecruitment = function(recruitment) {
             $http.delete('/api/recruitment/' + recruitment._id).success(function() {
