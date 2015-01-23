@@ -41,9 +41,6 @@ exports.create = function(req, res) {
 
 // Updates an existing post in the DB.
 exports.update = function(req, res) {
-    if (req.body._id) {
-        delete req.body._id;
-    }
     Post.findById(req.params.id, function(err, post) {
         if (err) {
             return handleError(res, err);
@@ -52,14 +49,19 @@ exports.update = function(req, res) {
             return res.sendStatus(404);
         }
 
-        var updated = _.merge(post, req.body._id);
-        console.log(updated.post);
-        updated.save(function(err) {
+// set the new user information if it exists in the request
+        if (req.body.title) post.title = req.body.title;
+        if (req.body.date) post.date = req.body.date;
+        if (req.body.content) post.content = req.body.content;
+        if (req.body.tags) post.tags = req.body.tags;
+        if (req.body.image) post.image = req.body.image;
+
+        post.save(function(err) {
             if (err) {
                 return handleError(res, err);
             }
-            console.log(updated.post);
-            return res.status(200).json(updated);
+            console.log('post updated');
+            return res.status(200).json(post);
         });
     });
 };

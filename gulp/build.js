@@ -74,7 +74,7 @@ gulp.task('injector:js', ['lint', 'injector:css'], function () {
     .pipe($.notify());
 });
 
-gulp.task('partials', function () {
+gulp.task('templates', function () {
 
     return gulp
     .src('client/app/**/*.tpl.html')
@@ -92,20 +92,22 @@ gulp.task('partials', function () {
     .pipe($.notify());
 });
 
-gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], function () {
+gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'templates'], function () {
     var htmlFilter = $.filter('*.html');
     var jsFilter = $.filter('**/*.js');
     var cssFilter = $.filter('**/*.css');
     var assets;
-    var templateCache = './.tmp/templates.js';
 
-    return gulp.src('client/index.html')
-    .pipe($.plumber())
-    .pipe($.inject(gulp.src(templateCache, {read: false}), {
+    var templateCacheFile = gulp.src('./.tmp/templates.js', {read: false});
+    var templateCacheOpt = {
       starttag: '<!-- inject:partials -->',
       ignorePath: '.tmp',
       addRootSlash: false
-    }))
+    };
+
+    return gulp.src('client/index.html')
+    .pipe($.plumber())
+    .pipe($.inject(templateCacheFile, templateCacheOpt))
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
@@ -115,7 +117,7 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
     .pipe(jsFilter.restore())
     .pipe($.sourcemaps.write())
     .pipe(cssFilter)
-    .pipe($.replace(['../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap', '../../bower_components/font-awesome/fonts'], 'assets/fonts'))
+    .pipe($.replace(['../../bootstrap-sass-official/assets/fonts/bootstrap', '../../font-awesome/fonts'], 'assets/fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -159,4 +161,4 @@ gulp.task('clean', function (done) {
     $.del(['dist/', '.tmp/'], done);
 });
 
-gulp.task('build', ['partials', 'html', 'images', 'fonts', 'misc']);
+gulp.task('build', ['templates', 'html', 'images', 'fonts', 'misc']);

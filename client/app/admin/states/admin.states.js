@@ -60,7 +60,7 @@
         url: '/news/create',
          views: {
           'content@admin': {
-            controller: 'NewsCreateCtrl',
+            controller: 'NewsCreateCtrl as vm',
             templateUrl: 'app/admin/states/news/create/admin.news-create.tpl.html'
           }
         }
@@ -69,8 +69,19 @@
         url: '/news/list',
          views: {
           'content@admin': {
-            controller: 'NewsListCtrl',
+            controller: 'NewsListCtrl as vm',
             templateUrl: 'app/admin/states/news/admin.news.tpl.html'
+          }
+        }
+      })
+      .state('admin.newsEdit', {
+        url: '/news/edit/:postId',
+        views: {
+          'content@admin': {
+            templateUrl: 'app/admin/states/news/edit/admin.news-edit.tpl.html',
+            controller: function ($stateParams) {
+                console.log($stateParams);
+            }
           }
         }
       })
@@ -105,8 +116,28 @@
         url: '/resources',
          views: {
           'content@admin': {
-            controller: 'ResourceCreateCtrl',
+            controller: 'ResourceCtrl as vm',
+            templateUrl: 'app/admin/states/resources/admin.resource.tpl.html'
+          }
+        }
+      })
+      .state('admin.resourceCreate', {
+        url: '/resources/new',
+         views: {
+          'content@admin': {
+            controller: 'ResourceCreateCtrl as vm',
             templateUrl: 'app/admin/states/resources/create/admin.resources-create.tpl.html'
+          }
+        }
+      })
+      .state('admin.resourceEdit', {
+        url: '/resources/edit/:resourceId',
+         views: {
+          'content@admin': {
+            templateUrl: 'app/admin/states/resources/edit/admin.resource-edit.tpl.html',
+            controller: function ($stateParams) {
+                console.log($stateParams);
+            }
           }
         }
       });

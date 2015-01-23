@@ -1,42 +1,36 @@
 (function () {
     'use strict';
 
-    function NewsListCtrl($scope, PostFactory) {
-
-        PostFactory.getAllPosts().success(function (posts) {
-
-        $scope.posts = posts;
-
-      // display more posts
-        $scope.postsLength = posts.length;
-        var view = 1;
-        var postsQty = 4;
-        $scope.postsShownPerView = function() {
-            return view * postsQty;
-        };
-        $scope.getAdditionalPosts = function() {
-            return view < ($scope.postsLength / postsQty);
-        };
-        $scope.showMorePosts = function() {
-            view = view + 1;
-        };
-    }).
-    error(function (error) {
-        $scope.status = 'Unable to Retrieve Posts: ' + error.message;
-      // console.log($scope.status);
-    });
-
-    // ng-show/ng-hide
-        $scope.showMode = false;
-
-    // when x is clicked
-        $scope.deletePost = function (postID) {
-        console.log('inside posts.controller.js deletePost - postID', postID);
-        PostFactory.removePost(postID);
-    };
-    }
-
     angular
         .module('topshelf.admin.states')
         .controller('NewsListCtrl', NewsListCtrl);
+    /* @ngInject */
+    function NewsListCtrl(Post) {
+        var vm = this;
+        vm.processing = true;
+
+        Post.all().success(function (data) {
+
+        vm.processing = false;
+
+        // bind the posts that come back to vm.posts
+        vm.posts = data;
+
+        // display more posts
+        vm.postsLength = data.length;
+        var view = 1;
+        var postsQty = 4;
+
+    }).error(function (error) {
+        vm.status = 'Unable to Retrieve Posts: ' + error.message;
+    });
+    // ng-show/ng-hide
+        vm.showMode = false;
+
+        vm.deletePost = function (id) {
+        console.log('inside posts.controller.js deletePost - id', id);
+        Post.delete(id);
+    };
+    }
+
 })();

@@ -1,5 +1,14 @@
 (function() {
     'use strict';
+  /**
+   * @namespace HomeCarouselCtrl
+   * @desc Carousel controller
+   * @memberOf topshelf.core.states
+   */
+
+    angular
+        .module('topshelf.core.states')
+        .controller('HomeCarouselCtrl', HomeCarouselCtrl);
 
     function HomeCarouselCtrl () {
         var carousel = this;
@@ -19,7 +28,4 @@
 
     }
 
-    angular
-        .module('topshelf.core.states')
-        .controller('HomeCarouselCtrl', HomeCarouselCtrl);
 })();

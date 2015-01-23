@@ -8,38 +8,30 @@
    * @description
    *
    */
-    function HomeCtrl(PostFactory, $location) {
 
-        var home = this;
-        home.posts = {};
+    angular
+      .module('topshelf.core.states')
+      .controller('HomeCtrl', HomeCtrl);
+    /* @ngInject */
+    function HomeCtrl(Post, $location) {
 
-        PostFactory.getAllPosts().success(function(posts) {
+        var vm = this;
+        //home.posts = {};
+        vm.processing = true;
 
-            home.posts = posts;
+        Post.all().success(function(data) {
+        // when all the posts come back, remove the processing variable
+            vm.processing = false;
 
-            home.postsLength = posts.length;
-            var view = 1;
-            var postsQty = 4;
-            home.postsShownPerView = function() {
-                return view * postsQty;
-            };
-            home.getAdditionalPosts = function() {
-                return view < (home.postsLength / postsQty);
-            };
-            home.showMorePosts = function() {
-                view = view + 1;
-            };
-        }).
-        error(function (error) {
-        home.status = 'Unable to Retrieve Posts: ' + error.message;
-    });
-        home.viewMore = function(post) {
+         // bind the posts that come back to vm.posts
+            vm.posts = data;
+        }).error(function (error) {
+            vm.status = 'Unable to Retrieve Posts: ' + error.message;
+        });
+
+        vm.viewMore = function(post) {
             $location.path('/view-post/' + post._id);
         };
 
     }
-
-    angular
-        .module('topshelf.core.states')
-        .controller('HomeCtrl', HomeCtrl);
 })();

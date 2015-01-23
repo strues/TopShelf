@@ -1,37 +1,47 @@
 (function () {
     'use strict';
-
-    function PostFactory ($http) {
-        console.log('post.service.js');
-
-        var urlBase = 'api/posts';
-        var exports = {};
-
-        exports.getAllPosts = function () {
-            return $http.get(urlBase);
-        };
-
-        exports.getPostById = function(postId) {
-            return $http.get(urlBase + '/' + postId);
-        };
-
-        exports.createPost = function(newPost) {
-            return $http.post(urlBase, newPost);
-        };
-
-        exports.updatePost = function(updatedPost) {
-            return $http.put(urlBase + '/' + updatedPost._id, updatedPost);
-        };
-
-        exports.removePost = function(postId) {
-            return $http.delete(urlBase + '/' + postId);
-        };
-
-        return exports;
-
-    }
+  /**
+   * @namespace Factories
+   * @desc Communicates with backend returning posts
+   * @memberOf topshelf.core.services
+   */
 
     angular
         .module('topshelf.core.services')
-        .factory('PostFactory', PostFactory);
+        .factory('Post', Post);
+
+    /* @ngInject */
+    function Post ($http) {
+        console.log('Post Factory: topshelf.core.services');
+
+        var urlBase = 'api/posts';
+        var postFactory = {};
+
+        postFactory.all = function () {
+            console.log('Getting all posts');
+            return $http.get(urlBase);
+        };
+
+        postFactory.get = function(id) {
+            console.log('Getting this ' + id);
+            return $http.get(urlBase + '/' + id);
+        };
+
+        postFactory.create = function(postData) {
+            console.log(postData);
+            return $http.post(urlBase, postData);
+        };
+
+        postFactory.update = function(id, postData) {
+            return $http.put(urlBase + '/' + id, postData);
+        };
+
+        postFactory.delete = function(id) {
+            return $http.delete(urlBase + '/' + id);
+        };
+
+        return postFactory;
+
+    }
+
 })();

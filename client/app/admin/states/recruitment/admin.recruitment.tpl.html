@@ -1,27 +1,35 @@
 <div class="row">
-    <div class="col-sm-12 col-md-4" ng-controller="RecruitmentListCtrl as vm">
-        <h1>Recruitment <span class="recruitmentWhite">Posts</span></h1>
-        <div class="well">
-        <ul class="list-unstyled" ng-repeat="resource in vm.resources">
-          <li>
-            <a ng-href="{{resource.websiteUrl}}" target="_blank">{{resource.websiteName}}</a>
-            <button class="btn btn-primary" ng-click="openResourceModal(resourceId)" resource-edit-modal>Edit</button>
-      </li>
-    </ul>
-
-
-        </div>
-
-</div>
-    </div>
-    <div class="col-sm-12 col-md-4" ng-controller="RecruitmentCtrl">
+    <div class="col-sm-6 col-md-4" ng-controller="RecruitmentCtrl">
         <h1>Update <span class="recruitmentWhite">Recruitment</span></h1>
     <hr>
-        <formly-form result="formData" fields="formFields" options="formOptions" ng-submit="onSubmit()">
-            <button class="btn btn-primary" type="submit">Submit</button>
-        </formly-form>
+<form form-for="formData" submit-with="submit(data)">
+<div class="row">
+   <h4>Select Menus</h4>
+  <select-field attribute="classType" label="Class Type" options="classType"></select-field>
+  <hr />
+  </div>
+  <div class="row">
+  <select-field attribute="classSpec" label="Class Spec" options="classSpec"></select-field>
+  </div>
+<div class="row">
+ <div class="col-sm-6">
+ <div class="form-group">
+<label>Priority</label>
+  <radio-field attribute="priority" label="{{priority.label}}" value="{{priority.value}}" ng-repeat="priority in priority"></radio-field>
+  </div>
+</div>
+ <div class="col-sm-6">
+   <div class="form-group">
+<label>Status</label>
+  <radio-field attribute="status" label="{{status.label}}" value="{{status.value}}" ng-repeat="status in status"></radio-field>
+  </div>
+  </div>
+  </div>
+
+  <submit-button label="Recruit!"></submit-button>
+</form>
     </div>
-    <div class="col-sm-12 col-md-4" ng-controller="RecruitmentListCtrl as vm">
+    <div class="col-sm-6 col-md-8" ng-controller="RecruitmentListCtrl as vm">
     <h1 style="text-align: right;">Currently <span class="recruitmentWhite">Recruiting</span></h1>
      <table class="table table-condensed">
                     <thead>

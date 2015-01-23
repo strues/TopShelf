@@ -30,19 +30,29 @@ exports.show = function(req, res) {
 
 // Creates a new resource in the DB.
 exports.create = function(req, res) {
-    Resource.create(function(err, resource) {
+    var resource = new Resource();   // create a new instance of the Resource model
+    resource.websiteName = req.body.websiteName;  // set the resource name (comes from the request)
+    resource.websiteUrl = req.body.websiteUrl;  // set the resource url (comes from the request)
+
+    resource.save(function(err) {
         if (err) {
-            return handleError(res, err);
+          // duplicate entry
+            if (err.code === 11000)
+            return res.json({success: false,
+              message: 'A resource with that name already exists. '});
+            else {
+                return res.send(err);
+            }
         }
-        return res.status(201).json(resource);
+
+        // return a message
+        res.json({message: 'Resource created!'});
     });
+
 };
 
 // Updates an existing resource in the DB.
 exports.update = function(req, res) {
-    if (req.body._id) {
-        delete req.body._id;
-    }
     Resource.findById(req.params.id, function(err, resource) {
         if (err) {
             return handleError(res, err);
@@ -51,14 +61,16 @@ exports.update = function(req, res) {
             return res.sendStatus(404);
         }
 
-        var updated = _.merge(resource, req.body._id);
-        console.log(updated.resource);
-        updated.save(function(err) {
+// set the new user information if it exists in the request
+        if (req.body.websiteName) resource.websiteName = req.body.websiteName;
+        if (req.body.websiteUrl) resource.websiteUrl = req.body.websiteUrl;
+
+        resource.save(function(err) {
             if (err) {
                 return handleError(res, err);
             }
-            console.log(updated.resource);
-            return res.status(200).json(updated);
+            console.log('resource updated');
+            return res.status(200).json(resource);
         });
     });
 };

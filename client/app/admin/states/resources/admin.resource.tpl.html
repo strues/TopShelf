@@ -1,0 +1,17 @@
+<div class="backendWrap">
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2" ng-controller="ResourceCtrl as vm">
+<h1> Resources</h1>
+ <ul class="list-unstyled" ng-repeat="resource in vm.resources">
+      <li>
+       <h4>{{ resource.websiteName }}</h4>
+      </li>
+      <li> {{ resource.websiteUrl }}</li>
+      <li>
+      <i ng-click="vm.deleteResource(resource._id)" class="fa fa-trash"></i></button>
+       <a href="" ui-sref='admin.resourceEdit({resourceId: resource._id})'><button class="btn btn-primary">Edit</button></a>
+      </li>
+    </ul>
+</div>
+</div>
+</div>

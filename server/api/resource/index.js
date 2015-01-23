@@ -8,22 +8,6 @@ var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
-router.param('resource', function(req, res, next, id) {
-    var query = Resource.findById(id);
-
-    query.exec(function (err, resource) {
-        if (err) {
-            return next(err);
-        }
-        if (!resource) {
-            return next(new Error('cant find resource'));
-        }
-
-        req.resource = resource;
-        return next();
-    });
-});
-
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);

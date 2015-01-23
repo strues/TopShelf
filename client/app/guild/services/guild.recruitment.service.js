@@ -1,45 +1,39 @@
 (function () {
     'use strict';
 
-    function recruitmentFactory ($http) {
-        console.log('recruitmentFactory.service.js');
-
+     /* @ngInject */
+    function Recruitment ($http) {
         var urlBase = 'api/recruitment';
-        var exports = {};
+        var recruitmentFactory = {};
 
-        exports.getRecruitment = function () {
-      // console.log('recruitmentFactory.service.js - getPosts');
+        recruitmentFactory.all = function () {
+            console.log('Getting all recruiting needs');
             return $http.get(urlBase);
         };
 
-        exports.getRecruitmentById = function(recruitmentID) {
-            return $http.get(urlBase + '/' + recruitmentID);
+        recruitmentFactory.get = function(id) {
+            console.log('Getting this ' + id);
+            return $http.get(urlBase + '/' + id);
         };
 
-        exports.createRecruitment = function (recruitment) {
-          // console.log('recruitmentFactory.service.js - createPosts', post);
-            return $http.post(urlBase, recruitment);
+        recruitmentFactory.create = function(recruitmentData) {
+            console.log(recruitmentData);
+            return $http.post(urlBase, recruitmentData);
         };
 
-        exports.deleteRecruitment = function (recruitmentID) {
-          // console.log('recruitmentFactory.service.js - deletePosts', postID);
-            return $http.delete(urlBase + '/' + recruitmentID);
+        recruitmentFactory.update = function(id, recruitmentData) {
+            return $http.put(urlBase + '/' + id, recruitmentData);
         };
 
-        exports.showRecruitment = function (recruitmentID) {
-          // console.log('recruitmentFactory.service.js - showPost', postID);
-            return $http.get(urlBase + '/' + recruitmentID);
+        recruitmentFactory.delete = function(id) {
+            return $http.delete(urlBase + '/' + id);
         };
 
-        exports.updateRecruitment = function (recruitmentID) {
-            return $http.put(urlBase + '/' + recruitmentID);
-        };
-
-        return exports;
+        return recruitmentFactory;
 
     }
 
     angular
         .module('topshelf.guild.services')
-        .factory('recruitmentFactory', recruitmentFactory);
+        .factory('Recruitment', Recruitment);
 })();

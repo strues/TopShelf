@@ -1,13 +1,15 @@
 (function () {
     'use strict';
 
-  /* @ngdoc object
-   * @name core
-   * @requires $stateProvider
-   *
-   * @description route
-   *
+  /**
+   * @namespace States
+   * @desc Home states
+   * @memberOf Core
    */
+
+    angular
+        .module('topshelf.core.states')
+        .config(config);
 
     function config($stateProvider) {
 
@@ -15,7 +17,7 @@
         .state('home', {
             url: '/',
             templateUrl: 'app/core/states/home/core.home.tpl.html',
-            controller: 'HomeCtrl as home'
+            controller: 'HomeCtrl as vm'
         })
         .state('home.view-post', {
             url: 'view-post/:postId',
@@ -23,7 +25,5 @@
             controller: 'HomeViewPostCtrl as viewPost'
         });
     }
-    angular
-        .module('topshelf.core.states')
-        .config(config);
+
 })();

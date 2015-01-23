@@ -5,44 +5,37 @@
         return {
           templateUrl: '',
           restrict: 'EA',
-          controller: function($scope, PostFactory, $modal, $log) {
+          controller: function($scope, Post, $modal, $log) {
 
-            $scope.openViewModal = function (postID) {
+            $scope.openViewModal = function (id) {
                 var modalInstance = $modal.open({
-              templateUrl: 'app/core/directives/newsView/core.viewModal.tpl.html',
-              scope: $scope,
-              controller: ModalInstanceCtrl,
-              size: 'lg',
+                    templateUrl: 'app/core/directives/newsView/core.viewModal.tpl.html',
+                    scope: $scope,
+                    controller: ModalInstanceCtrl,
+                    size: 'lg',
 
               resolve: {
                 post: function () {
-                    PostFactory.getPostById(postID)
-                    .success(function (data) {
-                    $scope.status = 'Retrieved Recruitment by ID';
-                }).
-                error(function (error) {
+                    Post.get(id).success(function (data) {
+                    $scope.status = 'Retrieved Post';
+                }).error(function (error) {
                     $scope.status = 'Cannot get current posts: ' + error.message;
-                });  // end of recruitmentFactory.showPost(postID)
-
+                });
                     return $scope.post;
                 }
               }
             });
 
                 modalInstance.result.then(function () {
-              // console.log('in modalInstance.result.then #2');
                     $log.info('Modal dismissed at: ' + new Date());
                 });
 
             };
-            var ModalInstanceCtrl = function ($scope, $modalInstance, PostFactory) {
+            var ModalInstanceCtrl = function ($scope, $modalInstance, Post) {
 
             $scope.ok = function () {
-            // $modalInstance.close($scope.selected.item);
                 $modalInstance.close();
             };
-            // };
-
             $scope.cancel = function () {
                 $modalInstance.dismiss('cancel');
             };

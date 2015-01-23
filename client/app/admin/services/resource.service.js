@@ -1,37 +1,37 @@
 (function () {
     'use strict';
 
-    function ResourceFactory ($http) {
+    angular
+        .module('topshelf.admin.services')
+        .factory('Resource', Resource);
+
+    function Resource ($http) {
         console.log('resource.service.js');
 
         var urlBase = 'api/resources';
-        var exports = {};
+        var resourceFactory = {};
 
-        exports.getAllResources = function () {
+        resourceFactory.all = function () {
             return $http.get(urlBase);
         };
 
-        exports.getResourceById = function(resourceId) {
-            return $http.get(urlBase + '/' + resourceId);
+        resourceFactory.get = function(id) {
+            return $http.get(urlBase + '/' + id);
         };
 
-        exports.createResource = function(newResource) {
-            return $http.post(urlBase, newResource);
+        resourceFactory.create = function(resourceData) {
+            return $http.post(urlBase, resourceData);
         };
 
-        exports.updateResource = function(updatedResource) {
-            return $http.put(urlBase + '/' + updatedResource._id, updatedResource);
+        resourceFactory.update = function(id, resourceData) {
+            return $http.put(urlBase + '/' + id, resourceData);
         };
 
-        exports.removeResource = function(resourceId) {
-            return $http.delete(urlBase + '/' + resourceId);
+        resourceFactory.removeResource = function(id) {
+            return $http.delete(urlBase + '/' + id);
         };
 
-        return exports;
+        return resourceFactory;
 
     }
-
-    angular
-        .module('topshelf.admin.services')
-        .factory('ResourceFactory', ResourceFactory);
 })();

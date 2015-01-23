@@ -22,6 +22,7 @@
     application.classOptions = [
         {value: 'deathKnight', label: 'Death Knight'},
         {value: 'druid', label: 'Druid'},
+        {value: 'hunter', label: 'Hunter'},
         {value: 'mage', label: 'Mage'},
         {value: 'monk', label: 'Monk'},
         {value: 'paladin', label: 'Paladin'},
