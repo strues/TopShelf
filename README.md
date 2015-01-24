@@ -22,7 +22,7 @@ Clone the repo
 Run `npm install && bower install`, in order to get started.
 
 
-Run `gulp serve-dev` to launch the development.
+Run `gulp serve` to launch the development.
 
 ### Features
 
@@ -32,7 +32,7 @@ Run `gulp serve-dev` to launch the development.
 * Markup:  `HTML`
 * Stylesheets: `Sass`
 * Task Runner: `Gulp`
-* Angular: `1.3.9` `ui.router` `ui.bootstrap` 
+* Angular: `1.3.9`
 
 
 **Server Side**
@@ -40,7 +40,7 @@ Run `gulp serve-dev` to launch the development.
 * Server: `Express.js`
 * Database: `MongoDB`
 * Authentication: `Passport Local w/ JWT`
-* oAuth: `Facebook` `Twitter` `Google` `Battle.net (soon)`
+* Session: `Redis`
 
 
 ## Project Structure
@@ -49,11 +49,16 @@ Overview
 
     |── client
     |   ├── app                 - Everything related to our Angular app
+    |   ├    ├── accounts       - Account / User module
+    |   |    ├── guild          - Guild module
+    |   |    ├── core           - Core module
+    |   |    ├── admin          - Admin module
     |   |-- index.html
+    |   |-- topshelf.module.js  - Bootstrap of the entire application
     |   ├── assets              - Fonts, Images, etc
     |   |__ styles              - Sass files
-    |   |
-    |   |__ bower_components
+    |
+    |__ bower_components
     |
     |
     ├── test                    - Testing
@@ -66,19 +71,18 @@ Overview
         ├── components          - Errors for the most part (404)
         ├── config              - Express settings and environemtn
         │   └── environment     - Node env configurations
-        └── views               - Server rendered jade views
+        └── views               - Server rendered views
 
 
 A look inside the core component in `client/app/core`
 
 
-    home
-    ├── home.module.js          - Routes
-    ├── home.controller.js      - Controller for our main route
-    ├── home.tpl.html           - View
-    ├── home.directive.js       - 
-    ├── home.filter.js          - 
-    ├── home.service.js         - 
+    core
+    ├── core.module.js          - Routes
+    ├── directives              - Appwide directives
+    ├── services                - Services for the entire app
+    ├── filters                 - Filters for the entire app
+    ├── states                  - States  (home)
 
 Inside of the api at`server/api`
 
