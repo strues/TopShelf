@@ -26,10 +26,10 @@ var UserSchema = new Schema({
         default: 'user',
         enum: ['admin', 'user']
     },
-    posts: [{
+    posts: {
         type: Schema.Types.ObjectId,
         ref: 'Post'
-    }],
+    },
     password: {
       type: String
     },

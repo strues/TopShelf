@@ -38,7 +38,7 @@
                         <!-- dropdown user -->
                     <li class="dropdown" ng-show="vm.Auth.isLoggedIn()" dropdown>
                       <a role="button" class="dropdown-toggle" dropdown-toggle>
-                        {{ vm.Auth.getCurrentUser().username }} <i class="ico-user"></i> <b class="caret"></b>
+                        {{ vm.Auth.getCurrentUser().name }} <i class="ico-user"></i> <b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu">
                             <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
