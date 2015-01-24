@@ -21,7 +21,6 @@
         <div class="row">
           <div class="col-sm-5">
             <div class="form-group">
-              <label>Priority</label>
               <radio-field attribute="priority"
                     label="{{priority.label}}"
                     value="{{priority.value}}"
@@ -31,7 +30,6 @@
           </div>
         <div class="col-sm-6 col-sm-offset-1">
           <div class="form-group">
-              <label>Status</label>
               <radio-field attribute="status"
                   label="{{status.label}}"
                   value="{{status.value}}"
@@ -57,7 +55,7 @@
       </thead>
       <tbody>
           <tr ng-repeat="recruitment in vm.recruitments" ng-class-even="table-striped">
-              <td>{{recruitment.classType}}</td>
+              <td><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" style="padding-right: 10px;" height="30px"></td>
 
               <td>{{recruitment.classSpec}}</td>
 

@@ -5,7 +5,7 @@
         .module('topshelf.admin.states')
         .controller('ResourceCreateCtrl', ResourceCreateCtrl);
 
-    function ResourceCreateCtrl($scope, Resource, sweet, Auth) {
+    function ResourceCreateCtrl($scope, Resource, toastr, Auth) {
         var vm = this;
         vm.processing = true;
         vm.toggle = false;
@@ -15,13 +15,13 @@
 
             Resource.create(vm.resourceData)
             .success(function (data) {
-                sweet.show('Resource added to the database', 'success');
+                toastr.success('Your resource was added to the database', 'Submitted!');
                 vm.processing = false;
                 vm.resourceData = {};
                 vm.message = data.message;
             })
             .error(function (error) {
-                sweet.show('Oops...', 'Something broke', 'error');
+                toastr.error('Unable to Create Post' + error.message, 'Error');
                 $scope.status = 'Unable to Create Post: ' + error.message;
 
             });

@@ -6,7 +6,10 @@ var mongoose = require('mongoose'),
 var Post = new Schema({
   title: String,
   content: String,
-  tags: Array,
+  tags: {
+    type: Schema.Types.ObjectId,
+    ref: 'Tag'
+  },
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User'

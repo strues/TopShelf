@@ -9,7 +9,7 @@
    *
    */
 
-    function RecruitmentCtrl ($scope, $http, $state, $timeout, FormForConfiguration, sweet) {
+    function RecruitmentCtrl ($scope, $http, $state, $timeout, FormForConfiguration, toastr) {
         FormForConfiguration.enableAutoLabels();
 
         $scope.formData = {};
@@ -71,7 +71,7 @@
           {label: 'Open', value: 'open'}
         ];
         $scope.submit = function(data) {
-            sweet.show('Your form has been submitted');
+            toastr.success('The changes to recruitment have been made', 'Status Updated');
             $http.post('/api/recruitment', $scope.formData);
             console.log('recruitment status submitted:', $scope.formData);
             $state.reload();

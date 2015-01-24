@@ -18,7 +18,7 @@
    *
    */
 
-    function loginForm(Auth, $location, $window, sweet) {
+    function loginForm(Auth, $location, $window, toastr) {
         return {
       templateUrl: 'app/account/states/login/account.loginForm.tpl.html',
       restrict: 'EA',
@@ -35,13 +35,13 @@
                 password: scope.user.password
           })
           .then(function success() {
-              sweet.show('Welcome Back', 'You\'ve successfully logged in', 'success');
+              toastr.success('Successfully logged in', 'Welcome Back!');
             // Logged in, redirect to home
               $location.path('/');
           })
           .catch(function(err) {
               scope.errors.other = err.message;
-              sweet.show(err.other);
+
           });
               }
           };

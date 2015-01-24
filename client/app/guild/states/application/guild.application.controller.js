@@ -9,7 +9,7 @@
    *
    */
 
-    function ApplicationCtrl($location, ApplicationFactory, sweet) {
+    function ApplicationCtrl($location, ApplicationFactory, toastr) {
     var application = this;
     application.data = {};
 
@@ -85,7 +85,8 @@
         ApplicationFactory.createApplication(application.data)
           .then(function () {
               application.data = {};
-              sweet.show('Your application was submitted', 'Expect to hear from us soon!');
+              toastr.success('Your application was submitted!', 'Expect to hear from us soon');
+
               console.log('form submitted:', application.data);
               $location.path('/completed');
           },

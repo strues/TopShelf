@@ -19,7 +19,7 @@
    */
   /*jshint unused:false */
 
-    function signupForm (Auth, $location, $window, sweet) {
+    function signupForm (Auth, $location, $window, toastr) {
         return {
           templateUrl: 'app/account/states/signup/account.signupForm.tpl.html',
           restrict: 'EA',
@@ -37,7 +37,7 @@
                         password: scope.user.password
               })
               .then(function() {
-                  sweet.show('Success!', 'You\'re account has been created', 'success');
+                  toastr.success('Sucessfully signed up', 'Welcome!');
                 // Account created, redirect to home
                   $location.path('/');
               })

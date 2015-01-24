@@ -12,8 +12,10 @@
         .module('topshelf.guild.states')
         .controller('StreamCtrl', StreamCtrl);
 
-    function StreamCtrl($scope, $rootScope, $location, sweet, Streams) {
-    sweet.show('Streams are offline if the page is empty');
+    function StreamCtrl($scope, $rootScope, $location, toastr, Streams) {
+
+    toastr.warning('Streams are offline if the page is empty',
+      'This page loads direct videos from Twitch');
 
     $scope.allStreams = [
       // List of stream names of TI streams.
