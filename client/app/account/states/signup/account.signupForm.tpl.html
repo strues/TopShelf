@@ -4,13 +4,13 @@
     <input class="form-control input-lg"
            type="text"
            name="username"
-           ng-model="user.name"
+           ng-model="user.username"
            placeholder="Username" required autofocus>
       <span class="ion-person form-control-feedback"></span>
       <div class="help-block text-danger"
            ng-if="form.username.$dirty"
            ng-messages="form.username.$error">
-        <div ng-message="required">You must enter your username.</div>
+        <div ng-message="required">You must enter a username.</div>
       </div>
   </div>
 

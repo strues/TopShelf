@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/vendor.css">
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="../bower_components/textAngular/src/textAngular.css" />
     <link rel="stylesheet" href="../bower_components/sweetalert/lib/sweet-alert.css" />
     <link rel="stylesheet" href="../bower_components/animate.css/animate.css" />
@@ -40,7 +41,7 @@
     <![endif]-->
 
 <div ui-view="" class="fadeZoom"></div>
-<script src="http://fb.me/react-0.12.2.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.min.js"></script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -53,6 +54,7 @@
     <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../bower_components/rangy/rangy-core.min.js"></script>
     <script src="../bower_components/rangy/rangy-classapplier.min.js"></script>
     <script src="../bower_components/rangy/rangy-highlighter.min.js"></script>
@@ -73,64 +75,65 @@
     <script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-    <script src="../bower_components/angular-form-for/dist/form-for.bootstrap-templates.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
     <!-- build:js({.tmp,client}) scripts/app.js -->
              <script src="topshelf.module.js"></script>
              <script src="appStart.js"></script>
     <!-- inject:js -->
              <script src="app/admin/admin.module.js"></script>
+             <script src="app/admin/states/users/details/user-details.controller.js"></script>
              <script src="app/admin/states/resources/edit/admin.resource-edit.controller.js"></script>
              <script src="app/admin/states/resources/create/admin.resources-create.controller.js"></script>
-             <script src="app/admin/states/users/details/user-details.controller.js"></script>
              <script src="app/admin/states/news/edit/admin.news-edit.controller.js"></script>
              <script src="app/admin/states/news/create/admin.news-create.controller.js"></script>
              <script src="app/admin/states/applications/details/application-details.controller.js"></script>
              <script src="app/account/account.module.js"></script>
              <script src="app/account/states/profile/edit/account.profile-edit.controller.js"></script>
-             <script src="app/guild/guild.module.js"></script>
-             <script src="app/guild/states/streams/guild.streams.controller.js"></script>
-             <script src="app/guild/states/recruitment/guild.recruitment.controller.js"></script>
-             <script src="app/guild/states/application/guild.application.controller.js"></script>
              <script src="app/core/core.module.js"></script>
              <script src="app/core/states/home/core.home.controller.js"></script>
              <script src="app/core/states/home/core.carousel.controller.js"></script>
              <script src="app/core/filters/posttagsformat/posttagsformat.js"></script>
-             <script src="app/core/directives/recruitingPanel/core.recruitingPanel.directive.js"></script>
              <script src="app/core/directives/newsView/core.newsView.directive.js"></script>
+             <script src="app/core/directives/recruitingPanel/core.recruitingPanel.directive.js"></script>
              <script src="app/core/directives/navbar/core.navbar.directive.js"></script>
              <script src="app/core/directives/navbar/core.navbar.controller.js"></script>
              <script src="app/core/directives/mongoose/mongoose-error.directive.js"></script>
              <script src="app/core/directives/footer/core.footer.directive.js"></script>
              <script src="app/core/directives/footer/core.footer.controller.js"></script>
              <script src="app/core/directives/disableAnimation/core.disableAnimation.directive.js"></script>
-             <script src="app/admin/states/resources/admin.resource.controller.js"></script>
+             <script src="app/guild/guild.module.js"></script>
+             <script src="app/guild/states/streams/guild.streams.controller.js"></script>
+             <script src="app/guild/states/recruitment/guild.recruitment.controller.js"></script>
+             <script src="app/guild/states/application/guild.application.controller.js"></script>
              <script src="app/admin/states/users/admin.users.controller.js"></script>
-             <script src="app/admin/states/recruitment/admin.recruitmentList.controller.js"></script>
-             <script src="app/admin/states/recruitment/admin.recruitment.controller.js"></script>
+             <script src="app/admin/states/resources/admin.resource.controller.js"></script>
              <script src="app/admin/states/news/admin.news.controller.js"></script>
              <script src="app/admin/states/news/admin.news-datePicker.controller.js"></script>
+             <script src="app/admin/states/recruitment/admin.recruitmentList.controller.js"></script>
+             <script src="app/admin/states/recruitment/admin.recruitment.controller.js"></script>
              <script src="app/admin/states/applications/admin.applications.controller.js"></script>
              <script src="app/admin/directives/admin.navbar/admin.navbar.directive.js"></script>
              <script src="app/admin/directives/admin.navbar/admin.navbar.controller.js"></script>
              <script src="app/account/states/signup/account.signup.controller.js"></script>
-             <script src="app/account/states/settings/account.settings.controller.js"></script>
              <script src="app/account/states/profile/account.profile.controller.js"></script>
+             <script src="app/account/states/settings/account.settings.controller.js"></script>
              <script src="app/account/states/login/account.login.controller.js"></script>
-             <script src="app/guild/services/guild.streams.service.js"></script>
-             <script src="app/guild/services/guild.recruitment.service.js"></script>
-             <script src="app/guild/services/guild.gameData.service.js"></script>
-             <script src="app/guild/services/guild.application.service.js"></script>
-             <script src="app/guild/states/guild.states.js"></script>
-             <script src="app/guild/filters/guild.startFrom.filter.js"></script>
-             <script src="app/guild/filters/guild.classes.filter.js"></script>
              <script src="app/core/states/core.states.js"></script>
              <script src="app/core/services/util.service.js"></script>
              <script src="app/core/services/post.service.js"></script>
              <script src="app/core/services/logger.service.js"></script>
+             <script src="app/core/services/form-for.bootstrap.templates.js"></script>
              <script src="app/core/services/config.service.js"></script>
              <script src="app/core/services/authInterceptor.service.js"></script>
              <script src="app/core/filters/startFrom.filter.js"></script>
+             <script src="app/guild/states/guild.states.js"></script>
+             <script src="app/guild/services/guild.streams.service.js"></script>
+             <script src="app/guild/services/guild.recruitment.service.js"></script>
+             <script src="app/guild/services/guild.gameData.service.js"></script>
+             <script src="app/guild/services/guild.application.service.js"></script>
+             <script src="app/guild/filters/guild.startFrom.filter.js"></script>
+             <script src="app/guild/filters/guild.classes.filter.js"></script>
              <script src="app/admin/states/admin.states.js"></script>
              <script src="app/admin/services/resource.service.js"></script>
              <script src="app/account/states/account.states.js"></script>
