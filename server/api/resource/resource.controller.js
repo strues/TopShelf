@@ -33,6 +33,8 @@ exports.create = function(req, res) {
     var resource = new Resource();   // create a new instance of the Resource model
     resource.websiteName = req.body.websiteName;  // set the resource name (comes from the request)
     resource.websiteUrl = req.body.websiteUrl;  // set the resource url (comes from the request)
+    resource.websiteType = req.body.websiteType;
+    resource.resourceDesc = req.body.resourceDesc;
 
     resource.save(function(err) {
         if (err) {
@@ -64,6 +66,8 @@ exports.update = function(req, res) {
 // set the new user information if it exists in the request
         if (req.body.websiteName) resource.websiteName = req.body.websiteName;
         if (req.body.websiteUrl) resource.websiteUrl = req.body.websiteUrl;
+        if (req.body.websiteType) resource.websiteType = req.body.websiteType;
+        if (req.body.resourceDesc) resource.resourceDesc = req.body.resourceDesc;
 
         resource.save(function(err) {
             if (err) {

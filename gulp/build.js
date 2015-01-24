@@ -117,7 +117,7 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'templates'], funct
     .pipe(jsFilter.restore())
     .pipe($.sourcemaps.write())
     .pipe(cssFilter)
-    .pipe($.replace(['../../bootstrap-sass-official/assets/fonts/bootstrap', '../../font-awesome/fonts'], 'assets/fonts'))
+    .pipe($.replace(['../bootstrap-sass/assets/fonts/bootstrap'], 'assets/fonts'))
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
@@ -146,10 +146,8 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-    return gulp.src($.mainBowerFiles())
-    .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
-    .pipe($.flatten())
-    .pipe(gulp.dest('dist/client/assets/fonts/'));
+    return gulp.src(config.bowerDir + 'font-awesome/fonts/**.*') 
+      .pipe(gulp.dest('dist/client/assets/fonts/'));
 });
 
 gulp.task('misc', function () {

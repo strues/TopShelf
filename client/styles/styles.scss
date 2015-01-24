@@ -1,18 +1,20 @@
 //
 // Fonts
 //
-$brand-primary:         #3498db;
+
 @import "base/settings";
 @import "base/fonts";
 @import "base/icons";
 @import "base/normalize";
+
 
 //
 // Utilities
 //
 
 @import "utilities/animations";
-
+@import "utilities/mixins";
+@import "utilities/theming";
 
 //
 // Components
@@ -23,6 +25,7 @@ $brand-primary:         #3498db;
 @import "components/navbar";
 @import "components/applicationForm";
 @import "components/tables";
+@import "components/card";
 
 
 
@@ -38,6 +41,7 @@ $brand-primary:         #3498db;
 @import "sections/recruitmentPage";
 @import "sections/recruitingPanel";
 @import "sections/profile/editProfile";
+
 .panel {
     background: transparent;
 }
@@ -50,6 +54,7 @@ $brand-primary:         #3498db;
   margin-bottom: 25px;
   padding: 20px 20px 20px 20px;
 }
+
 
 // injector
 // endinjector

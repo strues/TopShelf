@@ -5,10 +5,10 @@
         return {
       templateUrl: 'app/core/directives/recruitingPanel/core.recruitingPanel.tpl.html',
       restrict: 'EA',
-      controller: function($scope, recruitmentFactory, $log) {
-          recruitmentFactory.getRecruitment()
-            .success(function (recruitments) {
-            $scope.recruitments = recruitments;
+      controller: function($scope, Recruitment, $log) {
+          Recruitment.all()
+            .success(function (data) {
+            $scope.recruitments = data;
           //console.log('aside - postsFactory.getPosts()', posts);
            // socket.syncUpdates('recruitment', $scope.recruitments);
         }).

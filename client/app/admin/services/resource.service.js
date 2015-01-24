@@ -27,7 +27,7 @@
             return $http.put(urlBase + '/' + id, resourceData);
         };
 
-        resourceFactory.removeResource = function(id) {
+        resourceFactory.delete = function(id) {
             return $http.delete(urlBase + '/' + id);
         };
 

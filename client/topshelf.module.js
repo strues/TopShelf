@@ -24,6 +24,7 @@
                   'ui.router',
                   'ui.bootstrap',
                   'textAngular',
+                  'vModal',
                   'formFor',
                   'formFor.bootstrapTemplates',
                   'hSweetAlert',

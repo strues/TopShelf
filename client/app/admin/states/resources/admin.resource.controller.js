@@ -7,6 +7,7 @@
     /* @ngInject */
     function ResourceCtrl(Resource) {
         var vm = this;
+
         vm.processing = true;
 
         Resource.all().success(function (data) {
@@ -22,10 +23,22 @@
     // ng-show/ng-hide
         vm.showMode = false;
 
-        vm.deleteResource = function (id) {
-        console.log('inside resource.controller.js deleteResource - id', id);
-        Resource.delete(id);
-    };
+              // function to delete a user
+        vm.deleteResource = function(id) {
+            vm.processing = true;
+
+            Resource.delete(id)
+            .success(function(data) {
+
+              // get all users to update the table
+              // you can also set up your api to return the list of users with the delete call
+                Resource.all().success(function(data) {
+                    vm.processing = false;
+                    vm.resource = data;
+                });
+
+            });
+        };
     }
 
 })();

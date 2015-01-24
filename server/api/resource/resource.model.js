@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 var ResourceSchema = new Schema({
   websiteUrl: String,
   websiteName: String,
-  websiteType: String
+  websiteType: String,
+  resourceDesc: String
 });
 
 module.exports = mongoose.model('Resource', ResourceSchema);

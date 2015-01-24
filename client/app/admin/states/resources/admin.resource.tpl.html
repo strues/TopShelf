@@ -1,17 +1,27 @@
-<div class="backendWrap">
+<div class="backendWrap" ng-controller="ResourceCtrl as vm">
 <div class="row">
-<div class="col-sm-8 col-sm-offset-2" ng-controller="ResourceCtrl as vm">
-<h1> Resources</h1>
- <ul class="list-unstyled" ng-repeat="resource in vm.resources">
-      <li>
-       <h4>{{ resource.websiteName }}</h4>
-      </li>
-      <li> {{ resource.websiteUrl }}</li>
-      <li>
-      <i ng-click="vm.deleteResource(resource._id)" class="fa fa-trash"></i></button>
-       <a href="" ui-sref='admin.resourceEdit({resourceId: resource._id})'><button class="btn btn-primary">Edit</button></a>
-      </li>
-    </ul>
-</div>
+          <h2>Guild <span class="recruitmentWhite">Resources</span><a class="pull-right" href="" ui-sref="admin.resourceCreate"><button class="btn btn-xs btn-danger"><i class="fa fa-plus"></i>Add</button></a></h2>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-repeat="resource in vm.resources">
+            <div class="box">
+                <div class="box-icon">
+                    <span class="fa fa-4x fa-html5"></span>
+                </div>
+                <div class="info">
+                    <h4 class="text-center"><h4>{{ resource.websiteName }}</h4>
+                      <div class="postContent">
+                        <p ng-hide="showMode" ng-bind-html="resource.resourceDesc | limitTo : 475"></p>
+                        <p ng-hide="!showMode" ng-bind-html="resource.resourceDesc"></p>
+                      </div>
+
+                    <a class="pull-left" href="" ng-click="vm.deleteResource(resource._id)">
+                      <button class="btn btn-xs btn-danger">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </a>
+                     <a href="" class="pull-left" ui-sref='admin.resourceEdit({resourceId: resource._id})'><button class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></button></a>
+                    <a ng-href="{{ resource.websiteUrl }}" class="btn">View</a>
+                </div>
+            </div>
+        </div>
 </div>
 </div>

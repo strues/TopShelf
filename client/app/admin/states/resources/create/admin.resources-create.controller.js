@@ -8,7 +8,7 @@
     function ResourceCreateCtrl($scope, Resource, sweet, Auth) {
         var vm = this;
         vm.processing = true;
-
+        vm.toggle = false;
         vm.saveResource = function () {
             vm.processing = true;
             vm.message = '';

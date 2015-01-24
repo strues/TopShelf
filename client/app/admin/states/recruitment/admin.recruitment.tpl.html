@@ -1,65 +1,77 @@
 <div class="row">
-    <div class="col-sm-6 col-md-4" ng-controller="RecruitmentCtrl">
-        <h1>Update <span class="recruitmentWhite">Recruitment</span></h1>
-    <hr>
-<form form-for="formData" submit-with="submit(data)">
-<div class="row">
-   <h4>Select Menus</h4>
-  <select-field attribute="classType" label="Class Type" options="classType"></select-field>
-  <hr />
-  </div>
-  <div class="row">
-  <select-field attribute="classSpec" label="Class Spec" options="classSpec"></select-field>
-  </div>
-<div class="row">
- <div class="col-sm-6">
- <div class="form-group">
-<label>Priority</label>
-  <radio-field attribute="priority" label="{{priority.label}}" value="{{priority.value}}" ng-repeat="priority in priority"></radio-field>
-  </div>
-</div>
- <div class="col-sm-6">
-   <div class="form-group">
-<label>Status</label>
-  <radio-field attribute="status" label="{{status.label}}" value="{{status.value}}" ng-repeat="status in status"></radio-field>
-  </div>
-  </div>
-  </div>
-
-  <submit-button label="Recruit!"></submit-button>
-</form>
-    </div>
-    <div class="col-sm-6 col-md-8" ng-controller="RecruitmentListCtrl as vm">
+  <div class="col-sm-12">
+    <h1>Recruitment</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="col-sm-6 col-md-4" ng-controller="RecruitmentCtrl">
+    <div class="well">
+    <h1>Update <span class="recruitmentWhite">Recruitment</span></h1>
+      <form form-for="formData" submit-with="submit(data)">
+        <div class="row">
+          <select-field attribute="classType" label="Class Type" options="classType"></select-field>
+        </div>
+        <div class="row">
+          <select-field attribute="classSpec" label="Class Spec" options="classSpec"></select-field>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="form-group">
+              <label>Priority</label>
+              <radio-field attribute="priority"
+                    label="{{priority.label}}"
+                    value="{{priority.value}}"
+                    ng-repeat="priority in priority">
+              </radio-field>
+            </div>
+          </div>
+        <div class="col-sm-6 col-sm-offset-1">
+          <div class="form-group">
+              <label>Status</label>
+              <radio-field attribute="status"
+                  label="{{status.label}}"
+                  value="{{status.value}}"
+                  ng-repeat="status in status">
+              </radio-field>
+            </div>
+          </div>
+        </div> <!-- end radio button row -->
+        <submit-button label="Recruit!"></submit-button>
+      </form>
+      </div>
+  </div> <!-- end form container and RecruitmentCtrl -->
+  <div class="col-sm-6 col-md-8" ng-controller="RecruitmentListCtrl as vm">
     <h1 style="text-align: right;">Currently <span class="recruitmentWhite">Recruiting</span></h1>
-     <table class="table table-condensed">
-                    <thead>
-                        <tr style="font-size:14px;">
-                            <th>Class Type</th>
-                            <th>Class Spec</th>
-                            <th>Priority</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="recruitment in vm.recruitments" ng-class-even="table-striped" style="cursor:pointer">
-                            <td>{{recruitment.classType}}</td>
+    <table class="table table-condensed">
+      <thead>
+          <tr style="font-size:14px;">
+              <th>Class Type</th>
+              <th>Class Spec</th>
+              <th>Priority</th>
+              <th>Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="recruitment in vm.recruitments" ng-class-even="table-striped" style="cursor:pointer">
+              <td>{{recruitment.classType}}</td>
 
-                            <td>{{recruitment.classSpec}}</td>
+              <td>{{recruitment.classSpec}}</td>
 
-                            <td>{{recruitment.priority}}</td>
+              <td>{{recruitment.priority}}</td>
 
-                            <td>{{recruitment.status}}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="" ng-click="vm.deleteRecruitment(recruitment)" class="btn btn-sm btn-danger">
-                                        <span class="glyphicon glyphicon-trash"></span>Delete</a>
+              <td>{{recruitment.status}}</td>
+              <td>
+                  <div class="btn-group">
+                      <a href="" ng-click="vm.deleteRecruitment(recruitment)" class="btn btn-sm btn-danger">
+                          <span class="glyphicon glyphicon-trash"></span>Delete</a>
 
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-    </div>
+                  </div>
+              </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-
