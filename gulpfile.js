@@ -2,8 +2,9 @@
 
 var gulp = require('gulp');
 
-require('require-dir')('./gulp');
+var $ = require('gulp-load-plugins')({lazy: true});
 
-gulp.task('default', ['clean'], function () {
-    gulp.start('serve');
-});
+require('require-dir')('./gulp', { recurse: true });
+
+gulp.task('help', $.taskListing);
+gulp.task('default', ['help']);

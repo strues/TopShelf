@@ -18,7 +18,7 @@ var Post = new Schema({
 Post.statics = {
     loadRecent: function(cb) {
         this.find({})
-        .populate({path:'User', select: 'name'})
+        .populate({path:'User', select: 'username'})
         .sort('-date')
         .limit(20)
         .exec(cb);

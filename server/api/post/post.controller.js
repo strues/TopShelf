@@ -5,7 +5,7 @@ var Post = require('./post.model');
 
 // Get list of posts
 exports.index = function(req, res) {
-    Post.find().populate('author', 'name')
+    Post.find().populate('author', 'username')
     .exec(function(err, posts) {
         if (err) {
             return handleError(res, err);
@@ -17,7 +17,7 @@ exports.index = function(req, res) {
 // Get a single post
 exports.show = function(req, res) {
     Post.findById(req.params.id)
-    .populate('author', 'name')
+    .populate('author', 'username')
     .exec(function (err, post) {
         if (err) {
             return handleError(res, err);

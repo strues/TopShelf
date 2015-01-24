@@ -8,24 +8,28 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express     = require('express'),
     mongoose    = require('mongoose'),
+    chalk       = require('chalk'),
     config      = require('./config/environment');
 
 // Establish Mongo Connection
-mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
+var db = mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
     if (err) {
-        console.log('Rekt, connection failed to: ' + config.mongo.uri);
-        console.log(err);
+        console.error(chalk.red('Rekt, connection failed to: ' + config.mongo.uri));
+        console.log(chalk.red(err));
     } else {
-        console.log('Connection successful to: ' + config.mongo.uri);
+        console.log(chalk.green('Connection successful to: ' + config.mongo.uri));
     }
 });
-
+// If error, tell us more about error and end
+mongoose.connection.on('error', function(err) {
+    console.error(chalk.red('MongoDB connection error: ' + err));
+    process.exit(-1);
+});
 // Setup server
 var app         = express();
-var fs          = require('fs');
-var https       = require('https');
+//var fs          = require('fs');
+//var https       = require('https');
 var server      = require('http').createServer(app);
-var Guild           = require('./api/roster/roster.model');
 
 require('./config/express')(app);
 require('./routes')(app);
@@ -41,46 +45,6 @@ var request = require('./request')
 server.listen(config.port, config.ip, function () {
     console.log('Express is running on %d, in %s mode',
     config.port, app.get('env'));
-
-    Guild.findOne({}, function(err, guild) {
-        request.bnet(
-            'us.battle.net',
-            '/api/wow/guild/' + config.realm + '/' + encodeURIComponent(config.guild) +
-            '?fields=members',
-            function(data) {
-                var lastUpdated = new Date().getTime();
-                if (guild !== null) {
-                    for (var key in data) {
-                        guild[key] = data[key];
-                    }
-
-                    guild.lastUpdated = lastUpdated;
-                    guild.settings = {
-                        webAdminBattletag: ''
-                    };
-
-                    guild.save(function(err) {
-                        if (err) throw err;
-                    });
-                }
-                else {
-                    var newGuild = new Guild();
-                    for (var key in data) {
-                        newGuild[key] = data[key];
-                    }
-
-                    newGuild.lastUpdated = lastUpdated;
-                    newGuild.settings = {
-                        webAdminBattletag: ''
-                    };
-
-                    newGuild.save(function(err) {
-                        if (err) throw err;
-                    });
-                }
-            }
-        );
-    });
 });
 
 exports = module.exports = app;

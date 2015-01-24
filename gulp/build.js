@@ -1,25 +1,30 @@
 'use strict';
 
 var gulp = require('gulp');
-var config = require('./config');
+var gutil = require('gulp-util');
+var autoprefixer = require('autoprefixer-core');
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'glob', 'del']
 });
 
-gulp.task('styles', ['wiredep', 'injector:sass'], function () {
+gulp.task('styles', ['wiredep', 'inject-sass'], function () {
+    gutil.log('Compiling Sass --> CSS');
     return gulp
-    .src(['client/styles/styles.scss', 'client/styles/vendor.scss'])
-    .pipe($.sass({style: 'expanded'}))
-    .on('error', function handleError(err) {
-        console.error(err.toString());
-        this.emit('end');
-    })
-    .pipe($.autoprefixer())
-    .pipe(gulp.dest('.tmp/styles/'))
-    .pipe($.notify('Sass changed and reloaded'));
+      .src(['client/styles/styles.scss', 'client/styles/vendor.scss'])
+      .pipe($.plumber()) // exit gracefully if something fails after this
+      .pipe($.sourcemaps.init())
+      .pipe($.sass({style: 'expanded'}))
+      .on('error', function handleError(err) {
+          console.error(err.toString());
+          this.emit('end');
+      })
+      .pipe($.postcss([autoprefixer({browsers: ['last 2 version']})]))
+      .pipe($.sourcemaps.write('.'))
+      .pipe(gulp.dest('.tmp/styles/'))
+      .pipe($.notify('Sass changed and reloaded'));
 });
 
-gulp.task('injector:sass', function () {
+gulp.task('inject-sass', function () {
     return gulp
     .src('client/styles/index.scss')
     .pipe($.inject(gulp.src([
@@ -146,7 +151,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-    return gulp.src(config.bowerDir + 'font-awesome/fonts/**.*') 
+    return gulp.src('./bower_components/font-awesome/fonts/**.*') 
       .pipe(gulp.dest('dist/client/assets/fonts/'));
 });
 
