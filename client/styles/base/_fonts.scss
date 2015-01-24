@@ -7,10 +7,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 body {
     font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-      color: #bebebe;
+    color: #bebebe;
 }
 .blueText {
     color: $tsBlue;
+}
+.inverseText {
+  color: $drkGray;
 }
 .smCaps {
     font-variant: small-caps;
