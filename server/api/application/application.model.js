@@ -17,6 +17,9 @@ var ApplicationSchema = new Schema({
   pastGuilds: {type: String},
   screenshot: {type: String},
   whyTS: {type: String},
+  applicantJoke: {type: String},
+  applicantSelfImprovement: {type: String},
+  applicantAlt: {type: String},
   created: {
     type: Date,
     default: Date
@@ -42,8 +45,7 @@ var ApplicationSchema = new Schema({
 ApplicationSchema.statics = {
   loadRecent: function(cb) {
     this.find({})
-      .populate({path:'applicant', select: 'name'})
-      .sort('-date')
+      .populate({path:'User', select: 'name'})
       .limit(20)
       .exec(cb);
   }

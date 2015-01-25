@@ -1,238 +1,80 @@
 <div class="container frontendWrap">
-<div navbar></div>
-<div class="row" ng-controller="ApplicationCtrl as application">
-<div class="col-sm-12 col-lg-8">
-  <h1 class="text-light">Top Shelf <span class="recruitmentWhite">Guild Application</span></h1>
-      <form class="applicationForm" name="applicationForm" novalidate ng-submit="application.submit(applicationForm.$valid, data)">
-  <!-- Char Name -->
-  <div class="row">
-  <div class="col-md-4 form-group has-feedback"
-              ng-class="{ 'has-error' : applicationForm.charName.$invalid && applicationForm.charName.$dirty }">
-              <label>Character Name</label>
-            <input class="form-control input-lg"
-                   type="text"
-                   name="charName"
-                   ng-model="application.data.charName"
-                   placeholder="Laerel"
-                   required>
-             <span class="ion-android-contact form-control-feedback"></span>
-          <div ng-if="applicationForm.$submitted || applicationForm.charName.$touched"
-                ng-messages="applicationForm.charName.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.charName.$error.required">Your character's name is required.</div>
+  <div navbar></div>
+  <div class="row" ng-controller="ApplicationCtrl as application">
+    <div class="col-sm-12 col-lg-8">
+      <h1 class="text-light">Top Shelf <span class="recruitmentWhite">Guild Application</span></h1>
+      <div class="panel">
+        <form form-for="formData" validation-rules="validationRules" submit-with="submit(data)" validation-failed="validationFailed()">
+          <div class="row">
+            <div class="col-md-3">
+              <text-field label="Character Name" attribute="charName" icon-after="fa fa-user" placeholder="Laerel" ></text-field>
+            </div>
+            <div class="col-md-3">
+              <select-field
+                attribute="charClass"
+                label="Class"
+                icon-after="fa fa-cube"
+                options="classOptions"></select-field>
+            </div>
+            <div class="col-md-3">
+              <select-field
+              attribute="charSpec"
+              label="Spec"
+              icon-after="fa fa-eyedropper"
+              options="specOptions"></select-field>
+            </div>
+            <div class="col-md-3">
+              <select-field
+                attribute="charServer"
+                label="Realm"
+                icon-after="fa fa-server"
+                options="realmList"
+                enable-filtering></select-field>
             </div>
           </div>
-<!-- ./charName -->
-  <div class="col-md-4 form-group has-feedback"
-              ng-class="{ 'has-error' : applicationForm.charClass.$invalid && applicationForm.charClass.$dirty }">
-              <label>Class Type</label>
-            <input class="form-control input-lg"
-                   type="text"
-                   name="charClass"
-                   ng-model="application.data.charClass"
-                   placeholder="Monk"
-                   required>
-             <span class="ion-flag form-control-feedback"></span>
-          <div ng-if="applicationForm.$submitted || applicationForm.charClass.$touched"
-                ng-messages="applicationForm.charClass.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.charClass.$error.required">Your class type is required.</div>
-            </div>
+          <text-field
+            attribute="charArmory"
+            label="Armory"
+            icon-after="fa fa-shield"
+            placeholder="http://us.battle.net"
+            help="Link us to your armory. If your armory is broken, please leave a link to you on WoWProgress."></text-field>
+        <div class="row">
+          <div class="col-md-4">
+            <text-field
+              attribute="applicantName"
+              label="First Name"
+              icon-after="fa fa-smile-o"
+              placeholder="Joe"></text-field>
           </div>
-<!-- ./charClass -->
-  <div class="col-md-4 form-group has-feedback"
-              ng-class="{ 'has-error' : applicationForm.charSpec.$invalid && applicationForm.charSpec.$dirty }">
-              <label>Class Spec</label>
-            <input class="form-control input-lg"
-                   type="text"
-                   name="charSpec"
-                   ng-model="application.data.charSpec"
-                   placeholder="Brewmaster"
-                   required>
-            <span class="ion-ios-cog-outline form-control-feedback"></span>
-          <div ng-if="applicationForm.$submitted || applicationForm.charSpec.$touched"
-                ng-messages="applicationForm.charSpec.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.charSpec.$error.required">Your class spec required.</div>
-            </div>
+          <div class="col-md-4">
+            <select-field
+              attribute="applicantAge"
+              label="Age"
+              icon-after="fa fa-level-up"
+              options="yearsOld"></select-field>
           </div>
-
-<!-- ./charClass -->
-          <div class="col-md-4 form-group has-feedback"
-               ng-class="{ 'has-error' : applicationForm.charServer.$invalid && applicationForm.charServer.$dirty }">
-            <label>Realm</label>
-            <input class="form-control input-lg"
-                   type="text"
-                   name="charServer"
-                   ng-model="application.data.charServer"
-                   placeholder="Sargeras"
-                   required>
-            <span class="ion-planet form-control-feedback"></span>
-
-            <div ng-if="applicationForm.$submitted || applicationForm.charServer.$touched"
-                 ng-messages="applicationForm.charServer.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.charServer.$error.required">Your server is required.
-              </div>
-            </div>
+        <div class="col-md-4">
+          <text-field
+            attribute="applicantRealId"
+            label="RealID"
+            icon-after="fa fa-user-secret"
+            placeholder="battle#1234"></text-field>
           </div>
-
-          <div class="col-md-8 form-group has-feedback"
-               ng-class="{ 'has-error' : applicationForm.charArmory.$invalid && applicationForm.charArmory.$dirty }">
-            <label>Armory</label>
-            <input class="form-control input-lg" type="url" name="armory" ng-model="application.data.charArmory"
-                   placeholder="http://us.battle.net/" required autofocus>
-            <span class="ion-android-clipboard form-control-feedback"></span>
-
-            <div ng-if="applicationForm.$submitted || applicationForm.charArmory.$touched"
-                 ng-messages="applicationForm.charArmory.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.charArmory.$error.required">An armory is required.
-              </div>
-            </div>
-          </div>
-          </div>
-          <!-- ./charArmory -->
-<div class="row">
-          <div class="col-md-4 form-group has-feedback"
-               ng-class="{ 'has-error' : applicationForm.applicantName.$invalid && applicationForm.applicantName.$dirty }">
-            <label>First Name</label>
-            <input class="form-control input-lg"
-                   type="text"
-                   name="applicantName"
-                   ng-model="application.data.applicantName"
-                   placeholder="John"
-                   required>
-            <span class="ion-ios-person form-control-feedback"></span>
-
-            <div ng-if="applicationForm.$submitted || applicationForm.applicantName.$touched"
-                 ng-messages="applicationForm.applicantName.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.applicantName.$error.required">Please tell us your
-                name.
-              </div>
-            </div>
-          </div>
-          <!-- ./applicantName -->
-          <div class="col-md-4 form-group has-feedback"
-               ng-class="{ 'has-error' : applicationForm.applicantAge.$invalid && applicationForm.applicantAge.$dirty }">
-            <label>Age</label>
-            <input class="form-control input-lg"
-                   type="number"
-                   name="applicantAge"
-                   ng-model="application.data.applicantAge"
-                   placeholder="18"
-                   min="18"
-                   required>
-            <span class="ion-calendar form-control-feedback"></span>
-
-            <div ng-if="applicationForm.$submitted || applicationForm.applicantAge.$touched"
-                 ng-messages="applicationForm.applicantAge.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.applicantAge.$error.required">Your age is required.
-              </div>
-            </div>
-          </div>
-          <!-- ./applicantAge -->
-
-          <div class="col-md-4 form-group has-feedback"
-               ng-class="{ 'has-error' : applicationForm.applicantRealId.$invalid && applicationForm.applicantRealId.$dirty }">
-            <label>RealID</label>
-            <input class="form-control input-lg"
-                   type="text"
-                   name="applicantRealId"
-                   ng-model="application.data.applicantRealId"
-                   placeholder="Example#2123"
-                   required>
-            <span class="ion-ios-flame form-control-feedback"></span>
-
-            <div ng-if="applicationForm.$submitted || applicationForm.realID.$touched"
-                 ng-messages="applicationForm.realID.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.realID.$error.required">Your realID is required.</div>
-            </div>
-          </div>
-          <!-- ./realID-->
         </div>
-        <div class="form-group has-feedback" ng-class="{ 'has-error' : applicationForm.charLogs.$invalid && applicationForm.charLogs.$dirty }">
-          <label>Warcraft Logs</label>
-            <input class="form-control input-lg" type="url" id="charLogs" name="charLogs" ng-model="application.data.charLogs" placeholder="http://www.warcraftlogs.com" required>
-            <span class="ion-android-list form-control-feedback"></span>
-              <div ng-if="applicationForm.$submitted || applicationForm.charLogs.$touched"
-                ng-messages="applicationForm.charLogs.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.charLogs.$error.required">Logs are required for your application.</div>
-            </div>
-          </div>
+      <text-field attribute="charLogs" label="Warcraft Logs"  icon-after="fa fa-folder" placeholder="http://warcraftlogs.com"></text-field>
+       <text-field label="Mythic/Heroic Experience" icon-after="fa fa-trophy" attribute="heroicXP" multiline placeholder="Please tell us about your current mythic and past heroic raiding experience."></text-field>
 
-          <div class="form-group has-feedback"
-              ng-class="{ 'has-error' : applicationForm.heroicXP.$invalid && applicationForm.heroicXP.$dirty }">
-              <label>Heroic Experience</label>
-            <textarea class="form-control input-lg"
-                   type="text"
-                   name="heroicXP"
-                   ng-model="application.data.heroicXP"
-                   placeholder="Tell us about your heroic progression experience"
-                   required>
-          </textarea>
-           <span class="ion-trophy form-control-feedback"></span>
-            <div ng-if="applicationForm.$submitted || applicationForm.heroicXP.$touched"
-                ng-messages="applicationForm.heroicXP.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.heroicXP.$error.required">Your heroic raiding experience is required.</div>
-            </div><!--ngMessage-->
-          </div><!-- ./heroicXP -->
-
-          <div class="form-group has-feedback"
-              ng-class="{ 'has-error' : applicationForm.pastGuilds.$invalid && applicationForm.pastGuilds.$dirty }">
-           <label>Guild History</label>
-            <textarea class="form-control input-lg"
-                   type="text"
-                   name="pastGuilds"
-                   ng-model="application.data.pastGuilds"
-                   placeholder="Please tell us the most recent guilds you have been a part of. Why did you leave?"
-                   required>
-          </textarea>
-           <span class="ion-ios-albums-outline form-control-feedback"></span>
-            <div ng-if="applicationForm.$submitted || applicationForm.pastGuilds.$touched"
-                ng-messages="applicationForm.pastGuilds.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.pastGuilds.$error.required">Your guild history is required.</div>
-            </div><!--ngMessage-->
-          </div><!-- ./pastGuilds -->
-
-          <div class="form-group has-feedback"
-              ng-class="{ 'has-error' : applicationForm.screenshot.$invalid && applicationForm.screenshot.$dirty }">
-            <label>UI Screenshot</label>
-            <input class="form-control input-lg"
-                   type="text"
-                   name="screenshot"
-                   ng-model="application.data.screenshot"
-                   placeholder="http://imgur.com"
-                   required>
-            <span class="ion-image form-control-feedback"></span>
-           <div ng-if="applicationForm.$submitted || applicationForm.screenshot.$touched"
-                ng-messages="applicationForm.screenshot.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.screenshot.$error.required">A UI screenshot is required.</div>
-            </div><!-- ./ngMessage -->
-          </div><!-- ./screen -->
-
-
-        <div class="form-group has-feedback"
-              ng-class="{ 'has-error' : applicationForm.whyTS.$invalid && applicationForm.whyTS.$dirty }">
-              <label>Why Top Shelf?</label>
-            <textarea class="form-control input-lg"
-                     type="text"
-                     name="whyTS"
-                     ng-model="application.data.whyTS"
-                     placeholder="Please tell us why you want to join Top Shelf? Why should we consider your application over all the others?"
-                     required>
-          </textarea>
-           <span class="ion-help form-control-feedback"></span>
-          <div ng-if="applicationForm.$submitted || applicationForm.whyTS.$touched"
-              ng-messages="applicationForm.whyTS.$error" class="text-danger">
-              <div ng-message="required" ng-show="applicationForm.whyTS.$error.required">Your response is required.</div>
-            </div><!-- ngMessage-->
-          </div><!-- ./why Top Shelf -->
-
-
-
-          <p class="text-center applicationForm"><small>Your application will be reviewed within 1-2 days. All fields are required. If you dont see a notification telling you we received your application, it did not submit. You can preview your application as you type it.</small></p>
-
-          <button type="submit" ng-disabled="applicationForm.$invalid" class="btn btn-lg btn-block btn-primary">Apply</button>
-          <br/>
-    </form>
+      <text-field label="Guild History" attribute="pastGuilds" icon-after="fa fa-book" multiline placeholder="Why are you looking to leave your current guild? What are some of the most recent guilds you've been in?"></text-field>
+      <text-field attribute="screenshot" label="UI Screenshot"  icon-after="fa fa-image" help="Please upload a screenshot of your UI in raid combat" placeholder="http://imgur.com"></text-field>
+      <text-field label="Why Top Shelf?" icon-after="fa fa-diamond"attribute="whyTS" multiline placeholder="How did you find out about us and why did you choose to apply with us?"></text-field>
+      <text-field attribute="applicantAlt" label="Alt Character Armory"  icon-after="fa fa-compass" placeholder="http://us.battle.net" help="Link us to the armory of an alt that you are able to raid on."></text-field>
+      <text-field attribute="applicantSelfImprovement" label="Self Improvement" multiline icon-after="fa fa-user-plus" placeholder="What resources do you use to improve your raid performance?" help="Blogs, Forums, etc"></text-field>
+      <text-field attribute="applicantJoke" label="Tell us a joke" multiline icon-after="fa fa-meh-o" placeholder="Make us laugh as a lasting impression."></text-field>
+  <submit-button label="Apply"></submit-button>
+</form>
+</div>
     </div>
-    <div class="col-lg-4">
+<div class="col-lg-4">
     <div class="panel applicationRightPanel">
     <h4 class="blueText"><i class="fa fa-star"></i> Things to remember as you apply <i class="fa fa-star"></i></h4>
         <ul class="list-unstyled applicationRightList">
@@ -244,24 +86,21 @@
           </ul>
     </div>
     <div class="panel" style="text-align: center;">
-        <h5 class="appPreview">Character Name:</h5><span ng-bind="application.data.charName"></span>
-        <h5 class="appPreview">Character Class:</h5><span ng-bind="application.data.charClass"></span>
-        <h5 class="appPreview">Character Spec:</h5><span ng-bind="application.data.charSpec"></span>
-        <h5 class="appPreview">Character Server:</h5><span ng-bind="application.data.charServer"></span>
-        <h5 class="appPreview">Armory:</h5><span ng-bind="application.data.charArmory"></span>
-        <h5 class="appPreview">First Name:</h5><span ng-bind="application.data.applicantName"></span>
-        <h5 class="appPreview">Age:</h5><span ng-bind="application.data.applicantAge"></span>
-        <h5 class="appPreview">RealId:</h5><span ng-bind="application.data.applicantRealId"></span>
-        <h5 class="appPreview">Logs:</h5><span ng-bind="application.data.charLogs"></span>
-        <h5 class="appPreview">Heroic Experience:</h5><span ng-bind="application.data.heroicXP"></span>
-        <h5 class="appPreview">Guild History:</h5><span ng-bind="application.data.pastGuilds"></span>
-        <h5 class="appPreview">UI Screenshot:</h5><span ng-bind="application.data.screenshot"></span>
-        <h5 class="appPreview">Why Top Shelf:</h5><span ng-bind="application.data.whyTS"></span>
+        <h5 class="appPreview">Character Name:</h5><span ng-bind="formData.charName"></span>
+        <h5 class="appPreview">Character Class:</h5><span ng-bind="formData.charClass"></span>
+        <h5 class="appPreview">Character Spec:</h5><span ng-bind="formData.charSpec"></span>
+        <h5 class="appPreview">Character Server:</h5><span ng-bind="formData.charServer"></span>
+        <h5 class="appPreview">Armory:</h5><span ng-bind="formData.charArmory"></span>
+        <h5 class="appPreview">First Name:</h5><span ng-bind="formData.applicantName"></span>
+        <h5 class="appPreview">Age:</h5><span ng-bind="formData.applicantAge"></span>
+        <h5 class="appPreview">RealId:</h5><span ng-bind="formData.applicantRealId"></span>
+        <h5 class="appPreview">Logs:</h5><span ng-bind="formData.charLogs"></span>
+        <h5 class="appPreview">Heroic Experience:</h5><span ng-bind="formData.heroicXP"></span>
+        <h5 class="appPreview">Guild History:</h5><span ng-bind="formData.pastGuilds"></span>
+        <h5 class="appPreview">UI Screenshot:</h5><span ng-bind="formData.screenshot"></span>
+        <h5 class="appPreview">Why Top Shelf:</h5><span ng-bind="formData.whyTS"></span>
     </div>
     </div>
   </div>
 </div>
-
-    </div>
-
-
+</div>

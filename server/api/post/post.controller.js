@@ -3,8 +3,7 @@
 var _ = require('lodash');
 var async = require('async');
 var Post = require('./post.model'),
-    User = require('../user/user.model'),
-    Tag = require('./tag.model');
+    User = require('../user/user.model');
 
 // Get list of posts
 exports.index = function(req, res) {

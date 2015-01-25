@@ -43,6 +43,6 @@
     }
 
     angular
-        .module('topshelf.guild')
+        .module('topshelf.guild.services')
         .factory('ApplicationFactory', ApplicationFactory);
 })();

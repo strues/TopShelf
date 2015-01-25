@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"com",
+				"_compass.scss"
+			],
+			[
+				"bower",
+				"bower_components/"
+			],
+			[
 				"template",
 				"templateUrl"
 			],
@@ -44,34 +52,42 @@
 	"buffers":
 	[
 		{
+			"file": "server/api/user/user.controller.js",
+			"settings":
+			{
+				"buffer_size": 4225,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "client/app/account/directives/account.signupForm.directive.js",
 			"settings":
 			{
-				"buffer_size": 1946,
+				"buffer_size": 1929,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "package.json",
+			"file": "client/app/account/directives/account.loginForm.directive.js",
 			"settings":
 			{
-				"buffer_size": 3020,
+				"buffer_size": 1409,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "server/server.js",
+			"file": "client/app/account/states/signup/account.signupForm.tpl.html",
 			"settings":
 			{
-				"buffer_size": 1429,
+				"buffer_size": 2101,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "server/auth/auth.service.js",
+			"file": "server/api/user/index.js",
 			"settings":
 			{
-				"buffer_size": 2443,
+				"buffer_size": 622,
 				"line_ending": "Unix"
 			}
 		}
@@ -79,9 +95,73 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 140.0,
+		"height": 151.0,
 		"selected_items":
 		[
+			[
+				"jsb",
+				"Javascript Beautify"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"api",
+				"API Blueprint: Parse to JSON AST"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"commen",
+				"Toggle Block Comment"
+			],
+			[
+				"javsc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"coffee",
+				"CoffeeToJs: Convert selection"
+			],
+			[
+				"cof",
+				"Set Syntax: CoffeScript"
+			],
+			[
+				"coff",
+				"Set Syntax: CoffeScript"
+			],
+			[
+				"beau",
+				"Javascript Beautify"
+			],
+			[
+				"bea",
+				"Javascript Beautify"
+			],
+			[
+				"themr",
+				"Themr: List themes"
+			],
+			[
+				"instl",
+				"npm: Install Package"
+			],
+			[
+				"lorem",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"comment",
+				"Toggle Block Comment"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"comm",
 				"Toggle Comment"
@@ -89,10 +169,6 @@
 			[
 				"comme",
 				"Toggle Comment"
-			],
-			[
-				"comment",
-				"Toggle Block Comment"
 			],
 			[
 				"sort",
@@ -105,14 +181,6 @@
 			[
 				"java",
 				"Set Syntax: JavaScript"
-			],
-			[
-				"themr",
-				"Themr: List themes"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"tra",
@@ -149,14 +217,6 @@
 			[
 				"termin",
 				"Preferences: Terminal Settings – Default"
-			],
-			[
-				"commen",
-				"Toggle Comment"
-			],
-			[
-				"beau",
-				"HTMLBeautify"
 			],
 			[
 				"snippet",
@@ -205,37 +265,151 @@
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/directives",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/services",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/login",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/signup",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/directives",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/create",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/edit",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/navbar",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/components",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/sections",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/sections/admin",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/utilities",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/home",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/recruitment",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/streams",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/base",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/api",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/bnet",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/config",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/environment"
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/local",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/components/errors"
 	],
 	"file_history":
 	[
-		"/Users/steventruesdell/Webdev/TopShelf/web/bower.json",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/app.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/environment/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/login/account.loginForm.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/user.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/express.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/server.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/index.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/auth.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/bower.json",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/topshelf.module.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/index.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/streams/guild.streams.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/admin.resource.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/directives/account.signupForm.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/create/admin.news-create.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/recruitment/admin.recruitment.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/create/admin.resources-create.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/directives/account.loginForm.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/application/guild.application.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/post.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/post.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/tag.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/recruitment/admin.recruitment.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/README.md",
+		"/Users/steventruesdell/Webdev/TopShelf/web/CHANGELOG.md",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/user.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/user.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/home/core.home.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/navbar/core.navbar.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/directives/admin.navbar/admin.navbar.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/package.json",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/local/passport.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/controllers/user.password.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/controllers/user.profile.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/controllers/user.authorization.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/controllers/user.authentication.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/environment/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/components/errors/errorHandler.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/user.e2e.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/passport.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/server.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/logger.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/express.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/signup/account.signupForm.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/profile/edit/account.profile-edit.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulpfile.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/build.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/wiredep.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/config.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/tasks/styles.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/tasks/wiredep.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/util/log.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/create/admin.resources-create.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/utilities/_theming.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/components/_card.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/form-for.bootstrap.templates.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/bower_components/angular-form-for/.bower.json",
+		"/Users/steventruesdell/Webdev/TopShelf/web/bower_components/angular-form-for/bower.json",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/recruitment/guild.recruitment.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/admin.resource.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/components/_buttons.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/base/_fonts.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/applications/details/application-details.tpl.html",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/codeivate-st.sublime-settings",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/applications/details/application-details.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/create/admin.news-create.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/base/_settings.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/styles.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/application/guild.application.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/recruitingPanel/core.recruitingPanel.tpl.html",
+		"/Users/steventruesdell/Downloads/_variables (1).scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/utilities/_mixins.scss",
+		"/Users/steventruesdell/Downloads/_bootswatch.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/vendor.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/config.rb",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/resource/resource.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/services/resourceModal.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/edit/admin.resource-edit.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/edit/admin.resource-edit.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/services/resource.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/_bootswatch.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/resource/resource.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/inject.js",
+		"/Users/steventruesdell/Webdev/topshelf/web/client/styles/components/_hero.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/gulp/build.js",
+		"/Users/steventruesdell/Webdev/TopShelf/gulp/e2e-tests.js",
+		"/Users/steventruesdell/Webdev/TopShelf/gulp/inject.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/server.js",
+		"/Users/steventruesdell/Webdev/TopShelf/gulp/proxy.js",
+		"/Users/steventruesdell/Webdev/TopShelf/gulp/server.js",
+		"/Users/steventruesdell/Webdev/TopShelf/gulp/styles.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/styles.js",
+		"/Users/steventruesdell/Webdev/TopShelf/gulp/watch.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/watch.js",
+		"/Users/steventruesdell/Webdev/TopShelf/gulp/unit-tests.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/bower_components/angular-h-sweetalert/bower.json",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/config.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/recruitment/admin.recruitmentSites.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/services/guild.recruitment.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/recruitment/admin.recruitmentList.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/admin.states.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/resource/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/edit/admin.news-edit.modal.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/edit/newsEditModal.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/edit/admin.news-edit.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/edit/admin.news-edit.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/admin.news.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/post.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/home/core.home.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/newsView/core.newsView.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/admin.news.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/core.states.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/admin.news-datePicker.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/home/core.carousel.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/.jshintrc",
+		"/Users/steventruesdell/Webdev/TopShelf/ga/gulp/build.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/app.js",
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/login/account.loginForm.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/index.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/guild/index.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/guild/guild.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/directives/account.loginForm.directive.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/bnet/index.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/bnet/passport.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/roster/roster.tpl.html",
@@ -245,123 +419,20 @@
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/roster/roster.classDefinitions.provider.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/raid/raid-comp/raidComp.tpl.html",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/raid/raid-comp/raid.searchArmory.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/app.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/sections/_rosterHolder.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/utilities/_bootstrap.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/roster/roster.searchArmory.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.create/newsCreate.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/recruitment/recruitment.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.create/newsCreate.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/admin.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/recruitment/recruitment.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/recruitment/recruitmentList.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/applications/applicationList.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/newsList.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.recruitingPanel/recruitingPanel.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/bower_components/ngstorage/ngStorage.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/services/auth.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/services/account.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/environment/development.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/routes.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/index.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/account.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/account-profile/profile.edit/profile.edit.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/account-profile/profile.edit/profile.edit.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view/newsView.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/user.model.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/navbar/core.navbar.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/account-profile/profile.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/account-profile/profile.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/post.model.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view/viewModal.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/post.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/comment/comment.model.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/post.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/comment/comment.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/comment/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/sections/_recruitingPanel.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/guild.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/filters/posttagsformat/posttagsformat.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/filters/startFrom.filter.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/media-manager/media-manager.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.edit/editModal.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/thumbPreview/thumbPreview.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/socketio.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/image.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/imageShower/imageShower.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/imageShower/imageShower.less",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/fileModel/fileModel.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/fileUpload.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/image/image.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/image/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/package.json",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/upload/upload.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/media/fileModel.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/media/mediaManager.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/media/mediaManager.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/components/_mediaManager.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/image/image.model.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/common/tsFormGroup.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.edit/newsEditModal.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/admin.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/appStart.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.viewPost.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.viewPost.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/core.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/sidebar.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/sidebarModal.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/sidebar.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view/editModal.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/news.view/newsEditModal.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/applications/applicationView.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/applications/applicationView.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/news.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/news/newsEditModal.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/adminSidebar.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/config.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/application/application.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/recruitmentPanel.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/recruitmentPanelModal.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/recruitmentPanel.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/recruitmentPanelModal.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/navbar/navbar.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/user/signup/signupForm.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/user/login/loginForm.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/user/user.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/home/home.controller.spec.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/gulpfile.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/appStart.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/category/category.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/category/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/category.model.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/local/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/local/passport.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/.jshintrc-spec",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/.jshintrc",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/app/config/database.php",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/composer.lock",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/composer.json",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/angular/app/index.html",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/angular/gulpfile.js",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/app/config/app.php",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/app/routes.php",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/public/js/todosController.js",
-		"/Users/steventruesdell/Webdev/Boxes/dev1/data/public/js/todosFactory.js"
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/app.scss"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
 		"height": 100.0,
 		"where_history":
 		[
+			"/Users/steventruesdell/Webdev/topshelf/web/",
+			"/Users/steventruesdell/Webdev/topshelf/web/server",
+			"/Users/steventruesdell/Webdev/topshelf/web",
 			"/Users/steventruesdell/Webdev/Experiments/topshelf/server",
 			"/Users/steventruesdell/Webdev/Experiments/topshelf/frontend",
 			"/Users/steventruesdell/Webdev/Experiments/tsg",
@@ -373,6 +444,21 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\"",
+			"name",
+			"config",
+			"\"",
+			"input",
+			"\"",
+			"$bootstrap-sass-asset-helper",
+			"box",
+			"$dark",
+			"glyphicons-halflings-regular.woff2",
+			"ffff",
+			"/ffff",
+			"ffff",
+			"name",
+			"vm",
 			"\"",
 			"socket",
 			"vm",
@@ -491,6 +577,9 @@
 		"replace_history":
 		[
 			"'",
+			"label",
+			"recruitment",
+			"'",
 			"$scope.",
 			"vm",
 			"RosterService",
@@ -548,24 +637,24 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "client/app/account/directives/account.signupForm.directive.js",
+					"file": "server/api/user/user.controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1946,
+						"buffer_size": 4225,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								478,
-								478
+								2163,
+								2163
 							]
 						],
 						"settings":
@@ -573,66 +662,348 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content"
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
 							"editorconfig": true,
 							"ensure_newline_at_eof_on_save": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1422134402.5,
+							"tabs_extra_last_activated_sheet_index": 0,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1490.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "client/app/account/directives/account.signupForm.directive.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1929,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								685,
+								685
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1422134453.37,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 349.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/app/account/directives/account.loginForm.directive.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1409,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1126,
+								1126
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 284.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "client/app/account/states/signup/account.signupForm.tpl.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2101,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								453,
+								453
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1422133998.49,
+							"tabs_extra_last_activated_sheet_index": 2,
 							"translate_tabs_to_spaces": true,
 							"trim_trailing_white_space_on_save": true
 						},
@@ -644,20 +1015,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "package.json",
+					"buffer": 4,
+					"file": "server/api/user/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3020,
+						"buffer_size": 622,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								896,
-								896
+								318,
+								318
 							]
 						],
 						"settings":
@@ -665,158 +1036,68 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 252.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "server/server.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1429,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								880,
-								880
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content"
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
 							"editorconfig": true,
 							"ensure_newline_at_eof_on_save": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1422133184.74,
+							"tabs_extra_last_activated_sheet_index": 1,
 							"translate_tabs_to_spaces": true,
 							"trim_trailing_white_space_on_save": true
 						},
@@ -824,99 +1105,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "server/auth/auth.service.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2443,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -953,6 +1142,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 0.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -960,7 +1153,7 @@
 	"project": "topshelf.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 80.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -995,7 +1188,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 243.0,
+	"side_bar_width": 227.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
