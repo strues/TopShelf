@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+    moment = require('moment'),
     Schema = mongoose.Schema;
 
 var ApplicationSchema = new Schema({
@@ -22,11 +23,11 @@ var ApplicationSchema = new Schema({
   applicantAlt: {type: String},
   created: {
     type: Date,
-    default: Date
+    default: moment()
     },
   updated: {
     type: Date,
-    default: Date.now
+    default: moment()
     },
   read: {
     type: Number,

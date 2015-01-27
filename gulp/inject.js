@@ -6,14 +6,12 @@ var config = require('../gulp.config')();
 var ngFS = require('gulp-angular-filesort');
 var path = require('path');
 var _ = require('lodash');
-var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
 
-/**
- * Build everything
- * This is separate so we can run tests on
- * optimize before handling image or fonts
- */
-gulp.task('build', ['clean', 'optimize', 'images', 'fonts'], function() {
-    del(config.temp);
+gulp.task('inject', ['wiredep', 'styles', 'templates'], function() {
+
+    return gulp
+        .src(config.index)
+        .pipe($.inject(gulp.src(config.css)))
+        .pipe(gulp.dest(config.client));
 });

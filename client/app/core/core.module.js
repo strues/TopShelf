@@ -3,7 +3,6 @@
 /**
  * @ngdoc module
  * @name core
- * @propertyOf topshelf
  * @description application-wide core features
  */
 

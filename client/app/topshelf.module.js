@@ -13,7 +13,7 @@
     angular.module('topshelf.account', []);
     angular.module('topshelf.admin', []);
     angular.module('topshelf', []);
-
+    /* @ngInject */
     angular.module('topshelf', [
                   'ngStorage',
                   'ngResource',
@@ -37,7 +37,7 @@
 
     ]);
 
-    function config ($urlRouterProvider, $locationProvider, $httpProvider, toastrConfig) {
+    function config ($urlRouterProvider, $locationProvider, $httpProvider, toastrConfig) {    /* @ngInject */
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
@@ -66,7 +66,7 @@
         toastClass: 'toast'
       });
     }
-
+    /* @ngInject */
     function run ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;

@@ -15,7 +15,7 @@
 @import "utilities/animations";
 @import "utilities/mixins";
 @import "utilities/theming";
-
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 //
 // Components
 //
@@ -26,11 +26,6 @@
 @import "components/applicationForm";
 @import "components/tables";
 @import "components/card";
-
-.myGrid {
-    width: 600px;
-    height: 950px;
-  }
 
 //
 // Sections
@@ -60,6 +55,3 @@
 .list-group-item {
   height: 30px;
 }
-
-// injector
-// endinjector

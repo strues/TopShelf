@@ -1,11 +1,10 @@
 (function () {
     'use strict';
   /**
-   * @ngdoc service
+   * @ngdoc Service
    * @name Post
    * @desc Communicates with backend returning posts
    * @memberOf topshelf.core.services
-   * @returns {object | postData}
    */
 
     angular

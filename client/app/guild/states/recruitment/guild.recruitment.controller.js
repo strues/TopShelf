@@ -2,17 +2,17 @@
     'use strict';
 
   /**
-   * @ngdoc object
-   * @name guild.recruitment.controller:RecruitmentCtrl
+   * @ngdoc Controller
+   * @name RecruitmentCtrl
    *
-   * @description
+   * @description Currently is just "there"
    *
    */
     angular
     .module('topshelf.guild.states')
     .controller('RecruitmentCtrl', RecruitmentCtrl);
 
-    function RecruitmentCtrl($scope, $modal, $log) {
+    function RecruitmentCtrl() {
 
         var recruitment = this;
     }

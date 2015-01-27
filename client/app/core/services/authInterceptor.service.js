@@ -4,9 +4,7 @@
   /**
    * @ngdoc service
    * @name authInterceptor
-   * @propertyOf topshelf.core.services
    * @description Intercepts $http requests checking for auth token
-   * @returns $localStorage.token
    *
    */
 

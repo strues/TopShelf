@@ -14,8 +14,11 @@
     function HomeCarouselCtrl () {
         var carousel = this;
 
-        carousel.myInterval = 3000;
+        carousel.myInterval = 4000;
         carousel.slides = [
+            {
+                image: 'assets/images/koragh.png'
+            },
             {
                 image: 'assets/images/butcher.png'
             },

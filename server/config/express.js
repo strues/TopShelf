@@ -82,9 +82,9 @@ module.exports = function(app) {
     }
 
     if ('development' === env || 'test' === env) {
-        app.use(express.static(path.join(config.root, '.tmp')));
-        app.use(express.static(path.join(config.root, 'client')));
-        app.set('appPath', 'client');
+        app.use(express.static('./client/'));
+        app.use(express.static('./'));
+        app.use(express.static('./tmp'));
         app.use(errorHandler()); // Error handler - has to be last
     }
 };

@@ -11,59 +11,35 @@
 
 var _ = require('lodash');
 var mongoose = require('mongoose');
+var moment = require('moment');
 var Application = require('./application.model');
 var User = require('../user/user.model');
 
-// Get list of applications
-exports.index = function(req, res) {
-    Application.loadRecent(function (err, applications) {
-        if (err) { return handleError(res, err); }
-        return res.status(200).json(applications);
-    });
+/**
+ * [all List of applications]
+ * @param  {[get]} req [gets all applications]
+ * @param  {[populate]} res [returns the user's name]
+ * @return {[applications]}     [description]
+ */
+exports.all = function(req, res) {
+    Application.find().populate('applicant', 'name')
+        .exec(function(err, applications) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.status(200).json(applications);
+        });
 };
 
 // Get a single application
-exports.show = function(req, res) {
-    var applicant = req.user.name;
-    Application.findById(req.params.id).populate('applicant', 'name').exec(function (err, application) {
+exports.get = function(req, res) {
+    Application.findById(req.params.id)
+    .populate('applicant', 'name')
+    .exec(function (err, application) {
         if (err) { return handleError(res, err); }
         if (!application) { return res.sendStatus(404); }
         return res.json(application);
     });
-};
-
-exports.like = function(req, res) {
-  var id = req.params.id || '';
-  if (id === '') {
-    return res.sendStatus(400);
-  }
-
-
-  Application.update({_id: id}, { $inc: { likes: 1 } }, function(err, nbRows, raw) {
-    if (err) {
-      console.log(err);
-      return res.sendStatus(400);
-    }
-
-    return res.sendStatus(200);
-  });
-};
-
-exports.unlike = function(req, res) {
-  var id = req.params.id || '';
-  if (id === '') {
-    return res.sendStatus(400)
-  }
-
-
-  Application.update({_id: id}, { $inc: { likes: -1 } }, function(err, nbRows, raw) {
-    if (err) {
-      console.log(err);
-      return res.sendStatus(400)
-    }
-
-    return res.sendStatus(200);
-  });
 };
 
 // Creates a new application in the DB.

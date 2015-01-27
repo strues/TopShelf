@@ -1,21 +1,20 @@
 'use strict';
 
 var gulp = require('gulp');
-var $    = require('gulp-load-plugins');
 var gutil = require('gulp-util');
+var config = require('../gulp.config')();
+var $ = require('gulp-load-plugins')({
+  pattern: ['gulp-*', 'main-bower-files', 'glob', 'del']
+});
 
-// inject bower components
-gulp.task('wiredep', function () {
-    gutil.log('Wiring the bower dependencies into the html');
+gulp.task('wiredep', function() {
+
     var wiredep = require('wiredep').stream;
+    var options = config.getWiredepDefaultOptions();
 
-    return gulp.src('./client/index.html')
-    .pipe(wiredep({
-      debug: true,
-      directory: './bower_components/',
-      bowerJson: require('../bower.json'),
-      ignorePath: '../..'
-    }))
-    //.pipe($.inject(gulp.src(config.appjs)))
-    .pipe(gulp.dest('client'));
+    return gulp
+        .src(config.index)
+        .pipe(wiredep(options))
+        .pipe($.inject(gulp.src(config.js)))
+        .pipe(gulp.dest(config.client));
 });
