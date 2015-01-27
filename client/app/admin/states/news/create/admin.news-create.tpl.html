@@ -41,12 +41,22 @@
           <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage']]" class="textEditor" ng-model="vm.postData.content"></text-angular>
       </div>
     </div>
+     <div class="row" style="padding-left: 15px;">
+     <hr />
+    <div class="col-md-10">
+          <textarea class="form-control"
+                    placeholder="Description"
+                    ng-model="vm.postData.description"
+                    rows="3"
+                    ></textarea>
+                    </div>
+    </div>
     <div class="row" style="padding-top:15px;">
       <div class="col-md-3">
         <input type="text"
                class="form-control"
                placeholder="tags"
-               ng-model="vm.postData.tags"
+               ng-model="vm.postData.tagName"
                ng-list=", "
                required/>
       </div>

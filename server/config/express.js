@@ -22,6 +22,7 @@ var express        = require('express'),
     redisStore     = require('connect-redis')(session),
     flash          = require('express-flash');
 
+
 module.exports = function(app) {
     var client = redis.createClient(); // Redis
     var env = app.get('env');
@@ -53,7 +54,6 @@ module.exports = function(app) {
     app.use(methodOverride('X-HTTP-Method-Override'));
     app.use(cors());
     app.use(cookieParser());
-    app.use(passport.initialize());
   // Enable jsonp
     app.use(session({
     secret: config.secrets.session,

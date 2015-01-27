@@ -10,7 +10,7 @@ var $ = require('gulp-load-plugins')({
 gulp.task('styles', ['wiredep', 'inject-sass'], function () {
     gutil.log('Compiling Sass --> CSS');
     return gulp
-      .src(['client/styles/styles.scss', 'client/styles/vendor.scss'])
+      .src(['client/styles/styles.scss', '!client/styles/vendor.scss'])
       .pipe($.plumber()) // exit gracefully if something fails after this
       .pipe($.sourcemaps.init())
       .pipe($.sass({style: 'expanded'}))

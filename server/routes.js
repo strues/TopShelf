@@ -25,6 +25,19 @@ module.exports = function(app) {
         res.redirect('/#' + req.originalUrl);
     });
 
+    app.get('/session/set/:value', function(req, res) {
+        req.session.redSession = req.params.value;
+        res.send('session written in Redis successfully');
+    });
+
+    app.get('/session/get/', function(req, res) {
+        if (req.session.redSession) {
+            res.send('the session value stored in Redis is: ' + req.session.redSess);
+        }
+        else {
+            res.send('no session value stored in Redis ');
+        }
+    });
     app.all('*', function(req, res, next) {
         res.set('Access-Control-Allow-Origin', '*');
         res.set('Access-Control-Allow-Credentials', true);
@@ -41,18 +54,4 @@ module.exports = function(app) {
     app.use(function(err, req, res) {
       res.status(500).body({message: err.message});
   });
-
-    app.get('/session/set/:value', function(req, res) {
-        req.session.redSession = req.params.value;
-        res.send('session written in Redis successfully');
-    });
-
-    app.get('/session/get/', function(req, res) {
-        if (req.session.redSession) {
-            res.send('the session value stored in Redis is: ' + req.session.redSess);
-        }
-        else {
-            res.send('no session value stored in Redis ');
-        }
-    });
 };

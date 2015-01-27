@@ -36,9 +36,19 @@
             },
             {
                 field: 'created',
-                columnFilter: true,
                 displayName: 'Posted'
-            }
+            },
+            {
+                field: 'delete',
+                columnFilter: false,
+                displayName: 'Actions',
+                render: function(application) {
+                      return React.DOM.a({href:'javascript:', onClick: function() {
+                          $scope.selectApp = application;
+                          $http.delete('/api/applications' + '/' + application._id);
+                      }}, "Delete");
+                  }
+              },
             ]
         };
 

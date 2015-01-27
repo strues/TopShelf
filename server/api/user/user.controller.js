@@ -5,6 +5,9 @@ var _ = require('lodash'),
     config = require('../../config/environment'),
     jwt = require('jsonwebtoken');
 
+var validationError = function(res, err) {
+    return res.status(422).json(err);
+};
 /**
  * Get list of users
  * restriction: 'admin'
@@ -147,7 +150,7 @@ exports.update = function(req, res) {
     }
     User.findById(req.params.id, function(err, user) {
         if (err) {
-            return handleError(res, err);
+            return res.send(500, err);
         }
         if (!user) {
             return res.sendStatus(404);
@@ -156,7 +159,7 @@ exports.update = function(req, res) {
         var updated = _.extend(user, req.body);
         updated.save(function(err) {
             if (err) {
-                return handleError(res, err);
+                return res.send(500, err);
             }
             return res.status(200).json(user);
         });
@@ -186,14 +189,14 @@ exports.show = function(req, res, next) {
 exports.destroy = function(req, res) {
     User.findById(req.params.id, function(err, user) {
         if (err) {
-            return handleError(res, err);
+            return res.send(500, err);
         }
         if (!user) {
             return res.send(404);
         }
         user.remove(function(err) {
             if (err) {
-                return handleError(res, err);
+              return res.send(500, err);
             }
             return res.send(204);
         });
@@ -235,15 +238,8 @@ exports.me = function(req, res, next) {
         if (!user) {
             return res.json(401);
         }
-        res.json(user.profile);
+        res.json(user);
     });
-};
-exports.handleError = function(res, err) {
-    return res.status(500).json(err);
-};
-
-exports.validationError = function(res, err) {
-    return res.status(422).json(err);
 };
 
 /**

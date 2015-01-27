@@ -6,28 +6,49 @@
         .controller('ProfileEditCtrl', ProfileEditCtrl);
 
     /* @ngInject */
-    function ProfileEditCtrl(Auth, User) {
+    function ProfileEditCtrl(Auth, User, toastr) {
         /*jshint validthis: true */
         var vm = this;
         vm.title = 'ProfileEditCtrl';
         vm.Auth = Auth;
-
         vm.errors = {};
 
-        vm.changePassword = function(form) {
-            vm.submitted = true;
-            if (form.$valid) {
+        vm.changePassword = function() {
                 Auth.changePassword(vm.user.oldPassword, vm.user.newPassword)
             .then(function() {
-                vm.message = 'Password successfully changed.';
+                toastr.success('Your password has been changed.', 'All Set!')
             })
             .catch(function() {
-                form.password.$setValidity('mongoose', false);
-                vm.errors.other = 'Incorrect password';
                 vm.message = '';
             });
             }
-    };
+        };
 
-    }
 })();
+
+/*
+// get the user data for the user you want to edit
+        // $routeParams is the way we grab data from the URL
+        Post.get($stateParams.postId)
+          .success(function(data) {
+              vm.postData = data;
+          });
+
+        // function to save the user
+        vm.savePost = function() {
+            vm.processing = true;
+            vm.message = '';
+
+          // call the userService function to update
+            Post.update($stateParams.postId, vm.postData)
+            .success(function(data) {
+                vm.processing = false;
+
+              // clear the form
+                vm.postData = {};
+
+              // bind the message from our API to vm.message
+                vm.message = data.message;
+            });
+        };
+ */

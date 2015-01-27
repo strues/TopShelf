@@ -25,7 +25,7 @@ exports.index = function(req, res) {
 // Get a single application
 exports.show = function(req, res) {
     var applicant = req.user.name;
-    Application.findById(req.params.id).populate('user', 'name').exec(function (err, application) {
+    Application.findById(req.params.id).populate('applicant', 'name').exec(function (err, application) {
         if (err) { return handleError(res, err); }
         if (!application) { return res.sendStatus(404); }
         return res.json(application);

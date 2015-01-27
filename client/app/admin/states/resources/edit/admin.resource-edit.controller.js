@@ -6,14 +6,14 @@
         .controller('ResourceEditCtrl', ResourceEditCtrl);
 
     /* @ngInject */
-    function ResourceEditCtrl(Resource, $scope, $stateParams, ResourceModal) {
+    function ResourceEditCtrl(Resource, $scope, $stateParams) {
         /*jshint validthis: true */
         var vm = this;
         $scope.model = {};
         // variable to hide/show elements of the view
         // differentiates between create or edit pages
         vm.type = 'edit';
-        vm.close = ResourceModal.deactivate;
+        //vm.close = ResourceModal.deactivate;
         // get the user data for the user you want to edit
         // $routeParams is the way we grab data from the URL
         Resource.get($stateParams.resourceId)

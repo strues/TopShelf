@@ -1,3 +1,4 @@
+/*jshint node:true*/
 'use strict';
 
 var _ = require('lodash');
@@ -56,7 +57,11 @@ exports.update = function(req, res) {
         // set the new user information if it exists in the request
         if (req.body.title) post.title = req.body.title;
         if (req.body.date) post.date = req.body.date;
+        if (req.body.lastUpdated) post.lastUpdated = req.body.date;
+        if (req.body.seoTitle) post.seoTitle = req.body.seoTitle;
+        if (req.body.description) post.description = req.body.description;
         if (req.body.content) post.content = req.body.content;
+        if (req.body.state) post.state = req.body.state;
         if (req.body.tags) post.tags = req.body.tags;
         if (req.body.image) post.image = req.body.image;
 

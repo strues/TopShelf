@@ -78,8 +78,11 @@ var UserSchema = new Schema({
 UserSchema.virtual('profile')
     .get(function() {
         return {
-            'name': this.name,
-            'role': this.role
+         'name': this.name,
+        'role': this.role,
+        'battletag': this.battletag,
+        'characters': this.characters,
+        'posts': this.posts
         };
     });
 

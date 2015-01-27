@@ -28,9 +28,6 @@
     "bootstrap-sass": {
       "ignore": "**/*.js"
     },
-    "bootstrap": {
-      "ignore": "**/*"
-    },
     "angular-h-sweetalert": {
       "ignore": "**/*.min.js"
     }
