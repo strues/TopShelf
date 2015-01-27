@@ -13,8 +13,8 @@
     angular.module('topshelf.account', []);
     angular.module('topshelf.admin', []);
     angular.module('topshelf', []);
-    angular
-        .module('topshelf', [
+
+    angular.module('topshelf', [
                   'ngStorage',
                   'ngResource',
                   'ngMessages',
@@ -43,8 +43,8 @@
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.useApplyAsync(true);
         angular.extend(toastrConfig, {
-        allowHtml: false,
-        closeButton: false,
+        allowHtml: true,
+        closeButton: true,
         closeHtml: '<button>&times;</button>',
         containerId: 'toast-container',
         extendedTimeOut: 1000,

@@ -2,10 +2,10 @@
     'use strict';
 
   /**
-   * @ngdoc object
-   * @name home.controller:HomeCtrl as home
-   *
-   * @description
+   * @ngdoc controller
+   * @name HomeCtrl as vm
+   * @propertyOf topshelf.core.states
+   * @description Controller for the home page
    *
    */
 

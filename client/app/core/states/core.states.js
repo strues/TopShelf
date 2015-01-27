@@ -2,15 +2,16 @@
     'use strict';
 
   /**
+   * @ngdoc object
    * @namespace States
-   * @desc Home states
-   * @memberOf Core
+   * @desc Routing for the home page
+   * @memberOf topshelf.core
    */
 
     angular
         .module('topshelf.core.states')
         .config(config);
-
+            /* @ngInject */
     function config($stateProvider) {
 
         $stateProvider

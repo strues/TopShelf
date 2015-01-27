@@ -2,17 +2,21 @@
     'use strict';
 
   /**
-   * @ngdoc object
-   * @name guild.recruitment.controller:ApplicationCtrl
-   *
-   * @description
-   *
+   * @ngdoc controller
+   * @name ApplicationCtrl
+   * @propertyOf topshelf.guild.states
+   * @requires (form-for, toastr)
+   * @description Form to submit an application
    */
-
+    angular
+        .module('topshelf.guild.states')
+        .controller('ApplicationCtrl', ApplicationCtrl);
+                              /* @ngInject */
     function ApplicationCtrl($scope, $location, ApplicationFactory, Armory, $timeout, toastr) {
         $scope.formData = {};
 
         $scope.classOptions = [
+          {value:'', label: ''},
           {value: 'deathKnight', label: 'Death Knight'},
           {value: 'druid', label: 'Druid'},
           {value: 'hunter', label: 'Hunter'},
@@ -26,43 +30,44 @@
           {value: 'warrior', label: 'Warrior'}
         ];
         $scope.yearsOld = [
-          {value: 'u18', label: 'Under 18'},
+          {value: 'Under 18', label: 'Under 18'},
           {value: '18-21', label: '18 to 21'},
           {value: '21-30', label: '22 to 30'},
           {value: '30+', label: 'Over 30'}
         ];
         $scope.specOptions = [
-          {value: 'affliction', label: 'Affliction'},
-          {value: 'arcane', label: 'Arcane'},
-          {value: 'arms', label:'Arms'},
-          {value: 'assassination', label:'Assasination'},
-          {value: 'balance', label: 'Balance'},
-          {value: 'beastmaster', label:'Beast Mastery'},
-          {value: 'blood', label:'Blood'},
-          {value: 'brewmaster', label: 'Brewmaster'},
-          {value: 'combat', label:'Combat'},
-          {value: 'demonology', label:'Demonology'},
-          {value: 'destruction', label:'Destruction'},
-          {value: 'discipline', label:'Discipline'},
-          {value: 'elemental', label:'Elemental'},
-          {value: 'enhancement', label:'Enhancement'},
-          {value: 'feral', label: 'Feral'},
-          {value: 'fire', label:'Fire'},
-          {value: 'frost', label: 'Frost'},
-          {value: 'fury', label: 'Fury'},
-          {value: 'glad', label:'Gladiator'},
-          {value: 'guardian', label:'Guardian'},
-          {value: 'holy', label:'Holy'},
-          {value: 'marksman', label: 'Marksman'},
-          {value: 'mistweaver', label:'Mistweaver'},
-          {value: 'protection', label:'Protection'},
-          {value: 'restoration', label:'Restoration'},
-          {value: 'retribution', label:'Retribution'},
-          {value: 'shadow', label:'Shadow'},
-          {value: 'subtlety', label:'Subtlety'},
-          {value: 'survival', label:'Survival'},
-          {value: 'unholy', label:'Unholy'},
-          {value:'windwalker', label:'Windwalker'}
+          {value:'', label: ''},
+          {value: 'Affliction', label: 'Affliction'},
+          {value: 'Arcane', label: 'Arcane'},
+          {value: 'Arms', label:'Arms'},
+          {value: 'Assasination', label:'Assasination'},
+          {value: 'Balance', label: 'Balance'},
+          {value: 'Beastmaster', label:'Beast Mastery'},
+          {value: 'Blood', label:'Blood'},
+          {value: 'Brewmaster', label: 'Brewmaster'},
+          {value: 'Combat', label:'Combat'},
+          {value: 'Demonology', label:'Demonology'},
+          {value: 'Destruction', label:'Destruction'},
+          {value: 'Discipline', label:'Discipline'},
+          {value: 'Elemental', label:'Elemental'},
+          {value: 'Enhancement', label:'Enhancement'},
+          {value: 'Feral', label: 'Feral'},
+          {value: 'Fire', label:'Fire'},
+          {value: 'Frost', label: 'Frost'},
+          {value: 'Fury', label: 'Fury'},
+          {value: 'Gladiator', label:'Gladiator'},
+          {value: 'Guardian', label:'Guardian'},
+          {value: 'Holy', label:'Holy'},
+          {value: 'Marksman', label: 'Marksman'},
+          {value: 'Mistweaver', label:'Mistweaver'},
+          {value: 'Protection', label:'Protection'},
+          {value: 'Restoration', label:'Restoration'},
+          {value: 'Retribution', label:'Retribution'},
+          {value: 'Shadow', label:'Shadow'},
+          {value: 'Subtlety', label:'Subtlety'},
+          {value: 'Survival', label:'Survival'},
+          {value: 'Unholy', label:'Unholy'},
+          {value: 'Windwalker', label:'Windwalker'}
         ];
 
         $scope.realmList = [
@@ -307,10 +312,10 @@
             ApplicationFactory.createApplication(data)
           .then(function () {
               $scope.data = {};
-              toastr.success('Your application was submitted!', 'Expect to hear from us soon');
+              toastr.success('Expect a response in 2-3 days.', 'Application submitted!');
 
               console.log('form submitted:', $scope.data);
-              $location.path('/completed');
+              $location.path('/');
           },
             function() {
                 $scope.submitting = false;
@@ -322,8 +327,4 @@
         };
 
     }
-
-    angular
-        .module('topshelf.guild.states')
-        .controller('ApplicationCtrl', ApplicationCtrl);
 })();

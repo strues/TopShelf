@@ -1,8 +1,9 @@
 (function() {
     'use strict';
   /**
-   * @namespace HomeCarouselCtrl
+   * @name HomeCarouselCtrl as carousel
    * @desc Carousel controller
+   * @requires (ui.bootstrap)
    * @memberOf topshelf.core.states
    */
 

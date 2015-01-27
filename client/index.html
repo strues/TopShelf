@@ -39,7 +39,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-<div ui-view="" class="fadeZoom"></div>
+    <div ui-view="" class="fadeZoom"></div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.min.js"></script>
 
     <!-- build:js scripts/vendor.js -->
@@ -89,9 +89,18 @@
              <script src="app/account/account.module.js"></script>
              <script src="app/account/states/profile/edit/account.profile-edit.controller.js"></script>
              <script src="app/guild/guild.module.js"></script>
-             <script src="app/guild/states/recruitment/guild.recruitment.controller.js"></script>
              <script src="app/guild/states/streams/guild.streams.controller.js"></script>
+             <script src="app/guild/states/recruitment/guild.recruitment.controller.js"></script>
              <script src="app/guild/states/application/guild.application.controller.js"></script>
+             <script src="app/admin/states/users/admin.users.controller.js"></script>
+             <script src="app/admin/states/resources/admin.resource.controller.js"></script>
+             <script src="app/admin/states/recruitment/admin.recruitmentList.controller.js"></script>
+             <script src="app/admin/states/recruitment/admin.recruitment.controller.js"></script>
+             <script src="app/admin/states/news/admin.news.controller.js"></script>
+             <script src="app/admin/states/news/admin.news-datePicker.controller.js"></script>
+             <script src="app/admin/states/applications/admin.applications.controller.js"></script>
+             <script src="app/admin/directives/admin.navbar/admin.navbar.directive.js"></script>
+             <script src="app/admin/directives/admin.navbar/admin.navbar.controller.js"></script>
              <script src="app/core/core.module.js"></script>
              <script src="app/core/states/home/core.home.controller.js"></script>
              <script src="app/core/states/home/core.carousel.controller.js"></script>
@@ -104,15 +113,6 @@
              <script src="app/core/directives/footer/core.footer.directive.js"></script>
              <script src="app/core/directives/footer/core.footer.controller.js"></script>
              <script src="app/core/directives/disableAnimation/core.disableAnimation.directive.js"></script>
-             <script src="app/admin/states/users/admin.users.controller.js"></script>
-             <script src="app/admin/states/resources/admin.resource.controller.js"></script>
-             <script src="app/admin/states/recruitment/admin.recruitmentList.controller.js"></script>
-             <script src="app/admin/states/recruitment/admin.recruitment.controller.js"></script>
-             <script src="app/admin/states/news/admin.news.controller.js"></script>
-             <script src="app/admin/states/news/admin.news-datePicker.controller.js"></script>
-             <script src="app/admin/states/applications/admin.applications.controller.js"></script>
-             <script src="app/admin/directives/admin.navbar/admin.navbar.directive.js"></script>
-             <script src="app/admin/directives/admin.navbar/admin.navbar.controller.js"></script>
              <script src="app/account/states/signup/account.signup.controller.js"></script>
              <script src="app/account/states/settings/account.settings.controller.js"></script>
              <script src="app/account/states/profile/account.profile.controller.js"></script>
@@ -125,6 +125,8 @@
              <script src="app/guild/services/guild.application.service.js"></script>
              <script src="app/guild/filters/guild.startFrom.filter.js"></script>
              <script src="app/guild/filters/guild.classes.filter.js"></script>
+             <script src="app/admin/states/admin.states.js"></script>
+             <script src="app/admin/services/resource.service.js"></script>
              <script src="app/core/states/core.states.js"></script>
              <script src="app/core/services/util.service.js"></script>
              <script src="app/core/services/post.service.js"></script>
@@ -133,8 +135,6 @@
              <script src="app/core/services/config.service.js"></script>
              <script src="app/core/services/authInterceptor.service.js"></script>
              <script src="app/core/filters/startFrom.filter.js"></script>
-             <script src="app/admin/states/admin.states.js"></script>
-             <script src="app/admin/services/resource.service.js"></script>
              <script src="app/account/states/account.states.js"></script>
              <script src="app/account/services/user.service.js"></script>
              <script src="app/account/services/auth.service.js"></script>

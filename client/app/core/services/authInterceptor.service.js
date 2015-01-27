@@ -3,12 +3,18 @@
 
   /**
    * @ngdoc service
-   * @name topshelf.core.factory:authInterceptor
-   *
-   * @description
+   * @name authInterceptor
+   * @propertyOf topshelf.core.services
+   * @description Intercepts $http requests checking for auth token
+   * @returns $localStorage.token
    *
    */
 
+    angular
+      .module('topshelf.core.services')
+      .factory('authInterceptor', authInterceptor);
+
+                              /* @ngInject */
     function authInterceptor($rootScope, $q, $localStorage, $location) {
 
         return {
@@ -34,10 +40,6 @@
           }
       }
     };
-    }
-
-    angular
-        .module('topshelf.core.services')
-        .factory('authInterceptor', authInterceptor);
+  }
 
 })();
