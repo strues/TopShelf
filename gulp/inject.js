@@ -1,12 +1,11 @@
 'use strict';
 
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var config = require('../gulp.config')();
-var ngFS = require('gulp-angular-filesort');
-var path = require('path');
-var _ = require('lodash');
-var $ = require('gulp-load-plugins')({lazy: true});
+var gulp   = require('gulp'),
+    gutil  = require('gulp-util'),
+    config = require('../gulp.config')(),
+    path   = require('path'),
+    _      = require('lodash'),
+    $      = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('inject', ['wiredep', 'styles', 'templates'], function() {
 

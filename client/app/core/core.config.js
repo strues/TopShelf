@@ -2,7 +2,6 @@
     'use strict';
 
     angular.module('topshelf.core')
-        .value('config', config())
         .config(configureToastr)
         .config(configure);
 

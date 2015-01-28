@@ -1,13 +1,12 @@
 'use strict';
 
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-
-var nodemon = require('gulp-nodemon');
-var config = require('../gulp.config')();
-var $ = require('gulp-load-plugins')({
-  pattern: ['gulp-*', 'main-bower-files', 'glob', 'del']
-});
+var gulp   = require('gulp'),
+    gutil  = require('gulp-util'),
+    config = require('../gulp.config')(),
+    path   = require('path'),
+    nodemon = require('gulp-nodemon'),
+    _      = require('lodash'),
+    $      = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('nodemon', function () {
   nodemon({
