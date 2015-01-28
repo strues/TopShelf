@@ -1,6 +1,12 @@
 (function () {
     'use strict';
 
+/**
+ * @ngdoc controller
+ * @name NewsCreateCtrl
+ * @description Controller to create news posting.
+ */
+
     angular
         .module('topshelf.admin.states')
         .controller('NewsCreateCtrl', NewsCreateCtrl);
@@ -25,7 +31,8 @@
                   vm.status = 'Created Post! Refreshing Post List.';
               })
               .error(function (error) {
-                toastr.error('There was a problem with your post' + error.message, 'Something broke');
+                toastr.error('There was a problem with your post' + error.message,
+                  'Something broke');
                 vm.status = 'Unable to Create Post: ' + error.message;
                 console.log('status:', vm.status);
             });

@@ -4,7 +4,7 @@
     angular
         .module('topshelf.admin.states')
         .controller('NewsListCtrl', NewsListCtrl);
-    /* @ngInject */
+          /* @ngInject */
     function NewsListCtrl(Post) {
         var vm = this;
         vm.processing = true;

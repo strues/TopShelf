@@ -13,27 +13,27 @@
         extendString ();
 
         return {
-      // bundle these so util clients don't have to get them
-      $q      : $q,
-      $timeout: $timeout,
-      config: config,
-      logger: logger,
+              // bundle these so util clients don't have to get them
+              $q      : $q,
+              $timeout: $timeout,
+              config: config,
+              logger: logger,
 
-      // actual utilities
-      $broadcast: $broadcast,
+              // actual utilities
+              $broadcast: $broadcast,
 
-      deal: deal,
-      defineProperty: defineProperty,
-      filterById: filterById,
-      filterByName: filterByName,
-      filterByType: filterByType,
-      filterHttpError: filterHttpError,
+              deal: deal,
+              defineProperty: defineProperty,
+              filterById: filterById,
+              filterByName: filterByName,
+              filterByType: filterByType,
+              filterHttpError: filterHttpError,
 
-      groupArray: groupArray,
-      keyArray: keyArray,
-      toTitle: toTitle,
-      resolved: $q.when(true) // a re-usable resolved promise
-    };
+              groupArray: groupArray,
+              keyArray: keyArray,
+              toTitle: toTitle,
+              resolved: $q.when(true) // a re-usable resolved promise
+            };
     /////////////////////
         function $broadcast() {
             return $rootScope.$broadcast.apply($rootScope, arguments);

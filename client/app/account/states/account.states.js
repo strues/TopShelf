@@ -26,7 +26,8 @@
             template: ' ',
             controller: function($stateParams, Auth, $location) {
                 if ($stateParams.sessionToken) {
-                    Auth.setSessionToken($stateParams.sessionToken, function() {$location.path('/');});
+                    Auth.setSessionToken($stateParams.sessionToken, function() {
+                      $location.path('/');});
                 }
             }
       })

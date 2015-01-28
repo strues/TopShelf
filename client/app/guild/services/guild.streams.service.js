@@ -41,7 +41,7 @@
          });
       },
       getStreamValk: function() {
-         return $http({
+          return $http({
           method: 'jsonp',
           url: 'https://api.twitch.tv/kraken/streams/valkyrie89?callback=JSON_CALLBACK'
         })

@@ -2,16 +2,21 @@
     'use strict';
 
   /**
-   * @ngdoc object
-   * @label admin.recruitment.controller:RecruitmentCtrl
+   * @ngdoc controller
+   * @name RecruitmentCtrl
    *
-   * @description
+   * @description angular-form-for
    *
    */
-
+    angular
+      .module('topshelf.admin.states')
+      .controller('RecruitmentCtrl', RecruitmentCtrl);
+                                    /* @ngInject */
     function RecruitmentCtrl ($scope, $http, $state, $timeout, FormForConfiguration, toastr) {
         FormForConfiguration.enableAutoLabels();
-
+/*
+  TODO: remove this shit and put it into a data model
+ */
         $scope.formData = {};
         $scope.classType = [
           {value: 'DeathKnight', label: 'Death Knight'},
@@ -77,7 +82,5 @@
             $state.reload();
         };
     }
-    angular
-        .module('topshelf.admin.states')
-        .controller('RecruitmentCtrl', RecruitmentCtrl);
+
 })();

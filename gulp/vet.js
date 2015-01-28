@@ -25,3 +25,11 @@ gulp.task('vet:nofail', function () {
       .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
       .pipe($.jscs());
 });
+
+// generate a todo.md from your javascript files
+gulp.task('todo', function() {
+    gulp.src(config.js)
+        .pipe($.todo())
+        .pipe(gulp.dest('./'));
+        // -> Will output a TODO.md with your todos
+});

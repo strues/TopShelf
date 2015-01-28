@@ -1,11 +1,14 @@
 (function() {
     'use strict';
-
+/*
+ * @ngdoc Controller
+ * @name ResourceEditCtrl
+ */
     angular
         .module('topshelf.admin.states')
         .controller('ResourceEditCtrl', ResourceEditCtrl);
 
-    /* @ngInject */
+                          /* @ngInject */
     function ResourceEditCtrl(Resource, $scope, $stateParams) {
         /*jshint validthis: true */
         var vm = this;

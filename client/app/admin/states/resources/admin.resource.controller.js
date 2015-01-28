@@ -1,6 +1,10 @@
 (function () {
     'use strict';
-
+/*
+ * @ngdoc Controller
+ * @name ResourceCtrl
+ * @description Logic for displaying resources in admin area
+ */
     angular
         .module('topshelf.admin.states')
         .controller('ResourceCtrl', ResourceCtrl);

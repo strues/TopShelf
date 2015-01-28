@@ -16,12 +16,12 @@
         vm.changePassword = function() {
                 Auth.changePassword(vm.user.oldPassword, vm.user.newPassword)
             .then(function() {
-                toastr.success('Your password has been changed.', 'All Set!')
+                toastr.success('Your password has been changed.', 'All Set!');
             })
             .catch(function() {
                 vm.message = '';
             });
-            }
-        };
+            };
+    }
 
 })();

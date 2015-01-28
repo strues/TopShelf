@@ -1,10 +1,14 @@
 (function () {
     'use strict';
-
+/*
+ * @ngdoc Controller
+ * @name RecruitmentListCtrl
+ * @description Logic to display the current recruitment status
+ */
     angular
-        .module('topshelf.admin')
+        .module('topshelf.admin.states')
         .controller('RecruitmentListCtrl', RecruitmentListCtrl);
-
+                          /* @ngInject */
     function RecruitmentListCtrl($http, Recruitment) {
         var vm = this;
 

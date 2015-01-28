@@ -31,7 +31,7 @@ exports.getUsers = function(req, res, next) {
     });
 };
 
-// Checks if the email is already taken TODO: protect with fail2ban
+// Checks if the email is already taken
 // GET /api/users :email
 exports.checkEmailAvailable = function(req, res, next) {
     if (!req.query.email) {

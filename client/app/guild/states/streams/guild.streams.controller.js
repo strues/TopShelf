@@ -2,16 +2,16 @@
     'use strict';
 
   /**
-   * @ngdoc object
-   * @name guild.recruitment.controller:StreamCtrl
+   * @ngdoc controller
+   * @name StreamCtrl
    *
-   * @description
+   * @description Controller to work with the Twitch.tv API
    *
    */
     angular
         .module('topshelf.guild.states')
         .controller('StreamCtrl', StreamCtrl);
-
+                      /* @ngInject */
     function StreamCtrl($scope, $rootScope, $location, toastr, Streams) {
 
     toastr.warning('Streams are offline if the page is empty',
@@ -22,7 +22,6 @@
       'gamesdonequick',
       'toxicpopsicles',
       'teomorassalt'
-
     ];
 
     $scope.streamsList = [];
@@ -63,16 +62,17 @@
 
         // Binds event handler to ESCAPE key to exit stream
     $(window).on('keydown', function(e) {
-        if(e.which === 27) {
+        if (e.which === 27) {
             $rootScope.closeStream();
-         }
+        }
     });
-
 
     // If user leaves the page while a stream is active promt them!
     $(window).on('beforeunload', function() {
         if ($rootScope.streamActive === true)
+            {
             return 'Leave?';
+        }
     });
 
 }

@@ -1,10 +1,13 @@
 (function () {
     'use strict';
-
+/*
+ * @ngdoc Controller
+ * @name ResourceCreateCtrl
+ */
     angular
         .module('topshelf.admin.states')
         .controller('ResourceCreateCtrl', ResourceCreateCtrl);
-
+                                  /* @ngInject */
     function ResourceCreateCtrl($scope, Resource, toastr, Auth) {
         var vm = this;
         vm.processing = true;
