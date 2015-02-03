@@ -38,20 +38,9 @@ var UserSchema = new Schema({
     bnetId: Number,
     battletag: String,
     // characters
-    characters: [{
-        name: String,
-        realm: String,
-        battlegroup: String,
-        class: Number,
-        race: Number,
-        gender: Number,
-        level: Number,
-        achievementPoints: Number,
-        thumbnail: String
-    }],
-    mainCharacter: {
-        name: String,
-        realm: String
+    characters: {
+        type: Schema.Types.ObjectId,
+        ref: 'Character'
     },
     // site settings
     showBattletag: Boolean,

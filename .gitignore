@@ -3,6 +3,9 @@ dist/
 client/assets/
 .sass-cache/
 
+*.crt
+*.csr
+*.key
 *.user
 *.gpState
 *.suo

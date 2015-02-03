@@ -36,17 +36,25 @@ Hello, {{ vm.Auth.getCurrentUser().name }}</div>
       </form>
 
 
-      <form method="post" ng-submit="vm.updateProfile()">
-        <div class="form-group">
-          <label class="control-label"><i class="ion-person"></i> Battletag</label>
-          <input type="text" class="form-control" ng-model="user.battletag" />
-        </div>
-        <div class="form-group">
-          <label class="control-label"><i class="ion-at"></i> Email Address</label>
-          <input type="email" class="form-control" ng-model="user.email" />
-        </div>
-        <button class="btn btn-lg btn-success">Update Information</button>
-      </form>
+      <form role="form"
+              name="customOptionsForm"
+              ng-submit="submit()"
+              ng-fab-form-options="customFormOptions">
+            <div class="form-group">
+                <label class="control-label">Character (required)
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Character"
+                       ng-model="characterData.name"
+                       required>
+            </div>
+              <div class="form-group">
+                <button type="submit"
+                        class="btn btn-primary">Submit Form
+                </button>
+            </div>
+        </form>
     </div>
   </div>
 

@@ -14,7 +14,7 @@
     function HomeCarouselCtrl () {
         var carousel = this;
 
-        carousel.myInterval = 4000;
+        carousel.slideInterval = 4000;
         carousel.slides = [
             {
                 image: 'assets/images/koragh.png'

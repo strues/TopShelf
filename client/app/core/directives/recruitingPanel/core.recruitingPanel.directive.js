@@ -9,8 +9,6 @@
           Recruitment.all()
             .success(function (data) {
             $scope.recruitments = data;
-          //console.log('aside - postsFactory.getPosts()', posts);
-           // socket.syncUpdates('recruitment', $scope.recruitments);
         }).
         error(function (error) {
             $scope.status = 'Unable to Retrieve Recruitment Status: ' + error.message;

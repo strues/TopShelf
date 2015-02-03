@@ -22,7 +22,6 @@
         Post.all().success(function(data) {
         // when all the posts come back, remove the processing variable
             vm.processing = false;
-
          // bind the posts that come back to vm.posts
             vm.posts = data;
         }).error(function (error) {
@@ -32,6 +31,5 @@
         vm.viewMore = function(post) {
             $location.path('/view-post/' + post._id);
         };
-
     }
 })();

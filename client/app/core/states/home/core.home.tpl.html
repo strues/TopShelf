@@ -2,7 +2,7 @@
 <div class="container frontendWrap">
 <div navbar></div>
 <div class="row carouselArea" ng-controller="HomeCarouselCtrl as carousel">
-    <carousel interval="carousel.myInterval" disable-animation="true">
+    <carousel interval="carousel.slideInterval" disable-animation="true">
       <slide ng-repeat="slide in carousel.slides" active="slide.active">
         <img ng-src="{{slide.image}}" width="1170px"style="margin:auto;">
       </slide>
@@ -33,8 +33,6 @@
         <p ng-hide="!showMode" ng-bind-html="post.content"></p>
       </div>
       <div class="postFooter">
-        <span class="taggedEM"><i class="ico-tags2"></i></span>
-        <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{tag}}</span>
         <button class="btn btn-primary pull-right" ng-click="openViewModal(post._id)" news-view-modal>Read More</button>
       </div>
       </div>

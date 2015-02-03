@@ -28,25 +28,25 @@ mongoose.connection.on('error', function(err) {
 // Setup server
 var app         = express();
 var fs          = require('fs');
-var https       = require('https');
+//var https       = require('https');
 var server      = require('http').createServer(app);
 
 require('./config/express')(app);
 require('./routes')(app);
 var request = require('./request')
 
-var options = {
-key: fs.readFileSync('./server.key'),
-cert: fs.readFileSync('./server.crt')
-};
+// var options = {
+// key: fs.readFileSync('./server.key'),
+// cert: fs.readFileSync('./server.crt')
+// };
 
 /*
  * Start the server
  */
 // HTTPS server
- https.createServer(options, app).listen('8443', function() {
-     console.log('HTTPS Express server listening on port ' + '8443');
- });
+ // https.createServer(options, app).listen('8443', function() {
+ //     console.log('HTTPS Express server listening on port ' + '8443');
+ // });
 server.listen(config.port, config.ip, function () {
     console.log('Express is running on %d, in %s mode',
     config.port, app.get('env'));

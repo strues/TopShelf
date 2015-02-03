@@ -7,7 +7,7 @@
 (function() {
 
     'use strict';
-
+                      /* @ngInject */
     function util($q, $rootScope, $timeout, config, logger) {
 
         extendString ();

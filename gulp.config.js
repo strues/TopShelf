@@ -104,9 +104,9 @@ module.exports = function() {
             'node_modules/mocha-clean/index.js',
             'node_modules/sinon-chai/lib/sinon-chai.js'
         ],
-        specHelpers: [client + 'test-helpers/*.js'],
+        specHelpers: [root + 'tests/test-helpers/*.js'],
         specs: [clientApp + '**/*.spec.js'],
-        serverIntegrationSpecs: [client + '/tests/server-integration/**/*.spec.js'],
+        serverIntegrationSpecs: [root + '/tests/server-integration/**/*.spec.js'],
 
         /**
          * Node settings

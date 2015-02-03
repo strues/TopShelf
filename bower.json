@@ -22,9 +22,10 @@
     "angular-form-for": "~1.7.1",
     "v-modal": "~0.2.1",
     "bootstrap-sass": "~3.3.3",
-    "angular-toastr": "1.0.0-beta.2"
+    "angular-toastr": "1.0.0-beta.2",
+    "ng-fab-form": "~1.1.9"
   },
-   "ignore": [
+  "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",

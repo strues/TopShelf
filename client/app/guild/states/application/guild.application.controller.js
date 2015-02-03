@@ -32,8 +32,10 @@
         $scope.yearsOld = [
           {value: 'Under 18', label: 'Under 18'},
           {value: '18-21', label: '18 to 21'},
-          {value: '21-30', label: '22 to 30'},
-          {value: '30+', label: 'Over 30'}
+          {value: '22-25', label: '22 to 25'},
+          {value: '26-30', label: '26 to 30'},
+          {value: '31-35', label: '31 to 35'},
+          {value: '35+', label: 'Over 35'}
         ];
         $scope.specOptions = [
           {value:'', label: ''},

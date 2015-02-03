@@ -17,6 +17,7 @@
         var jspcb = 'jsonp=JSON_CALLBACK';
         var apiKey = 'apikey=jbdqc3ufm6hfzpymxc3ej52988vvh59b';
         var loc = 'locale=en_US';
+        var guildName = 'Top Shelf';
         var exports = {};
 
         exports.getRealms = function () {
@@ -24,6 +25,10 @@
         };
         exports.asError = function(status, statusText) {
             return 'Unable to fetch data from armory (Code ' + status + ') : ' + '\n' + statusText;
+        };
+        exports.getTopShelfMembers = function () {
+            return $http.jsonp(urlBase + 'guild/sargeras/Top%20Shelf?fields=members' +
+              '&' + loc + '&' + jspcb + '&' + apiKey);
         };
         exports.setRealm = function (realm) {
                 data.realm = realm;

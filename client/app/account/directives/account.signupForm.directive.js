@@ -32,7 +32,7 @@
 
                   if (form.$valid) {
                       Auth.createUser({
-                        username: scope.user.username,
+                        name: scope.user.name,
                         email: scope.user.email,
                         password: scope.user.password
               })

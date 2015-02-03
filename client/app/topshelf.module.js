@@ -26,6 +26,7 @@
                   'textAngular',
                   'vModal',
                   'toastr',
+                  'ngFabForm',
                   'formFor',
                   'formFor.bootstrapTemplates',
                   'ngReactGrid',

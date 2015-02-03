@@ -9,7 +9,7 @@ var gulp         = require('gulp'),
     $            = require('gulp-load-plugins')({lazy: true});
 
 // watch files for changes and reload
-gulp.task('serve', ['clean:sass', 'styles', 'nodemon'], function() {
+gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() {
   browserSync({
     proxy: 'http://localhost:9000',
     files: [
@@ -26,4 +26,5 @@ gulp.task('serve', ['clean:sass', 'styles', 'nodemon'], function() {
   });
 
   gulp.watch([config.sass], ['styles']);
+  gulp.watch([config.templates], ['templates']);
 });

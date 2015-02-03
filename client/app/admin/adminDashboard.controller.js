@@ -8,6 +8,7 @@
             dash.users = users;
 
         });
+
     }
 
     angular
