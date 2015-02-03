@@ -23,7 +23,7 @@
          * @ngdoc object
          * @description Returns a list of realms from battle.net
          */
-        $http.jsonp('http://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
+        $http.jsonp('https://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
             .success(function(data, status, headers, config) {
                 data.realms.map(function(item) {
                     $scope.realms.push(item.name);

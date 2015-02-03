@@ -7,6 +7,7 @@ var gulp   = require('gulp'),
     _      = require('lodash'),
     args = require('yargs').argv,
     $      = require('gulp-load-plugins')({lazy: true});
+var del = require('del');
 
 /**
  * Build everything

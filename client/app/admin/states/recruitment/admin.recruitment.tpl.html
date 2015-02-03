@@ -11,34 +11,100 @@
   <div class="col-sm-6 col-md-4" ng-controller="RecruitmentCtrl">
     <div class="well">
     <h3>Update <span class="inverseText">Recruitment Status</span></h4>
-      <form form-for="formData" submit-with="submit(data)">
+       <form role="form"
+              name="recruitmentStatusForm"
+              ng-submit="submit()">
         <div class="row">
-          <select-field attribute="classType" options="classType"></select-field>
-        </div>
-        <div class="row">
-          <select-field attribute="classSpec" options="classSpec"></select-field>
-        </div>
+             <div class="form-group">
+                <label>Class Type</label>
+                <select ng-model="formData.classType"
+                        class="form-control"
+                        required>
+                    <option value=""></option>
+                    <option value="DeathKnight">Death Knight</option>
+                    <option value="Druid">Druid</option>
+                    <option value="Hunter">Hunter</option>
+                    <option value="Mage">Mage</option>
+                    <option value="Monk">Monk</option>
+                    <option value="Paladin">Paladin</option>
+                    <option value="Priest">Priest</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Shaman">Shaman</option>
+                    <option value="Warlock">Warlock</option>
+                    <option value="Warrior">Warrior</option>
+                </select>
+            </div><!-- form group-->
+             <div class="form-group">
+                    <label>Specialization</label>
+                    <select ng-model="formData.classSpec"
+                            class="form-control"
+                            required>
+                        <option value=""></option>
+                        <option value="Affliction">Affliction</option>
+                        <option value="Arcane">Arcane</option>
+                        <option value="Arms">Arms</option>
+                        <option value="Assasination">Assasination</option>
+                        <option value="Balance">Balance</option>
+                        <option value="Beast Mastery">Beast Mastery</option>
+                        <option value="Blood">Blood</option>
+                        <option value="Brewmaster">Brewmaster</option>
+                        <option value="Combat">Combat</option>
+                        <option value="Demonology">Demonology</option>
+                        <option value="Destruction">Destruction</option>
+                        <option value="Discipline">Discipline</option>
+                        <option value="Elemental">Elemental</option>
+                        <option value="Enhancement">Enhancement</option>
+                        <option value="Feral">Feral</option>
+                        <option value="Fire">Fire</option>
+                        <option value="Frost">Frost</option>
+                        <option value="Fury">Fury</option>
+                        <option value="Gladiator">Gladiator</option>
+                        <option value="Guardian">Guardian</option>
+                        <option value="Holy">Holy</option>
+                        <option value="Marksman">Marksman</option>
+                        <option value="Mistweaver">Mistweaver</option>
+                        <option value="Protection">Protection</option>
+                        <option value="Restoration">Restoration</option>
+                        <option value="Shadow">Shadow</option>
+                        <option value="Subtlety">Subtlety</option>
+                        <option value="Survival">Survival</option>
+                        <option value="Unholy">Unholy</option>
+                        <option value="Windwalker">Windwalker</option>
+                    </select>
+                </div><!-- charSpec-->
+        </div><!-- row-->
         <div class="row">
           <div class="col-sm-5">
-            <div class="form-group">
-              <radio-field attribute="priority"
-                    label="{{priority.label}}"
-                    value="{{priority.value}}"
-                    ng-repeat="priority in priority">
-              </radio-field>
+                 <div class="form-group">
+                <label>Priority</label>
+                <select ng-model="formData.priority"
+                        class="form-control"
+                        required>
+                    <option value=""></option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
             </div>
           </div>
         <div class="col-sm-6 col-sm-offset-1">
-          <div class="form-group">
-              <radio-field attribute="status"
-                  label="{{status.label}}"
-                  value="{{status.value}}"
-                  ng-repeat="status in status">
-              </radio-field>
+              <div class="form-group">
+                <label>Status</label>
+                <select ng-model="formData.status"
+                        class="form-control"
+                        required>
+                    <option value=""></option>
+                    <option value="Open">Open</option>
+                    <option value="Closed">Closed</option>
+                </select>
             </div>
           </div>
-        </div> <!-- end radio button row -->
-        <submit-button label="Recruit!"></submit-button>
+        </div>
+        <div class="form-group">
+                <button type="submit"
+                        class="btn btn-primary">Submit Form
+                </button>
+            </div>
       </form>
       </div>
   </div> <!-- end form container and RecruitmentCtrl -->

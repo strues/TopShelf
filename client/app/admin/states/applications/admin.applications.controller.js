@@ -13,7 +13,7 @@
       .module('topshelf.admin.states')
       .controller('ApplicationListCtrl', ApplicationListCtrl);
                                     /* @ngInject */
-    function ApplicationListCtrl ($scope, ApplicationFactory, $http, $timeout, $location) {
+    function ApplicationListCtrl ($scope, Application, $http, $timeout, $location) {
       /*
         @todo build react files from source for optimal customization
        */
@@ -59,7 +59,7 @@
             ]
         };
 
-        ApplicationFactory.getAllApplications().then(function(response) {
+        Application.getAllApplications().then(function(response) {
             $scope.appGrid.data = response.data;
         });
         // var dateAsString = $filter('date')($scope.application, 'yyyy-MM-dd');

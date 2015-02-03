@@ -27,8 +27,6 @@
                   'vModal',
                   'toastr',
                   'ngFabForm',
-                  'formFor',
-                  'formFor.bootstrapTemplates',
                   'ngReactGrid',
                   'angular-loading-bar',
                   'topshelf.core',
