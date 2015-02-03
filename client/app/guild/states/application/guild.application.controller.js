@@ -1,330 +1,51 @@
-(function () {
+(function() {
     'use strict';
 
-  /**
-   * @ngdoc controller
-   * @name ApplicationCtrl
-   * @propertyOf topshelf.guild.states
-   * @requires (form-for, toastr)
-   * @description Form to submit an application
-   */
+    /**
+     * @ngdoc controller
+     * @name ApplicationCtrl
+     * @propertyOf topshelf.guild.states
+     * @requires (form-for, toastr)
+     * @description Form to submit an application
+     */
     angular
         .module('topshelf.guild.states')
         .controller('ApplicationCtrl', ApplicationCtrl);
-                              /* @ngInject */
-    function ApplicationCtrl($scope, $location, ApplicationFactory, Armory, $timeout, toastr) {
-        $scope.formData = {};
+    /* @ngInject */
+    function ApplicationCtrl($scope, $location, $http, Application, ngFabForm, toastr) {
 
-        $scope.classOptions = [
-          {value:'', label: ''},
-          {value: 'deathKnight', label: 'Death Knight'},
-          {value: 'druid', label: 'Druid'},
-          {value: 'hunter', label: 'Hunter'},
-          {value: 'mage', label: 'Mage'},
-          {value: 'monk', label: 'Monk'},
-          {value: 'paladin', label: 'Paladin'},
-          {value: 'priest', label: 'Priest'},
-          {value: 'rogue', label: 'Rogue'},
-          {value: 'shaman', label: 'Shaman'},
-          {value: 'warlock', label: 'Warlock'},
-          {value: 'warrior', label: 'Warrior'}
-        ];
-        $scope.yearsOld = [
-          {value: 'Under 18', label: 'Under 18'},
-          {value: '18-21', label: '18 to 21'},
-          {value: '22-25', label: '22 to 25'},
-          {value: '26-30', label: '26 to 30'},
-          {value: '31-35', label: '31 to 35'},
-          {value: '35+', label: 'Over 35'}
-        ];
-        $scope.specOptions = [
-          {value:'', label: ''},
-          {value: 'Affliction', label: 'Affliction'},
-          {value: 'Arcane', label: 'Arcane'},
-          {value: 'Arms', label:'Arms'},
-          {value: 'Assasination', label:'Assasination'},
-          {value: 'Balance', label: 'Balance'},
-          {value: 'Beastmaster', label:'Beast Mastery'},
-          {value: 'Blood', label:'Blood'},
-          {value: 'Brewmaster', label: 'Brewmaster'},
-          {value: 'Combat', label:'Combat'},
-          {value: 'Demonology', label:'Demonology'},
-          {value: 'Destruction', label:'Destruction'},
-          {value: 'Discipline', label:'Discipline'},
-          {value: 'Elemental', label:'Elemental'},
-          {value: 'Enhancement', label:'Enhancement'},
-          {value: 'Feral', label: 'Feral'},
-          {value: 'Fire', label:'Fire'},
-          {value: 'Frost', label: 'Frost'},
-          {value: 'Fury', label: 'Fury'},
-          {value: 'Gladiator', label:'Gladiator'},
-          {value: 'Guardian', label:'Guardian'},
-          {value: 'Holy', label:'Holy'},
-          {value: 'Marksman', label: 'Marksman'},
-          {value: 'Mistweaver', label:'Mistweaver'},
-          {value: 'Protection', label:'Protection'},
-          {value: 'Restoration', label:'Restoration'},
-          {value: 'Retribution', label:'Retribution'},
-          {value: 'Shadow', label:'Shadow'},
-          {value: 'Subtlety', label:'Subtlety'},
-          {value: 'Survival', label:'Survival'},
-          {value: 'Unholy', label:'Unholy'},
-          {value: 'Windwalker', label:'Windwalker'}
-        ];
+        $scope.defaultFormOptions = ngFabForm.config;
+        $scope.customFormOptions = angular.copy(ngFabForm.config);
 
-        $scope.realmList = [
-          {value:'', label: ''},
-          {value:'Aegwynn', label: 'Aegwynn'},
-          {value:'Aerie Peak', label: 'Aerie Peak'},
-          {value:'Agamaggan', label: 'Agamaggan'},
-          {value:'Aggramar', label: 'Aggramar'},
-          {value:'Akama', label: 'Akama'},
-          {value:'Alexstrasza', label: 'Alexstrasza'},
-          {value:'Alleria', label: 'Alleria'},
-          {value:'Altar of Storms', label: 'Altar of Storms'},
-          {value:'Alterac Mountains', label: 'Alterac Mountains'},
-          {value:'Andorhal', label: 'Andorhal'},
-          {value:'Anetheron', label: 'Anetheron'},
-          {value:'Antonidas', label: 'Antonidas'},
-          {value:'Anub arak', label: 'Anub arak'},
-          {value:'Anvilmar', label: 'Anvilmar'},
-          {value:'Arathor', label: 'Arathor'},
-          {value:'Archimonde', label: 'Archimonde'},
-          {value:'Area 52', label: 'Area 52'},
-          {value:'Argent Dawn', label: 'Argent Dawn'},
-          {value:'Arthas', label: 'Arthas'},
-          {value:'Arygos', label: 'Arygos'},
-          {value:'Auchindoun', label: 'Auchindoun'},
-          {value:'Azgalor', label: 'Azgalor'},
-          {value:'Azjol-Nerub', label: 'Azjol-Nerub'},
-          {value:'Azshara', label: 'Azshara'},
-          {value:'Azuremyst', label: 'Azuremyst'},
-          {value:'Baelgun', label: 'Baelgun'},
-          {value:'Balnazzar', label: 'Balnazzar'},
-          {value:'Black Dragonflight', label: 'Black Dragonflight'},
-          {value:'Blackhand', label: 'Blackhand'},
-          {value:'Blackrock', label: 'Blackrock'},
-          {value:'Blackwater Raiders', label: 'Blackwater Raiders'},
-          {value:'Blackwing Lair', label: 'Blackwing Lair'},
-          {value:'Bladefist', label: 'Bladefist'},
-          {value:'Blades Edge', label: 'Blades Edge'},
-          {value:'Bleeding Hollow', label: 'Bleeding Hollow'},
-          {value:'Blood Furnace', label: 'Blood Furnace'},
-          {value:'Bloodhoof', label: 'Bloodhoof'},
-          {value:'Bloodscalp', label: 'Bloodscalp'},
-          {value:'Bonechewer', label: 'Bonechewer'},
-          {value:'Borean Tundra', label: 'Borean Tundra'},
-          {value:'Boulderfist', label: 'Boulderfist'},
-          {value:'Bronzebeard', label: 'Bronzebeard'},
-          {value:'Burning Blade', label: 'Burning Blade'},
-          {value:'Burning Legion', label: 'Burning Legion'},
-          {value:'Cairne', label: 'Cairne'},
-          {value:'Cenarion Circle', label: 'Cenarion Circle'},
-          {value:'Cenarius', label: 'Cenarius'},
-          {value:'Cho gall', label: 'Cho gall'},
-          {value:'Chromaggus', label: 'Chromaggus'},
-          {value:'Coilfang', label: 'Coilfang'},
-          {value:'Crushridge', label: 'Crushridge'},
-          {value:'Daggerspine', label: 'Daggerspine'},
-          {value:'Dalaran', label: 'Dalaran'},
-          {value:'Dalvengyr', label: 'Dalvengyr'},
-          {value:'Dark Iron', label: 'Dark Iron'},
-          {value:'Darkspear', label: 'Darkspear'},
-          {value:'Darrowmere', label: 'Darrowmere'},
-          {value:'Dawnbringer', label: 'Dawnbringer'},
-          {value:'Deathwing', label: 'Deathwing'},
-          {value:'Demon Soul', label: 'Demon Soul'},
-          {value:'Dentarg', label: 'Dentarg'},
-          {value:'Destromath', label: 'Destromath'},
-          {value:'Dethecus', label: 'Dethecus'},
-          {value:'Detheroc', label: 'Detheroc'},
-          {value:'Doomhammer', label: 'Doomhammer'},
-          {value:'Draenor', label: 'Draenor'},
-          {value:'Dragonblight', label: 'Dragonblight'},
-          {value:'Dragonmaw', label: 'Dragonmaw'},
-          {value:'Draka', label: 'Draka'},
-          {value:'Drak tharon', label: 'Drak tharon'},
-          {value:'Drak thul', label: 'Drak thul'},
-          {value:'Drenden', label: 'Drenden'},
-          {value:'Dunemaul', label: 'Dunemaul'},
-          {value:'Durotan', label: 'Durotan'},
-          {value:'Duskwood', label: 'Duskwood'},
-          {value:'Earthen Ring', label: 'Earthen Ring'},
-          {value:'Echo Isles', label: 'Echo Isles'},
-          {value:'Eitrigg', label: 'Eitrigg'},
-          {value:'Eldre Thalas', label: 'Eldre Thalas'},
-          {value:'Elune', label: 'Elune'},
-          {value:'Emerald Dream', label: 'Emerald Dream'},
-          {value:'Eonar', label: 'Eonar'},
-          {value:'Eredar', label: 'Eredar'},
-          {value:'Executus', label: 'Executus'},
-          {value:'Exodar', label: 'Exodar'},
-          {value:'Farstriders', label: 'Farstriders'},
-          {value:'Feathermoon', label: 'Feathermoon'},
-          {value:'Fenris', label: 'Fenris'},
-          {value:'Firetree', label: 'Firetree'},
-          {value:'Fizzcrank', label: 'Fizzcrank'},
-          {value:'Frostmane', label: 'Frostmane'},
-          {value:'Frostwolf', label: 'Frostwolf'},
-          {value:'Galakrond', label: 'Galakrond'},
-          {value:'Garithos', label: 'Garithos'},
-          {value:'Garona', label: 'Garona'},
-          {value:'Garrosh', label: 'Garrosh'},
-          {value:'Ghostlands', label: 'Ghostlands'},
-          {value:'Gilneas', label: 'Gilneas'},
-          {value:'Gnomeregan', label: 'Gnomeregan'},
-          {value:'Gorefiend', label: 'Gorefiend'},
-          {value:'Gorgonnash', label: 'Gorgonnash'},
-          {value:'Greymane', label: 'Greymane'},
-          {value:'Grizzly Hills', label: 'Grizzly Hills'},
-          {value:'Gul dan', label: 'Gul dan'},
-          {value:'Gurubashi', label: 'Gurubashi'},
-          {value:'Hakkar', label: 'Hakkar'},
-          {value:'Haomarush', label: 'Haomarush'},
-          {value:'Hellscream', label: 'Hellscream'},
-          {value:'Hydraxis', label: 'Hydraxis'},
-          {value:'Hyjal', label: 'Hyjal'},
-          {value:'Icecrown', label: 'Icecrown'},
-          {value:'Illidan', label: 'Illidan'},
-          {value:'Jaedenar', label: 'Jaedenar'},
-          {value:'Kael thas', label: 'Kael thas'},
-          {value:'Kalecgos', label: 'Kalecgos'},
-          {value:'Kargath', label: 'Kargath'},
-          {value:'Kel Thuzad', label: 'Kel Thuzad'},
-          {value:'Khadgar', label: 'Khadgar'},
-          {value:'Khaz Modan', label: 'Khaz Modan'},
-          {value:'Kil Jaeden', label: 'Kil Jaeden'},
-          {value:'Kilrogg', label: 'Kilrogg'},
-          {value:'Kirin Tor', label: 'Kirin Tor'},
-          {value:'Korgath', label: 'Korgath'},
-          {value:'Korialstrasz', label: 'Korialstrasz'},
-          {value:'Kul Tiras', label: 'Kul Tiras'},
-          {value:'Laughing Skull', label: 'Laughing Skull'},
-          {value:'Lethon', label: 'Lethon'},
-          {value:'Lightbringer', label: 'Lightbringer'},
-          {value:'Lightninghoof', label: 'Lightninghoof'},
-          {value:'Lightnings Blade', label: 'Lightnings Blade'},
-          {value:'Llane', label: 'Llane'},
-          {value:'Lothar', label: 'Lothar'},
-          {value:'Madoran', label: 'Madoran'},
-          {value:'Maelstrom', label: 'Maelstrom'},
-          {value:'Magtheridon', label: 'Magtheridon'},
-          {value:'Maiev', label: 'Maiev'},
-          {value:'Malfurion', label: 'Malfurion'},
-          {value:'Mal Ganis', label: 'Mal Ganis'},
-          {value:'Malorne', label: 'Malorne'},
-          {value:'Malygos', label: 'Malygos'},
-          {value:'Mannoroth', label: 'Mannoroth'},
-          {value:'Medivh', label: 'Medivh'},
-          {value:'Misha', label: 'Misha'},
-          {value:'Mok Nathal', label: 'Mok Nathal'},
-          {value:'Moon Guard', label: 'Moon Guard'},
-          {value:'Moonrunner', label: 'Moonrunner'},
-          {value:'Mug thol', label: 'Mug thol'},
-          {value:'Muradin', label: 'Muradin'},
-          {value:'Nathrezim ', label: 'Nathrezim '},
-          {value:'Nazgrel', label: 'Nazgrel'},
-          {value:'Nazjatar', label: 'Nazjatar'},
-          {value:'Ner zhul', label: 'Ner zhul'},
-          {value:'Nesingwary', label: 'Nesingwary'},
-          {value:'Nordrassil', label: 'Nordrassil'},
-          {value:'Norgannon', label: 'Norgannon'},
-          {value:'Onyxia', label: 'Onyxia'},
-          {value:'Perenolde', label: 'Perenolde'},
-          {value:'Proudmoore', label: 'Proudmoore'},
-          {value:'Quel Dorei', label: 'Quel Dorei'},
-          {value:'Ravencrest', label: 'Ravencrest'},
-          {value:'Ravenholdt ', label: 'Ravenholdt '},
-          {value:'Rexxar', label: 'Rexxar'},
-          {value:'Rivendare', label: 'Rivendare'},
-          {value:'Runetotem', label: 'Runetotem'},
-          {value:'Sargeras', label: 'Sargeras'},
-          {value:'Scarlet Crusade', label: 'Scarlet Crusade'},
-          {value:'Scilla', label: 'Scilla'},
-          {value:'Sen Jin', label: 'Sen Jin'},
-          {value:'Sentinels', label: 'Sentinels'},
-          {value:'Shadow Council ', label: 'Shadow Council '},
-          {value:'Shadowmoon', label: 'Shadowmoon'},
-          {value:'Shadowsong', label: 'Shadowsong'},
-          {value:'Shandris', label: 'Shandris'},
-          {value:'Shattered Halls', label: 'Shattered Halls'},
-          {value:'Shattered Hand', label: 'Shattered Hand'},
-          {value:'Shu Halo', label: 'Shu Halo'},
-          {value:'Silver Hand', label: 'Silver Hand'},
-          {value:'Silvermoon', label: 'Silvermoon'},
-          {value:'Sisters of Elune', label: 'Sisters of Elune'},
-          {value:'Skullcrusher', label: 'Skullcrusher'},
-          {value:'Skywall', label: 'Skywall'},
-          {value:'Smolderthorn', label: 'Smolderthorn'},
-          {value:'Spinebreaker', label: 'Spinebreaker'},
-          {value:'Spirestone', label: 'Spirestone'},
-          {value:'Staghelm', label: 'Staghelm'},
-          {value:'Steamwheedle Cartel ', label: 'Steamwheedle Cartel'},
-          {value:'Stonemaul', label: 'Stonemaul'},
-          {value:'Stormrage', label: 'Stormrage'},
-          {value:'Stormreaver', label: 'Stormreaver'},
-          {value:'Stormscale', label: 'Stormscale'},
-          {value:'Suramar', label: 'Suramar'},
-          {value:'Tanaris', label: 'Tanaris'},
-          {value:'Terenas', label: 'Terenas'},
-          {value:'Terokkar', label: 'Terokkar'},
-          {value:'The Forgotten Coast', label: 'The Forgotten Coast'},
-          {value:'The Scryers', label: 'The Scryers'},
-          {value:'The Underbog', label: 'The Underbog'},
-          {value:'The Venture Co US ', label: 'The Venture Co US '},
-          {value:'Thorium Brotherhood ', label: 'Thorium Brotherhood '},
-          {value:'Thrall', label: 'Thrall'},
-          {value:'Thunderhorn', label: 'Thunderhorn'},
-          {value:'Thunderlord', label: 'Thunderlord'},
-          {value:'Tichondrius', label: 'Tichondrius'},
-          {value:'Tortheldrin', label: 'Tortheldrin'},
-          {value:'Trollbane', label: 'Trollbane'},
-          {value:'Turalyon', label: 'Turalyon'},
-          {value:'Twisting Nether ', label: 'Twisting Nether'},
-          {value:'Uldaman', label: 'Uldaman'},
-          {value:'Uldum', label: 'Uldum'},
-          {value:'Undermine', label: 'Undermine'},
-          {value:'Ursin', label: 'Ursin'},
-          {value:'Uther', label: 'Uther'},
-          {value:'Vashj', label: 'Vashj'},
-          {value:'Vek nilash', label: 'Vek nilash'},
-          {value:'Velen', label: 'Velen'},
-          {value:'Warsong', label: 'Warsong'},
-          {value:'Whisperwind', label: 'Whisperwind'},
-          {value:'Wildhammer', label: 'Wildhammer'},
-          {value:'Windrunner', label: 'Windrunner'},
-          {value:'Winterhoof', label: 'Winterhoof'},
-          {value:'Wyrmrest Accord', label: 'Wyrmrest Accord'},
-          {value:'Ysera', label: 'Ysera'},
-          {value:'Ysondre', label: 'Ysondre'},
-          {value:'Zangarmarsh ', label: 'Zangarmarsh '},
-          {value:'Zul jin', label: 'Zul jin'},
-          {value:'Zuluhed', label: 'Zuluhed'}
+        $scope.realms = [];
 
-        ];
-        $scope.validationFailed = function() {
-            toastr.error('Your form is invalid');
-        };
+        /*
+         * @ngdoc object
+         * @description Returns a list of realms from battle.net
+         */
+        $http.jsonp('http://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
+            .success(function(data, status, headers, config) {
+                data.realms.map(function(item) {
+                    $scope.realms.push(item.name);
+                });
+            }).error(function(data, status, headers, config) {
 
-        $scope.validationRules = {
-
-        };
-
-        $scope.submit = function(data) {
-            ApplicationFactory.createApplication(data)
-          .then(function () {
-              $scope.data = {};
-              toastr.success('Expect a response in 2-3 days.', 'Application submitted!');
-
-              console.log('form submitted:', $scope.data);
-              $location.path('/');
-          },
-            function() {
-                $scope.submitting = false;
             });
+
+        $scope.submit = function(formData) {
+            Application.createApplication(formData)
+                .success(function() {
+                    $scope.processing = false;
+                    $scope.formData = {};
+                    toastr.success('Your application submitted successfully', 'App Submitted!');
+                })
+                .error(function(error) {
+                    toastr.error('There was a problem with your post' + error.message,
+                        'Something broke');
+                });
         };
 
-        $scope.goBack = function () {
+        $scope.goBack = function() {
             $location.path('/');
         };
 

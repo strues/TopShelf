@@ -25,6 +25,17 @@ gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() 
     reloadDelay: 0 //1000
   });
 
-  gulp.watch([config.sass], ['styles']);
-  gulp.watch([config.templates], ['templates']);
+  gulp.watch([config.sass], ['styles'])
+    .on('change', changeEvent);
+  gulp.watch([config.templates], ['templates'])
+   .on('change', changeEvent);
 });
+
+/**
+ * When files change, log it
+ * @param  {Object} event - event that fired
+ */
+function changeEvent(event) {
+    var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
+
+}

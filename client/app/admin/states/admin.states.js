@@ -115,15 +115,6 @@
             }
           }
         })
-        .state('admin.roster', {
-          url: '/roster',
-           views: {
-            'content@admin': {
-              controller: 'AdminRosterCtrl',
-              templateUrl: 'app/admin/states/roster/admin.roster.tpl.html'
-            }
-          }
-        })
         .state('admin.resources', {
           url: '/resources',
            views: {

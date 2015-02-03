@@ -1,16 +1,20 @@
 /**
  * application.service.js in web
  */
-(function () {
+(function() {
     'use strict';
 
-    function ApplicationFactory ($http) {
+    angular
+        .module('topshelf.guild.services')
+        .factory('Application', Application);
+
+    function Application($http) {
         console.log('application.service.js');
 
         var urlBase = 'api/applications';
         var exports = {};
 
-        exports.getAllApplications = function () {
+        exports.getAllApplications = function() {
             return $http.get(urlBase);
         };
 
@@ -18,31 +22,30 @@
             return $http.get(urlBase + '/' + applicationId);
         };
 
-        exports.createApplication = function(newApplication) {
-            return $http.post(urlBase, newApplication);
+        exports.createApplication = function(formData) {
+            return $http.post(urlBase, formData);
         };
 
         exports.updateApplication = function(updatedApplication) {
             return $http.put(urlBase + '/' + updatedApplication._id, updatedApplication);
         };
 
-        exports.removePost = function(applicationId) {
+        exports.removeApplication = function(applicationId) {
             return $http.delete(urlBase + '/' + applicationId);
         };
 
-        exports.likeApplication = function(applicationId) {
-            return $http.post(urlBase + '/' + applicationId);
-        };
+        exports.getRealms = function() {
+            $http.jsonp('http://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
+                .success(function(data, status, headers, config) {
+                    data.realms.map(function(item) {
+                        $scope.realms.push(item.name);
+                    });
+                }).error(function(data, status, headers, config) {
 
-        exports.unlikeApplication = function(applicationId) {
-            return $http.put(urlBase + '/' + applicationId);
-        };
-
+                });
+        }
         return exports;
 
     }
 
-    angular
-        .module('topshelf.guild.services')
-        .factory('ApplicationFactory', ApplicationFactory);
 })();

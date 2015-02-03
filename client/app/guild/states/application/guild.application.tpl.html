@@ -4,76 +4,188 @@
     <div class="col-sm-12 col-lg-8">
       <h1 class="text-light">Top Shelf <span class="recruitmentWhite">Guild Application</span></h1>
       <div class="panel">
-        <form form-for="formData" validation-rules="validationRules" submit-with="submit(data)" validation-failed="validationFailed()">
-          <div class="row">
-            <div class="col-md-3">
-              <text-field label="Character Name" attribute="charName" icon-after="fa fa-user" placeholder="Laerel" ></text-field>
+        <form role="form"
+              name="applicationForm"
+              ng-submit="submit(formData)"
+              ng-fab-form-options="customFormOptions">
+            <div class="form-group">
+                <label class="control-label">Character Name
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Laerel"
+                       ng-model="formData.charName"
+                       required>
+            </div><!-- /charname field -->
+            <div class="form-group">
+                    <label>Class</label>
+                    <select ng-model="formData.charClass"
+                            class="form-control"
+                            required>
+                        <option value=""></option>
+                        <option value="DeathKnight">Death Knight</option>
+                        <option value="Druid">Druid</option>
+                        <option value="Hunter">Hunter</option>
+                        <option value="Mage">Mage</option>
+                        <option value="Monk">Monk</option>
+                        <option value="Paladin">Paladin</option>
+                        <option value="Priest">Priest</option>
+                        <option value="Rogue">Rogue</option>
+                        <option value="Shaman">Shaman</option>
+                        <option value="Warlock">Warlock</option>
+                        <option value="Warrior">Warrior</option>
+                    </select>
+                </div><!-- charclass -->
+            <div class="form-group">
+                    <label>Specialization</label>
+                    <select ng-model="formData.charSpec"
+                            class="form-control"
+                            required>
+                        <option value=""></option>
+                        <option value="Affliction">Affliction</option>
+                        <option value="Arcane">Arcane</option>
+                        <option value="Arms">Arms</option>
+                        <option value="Assasination">Assasination</option>
+                        <option value="Balance">Balance</option>
+                        <option value="Beast Mastery">Beast Mastery</option>
+                        <option value="Blood">Blood</option>
+                        <option value="Brewmaster">Brewmaster</option>
+                        <option value="Combat">Combat</option>
+                        <option value="Demonology">Demonology</option>
+                        <option value="Destruction">Destruction</option>
+                        <option value="Discipline">Discipline</option>
+                        <option value="Elemental">Elemental</option>
+                        <option value="Enhancement">Enhancement</option>
+                        <option value="Feral">Feral</option>
+                        <option value="Fire">Fire</option>
+                        <option value="Frost">Frost</option>
+                        <option value="Fury">Fury</option>
+                        <option value="Gladiator">Gladiator</option>
+                        <option value="Guardian">Guardian</option>
+                        <option value="Holy">Holy</option>
+                        <option value="Marksman">Marksman</option>
+                        <option value="Mistweaver">Mistweaver</option>
+                        <option value="Protection">Protection</option>
+                        <option value="Restoration">Restoration</option>
+                        <option value="Shadow">Shadow</option>
+                        <option value="Subtlety">Subtlety</option>
+                        <option value="Survival">Survival</option>
+                        <option value="Unholy">Unholy</option>
+                        <option value="Windwalker">Windwalker</option>
+                    </select>
+                </div><!-- charSpec-->
+            <div class="form-group">
+              <label>Realm</label>
+              <input type="text" class="form-control" placeholder="Realm" typeahead="name for name in realms | filter:$viewValue | limitTo:8" ng-model="formData.charServer">
+            </div><!-- /charserver typeahead -->
+            <div class="form-group">
+                <label class="control-label">Armory
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="http://us.battle.net/wow/characters/"
+                       ng-model="formData.charArmory"
+                       required>
+            </div><!-- /chararmory field -->
+            <div class="form-group">
+                <label class="control-label">First Name
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Joe"
+                       ng-model="formData.applicantName"
+                       required>
+            </div><!-- /firstname field -->
+            <div class="form-group">
+                <label class="control-label">Age
+                </label>
+                <input type="number"
+                       class="form-control"
+                       placeholder="18"
+                       ng-model="formData.applicantAge"
+                       required>
+            </div><!-- /age field -->
+             <div class="form-group">
+                <label class="control-label">RealID
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="battletag#123"
+                       ng-model="formData.applicantRealId"
+                       required>
+            </div><!-- /realid field -->
+            <div class="form-group">
+                <label class="control-label">Logs
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="http://warcraftlogs.com"
+                       ng-model="formData.charLogs"
+                       required>
+            </div><!-- /logs field -->
+            <div class="form-group">
+                <label>Mythic/Heroic Experience</label>
+                <textarea ng-model="formData.heroicXP"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+            </div><!-- heroicxp -->
+            <div class="form-group">
+                <label>Guild History</label>
+                <textarea ng-model="formData.pastGuilds"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+            </div><!-- heroicxp -->
+            <div class="form-group">
+                <label class="control-label">UI Screenshot
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="http://imgur.com"
+                       ng-model="formData.screenshot"
+                       required>
+            </div><!-- /screenshot field -->
+            <div class="form-group">
+                <label>Why Top Shelf?</label>
+                <textarea ng-model="formData.whyTS"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+            </div><!-- whyTS -->
+            <div class="form-group">
+                <label class="control-label">Raiding Alt
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="http://us.battle.net/wow/characters/"
+                       ng-model="formData.applicantAlt"
+                       required>
+            </div><!-- /applicantAlt field -->
+            <div class="form-group">
+                <label>What resources do you use to improve your raid performance?</label>
+                <textarea ng-model="formData.applicantSelfImprovement"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+            </div><!-- applicantSelfImprovement -->
+            <div class="form-group">
+                <label>Tell us a joke</label>
+                <textarea ng-model="formData.applicantJoke"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+            </div><!-- applicantSelfImprovement -->
+             <div class="form-group">
+                <button type="submit"
+                        class="btn btn-primary">Submit Form
+                </button>
             </div>
-            <div class="col-md-3">
-              <select-field
-                attribute="charClass"
-                label="Class"
-                icon-after="fa fa-cube"
-                options="classOptions"></select-field>
-            </div>
-            <div class="col-md-3">
-              <select-field
-              attribute="charSpec"
-              label="Spec"
-              icon-after="fa fa-eyedropper"
-              options="specOptions"></select-field>
-            </div>
-            <div class="col-md-3">
-              <select-field
-                attribute="charServer"
-                label="Realm"
-                icon-after="fa fa-server"
-                options="realmList"
-                enable-filtering></select-field>
-            </div>
-          </div>
-          <text-field
-            attribute="charArmory"
-            label="Armory"
-            icon-after="fa fa-shield"
-            placeholder="http://us.battle.net"
-            help="Link us to your armory. If your armory is broken, please leave a link to you on WoWProgress."></text-field>
-        <div class="row">
-          <div class="col-md-4">
-            <text-field
-              attribute="applicantName"
-              label="First Name"
-              icon-after="fa fa-smile-o"
-              placeholder="Joe"></text-field>
-          </div>
-          <div class="col-md-4">
-            <select-field
-              attribute="applicantAge"
-              label="Age"
-              icon-after="fa fa-level-up"
-              options="yearsOld"></select-field>
-          </div>
-        <div class="col-md-4">
-          <text-field
-            attribute="applicantRealId"
-            label="RealID"
-            icon-after="fa fa-user-secret"
-            placeholder="battle#1234"></text-field>
-          </div>
-        </div>
-      <text-field attribute="charLogs" label="Warcraft Logs"  icon-after="fa fa-folder" placeholder="http://warcraftlogs.com"></text-field>
-       <text-field label="Mythic/Heroic Experience" icon-after="fa fa-trophy" attribute="heroicXP" multiline placeholder="Please tell us about your current mythic and past heroic raiding experience."></text-field>
+        </form>
 
-      <text-field label="Guild History" attribute="pastGuilds" icon-after="fa fa-book" multiline placeholder="Why are you looking to leave your current guild? What are some of the most recent guilds you've been in?"></text-field>
-      <text-field attribute="screenshot" label="UI Screenshot"  icon-after="fa fa-image" help="Please upload a screenshot of your UI in raid combat" placeholder="http://imgur.com"></text-field>
-      <text-field label="Why Top Shelf?" icon-after="fa fa-diamond"attribute="whyTS" multiline placeholder="How did you find out about us and why did you choose to apply with us?"></text-field>
-      <text-field attribute="applicantAlt" label="Alt Character Armory"  icon-after="fa fa-compass" placeholder="http://us.battle.net" help="Link us to the armory of an alt that you are able to raid on."></text-field>
-      <text-field attribute="applicantSelfImprovement" label="Self Improvement" multiline icon-after="fa fa-user-plus" placeholder="What resources do you use to improve your raid performance?" help="Blogs, Forums, etc"></text-field>
-      <text-field attribute="applicantJoke" label="Tell us a joke" multiline icon-after="fa fa-meh-o" placeholder="Make us laugh as a lasting impression."></text-field>
-  <submit-button label="Apply"></submit-button>
-</form>
+
+</div><!--/panel-->
 </div>
-    </div>
 <div class="col-lg-4">
     <div class="panel applicationRightPanel">
     <h4 class="blueText"><i class="fa fa-star"></i> Things to remember as you apply <i class="fa fa-star"></i></h4>

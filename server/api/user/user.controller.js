@@ -31,6 +31,21 @@ exports.getUsers = function(req, res, next) {
     });
 };
 
+/**
+ * Get a single user
+ */
+exports.show = function(req, res, next) {
+    var userId = req.params.id;
+
+    User.findById(userId, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        //   if (!user) return res.send(401);
+        res.json(user.profile);
+    });
+};
+
 // Checks if the email is already taken
 // GET /api/users :email
 exports.checkEmailAvailable = function(req, res, next) {
@@ -166,20 +181,7 @@ exports.update = function(req, res) {
     });
 };
 
-/**
- * Get a single user
- */
-exports.show = function(req, res, next) {
-    var userId = req.params.id;
 
-    User.findById(userId, function(err, user) {
-        if (err) {
-            return next(err);
-        }
-        //   if (!user) return res.send(401);
-        res.json(user.profile);
-    });
-};
 
 /**
  * Deletes a user

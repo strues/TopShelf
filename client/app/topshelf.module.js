@@ -42,7 +42,6 @@
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
     }
-
     angular
         .module('topshelf')
         .run(run);

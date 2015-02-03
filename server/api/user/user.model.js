@@ -26,7 +26,7 @@ var UserSchema = new Schema({
         default: 'user',
         enum: ['admin', 'user']
     },
-    posts: {
+    articles: {
         type: Schema.Types.ObjectId,
         ref: 'Post'
     },
@@ -38,7 +38,7 @@ var UserSchema = new Schema({
     bnetId: Number,
     battletag: String,
     // characters
-    characters: {
+    toons: {
         type: Schema.Types.ObjectId,
         ref: 'Character'
     },
@@ -70,8 +70,8 @@ UserSchema.virtual('profile')
          'name': this.name,
         'role': this.role,
         'battletag': this.battletag,
-        'characters': this.characters,
-        'posts': this.posts
+        'toons': this.toons,
+        'articles': this.articles
         };
     });
 

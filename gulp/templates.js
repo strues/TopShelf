@@ -21,5 +21,5 @@ gulp.task('templates', function () {
       config.templateCache.options
     ))
     .pipe(gulp.dest(config.temp))
-    .pipe($.notify('$Templatecache compiled'));
+    .pipe($.notify('angular templatecache compiled'));
 });

@@ -12,7 +12,7 @@
    * @example
    *
    */
-   angular
+    angular
         .module('topshelf.core.directives')
         .directive('navbar', navbar);
 

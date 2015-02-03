@@ -3,7 +3,7 @@
 
   /**
    * @ngdoc Controller
-   * @name RecruitmentCtrl
+   * @name topshelf.guild.states:RecruitmentCtrl
    *
    * @description Currently is just "there"
    *
