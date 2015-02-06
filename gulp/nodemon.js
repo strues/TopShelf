@@ -11,7 +11,7 @@ var gulp   = require('gulp'),
 gulp.task('nodemon', function () {
   nodemon({
       script: 'server/server.js',
-      ext: 'html js scss css',
+      ext: 'js',
       ignore: [
         'node_modules/**',
         'bower_components/**'

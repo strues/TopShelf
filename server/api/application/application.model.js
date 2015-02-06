@@ -5,42 +5,69 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ApplicationSchema = new Schema({
-  charName: {type: String},
-  charClass:{type: String},
-  charSpec: {type: String},
-  charServer: {type: String},
-  charArmory: {type: String},
-  applicantName: {type: String},
-  applicantAge: {type: String},
-  applicantRealId: {type: String},
-  charLogs: {type: String},
-  heroicXP: {type: String},
-  pastGuilds: {type: String},
-  screenshot: {type: String},
-  whyTS: {type: String},
-  applicantJoke: {type: String},
-  applicantSelfImprovement: {type: String},
-  applicantAlt: {type: String},
-  created: {
-    type: Date,
-    default: moment()
+    charName: {
+        type: String
     },
-  updated: {
-    type: Date,
-    default: moment()
+    charClass: {
+        type: String
     },
-  read: {
-    type: Number,
-    default: 0
+    charSpec: {
+        type: String
     },
-  likes: {
-    type: Number,
-    default: 0
+    charServer: {
+        type: String
     },
-  applicant: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
+    charArmory: {
+        type: String
+    },
+    applicantName: {
+        type: String
+    },
+    applicantAge: {
+        type: String
+    },
+    applicantTZ: {
+        type: String
+    },
+    applicantRealId: {
+        type: String
+    },
+    charLogs: {
+        type: String
+    },
+    heroicXP: {
+        type: String
+    },
+    pastGuilds: {
+        type: String
+    },
+    screenshot: {
+        type: String
+    },
+    whyTS: {
+        type: String
+    },
+    applicantJoke: {
+        type: String
+    },
+    applicantSelfImprovement: {
+        type: String
+    },
+    applicantAlt: {
+        type: String
+    },
+    created: {
+        type: Date,
+        default: moment()
+    },
+    updated: {
+        type: Date,
+        default: moment()
+    },
+    applicant: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 ApplicationSchema.statics = {

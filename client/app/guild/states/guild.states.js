@@ -12,7 +12,7 @@
     angular
         .module('topshelf.guild.states')
         .config(config);
-
+    /* @ngInject */
     function config($stateProvider) {
         $stateProvider
             .state('guildrecruitment', {

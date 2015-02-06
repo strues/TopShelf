@@ -105,6 +105,18 @@
                        ng-model="formData.applicantAge"
                        required>
             </div><!-- /age field -->
+            <div class="form-group">
+                <label>Timezone</label>
+                  <select ng-model="formData.applicantTZ"
+                          class="form-control"
+                          required>
+                    <option value=""></option>
+                    <option value="PST">Pacific (PST)</option>
+                    <option value="MST">Mountain (MST)</option>
+                    <option value="CST">Central (CST)</option>
+                    <option value="EST">Eastern (EST)</option>
+                    </select>
+                </div><!-- applicantTZ -->
              <div class="form-group">
                 <label class="control-label">RealID
                 </label>

@@ -19,7 +19,7 @@
 
         $scope.allStreams = [
             // List of stream names of TI streams.
-            'gamesdonequick',
+            'soopie',
             'toxicpopsicles',
             'teomorassalt'
         ];
