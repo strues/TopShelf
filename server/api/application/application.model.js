@@ -2,7 +2,9 @@
 
 var mongoose = require('mongoose'),
     moment = require('moment'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    relationship = require('mongoose-relationship');
+var User = require('../user/user.model');
 
 var ApplicationSchema = new Schema({
     charName: {
@@ -64,19 +66,20 @@ var ApplicationSchema = new Schema({
         type: Date,
         default: moment()
     },
-    applicant: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User',
+        childPath: 'applications'
     }
 });
 
-ApplicationSchema.statics = {
-  loadRecent: function(cb) {
-    this.find({})
-      .populate({path:'User', select: 'name'})
-      .limit(20)
-      .exec(cb);
-  }
-};
+ApplicationSchema.plugin(relationship, {relationshipPathName:'user'});
+var Application = mongoose.model('Application', ApplicationSchema)
+
+var user = new User({});
+user.save();
+var application = new Application({user:user._id});
+application.save() //the parent children property will now contain child's id
+application.remove() //the parent children property will no longer contain the child's id
 
 module.exports = mongoose.model('Application', ApplicationSchema);

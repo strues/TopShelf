@@ -58,7 +58,7 @@ $brand-danger:          #e51c23;
 //** Background color for `<body>`.
 $body-bg:               #fff;
 //** Global text color on `<body>`.
-$text-color:            lighten($gray, 55%);
+$text-color:            lighten($gray, 35%) !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary;
@@ -616,7 +616,7 @@ $modal-title-padding:         15px;
 $modal-title-line-height:     $line-height-base;
 
 //** Background color of modal content area
-$modal-content-bg:                             #fff;
+$modal-content-bg:                             $drkrGray;
 //** Modal content border color
 $modal-content-border-color:                   transparent;
 //** Modal content border color **for IE8**

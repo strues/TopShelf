@@ -2,8 +2,7 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    request = require('request'),
-    q = require('q'),
+    relationship = require('mongoose-relationship'),
     crypto = require('crypto'),
     _ = require('lodash'),
     authTypes = ['bnet', 'twitter', 'facebook'];
@@ -31,19 +30,22 @@ var UserSchema = new Schema({
         ref: 'Post'
     },
     password: {
-      type: String
+        type: String
     },
     provider: String,
     salt: String,
-    bnetId: Number,
+    battleid: Number,
     battletag: String,
+    showBattletag: Boolean,
     // characters
     toons: {
         type: Schema.Types.ObjectId,
         ref: 'Character'
     },
-    // site settings
-    showBattletag: Boolean,
+    applications: [{
+        type: Schema.ObjectId,
+        ref: 'Application'
+    }],
     activity: {
         dateCreated: {
             type: Date,
@@ -67,11 +69,11 @@ var UserSchema = new Schema({
 UserSchema.virtual('profile')
     .get(function() {
         return {
-         'name': this.name,
-        'role': this.role,
-        'battletag': this.battletag,
-        'toons': this.toons,
-        'articles': this.articles
+            'name': this.name,
+            'role': this.role,
+            'battletag': this.battletag,
+            'toons': this.toons,
+            'articles': this.articles
         };
     });
 
@@ -233,13 +235,13 @@ UserSchema.methods = {
 
         if (!callback)
             return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
-          .toString('base64');
+                .toString('base64');
 
         return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength,
-          function(err, key) {
-            if (err) callback(err);
-            return callback(null, key.toString('base64'));
-        });
+            function(err, key) {
+                if (err) callback(err);
+                return callback(null, key.toString('base64'));
+            });
     }
 };
 

@@ -34,7 +34,7 @@ exports.all = function(req, res) {
 // Get a single application
 exports.get = function(req, res) {
     Application.findById(req.params.id)
-        .populate('applicant', 'name')
+        .populate('user', 'name')
         .exec(function(err, application) {
             if (err) {
                 return handleError(res, err);

@@ -30,6 +30,9 @@
         vm.deletePost = function (id) {
         console.log('inside posts.controller.js deletePost - id', id);
         Post.delete(id);
+        $http.get('/api/posts').success(function(posts) {
+                vm.posts = posts;
+            });
     };
     }
 
