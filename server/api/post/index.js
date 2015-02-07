@@ -23,10 +23,8 @@ router.param('post', function(req, res, next, id) {
 });
 
 router.param('author', controller.getListByAuthor);
-router.param('tag', controller.getListByTag);
 
 router.get('/', controller.index);
-router.get('/tag/:tag', controller.index)
 router.get('/author/:author', controller.index)
 router.get('/:id', controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);

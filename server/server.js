@@ -1,5 +1,5 @@
 /**
- * Main Server File
+ * Express Server
  */
 
 'use strict';
@@ -11,7 +11,7 @@ var express     = require('express'),
     chalk       = require('chalk'),
     config      = require('./config/environment');
 
-// Establish Mongo Connection
+// Establish MongoDB connection
 var db = mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
     if (err) {
         console.error(chalk.red('Rekt, connection failed to: ' + config.mongo.uri));
@@ -33,7 +33,6 @@ var server      = require('http').createServer(app);
 
 require('./config/express')(app);
 require('./routes')(app);
-var request = require('./request')
 
 // var options = {
 // key: fs.readFileSync('./server.key'),
