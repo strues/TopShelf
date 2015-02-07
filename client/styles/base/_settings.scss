@@ -58,7 +58,7 @@ $brand-danger:          #e51c23;
 //** Background color for `<body>`.
 $body-bg:               #fff;
 //** Global text color on `<body>`.
-$text-color:            $gray;
+$text-color:            lighten($gray, 55%);
 
 //** Global textual link color.
 $link-color:            $brand-primary;
@@ -98,7 +98,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 $headings-font-family:    inherit;
 $headings-font-weight:    400;
 $headings-line-height:    1.1;
-$headings-color:          #444;
+$headings-color:          $tsBlue;
 
 
 //== Iconography
@@ -228,7 +228,7 @@ $input-border-radius-small:      $border-radius-small;
 $input-border-focus:             #66afe9;
 
 //** Placeholder text color
-$input-color-placeholder:        $gray-light;
+$input-color-placeholder:        $gray;
 
 //** Default `.form-control` height
 $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2);

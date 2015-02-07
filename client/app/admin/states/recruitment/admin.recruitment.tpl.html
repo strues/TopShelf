@@ -1,14 +1,9 @@
 <div class="row">
   <div class="col-sm-12">
-    <h1>Recruitment</h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat.</p>
-    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <div class="col-sm-6 col-md-4" ng-controller="RecruitmentCtrl">
+    <h1>Guild Recruitment</h1>
+    <p class="lead">Make changes to the guild's recruitment status.</p>
+
+  <div class="col-sm-6 col-md-4" class="adminRecruitP" ng-controller="RecruitmentCtrl">
     <div class="well">
     <h3>Update <span class="inverseText">Recruitment Status</span></h4>
        <form role="form"
@@ -16,7 +11,7 @@
               ng-submit="submit()">
         <div class="row">
              <div class="form-group">
-                <label>Class Type</label>
+                <span class="inverseText"><label>Class Type</label></span>
                 <select ng-model="formData.classType"
                         class="form-control"
                         required>
@@ -35,7 +30,7 @@
                 </select>
             </div><!-- form group-->
              <div class="form-group">
-                    <label>Specialization</label>
+                    <span class="inverseText"><label>Specialization</label></span>
                     <select ng-model="formData.classSpec"
                             class="form-control"
                             required>
@@ -76,7 +71,7 @@
         <div class="row">
           <div class="col-sm-5">
                  <div class="form-group">
-                <label>Priority</label>
+               <span class="inverseText"> <label>Priority</label></span>
                 <select ng-model="formData.priority"
                         class="form-control"
                         required>
@@ -89,7 +84,7 @@
           </div>
         <div class="col-sm-6 col-sm-offset-1">
               <div class="form-group">
-                <label>Status</label>
+               <span class="inverseText"> <label>Status</label></span>
                 <select ng-model="formData.status"
                         class="form-control"
                         required>
