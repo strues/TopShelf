@@ -9,7 +9,7 @@
    *
    */
     angular
-        .module('topshelf.admin')
+        .module('app.admin')
         .config(config);
 
     function config($stateProvider) {

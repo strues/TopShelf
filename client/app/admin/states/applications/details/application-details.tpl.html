@@ -4,43 +4,7 @@
     <h1>{{application.charName}}'s Application </h1>
     </div>
   </div>
-  <div class="col-md-5">
-  <dl class="dl-horizontal" style="padding-top: 15px; padding-left: 10px; padding-right: 15px;">
-      <dt>Character Name:</dt>
-      <dd>{{application.charName}}</dd>
-      <dt>Class:</dt>
-      <dd>{{application.charClass}}</dd>
-      <dt>Spec:</dt>
-      <dd>{{application.charSpec}}</dd>
-      <dt>Armory:</dt>
-      <dd><a ng-href="{{application.charArmory}}" target="_blank">View Armory</a></dd>
-      <dt>Server:</dt>
-      <dd>{{application.charServer}}</dd>
-      <dt>Logs:</dt>
-      <dd><a ng-href="{{application.charLogs}}" target="_blank">View Logs</a></dd>
-      <dt>Name:</dt>
-      <dd>{{application.applicantName}}</dd>
-      <dt>Age:</dt>
-      <dd>{{application.applicantAge}}</dd>
-      <dt>RealID:</dt>
-      <dd>{{application.applicantRealId}}</dd>
-       <dt>UI Screenshot:</dt>
-      <dd>{{application.screenshot}}</dd>
-      <dt>Heroic Exp:</dt>
-      <dd>{{application.heroicXP}}</dd>
-      <dt>Guild History:</dt>
-      <dd>{{application.pastGuilds}}</dd>
-      <dt>Why Top Shelf?</dt>
-      <dd>{{application.whyTS}}</dd>
-      <dt>Raiding Alt</dt>
-      <dd><a ng-href="{{application.applicantAlt}}" target="_blank">View Alt</a></dd>
-      <dt>Resources used to gather info</dt>
-      <dd>{{application.applicantSelfImprovement}}</dd>
-      <dt>Tell us a joke</dt>
-      <dd>{{application.applicantJoke}}</dd>
-    </dl>
 
-  </div>
 <div class="col-xs-12 col-md-6 col-md-offset-1">
     <div class="panel panel-default">
       <div class="panel-heading resume-heading">
@@ -64,6 +28,48 @@
         </div>
       </div>
       <div class="bs-callout bs-callout-danger">
+        <h4>Armory</h4>
+        <p>
+            <a ng-href="{{application.charArmory}}" target="_blank">View Armory</a>
+        </p>
+        </div>
+        <div class="bs-callout bs-callout-danger">
+        <h4>Alt Armory</h4>
+        <p>
+         <a ng-href="{{application.applicantAlt}}" target="_blank">View Alt</a>
+        </p>
+      </div>
+      <div class="bs-callout bs-callout-danger">
+        <h4>First Name</h4>
+        <p>
+            {{application.applicantName}}
+        </p>
+      </div>
+      <div class="bs-callout bs-callout-danger">
+        <h4>Age</h4>
+        <p>
+            {{application.applicantAge}}
+        </p>
+      </div>
+      <div class="bs-callout bs-callout-danger">
+        <h4>Timezone</h4>
+        <p>
+            {{application.applicantTZ}}
+        </p>
+      </div>
+      <div class="bs-callout bs-callout-danger">
+        <h4>Screenshot</h4>
+        <p>
+            {{application.screenshot}}
+        </p>
+      </div>
+      <div class="bs-callout bs-callout-danger">
+        <h4>Warcraft Logs</h4>
+        <p>
+          <a ng-href="{{application.charLogs}}" target="_blank">View Logs</a>
+        </p>
+      </div>
+      <div class="bs-callout bs-callout-danger">
         <h4>Heroic Experience</h4>
         <p>
             {{application.heroicXP}}
@@ -78,7 +84,7 @@
       <div class="bs-callout bs-callout-danger">
         <h4>Why Top Shelf?</h4>
         <p>
-      {{application.whyTS}}
+          {{application.whyTS}}
         </p>
       </div>
       <div class="bs-callout bs-callout-danger">

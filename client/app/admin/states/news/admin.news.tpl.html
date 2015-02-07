@@ -1,22 +1,25 @@
-<div class="backendWrap">
-<div class="row" ng-controller="NewsListCtrl as vm">
-<div class="col-sm-8 col-sm-offset-2">
- <ul class="posts" ng-repeat="post in vm.posts | orderBy:'date':reverse">
-      <li>{{post.date | date:'MM/dd/yyyy'}}</li>
-      <li>
-        <h4 class="post-title">{{post.title}}</h4>
-        <span class="more" ng-hide="showMode" ng-click="showMode=!showMode">more...</span>
-        <span class="more" ng-hide="!showMode" ng-click="showMode=!showMode">less...</span>
-      </li>
-      <li ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></li>
-      <li ng-hide="!showMode" ng-bind-html="post.content"></li>
-      <li>
-      <i ng-click="vm.deletePost(post._id)" class="fa fa-trash"></i></button>
-       <a href="" ui-sref='admin.newsEdit({postId: post._id})'><button class="btn btn-primary">Edit</button></a>
-        <span class="taggedEM">tagged:</span>
-        <span ng-repeat="tag in post.tags | postTagsFormat:', ' track by $index">{{ tag }}</span>
-      </li>
-    </ul>
-    <p class="more" ng-show="vm.getAdditionalPosts()" ng-click="vm.showMorePosts()">View More Posts...</p>
-</div>
+<div class="backendWrap" style="padding-top:60px;">
+  <div class="row" ng-controller="NewsListCtrl as vm">
+
+   <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Summary</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="post in vm.posts | orderBy:'date':reverse">
+      <td>{{post.date | date:'MM/dd/yyyy'}}</td>
+      <td>{{post.title}}</td>
+      <td ng-bind-html="post.content | limitTo : 100"></td>
+      <td>
+        <a ui-sref='admin.newsEdit({postId: post._id})'>
+          <i class="fa fa-pencil"></i></a> | <i ng-click="vm.deletePost(post._id)" class="fa fa-trash"></i>
+      </td>
+    </tr>
+    </tbody>
+   </table>
+  </div>
 </div>
