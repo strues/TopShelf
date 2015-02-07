@@ -9,7 +9,7 @@
    */
 
     angular
-        .module('topshelf.core.states')
+        .module('app.core.states')
         .config(config);
             /* @ngInject */
     function config($stateProvider) {

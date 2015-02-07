@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('topshelf.guild.states', []);
-angular.module('topshelf.guild.services', []);
+angular.module('app.guild.states', []);
+angular.module('app.guild.services', []);
 
-angular.module('topshelf.guild', [
-  'topshelf.guild.states',
-  'topshelf.guild.services'
+angular.module('app.guild', [
+  'app.guild.states',
+  'app.guild.services'
 ]);

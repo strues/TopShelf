@@ -9,7 +9,7 @@
    *
    */
     angular
-      .module('topshelf.admin.states')
+      .module('app.admin.states')
       .controller('ApplicationViewCtrl', ApplicationViewCtrl);
                                                 /* @ngInject */
     function ApplicationViewCtrl ($scope, $http, $stateParams, Application, $location) {

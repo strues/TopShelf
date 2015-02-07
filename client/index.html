@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" ng-app="topshelf">
+<html class="no-js" lang="en" ng-app="app">
  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -53,7 +53,6 @@
     <script src="/bower_components/ngstorage/ngStorage.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="/bower_components/rangy/rangy-core.min.js"></script>
     <script src="/bower_components/rangy/rangy-cssclassapplier.min.js"></script>
@@ -68,13 +67,13 @@
     <script src="/bower_components/angular-toastr/dist/angular-toastr.js"></script>
     <script src="/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <script src="/bower_components/ng-fab-form/dist/ng-fab-form.min.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
     <!-- build:js js/app.js-->
     <!-- inject:js -->
 
-    <script src="/client/app/topshelf.module.js"></script>
+    <script src="/client/app/app.module.js"></script>
 
     <script src="/client/app/account/account.module.js"></script>
 
@@ -106,6 +105,10 @@
 
     <script src="/client/app/admin/states/admin.states.js"></script>
 
+    <script src="/client/app/core/filters/startFrom.filter.js"></script>
+
+    <script src="/client/app/core/states/core.states.js"></script>
+
     <script src="/client/app/core/services/authInterceptor.service.js"></script>
 
     <script src="/client/app/core/services/logger.service.js"></script>
@@ -115,10 +118,6 @@
     <script src="/client/app/core/services/util.service.js"></script>
 
     <script src="/client/app/core/services/wowHelper.service.js"></script>
-
-    <script src="/client/app/core/filters/startFrom.filter.js"></script>
-
-    <script src="/client/app/core/states/core.states.js"></script>
 
     <script src="/client/app/guild/services/guild.application.service.js"></script>
 
@@ -142,11 +141,11 @@
 
     <script src="/client/app/admin/directives/admin.navbar/admin.navbar.directive.js"></script>
 
+    <script src="/client/app/admin/states/applications/admin.applications.controller.js"></script>
+
     <script src="/client/app/admin/states/news/admin.news-datePicker.controller.js"></script>
 
     <script src="/client/app/admin/states/news/admin.news.controller.js"></script>
-
-    <script src="/client/app/admin/states/applications/admin.applications.controller.js"></script>
 
     <script src="/client/app/admin/states/recruitment/admin.recruitment.controller.js"></script>
 
@@ -164,11 +163,11 @@
 
     <script src="/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
 
+    <script src="/client/app/core/directives/newsView/core.newsView.directive.js"></script>
+
     <script src="/client/app/core/directives/navbar/core.navbar.controller.js"></script>
 
     <script src="/client/app/core/directives/navbar/core.navbar.directive.js"></script>
-
-    <script src="/client/app/core/directives/newsView/core.newsView.directive.js"></script>
 
     <script src="/client/app/core/directives/recruitingPanel/core.recruitingPanel.directive.js"></script>
 
@@ -182,17 +181,17 @@
 
     <script src="/client/app/guild/states/recruitment/guild.recruitment.controller.js"></script>
 
-    <script src="/client/app/guild/states/streams/guild.streams.controller.js"></script>
-
     <script src="/client/app/guild/states/roster/guild.roster.controller.js"></script>
 
+    <script src="/client/app/guild/states/streams/guild.streams.controller.js"></script>
+
     <script src="/client/app/account/states/profile/edit/account.profile-edit.controller.js"></script>
+
+    <script src="/client/app/admin/states/applications/details/application-details.controller.js"></script>
 
     <script src="/client/app/admin/states/news/create/admin.news-create.controller.js"></script>
 
     <script src="/client/app/admin/states/news/edit/admin.news-edit.controller.js"></script>
-
-    <script src="/client/app/admin/states/applications/details/application-details.controller.js"></script>
 
     <script src="/client/app/admin/states/resources/create/admin.resources-create.controller.js"></script>
 

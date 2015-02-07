@@ -3,7 +3,7 @@
 
   /**
    * @ngdoc object
-   * @name topshelf.core.controller:AdminNavbarCtrl
+   * @name app.core.controller:AdminNavbarCtrl
    *
    * @description
    *
@@ -16,6 +16,6 @@
     }
 
     angular
-        .module('topshelf.admin.directives')
+        .module('app.admin.directives')
         .controller('AdminNavbarCtrl', AdminNavbarCtrl);
 })();

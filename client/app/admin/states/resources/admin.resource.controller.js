@@ -6,7 +6,7 @@
  * @description Logic for displaying resources in admin area
  */
     angular
-        .module('topshelf.admin.states')
+        .module('app.admin.states')
         .controller('ResourceCtrl', ResourceCtrl);
     /* @ngInject */
     function ResourceCtrl(Resource) {

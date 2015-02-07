@@ -9,7 +9,7 @@
      *
      */
     angular
-        .module('topshelf.guild.states')
+        .module('app.guild.states')
         .controller('StreamCtrl', StreamCtrl);
     /* @ngInject */
     function StreamCtrl($scope, $rootScope, $location, toastr, Streams) {

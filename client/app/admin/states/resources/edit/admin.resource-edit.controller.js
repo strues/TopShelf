@@ -5,7 +5,7 @@
  * @name ResourceEditCtrl
  */
     angular
-        .module('topshelf.admin.states')
+        .module('app.admin.states')
         .controller('ResourceEditCtrl', ResourceEditCtrl);
 
                           /* @ngInject */

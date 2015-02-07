@@ -44,6 +44,6 @@
     }
 
     angular
-      .module('topshelf.admin.states')
+      .module('app.admin.states')
       .controller('AdminUsersCtrl', AdminUsersCtrl);
 })();

@@ -8,7 +8,7 @@
    *
    */
     angular
-        .module('topshelf.guild.states')
+        .module('app.guild.states')
         .controller('RosterCtrl', RosterCtrl);
 
     /* @ngInject */

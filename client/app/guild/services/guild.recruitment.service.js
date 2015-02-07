@@ -34,6 +34,6 @@
     }
 
     angular
-        .module('topshelf.guild.services')
+        .module('app.guild.services')
         .factory('Recruitment', Recruitment);
 })();

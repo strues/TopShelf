@@ -23,6 +23,6 @@
     }
 
     angular
-        .module('topshelf.admin.directives')
+        .module('app.admin.directives')
         .directive('adminNavbar', adminNavbar);
 })();

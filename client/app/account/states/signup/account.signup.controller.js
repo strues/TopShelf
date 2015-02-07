@@ -15,6 +15,6 @@
     }
 
     angular
-        .module('topshelf.account.states')
+        .module('app.account.states')
         .controller('SignupCtrl', SignupCtrl);
 })();

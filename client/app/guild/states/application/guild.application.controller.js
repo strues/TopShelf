@@ -9,7 +9,7 @@
      * @description Form to submit an application
      */
     angular
-        .module('topshelf.guild.states')
+        .module('app.guild.states')
         .controller('ApplicationCtrl', ApplicationCtrl);
     /* @ngInject */
     function ApplicationCtrl($scope, $location, $http, Application, ngFabForm, toastr) {

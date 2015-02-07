@@ -10,7 +10,7 @@
    */
 
     angular
-      .module('topshelf.core.states')
+      .module('app.core.states')
       .controller('HomeCtrl', HomeCtrl);
     /* @ngInject */
     function HomeCtrl(Post, $location) {

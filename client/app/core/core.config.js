@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('topshelf.core')
+    angular.module('app.core')
         .config(configureToastr)
         .config(configure);
 

@@ -12,6 +12,6 @@
     }
 
     angular
-        .module('topshelf.admin')
+        .module('app.admin')
         .controller('AdminDashboardCtrl', AdminDashboardCtrl);
 })();

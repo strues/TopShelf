@@ -5,7 +5,7 @@
  * @name ResourceCreateCtrl
  */
     angular
-        .module('topshelf.admin.states')
+        .module('app.admin.states')
         .controller('ResourceCreateCtrl', ResourceCreateCtrl);
                                   /* @ngInject */
     function ResourceCreateCtrl($scope, Resource, toastr, Auth) {

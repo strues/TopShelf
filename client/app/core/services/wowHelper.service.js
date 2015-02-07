@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('topshelf.core.services')
+        .module('app.core.services')
         .factory('wowHelper', wowHelper);
 
     /* @ngInject */

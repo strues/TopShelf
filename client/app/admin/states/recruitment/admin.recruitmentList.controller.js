@@ -6,7 +6,7 @@
  * @description Logic to display the current recruitment status
  */
     angular
-        .module('topshelf.admin.states')
+        .module('app.admin.states')
         .controller('RecruitmentListCtrl', RecruitmentListCtrl);
                           /* @ngInject */
     function RecruitmentListCtrl($http, Recruitment) {

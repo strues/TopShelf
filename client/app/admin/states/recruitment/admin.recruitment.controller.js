@@ -9,7 +9,7 @@
    *
    */
     angular
-      .module('topshelf.admin.states')
+      .module('app.admin.states')
       .controller('RecruitmentCtrl', RecruitmentCtrl);
                                     /* @ngInject */
     function RecruitmentCtrl ($scope, $http, $state, toastr) {

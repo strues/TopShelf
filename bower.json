@@ -22,7 +22,8 @@
     "ngReactGrid": "~0.7.0",
     "v-modal": "~0.2.1",
     "angular-toastr": "1.0.0-beta.2",
-    "ng-fab-form": "~1.1.9"
+    "ng-fab-form": "~1.1.9",
+    "angular-touch": "~1.3.12"
   },
   "ignore": [
     "**/.*",
@@ -39,7 +40,7 @@
   "resolutions": {
     "angular-toastr": "1.0.0-beta.2",
     "angular-messages": "~1.3.12",
-    "angular": "~1.3.12",
+    "angular": "1.3.12",
     "angular-animate": "~1.3.12"
   }
 }

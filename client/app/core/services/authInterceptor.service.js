@@ -9,7 +9,7 @@
    */
 
     angular
-      .module('topshelf.core.services')
+      .module('app.core.services')
       .factory('authInterceptor', authInterceptor);
 
                               /* @ngInject */

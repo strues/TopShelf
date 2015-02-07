@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('topshelf.guild.services')
+        .module('app.guild.services')
         .factory('Streams', Streams);
 
     function Streams ($http, $rootScope) {

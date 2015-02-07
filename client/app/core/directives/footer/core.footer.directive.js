@@ -23,6 +23,6 @@
     }
 
     angular
-        .module('topshelf.core.directives')
+        .module('app.core.directives')
         .directive('theFooter', theFooter);
 })();

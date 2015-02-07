@@ -13,7 +13,7 @@
    *
    */
     angular
-        .module('topshelf.core.directives')
+        .module('app.core.directives')
         .directive('navbar', navbar);
 
     function navbar() {

@@ -10,7 +10,7 @@
    */
 
     angular
-      .module('topshelf.admin.states')
+      .module('app.admin.states')
       .controller('ApplicationListCtrl', ApplicationListCtrl);
                                     /* @ngInject */
     function ApplicationListCtrl ($scope, Application, $http, $timeout, $location) {

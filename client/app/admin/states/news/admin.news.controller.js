@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('topshelf.admin.states')
+        .module('app.admin.states')
         .controller('NewsListCtrl', NewsListCtrl);
           /* @ngInject */
     function NewsListCtrl(Post) {

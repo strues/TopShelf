@@ -16,6 +16,6 @@
     }
 
     angular
-        .module('topshelf.core.directives')
+        .module('app.core.directives')
         .controller('FooterCtrl', FooterCtrl);
 })();

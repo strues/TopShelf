@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('topshelf.admin.services')
+        .module('app.admin.services')
         .factory('Resource', Resource);
 
     function Resource ($http) {

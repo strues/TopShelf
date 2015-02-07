@@ -19,7 +19,7 @@
     }
 
     angular
-    .module('topshelf.core.directives')
+    .module('app.core.directives')
     .directive('mongooseError', mongooseError);
 
 })();

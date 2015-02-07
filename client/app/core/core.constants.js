@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('topshelf.core')
+        .module('app.core')
         .constant('wowConstants', wowConstants);
 
     var wowConstants = {

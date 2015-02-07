@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('topshelf.admin.states', []);
-angular.module('topshelf.admin.directives', []);
-angular.module('topshelf.admin.services', []);
+angular.module('app.admin.states', []);
+angular.module('app.admin.directives', []);
+angular.module('app.admin.services', []);
 
-angular.module('topshelf.admin', [
-  'topshelf.admin.states',
-  'topshelf.admin.directives',
-  'topshelf.admin.services'
+angular.module('app.admin', [
+  'app.admin.states',
+  'app.admin.directives',
+  'app.admin.services'
 ]);

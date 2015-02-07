@@ -8,7 +8,7 @@
    */
 
     angular
-        .module('topshelf.core.states')
+        .module('app.core.states')
         .controller('HomeCarouselCtrl', HomeCarouselCtrl);
 
     function HomeCarouselCtrl () {

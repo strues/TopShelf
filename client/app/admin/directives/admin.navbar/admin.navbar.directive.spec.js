@@ -5,7 +5,7 @@ describe('navbar', function () {
   var scope
     , element;
 
-  beforeEach(module('topshelf.core', 'core/navbar/navbar.tpl.html'));
+  beforeEach(module('app.admin', 'core/navbar/navbar.tpl.html'));
 
   var element, scope;
 

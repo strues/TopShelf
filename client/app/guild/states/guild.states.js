@@ -10,7 +10,7 @@
      */
 
     angular
-        .module('topshelf.guild.states')
+        .module('app.guild.states')
         .config(config);
     /* @ngInject */
     function config($stateProvider) {

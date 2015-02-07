@@ -6,14 +6,14 @@
  * @description application-wide core features
  */
 
-angular.module('topshelf.core.directives', []);
-angular.module('topshelf.core.states', []);
-angular.module('topshelf.core.filters', []);
-angular.module('topshelf.core.services', []);
+angular.module('app.core.directives', []);
+angular.module('app.core.states', []);
+angular.module('app.core.filters', []);
+angular.module('app.core.services', []);
 
-angular.module('topshelf.core', [
-  'topshelf.core.states',
-  'topshelf.core.services',
-  'topshelf.core.filters',
-  'topshelf.core.directives'
+angular.module('app.core', [
+  'app.core.states',
+  'app.core.services',
+  'app.core.filters',
+  'app.core.directives'
 ]);

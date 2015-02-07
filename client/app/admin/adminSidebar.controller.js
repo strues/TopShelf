@@ -13,6 +13,6 @@
     }
 
     angular
-        .module('topshelf.admin')
+        .module('app.admin')
         .controller('AdminSidebarCtrl', AdminSidebarCtrl);
 })();
