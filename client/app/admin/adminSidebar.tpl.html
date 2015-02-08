@@ -1,18 +1,51 @@
-<div class="panel col-sm-3 col-md-2 sidebar" id="adminSideBar" ng-controller="AdminSidebarCtrl as vm">
-          <ul class="nav nav-sidebar">
-            <li class="active">
-             <a ui-sref="admin">
-                <i class="fa fa-dashboard"></i> Admin Dash</a>
-            </li>
-            <li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
-            <li><a ui-sref="admin.news"><i class="fa fa-newspaper-o"></i> News</a></li>
-            <li><a ui-sref="admin.newsPost"><i class="fa fa-caret-right"></i> New Post</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a ui-sref="admin.applications"><i class="fa fa-file-text-o"></i> Applications</a></li>
-            <li><a ui-sref="admin.recruitmentStatus"><i class="fa fa-compass"></i> Recruitment</a></li>
-          </ul>
-        </div>
 
+<ul class="nav">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span>Navigation</span>
+  </li>
+  <li>
+      <a ui-sref="admin">
+      <i class="glyphicon glyphicon-dashboard icon text-primary-dker"></i>
+      <span class="font-bold">Dashboard</span>
+    </a>
+  </li>
+  <li ui-sref-active="active">
+    <a ui-sref="admin.news">
+      <i class="glyphicon glyphicon-list icon text-info-dker"></i>
+      <span class="font-bold">News List</span>
+    </a>
+  </li>
+  <li ui-sref-active="active">
+    <a ui-sref="admin.newsPost">
+      <i class="glyphicon glyphicon-plus icon text-info-dker"></i>
+      <span class="font-bold">New Post</span>
+    </a>
+  </li>
+  <li ui-sref-active="active">
+    <a ui-sref="admin.applications">
+      <i class="glyphicon glyphicon-edit icon text-info-dker"></i>
+      <span class="font-bold">Applications</span>
+    </a>
+  </li>
+   <li ui-sref-active="active">
+    <a ui-sref="admin.recruitmentStatus">
+      <i class="glyphicon glyphicon-th-large icon text-success"></i>
+      <span class="font-bold">Recruitment</span>
+    </a>
+  </li>
+  <li ui-sref-active="active">
+    <a ui-sref="admin.users">
+      <i class="glyphicon glyphicon-user icon text-success"></i>
+      <span class="font-bold">Users</span>
+    </a>
+  </li>
+    <li ui-sref-active="active">
+    <a ui-sref="admin.resources">
+      <i class="glyphicon glyphicon-briefcase icon text-info-dker"></i>
+      <span class="font-bold">Resources</span>
+    </a>
+  </li>
 
+</ul>
+<!-- / list -->
 

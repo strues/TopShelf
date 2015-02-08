@@ -1,5 +1,11 @@
 <div admin-navbar></div>
-<div class="container backendWrap">
-    <div ui-view="content"></div>
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-5 col-md-2 no-gutter" style="min-height:700px; background-color: rgb(20, 21, 23);">
+      <div ui-view="sidebar"></div>
+    </div>
+    <div class="col-sm-7 col-md-10 no-gutter" style="background-color:#f5f5f5;">
+      <div ui-view="content"></div>
+    </div>
+  </div>
 </div>

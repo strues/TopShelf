@@ -1,7 +1,12 @@
-<div class="col-sm-12" ng-controller="NewsCreateCtrl as vm">
-  <div class="panel">
-    <h1>New <span class="recruitmentWhite">Post</span></h1>
+<div ng-controller="NewsCreateCtrl as vm">
+  <span class="pull-right">
     <h5>Create a new post that displays on the homepage</h5>
+    </span>
+  <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">New Post</span></h3>
+    </div>
+    <div class="panel-body">
   <form novalidate ng-submit="vm.savePost()">
     <div class="well">
     <div class="row">
@@ -76,5 +81,6 @@
       </div> <!--./row-->
     </div>
   </form>
+  </div>
 </div>
 </div>
