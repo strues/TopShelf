@@ -13,7 +13,7 @@
       .module('app.core.states')
       .controller('HomeCtrl', HomeCtrl);
     /* @ngInject */
-    function HomeCtrl(Post, $location) {
+    function HomeCtrl(Post,$scope, $location, $modal) {
 
         var vm = this;
         //home.posts = {};
@@ -31,5 +31,10 @@
         vm.viewMore = function(post) {
             $location.path('/view-post/' + post._id);
         };
+
+
+
+        // Show when some event occurs (use $promise property to ensure the template has been loaded)
+
     }
 })();

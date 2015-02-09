@@ -42,9 +42,17 @@
     }
 
     /* @ngInject */
-    function configure ($urlRouterProvider, $locationProvider, $httpProvider) {
+    function configure ($urlRouterProvider, $locationProvider, $tooltipProvider, $datepickerProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
+        angular.extend($datepickerProvider.defaults, {
+          dateFormat: 'dd/MM/yyyy',
+          startWeek: 1
+        });
+        angular.extend($tooltipProvider.defaults, {
+          animation: 'am-flip-x',
+          trigger: 'hover'
+        });
     }
 })();

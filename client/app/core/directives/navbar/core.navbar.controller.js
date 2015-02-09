@@ -1,18 +1,27 @@
-(function () {
+(function() {
     'use strict';
 
-  /**
-   * @ngdoc object
-   * @name topshelf.core.controller:NavbarCtrl
-   *
-   * @description
-   *
-   */
+    /**
+     * @ngdoc controller
+     * @name topshelf.core.controller:NavbarCtrl
+     *
+     * @description Controller for the Navbar
+     *
+     */
 
-    function NavbarCtrl(Auth) {
+    function NavbarCtrl(Auth, $location) {
         var vm = this;
 
         vm.Auth = Auth;
+
+        vm.isCollapsed = true;
+        vm.isLoggedIn = Auth.isLoggedIn;
+        vm.isAdmin = Auth.isAdmin;
+        vm.getCurrentUser = Auth.getCurrentUser;
+
+        vm.isActive = function(route) {
+            return route === $location.path();
+        };
     }
 
     angular

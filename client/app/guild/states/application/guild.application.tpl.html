@@ -76,7 +76,7 @@
                 </div><!-- charSpec-->
             <div class="form-group">
               <label>Realm</label>
-              <input type="text" class="form-control" placeholder="Realm" typeahead="name for name in realms | filter:$viewValue | limitTo:8" ng-model="formData.charServer">
+              <input type="text" class="form-control" placeholder="Realm" ng-options="name for name in realms | filter:$viewValue | limitTo:8" ng-model="formData.charServer" bs-typeahead>
             </div><!-- /charserver typeahead -->
             <div class="form-group">
                 <label class="control-label">Armory

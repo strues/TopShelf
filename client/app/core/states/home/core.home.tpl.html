@@ -2,11 +2,11 @@
 <div class="container frontendWrap">
 <div navbar></div>
 <div class="row carouselArea" ng-controller="HomeCarouselCtrl as carousel">
-    <carousel interval="carousel.slideInterval" disable-animation="true">
-      <slide ng-repeat="slide in carousel.slides" active="slide.active">
-        <img ng-src="{{slide.image}}" width="1170px"style="margin:auto;">
-      </slide>
-    </carousel>
+    <ul rn-carousel rn-carousel-auto-slide class="image">
+      <li ng-repeat="slide in carousel.slides">
+<img ng-src="{{ slide.image }}" width="1170px"style="margin:auto;">
+  </li>
+</ul>
 </div>
 <div class="row spaceRow"></div>
 <div class="row newsContainer" ng-controller="HomeCtrl as vm">
@@ -33,7 +33,9 @@
         <p ng-hide="!showMode" ng-bind-html="post.content"></p>
       </div>
       <div class="postFooter">
-        <button class="btn btn-primary pull-right" ng-click="openViewModal(post._id)" news-view-modal>Read More</button>
+
+
+      <button type="button" class="btn btn-lg btn-primary" data-animation="am-fade-and-slide-top" data-template="app/core/directives/newsView/core.viewModal.tpl.html" bs-modal="newsViewModal">Read More</button>
       </div>
       </div>
 

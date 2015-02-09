@@ -8,11 +8,10 @@
           controller: function($scope, Post, $modal, $log) {
 
             $scope.openViewModal = function (id) {
-                var modalInstance = $modal.open({
-                    templateUrl: 'app/core/directives/newsView/core.viewModal.tpl.html',
-                    scope: $scope,
-                    controller: ModalInstanceCtrl,
-                    size: 'lg',
+              var newsViewModal = $modal({
+                scope: $scope,
+                template: 'app/core/directives/newsView/core.viewModal.tpl.html',
+                show: false,
 
               resolve: {
                 post: function () {
@@ -26,11 +25,10 @@
               }
             });
 
-                modalInstance.result.then(function () {
-                    $log.info('Modal dismissed at: ' + new Date());
-                });
-
             };
+            $scope.showModal = function() {
+          newsViewModal.$promise.then(newsViewModal.show);
+        };
             var ModalInstanceCtrl = function ($scope, $modalInstance, Post) {
 
             $scope.ok = function () {

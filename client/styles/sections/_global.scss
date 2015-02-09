@@ -5,7 +5,10 @@ body {
   background-attachment: fixed;
   overflow-x: hidden;
 }
-
+.icon-bar {
+  color: $tsBlue;
+  background-color: $tsBlue;
+}
 
 // Separator | <--- with padding lol
 .sep {

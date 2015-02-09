@@ -3,7 +3,7 @@
   /**
    * @name HomeCarouselCtrl as carousel
    * @desc Carousel controller
-   * @requires (ui.bootstrap)
+   * @requires (mgcrea.ngStrap)
    * @memberOf topshelf.core.states
    */
 
@@ -14,7 +14,9 @@
     function HomeCarouselCtrl () {
         var carousel = this;
 
-        carousel.slideInterval = 4000;
+      /*
+        @todo pull images from backend so that adding to the carousel is easier
+       */
         carousel.slides = [
             {
                 image: 'assets/images/koragh.png'

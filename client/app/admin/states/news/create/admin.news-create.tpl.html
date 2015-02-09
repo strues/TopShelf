@@ -19,25 +19,11 @@
               ng-model="vm.postData.title"
               required/>
       </div>
-      <div class="col-sm-3">
-        <div class="input-group" ng-controller="DatepickerCtrl">
-          <input type="text"
-                 class="form-control"
-                 datepicker-popup="{{format}}"
-                 ng-model="vm.postsData.date"
-                 is-open="opened"
-                 min-date="minDate"
-                 max-date="'2016-06-22'"
-                 datepicker-options="dateOptions"
-                 placeholder="Date"
-                 date-disabled="disabled(date, mode)"
-                 close-text="Close"
-                       required/>
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open($event)">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </button>
-          </span>
+      <div class="col-sm-3" ng-controller="DatepickerCtrl">
+       <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+          <label class="control-label"><i class="fa fa-calendar"></i> Date</label>
+          <input type="text" class="form-control" ng-model="vm.postData.date" name="date" bs-datepicker>
+        </div>
         </div>
     </div>
     </div>
