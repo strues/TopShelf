@@ -8,8 +8,8 @@ module.exports = {
     uri: 'mongodb://localhost/topshelf-dev'
   },
  bnet: {
-    clientID:     process.env.BNET_ID || '4gfahazrsuk3qaw4ja4ddhxcreg4qwy7',
-    clientSecret: process.env.BNET_SECRET || '2qSuv8kgtg9PDyTj2UB5Ey2Q624ERaED',
+    clientID:     process.env.BNET_ID || '',
+    clientSecret: process.env.BNET_SECRET || '',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/bnet/callback'
   }
 };
