@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
     <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="/bower_components/ngReactGrid/build/css/ngReactGrid.css" />
-    <link rel="stylesheet" href="/bower_components/valitycss/dist/vality.css" />
-    <link rel="stylesheet" href="/bower_components/v-modal/dist/v-modal.css" />
     <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css" />
     <link rel="stylesheet" href="/bower_components/angular-motion/dist/angular-motion.css" />
     <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css" />
@@ -54,7 +52,6 @@
     <script src="/bower_components/ngstorage/ngStorage.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="/bower_components/rangy/rangy-core.min.js"></script>
     <script src="/bower_components/rangy/rangy-cssclassapplier.min.js"></script>
     <script src="/bower_components/rangy/rangy-selectionsaverestore.min.js"></script>
@@ -64,7 +61,6 @@
     <script src="/bower_components/textAngular/src/textAngularSetup.js"></script>
     <script src="/bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <script src="/bower_components/ngReactGrid/build/js/ngReactGrid.min.js"></script>
-    <script src="/bower_components/v-modal/dist/v-modal.js"></script>
     <script src="/bower_components/angular-toastr/dist/angular-toastr.js"></script>
     <script src="/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <script src="/bower_components/ng-fab-form/dist/ng-fab-form.min.js"></script>
@@ -111,6 +107,16 @@
 
     <script src="/client/app/core/filters/startFrom.filter.js"></script>
 
+    <script src="/client/app/core/services/authInterceptor.service.js"></script>
+
+    <script src="/client/app/core/services/logger.service.js"></script>
+
+    <script src="/client/app/core/services/post.service.js"></script>
+
+    <script src="/client/app/core/services/util.service.js"></script>
+
+    <script src="/client/app/core/services/wowHelper.service.js"></script>
+
     <script src="/client/app/core/states/core.states.js"></script>
 
     <script src="/client/app/guild/services/guild.application.service.js"></script>
@@ -124,16 +130,6 @@
     <script src="/client/app/guild/services/guild.streams.service.js"></script>
 
     <script src="/client/app/guild/states/guild.states.js"></script>
-
-    <script src="/client/app/core/services/authInterceptor.service.js"></script>
-
-    <script src="/client/app/core/services/logger.service.js"></script>
-
-    <script src="/client/app/core/services/post.service.js"></script>
-
-    <script src="/client/app/core/services/util.service.js"></script>
-
-    <script src="/client/app/core/services/wowHelper.service.js"></script>
 
     <script src="/client/app/account/states/login/account.login.controller.js"></script>
 
@@ -193,9 +189,11 @@
 
     <script src="/client/app/admin/states/applications/details/application-details.controller.js"></script>
 
+    <script src="/client/app/admin/states/news/edit/admin.news-edit.controller.js"></script>
+
     <script src="/client/app/admin/states/news/create/admin.news-create.controller.js"></script>
 
-    <script src="/client/app/admin/states/news/edit/admin.news-edit.controller.js"></script>
+    <script src="/client/app/admin/states/news/create/admin.newsUpload.controller.js"></script>
 
     <script src="/client/app/admin/states/resources/create/admin.resources-create.controller.js"></script>
 

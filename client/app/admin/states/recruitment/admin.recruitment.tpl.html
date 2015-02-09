@@ -11,7 +11,7 @@
               ng-submit="submit()">
         <div class="row">
              <div class="form-group">
-                <span class="inverseText"><label>Class Type</label></span>
+                <h5>Class Type</h5>
                 <select ng-model="formData.classType"
                         class="form-control"
                         required>
@@ -30,7 +30,7 @@
                 </select>
             </div><!-- form group-->
              <div class="form-group">
-                    <span class="inverseText"><label>Specialization</label></span>
+                   <h5>Specialization</h5>
                     <select ng-model="formData.classSpec"
                             class="form-control"
                             required>
@@ -71,7 +71,7 @@
         <div class="row">
           <div class="col-sm-5">
                  <div class="form-group">
-               <span class="inverseText"> <label>Priority</label></span>
+               <h5>Priority</h5>
                 <select ng-model="formData.priority"
                         class="form-control"
                         required>
@@ -84,7 +84,7 @@
           </div>
         <div class="col-sm-6 col-sm-offset-1">
               <div class="form-group">
-               <span class="inverseText"> <label>Status</label></span>
+               <h5>Status</h5>
                 <select ng-model="formData.status"
                         class="form-control"
                         required>
@@ -104,7 +104,7 @@
       </div>
   </div> <!-- end form container and RecruitmentCtrl -->
   <div class="col-sm-6 col-md-8" ng-controller="RecruitmentListCtrl as vm">
-    <h1 style="text-align: right;">Currently <span class="recruitmentWhite">Recruiting</span></h1>
+    <h1 style="text-align: right;">Currently Recruiting</h1>
     <table class="table table-condensed">
       <thead>
           <tr style="font-size:14px;">

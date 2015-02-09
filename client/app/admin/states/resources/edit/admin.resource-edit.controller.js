@@ -9,7 +9,7 @@
         .controller('ResourceEditCtrl', ResourceEditCtrl);
 
                           /* @ngInject */
-    function ResourceEditCtrl(Resource, $scope, $stateParams) {
+    function ResourceEditCtrl(Resource, $scope, $stateParams, toastr) {
         /*jshint validthis: true */
         var vm = this;
         $scope.model = {};
@@ -36,7 +36,7 @@
 
               // clear the form
                 vm.resourceData = {};
-
+                toastr.success('Your changes have been saved', 'Success');
               // bind the message from our API to vm.message
                 vm.message = data.message;
             });
