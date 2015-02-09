@@ -63,7 +63,7 @@ module.exports = function() {
         templateCache: {
             file: 'templates.js',
             options: {
-                module: 'topshelf.core',
+                module: 'app.core',
                 root: 'app/',
                 standAlone: false,
             }
