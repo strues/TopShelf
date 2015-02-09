@@ -8,6 +8,8 @@ A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.
 This is a repository for an SPA I'm building for my World of Warcraft guild. Please feel free to  
 leave comments, suggestions or use it as a base for your own project.  
   
+  ##### Currently in early(ish) stages of development
+
 Before beginning you should have [NodeJS](http://www.nodejs.com) and [MongoDB](http://www.mongodb.org/downloads) installed on your computer. As a quick note, I do all of my work using a Mac so any commands I included might not work for Windows users.  
   
 
@@ -21,8 +23,13 @@ Clone the repo
 
 Run `npm install && bower install`, in order to get started.
 
+Navigate to `server/config/environment` and rename index.example.js to index.js. Make sure to edit all the fields that have
+caps for values to match your settings. You can either setup the MongoDB database yourself or use a BaaS such as [Mongolabs](http://www.mongolabs.com). You're going to need to change the development and production files inside the environment folder as well.  
+  
+Due to the fact that this is still fairly early in the development phases much of the frontend configuration will require you
+to manually change things such as Top Shelf to whatever your guild is named.
 
-Run `gulp serve` to launch the development.
+Run `gulp serve` to launch the development server.
 
 ### Features
 
@@ -32,7 +39,7 @@ Run `gulp serve` to launch the development.
 * Markup:  `HTML`
 * Stylesheets: `Sass`
 * Task Runner: `Gulp`
-* Angular: `1.3.9`
+* Angular: `1.3.12`
 
 
 **Server Side**
@@ -54,7 +61,7 @@ Overview
     |   |    ├── core           - Core module
     |   |    ├── admin          - Admin module
     |   |-- index.html
-    |   |-- topshelf.module.js  - Bootstrap of the entire application
+    |   |-- app.module.js       - Bootstrap of the entire application
     |   ├── assets              - Fonts, Images, etc
     |   |__ styles              - Sass files
     |

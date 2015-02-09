@@ -3,6 +3,12 @@
 [Back to Repo](https://github.com/strues/TopShelf)
 ## [Unreleased][unreleased]
 
+## 2015-02-09
+### Beta 1
+- Things are starting to take shape and at this time I'd like to think that we're ready for  
+the first beta version. Everything implemented is working fairly well. The only way to find bugs
+is to get this out there and used.
+
 ## 2015-01-18
 ### Gulp, Sass and other fixes
 - I realized for whatever reason the Sass files were not being processed by gulp properly for
