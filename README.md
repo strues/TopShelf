@@ -24,7 +24,7 @@ Clone the repo
 Run `npm install && bower install`, in order to get started.
 
 Navigate to `server/config/environment` and rename index.example.js to index.js. Make sure to edit all the fields that have
-caps for values to match your settings. You can either setup the MongoDB database yourself or use a BaaS such as [Mongolabs](http://www.mongolabs.com). You're going to need to change the development and production files inside the environment folder as well.  
+caps for values to match your settings. You can either setup the MongoDB database yourself or use a BaaS such as [Mongolab](http://www.mongolab.com). You're going to need to change the development and production files inside the environment folder as well.  
   
 Due to the fact that this is still fairly early in the development phases much of the frontend configuration will require you
 to manually change things such as Top Shelf to whatever your guild is named.
