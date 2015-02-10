@@ -8,7 +8,7 @@ var gulp         = require('gulp'),
     _            = require('lodash'),
     $            = require('gulp-load-plugins')({lazy: true});
 
-gulp.task('styles', function () {
+gulp.task('styles', ['clean:sass'], function () {
 
   return gulp.src(config.sass)
     .pipe($.plumber())

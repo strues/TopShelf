@@ -33,6 +33,11 @@ module.exports = function() {
             clientApp + '**/*.js',
             '!' + clientApp + '**/*.spec.js'
         ],
+        jsOrder: [
+            '**/app.module.js',
+            '**/*.module.js',
+            '**/*.js'
+        ],
         sass: client + 'styles/styles.scss',
         report: report,
         assets: assets,

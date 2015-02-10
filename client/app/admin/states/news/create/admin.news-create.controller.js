@@ -21,7 +21,9 @@
         vm.savePost = function () {
             vm.processing = true;
             vm.message = '';
-
+/*
+ @TODO implement image upload
+ */
             Post.create(vm.postData)
               .success(function(data) {
                   vm.processing = false;

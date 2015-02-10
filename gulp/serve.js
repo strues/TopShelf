@@ -17,16 +17,17 @@ gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() 
         config.temp + '**/*.css',
         '!' + config.sass
     ],
+    browser: 'Safari',
     injectChanges: true,
     logFileChanges: true,
     logLevel: 'debug',
     logPrefix: 'topshelf',
     notify: true,
-    reloadDelay: 0 //1000
+    reloadDelay: 600 //1000
   });
 
   gulp.watch([config.sass], ['styles'])
-    .on('change', changeEvent);
+     .on('change', changeEvent);
   gulp.watch([config.templates], ['templates'])
    .on('change', changeEvent);
 });
@@ -37,5 +38,5 @@ gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() 
  */
 function changeEvent(event) {
     var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
-
+    console.log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }

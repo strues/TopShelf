@@ -17,7 +17,6 @@ var express        = require('express'),
     logger         = require('./logger'),
     config         = require('./environment'),
     redis          = require('redis'),
-    busboy         = require('connect-busboy'),
     passport       = require('passport'),
     session        = require('express-session'),
     redisStore     = require('connect-redis')(session),
@@ -51,7 +50,6 @@ module.exports = function(app) {
     app.use(bodyParser.urlencoded({
       extended: true
     }));
-    app.use(busboy());
     app.use(bodyParser.json());
     app.use(methodOverride('X-HTTP-Method-Override'));
     app.use(cors());

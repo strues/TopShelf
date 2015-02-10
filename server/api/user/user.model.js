@@ -73,7 +73,8 @@ UserSchema.virtual('profile')
             'role': this.role,
             'battletag': this.battletag,
             'toons': this.toons,
-            'articles': this.articles
+            'articles': this.articles,
+            'lastLogon': this.lastLogon
         };
     });
 
@@ -83,7 +84,9 @@ UserSchema
     .get(function() {
         return {
             '_id': this._id,
-            'role': this.role
+            'role': this.role,
+            'lastLogon': this.lastLogon,
+            'battletag': this.battletag
         };
     });
 

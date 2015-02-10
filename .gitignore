@@ -1,11 +1,5 @@
-.idea/
-dist/
-client/assets/
-.sass-cache/
-
-*.crt
-*.csr
-*.key
+# Ignore Visual Studio  Project #
+###################
 *.user
 *.gpState
 *.suo
@@ -70,6 +64,12 @@ journal
 *.mdf
 *.ldf
 
+# Assets for Web     #
+######################
+client/assets/*
+*.crt
+*.key
+*.csr
 # OS generated files #
 ######################
 .DS_Store*
