@@ -1,13 +1,24 @@
 language: node_js
 node_js:
   - "0.10"
+
 branches:
   only:
     - master
-before_script:
-  - npm install -g gulp
-  - npm install -g bower
+
+before_install:
+  - npm install bower -g
+  - npm install gulp -g
+
+script:
   - npm install
+  - bower install
+
+cache:
+  directories:
+  - bower_components
+  - node_modules
+
 services:
   - mongodb
   - redis
