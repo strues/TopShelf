@@ -6,9 +6,8 @@ branches:
     - master
 before_script:
   - npm install -g gulp
-  - npm install bower
+  - npm install -g bower
   - npm install
-  - bower install
 services:
   - mongodb
   - redis
