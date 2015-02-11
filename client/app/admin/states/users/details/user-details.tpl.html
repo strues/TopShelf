@@ -1,40 +1,28 @@
 <div class="row">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h1 class="panel-title"> {{user.name}}</h1>
+      <h1 class="panel-title" style="font-size: 36px;"> {{user.name}}
+        <button type="button" class="btn btn-sm btn-warning pull-right" data-template="app/admin/states/users/details/user-details-aside.tpl.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body"><i class="fa fa-pencil"></i> Edit User
+        </button>
+      </h1>
     </div>
     <div class="panel-body">
-    <div class="row">
      <div class="col-sm-6 col-lg-3">
-      <div class="well">
-          <h2>Role:</h2><h5>{{ user.role }} <i class="fa fa-pencil" ng-click="toggle = !toggle"></i></h5>
-          <div class="row" ng-show="toggle">
-          <form novalidate ng-submit="saveAUser()">
-        <div class="row">
-              <div class="col-sm-4 col-md-5">
-                <input type="text"
-                      class="form-control"
-                      ng-minLength=3
-                      ng-maxLength=75
-                      ng-model="user.role"
-                      />
-              </div>
-                <!-- Save Btn-->
-          <div class="row" style="padding-top: 20px; padding-right: 15px;">
-              <input type="submit" class="btn btn-primary pull-right" value="Save" />
-          </div> <!--./row-->
-      </form>
-      </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-3">
-        <div class="well">
-          <h2>Email:</h2><h4>{{ user.email }}</h4>
-        </div>
-      <div class="col-sm-6 col-lg-3">
-    </div>
-    </div>
-  </div>
-</div>
+      <div class="callout">
+          <h6>Role:</h6>
+          <p>{{ user.role }}</p>
 
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <div class="callout">
+          <h6>Battletag:</h6><p>{{ user.battletag }}</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+      <!-- placeholder col -->
+      </div>
+
+    </div><!-- panel body-->
+  </div><!-- panel -->
 </div>
