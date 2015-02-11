@@ -42,7 +42,8 @@
     }
 
     /* @ngInject */
-    function configure ($urlRouterProvider, $locationProvider, $tooltipProvider, $datepickerProvider, $httpProvider) {
+    function configure ($urlRouterProvider, $locationProvider,
+              $tooltipProvider, $datepickerProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');

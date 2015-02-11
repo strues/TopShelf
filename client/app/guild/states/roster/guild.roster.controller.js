@@ -17,7 +17,7 @@
         var vm = this;
 
         $scope.filterMaxOnly = function(member) {
-            return member.level == 100;
+            return member.level === 100;
         };
 
         $scope.characters = [];
@@ -31,13 +31,11 @@
                     level: character.character.level,
                     spec: !character.character.spec ? null : character.character.spec.name,
                     role: !character.character.spec ? null : character.character.spec.role,
-                    rank: character.rank,
-                    wowClass: classes[character.character.class],
-                    classLabel: classes[character.character.class].name
+                    rank: character.rank
                 };
                 $scope.characters.push(member);
             });
 
-        })
+        });
     }
 })();

@@ -13,7 +13,7 @@
     angular
         .module('app.admin.states')
         .controller('AdminUserDetailsCtrl', AdminUserDetailsCtrl);
-
+/* @ngInject */
     function AdminUserDetailsCtrl($scope, $http, toastr, $aside, $stateParams, $location) {
 
         var userId = $stateParams.id;
@@ -50,7 +50,7 @@
         });
         userDetailsEditAside.$promise.then(function() {
             userDetailsEditAside.hide();
-        })
+        });
     }
 
 })();

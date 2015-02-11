@@ -58,7 +58,7 @@
                     },
                     'content@admin': {
                         controller: 'ApplicationViewCtrl',
-                        templateUrl: 'app/admin/states/applications/details/application-details.tpl.html'
+                        templateUrl: 'app/admin/states/applications/details/appDetails.tpl.html'
                     }
                 }
             })
@@ -164,7 +164,7 @@
                     },
                     'content@admin': {
                         controller: 'ResourceCreateCtrl as vm',
-                        templateUrl: 'app/admin/states/resources/create/admin.resources-create.tpl.html'
+                        templateUrl: 'app/admin/states/resources/create/resourcesCreate.tpl.html'
                     }
                 }
             })
@@ -176,7 +176,7 @@
                         templateUrl: 'app/admin/adminSidebar.tpl.html'
                     },
                     'content@admin': {
-                        templateUrl: 'app/admin/states/resources/edit/admin.resource-edit.tpl.html',
+                        templateUrl: 'app/admin/states/resources/edit/resourcesEdit.tpl.html',
                         controller: function($stateParams) {
                             console.log($stateParams);
                         }

@@ -7,8 +7,8 @@
     angular
         .module('app.guild.services')
         .factory('Application', Application);
-
-    function Application($http) {
+/* @ngInject */
+    function Application($scope, $http) {
         console.log('application.service.js');
 
         var urlBase = 'api/applications';
@@ -43,7 +43,7 @@
                 }).error(function(data, status, headers, config) {
 
                 });
-        }
+        };
         return exports;
 
     }
