@@ -12,7 +12,6 @@
   },
   "scripts": {
     "init": "npm install",
-    "install": "bower install",
     "start": "node server/server.js"
   },
   "dependencies": {
