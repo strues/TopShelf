@@ -2,6 +2,7 @@
 
 var gulp   = require('gulp'),
     gutil  = require('gulp-util'),
+    chalk  = require('chalk'),
     config = require('../gulp.config')(),
     path   = require('path'),
     _      = require('lodash'),
@@ -48,3 +49,17 @@ gulp.task('build-specs', ['templates'], function(done) {
             {name: 'inject:templates', read: false}))
         .pipe(gulp.dest(config.client));
 });
+/**
+ * Log. With options.
+ *
+ * @param {String} msg
+ * @param {Object} options
+ */
+function log (msg, options) {
+  options = options || {};
+  console.log(
+    (options.padding ? '\n' : '') +
+    chalk.yellow(' > ' + msg) +
+    (options.padding ? '\n' : '')
+  );
+}

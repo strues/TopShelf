@@ -19,7 +19,7 @@
             $scope.user = user;
         });
     }
-
+    $scope.toggle = false;
     $scope.saveAUser = function() {
         if (userId && userId.length > 0) {
             $http.put('/api/users/' + userId,

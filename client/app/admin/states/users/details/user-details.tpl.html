@@ -7,7 +7,24 @@
     <div class="row">
      <div class="col-sm-6 col-lg-3">
       <div class="well">
-          <h2>Role:</h2><h4>{{ user.role }}</h4>
+          <h2>Role:</h2><h5>{{ user.role }} <i class="fa fa-pencil" ng-click="toggle = !toggle"></i></h5>
+          <div class="row" ng-show="toggle">
+          <form novalidate ng-submit="saveAUser()">
+        <div class="row">
+              <div class="col-sm-4 col-md-5">
+                <input type="text"
+                      class="form-control"
+                      ng-minLength=3
+                      ng-maxLength=75
+                      ng-model="user.role"
+                      />
+              </div>
+                <!-- Save Btn-->
+          <div class="row" style="padding-top: 20px; padding-right: 15px;">
+              <input type="submit" class="btn btn-primary pull-right" value="Save" />
+          </div> <!--./row-->
+      </form>
+      </div>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3">
@@ -18,4 +35,6 @@
     </div>
     </div>
   </div>
+</div>
+
 </div>

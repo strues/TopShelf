@@ -1,14 +1,17 @@
 'use strict';
-var args = require('yargs').argv;
+
 var gulp         = require('gulp'),
     gutil        = require('gulp-util'),
     browserSync  = require('browser-sync'),
     config       = require('../gulp.config')(),
     path         = require('path'),
+        chalk  = require('chalk'),
     _            = require('lodash'),
     $            = require('gulp-load-plugins')({lazy: true});
+
+var args   = require('yargs').argv;
 var envenv = $.util.env;
-var port = process.env.PORT || config.defaultPort;
+var port   = process.env.PORT || config.defaultPort;
 // watch files for changes and reload
 gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() {
   browserSync({
@@ -18,7 +21,6 @@ gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() 
         config.temp + '**/*.css',
         '!' + config.sass
     ],
-    browser: 'Safari',
     injectChanges: true,
     logFileChanges: true,
     logLevel: 'debug',
@@ -27,10 +29,8 @@ gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() 
     reloadDelay: 600 //1000
   });
 
-  gulp.watch([config.sass], ['styles'])
-     .on('change', changeEvent);
-  gulp.watch([config.templates], ['templates'])
-   .on('change', changeEvent);
+  gulp.watch('client/styles/**/*.scss', ['styles',browserSync.reload]);
+  gulp.watch([config.templates], ['templates',browserSync.reload]);
 });
 /**
  * Run the spec runner
@@ -156,4 +156,18 @@ function startBrowserSync(isDev, specRunner) {
     }
 
     browserSync(options);
+}
+/**
+ * Log. With options.
+ *
+ * @param {String} msg
+ * @param {Object} options
+ */
+function log (msg, options) {
+  options = options || {};
+  console.log(
+    (options.padding ? '\n' : '') +
+    chalk.yellow(' > ' + msg) +
+    (options.padding ? '\n' : '')
+  );
 }

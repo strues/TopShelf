@@ -92,7 +92,7 @@ exports.updateCurrentUser = function(req, res) {
 
     req.user.save(function(err) {
         if (err) {
-            res.status(400);
+            res.sendStatus(400);
             return res.send({
                 reason: err.toString()
             });
@@ -105,7 +105,7 @@ exports.updateUser = function(req, res) {
     var userUpdates = req.body;
 
     if (!req.user.hasRole('admin')) {
-        res.status(403);
+        res.sendStatus(403);
         return res.end();
     }
 
@@ -115,6 +115,7 @@ exports.updateUser = function(req, res) {
     }).exec(function(err, userToEdit) {
         userToEdit.name = userUpdates.name;
         userToEdit.email = userUpdates.email;
+        userToEdit.role = userUpdates.role;
         userToEdit.battletag = userUpdates.battletag;
 
         userToEdit.save(function(err) {

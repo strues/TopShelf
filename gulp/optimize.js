@@ -2,6 +2,7 @@
 
 var gulp   = require('gulp'),
     gutil  = require('gulp-util'),
+    chalk  = require('chalk'),
     config = require('../gulp.config')(),
     path   = require('path'),
     ngFS   = require('gulp-angular-filesort'),
@@ -53,3 +54,17 @@ gulp.task('optimize', ['clean', 'inject'], function() {
         .pipe($.revReplace())
         .pipe(gulp.dest(config.build));
 });
+/**
+ * Log. With options.
+ *
+ * @param {String} msg
+ * @param {Object} options
+ */
+function log (msg, options) {
+  options = options || {};
+  console.log(
+    (options.padding ? '\n' : '') +
+    chalk.yellow(' > ' + msg) +
+    (options.padding ? '\n' : '')
+  );
+}

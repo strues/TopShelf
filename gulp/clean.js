@@ -2,6 +2,7 @@
 
 var gulp   = require('gulp'),
     gutil  = require('gulp-util'),
+    chalk  = require('chalk'),
     config = require('../gulp.config')(),
     path   = require('path'),
     _      = require('lodash'),
@@ -18,3 +19,18 @@ gulp.task('clean:sass', function () {
   return del([config.temp])
   $.notify('Deleting temp folders');
 });
+
+/**
+ * Log. With options.
+ *
+ * @param {String} msg
+ * @param {Object} options
+ */
+function log (msg, options) {
+  options = options || {};
+  console.log(
+    (options.padding ? '\n' : '') +
+    chalk.yellow(' > ' + msg) +
+    (options.padding ? '\n' : '')
+  );
+}
