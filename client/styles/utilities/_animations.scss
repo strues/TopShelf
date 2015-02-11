@@ -3,10 +3,10 @@
 * Animations
 *********************/
 .fadeZoom.ng-enter {
-  -webkit-animation-duration: 0.6s, 0.2s;
-  -moz-animation-duration: 0.2s, 0.2s;
-  -ms-animation-duration: 0.2s, 0.2s;
-  animation-duration: 0.2, 0.2s;
+  -webkit-animation-duration: 0.6s, 0.4s;
+  -moz-animation-duration: 0.4s, 0.4s;
+  -ms-animation-duration: 0.4s, 0.4s;
+  animation-duration: 0.2, 0.4s;
   -webkit-animation-name: fadeIn, zoomIn;
   -moz-animation-name: fadeIn, zoomIn;
   -ms-animation-name: fadeIn, zoomIn;
@@ -14,10 +14,10 @@
 }
 
 .fadeZoomFadeDown.ng-enter {
-  -webkit-animation-duration: 0.2s, 0.2s;
-  -moz-animation-duration: 0.2s, 0.2s;
-  -ms-animation-duration: 0.2s, 0.2s;
-  animation-duration: 0.2s, 0.2s;
+  -webkit-animation-duration: 0.4s, 0.4s;
+  -moz-animation-duration: 0.4s, 0.4s;
+  -ms-animation-duration: 0.4s, 0.4s;
+  animation-duration: 0.4s, 0.4s;
   -webkit-animation-name: fadeIn, zoomIn;
   -moz-animation-name: fadeIn, zoomIn;
   -ms-animation-name: fadeIn, zoomIn;
@@ -25,10 +25,10 @@
 }
 
 .fadeZoomFadeDown.ng-leave {
-  -webkit-animation: fadeOutDown 0.2s;
-  -moz-animation: fadeOutDown 0.2s;
-  -ms-animation: fadeOutDown 0.2s;
-  animation: fadeOutDown 0.2s;
+  -webkit-animation: fadeOutDown 0.4s;
+  -moz-animation: fadeOutDown 0.4s;
+  -ms-animation: fadeOutDown 0.4s;
+  animation: fadeOutDown 0.4s;
 }
 
 @-webkit-keyframes zoomIn {
@@ -54,26 +54,6 @@
     transform: scale3d(0.8, 0.8, 0.8);
   }
 
-  50% {
-    opacity: 1;
-  }
 }
-
-/* Transistions for Elements added with Angular JS */
-    .ng-enter {
-        transition: 1s;
-        opacity: 0;
-    }
-
-    .ng-enter-active {
-        opacity: 1;
-    }
-
-    .ng-leave {
-        transition: 1s;
-        opacity: 1;
-    }
-
-    .ng-leave-active {
-        opacity: 0;
-    }
+.ng-enter { display:none; }
+.ng-enter.ng-enter-active { display:block; }

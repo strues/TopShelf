@@ -3,7 +3,7 @@
 
     /**
      * @ngdoc controller
-     * @name topshelf.core.controller:NavbarCtrl
+     * @name app.core.controller:NavbarCtrl
      *
      * @description Controller for the Navbar
      *

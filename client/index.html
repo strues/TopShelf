@@ -6,9 +6,9 @@
     <title>Top Shelf Guild</title>
     <meta name="description" content="Top Shelf Sargeras US World of Warcraft Mythic Raiding Guild">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <style>.ng-hide {display: none!important;}</style>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
     <base href="/">
     <!-- build:css styles/lib.css -->
     <!-- bower:css -->
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css" />
     <link rel="stylesheet" href="/bower_components/angular-motion/dist/angular-motion.css" />
     <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css" />
+    <link rel="stylesheet" href="/bower_components/trNgGrid/release/trNgGrid.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -36,7 +37,8 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view="" class="fadeZoom"></div>
+      <div ui-view></div>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.min.js"></script>
 
     <!-- build:js js/lib.js -->
@@ -68,6 +70,7 @@
     <script src="/bower_components/angular-strap/dist/angular-strap.js"></script>
     <script src="/bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
     <script src="/bower_components/angular-carousel/dist/angular-carousel.js"></script>
+    <script src="/bower_components/trNgGrid/release/trNgGrid.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js js/app.js-->
@@ -107,6 +110,8 @@
 
     <script src="/client/app/core/filters/startFrom.filter.js"></script>
 
+    <script src="/client/app/core/states/core.states.js"></script>
+
     <script src="/client/app/core/services/authInterceptor.service.js"></script>
 
     <script src="/client/app/core/services/logger.service.js"></script>
@@ -116,8 +121,6 @@
     <script src="/client/app/core/services/util.service.js"></script>
 
     <script src="/client/app/core/services/wowHelper.service.js"></script>
-
-    <script src="/client/app/core/states/core.states.js"></script>
 
     <script src="/client/app/guild/services/guild.application.service.js"></script>
 
@@ -143,13 +146,13 @@
 
     <script src="/client/app/admin/states/applications/admin.applications.controller.js"></script>
 
-    <script src="/client/app/admin/states/recruitment/admin.recruitment.controller.js"></script>
-
-    <script src="/client/app/admin/states/recruitment/admin.recruitmentList.controller.js"></script>
-
     <script src="/client/app/admin/states/news/admin.news-datePicker.controller.js"></script>
 
     <script src="/client/app/admin/states/news/admin.news.controller.js"></script>
+
+    <script src="/client/app/admin/states/recruitment/admin.recruitment.controller.js"></script>
+
+    <script src="/client/app/admin/states/recruitment/admin.recruitmentList.controller.js"></script>
 
     <script src="/client/app/admin/states/resources/admin.resource.controller.js"></script>
 
@@ -167,9 +170,9 @@
 
     <script src="/client/app/core/directives/navbar/core.navbar.directive.js"></script>
 
-    <script src="/client/app/core/directives/newsView/core.newsView.directive.js"></script>
-
     <script src="/client/app/core/directives/recruitingPanel/core.recruitingPanel.directive.js"></script>
+
+    <script src="/client/app/core/directives/newsView/core.newsView.directive.js"></script>
 
     <script src="/client/app/core/filters/posttagsformat/posttagsformat.js"></script>
 

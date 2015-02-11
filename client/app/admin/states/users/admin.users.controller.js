@@ -11,36 +11,19 @@
         });
    */
 
-    function AdminUsersCtrl ($scope, User, $filter, $timeout, $http, $location) {
-        $scope.userGrid = {
-            data: [],
-            columnDefs: [
-            {
-                field: 'name',
-                columnFilter: true,
-                displayName: 'Username',
-                render: function(user) {
-                      return React.DOM.a({href:'javascript:', onClick: function() {
-                          $scope.selectUser = user;
-                          $location.path('/admin/users/details/' + user._id);
-                      }}, user.name);
-                  }
-            },
-            {
-                field: 'email',
-                displayName: 'Email Address'
-            },
-            {
-                field: 'role',
-                columnFilter: true,
-                displayName: 'Role'
-            }
-            ]
-        };
+    function AdminUsersCtrl ($scope, User, toastr, $state, $timeout, $http, $location) {
 
         $http.get('/api/users').then(function(response) {
-            $scope.userGrid.data = response.data;
+            $scope.dataForTable = response.data;
         });
+
+        $scope.deleteUser = function(id) {
+          $http.delete('/api/users' + '/' + id).success(function() {
+            $state.reload();
+            toastr.success('Hopefully you meant to do that', 'User Deleted');
+          });
+        };
+
     }
 
     angular

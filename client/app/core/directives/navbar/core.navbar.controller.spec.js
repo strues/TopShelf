@@ -4,7 +4,7 @@
 describe('NavbarCtrl', function () {
   var ctrl;
 
-  beforeEach(module('topshelf.core'));
+  beforeEach(module('app.core.directives'));
 
   beforeEach(inject(function ($rootScope, $controller) {
     ctrl = $controller('NavbarCtrl');

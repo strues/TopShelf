@@ -21,7 +21,7 @@ module.exports = function(config) {
     exclude: gulpConfig.karma.exclude,
 
     proxies: {
-        '/': 'http://localhost:8888/'
+        '/': 'http://localhost:3000/'
     },
 
     // preprocess matching files before serving them to the browser
@@ -39,7 +39,7 @@ module.exports = function(config) {
     },
 
     // web server port
-    port: 9876,
+    port: 9000,
 
 
     // enable / disable colors in the output (reporters and logs)
@@ -52,7 +52,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    autoWatch: false,
 
 
     // start these browsers

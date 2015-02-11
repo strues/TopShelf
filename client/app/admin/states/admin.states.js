@@ -49,19 +49,6 @@
                     }
                 }
             })
-            .state('admin.applicationView', {
-                url: '/applications/view',
-                views: {
-                    'sidebar@admin': {
-                        controller: 'AdminSidebarCtrl',
-                        templateUrl: 'app/admin/adminSidebar.tpl.html'
-                    },
-                    'content@admin': {
-                        controller: 'ApplicationViewCtrl',
-                        templateUrl: 'app/admin/states/applications/details/application-details.tpl.html'
-                    }
-                }
-            })
             .state('admin.applicationViewID', {
                 url: '/applications/view/:id',
                 views: {

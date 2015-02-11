@@ -28,6 +28,7 @@
                   'textAngular',
                   'toastr',
                   'ngFabForm',
+                  'trNgGrid',
                   'ngReactGrid',
                   'angular-loading-bar',
                   'app.core',

@@ -2,7 +2,7 @@
 
 describe('Directive: mongooseError', function () {
 
-  beforeEach(module('topshelf.core'));
+  beforeEach(module('app.core.directives'));
   beforeEach(module('core/mongoose-error.html'));
 
   var element, scope;
