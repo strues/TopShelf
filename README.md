@@ -1,6 +1,6 @@
 Top Shelf Guild
 ===========
-![Travis CI](https://travis-ci.org/strues/TopShelf.svg?branch=master)
+
   
 A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.js, Express.js, and Node.js. 
 
@@ -8,7 +8,7 @@ A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.
 This is a repository for an SPA I'm building for my World of Warcraft guild. Please feel free to  
 leave comments, suggestions or use it as a base for your own project.  
   
-  ##### Currently in early(ish) stages of development
+##### Currently in early(ish) stages of development
 
 Before beginning you should have [NodeJS](http://www.nodejs.com) and [MongoDB](http://www.mongodb.org/downloads) installed on your computer. As a quick note, I do all of my work using a Mac so any commands I included might not work for Windows users.  
   
