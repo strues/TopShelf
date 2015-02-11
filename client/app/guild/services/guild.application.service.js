@@ -8,7 +8,7 @@
         .module('app.guild.services')
         .factory('Application', Application);
 /* @ngInject */
-    function Application($scope, $http) {
+    function Application($http) {
         console.log('application.service.js');
 
         var urlBase = 'api/applications';
