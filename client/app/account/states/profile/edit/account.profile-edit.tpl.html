@@ -35,7 +35,7 @@ Hello, {{ vm.Auth.getCurrentUser().name }}</div>
         <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
       </form>
 
-
+      <button class="btn btn-md btn-warning" ui-sref="account.logout"><i class="ico-user-minus"></i> Logout</button>
       <form role="form"
               name="customOptionsForm"
               ng-submit="submit()"

@@ -34,6 +34,7 @@
     "fs": "0.0.2",
     "helmet": "^0.6.0",
     "jsonwebtoken": "^3.2.2",
+    "jwt-simple": "^0.2.0",
     "lodash": "^3.1.0",
     "method-override": "^2.3.1",
     "moment": "^2.9.0",
@@ -41,7 +42,10 @@
     "mongoose-relationship": "^0.1.1",
     "morgan": "^1.5.1",
     "passport": "^0.2.1",
+    "passport-bnet": "^1.0.2",
     "passport-local": "^1.0.0",
+    "path": "^0.11.14",
+    "querystring": "^0.2.0",
     "redis": "^0.12.1",
     "request": "^2.53.0",
     "serve-favicon": "^2.2.0"

@@ -1,6 +1,6 @@
 <form ng-submit="register(form)" name="form" novalidate>
   <div class="form-group has-feedback"
-       ng-class="{ 'has-error' : form.username.$invalid && form.username.$dirty }">
+       ng-class="{ 'has-error' : form.username.$invalid && form.name.$dirty }">
     <input class="form-control input-lg"
            type="text"
            name="username"
@@ -23,7 +23,20 @@ ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
 <div ng-message="pattern">Your email address is invalid.</div>
 </div>
 </div>
-
+  <div class="form-group has-feedback"
+       ng-class="{ 'has-error' : form.battletag.$invalid && form.battletag.$dirty }">
+    <input class="form-control input-lg"
+           type="text"
+           name="battletag"
+           ng-model="user.battletag"
+           placeholder="Battletag#123" required autofocus>
+      <span class="ion-person form-control-feedback"></span>
+      <div class="help-block text-danger"
+           ng-if="form.battletag.$dirty"
+           ng-messages="form.battletag.$error">
+        <div ng-message="required">You must enter a battletag.</div>
+      </div>
+  </div>
 <div class="form-group has-feedback" ng-class="{ 'has-error' : form.password.$invalid && form.password.$dirty }">
 <input password-strength class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
 <span class="ion-key form-control-feedback"></span>

@@ -75,61 +75,6 @@ exports.getUserById = function(req, res) {
     });
 };
 
-exports.updateCurrentUser = function(req, res) {
-    var userUpdates = req.body;
-
-    if (req.params.id !== userUpdates._id && !req.user.hasRole('admin')) {
-        res.sendStatus(403);
-        return res.end();
-    }
-
-    req.user.name = userUpdates.name;
-
-    if (userUpdates.password && userUpdates.password.length > 0) {
-        req.user.salt = encryption.createSalt();
-        req.user.hashed_pwd = encryption.hashPwd(req.user.salt, userUpdates.password);
-    }
-
-    req.user.save(function(err) {
-        if (err) {
-            res.sendStatus(400);
-            return res.send({
-                reason: err.toString()
-            });
-        }
-        res.send(req.user);
-    });
-};
-
-exports.updateUser = function(req, res) {
-    var userUpdates = req.body;
-
-    if (!req.user.hasRole('admin')) {
-        res.sendStatus(403);
-        return res.end();
-    }
-
-    //get the original from db
-    User.findOne({
-        _id: req.params.id
-    }).exec(function(err, userToEdit) {
-        userToEdit.name = userUpdates.name;
-        userToEdit.email = userUpdates.email;
-        userToEdit.role = userUpdates.role;
-        userToEdit.battletag = userUpdates.battletag;
-
-        userToEdit.save(function(err) {
-            if (err) {
-                res.sendStatus(400);
-                return res.send({
-                    reason: err.toString()
-                });
-            }
-            res.send(userToEdit);
-        });
-    });
-};
-
 /**
  * Creates a new user
  */
@@ -155,34 +100,9 @@ exports.create = function(req, res) {
         res.json({
             token: token
         });
-        console.log('user ' + req.body.name + ' created');
+        console.log('Created user', user);
     });
 };
-
-// Updates an existing user in the DB.
-exports.update = function(req, res) {
-    if (req.body._id) {
-        delete req.body._id;
-    }
-    User.findById(req.params.id, function(err, user) {
-        if (err) {
-            return res.send(500, err);
-        }
-        if (!user) {
-            return res.sendStatus(404);
-        }
-        // var updated = _.merge(post, req.body);
-        var updated = _.extend(user, req.body);
-        updated.save(function(err) {
-            if (err) {
-                return res.send(500, err);
-            }
-            return res.status(200).json(user);
-        });
-    });
-};
-
-
 
 /**
  * Deletes a user
@@ -199,7 +119,7 @@ exports.destroy = function(req, res) {
         }
         user.remove(function(err) {
             if (err) {
-              return res.send(500, err);
+                return res.send(500, err);
             }
             return res.send(204);
         });

@@ -38,6 +38,7 @@
                         Auth.createUser({
                             name: scope.user.name,
                             email: scope.user.email,
+                            battletag: scope.user.battletag,
                             password: scope.user.password
                         })
                             .then(function() {

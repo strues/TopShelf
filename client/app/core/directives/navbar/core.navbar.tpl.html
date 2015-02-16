@@ -23,38 +23,29 @@
         <li ui-sref-active="active">
           <a data-match-route ui-sref="guildrecruitment"><i class="blueIco ico-shield3"></i> Recruitment</a></li>
           <li ui-sref-active="active">
-            <a ui-sref="apply"><i class="ico-file-check"></i> Apply</a></li>
+            <a data-match-route ui-sref="apply"><i class="ico-file-check"></i> Apply</a></li>
               <li ui-sref-active="active">
-                <a ui-sref="streams"><i class="ico-movie2"></i> Streams</a></li>
+                <a data-match-route ui-sref="streams"><i class="ico-movie2"></i> Streams</a></li>
 
                 <li>
                   <a href="https://topshelfguild.com/forums" target="_blank">
                   <i class="ico-bubbles2"></i> Forums</a></li>
                   <li ng-show="vm.Auth.isAdmin()" ui-sref-active="active">
-                    <a ui-sref="admin"><i class="ico-shocked"></i> Admin</a></li>
+                    <a data-match-route ui-sref="admin"><i class="ico-shocked"></i> Admin</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
                     <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                      <a ui-sref="account.signup">
+                      <a data-match-route ui-sref="account.signup">
                         <i class="ico-user-plus"></i> Sign up</a>
                     </li>
                       <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                        <a ui-sref="account.login" style="border-right: none;"><i class="ico-key"></i> Login</a>
+                        <a data-match-route ui-sref="account.login" style="border-right: none;"><i class="ico-key"></i> Login</a>
                       </li>
                         <!-- dropdown user -->
-                    <li class="dropdown" ng-show="vm.Auth.isLoggedIn()" dropdown>
-                      <a role="button" class="dropdown-toggle" dropdown-toggle>
-                        {{ vm.Auth.getCurrentUser().name }} <i class="ico-user"></i> <b class="caret"></b>
+                    <li ng-show="vm.Auth.isLoggedIn()">
+                      <a ui-sref="account.profile-edit">
+                        {{ vm.Auth.getCurrentUser().name }} <i class="ico-user"></i>
                       </a>
-                      <ul class="dropdown-menu">
-                            <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                              <a ui-sref="account.profile-edit"><i class="ico-tools"></i> Profile</a>
-                            </li>
-                            <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                              <a ui-sref="account.logout"><i class="ico-user-minus"></i> Logout</a>
-                            </li>
-                          </ul>
-                          <!--./dropdown user -->
                         </li>
                       </ul>
                     </div>

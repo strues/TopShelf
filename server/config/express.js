@@ -56,16 +56,16 @@ module.exports = function(app) {
     app.use(cookieParser());
   // Enable jsonp
     app.use(session({
-    secret: config.secrets.session,
-    saveUninitialized: false, // don't create session until something stored,
-    resave: true, // don't save session if unmodified
-    store: new redisStore({
-        host: 'localhost',
-        port: 6379,
-        client: client
-    }),
-    cookie: config.sessionCookie,
-    name: config.sessionName
+      secret: config.secrets.session,
+      saveUninitialized: false, // don't create session until something stored,
+      resave: true, // don't save session if unmodified
+      store: new redisStore({
+          host: 'localhost',
+          port: 6379,
+          client: client
+      }),
+      cookie: config.sessionCookie,
+      name: config.sessionName
     }));
 
     app.use(passport.initialize());

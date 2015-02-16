@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    relationship = require('mongoose-relationship'),
+    request = require('request'),
     crypto = require('crypto'),
     _ = require('lodash'),
     authTypes = ['bnet', 'twitter', 'facebook'];
@@ -34,18 +34,17 @@ var UserSchema = new Schema({
     },
     provider: String,
     salt: String,
-    battleid: Number,
-    battletag: String,
-    showBattletag: Boolean,
+    bnetId: Number,
+    battletag: {
+      type: String
+    },
     // characters
     toons: {
         type: Schema.Types.ObjectId,
         ref: 'Character'
     },
-    applications: [{
-        type: Schema.ObjectId,
-        ref: 'Application'
-    }],
+    // site settings
+    showBattletag: Boolean,
     activity: {
         dateCreated: {
             type: Date,
@@ -73,8 +72,7 @@ UserSchema.virtual('profile')
             'role': this.role,
             'battletag': this.battletag,
             'toons': this.toons,
-            'articles': this.articles,
-            'lastLogon': this.lastLogon
+            'articles': this.articles
         };
     });
 
@@ -84,25 +82,9 @@ UserSchema
     .get(function() {
         return {
             '_id': this._id,
-            'role': this.role,
-            'lastLogon': this.lastLogon,
-            'battletag': this.battletag
+            'role': this.role
         };
     });
-
-/**
- * Validations
- */
-
-// Validate empty email
-UserSchema
-    .path('email')
-    .validate(function(email) {
-        if (authTypes.indexOf(this.provider) !== -1) {
-            return true;
-        }
-        return email.length;
-    }, 'Email cannot be blank');
 
 // Validate empty password
 UserSchema
@@ -246,16 +228,6 @@ UserSchema.methods = {
                 return callback(null, key.toString('base64'));
             });
     }
-};
-
-UserSchema.statics.makeUserList = function(users) {
-
-    var userList = [];
-    users.forEach(function(aUser) {
-        userList.push(aUser.name);
-    });
-
-    return userList;
 };
 
 module.exports = mongoose.model('User', UserSchema);
