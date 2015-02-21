@@ -1,0 +1,54 @@
+html body {
+  min-height: 100%;
+  background-image: url(../../assets/images/pattern.png);
+  background-attachment: fixed;
+}
+
+article {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0, .75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0, .75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0, .75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0, .75), rgba(0,0,0,0));
+}
+
+.navicon {
+  z-index: 1010;
+}
+
+.icon-bar {
+  color: $tsblue;
+  background-color: $tsblue;
+}
+
+// Separator | <--- with padding lol
+.sep {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.frontend-wrap {
+  background-color: #eaeaea;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.backend-wrap {
+  border: 1px solid rgba(59, 62, 64, .52);
+  background-color: rgba(26, 26, 26, .85);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+

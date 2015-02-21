@@ -3,7 +3,7 @@
 
   /**
    * @ngdoc directive
-   * @name core.directive:navbar
+   * @name core.directive:asideNav
    * @restrict EA
    * @element
    *
@@ -14,13 +14,13 @@
    */
     angular
         .module('app.core.directives')
-        .directive('navbar', navbar);
+        .directive('asideNav', asideNav);
 
-    function navbar() {
+    function asideNav() {
         return {
           restrict: 'EA',
-          templateUrl: 'app/core/directives/navbar/core.navbar.tpl.html',
-          controller: 'NavbarCtrl',
+          templateUrl: 'app/core/directives/asideNav/core.asideNav.tpl.html',
+          controller: 'AsideNavCtrl',
           controllerAs: 'vm'
       };
     }

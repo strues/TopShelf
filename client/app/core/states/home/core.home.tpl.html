@@ -1,80 +1,105 @@
-
-<div class="container frontendWrap">
-<div navbar></div>
-<div class="row carouselArea" ng-controller="HomeCarouselCtrl as carousel">
-    <ul rn-carousel rn-carousel-auto-slide class="image">
-      <li ng-repeat="slide in carousel.slides">
-<img ng-src="{{ slide.image }}" width="1170px"style="margin:auto;">
-  </li>
-</ul>
-</div>
-<div class="row spaceRow"></div>
-<div class="row newsContainer" ng-controller="HomeCtrl as vm">
-  <div class="col-sm-12 col-lg-9">
-    <div class="row homeNews" ng-repeat="post in vm.posts | orderBy:'-date'">
-
-      <div class="col-lg-3">
-
-        <img class="postImage" ng-src="{{post.image}}"/>
-        </div>
-      <div class="col-lg-9">
-        <div class="postTitle">
-            <h1 class="post-title">{{post.title}}</h1>
-        </div>
-      <div class="postMeta">
-       <h5>
-        <i class="fa fa-calendar"></i>
-        {{ post.date | date:'MM/dd/yyyy' }}<span class="sep">|</span>
-        Posted by {{ post.author.name }}</h5>
-      </div>
-      <hr />
-      <div class="postContent">
-        <p ng-hide="showMode" ng-bind-html="post.content | limitTo : 475"></p>
-        <p ng-hide="!showMode" ng-bind-html="post.content"></p>
-      </div>
-      <div class="postFooter">
-
-
-      <button type="button" class="btn btn-lg btn-primary" data-animation="am-fade-and-slide-top" data-template="app/core/directives/newsView/core.viewModal.tpl.html" bs-modal="newsViewModal">Read More</button>
-      </div>
-      </div>
-
-    </div><!-- end homeNews-->
-  </div><!-- end column -->
-  <div class="col-lg-3 recruitingP">
-      <recruiting-panel></recruiting-panel>
-
-  <div class="panel">
-    <div class="recruitmentPanel">
-      <div class="recruitmentHeader">
-          <h2>Raid <span class="recruitmentWhite">Progress</span></h2>
-          </div>
-      <div style="padding-left:8px;">
-        <h3><span class="recruitmentWhite">Mythic Highmaul:</span></h3>
-          <i class="blueIco fa fa-times-circle-o fa-2x"></i>
-          <i class="blueIco fa fa-times-circle-o fa-2x"></i>
-          <i class="blueIco fa fa-times-circle-o fa-2x"></i>
-          <i class="blueIco fa fa-times-circle-o fa-2x"></i>
-          <i class="blueIco fa fa-times-circle-o fa-2x"></i>
-          <i class="blueIco fa fa-times-circle-o fa-2x"></i>
-          <i class="fa fa-circle-o fa-2x"></i>
-      </div>
-      <div style="padding-left:8px;">
-        <h3><span class="recruitmentWhite">Mythic BRF:</span></h3>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-          <i class="fa fa-circle-o fa-1x"></i>
-      </div>
+<!-- Topbar
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<topbar></topbar>
+<!-- home-page container
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div id="home-page" class="container">
+  <div class="row">
+    <div class="col-sm-hidden col-lg-12">
+    <!-- carousel row/column -->
+    <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
+    <!-- rn-carousel directive start -->
+      <ul rn-carousel rn-carousel-auto-slide class="image">
+        <li ng-repeat="slide in carousel.slides">
+          <img ng-src="{{ slide.image }}" alt="carousel slide">
+        </li>
+      </ul>
+    </div><!-- END carousel-area -->
+    <!-- END carousel row/column -->
     </div>
   </div>
-  </div> <!-- col-lg-3 recruitingP -->
-  </div>
-</div><!-- end container -->
+<!-- Start News Posts
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="row" ng-controller="HomeCtrl as vm">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <!-- Article News Posting -->
+      <article class="news-post" ng-repeat="post in vm.posts | orderBy:'-date'">
+        <!-- Post Image -->
+        <div class="post-image-wrapper">
+          <img src="http://placehold.it/750x450">
+        </div><!--<img class="post-image" ng-src="{{post.image}}" alt="news post image"> -->
+        <!-- END post-image -->
+        <div class="post-wrapper box">
+          <div class="post-title">
+           <h1 class="post-title-text">{{post.title}}</h1>
+          </div>
+           <div class="post-meta">
+           <ul>
+           <li>{{ post.date | date:'MMM dd, yyyy' }}</li>
+           <li class="divider"></li>
+           <li>Posted by {{ post.author.name }}</li>
+           </ul>
+           </div>
+            <div class="post-content">
+              <p ng-hide="showMode" ng-bind-html="post.description | limitTo : 140"></p>
+              <p ng-hide="!showMode" ng-bind-html="post.description"></p>
+            </div><!-- post-content -->
+            <div id="post-footer" class="row">
+             <button type="button" class="btn btn-block btn-primary pull-right" data-animation="am-fade-and-slide-top"
+                  data-template="app/core/directives/newsView/core.viewModal.tpl.html" bs-modal="newsViewModal">Read More</button>
+            <div class="post-tags">
+              <i class="fa fa-tags"></i>
+                <a href="#"><span class="label label-info">Snipp</span></a>
+                <a href="#"><span class="label label-info">Bootstrap</span></a>
+                <a href="#"><span class="label label-info">UI</span></a>
+                </div>
+            </div><!-- END post footer -->
+        </div><!-- END post-wrapper -->
+      </article><!-- END article news-post -->
+    </div><!-- END column -->
+<!-- Start Right Side aside
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <aside id="side-bar" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="clearfix"></div>
+    <!-- recruitment-aside -->
+      <div id="recruitment-widget" class="box row">
+        <div class="recruitment-panel-row">
+        <h2 class="widget-head">Recruitment</h2>
+      </div>
+      <recruiting-panel></recruiting-panel>
+      </div> <!-- END recruitment-aside -->
+      <!-- raidprogress -->
+      <div id="progression-widget" class="box row">
+        <span class="widget-head"><img src="/assets/images/highmaul.jpg" class="raid-progress-header" alt="highmaul"></span>
+      <div class="raid-progression">
+
+        <img src="/assets/images/icons/kargath.png" height="80px" width="80px">
+        <img src="/assets/images/icons/butcher.png" height="80px" width="80px">
+        <img src="/assets/images/icons/brackenspore.png" height="80px" width="80px">
+        <img src="/assets/images/icons/tectus.png" height="80px" width="80px">
+        <img src="/assets/images/icons/twin-ogron.png" height="80px" width="80px">
+        <img src="/assets/images/icons/koragh.png" height="80px" width="80px">
+        <img src="/assets/images/icons/imperator.png" height="80px" width="80px">
+
+        </div>
+        </div>
+              <div id="progression-widget" class="box row">
+        <span class="widget-head"><img src="/assets/images/blackrock-foundry.jpg" class="raid-progress-header" alt="blackrock foundry">
+        </span>
+        <div class="raid-progression">
+          <img src="/assets/images/icons/gruul.png" height="80px" width="80px">
+          <img src="/assets/images/icons/oregorger.png" height="80px" width="80px">
+          <img src="/assets/images/icons/beastlord.png" height="80px" width="80px">
+          <img src="/assets/images/icons/hans-and-franz.png" height="80px" width="80px">
+          <img src="/assets/images/icons/flamebender.png" height="80px" width="80px">
+          <img src="/assets/images/icons/operator.png" height="80px" width="80px">
+          <img src="/assets/images/icons/kromog.png" height="80px" width="80px">
+          <img src="/assets/images/icons/blastfurnace.png" height="80px" width="80px">
+          <img src="/assets/images/icons/iron-maidens.png" height="80px" width="80px">
+          <img src="/assets/images/icons/blackhand.png" height="80px" width="80px">
+        </div>
+      </div> <!-- END recruitment-aside -->
+    </aside> <!-- END sidebar -->
+  </div><!-- END row -->
+</div> <!-- END home -->
 <the-footer></the-footer>

@@ -42,7 +42,7 @@
     }
 
     /* @ngInject */
-    function configure ($urlRouterProvider, $locationProvider,
+    function configure ($urlRouterProvider, $locationProvider, $asideProvider,
               $tooltipProvider, $datepickerProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
@@ -54,6 +54,10 @@
         angular.extend($tooltipProvider.defaults, {
           animation: 'am-flip-x',
           trigger: 'hover'
+        });
+        angular.extend($asideProvider.defaults, {
+          container: 'body',
+          html: true
         });
     }
 })();

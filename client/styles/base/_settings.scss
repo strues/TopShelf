@@ -1,11 +1,6 @@
-$tsBlue: #3498db;
-$porcelain: rgb(236, 240, 241);
-$mdGray: rgba(59, 62, 64, 0.52);
-$drkGray: rgb(20, 21, 23);
-$drkrGray: rgb(21, 21, 21);
-$brand-primary:         #3498db;
-$brand-success:         #4CAF50;
-$brand-info:            #9C27B0;
+$brand-primary:         $tsblue;
+$brand-success:         #4caf50;
+$brand-info:            #9c27b0;
 $brand-warning:         #ff9800;
 $brand-danger:          #e51c23;
 $btn-primary-color:              #fff;
@@ -43,21 +38,14 @@ $gray:                   #666;
 $gray-light:             #bbb;
 $gray-lighter:           lighten($gray-base, 93.5%); // #eee
 
-$brand-primary:         #2196F3;
-$brand-success:         #4CAF50;
-$brand-info:            #9C27B0;
-$brand-warning:         #ff9800;
-$brand-danger:          #e51c23;
-
-
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #fff;
+$body-bg:               $porcelain;
 //** Global text color on `<body>`.
-$text-color:            lighten($gray, 35%) !default;
+$text-color:            lighten($gray, 15%) !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary;
@@ -71,22 +59,22 @@ $link-hover-decoration: underline;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 $font-family-base:        $font-family-sans-serif;
 
-$font-size-base:          14px;
+$font-size-base:          16px;
 $font-size-large:         ceil(($font-size-base * 1.25)); // ~18px
-$font-size-small:         ceil(($font-size-base * 0.85)); // ~12px
+$font-size-small:         ceil(($font-size-base * .85)); // ~12px
 
-$font-size-h1:            36px;
-$font-size-h2:            28px;
-$font-size-h3:            22px;
-$font-size-h4:            20px;
-$font-size-h5:            18px;
-$font-size-h6:            16px;
+$font-size-h1:            48px;
+$font-size-h2:            36px;
+$font-size-h3:            28px;
+$font-size-h4:            22px;
+$font-size-h5:            20px;
+$font-size-h6:            18px;
 
 //** Unit-less `line-height` for use in components like buttons.
 $line-height-base:        1.846; // 20/14
@@ -94,10 +82,10 @@ $line-height-base:        1.846; // 20/14
 $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
-$headings-font-family:    inherit;
-$headings-font-weight:    400;
+$headings-font-family:    "Oswald", Helvetica, Arial, sans-serif;
+$headings-font-weight:    700;
 $headings-line-height:    1.1;
-$headings-color:          $tsBlue;
+$headings-color:          inherit;
 
 
 //== Iconography
@@ -377,8 +365,8 @@ $container-lg:                 $container-large-desktop;
 //##
 
 // Basics of a navbar
-$navbar-height:                    64px;
-$navbar-margin-bottom:             $line-height-computed;
+$navbar-height:                    100px;
+$navbar-margin-bottom:             40px;
 $navbar-border-radius:             $border-radius-base;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2));
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2);
@@ -615,7 +603,7 @@ $modal-title-padding:         15px;
 $modal-title-line-height:     $line-height-base;
 
 //** Background color of modal content area
-$modal-content-bg:                             $drkrGray;
+$modal-content-bg:                             $darker-gray;
 //** Modal content border color
 $modal-content-border-color:                   transparent;
 //** Modal content border color **for IE8**

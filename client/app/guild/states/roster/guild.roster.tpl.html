@@ -1,11 +1,68 @@
-<div navbar></div>
-<div class="container frontendWrap">
-<div class="page recruitmentPage">
-<div ng-controller="RosterCtrl">
-  <div ng-repeat="character in data.members">
-  <h1>{{character.character.name}}</h1>
-  </div>
-</div>
-    </div>
+<!-- Topbar
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<topbar></topbar>
+<!-- home-page container
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div id="roster-page" class="container">
+<!-- Start News Posts
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="row" ng-controller="HomeCtrl as vm">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <!-- Article News Posting -->
+      <article class="news-post">
+        <div ng-controller="RosterCtrl">
+          <div ng-repeat="character in data.members">
+          <h1>{{character.character.name}}</h1>
+          <h5>{{character.character.class | className}}</h5>
+          <h5>{{character.character.spec.name }}</h5>
+          <h5>{{character.rank | rankName}}</h5>
+          </div>
+        </div>
+      </article><!-- END article news-post -->
+    </div><!-- END column -->
+<!-- Start Right Side aside
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <aside id="side-bar" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="clearfix"></div>
+    <!-- recruitment-aside -->
+      <div id="recruitment-widget" class="box row">
+        <div class="recruitment-panel-row">
+        <h2 class="widget-head">Recruitment</h2>
+      </div>
+      <recruiting-panel></recruiting-panel>
+      </div> <!-- END recruitment-aside -->
+      <!-- raidprogress -->
+      <div id="progression-widget" class="box row">
+        <span class="widget-head"><img src="/assets/images/highmaul.jpg" class="raid-progress-header" alt="highmaul"></span>
+      <div class="raid-progression">
 
-</div>
+        <img src="/assets/images/icons/kargath.png" height="80px" width="80px">
+        <img src="/assets/images/icons/butcher.png" height="80px" width="80px">
+        <img src="/assets/images/icons/brackenspore.png" height="80px" width="80px">
+        <img src="/assets/images/icons/tectus.png" height="80px" width="80px">
+        <img src="/assets/images/icons/twin-ogron.png" height="80px" width="80px">
+        <img src="/assets/images/icons/koragh.png" height="80px" width="80px">
+        <img src="/assets/images/icons/imperator.png" height="80px" width="80px">
+
+        </div>
+        </div>
+              <div id="progression-widget" class="box row">
+        <span class="widget-head"><img src="/assets/images/blackrock-foundry.jpg" class="raid-progress-header" alt="blackrock foundry">
+        </span>
+        <div class="raid-progression">
+          <img src="/assets/images/icons/gruul.png" height="80px" width="80px">
+          <img src="/assets/images/icons/oregorger.png" height="80px" width="80px">
+          <img src="/assets/images/icons/beastlord.png" height="80px" width="80px">
+          <img src="/assets/images/icons/hans-and-franz.png" height="80px" width="80px">
+          <img src="/assets/images/icons/flamebender.png" height="80px" width="80px">
+          <img src="/assets/images/icons/operator.png" height="80px" width="80px">
+          <img src="/assets/images/icons/kromog.png" height="80px" width="80px">
+          <img src="/assets/images/icons/blastfurnace.png" height="80px" width="80px">
+          <img src="/assets/images/icons/iron-maidens.png" height="80px" width="80px">
+          <img src="/assets/images/icons/blackhand.png" height="80px" width="80px">
+        </div>
+      </div> <!-- END recruitment-aside -->
+    </aside> <!-- END sidebar -->
+  </div><!-- END row -->
+</div> <!-- END home -->
+<the-footer></the-footer>

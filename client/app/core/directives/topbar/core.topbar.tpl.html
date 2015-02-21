@@ -1,0 +1,58 @@
+<!-- Topbar
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div id="topbar" class="topbar-container container" ng-controller="TopBarCtrl as vm">
+  <header role="banner">
+    <div class="topbar-background clearfix"></div><!--topbarbg cf-->
+    <!-- Topbar Group -->
+    <div class="topbar-group">
+    <!-- Navbar header-->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+           <i class="icono-hamburger"></i>
+          </button>
+          <a class="navbar-brand brand-image" ui-sref="home" rel="home">
+            <img src="/assets/images/logo.png" height="65px" width="230px" alt="Top Shelf Guild logo">
+          </a>
+      </div>
+    <!-- END navbar header-->
+      <nav class="pull-right" role="navigation">
+        <div class="collapse navbar-collapse">
+          <ul id="top-menu" class="nav navbar-nav">
+            <li><a ui-sref="apply">Apply</a></li>
+            <li><a ui-sref="guildrecruitment">Recruitment Info</a></li>
+            <li><a ui-sref="streams">Streams</a></li>
+            <li><a ui-sref="roster">Roster</a></li>
+            <li><a href="https://topshelfguild.com/forums">Forums</a></li>
+            <li ng-show="vm.Auth.isAdmin()" ui-sref-active="active">
+<a ui-sref="admin"><i class="ico-shocked"></i> Admin</a></li>
+            <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
+              <a ui-sref="account.signup">
+               Sign up</a>
+            </li>
+            <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
+              <a ui-sref="account.login"> Login</a>
+            </li>
+            <!-- Dropdown -->
+            <li class="dropdown" ng-show="vm.Auth.isLoggedIn()">
+            <a role="button" data-toggle="dropdown" bs-dropdown data-template="dropdownbody">
+            {{ vm.Auth.getCurrentUser().name }}<b class="caret"></b>
+            </a><script type="text/ng-template" id="dropdownbody">
+            <ul class="dropdown-menu">
+            <li ng-show="vm.Auth.isLoggedIn()">
+            <a ui-sref="account.profile-edit"> Profile</a>
+            </li>
+            <li ng-show="vm.Auth.isLoggedIn()">
+            <a ui-sref="account.logout"> Logout</a>
+            </li>
+            </ul>
+            </script>
+            </li>
+            <!-- END Dropdown -->
+          </ul><!-- END Navbar-nav -->
+        </div>
+      </nav>
+      <!-- END Nav -->
+    </div> <!-- END topbar-group -->
+  </header>
+</div> <!-- #topbar -->

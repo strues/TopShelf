@@ -12,7 +12,7 @@
         .controller('RosterCtrl', RosterCtrl);
 
     /* @ngInject */
-    function RosterCtrl($scope, Armory) {
+    function RosterCtrl($scope, $http) {
         /*jshint validthis: true */
         var vm = this;
 
@@ -22,19 +22,8 @@
 
         $scope.characters = [];
 
-        Armory.getTopShelfMembers().then(function(data) {
+        $http.get('/api/roster').then(function(data) {
             $scope.data = data.data;
-
-            angular.forEach(data.members, function(character) {
-                var member = {
-                    name: character.character.name,
-                    level: character.character.level,
-                    spec: !character.character.spec ? null : character.character.spec.name,
-                    role: !character.character.spec ? null : character.character.spec.role,
-                    rank: character.rank
-                };
-                $scope.characters.push(member);
-            });
 
         });
     }

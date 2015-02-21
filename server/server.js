@@ -46,10 +46,41 @@ require('./routes')(app);
  // https.createServer(options, app).listen('8443', function() {
  //     console.log('HTTPS Express server listening on port ' + '8443');
  // });
-
+ var request = require('./request');
+var Roster = require('./api/roster/roster.model');
 server.listen(config.port, config.ip, function () {
     console.log('Express is running on %d, in %s mode',
     config.port, app.get('env'));
+Roster.findOne({}, function(err, roster) {
+request.bnet(
+'us.battle.net',
+'/api/wow/guild/sargeras' + '/'+encodeURIComponent(config.guild)+'?fields=members,news',
+function(data) {
+var lastUpdated = new Date().getTime();
+if(roster !== null) {
+for(var key in data) {
+roster[key] = data[key];
+}
+roster.lastUpdated = lastUpdated;
+roster.news = data.news;
+
+roster.save(function(err) {
+if(err) throw err;
+});
+}
+else {
+var newRoster = new Roster();
+for(var key in data) {
+newRoster[key] = data[key];
+}
+newRoster.lastUpdated = lastUpdated;
+newRoster.save(function(err) {
+if(err) throw err;
+});
+}
+}
+);
+});
 });
 
 exports = module.exports = app;

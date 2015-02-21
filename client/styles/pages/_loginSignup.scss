@@ -1,0 +1,14 @@
+.login-panel {
+  background-color: #e6eaef;
+  @include center-both;
+  padding: 1em;
+}
+  .lf--input {
+    border: 0;
+
+    &:focus {
+      outline: none;
+      transition: transform .15s ease;
+      transform: scale(1.1);
+    }
+  }

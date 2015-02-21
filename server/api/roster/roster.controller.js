@@ -15,7 +15,7 @@ exports.getRoster = function(req, res) {
                             member.character.spec, member.character.name];
                         }),
                     function(member) {
-                        return member.character.level >= 92 && member.rank <= 5;
+                        return member.character.level >= 100 && member.rank <= 5;
                     });
 
             return res.json(roster);

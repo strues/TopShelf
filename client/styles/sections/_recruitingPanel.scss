@@ -1,55 +1,69 @@
-.recruitingP {
-  padding-top: 30px;
+.recruiting-panel {
+ // background-color: rgba(26, 26, 26, .85);
   color: #bebebe;
-  background-color: rgba(26, 26, 26, .85);
+  padding-top: 30px;
+  list-style-type: none;
+}
 
-}
 .panel {
-    border: none;
+  border: 0;
 }
-.recruitmentHeader h2 {
-    color: $tsBlue;
+#recruitment-widget {
+  ul {
+    float:left;
+    list-style-type: none;
+  }
 }
-.recruitmentHeader {
+.recruitment-panel-row {
+  h2 {
+    @include text-shadow(4);
+    text-transform: lowercase;
+    padding-left: .75em;
+  }
+}
+
+.recruitment-panel-header {
   text-align: center;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .004);
+
+  h2 {
+    @include textshadow(.3);
+    color: $tsblue;
+    font-family: 'Oswald';
+  }
 }
-.recruitmentWhite {
-  color: #fff;
+
+.recruitment-white {
+  color: #333;
 }
-.recruitmentPanel {
-    background-color: rgb(16, 17, 18);
+
+.recruitment-status-panel {
+  background-color: #3c3c3c;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  @include border-radius-separate(2px, 2px, 2px, 2px);
     //border: 1px solid rgba(59, 62, 64, 0.52);
+  ul {
+    list-style-type: none;
+  }
 }
+
 .class-icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .label-member {
-    padding: 2px;
-    margin: 2px;
-    display: inline-block;
-    font-size: 0.9em;
+  padding: 2px;
+  margin: 2px;
+  display: inline-block;
+  font-size: 0.9em;
 }
 
 ul.pagination {
-    margin: 0;
+  margin: 0;
 }
-.adminRecruitP {
+
+.admin-recruit-panel {
   color: $gray;
-}
-.validation-errors {
-  color: $brand-danger;
-}
-.buff-available {
-    color: #00be4d;
-}
-
-.buff-missing {
-    color: red;
-}
-
-.remove-roster {
-    cursor: pointer;
 }

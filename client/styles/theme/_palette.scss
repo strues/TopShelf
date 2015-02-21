@@ -1,0 +1,27 @@
+$tsblue: #3498db;
+$porcelain: rgb(236, 240, 241);
+$md-gray: rgba(59, 62, 64, .52);
+$med-gray: rgba(59, 62, 64, .52);
+$dark-gray: rgb(20, 21, 23);
+$darker-gray: rgb(21, 21, 21);
+
+$_color-base-grey: rgba(144, 164, 174, 1);
+
+$palettes: (
+    blue: (
+        base:   #3399cc,
+        light:  lighten(#3399cc, 15%),
+        dark:   #567
+    ),
+    gray: (
+        base:  $_color-base-grey,
+        light: lighten($_color-base-grey, 50%),
+        dark: darken($_color-base-grey, 15%),
+        darkest: darken($_color-base-grey, 75%)
+    )
+);
+
+// Palette function,
+@function palette($palette, $tone: 'base') {
+    @return map-get(map-get($palettes, $palette), $tone);
+}

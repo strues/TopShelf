@@ -1,0 +1,36 @@
+.fade-repeat.ng-enter {
+  -webkit-animation: fadeIn .2s;
+  animation: fadeIn .2s;
+}
+.fadeZoom.ng-enter,
+.fadeZoomFadeDown.ng-enter {
+  -webkit-animation-name: fadeIn, zoomIn;
+  -webkit-animation-duration: .6s, .2s;
+  animation-name: fadeIn, zoomIn;
+  animation-duration: .6s, .2s;
+}
+.fadeZoomFadeDown.ng-leave {
+  -webkit-animation: fadeOutDown .6s;
+  animation: fadeOutDown .6s;
+}
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.8, .8, .8);
+    transform: scale3d(.8, .8, .8);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.8, .8, .8);
+    -ms-transform: scale3d(.8, .8, .8);
+    transform: scale3d(.8, .8, .8);
+  }
+  50% {
+    opacity: 1;
+  }
+}

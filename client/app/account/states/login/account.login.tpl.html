@@ -1,13 +1,37 @@
-<div navbar></div>
-<div class="container frontendWrap">
+<div class="container">
   <div class="row">
-    <div class="center-form panel">
-    <div class="panel-head">
-      <h1 class="text-center">Log in</h1>
-    </div>
-    <div class="panel-body">
-      <login-form class="col-sm-12"></login-form>
-    </div>
-    </div>
+    <div class="login-panel">
+
+<form class="form" name="form" ng-submit="login(form)" novalidate>
+  <div class="form-group has-feedback">
+    <input class="form-control input-lg lf--input"
+           type="email" id="email"
+           name="email"
+           ng-model="user.email"
+           placeholder="Email"
+           ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+           required>
+    <span class="ion-at form-control-feedback"></span>
   </div>
+  <div class="form-group has-feedback">
+    <input class="form-control input-lg"
+           type="password"
+           name="password"
+           ng-model="user.password"
+           placeholder="Password"
+           required>
+    <span class="ion-key form-control-feedback"></span>
+  </div>
+<div>
+  <button id="button-effect" class="btn btn-primary btn-md btn-block" type="submit">
+    Login
+  </button>
+</div>
+</form>
+ <section>
+
+<p class="text-center text-muted text-small">Don't have an account yet? <a ui-sref="signup">Sign up</a></p>
+</section>
+    </div>
+</div>
 </div>

@@ -1,0 +1,121 @@
+#header {
+  display: block;
+}
+#topbar {
+  line-height: 70px;
+  transition: height 0.3s ease-in 0s;
+  transition-property: height;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1200;
+
+  .topbar-group {
+    position: relative;
+    margin: 0px auto;
+    z-index: 1200;
+  }
+}
+.topbar-background {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  right: 0px;
+  background-size: cover;
+}
+
+.navbar-brand {
+  font-size: 36px;
+  float: left;
+  padding: 15px;
+  font-size: 18px;
+  line-height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  .brand-image {
+    display: inline;
+    margin-bottom: 0px;
+    vertical-align: top;
+    transition: height 0.3s ease-in 0s;
+  }
+}
+
+.navbar-collapse .collapse {
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0px;
+  overflow: visible !important;
+  overflow-x: visible;
+  overflow-y: visible;
+}
+.navbar-toggle {
+    box-shadow: none;
+    margin-right: 15px;
+    margin-top: 35px;
+    position: absolute;
+    right: 0px;
+}
+.navbar-toggle {
+    display: none;
+}
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.navbar-collapse {
+    width: auto;
+    border-top: 0px none;
+    box-shadow: none;
+}
+.navbar-collapse {
+    max-height: 340px;
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow-x: visible;
+    border-top: 1px solid transparent;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1) inset;
+}
+.navbar-nav {
+    float: left;
+    margin: 0px;
+}
+
+.nav {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  line-height: 70px;
+  transition: color 0.1s ease-in 0s;
+}
+
+.nav > li > a {
+  color: #333;
+  font-family: 'Oswald';
+  font-size: 18px;
+  position: relative;
+  display: block;
+  padding: 10px 10px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 25px;
+    padding-bottom: 15px;
+}
+
+.dropdown-menu {
+  box-shadow: none;
+}

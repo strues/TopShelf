@@ -1,0 +1,43 @@
+<div ng-controller="AsideNavCtrl as vm" class="aside aside-nav" tabindex="-1" style="display: block;">
+  <div class="aside-dialog">
+    <div class="aside-content">
+      <div class="aside-body" style="padding:0;">
+      <div class="nav-wrap">
+      <nav class="main-nav" role="navigation">
+      <ul class="unstyled list-hover-slide">
+      <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="apply">Apply</a></li>
+        <li><a ui-sref="guildrecruitment">Recruitment Info</a></li>
+        <li><a ui-sref="streams">Streams</a></li>
+        <li><a href="https://topshelfguild.com/forums">Forums</a></li>
+        <li role="presentation" class="divider"></li>
+        <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
+        <a ui-sref="account.signup">
+          <i class="ico-user-plus"></i> Sign up</a>
+      </li>
+      <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
+        <a ui-sref="account.login" style="border-right: none;"><i class="ico-key"></i> Login</a>
+      </li>
+      <li ng-show="vm.Auth.isLoggedIn()">
+        <a role="button" class="dropdown-toggle" ng-click="isUser = !isUser">
+          {{ vm.Auth.getCurrentUser().name }} <i class="ico-user"></i> <b class="caret"></b>
+        </a>
+      <ul ng-show="isUser">
+        <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
+          <a ui-sref="account.profile-edit"><i class="ico-tools"></i> Profile</a>
+        </li>
+        <li ng-show="vm.Auth.isLoggedIn()" ui-sref-active="active">
+          <a ui-sref="account.logout"><i class="ico-user-minus"></i> Logout</a>
+        </li>
+      </ul>
+<!--./dropdown user -->
+      </ul>
+    </nav>
+  </div>
+      </div>
+      <div class="aside-footer">
+        <button type="button" class="btn btn-default" ng-click="$hide()"><i class="fa fa-close"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>

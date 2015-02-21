@@ -1,26 +1,33 @@
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    color: $tsBlue;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Oswald', 'Arial Black' sans-serif;
+  font-weight: 700;
 }
+
 body {
-    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-    color: #bebebe;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
 }
-.blueText {
-    color: $tsBlue;
+
+.blue-text {
+    color: $tsblue;
 }
-.inverseText {
-  color: $drkGray;
+
+.inverse-text {
+  color: $dark-gray;
 }
-.smCaps {
-    font-variant: small-caps;
+
+.sm-caps {
+  font-variant: small-caps;
 }
 
 .text-light {
-  padding-bottom: 30px;
-  color: $tsBlue;
+  color: #eaeaea;
 }
-.whiteText {
-  color: #FFF;
+
+.white-text {
+  color: #fff;
 }
