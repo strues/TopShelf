@@ -1,73 +1,62 @@
 <div ng-controller="NewsCreateCtrl as vm">
-  <span class="pull-right">
-    <h5>Create a new post that displays on the homepage</h5>
-    </span>
-  <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">New Post</span></h3>
-    </div>
-    <div class="panel-body">
-  <form novalidate ng-submit="vm.savePost()">
-    <div class="well">
-    <div class="row">
-      <div class="col-sm-8">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="text-primary">New Post</h1>
+     <form novalidate ng-submit="vm.savePost()">
+     <div class="row">
+        <div class="col-sm-12 col-lg-7 form-group">
         <input type="text"
               class="form-control"
               placeholder="Post Title"
               ng-minLength=3
               ng-maxLength=75
               ng-model="vm.postData.title"
-              required/>
-      </div>
-      <div class="col-sm-3" ng-controller="DatepickerCtrl">
-       <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
-          <label class="control-label"><i class="fa fa-calendar"></i> Date</label>
-          <input type="text" class="form-control" ng-model="vm.postData.date" name="date" bs-datepicker>
+              required>
+        </div><!-- END -->
+        <div class="col-lg-3" ng-controller="DatepickerCtrl">
+          <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+            <input type="text" placeholder="Date" class="form-control" ng-model="vm.postData.date" name="date" bs-datepicker>
+          </div>
         </div>
-        </div>
-    </div>
-    </div>
-    <div class="row" style="padding-left: 15px;">
-      <div class="col-sm-10">
+     </div> <!-- END row-->
+     <div class="row"><!-- textangular -->
+      <div class="col-sm-12 col-lg-10">
           <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage']]" class="textEditor" ng-model="vm.postData.content"></text-angular>
       </div>
-    </div>
-     <div class="row" style="padding-left: 15px;">
-     <hr />
-    <div class="col-md-10">
+    </div><!-- END row /textangular-->
+    <div class="row">
+    <div class="col-sm-12 col-lg-10">
           <textarea class="form-control"
-                    placeholder="Description"
+                    placeholder="Description / summary of your post. This will show on the home page and is limited to 140 characters."
                     ng-model="vm.postData.description"
                     rows="3"
                     ></textarea>
-                    </div>
-    </div>
-    <div class="row" style="padding-top:15px;">
-      <div class="col-md-3">
-        <input type="text"
-               class="form-control"
-               placeholder="tags"
-               ng-model="vm.postData.tagName"
-               ng-list=", "
-               required/>
       </div>
-      <div class="col-md-7">
+    </div><!-- END row / description-->
+    <div class="row">
+      <div class="col-sm-4">
         <input type="text"
                   class="form-control"
-                  placeholder="Image"
+                  placeholder="Home Image 750x450"
                   ng-model="vm.postData.image"
                   style="padding-left: 15px;"
                   />
       </div>
-
-    </div>
+      <div class="col-sm-4">
+        <input type="text"
+                  class="form-control"
+                  placeholder="Detailed View Image 1140x450"
+                  ng-model="vm.postData.lrgImage"
+                  style="padding-left: 15px;"
+                  />
+      </div>
+      </div><!-- END row-->
       <div class="row">
         <div class="col-sm-3 col-sm-offset-8" style="padding-top: 15px;">
           <input type="submit" class="btn btn-primary" value="Save Post" />
         </div>
       </div> <!--./row-->
-    </div>
-  </form>
-  </div>
-</div>
+     </form><!-- END form -->
+    </div><!-- END column -->
+  </div><!-- END row -->
 </div>

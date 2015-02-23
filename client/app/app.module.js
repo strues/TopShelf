@@ -20,7 +20,6 @@
                   'ngMessages',
                   'ngCookies',
                   'ngTouch',
-                  'ngSanitize',
                   'ngAnimate',
                   'ui.router',
                   'angular-carousel',

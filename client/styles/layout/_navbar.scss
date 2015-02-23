@@ -22,8 +22,10 @@
 }
 .topbar-background {
   display: block;
-  background-color: darken($tsblue, 50%);
-  opacity: .7;
+  //background-color: darken($tsblue, 50%);
+  background-color: #efefef;
+  background-image: url(../../assets/images/cream-dust.png);
+  background-repeat: repeat;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -102,13 +104,15 @@
 }
 
 .nav > li > a {
-  color: #fff;
+  color: $tsblue;
   font-family: 'Oswald';
+  font-weight: 300;
   font-size: 18px;
   position: relative;
   display: block;
   padding: 10px 10px;
   &:hover {
+    color: #fff;
     background-color: $tsblue;
   }
 }

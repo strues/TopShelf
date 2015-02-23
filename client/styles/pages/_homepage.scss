@@ -1,121 +1,14 @@
+// See sections/_news.scss for styles relating to news posts
+
 #home-page {
   padding-top: 25px;
 }
-
-.post-image-wrapper {
-  background: none repeat scroll 0% 0% #F4F4F4;
-  background-color: #F4F4F4;
-  background-image: none;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-position: 0% 0%;
-  background-clip: border-box;
-  background-origin: padding-box;
-  background-size: auto auto;
-  position: relative;
-}
-
-.post-image-wrapper img {
-    width: 100%;
-    height: auto;
-}
-
-.post-wrapper {
-  position: relative;
-  padding: 35px;
-}
-
-.news-post {
-  width: 750px;
-  padding: 0;
-  display: block;
-  padding: 0;
-  background-color: #FFF !important;
-  @include transition(all 500ms ease);
-  @include box-shadow(0 0 2px 0 rgba(0,0,0,0.2));
-  &:hover { @include box-shadow(0 0 3px 2px rgba(0,0,0,0.1)); .image { opacity: 0.8 } }
-
-        .image, .post-content { display: inline-block; position: relative;
-          @include transition(all 500ms ease);
-        }
-}
-
-.post-title {
-  border-radius: 2px 2px 0px 0px;
-  margin: 0px;
-  position: relative;
-}
-
-.post-title-text {
-  margin: 0px;
-  text-align: left;
-  line-height: 120%;
-  width: 100%;
-  padding-right: 40px;
-  position: relative;
-}
-
 .raid-progress {
   background-image: url('../../assets/images/mythic-highmaul.jpg');
   background-size: cover;
   background-position: 50% 95%;
 }
 
-.post-meta {
-  display: block;
-  color: #9A9A9A;
-  text-align: left;
-  padding: 0px;
-  margin-bottom: 0px;
-  line-height: 32px;
-}
-
-.post-meta ul {
-    list-style: outside none none;
-    margin: 0px;
-    padding: 0px;
-    display: inline-block;
-    z-index: 10;
-}
-
-.post-meta ul li {
-    float: left;
-    margin-right: 15px;
-}
-
 .home-right {
   padding-right: 10px;
-}
-
-.post-image-holder {
-  padding: 0;
-}
-
-.post-image {
-  float: left;
-}
-
-#post-footer {
-  position: relative;
-}
-
-.post-tags {
-  padding-top: 15px;
-  position: relative;
-  float: right;
-}
-
-ul.posts {
-  list-style: none;
-  padding: 20px 5px 20px 20px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  break-inside: avoid;
-  word-wrap: break-word;/*prevents individual posts from breaking to next column*/
-}
-li.posts {
-  margin: 10px 0;
-  cursor: default;
-  break-inside: avoid;
-  word-wrap: break-word;
 }

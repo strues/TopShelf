@@ -36,7 +36,8 @@ var PostSchema = new Schema({
     type: String,
     enum: ['Draft','Published', 'Archived']
   },
-  image: String
+  image: String,
+  lrgImage: String
 });
 
 PostSchema.statics = {
