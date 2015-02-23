@@ -26,7 +26,7 @@
       <article class="news-post" ng-repeat="post in vm.posts | orderBy:'-date'">
         <!-- Post Image -->
         <div class="post-image-wrapper">
-          <img class="post-image" src="{{post.image}}" alt="news post image">
+          <img ng-src="{{post.image}}" alt="news post image">
         </div>
         <!-- END post-image -->
         <div class="post-wrapper box">
@@ -45,12 +45,6 @@
             </div><!-- post-content -->
             <div id="post-footer" class="row"><a ui-sref='viewPost({id:post._id})'>
              <button type="button" class="btn btn-block btn-primary pull-right">Read More</button></a>
-            <div class="post-tags">
-              <i class="fa fa-tags"></i>
-                <a href="#"><span class="label label-info">Snipp</span></a>
-                <a href="#"><span class="label label-info">Bootstrap</span></a>
-                <a href="#"><span class="label label-info">UI</span></a>
-                </div>
             </div><!-- END post footer -->
         </div><!-- END post-wrapper -->
       </article><!-- END article news-post -->

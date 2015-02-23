@@ -30,6 +30,13 @@
         carousel.slides = [
             {
                 image: 'assets/images/mythic-koragh.jpg'
+
+            },
+            {
+              image: 'assets/images/blackhand-slider.jpg'
+            },
+            {
+              image: 'assets/images/mythic-butcher.jpg'
             }
         ];
 

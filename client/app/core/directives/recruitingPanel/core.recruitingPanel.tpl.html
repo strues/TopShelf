@@ -1,9 +1,9 @@
 <ul ng-repeat="recruitment in recruitments">
 <li>
-<img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" style="padding-right: 10px;"> {{ recruitment.classSpec }}
+<img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" height="32px" style="padding-right: 10px;"> {{ recruitment.classSpec }}
 <strong>{{ recruitment.priority }}</strong></li>
 </ul>
 <br>
 <div class="clearfix"></div>
-<a ui-sref="apply" class="btn btn-primary">Apply Now</a>
+<a ui-sref="apply" class="btn btn-primary pull-right">Apply Now</a>
 <!--ng-click="open(recruitment._id)"-->

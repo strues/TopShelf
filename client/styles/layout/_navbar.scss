@@ -23,8 +23,7 @@
 .topbar-background {
   display: block;
   //background-color: darken($tsblue, 50%);
-  background-color: #efefef;
-  background-image: url(../../assets/images/cream-dust.png);
+  background-color: $porcelain;
   background-repeat: repeat;
   position: absolute;
   width: 100%;
