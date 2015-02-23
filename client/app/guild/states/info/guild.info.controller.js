@@ -3,18 +3,18 @@
 
   /**
    * @ngdoc Controller
-   * @name topshelf.guild.states:RecruitmentCtrl
+   * @name topshelf.guild.states:GuildInfoCtrl
    *
    * @description Currently is just "there"
    *
    */
     angular
     .module('app.guild.states')
-    .controller('RecruitmentCtrl', RecruitmentCtrl);
+    .controller('GuildInfoCtrl', GuildInfoCtrl);
 
-    function RecruitmentCtrl() {
+    function GuildInfoCtrl() {
 
-        var recruitment = this;
+        var ginfo = this;
     }
 
 })();

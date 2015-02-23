@@ -1,9 +1,9 @@
-    <ul ng-repeat="recruitment in recruitments">
+<ul ng-repeat="recruitment in recruitments">
 <li style="cursor: hand;">
 <img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" style="padding-right: 10px;"> {{ recruitment.classSpec }}
 <strong>{{ recruitment.priority }}</strong></li>
 </ul>
 <br>
 <div class="clearfix"></div>
-<p class="lead">If your class is not listed here and you feel like you can be competitive with our raiders, you're encouraged to apply.</p>
+<a ui-sref="apply" class="btn btn-primary">Apply Now</a>
 <!--ng-click="open(recruitment._id)"-->

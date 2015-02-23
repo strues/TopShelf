@@ -15,10 +15,10 @@
     /* @ngInject */
     function config($stateProvider) {
         $stateProvider
-            .state('guildrecruitment', {
-                url: '/recruitment',
-                templateUrl: 'app/guild/states/recruitment/guild.recruitment.tpl.html',
-                controller: 'RecruitmentCtrl as recruitment'
+            .state('information', {
+                url: '/info',
+                templateUrl: 'app/guild/states/info/guild.info.tpl.html',
+                controller: 'GuildInfoCtrl as ginfo'
             })
             .state('apply', {
                 url: '/apply',

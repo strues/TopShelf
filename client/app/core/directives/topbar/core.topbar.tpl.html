@@ -7,9 +7,12 @@
     <div class="topbar-group">
     <!-- Navbar header-->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <button type="button" class="navbar-toggle collapsed" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#navbar">
             <span class="sr-only">Toggle navigation</span>
-           <i class="icono-hamburger"></i>
+
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand brand-image" ui-sref="home" rel="home">
             <img src="/assets/images/logo.png" height="65px" width="230px" alt="Top Shelf Guild logo">
@@ -17,10 +20,10 @@
       </div>
     <!-- END navbar header-->
       <nav class="pull-right" role="navigation">
-        <div class="collapse navbar-collapse">
+        <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
           <ul id="top-menu" class="nav navbar-nav">
             <li><a ui-sref="apply">Apply</a></li>
-            <li><a ui-sref="guildrecruitment">Recruitment Info</a></li>
+            <li><a ui-sref="information">Info</a></li>
             <li><a ui-sref="streams">Streams</a></li>
             <li><a ui-sref="roster">Roster</a></li>
             <li><a href="https://topshelfguild.com/forums">Forums</a></li>

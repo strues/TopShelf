@@ -1,6 +1,11 @@
-.applicationForm {
-    color: rgb(237, 237, 237);
-    font-family: 'Open Sans', sans-serif;
+#side-bar {
+  margin-bottom: 35px;
+  background-color: $med-gray;
+  text-align: left;
+}
+#application-page {
+  text-align: left;
+  margin-top: 35px;
 }
 
 .applicationRightPanel {
@@ -9,9 +14,14 @@
     padding-left: 10px;
     padding-right: 10px;
     background-color: rgba(26, 26, 26, .85);
-    color: rgb(237, 237, 237);
+    color: #fff;
 }
 
 .applicationRightList li {
     padding: 10px;
+    color: #fff;
+}
+
+.app-preview {
+  color: #fff;
 }

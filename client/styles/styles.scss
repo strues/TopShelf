@@ -67,10 +67,10 @@
 @import 'pages/streams';
 
 .box {
-  background-color: #fff;
   border-radius: 1px;
   margin-top: 0px;
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05);
+  text-align: inherit;
 }
 .textEditor {
   overflow: hidden;
@@ -83,4 +83,7 @@
 }
 .list-group-item {
   height: 30px;
+}
+#main {
+  padding-top: 20px;
 }
