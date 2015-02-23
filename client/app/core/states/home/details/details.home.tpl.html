@@ -1,3 +1,4 @@
+<div ng-controller="HomePostDetailsCtrl">
 <!-- Topbar
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <topbar></topbar>
@@ -6,16 +7,7 @@
 <div id="home-page" class="container">
   <div class="row">
     <div class="col-xs-hidden col-sm-hidden col-md-12 col-lg-12">
-    <!-- carousel row/column -->
-    <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
-    <!-- rn-carousel directive start -->
-      <ul rn-carousel rn-carousel-auto-slide class="image">
-        <li ng-repeat="slide in carousel.slides">
-          <img ng-src="{{ slide.image }}" alt="carousel slide">
-        </li>
-      </ul>
-    </div><!-- END carousel-area -->
-    <!-- END carousel row/column -->
+
     </div>
   </div>
 <!-- Start News Posts
@@ -23,7 +15,7 @@
   <div class="row" ng-controller="HomeCtrl as vm">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
     <!-- Article News Posting -->
-      <article class="news-post" ng-repeat="post in vm.posts | orderBy:'-date'">
+      <article class="news-post">
         <!-- Post Image -->
         <div class="post-image-wrapper">
           <img src="http://placehold.it/750x450">
@@ -103,3 +95,5 @@
   </div><!-- END row -->
 </div> <!-- END home -->
 <the-footer></the-footer>
+
+ </div>

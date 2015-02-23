@@ -111,9 +111,13 @@
   &:hover {
     background-color: $tsblue;
   }
-
 }
-
+.nav .open > a {
+    background-color: darken($tsblue, 10%);
+      &:hover {
+    background-color: $tsblue;
+  }
+}
 .navbar-nav > li > a {
     padding-top: 25px;
     padding-bottom: 15px;
