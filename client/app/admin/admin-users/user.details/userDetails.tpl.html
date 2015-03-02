@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1 class="panel-title" style="font-size: 36px;"> {{user.name}}
+        <button type="button" class="btn btn-sm btn-warning pull-right" data-template="app/admin/admin-users/user.details/userDetails-aside.tpl.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body"><i class="fa fa-pencil"></i> Edit User
+        </button>
+      </h1>
+    </div>
+    <div class="panel-body">
+      <form editable-form name="editableForm" onaftersave="saveUser()">
+        <div>
+          <!-- editable username (text with validation) -->
+          <span class="title">Battletag:</span>
+          <span editable-text="user.battletag" e-name="battletag" onbeforesave="checkBattletag($data)" e-required>{{ user.battletag || 'empty' }}</span>
+        </div>
+
+        <div>
+          <!-- editable group (select-remote) -->
+          <span class="title">Group: </span>
+      <span editable-select="user.role" e-name="role" e-ng-options="s.value as s.text for s in roles">
+        {{ (roles | filter:{value: user.role})[0].text || 'Not set' }}
+      </span>
+        </div>
+
+        <div>
+          <!-- button to show form -->
+          <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+            Edit
+          </button>
+          <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+          Save
+        </button>
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+          Cancel
+        </button>
+      </span>
+        </div>
+      </form>
+    </div><!-- panel body-->
+  </div><!-- panel -->
+</div>

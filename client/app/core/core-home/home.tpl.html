@@ -1,0 +1,99 @@
+<!-- Topbar
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<navbar></navbar>
+<!-- home-page container
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div id="home-page" class="container">
+  <div class="row">
+    <div class="col-xs-hidden col-sm-hidden col-md-12 col-lg-12">
+    <!-- carousel row/column -->
+    <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
+    <!-- rn-carousel directive start -->
+      <ul rn-carousel rn-carousel-auto-slide class="image">
+        <li ng-repeat="slide in carousel.slides">
+          <img ng-src="{{ slide.image }}" alt="carousel slide">
+        </li>
+      </ul>
+    </div><!-- END carousel-area -->
+    <!-- END carousel row/column -->
+    </div>
+  </div>
+<!-- Start News Posts
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="row" ng-controller="HomeCtrl as vm">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <!-- Article News Posting -->
+      <article class="news-post" ng-repeat="post in vm.posts | orderBy:'-date'">
+        <!-- Post Image -->
+        <div class="post-image-wrapper">
+          <img ng-src="{{post.image}}" alt="news post image">
+        </div>
+        <!-- END post-image -->
+        <div class="post-wrapper box">
+          <div class="post-title">
+           <h1 class="post-title-text">{{post.title}}</h1>
+          </div>
+           <div class="post-meta">
+           <ul>
+           <li>{{ post.date | date:'MMM dd, yyyy' }}</li>
+           <li class="divider"></li>
+           <li>Posted by {{ post.author.name }}</li>
+           </ul>
+           </div>
+            <div class="post-content">
+              <div ta-bind ng-model="post.description"></div>
+            </div><!-- post-content -->
+            <div id="post-footer" class="row"><a ui-sref='viewPost({id:post._id})'>
+             <button type="button" class="btn btn-block btn-primary pull-right">Read More</button></a>
+            </div><!-- END post footer -->
+        </div><!-- END post-wrapper -->
+      </article><!-- END article admin-news-post -->
+    </div><!-- END column -->
+<!-- Start Right Side aside
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <aside class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="clearfix"></div>
+    <!-- admin-recruitment-aside -->
+      <div id="recruitment-widget" class="row panel-main panel-primary">
+        <div class="panel-heading">
+        <h2 class="panel-title">Recruitment</h2>
+      </div>
+      <div class="panel-body">
+      <recruiting-panel></recruiting-panel>
+      </div>
+      </div> <!-- END admin-recruitment-aside -->
+      <!-- raidprogress -->
+      <div id="progression-widget" class="row panel-main panel-primary">
+              <div class="panel-heading">
+              <h3 class="panel-title">Mythic Highmaul</h3></div>
+        <div class="panel-body raid-progression">
+
+        <img src="/assets/images/icons/kargath.png" class="boss-killed" height="80px" width="80px">
+        <img src="/assets/images/icons/butcher.png" class="boss-killed" height="80px" width="80px">
+        <img src="/assets/images/icons/brackenspore.png" class="boss-killed" height="80px" width="80px">
+        <img src="/assets/images/icons/tectus.png" class="boss-killed" height="80px" width="80px">
+        <img src="/assets/images/icons/twin-ogron.png" class="boss-killed" height="80px" width="80px">
+        <img src="/assets/images/icons/koragh.png" class="boss-killed" height="80px" width="80px">
+        <img src="/assets/images/icons/imperator.png" height="80px" width="80px">
+        </div>
+        </div>
+        <div id="progression-widget" class="row panel-main panel-primary">
+         <div class="panel-heading">
+          <h3 class="panel-title">Mythic Blackrock Foundry</h3></div>
+          <div class="panel-body raid-progression">
+            <img src="/assets/images/icons/gruul.png" height="80px" width="80px">
+            <img src="/assets/images/icons/oregorger.png" height="80px" width="80px">
+            <img src="/assets/images/icons/beastlord.png" height="80px" width="80px">
+            <img src="/assets/images/icons/hans-and-franz.png" height="80px" width="80px">
+            <img src="/assets/images/icons/flamebender.png" height="80px" width="80px">
+            <img src="/assets/images/icons/operator.png" height="80px" width="80px">
+            <img src="/assets/images/icons/kromog.png" height="80px" width="80px">
+            <img src="/assets/images/icons/blastfurnace.png" height="80px" width="80px">
+            <img src="/assets/images/icons/iron-maidens.png" height="80px" width="80px">
+            <img src="/assets/images/icons/blackhand.png" height="80px" width="80px">
+        </div>
+      </div> <!-- END admin-recruitment-aside -->
+    </aside> <!-- END sidebar -->
+  </div><!-- END row -->
+</div> <!-- END home -->
+<the-footer></the-footer>

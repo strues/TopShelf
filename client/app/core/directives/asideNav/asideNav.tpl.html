@@ -1,0 +1,26 @@
+<aside ng-controller="AsideNavCtrl as vm" class="aside aside-nav" tabindex="-1" style="display: block;">
+  <div class="aside-dialog">
+    <div class="aside-content">
+      <div class="aside-body" style="padding:0;">
+      <div class="nav-wrap">
+      <nav class="main-nav" role="navigation">
+      <ul class="unstyled list-hover-slide">
+        <li title="home"><a ui-sref="home"><i class="fa fa-home fa-3x"></i></a></li>
+        <li title="dashboard"><a ui-sref="admin"><i class="fa fa-dashboard fa-3x"></i></a></li>
+        <li title="news"><a ui-sref="admin.news"><i class="fa fa-list-alt fa-3x"></i></a></li>
+        <!--<li><a ui-sref="admin.newsPost">New Post</a></li>-->
+        <li title="applications"><a ui-sref="admin.applications"><i class="fa fa-tasks fa-3x"></i></a></li>
+        <li title="recruitment"><a ui-sref="admin.recruitmentStatus"><i class="fa fa-crosshairs fa-3x"></i></a></li>
+        <li title="users"><a ui-sref="admin.users"><i class="fa fa-users fa-3x"></i></a></li>
+        <li title="resources"><a ui-sref="admin.resources"><i class="fa fa-external-link fa-3x"></i></a></li>
+<!--./dropdown user -->
+      </ul>
+    </nav>
+  </div>
+      </div>
+      <div class="aside-footer">
+        <button type="button" class="btn btn-sm btn-danger" ng-click="$hide()"><i class="fa fa-close fa-2x"></i></button>
+      </div>
+    </div>
+  </div>
+</aside>

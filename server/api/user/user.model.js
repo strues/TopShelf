@@ -1,233 +1,159 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    request = require('request'),
-    crypto = require('crypto'),
-    _ = require('lodash'),
-    authTypes = ['bnet', 'twitter', 'facebook'];
-
-var User;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var crypto = require('crypto');
 
 var UserSchema = new Schema({
-    name: {
-        type: String,
-        unique: true,
-        index: true
-    },
-    email: {
-        type: String,
-        unique: true,
-        index: true
-    },
-    role: {
-        type: String,
-        default: 'user',
-        enum: ['admin', 'user']
-    },
-    articles: {
-        type: Schema.Types.ObjectId,
-        ref: 'Post'
-    },
-    password: {
-        type: String
-    },
-    provider: String,
-    salt: String,
-    bnetId: Number,
-    battletag: {
-      type: String
-    },
-    // characters
-    toons: {
-        type: Schema.Types.ObjectId,
-        ref: 'Character'
-    },
-    // site settings
-    showBattletag: Boolean,
-    activity: {
-        dateCreated: {
-            type: Date,
-            default: Date.now
-        },
-        lastLogon: {
-            type: Date,
-            default: Date.now
-        },
-        lastUpdated: {
-            type: Date
-        }
-    }
+  name: String,
+  email: { type: String, lowercase: true },
+  role: {
+      type: String,
+      default: 'user'
+  },
+  articles: {
+      type: Schema.Types.ObjectId,
+      ref: 'Post'
+  },
+  characters: {
+     type: Schema.Types.ObjectId,
+      ref: 'Character'
+  },
+  twitch: {
+    type: String
+  },
+  battletag: String,
+  hashedPassword: String,
+  provider: String,
+  salt: String
 });
 
 /**
  * Virtuals
  */
+UserSchema
+  .virtual('password')
+  .set(function(password) {
+    this._password = password;
+    this.salt = this.makeSalt();
+    this.hashedPassword = this.encryptPassword(password);
+  })
+  .get(function() {
+    return this._password;
+  });
 
-// Public profile information
-UserSchema.virtual('profile')
-    .get(function() {
-        return {
-            'name': this.name,
-            'role': this.role,
-            'battletag': this.battletag,
-            'toons': this.toons,
-            'articles': this.articles
-        };
-    });
+// Public account-profile information
+UserSchema
+  .virtual('profile')
+  .get(function() {
+    return {
+      'name': this.name,
+      'role': this.role,
+      'characters': this.characters,
+      'battletag': this.battletag,
+      'twitch': this.twitch
+    };
+  });
 
 // Non-sensitive info we'll be putting in the token
 UserSchema
-    .virtual('token')
-    .get(function() {
-        return {
-            '_id': this._id,
-            'role': this.role
-        };
-    });
+  .virtual('token')
+  .get(function() {
+    return {
+      '_id': this._id,
+      'role': this.role
+    };
+  });
+
+/**
+ * Validations
+ */
+
+// Validate empty email
+UserSchema
+  .path('email')
+  .validate(function(email) {
+    return email.length;
+  }, 'Email cannot be blank');
 
 // Validate empty password
 UserSchema
-    .path('password')
-    .validate(function(password) {
-        if (authTypes.indexOf(this.provider) !== -1) return true;
-        return password.length;
-    }, 'Password cannot be blank');
+  .path('hashedPassword')
+  .validate(function(hashedPassword) {
+    return hashedPassword.length;
+  }, 'Password cannot be blank');
 
 // Validate email is not taken
 UserSchema
-    .path('email')
-    .validate(function(value, respond) {
-        var self = this;
-        this.constructor.findOne({
-            email: value
-        }, function(err, user) {
-            if (err) throw err;
-            if (user) {
-                if (self.id === user.id) return respond(true);
-                return respond(false);
-            }
-            respond(true);
-        });
-    }, 'The specified email address is already in use.');
+  .path('email')
+  .validate(function(value, respond) {
+    var self = this;
+    this.constructor.findOne({email: value}, function(err, user) {
+      if(err) throw err;
+      if(user) {
+        if(self.id === user.id) return respond(true);
+        return respond(false);
+      }
+      respond(true);
+    });
+}, 'The specified email address is already in use.');
 
 var validatePresenceOf = function(value) {
-    return value && value.length;
+  return value && value.length;
 };
 
 /**
  * Pre-save hook
  */
 UserSchema
-    .pre('save', function(next) {
-        // Handle new/update passwords
-        if (this.password) {
-            if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1)
-                next(new Error('Invalid password'));
+  .pre('save', function(callback) {
+      var user = this;
+       // Break out if the password hasn't changed
+      if (!user.isModified('password')) return callback();
 
-            // Make salt with a callback
-            var _this = this;
-            this.makeSalt(function(saltErr, salt) {
-                if (saltErr) next(saltErr);
-                _this.salt = salt;
-                // Async hash
-                _this.encryptPassword(_this.password, function(encryptErr, hashedPassword) {
-                    if (encryptErr) next(encryptErr);
-                    _this.password = hashedPassword;
-                    next();
-                });
-            });
-        } else {
-            next();
-        }
-    });
+      if (!validatePresenceOf(this.hashedPassword))
+        next(new Error('Invalid password'));
+      else
+      callback();
+  });
 
 /**
  * Methods
  */
 UserSchema.methods = {
-    /**
-     * Authenticate - check if the passwords are the same
-     *
-     * @param {authenticate} plainText
-     * @callback {callback} Optional callback
-     * @return {Boolean}
-     * @api public
-     */
-    authenticate: function(password, callback) {
-        if (!callback)
-            return this.password === this.encryptPassword(password);
+  /**
+   * Authenticate - check if the passwords are the same
+   *
+   * @param {String} plainText
+   * @return {Boolean}
+   * @api public
+   */
+  authenticate: function(plainText) {
+    return this.encryptPassword(plainText) === this.hashedPassword;
+  },
 
-        var _this = this;
-        this.encryptPassword(password, function(err, pwdGen) {
-            if (err) callback(err);
+  /**
+   * Make salt
+   *
+   * @return {String}
+   * @api public
+   */
+  makeSalt: function() {
+    return crypto.randomBytes(16).toString('base64');
+  },
 
-            if (_this.password === pwdGen) {
-                callback(null, true);
-            } else {
-                callback(null, false);
-            }
-        });
-    },
-
-    /**
-     * Make salt
-     *
-     * @param {Number} byteSize Optional salt byte size, default to 16
-     * @callback {callback} Optional callback
-     * @return {String}
-     * @api public
-     */
-    makeSalt: function(byteSize, callback) {
-        var defaultByteSize = 16;
-
-        if (typeof arguments[0] === 'function') {
-            callback = arguments[0];
-            byteSize = defaultByteSize;
-        } else if (typeof arguments[1] === 'function') {
-            callback = arguments[1];
-        }
-
-        if (!byteSize) {
-            byteSize = defaultByteSize;
-        }
-
-        if (!callback) {
-            return crypto.randomBytes(byteSize).toString('base64');
-        }
-
-        return crypto.randomBytes(byteSize, function(err, salt) {
-            if (err) callback(err);
-            return callback(null, salt.toString('base64'));
-        });
-    },
-    /**
-     * Encrypt password
-     *
-     * @param {String} password
-     * @callback {callback} Optional callback
-     * @return {String}
-     * @api public
-     */
-    encryptPassword: function(password, callback) {
-        if (!password || !this.salt) {
-            return null;
-        }
-
-        var defaultIterations = 10000;
-        var defaultKeyLength = 64;
-        var salt = new Buffer(this.salt, 'base64');
-
-        if (!callback)
-            return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
-                .toString('base64');
-
-        return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength,
-            function(err, key) {
-                if (err) callback(err);
-                return callback(null, key.toString('base64'));
-            });
-    }
+  /**
+   * Encrypt password
+   *
+   * @param {String} password
+   * @return {String}
+   * @api public
+   */
+  encryptPassword: function(password) {
+    if (!password || !this.salt) return '';
+    var salt = new Buffer(this.salt, 'base64');
+    return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+  }
 };
 
 module.exports = mongoose.model('User', UserSchema);

@@ -129,3 +129,131 @@
 .dropdown-menu {
   box-shadow: none;
 }
+
+.admin-nav {
+  color: #fff;
+  transition: color 0.1s ease-in 0s;
+  list-style-type: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+.admin-nav > ul {
+  list-style-type: none;
+}
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  margin-right: 10px;
+  padding: 0;
+  background: #222;
+  z-index: 2000;
+  color: #fff;
+}
+.menu li a.cog:before {
+  content: "\f411";
+}
+.menu li a.list:before {
+  content: "\f453";
+}
+.menu li a.copy:before {
+  content: "\f41b";
+}
+.menu li a.filing:before {
+  content: "\f428";
+}
+.menu li a.body:before {
+  content: "\f3e3";
+}
+.menu li a.home:before {
+  content: "\f447";
+}
+.menu li a.user:before {
+  content: "\f419";
+}
+.menu li a.link:before {
+  content: "\f1fe";
+}
+.menu li a:hover{
+  background: $tsblue;
+  color: #fff;
+}
+.menu li a{
+    display:block;
+    height:em;
+    width: 5em;
+    text-indent:-500em;
+    line-height:5em;
+    text-align:center;
+    color: #fff;
+    font-size: 16px;
+    background: #222;
+    position: relative;
+    border-bottom: 1px solid $porcelain;
+    transition: background 0.3s ease-in-out;
+}
+.menu li a:before {
+  font-family: Ionicons;
+  speak: none;
+  text-indent: 0em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.4em;
+}
+.menu li a:hover{
+  background: $tsblue;
+  color: #fff;
+}
+.menu li.current a {
+  background: $tsblue;
+  color: #fff;
+}
+.menu li a.active {
+  background: $tsblue;
+  color: #fff;
+}
+.menu li a.active:after{
+    position:absolute;
+    left: 5em;
+    top: 0;
+    content: "";
+    border: 2.5em solid transparent;
+    border-left-color: lighten($tsblue, 20%);
+    border-width: 2.5em 1em
+}
+
+.menu li{
+    position: relative;
+}
+.menu li:after{
+    content: attr(title);
+    position:absolute;
+    left: 5em;
+    top: 0;
+    height: 5em;
+    font-size: 16px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: $tsblue;
+    padding: 2em;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+}
+.menu li:hover:after{
+    visibility:visible;
+    opacity: 1;
+}
+@media screen and (max-height: 34em){
+  .menu li{
+    font-size:70%;
+  }
+}

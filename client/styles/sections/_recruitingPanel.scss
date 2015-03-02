@@ -9,10 +9,6 @@
   ul {
     float:left;
     list-style-type: none;
-    &:hover {
-      background-color: rgba(0, 0, 0, .4);
-      width: 100%;
-    }
   }
 }
 

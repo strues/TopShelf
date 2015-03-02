@@ -1,54 +1,39 @@
 
-<ul class="nav">
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span>Navigation</span>
+<ul class="menu">
+  <li title="home">
+    <a ui-sref="home" href="#" class="home">Home </a>
   </li>
-  <li>
-      <a ui-sref="home">
-      <i class="glyphicon glyphicon-home icon text-primary-dker"></i>
-      <span class="font-bold">Home</span>
+  <li title="Dashboard">
+      <a ui-sref="admin" class="cog">Dashboard
     </a>
   </li>
-  <li>
-      <a ui-sref="admin">
-      <i class="glyphicon glyphicon-dashboard icon text-primary-dker"></i>
-      <span class="font-bold">Dashboard</span>
+  <li title="News" ui-sref-active="active">
+    <a ui-sref="admin.news" class="list">News
     </a>
   </li>
-  <li ui-sref-active="active">
-    <a ui-sref="admin.news">
-      <i class="glyphicon glyphicon-list icon text-info-dker"></i>
-      <span class="font-bold">News List</span>
+  <li ui-sref-active="active" title="Post">
+    <a ui-sref="admin.newsPost" class="copy">
+      Post
     </a>
   </li>
-  <li ui-sref-active="active">
-    <a ui-sref="admin.newsPost">
-      <i class="glyphicon glyphicon-plus icon text-info-dker"></i>
-      <span class="font-bold">New Post</span>
+  <li ui-sref-active="active" title="Applications">
+    <a ui-sref="admin.applications" class="filing">
+      Applications
     </a>
   </li>
-  <li ui-sref-active="active">
-    <a ui-sref="admin.applications">
-      <i class="glyphicon glyphicon-edit icon text-info-dker"></i>
-      <span class="font-bold">Applications</span>
+   <li ui-sref-active="active" title="Recruitment">
+    <a ui-sref="admin.recruitmentStatus" class="body">
+    Recruitment
     </a>
   </li>
-   <li ui-sref-active="active">
-    <a ui-sref="admin.recruitmentStatus">
-      <i class="glyphicon glyphicon-th-large icon text-success"></i>
-      <span class="font-bold">Recruitment</span>
+  <li ui-sref-active="active" title="Users">
+    <a ui-sref="admin.users" class="user">
+     Users
     </a>
   </li>
-  <li ui-sref-active="active">
-    <a ui-sref="admin.users">
-      <i class="glyphicon glyphicon-user icon text-success"></i>
-      <span class="font-bold">Users</span>
-    </a>
-  </li>
-    <li ui-sref-active="active">
-    <a ui-sref="admin.resources">
-      <i class="glyphicon glyphicon-briefcase icon text-info-dker"></i>
-      <span class="font-bold">Resources</span>
+    <li ui-sref-active="active" title="Resources">
+    <a ui-sref="admin.resources" class="link">
+    Resources
     </a>
   </li>
 

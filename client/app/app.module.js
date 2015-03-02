@@ -25,6 +25,7 @@
                   'angular-carousel',
                   'mgcrea.ngStrap',
                   'textAngular',
+                  'xeditable',
                   'toastr',
                   'ngFabForm',
                   'trNgGrid',
@@ -36,9 +37,10 @@
 
     ]);
     /* @ngInject */
-    function run ($rootScope, $state, $stateParams) {
+    function run ($rootScope, $state, $stateParams, editableOptions) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+        editableOptions.theme = 'bs3';
     }
     angular
         .module('app')
