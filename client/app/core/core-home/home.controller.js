@@ -13,10 +13,9 @@
         .module('app.core.states')
         .controller('HomeCtrl', HomeCtrl);
     /* @ngInject */
-    function HomeCtrl(Post, $scope, $location, $modal) {
-
+    function HomeCtrl(Post, $scope, $location) {
         var vm = this;
-        //home.posts = {};
+        vm.posts = {};
         vm.processing = true;
 
         Post.all().success(function(data) {

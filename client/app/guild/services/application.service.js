@@ -11,11 +11,8 @@
         .module('app.guild.services')
         .factory('Application', Application);
                   /* @ngInject */
-<<<<<<< HEAD
-    function Application($scope, $http) {
-=======
     function Application($http) {
->>>>>>> Completely linted and up to jscs standards
+
         console.log('application.service.js');
 
         var urlBase = 'api/applications';

@@ -46,10 +46,11 @@
     }
 
     /* @ngInject */
-    function configure($urlRouterProvider, $locationProvider, $httpProvider) {
+    function configure($urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
+        cfpLoadingBarProvider.includeSpinner = true;
     }
     /* @ngInject */
     function configureDatepicker($datepickerProvider) {
