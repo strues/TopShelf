@@ -13,7 +13,16 @@
     float: left;
   }
 }
-
+.aside-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000000;
+  opacity: 0.7;
+}
 .aside .aside-nav {
   background-color: $tsblue;
   background-image: url('assets/images/dirty-old-black-shirt.png');
@@ -56,7 +65,11 @@
     }
   }
 }
-
+.aside-backdrop.am-fade,.modal-backdrop.am-fade{
+    background:rgba(0,0,0,.5);
+    -webkit-animation-duration:.15s;
+    animation-duration:.15s
+}
 // HOVER SLIDE EFFECT
 .list-hover-slide{
 

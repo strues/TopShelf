@@ -12,6 +12,7 @@
 var _           = require('lodash');
 var mongoose    = require('mongoose');
 var moment      = require('moment');
+var async = require('async');
 var Application = require('./application.model');
 var User        = require('../user/user.model');
 
@@ -48,14 +49,12 @@ exports.get = function(req, res) {
 
 // Creates a new application in the DB.
 exports.create = function(req, res) {
-    Application.create(_.merge({
-      user: req.user._id
-    }, req.body, function(err, application) {
+    Application.create(req.body, function(err, application) {
         if (err) {
             return handleError(res, err);
         }
         return res.status(201).json(application);
-    }));
+    });
 };
 
 // Updates an existing application in the DB.

@@ -8,6 +8,8 @@
    * @description main application file
    *
    */
+  /*global angular */
+/*jshint unused:false */
     angular.module('app.core', []);
     angular.module('app.guild', []);
     angular.module('app.account', []);

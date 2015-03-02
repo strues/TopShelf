@@ -14,6 +14,10 @@
     "init": "npm install",
     "start": "node server/server.js"
   },
+  "apidoc": {
+    "title": "Top Shelf apiDoc",
+    "url" : "https://topshelfguild.com/api",
+  },
   "dependencies": {
     "async": "^0.9.0",
     "bcrypt-nodejs": "0.0.3",

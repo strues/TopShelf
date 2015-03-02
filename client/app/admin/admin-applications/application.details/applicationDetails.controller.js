@@ -23,7 +23,7 @@
          * @todo refactor into its own service
          */
         if (applicationId && applicationId.length > 0) {
-            $http.get('/api/admin-applications/' + applicationId)
+            $http.get('/api/applications/' + applicationId)
                 .success(function(application) {
                     $scope.application = application;
                     $http.jsonp(urlBase + application.charServer + '/' + application.charName +
@@ -40,19 +40,19 @@
 
         $scope.saveApplication = function() {
             if (applicationId && applicationId.length > 0) {
-                $http.put('/api/admin-applications/' + applicationId,
+                $http.put('/api/applications/' + applicationId,
                     $scope.application).success(function(application) {
-                    $location.path('/admin/admin-applications');
+                    $location.path('/admin/applications');
                 });
             } else {
-                $http.post('/api/admin-applications', $scope.application)
+                $http.post('/api/pplications', $scope.application)
                     .success(function(application) {
-                        $location.path('/admin/admin-applications');
+                        $location.path('/admin/applications');
                     });
             }
         };
 
-        $http.get('/api/admin-applications').success(function(applications) {
+        $http.get('/api/applications').success(function(applications) {
             $scope.applicationList = applications;
         });
     }
