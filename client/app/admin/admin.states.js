@@ -45,7 +45,7 @@
                     },
                     'content@admin': {
                         controller: 'ApplicationListCtrl',
-                        templateUrl: 'app/admin/admin-applications/adminApplications.tpl.html'
+                        templateUrl: 'app/admin/admin-apps/adminApps.tpl.html'
                     }
                 }
             })
@@ -58,7 +58,7 @@
                     },
                     'content@admin': {
                         controller: 'ApplicationViewCtrl',
-                        templateUrl: 'app/admin/admin-applications/application.details/applicationDetails.tpl.html'
+                        templateUrl: 'app/admin/admin-apps/app.details/appDetails.tpl.html'
                     }
                 }
             })

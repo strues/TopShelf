@@ -3,12 +3,15 @@
 
     /**
      * @ngdoc controller
-     * @name app.core.controller:AsideNavCtrl
+     * @name app.admin.controller:AsideNavCtrl
      *
      * @description Controller for the Navbar
      *
      */
-
+    angular
+        .module('app.admin.directives')
+        .controller('AsideNavCtrl', AsideNavCtrl);
+                              /* @ngInject */
     function AsideNavCtrl(Auth, $scope, $rootScope, $aside, $location) {
         var vm = this;
 
@@ -26,7 +29,7 @@
         $rootScope.showSide = function() {
             var showNavAside = $aside({
                 scope: $scope,
-                template: 'app/core/directives/asideNav/asideNav.tpl.html',
+                template: 'app/admin/directives/asideNav/asideNav.tpl.html',
                 show: false
             });
             showNavAside.$promise.then(function() {
@@ -35,9 +38,7 @@
 
             vm.showNavAside = showNavAside;
 
-        }
+        };
     }
-    angular
-        .module('app.core.directives')
-        .controller('AsideNavCtrl', AsideNavCtrl);
+
 })();

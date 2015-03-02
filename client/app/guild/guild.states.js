@@ -22,18 +22,13 @@
             })
             .state('apply', {
                 url: '/apply',
-                templateUrl: 'app/guild/guild-application/application.tpl.html',
+                templateUrl: 'app/guild/guild-apply/application.tpl.html',
                 controller: 'ApplicationCtrl'
             })
             .state('roster', {
                 url: '/roster',
                 templateUrl: 'app/guild/guild-roster/roster.tpl.html',
                 controller: 'RosterCtrl'
-            })
-            .state('streams', {
-                url: '/streams',
-                templateUrl: 'app/guild/guild-streams/streams.tpl.html',
-                controller: 'StreamCtrl as vm'
             });
     }
 })();

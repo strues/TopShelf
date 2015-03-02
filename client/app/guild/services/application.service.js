@@ -1,40 +1,43 @@
-/**
- * application.service.js in web
- */
 (function() {
     'use strict';
+    /**
+     * @ngdoc Service
+     * @name Application
+     * @desc Handles requests for guild applications to the server
+     * @memberOf app.guild.services
+     */
 
     angular
         .module('app.guild.services')
         .factory('Application', Application);
-/* @ngInject */
-    function Application($http) {
+                  /* @ngInject */
+    function Application($scope, $http) {
         console.log('application.service.js');
 
         var urlBase = 'api/applications';
-        var exports = {};
+        var appFactory = {};
 
-        exports.getAllApplications = function() {
+        appFactory.getAllApplications = function() {
             return $http.get(urlBase);
         };
 
-        exports.getApplicationById = function(applicationId) {
+        appFactory.getApplicationById = function(applicationId) {
             return $http.get(urlBase + '/' + applicationId);
         };
 
-        exports.createApplication = function(formData) {
+        appFactory.createApplication = function(formData) {
             return $http.post(urlBase, formData);
         };
 
-        exports.updateApplication = function(updatedApplication) {
+        appFactory.updateApplication = function(updatedApplication) {
             return $http.put(urlBase + '/' + updatedApplication._id, updatedApplication);
         };
 
-        exports.removeApplication = function(applicationId) {
+        appFactory.removeApplication = function(applicationId) {
             return $http.delete(urlBase + '/' + applicationId);
         };
 
-        exports.getRealms = function() {
+        appFactory.getRealms = function() {
             $http.jsonp('http://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
                 .success(function(data, status, headers, config) {
                     data.realms.map(function(item) {
@@ -44,8 +47,8 @@
 
                 });
         };
-        return exports;
 
+        return appFactory;
     }
 
 })();

@@ -3,7 +3,7 @@
 
     /**
      * @ngdoc directive
-     * @name core.directive:asideNav
+     * @name admin.directive:asideNav
      * @restrict EA
      * @element
      *
@@ -13,13 +13,13 @@
      *
      */
     angular
-        .module('app.core.directives')
+        .module('app.admin.directives')
         .directive('asideNav', asideNav);
 
     function asideNav() {
         return {
             restrict: 'EA',
-            templateUrl: 'app/core/directives/asideNav/asideNav.tpl.html',
+            templateUrl: 'app/admin/directives/asideNav/asideNav.tpl.html',
             controller: 'AsideNavCtrl',
             controllerAs: 'vm'
         };

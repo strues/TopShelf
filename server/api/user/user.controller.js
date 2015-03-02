@@ -1,5 +1,11 @@
 'use strict';
-
+/**
+ * @apiDefine UserParam
+ * @apiParam {String} name Your username.
+ * @apiParam {String} email  Your email.
+ * @apiParam {String} battletag  Your battletag.
+ * @apiParam {String} role Your role.
+ */
 var User = require('./user.model');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
@@ -9,11 +15,9 @@ var validationError = function(res, err) {
 };
 
 /**
- * @api {get} /api/admin-users Get a list of all the admin-users
+ * @api {get} /api/users
  * @apiName index
- * @apiGroup User
- *
- * @apiSuccess {String} admin-users Returns admin-users
+ * @apiUse UserParam
  */
 exports.index = function(req, res) {
     User.find({}, '-salt -hashedPassword', function(err, users) {
@@ -23,7 +27,10 @@ exports.index = function(req, res) {
 };
 
 /**
- * Creates a new user
+ * @api {post} /api/users
+ * @apiName create
+ * @apiUse UserParam
+ * @apiSuccess token Returns a token to the user.
  */
 exports.create = function(req, res, next) {
     var newUser = new User(req.body);
@@ -88,7 +95,7 @@ exports.changePassword = function(req, res, next) {
 };
 
 exports.update = function(req, res) {
-  var userId = req.params.id;
+    var userId = req.params.id;
     User.findById(req.params.id, function(err, user) {
         if (err) res.send(err);
         // set the new user information if it exists in the request

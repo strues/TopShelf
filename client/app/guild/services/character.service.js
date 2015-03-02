@@ -3,8 +3,8 @@
   /**
    * @ngdoc Service
    * @name Character
-   * @desc Communicates with backend returning posts
-   * @memberOf topshelf.core.services
+   * @desc Communicates with backend returning character information
+   * @memberOf app.guild.services
    */
 
     angular

@@ -4,7 +4,7 @@
    * @ngdoc Service
    * @name Post
    * @desc Communicates with backend returning posts
-   * @memberOf topshelf.core.services
+   * @memberOf app.core.services
    */
 
     angular
@@ -13,8 +13,6 @@
 
     /* @ngInject */
     function Post ($http) {
-        console.log('Post Factory: topshelf.core.services');
-
         var urlBase = 'api/posts';
         var postFactory = {};
 
@@ -24,7 +22,7 @@
         };
 
         postFactory.get = function(id) {
-            console.log('Getting this ' + id);
+            console.log('Getting the post with this id: ' + id);
             return $http.get(urlBase + '/' + id);
         };
 
@@ -34,10 +32,12 @@
         };
 
         postFactory.update = function(id, postData) {
+            console.log('Updated post' + postData);
             return $http.put(urlBase + '/' + id, postData);
         };
 
         postFactory.delete = function(id) {
+            console.log('Deleted post' + id);
             return $http.delete(urlBase + '/' + id);
         };
 

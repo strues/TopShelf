@@ -1,12 +1,21 @@
-(function () {
+(function() {
     'use strict';
+    /**
+     * @ngdoc Service
+     * @name Recruitment
+     * @desc Communicates with backend handling recruitment status api calls
+     * @memberOf app.guild.services
+     */
 
-     /* @ngInject */
-    function Recruitment ($http) {
+    angular
+        .module('app.guild.services')
+        .factory('Recruitment', Recruitment);
+    /* @ngInject */
+    function Recruitment($http) {
         var urlBase = 'api/recruitment';
         var recruitmentFactory = {};
 
-        recruitmentFactory.all = function () {
+        recruitmentFactory.all = function() {
             console.log('Getting all recruiting needs');
             return $http.get(urlBase);
         };
@@ -33,7 +42,4 @@
 
     }
 
-    angular
-        .module('app.guild.services')
-        .factory('Recruitment', Recruitment);
 })();
