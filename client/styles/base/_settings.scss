@@ -45,7 +45,7 @@ $gray-lighter:           lighten($gray-base, 93.5%); // #eee
 //** Background color for `<body>`.
 $body-bg:               $porcelain;
 //** Global text color on `<body>`.
-$text-color:            lighten($gray, 15%) !default;
+$text-color:            darken($tsblue, 65%) !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary;

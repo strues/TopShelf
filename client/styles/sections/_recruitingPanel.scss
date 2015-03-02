@@ -5,15 +5,13 @@
   list-style-type: none;
 }
 
-.panel {
-  border: 0;
-}
 #recruitment-widget {
   ul {
     float:left;
     list-style-type: none;
   }
 }
+
 .recruitment-panel-row {
   h2 {
     @include text-shadow(4);
@@ -30,6 +28,7 @@
     @include textshadow(.3);
     color: $tsblue;
     font-family: 'Oswald';
+    font-weight: 400;
   }
 }
 

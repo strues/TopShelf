@@ -2,7 +2,11 @@
     'use strict';
 
     angular.module('app.core')
+        .config(config)
         .config(configureToastr)
+        .config(configureDatepicker)
+        .config(configureTooltip)
+        .config(configureAside)
         .config(configure);
 
     function config() {
@@ -23,10 +27,10 @@
             containerId: 'toast-container',
             extendedTimeOut: 1000,
             iconClasses: {
-              error: 'toast-error',
-              info: 'toast-info',
-              success: 'toast-success',
-              warning: 'toast-warning'
+                error: 'toast-error',
+                info: 'toast-info',
+                success: 'toast-success',
+                warning: 'toast-warning'
             },
             maxOpened: 0,
             messageClass: 'toast-message',
@@ -42,22 +46,30 @@
     }
 
     /* @ngInject */
-    function configure ($urlRouterProvider, $locationProvider, $asideProvider,
-              $tooltipProvider, $datepickerProvider, $httpProvider) {
+    function configure($urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
+    }
+    /* @ngInject */
+    function configureDatepicker($datepickerProvider) {
         angular.extend($datepickerProvider.defaults, {
-          dateFormat: 'dd/MM/yyyy',
-          startWeek: 1
+            dateFormat: 'dd/MM/yyyy',
+            startWeek: 1
         });
+    }
+    /* @ngInject */
+    function configureTooltip($tooltipProvider) {
         angular.extend($tooltipProvider.defaults, {
-          animation: 'am-flip-x',
-          trigger: 'hover'
+            animation: 'am-flip-x',
+            trigger: 'hover'
         });
+    }
+    /* @ngInject */
+    function configureAside($asideProvider) {
         angular.extend($asideProvider.defaults, {
-          container: 'body',
-          html: true
+            container: 'body',
+            html: true
         });
     }
 })();

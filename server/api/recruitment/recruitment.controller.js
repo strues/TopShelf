@@ -13,7 +13,7 @@ exports.index = function(req, res) {
     });
 };
 
-// Get a single recruitment
+// Get a single admin-recruitment
 exports.show = function(req, res) {
     Recruitment.findById(req.params.id, function(err, recruitment) {
         if (err) {
@@ -26,7 +26,7 @@ exports.show = function(req, res) {
     });
 };
 
-// Creates a new recruitment in the DB.
+// Creates a new admin-recruitment in the DB.
 exports.create = function(req, res) {
     Recruitment.create(req.body, function(err, recruitment) {
         if (err) {
@@ -36,7 +36,7 @@ exports.create = function(req, res) {
     });
 };
 
-// Updates an existing recruitment in the DB.
+// Updates an existing admin-recruitment in the DB.
 exports.update = function(req, res) {
  var recruitmentUpdates = req.body;
 
@@ -59,7 +59,7 @@ exports.update = function(req, res) {
     });
 };
 
-// Deletes a recruitment from the DB.
+// Deletes a admin-recruitment from the DB.
 exports.destroy = function(req, res) {
     Recruitment.findById(req.params.id, function(err, recruitment) {
         if (err) {

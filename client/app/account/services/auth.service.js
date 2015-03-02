@@ -20,7 +20,7 @@
             /**
              * Authenticate user and save token
              *
-             * @param  {Object}   user     - login info
+             * @param  {Object}   user     - account-login info
              * @param  {Function} callback - optional
              * @return {Promise}
              */
@@ -101,7 +101,36 @@
                     return cb(err);
                 }).$promise;
             },
-
+            changeAvatar: function(newAvatar, callback) {
+                var cb = callback || angular.noop;
+                return User.changeAvatar({
+                        id: currentUser._id
+                    }, {
+                        newAvatar: newAvatar
+                    },
+                    function(user) {
+                        return cb(user);
+                    },
+                    function(err) {
+                        return cb(err);
+                    }
+                ).$promise;
+            },
+            changeRole: function(newRole, callback) {
+                var cb = callback || angular.noop;
+                return User.changeRole({
+                        id: currentUser._id
+                    }, {
+                        newRole: newRole
+                    },
+                    function(user) {
+                        return cb(user);
+                    },
+                    function(err) {
+                        return cb(err);
+                    }
+                ).$promise;
+            },
             /**
              * Gets all available info on authenticated user
              *

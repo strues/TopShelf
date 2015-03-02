@@ -65,11 +65,22 @@ var ApplicationSchema = new Schema({
         type: Date,
         default: moment()
     },
+    state: {
+      type: String,
+      enum: ['declined','accepted', 'pending']
+    },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        childPath: 'applications'
+        ref: 'User'
     }
 });
+
+ApplicationSchema.statics = {
+  loadInfo: function(cb) {
+    this.find({})
+      .populate({path:'User', select: 'name'})
+      .exec(cb);
+  }
+};
 
 module.exports = mongoose.model('Application', ApplicationSchema);

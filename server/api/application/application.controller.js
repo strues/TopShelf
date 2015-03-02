@@ -22,7 +22,7 @@ var User        = require('../user/user.model');
  * @return {[applications]}     [description]
  */
 exports.all = function(req, res) {
-    Application.find().populate('applicant', 'name')
+    Application.find().populate('user', 'name')
         .exec(function(err, applications) {
             if (err) {
                 return handleError(res, err);
@@ -48,12 +48,14 @@ exports.get = function(req, res) {
 
 // Creates a new application in the DB.
 exports.create = function(req, res) {
-    Application.create(req.body, function(err, application) {
+    Application.create(_.merge({
+      user: req.user._id
+    }, req.body, function(err, application) {
         if (err) {
             return handleError(res, err);
         }
         return res.status(201).json(application);
-    });
+    }));
 };
 
 // Updates an existing application in the DB.

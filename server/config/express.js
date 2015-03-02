@@ -57,7 +57,7 @@ module.exports = function(app) {
   // Enable jsonp
     app.use(session({
       secret: config.secrets.session,
-      saveUninitialized: false, // don't create session until something stored,
+      saveUninitialized: false, // don't news.create session until something stored,
       resave: true, // don't save session if unmodified
       store: new redisStore({
           host: 'localhost',

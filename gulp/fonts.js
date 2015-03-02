@@ -12,5 +12,5 @@ gulp.task('fonts', function() {
     return gulp
         .src(config.fonts)
         .pipe(gulp.dest(config.assets + 'fonts'))
-        .pipe(gulp.dest(config.build + 'fonts'));
+        .pipe(gulp.dest(config.build + 'assets/fonts'));
 });

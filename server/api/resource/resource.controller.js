@@ -3,7 +3,7 @@
 var _ = require('lodash');
 var Resource = require('./resource.model');
 
-// Get list of resources
+// Get list of admin-resources
 exports.index = function(req, res) {
     Resource.find()
     .exec(function(err, resources) {
@@ -30,7 +30,7 @@ exports.show = function(req, res) {
 
 // Creates a new resource in the DB.
 exports.create = function(req, res) {
-    var resource = new Resource();   // create a new instance of the Resource model
+    var resource = new Resource();   // news.create a new instance of the Resource model
     resource.websiteName = req.body.websiteName;  // set the resource name (comes from the request)
     resource.websiteUrl = req.body.websiteUrl;  // set the resource url (comes from the request)
     resource.websiteType = req.body.websiteType;

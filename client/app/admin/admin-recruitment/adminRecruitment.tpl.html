@@ -1,0 +1,137 @@
+<div class="row">
+    <h1 class="text-primary">Guild Recruitment</h1>
+    <p class="lead">Make changes to the guild's recruitment status.</p>
+    <div class="row">
+      <div class="col-sm-6 col-md-4" class="adminRecruitP" ng-controller="RecruitmentCtrl">
+        <h4>Update Recruitment Status</h4>
+        <div class="box">
+           <form role="form"
+                  name="recruitmentStatusForm"
+                  ng-submit="submit()">
+            <div class="row">
+                 <div class="form-group">
+                    <label>Class Type</label>
+                    <select ng-model="formData.classType"
+                            class="form-control"
+                            required>
+                        <option value=""></option>
+                        <option value="DeathKnight">Death Knight</option>
+                        <option value="Druid">Druid</option>
+                        <option value="Hunter">Hunter</option>
+                        <option value="Mage">Mage</option>
+                        <option value="Monk">Monk</option>
+                        <option value="Paladin">Paladin</option>
+                        <option value="Priest">Priest</option>
+                        <option value="Rogue">Rogue</option>
+                        <option value="Shaman">Shaman</option>
+                        <option value="Warlock">Warlock</option>
+                        <option value="Warrior">Warrior</option>
+                    </select>
+                </div><!-- form group-->
+                 <div class="form-group">
+                       <label>Specialization</label>
+                        <select ng-model="formData.classSpec"
+                                class="form-control"
+                                required>
+                            <option value=""></option>
+                            <option value="Affliction">Affliction</option>
+                            <option value="Arcane">Arcane</option>
+                            <option value="Arms">Arms</option>
+                            <option value="Assasination">Assasination</option>
+                            <option value="Balance">Balance</option>
+                            <option value="Beast Mastery">Beast Mastery</option>
+                            <option value="Blood">Blood</option>
+                            <option value="Brewmaster">Brewmaster</option>
+                            <option value="Combat">Combat</option>
+                            <option value="Demonology">Demonology</option>
+                            <option value="Destruction">Destruction</option>
+                            <option value="Discipline">Discipline</option>
+                            <option value="Elemental">Elemental</option>
+                            <option value="Enhancement">Enhancement</option>
+                            <option value="Feral">Feral</option>
+                            <option value="Fire">Fire</option>
+                            <option value="Frost">Frost</option>
+                            <option value="Fury">Fury</option>
+                            <option value="Gladiator">Gladiator</option>
+                            <option value="Guardian">Guardian</option>
+                            <option value="Holy">Holy</option>
+                            <option value="Marksman">Marksman</option>
+                            <option value="Mistweaver">Mistweaver</option>
+                            <option value="Protection">Protection</option>
+                            <option value="Restoration">Restoration</option>
+                            <option value="Shadow">Shadow</option>
+                            <option value="Subtlety">Subtlety</option>
+                            <option value="Survival">Survival</option>
+                            <option value="Unholy">Unholy</option>
+                            <option value="Windwalker">Windwalker</option>
+                        </select>
+                    </div><!-- charSpec-->
+            </div><!-- row-->
+            <div class="row">
+              <div class="col-sm-5">
+                     <div class="form-group">
+                   <label>Priority</label>
+                    <select ng-model="formData.priority"
+                            class="form-control"
+                            required>
+                        <option value=""></option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+              </div>
+            <div class="col-sm-6 col-sm-offset-1">
+                  <div class="form-group">
+                   <label>Status</label>
+                    <select ng-model="formData.status"
+                            class="form-control"
+                            required>
+                        <option value=""></option>
+                        <option value="Open">Open</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+                    <button type="submit"
+                            class="btn btn-primary">Submit Form
+                    </button>
+                </div>
+          </form>
+          </div>
+      </div> <!-- end form container and RecruitmentCtrl -->
+      <div class="col-sm-6 col-md-8" style="background-color: #fff;" ng-controller="RecruitmentListCtrl as vm">
+        <h2 class="text-primary" style="text-align: right;">Currently Recruiting</h2>
+        <table class="table table-condensed">
+          <thead>
+              <tr style="font-size:14px;">
+                  <th>Class Type:</th>
+                  <th>Class Spec:</th>
+                  <th>Priority:</th>
+                  <th>Status:</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="recruitment in vm.recruitments" ng-class-even="table-striped">
+                  <td><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" style="padding-right: 10px;" height="30px"></td>
+
+                  <td>{{recruitment.classSpec}}</td>
+
+                  <td>{{recruitment.priority}}</td>
+
+                  <td>{{recruitment.status}}</td>
+                  <td>
+                      <div class="btn-group">
+                          <a href="" ng-click="vm.deleteRecruitment(recruitment)" class="btn btn-sm btn-danger">
+                              <span class="glyphicon glyphicon-trash"></span> Delete</a>
+
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

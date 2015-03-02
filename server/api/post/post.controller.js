@@ -64,6 +64,7 @@ exports.update = function(req, res) {
         if (req.body.state) post.state = req.body.state;
         if (req.body.tags) post.tags = req.body.tags;
         if (req.body.image) post.image = req.body.image;
+        if (req.body.lrgImage) post.lrgImage = req.body.lrgImage;
 
         post.save(function(err) {
             if (err) {
