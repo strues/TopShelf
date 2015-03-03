@@ -9,35 +9,66 @@
         .module('app.admin.states')
         .controller('MediaCtrl', MediaCtrl);
     /* @ngInject */
-    function MediaCtrl($rootScope, $scope, $http, toastr, $location) {
-        $scope.doUpload = function() {
+    function MediaCtrl($rootScope, FileUploader, $state, $scope, $http, toastr, $location) {
 
-            console.log('title', $scope.title);
-            console.log('url', $scope.url);
-            toastr.success('your image was saved.')
-            //create form data object
-            var fd = new FormData();
-            fd.append('title', $scope.title);
-            fd.append('file', $scope.url);
-            //send the file / data to your server
-            $http.post('/api/images', fd, {
-                transformRequest: angular.identity,
-                headers: {
-                    'Content-Type': undefined
+              $scope.files = {};
+              $scope.current = {};
+              $scope.selectedImages = {};
+              $scope.showMediaLibrary = true;
+            var uploader = $scope.uploader = new FileUploader({
+                url: '/api/files'
+            });
+            // FILTERS
+
+            $scope.uploader.filters.push({
+                name: 'customFilter',
+                fn: function(item /*{File|FileLikeObject}*/ , options) {
+                    return this.queue.length < 10;
                 }
-            }).success(function(data) {
-                //do something on success
-            }).error(function(err) {
-                //do something on error
-            })
+            });
 
-        }
+            // CALLBACKS
 
-        $http.get('/api/images').success(function(data) {
-            $scope.images = data;
-        }).error(function(error) {
-          console.log('error');
-        });
+            uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/ , filter, options) {
+                console.info('onWhenAddingFileFailed', item, filter, options);
+            };
+            uploader.onAfterAddingFile = function(fileItem) {
+                console.info('onAfterAddingFile', fileItem);
+            };
+            uploader.onAfterAddingAll = function(addedFileItems) {
+                console.info('onAfterAddingAll', addedFileItems);
+            };
+            uploader.onBeforeUploadItem = function(item) {
+                console.info('onBeforeUploadItem', item);
+            };
+            uploader.onProgressItem = function(fileItem, progress) {
+                console.info('onProgressItem', fileItem, progress);
+            };
+            uploader.onProgressAll = function(progress) {
+                console.info('onProgressAll', progress);
+            };
+            uploader.onSuccessItem = function(fileItem, response, status, headers) {
+                console.info('onSuccessItem', fileItem, response, status, headers);
+            };
+            uploader.onErrorItem = function(fileItem, response, status, headers) {
+                console.info('onErrorItem', fileItem, response, status, headers);
+            };
+            uploader.onCancelItem = function(fileItem, response, status, headers) {
+                console.info('onCancelItem', fileItem, response, status, headers);
+            };
+            uploader.onCompleteItem = function(fileItem, response, status, headers) {
 
-    }
+                console.info('onCompleteItem', fileItem, response, status, headers);
+            };
+            uploader.onCompleteAll = function() {
+              $http.get('/api/files').success(function(files) {
+                    $scope.files = files;
+                });
+            };
+            /*
+             * @TODO: Figure out why two entries are posted per image; with the second
+             * being blank.
+             */
+
+         }
 })();

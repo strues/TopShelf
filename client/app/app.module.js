@@ -30,7 +30,7 @@
                   'xeditable',
                   'toastr',
                   'ngFabForm',
-                  'bootstrap.fileField',
+                  'angularFileUpload',
                   'trNgGrid',
                   'angular-loading-bar',
                   'app.core',

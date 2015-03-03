@@ -109,7 +109,7 @@ module.exports = function() {
             'node_modules/mocha-clean/index.js',
             'node_modules/sinon-chai/lib/sinon-chai.js'
         ],
-        specHelpers: [root + 'tests/test-helpers/*.js'],
+        specHelpers: [root + 'tests/**/*.js'],
         specs: [clientApp + '**/*.spec.js'],
         serverIntegrationSpecs: [root + '/tests/server-integration/**/*.spec.js'],
 
@@ -144,7 +144,7 @@ module.exports = function() {
     function getKarmaOptions() {
         var options = {
             files: [].concat(
-               // bowerFiles,
+                bowerFiles,
                 config.specHelpers,
                 clientApp + '**/*.module.js',
                 clientApp + '**/*.js',

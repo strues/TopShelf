@@ -133,6 +133,7 @@ function startBrowserSync(isDev, specRunner) {
     var options = {
         proxy: 'localhost:' + port,
         port: 3000,
+        browser: 'canary',
         files: isDev ? [
             config.client + '**/*.*',
             '!' + config.sass,

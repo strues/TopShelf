@@ -18,6 +18,7 @@ var express = require('express'),
     logger = require('./logger'),
     config = require('./environment'),
     redis = require('redis'),
+    busboy = require('connect-busboy'),
     passport = require('passport'),
     session = require('express-session'),
     redisStore = require('connect-redis')(session),
@@ -67,12 +68,7 @@ module.exports = function(app) {
         cookie: config.sessionCookie,
         name: config.sessionName
     }));
-    app.use(multer({
-        dest: './client/assets/images/',
-        rename: function(fieldname, filename) {
-            return filename + '-' + Date.now()
-        }
-    }));
+    app.use(busboy());
 
     app.use(passport.initialize());
     app.use(passport.session());

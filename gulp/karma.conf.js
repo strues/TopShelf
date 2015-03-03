@@ -21,7 +21,7 @@ module.exports = function(config) {
     exclude: gulpConfig.karma.exclude,
 
     proxies: {
-        '/': 'http://localhost:3000/'
+        '/': 'http://localhost:8888/'
     },
 
     // preprocess matching files before serving them to the browser
@@ -57,7 +57,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'PhantomJS'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
