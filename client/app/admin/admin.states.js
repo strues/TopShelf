@@ -134,6 +134,15 @@
                         }
                     }
                 }
+            })
+                        .state('admin.media', {
+                url: '/media',
+                views: {
+                    'content@admin': {
+                        controller: 'MediaCtrl as vm',
+                        templateUrl: 'app/admin/admin-media/adminMedia.tpl.html'
+                    }
+                }
             });
     }
 

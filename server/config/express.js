@@ -4,37 +4,37 @@
 
 'use strict';
 
-var express        = require('express'),
-    favicon        = require('serve-favicon'),
-    morgan         = require('morgan'),
-    compression    = require('compression'),
-    bodyParser     = require('body-parser'),
+var express = require('express'),
+    favicon = require('serve-favicon'),
+    morgan = require('morgan'),
+    compression = require('compression'),
+    bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    cookieParser   = require('cookie-parser'),
-    errorHandler   = require('errorhandler'),
-    path           = require('path'),
-    cors           = require('cors'),
-    logger         = require('./logger'),
-    config         = require('./environment'),
-    redis          = require('redis'),
-    passport       = require('passport'),
-    session        = require('express-session'),
-    redisStore     = require('connect-redis')(session),
-    flash          = require('express-flash');
-
+    cookieParser = require('cookie-parser'),
+    errorHandler = require('errorhandler'),
+    path = require('path'),
+    cors = require('cors'),
+    multer = require('multer'),
+    logger = require('./logger'),
+    config = require('./environment'),
+    redis = require('redis'),
+    passport = require('passport'),
+    session = require('express-session'),
+    redisStore = require('connect-redis')(session),
+    flash = require('express-flash');
 
 module.exports = function(app) {
     var client = redis.createClient(); // Redis
     var env = app.get('env');
 
-  // Should be placed before express.static
+    // Should be placed before express.static
     app.use(compression({
-      // only compress files for the following content types
-      filter: function(req, res) {
-          return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
-      },
-      // zlib option for compression level
-      level: 3
+        // only compress files for the following content types
+        filter: function(req, res) {
+            return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
+        },
+        // zlib option for compression level
+        level: 3
     }));
     // Showing stack errors
     app.set('showStackError', true);
@@ -48,30 +48,36 @@ module.exports = function(app) {
 
     // Request body parsing middleware should be above methodOverride
     app.use(bodyParser.urlencoded({
-      extended: true
+        extended: true
     }));
     app.use(bodyParser.json());
     app.use(methodOverride('X-HTTP-Method-Override'));
     app.use(cors());
     app.use(cookieParser());
-  // Enable jsonp
+    // Enable jsonp
     app.use(session({
-      secret: config.secrets.session,
-      saveUninitialized: false, // don't news.create session until something stored,
-      resave: true, // don't save session if unmodified
-      store: new redisStore({
-          host: 'localhost',
-          port: 6379,
-          client: client
-      }),
-      cookie: config.sessionCookie,
-      name: config.sessionName
+        secret: config.secrets.session,
+        saveUninitialized: false, // don't news.create session until something stored,
+        resave: true, // don't save session if unmodified
+        store: new redisStore({
+            host: 'localhost',
+            port: 6379,
+            client: client
+        }),
+        cookie: config.sessionCookie,
+        name: config.sessionName
+    }));
+    app.use(multer({
+        dest: './client/assets/images/',
+        rename: function(fieldname, filename) {
+            return filename + '-' + Date.now()
+        }
     }));
 
     app.use(passport.initialize());
     app.use(passport.session());
 
-  // connect flash for flash messages
+    // connect flash for flash messages
     app.use(flash());
 
     app.set('appPath', path.join(config.root, 'client'));

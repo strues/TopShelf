@@ -30,6 +30,7 @@
                   'xeditable',
                   'toastr',
                   'ngFabForm',
+                  'bootstrap.fileField',
                   'trNgGrid',
                   'angular-loading-bar',
                   'app.core',
