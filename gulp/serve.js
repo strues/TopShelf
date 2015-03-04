@@ -1,36 +1,39 @@
 'use strict';
 
-var gulp         = require('gulp'),
-    gutil        = require('gulp-util'),
-    browserSync  = require('browser-sync'),
-    config       = require('../gulp.config')(),
-    path         = require('path'),
-        chalk  = require('chalk'),
-    _            = require('lodash'),
-    $            = require('gulp-load-plugins')({lazy: true});
+var gulp = require('gulp'),
+    gutil = require('gulp-util'),
+    browserSync = require('browser-sync'),
+    config = require('../gulp.config')(),
+    path = require('path'),
+    chalk = require('chalk'),
+    _ = require('lodash'),
+    $ = require('gulp-load-plugins')({
+        lazy: true
+    });
 
-var args   = require('yargs').argv;
+var args = require('yargs').argv;
 var envenv = $.util.env;
-var port   = process.env.PORT || config.defaultPort;
+var port = process.env.PORT || config.defaultPort;
 // watch files for changes and reload
 gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() {
-  browserSync({
-    proxy: 'http://localhost:9000',
-    files: [
-        config.client + '**/*',
-        config.temp + '**/*.css',
-        '!' + config.sass
-    ],
-    injectChanges: true,
-    logFileChanges: true,
-    logLevel: 'debug',
-    logPrefix: 'topshelf',
-    notify: true,
-    reloadDelay: 600 //1000
-  });
+    browserSync({
+        proxy: 'http://localhost:9000',
+        files: [
+            config.client + '**/*',
+            config.temp + '**/*.css',
+            '!' + config.sass
+        ],
+        browser: ['google chrome canary'],
+        injectChanges: true,
+        logFileChanges: true,
+        logLevel: 'debug',
+        logPrefix: 'topshelf',
+        notify: true,
+        reloadDelay: 600 //1000
+    });
 
-  gulp.watch('client/styles/**/*.scss', ['styles',browserSync.reload]);
-  gulp.watch([config.templates], ['templates',browserSync.reload]);
+    gulp.watch('src/client/styles/**/*.scss', ['styles', browserSync.reload]);
+    gulp.watch([config.templates], ['templates', browserSync.reload]);
 });
 /**
  * Run the spec runner
@@ -38,7 +41,7 @@ gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() 
  */
 gulp.task('serve-specs', ['build-specs'], function(done) {
     console.log('run the spec runner');
-    serve(true /* isDev */, true /* specRunner */);
+    serve(true /* isDev */ , true /* specRunner */ );
     done();
 });
 /**
@@ -76,17 +79,19 @@ function serve(isDev, specRunner) {
             console.log('files changed:\n' + ev);
             setTimeout(function() {
                 browserSync.notify('reloading now ...');
-                browserSync.reload({stream: false});
+                browserSync.reload({
+                    stream: false
+                });
             }, config.browserReloadDelay);
         })
-        .on('start', function () {
+        .on('start', function() {
             console.log('*** nodemon started');
             startBrowserSync(isDev, specRunner);
         })
-        .on('crash', function () {
+        .on('crash', function() {
             console.log('*** nodemon crashed: script crashed for some reason');
         })
-        .on('exit', function () {
+        .on('exit', function() {
             console.log('*** nodemon exited cleanly');
         });
 }
@@ -133,7 +138,7 @@ function startBrowserSync(isDev, specRunner) {
     var options = {
         proxy: 'localhost:' + port,
         port: 3000,
-        browser: 'canary',
+        browser: 'chromecanary',
         files: isDev ? [
             config.client + '**/*.*',
             '!' + config.sass,
@@ -151,7 +156,7 @@ function startBrowserSync(isDev, specRunner) {
         logPrefix: 'topshelf',
         notify: true,
         reloadDelay: 0 //1000
-    } ;
+    };
     if (specRunner) {
         options.startPath = config.specRunnerFile;
     }
@@ -164,11 +169,11 @@ function startBrowserSync(isDev, specRunner) {
  * @param {String} msg
  * @param {Object} options
  */
-function log (msg, options) {
-  options = options || {};
-  console.log(
-    (options.padding ? '\n' : '') +
-    chalk.yellow(' > ' + msg) +
-    (options.padding ? '\n' : '')
-  );
+function log(msg, options) {
+    options = options || {};
+    console.log(
+        (options.padding ? '\n' : '') +
+        chalk.yellow(' > ' + msg) +
+        (options.padding ? '\n' : '')
+    );
 }

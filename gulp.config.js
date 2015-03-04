@@ -1,12 +1,12 @@
 module.exports = function() {
-    var client = './client/';
-    var server = './server/';
+    var client = './src/client/';
+    var server = './src/server/';
     var clientApp = client + 'app/';
     var report = './report/';
     var root = './';
     var specRunnerFile = 'specs.html';
     var temp = './.tmp/';
-    var assets = './client/assets/';
+    var assets = './src/client/assets/';
     var wiredep = require('wiredep');
     var bowerFiles = wiredep({devDependencies: true})['js'];
 
@@ -15,7 +15,7 @@ module.exports = function() {
          * File paths
          */
         // all javascript that we want to vet
-        alljs: './client/**/*.js',
+        alljs: './src/client/**/*.js',
         build: './build/',
         client: client,
         css: temp + 'styles',
@@ -116,7 +116,7 @@ module.exports = function() {
         /**
          * Node settings
          */
-        nodeServer: './server/server.js',
+        nodeServer: './src/server/app.js',
         defaultPort: '9000'
     };
 
