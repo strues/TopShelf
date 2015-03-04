@@ -2,43 +2,49 @@
     'use strict';
     /**
      * @ngdoc Service
-     * @name Recruitment
+     * @name app.guild.services.service:Recruitment
      * @desc Communicates with backend handling recruitment status api calls
-     * @memberOf app.guild.services
      */
 
     angular
         .module('app.guild.services')
-        .factory('Recruitment', Recruitment);
+        .service('Recruitment', Recruitment);
+
+    Recruitment.$inject = ['$http'];
     /* @ngInject */
     function Recruitment($http) {
-        var urlBase = 'api/recruitment';
-        var recruitmentFactory = {};
+        var urlBase = '/api/recruitment';
+        var service = {
+            all: all,
+            get: get,
+            create: create,
+            update: update,
+            destroy: destroy
+        };
+        return service;
 
-        recruitmentFactory.all = function() {
+        function all() {
             console.log('Getting all recruiting needs');
             return $http.get(urlBase);
-        };
+        }
 
-        recruitmentFactory.get = function(id) {
-            console.log('Getting this ' + id);
-            return $http.get(urlBase + '/' + id);
-        };
+        function get(recruitmentId) {
+            console.log('Getting this ' + recruitmentId);
+            return $http.get(urlBase + '/' + recruitmentId);
+        }
 
-        recruitmentFactory.create = function(recruitmentData) {
+        function create(recruitmentData) {
             console.log(recruitmentData);
             return $http.post(urlBase, recruitmentData);
-        };
+        }
 
-        recruitmentFactory.update = function(id, recruitmentData) {
-            return $http.put(urlBase + '/' + id, recruitmentData);
-        };
+        function update(recruitmentId, recruitmentData) {
+            return $http.put(urlBase + '/' + recruitmentId, recruitmentData);
+        }
 
-        recruitmentFactory.delete = function(id) {
-            return $http.delete(urlBase + '/' + id);
-        };
-
-        return recruitmentFactory;
+        function destroy(recruitmentId) {
+            return $http.delete(urlBase + '/' + recruitmentId);
+        }
 
     }
 

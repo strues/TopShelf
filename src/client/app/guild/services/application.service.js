@@ -2,44 +2,53 @@
     'use strict';
     /**
      * @ngdoc Service
-     * @name Application
-     * @desc Handles requests for guild applications to the server
-     * @memberOf app.guild.services
+     * @name app.guild.services.service:Application
+     * @description Handles requests for guild applications to the server
      */
 
     angular
         .module('app.guild.services')
-        .factory('Application', Application);
+        .service('Application', Application);
+
+    Application.$inject = ['$http'];
     /* @ngInject */
     function Application($http) {
-
-        console.log('application.service.js');
-
         var urlBase = 'api/applications';
-        var appFactory = {};
+        var service = {
+            getAllApplications: getAllApplications,
+            getApplicationById: getApplicationById,
+            createApplication: createApplication,
+            updateApplication: updateApplication,
+            removeApplication: removeApplication,
+            getRealms: getRealms
+        };
+        return service;
 
-        appFactory.getAllApplications = function() {
+        function getAllApplications() {
+            console.log('Retrieving all applications');
             return $http.get(urlBase);
-        };
+        }
 
-        appFactory.getApplicationById = function(applicationId) {
+        function getApplicationById(applicationId) {
+            console.log('Getting this ' + applicationId);
             return $http.get(urlBase + '/' + applicationId);
-        };
+        }
 
-        appFactory.createApplication = function(formData) {
+        function createApplication(formData) {
+            console.log(formData);
             return $http.post(urlBase, formData);
-        };
+        }
 
-        appFactory.updateApplication = function(updatedApplication) {
-            return $http.put(urlBase + '/' + updatedApplication._id, updatedApplication);
-        };
+        function updateApplication(applicationId, updatedApplication) {
+            return $http.put(urlBase + '/' + applicationId, updatedApplication);
+        }
 
-        appFactory.removeApplication = function(applicationId) {
+        function removeApplication(applicationId) {
             return $http.delete(urlBase + '/' + applicationId);
-        };
+        }
 
-        appFactory.getRealms = function() {
-            $http.jsonp('http://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
+        function getRealms() {
+            return $http.jsonp('http://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
                 .success(function(data, status, headers, config) {
                     data.realms.map(function(item) {
                         $scope.realms.push(item.name);
@@ -47,9 +56,8 @@
                 }).error(function(data, status, headers, config) {
 
                 });
-        };
+        }
 
-        return appFactory;
     }
 
 })();

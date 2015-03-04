@@ -3,14 +3,14 @@
 
     /**
      * @ngdoc controller
-     * @name ApplicationCtrl
-     * @propertyOf topshelf.guild.states
-     * @requires (form-for, toastr)
+     * @name app.guild.states.controller:ApplicationCtrl
      * @description Form to submit an application
      */
     angular
         .module('app.guild.states')
         .controller('ApplicationCtrl', ApplicationCtrl);
+
+    ApplicationCtrl.$inject = ['$scope', '$http', '$location', 'Application', 'ngFabForm', 'toastr'];
     /* @ngInject */
     function ApplicationCtrl($scope, $location, $http, Application, ngFabForm, toastr) {
 
@@ -19,10 +19,6 @@
 
         $scope.realms = [];
 
-        /*
-         * @ngdoc object
-         * @description Returns a list of realms from battle.net
-         */
         $http.jsonp('https://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
             .success(function(data, status, headers, config) {
                 data.realms.map(function(item) {

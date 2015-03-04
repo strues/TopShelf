@@ -12,6 +12,8 @@
     angular
         .module('app.guild.states')
         .config(config);
+
+    config.$inject = ['$stateProvider'];
     /* @ngInject */
     function config($stateProvider) {
         $stateProvider

@@ -32,7 +32,7 @@ gulp.task('optimize', ['clean', 'inject'], function() {
         // Get the custom javascript
         .pipe(jsAppFilter)
         .pipe($.sourcemaps.init())
-        .pipe($.ngAnnotate({add: true}))
+        .pipe($.ngAnnotate({add: true, single_quotes: true}))
         .pipe(ngFS())
         .pipe($.uglify())
         .pipe($.size())

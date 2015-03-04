@@ -15,11 +15,14 @@
         $scope.current = {};
         $scope.selectedImages = {};
         $scope.showMediaLibrary = true;
+
         var uploader = $scope.uploader = new FileUploader({
             url: '/api/files'
         });
         // FILTERS
-
+        $http.get('/api/files').success(function(files) {
+            $scope.files = files;
+        });
         $scope.uploader.filters.push({
             name: 'customFilter',
             fn: function(item /*{File|FileLikeObject}*/ , options) {

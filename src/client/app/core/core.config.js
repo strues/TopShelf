@@ -2,22 +2,13 @@
     'use strict';
 
     angular.module('app.core')
-        .config(config)
         .config(configureToastr)
         .config(configureDatepicker)
         .config(configureTooltip)
         .config(configureAside)
         .config(configure);
 
-    function config() {
-        return {
-            //Configure the exceptionHandler decorator
-            appErrorPrefix: '[Top Shelf Error] ',
-            appTitle: 'Top Shelf Guild',
-            version: '1.0.0'
-        };
-    }
-
+    configureToastr.$inject = ['toastrConfig'];
     /* @ngInject */
     function configureToastr(toastrConfig) {
         angular.extend(toastrConfig, {
@@ -44,7 +35,7 @@
             toastClass: 'toast'
         });
     }
-
+    configure.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider'];
     /* @ngInject */
     function configure($urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.otherwise('/');
@@ -52,6 +43,7 @@
         $httpProvider.interceptors.push('authInterceptor');
         cfpLoadingBarProvider.includeSpinner = true;
     }
+    configureDatepicker.$inject = ['$datepickerProvider'];
     /* @ngInject */
     function configureDatepicker($datepickerProvider) {
         angular.extend($datepickerProvider.defaults, {
@@ -59,6 +51,7 @@
             startWeek: 1
         });
     }
+    configureTooltip.$inject = ['$tooltipProvider'];
     /* @ngInject */
     function configureTooltip($tooltipProvider) {
         angular.extend($tooltipProvider.defaults, {
@@ -66,6 +59,7 @@
             trigger: 'hover'
         });
     }
+    configureAside.$inject = ['$asideProvider'];
     /* @ngInject */
     function configureAside($asideProvider) {
         angular.extend($asideProvider.defaults, {

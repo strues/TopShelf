@@ -4,7 +4,6 @@
     /**
      * @ngdoc controller
      * @name HomeCtrl as vm
-     * @propertyOf topshelf.core.states
      * @description Controller for the home page
      *
      */
@@ -12,6 +11,8 @@
     angular
         .module('app.core.states')
         .controller('HomeCtrl', HomeCtrl);
+
+    HomeCtrl.$inject = ['Post', '$scope', '$location'];
     /* @ngInject */
     function HomeCtrl(Post, $scope, $location) {
         var vm = this;

@@ -12,6 +12,8 @@
         .module('app.core.states')
         .config(config);
     /* @ngInject */
+    config.$inject = ['$stateProvider'];
+
     function config($stateProvider) {
 
         $stateProvider
