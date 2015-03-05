@@ -25,6 +25,7 @@
         'angular-carousel',
         'mgcrea.ngStrap',
         'textAngular',
+        'vAccordion',
         'xeditable',
         'toastr',
         'ngFabForm',

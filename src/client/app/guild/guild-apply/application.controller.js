@@ -10,7 +10,6 @@
         .module('app.guild.states')
         .controller('ApplicationCtrl', ApplicationCtrl);
 
-    ApplicationCtrl.$inject = ['$scope', '$http', '$location', 'Application', 'ngFabForm', 'toastr'];
     /* @ngInject */
     function ApplicationCtrl($scope, $location, $http, Application, ngFabForm, toastr) {
 

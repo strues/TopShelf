@@ -5,7 +5,7 @@
         .module('app.admin.states')
         .controller('NewsListCtrl', NewsListCtrl);
     /* @ngInject */
-    function NewsListCtrl($http, Post) {
+    function NewsListCtrl($http, Post, Slide) {
         var vm = this;
         vm.processing = true;
 

@@ -17,11 +17,8 @@
     function HomeCtrl(Post, $scope, $location) {
         var vm = this;
         vm.posts = {};
-        vm.processing = true;
 
         Post.all().success(function(data) {
-            // when all the posts come back, remove the processing variable
-            vm.processing = false;
             // bind the posts that come back to vm.posts
             vm.posts = data;
         }).error(function(error) {

@@ -15,6 +15,7 @@
     function RosterCtrl($scope, $http) {
         /*jshint validthis: true */
         var vm = this;
+
         $scope.filterMaxOnly = function(member) {
             return member.level === 100;
         };
@@ -23,6 +24,7 @@
 
         $http.get('/api/roster').then(function(data) {
             $scope.data = data.data;
+
         });
     }
 })();

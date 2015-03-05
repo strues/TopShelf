@@ -25,6 +25,10 @@
                         controller: 'AdminDashboardCtrl',
                         controllerAs: 'dash',
                         templateUrl: 'app/admin/admin-dashboard/adminDashboard.tpl.html'
+                    },
+                    'progression@admin': {
+                        controller: 'ProgressionWidgetCtrl',
+                        templateUrl: 'app/admin/admin-dashboard/dashboardProgression.tpl.html'
                     }
                 }
             })
@@ -76,6 +80,15 @@
                         controller: function($stateParams) {
                             console.log($stateParams);
                         }
+                    }
+                }
+            })
+            .state('admin.carousel', {
+                url: '/carousel',
+                views: {
+                    'content@admin': {
+                        controller: 'AdminCarouselCtrl as vm',
+                        templateUrl: 'app/admin/admin-carousel/adminCarousel.tpl.html'
                     }
                 }
             })

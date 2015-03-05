@@ -23,7 +23,6 @@ gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() 
             config.temp + '**/*.css',
             '!' + config.sass
         ],
-        browser: ['google chrome canary'],
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'debug',

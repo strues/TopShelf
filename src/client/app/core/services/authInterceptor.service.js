@@ -4,7 +4,10 @@
     /**
      * @ngdoc service
      * @name authInterceptor
-     * @description Intercepts $http requests checking for auth token
+     * @description
+     * This interceptor will make sure that, after each $http request
+     * if the user doesn't have access to something runs the according
+     * event, given the response status codes from the server.
      *
      */
 
@@ -12,7 +15,7 @@
         .module('app.core.services')
         .factory('authInterceptor', authInterceptor);
 
-    /* @ngInject */
+        /* @ngInject */
     function authInterceptor($rootScope, $q, $localStorage, $location) {
 
         return {

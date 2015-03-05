@@ -23,7 +23,7 @@
                 controller: 'HomeCtrl as vm'
             })
             .state('viewPost', {
-                url: '/:id',
+                url: '/news/:id',
                 templateUrl: 'app/core/core-home/home.details/details.home.tpl.html',
                 controller: function($stateParams) {
                     console.log($stateParams);

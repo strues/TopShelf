@@ -1,0 +1,25 @@
+<div ng-controller="AdminCarouselCtrl as vm">
+<div class="row">
+<h2>Carousel Images<a class="pull-right" href=""><button class="btn btn-xs btn-danger"><i class="fa fa-plus"></i>Add</button></a></h2>
+      <form novalidate ng-submit="vm.saveCarousel()">
+              <div class="col-sm-4 col-md-5">
+              <label>Image Source:</label>
+                <input type="text"
+                      class="form-control"
+                      placeholder="/assets/images/image.jpg"
+                      ng-minLength=3
+                      ng-maxLength=75
+                      ng-model="vm.slideData.image"
+                      required/>
+              </div>
+                <!-- Save Btn-->
+          <div style="padding-top: 20px; padding-right: 15px;">
+              <input type="submit" class="btn btn-primary pull-right" value="Save" />
+          </div> <!--./row-->
+      </form>
+
+   <div ng-repeat="slide in vm.slides">
+   <img ng-src="{{slide.image}}" class="img-thumbnail">
+   </div>
+</div>
+</div>
