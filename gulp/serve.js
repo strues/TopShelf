@@ -38,7 +38,7 @@ gulp.task('serve', ['clean:sass', 'styles', 'templates', 'nodemon'], function() 
  * Run the spec runner
  * @return {Stream}
  */
-gulp.task('serve-specs', ['build-specs'], function(done) {
+gulp.task('serve-specs', function(done) {
     console.log('run the spec runner');
     serve(true /* isDev */ , true /* specRunner */ );
     done();

@@ -25,7 +25,6 @@
         'angular-carousel',
         'mgcrea.ngStrap',
         'textAngular',
-        'vAccordion',
         'xeditable',
         'toastr',
         'ngFabForm',
@@ -41,7 +40,6 @@
     run.$inject = ['$rootScope', '$state', '$stateParams', 'Auth', 'editableOptions'];
     /* @ngInject */
     function run($rootScope, $state, $stateParams, Auth, editableOptions) {
-
         $rootScope.Auth = Auth;
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;

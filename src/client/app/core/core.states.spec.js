@@ -7,7 +7,7 @@ describe('app.core.states', function() {
         };
 
         beforeEach(function() {
-            module('app.core.states', bard.fakeToastr);
+            module('app.core.states');
             bard.inject('$location', '$stateProvider', '$rootScope', '$state', '$templateCache');
             $templateCache.put(views.core, '');
         });

@@ -16,7 +16,6 @@
         $stateProvider
             .state('admin', {
                 url: '/admin',
-                authenticate: true,
                 views: {
                     '': {
                         templateUrl: 'app/admin/admin.tpl.html'
