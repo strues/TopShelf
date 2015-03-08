@@ -3,9 +3,9 @@
 <navbar></navbar>
 <!-- home-page container
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<div id="home-page" class="container">
+<div id="home-page">
   <div class="row">
-    <div class="hidden-xs hidden-sm col-md-12 col-lg-12">
+    <div class=".visible-lg-* .visible-md-* col-md-12 col-lg-12">
     <!-- carousel row/column -->
     <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
     <!-- rn-carousel directive start -->
@@ -20,7 +20,7 @@
   </div>
 <!-- Start News Posts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="row" ng-controller="HomeCtrl as vm">
+  <div class="container-fluid" ng-controller="HomeCtrl as vm">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
     <!-- Article News Posting -->
       <article class="news-post" ng-repeat="post in vm.posts | orderBy:'-date'">

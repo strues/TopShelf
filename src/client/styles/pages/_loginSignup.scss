@@ -12,3 +12,25 @@
       transform: scale(1.1);
     }
   }
+
+  #msform {
+  	width: 500px;
+  	margin: 50px auto;
+  	text-align: center;
+  	position: relative;
+  }
+  #msform fieldset {
+  	background: $porcelain;
+  	border: 0 none;
+  	border-radius: 3px;
+  	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  	padding: 20px 30px;
+
+  	box-sizing: border-box;
+  	width: 80%;
+  	margin: 0 10%;
+  	position: absolute;
+  }
+  #msform fieldset:not(:first-of-type) {
+  	display: none;
+  }

@@ -59,7 +59,7 @@ $link-hover-decoration: underline;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:  "adelle", Helvetica, Arial, sans-serif;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -82,7 +82,7 @@ $line-height-base:        1.846; // 20/14
 $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
-$headings-font-family:    "Oswald", Helvetica, Arial, sans-serif;
+$headings-font-family:    "brandon", Helvetica, Arial, sans-serif;
 $headings-font-weight:    700;
 $headings-line-height:    1.1;
 $headings-color:          inherit;
@@ -365,8 +365,8 @@ $container-lg:                 $container-large-desktop;
 //##
 
 // Basics of a navbar
-$navbar-height:                    100px;
-$navbar-margin-bottom:             40px;
+$navbar-height:                    70px;
+$navbar-margin-bottom:             0px;
 $navbar-border-radius:             $border-radius-base;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2));
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2);

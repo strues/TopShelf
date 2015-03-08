@@ -1,259 +1,125 @@
 #header {
   display: block;
 }
-#topbar {
-  line-height: 70px;
+#navbar {
   transition: height 0.3s ease-in 0s;
   transition-property: height;
   transition-duration: 0.3s;
   transition-timing-function: ease-in;
   transition-delay: 0s;
   position: relative;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1200;
-
-  .topbar-group {
+  .navbar-group {
     position: relative;
-    margin: 0px auto;
+    margin: 0 auto;
     z-index: 1200;
   }
 }
-.topbar-background {
+.navbar-background {
   display: block;
-  //background-color: darken($tsblue, 50%);
-  background-color: $porcelain;
-  background-repeat: repeat;
+  //background-color: darken($tsblue, 10%);
+  background-color: #045686;
+
+  background-size: cover;
+  box-shadow: 1px 1px 1px darken($tsblue, 15%);
   position: absolute;
   width: 100%;
   height: 100%;
-  left: 0px;
-  right: 0px;
-  background-size: cover;
+  left: 0;
+  right: 0;
+  padding-bottom: 1px;
+  -webkit-backface-visibility: hidden;
 }
-
 .navbar-brand {
-  font-size: 36px;
-  float: left;
-  padding: 15px;
-  font-size: 18px;
-  line-height: 20px;
+  margin-bottom: 0;
+  transition: height 0.3s ease-in 0s;
+  border-left: 1px solid rgba(0,0,0,0.05);
+  border-right: 1px solid rgba(0,0,0,0.05);
   display: inline-block;
-  vertical-align: middle;
-  .brand-image {
-    display: inline;
-    margin-bottom: 0px;
-    vertical-align: top;
-    transition: height 0.3s ease-in 0s;
-  }
+}
+.navbar-brand > img {
+display: inline-block;
+padding-top: 10px;
+position:absolute;
+top:0;
+margin-right: 60px;
 }
 
+.brand-text {
+    padding-top: 45px;
+    padding-left: 80px;
+    color: #fff;
+    font-size: 3.3rem;
+    line-height: 135%;
+}
 .navbar-collapse .collapse {
   display: block !important;
   height: auto !important;
-  padding-bottom: 0px;
+  padding-bottom: 0;
   overflow: visible !important;
   overflow-x: visible;
   overflow-y: visible;
 }
 .navbar-toggle {
-    box-shadow: none;
-    margin-right: 15px;
-    margin-top: 35px;
-    position: absolute;
-    right: 0px;
-}
-
-.navbar-toggle {
-    position: relative;
-    float: right;
-    padding: 9px 10px;
-    margin-top: 8px;
-    margin-right: 15px;
-    margin-bottom: 8px;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-
-.navbar-collapse {
-    width: auto;
-    border-top: 0px none;
-    box-shadow: none;
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 .navbar-collapse {
-    max-height: 340px;
-    padding-right: 15px;
-    padding-left: 15px;
-    overflow-x: visible;
-    border-top: 1px solid transparent;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1) inset;
+  width: auto;
+  border-top: 0 none;
+  box-shadow: none;
+}
+.navbar-collapse {
+  max-height: 340px;
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  border-top: 1px solid transparent;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
 .navbar-nav {
-    float: left;
-    margin: 0px;
+  float: left;
+  margin: 0;
 }
-
-.nav {
-  padding-top: 10px;
-  padding-bottom: 15px;
-  line-height: 70px;
-  transition: color 0.1s ease-in 0s;
-}
-
 .nav > li > a {
-  color: $tsblue;
-  font-family: 'Oswald';
-  font-weight: 300;
-  font-size: 18px;
+  color: $porcelain;
+  font-family: 'brandon';
+  font-weight: 400;
+  font-size: 2rem;
   position: relative;
-  display: block;
-  padding: 10px 10px;
-  &:hover {
-    color: #fff;
-    background-color: $tsblue;
+  display: inline-block;
+  &:after {
+    border-right: 1px solid darken($tsblue, 5%);
+    position: absolute;
+    &:last-child {
+      border-right: none;
+    }
   }
 }
 .nav .open > a {
-    background-color: darken($tsblue, 10%);
-      &:hover {
+  background-color: darken($tsblue, 10%);
+  &:hover {
     background-color: $tsblue;
   }
 }
 .navbar-nav > li > a {
-    padding-top: 25px;
-    padding-bottom: 15px;
-}
+  border-right: 1px solid darken($tsblue, 5%);
+  &:hover {
+    color: lighten(#3399cc, 15%);
 
+    background-color: darken($tsblue, 10%);
+  }
+}
 .dropdown-menu {
   box-shadow: none;
-}
-
-.admin-nav {
-  color: #fff;
-  transition: color 0.1s ease-in 0s;
-  list-style-type: none;
-  padding-left: 0;
-  padding-right: 0;
-}
-.admin-nav > ul {
-  list-style-type: none;
-}
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  list-style-type: none;
-  margin: 0;
-  margin-right: 10px;
-  padding: 0;
-  background: #222;
-  z-index: 2000;
-  color: #fff;
-}
-.menu li a.cog:before {
-  content: "\f411";
-}
-.menu li a.list:before {
-  content: "\f453";
-}
-.menu li a.copy:before {
-  content: "\f41b";
-}
-.menu li a.filing:before {
-  content: "\f428";
-}
-.menu li a.body:before {
-  content: "\f3e3";
-}
-.menu li a.home:before {
-  content: "\f447";
-}
-.menu li a.user:before {
-  content: "\f419";
-}
-.menu li a.link:before {
-  content: "\f1fe";
-}
-.menu li a:hover{
-  background: $tsblue;
-  color: #fff;
-}
-.menu li a{
-    display:block;
-    height:em;
-    width: 5em;
-    text-indent:-500em;
-    line-height:5em;
-    text-align:center;
-    color: #fff;
-    font-size: 16px;
-    background: #222;
-    position: relative;
-    border-bottom: 1px solid $porcelain;
-    transition: background 0.3s ease-in-out;
-}
-.menu li a:before {
-  font-family: Ionicons;
-  speak: none;
-  text-indent: 0em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 1.4em;
-}
-.menu li a:hover{
-  background: $tsblue;
-  color: #fff;
-}
-.menu li.current a {
-  background: $tsblue;
-  color: #fff;
-}
-.menu li a.active {
-  background: $tsblue;
-  color: #fff;
-}
-.menu li a.active:after{
-    position:absolute;
-    left: 5em;
-    top: 0;
-    content: "";
-    border: 2.5em solid transparent;
-    border-left-color: lighten($tsblue, 20%);
-    border-width: 2.5em 1em
-}
-
-.menu li{
-    position: relative;
-}
-.menu li:after{
-    content: attr(title);
-    position:absolute;
-    left: 5em;
-    top: 0;
-    height: 5em;
-    font-size: 16px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: $tsblue;
-    padding: 2em;
-    color: #fff;
-    transition: all 0.3s ease-in-out;
-    visibility: hidden;
-    opacity: 0;
-}
-.menu li:hover:after{
-    visibility:visible;
-    opacity: 1;
-}
-@media screen and (max-height: 34em){
-  .menu li{
-    font-size:70%;
-  }
 }

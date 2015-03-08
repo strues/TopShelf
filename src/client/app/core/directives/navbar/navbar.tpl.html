@@ -1,10 +1,10 @@
 <!-- Topbar
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<div id="topbar" class="topbar-container container" ng-controller="NavbarCtrl as vm">
+<div id="navbar" class="navbar-container container-fluid" ng-controller="NavbarCtrl as vm">
   <header role="banner">
-    <div class="topbar-background clearfix"></div><!--topbarbg cf-->
+    <div class="navbar-background clearfix"></div><!--topbarbg cf-->
     <!-- Topbar Group -->
-    <div class="topbar-group">
+    <div class="navbar-group">
     <!-- Navbar header-->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#navbar">
@@ -15,7 +15,8 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand brand-image" ui-sref="home" rel="home">
-            <img src="/assets/images/logo.png" height="65px" width="230px" alt="Top Shelf Guild logo">
+            <img src="/assets/images/crown.svg" height="60px" alt="Top Shelf Guild logo">
+            <span class="brand-text">Top Shelf</span>
           </a>
       </div>
     <!-- END navbar header-->
