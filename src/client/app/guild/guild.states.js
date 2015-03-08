@@ -27,6 +27,11 @@
                 templateUrl: 'app/guild/guild-apply/application.tpl.html',
                 controller: 'ApplicationCtrl'
             })
+            .state('streams', {
+                url: '/streams',
+                templateUrl: 'app/guild/guild-streams/streams.tpl.html',
+                controller: 'StreamsCtrl'
+            })
             .state('roster', {
                 url: '/roster',
                 templateUrl: 'app/guild/guild-roster/roster.tpl.html',

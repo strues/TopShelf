@@ -3,34 +3,77 @@
   @include center-both;
   padding: 1em;
 }
-  .lf--input {
-    border: 0;
+.lf--input {
+  border: 0;
+  &:focus {
+    outline: none;
+    transition: transform 0.15s ease;
+    transform: scale(1.1);
+  }
+}
+.help-block {
+    color: #ef5350;
+}
+#lsform {
+  width: 500px;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+}
+#lsform fieldset {
+  background: $porcelain;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 20px 30px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+  position: absolute;
+}
+#lsform fieldset:not(:first-of-type) {
+  display: none;
+}
 
-    &:focus {
-      outline: none;
-      transition: transform .15s ease;
-      transform: scale(1.1);
-    }
-  }
+#button-blue{
+	font-family: 'adelle', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color: #3498db;
+	color:white;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
 
-  #msform {
-  	width: 500px;
-  	margin: 50px auto;
-  	text-align: center;
-  	position: relative;
-  }
-  #msform fieldset {
-  	background: $porcelain;
-  	border: 0 none;
-  	border-radius: 3px;
-  	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-  	padding: 20px 30px;
+#button-blue:hover{
+	background-color: rgba(0,0,0,0);
+	color: #0493bd;
+}
 
-  	box-sizing: border-box;
-  	width: 80%;
-  	margin: 0 10%;
-  	position: absolute;
-  }
-  #msform fieldset:not(:first-of-type) {
-  	display: none;
-  }
+.submit:hover {
+	color: #3498db;
+}
+
+.ease {
+	width: 0px;
+	height: 74px;
+	background-color: #fbfbfb;
+	-webkit-transition: .3s ease;
+	-moz-transition: .3s ease;
+	-o-transition: .3s ease;
+	-ms-transition: .3s ease;
+	transition: .3s ease;
+}
+
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
+}

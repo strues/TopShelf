@@ -5,7 +5,7 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div id="home-page">
   <div class="row">
-    <div class=".visible-lg-* .visible-md-* col-md-12 col-lg-12">
+    <div class="visible-lg-* visible-md-* col-md-12 col-lg-12">
     <!-- carousel row/column -->
     <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
     <!-- rn-carousel directive start -->
@@ -21,12 +21,13 @@
 <!-- Start News Posts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container-fluid" ng-controller="HomeCtrl as vm">
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+      <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8">
     <!-- Article News Posting -->
       <article class="news-post" ng-repeat="post in vm.posts | orderBy:'-date'">
         <!-- Post Image -->
         <div class="post-image-wrapper">
-          <img ng-src="{{post.image}}" alt="news post image">
+          <img ng-src="{{post.image}}" class="img-responsive" alt="news post image">
         </div>
         <!-- END post-image -->
         <div class="post-wrapper box">
@@ -51,7 +52,7 @@
     </div><!-- END column -->
 <!-- Start Right Side aside
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <aside class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <aside class="col-sm-12 col-md-4 col-lg-4">
     <div class="clearfix"></div>
     <!-- admin-recruitment-aside -->
       <div id="recruitment-widget" class="row panel-main panel-primary">
@@ -95,5 +96,6 @@
       </div> <!-- END admin-recruitment-aside -->
     </aside> <!-- END sidebar -->
   </div><!-- END row -->
+  </div>
 </div> <!-- END home -->
 <the-footer></the-footer>

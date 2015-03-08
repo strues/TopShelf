@@ -6,6 +6,7 @@
 bin
 obj
 /packages
+src/client/assets/fonts/
 
 # Ignore Node & Bower
 ###################

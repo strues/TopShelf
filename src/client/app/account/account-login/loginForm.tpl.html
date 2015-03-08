@@ -1,33 +1,29 @@
-<form id="msform" name="form" ng-submit="login(form)" novalidate>
-<fieldset>
+<form id="lsform" name="form" ng-submit="login(form)" novalidate>
+  <fieldset>
     <img src="/assets/images/crown.svg" alt="crown" height="90px" style="padding-bottom: 15px;">
-  <div class="input-group input-group-lg">
-    <span class="input-group-addon"><span class="icon-email-plane"> </span></span>
-    <input class="form-control"
-           type="email" id="email"
-           name="email"
-           ng-model="user.email"
-           placeholder="Email"
-           ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-           required>
-</div><br>
-   <div class="input-group input-group-lg">
-    <span class="input-group-addon"><span class="icon-lock"> </span></span>
-    <input class="form-control"
-           type="password"
-           name="password"
-           ng-model="user.password"
-           placeholder="•••••••••••"
-           required>
-</div>
-  <br>
-  <button id="button-effect" class="btn btn-primary btn-lg btn-block" type="submit">
-    Login
-  </button>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">
+        <span class="icon-email-plane"> </span>
+      </span>
+      <input class="form-control" type="email" id="email" name="email" ng-model="user.email" placeholder="Email" ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+    </div>
+    <br>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">
+        <span class="icon-lock"> </span>
+      </span>
+      <input class="form-control" type="password" name="password" ng-model="user.password" placeholder="•••••••••••" required>
+    </div>
+    <br>
+    <div class="submit">
+        <input type="submit" value="Login" id="button-blue"/>
+        <div class="ease"></div>
+      </div>
 
-	</fieldset>
-    <section>
+  </fieldset>
+  <section>
 
-   <p class="text-center text-muted text-small">Don't have an account yet? <a ui-sref="signup">Sign up</a></p>
-   </section>
+    <p class="text-center text-muted text-small">Don't have an account yet? <a ui-sref="app.signup">Sign up</a>
+    </p>
+  </section>
 </form>

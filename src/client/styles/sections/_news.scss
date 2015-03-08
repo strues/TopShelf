@@ -13,7 +13,6 @@
 
 .post-image-wrapper img {
   height: 450px;
-  width: 850px;
 }
 
 .post-wrapper {
@@ -25,7 +24,7 @@
   @include transition(all 500ms ease);
   @include box-shadow(0 0 2px 0 rgba(0,0,0,0.2));
   display: block;
-  width: 850px;
+
   padding: 0;
 
   background-color: #FFF !important;

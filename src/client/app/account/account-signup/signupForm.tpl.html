@@ -1,54 +1,65 @@
-<form ng-submit="register(form)" name="form" novalidate>
-  <div class="form-group has-feedback"
-       ng-class="{ 'has-error' : form.username.$invalid && form.name.$dirty }">
-    <input class="form-control input-lg"
-           type="text"
-           name="username"
-           ng-model="user.name"
-           placeholder="Username" required autofocus>
-      <span class="ion-person form-control-feedback"></span>
-      <div class="help-block text-danger"
-           ng-if="form.username.$dirty"
-           ng-messages="form.username.$error">
-        <div ng-message="required">You must enter a username.</div>
+<form id="lsform" ng-submit="register(form)" name="form" novalidate>
+  <fieldset>
+    <img src="/assets/images/crown.svg" alt="crown" height="90px" style="padding-bottom: 15px;">
+    <!-- Username -->
+    <div class="input-group input-group-lg" ng-class="{ 'has-error' : form.username.$invalid && form.name.$dirty }">
+      <span class="input-group-addon">
+        <span class="icon-user-outline"> </span>
+      </span>
+      <input class="form-control"
+             type="text"
+             name="username"
+             ng-model="user.name"
+             placeholder="Username" required autofocus>
+             <div class="help-block text-danger"
+                  ng-if="form.username.$dirty"
+                  ng-messages="form.username.$error">
+               <div ng-message="required">You must enter a username.</div>
+             </div>
+    </div>
+<!--Email-->
+    <div class="input-group input-group-lg" ng-class="{ 'has-error' : form.email.$invalid && form.email.$dirty }">
+      <span class="input-group-addon">
+        <span class="icon-email-plane"> </span>
+      </span>
+      <input class="form-control" type="email" id="email" name="email" ng-model="user.email" placeholder="Email" required
+      ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+      <div class="help-block text-danger" ng-if="form.email.$dirty" ng-messages="form.email.$error">
+          <div ng-message="required">Your email address is required.</div>
+          <div ng-message="pattern">Your email address is invalid.</div>
       </div>
-  </div>
-
-<div class="form-group has-feedback" ng-class="{ 'has-error' : form.email.$invalid && form.email.$dirty }">
-<input class="form-control input-lg" type="email" id="email" name="email" ng-model="user.email" placeholder="Email" required
-ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
-<span class="ion-at form-control-feedback"></span>
-<div class="help-block text-danger" ng-if="form.email.$dirty" ng-messages="form.email.$error">
-<div ng-message="required">Your email address is required.</div>
-<div ng-message="pattern">Your email address is invalid.</div>
-</div>
-</div>
-  <div class="form-group has-feedback"
-       ng-class="{ 'has-error' : form.battletag.$invalid && form.battletag.$dirty }">
-    <input class="form-control input-lg"
-           type="text"
-           name="battletag"
-           ng-model="user.battletag"
-           placeholder="Battletag#123" required autofocus>
-      <span class="ion-person form-control-feedback"></span>
-      <div class="help-block text-danger"
-           ng-if="form.battletag.$dirty"
-           ng-messages="form.battletag.$error">
-        <div ng-message="required">You must enter a battletag.</div>
       </div>
-  </div>
-<div class="form-group has-feedback" ng-class="{ 'has-error' : form.password.$invalid && form.password.$dirty }">
-<input password-strength class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
-<span class="ion-key form-control-feedback"></span>
-<div class="help-block text-danger" ng-if="form.password.$dirty" ng-messages="form.password.$error">
-<div ng-message="required">Password is required.</div>
-</div>
-</div>
-<p class="text-center text-muted"><small>By clicking on Sign up, you agree to <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></small></p>
+      <div class="input-group input-group-lg" ng-class="{ 'has-error' : form.battletag.$invalid && form.battletag.$dirty }">
+        <span class="input-group-addon">
+          <span class="icon-atom"> </span>
+        </span>
+        <input class="form-control input-lg"
+               type="text"
+               name="battletag"
+               ng-model="user.battletag"
+               placeholder="Battletag#123" required>
+               <div class="help-block text-danger"
+                    ng-if="form.battletag.$dirty"
+                    ng-messages="form.battletag.$error">
+                 <div ng-message="required">You must enter a battletag.</div>
+               </div>
+      </div>
+    <br>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">
+        <span class="icon-lock"> </span>
+      </span>
+      <input class="form-control" type="password" name="password" ng-model="user.password" placeholder="•••••••••••" required>
+    </div>
+    <br>
+    <div class="submit">
+        <input type="submit" value="Signup" id="button-blue"/>
+        <div class="ease"></div>
+      </div>
+  </fieldset>
+  <section>
 
-<button type="submit" ng-disabled="form.$invalid" id="button-effect" class="btn btn-lg btn-block btn-primary">Sign up</button>
-<br/>
-
-<p class="text-center text-muted">Already have an account? <a ui-sref="account.login">Login</a></p>
+    <p class="text-center text-muted text-small">Already have an account? <a ui-sref="app.login">Login</a>
+    </p>
+  </section>
 </form>
-
