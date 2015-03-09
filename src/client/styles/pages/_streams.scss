@@ -1,118 +1,222 @@
 /* Wrapper and all data included in the stream thumbnails */
 .streamWrapper {
-  margin: 5px;
-  display: inline-block;
-  position: relative;
-  border: 6px solid #101010;
-  transition: all 250ms ease;
-  z-index: 0;
-  background: #101010;
-  opacity: .8;
+	margin: 5px;
+	display: inline-block;
+	position: relative;
+	border: 6px solid #101010;
+	transition: all 250ms ease;
+	z-index: 0;
+	background: #101010;
+	opacity: 0.8;
 }
 
 .streamWrapper:hover {
-  transform: scale(1.1);
-  border-color: #fff;
-  cursor: pointer;
-  z-index: 1;
+	transform: scale(1.1);
+	border-color: white;
+	cursor: pointer;
+	z-index: 1;
 }
 
 .streamWrapper .stream-info {
-  position: absolute;
-  width: 100%;
-  height: 17%;
-  bottom: 0;
-  opacity: .8;
-  background: #000;
+	position: absolute;
+	width: 100%;
+	height: 17%;
+	bottom: 0;
+	opacity: 0.8;
+	background: black;
 }
 
 .streamWrapper .stream-favorite {
-  position: absolute;
-  opacity: 0;
-  top: -3%;
-  left: 90%;
-  font-size: 24px;
-  padding: 5px;
-  transition: all 150ms ease;
+	position: absolute;
+	opacity: 0;
+	top: -3%;
+	left: 90%;
+	font-size: 24px;
+	padding: 5px;
+	transition: all 150ms ease;
 }
 
 .streamWrapper .stream-favorite.no {
-  color: $brand-primary;
-  transition: all 150ms ease;
+	color: yellow;
+	transition: all 150ms ease;
 }
 
 .streamWrapper .stream-favorite.no:hover {
-  color: #fff;
+	color: white;
 }
 
 .streamWrapper:hover .stream-favorite {
-  opacity: 1;
+	opacity: 1;
 }
 
 .streamWrapper .stream-favorite.yes:hover {
-  color: $brand-warning;
+	color: yellow;
 
 }
 
 
 .stream-info .stream-title {
-  position: absolute;
-  display: inline-block;
-  top:10%;
-  left:0;
-  padding: 4px;
+	position: absolute;
+	display: inline-block;
+	top:10%;
+	left:0;
+	padding: 4px;
 }
 
 .stream-info .stream-viewers {
-  position: absolute;
-  display: inline-block;
-  top: 10%;
-  left: 80%;
-  padding: 4px;
+	position: absolute;
+	display: inline-block;
+	top: 10%;
+	left: 80%;
+	padding: 4px;
 }
 
 
 
 
 .streamWrapper img {
-  width: 370px;
+	width: 370px;
 }
 
 
 
 /* Container for Stream that opens */
 .streamContainer {
-  position: fixed;
-  background-color: rgba(16,16,16, .8);
-  width: 90%;
-  height: 90%;
-  top: 0;
-  left: 0;
-  z-index: 1040;
+	position: fixed;
+	background-color: rgba(16,16,16,0.8);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 4;
+}
+.streamContainer .fa-times {
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 5px;
+	color: white;
+	z-index: 5;
+	cursor: pointer;
+	font-size: 26px;
+	display: inline;
+
 }
 
-.streamContainer .fa-times {
-  position: absolute;
-  left:95.7%;
-  top: 2.5%;
-  color: #fff;
-  z-index: 5;
-  cursor: pointer;
-  font-size: 26px;
-  display: inline;
-
+.twitchContainer {
+	position: fixed;
+	width: 95%;
+	height: 95%;
+	top: 2%;
+	left: 2.5%;
 }
 
 object {
-  position: fixed;
-  width: 90%;
-  height: 90%;
-  top: 5%;
-  left: 5%;
-  z-index: 1040;
+	position: fixed;
+	width: 95%;
+	height: 95%;
+	top: 2%;
+	left: 2.5%;
 }
 
 
 .fa-eye {
-  padding-left: 4px;
+	padding-left: 4px;
 }
+
+
+/* Queries for Twitch Thumbnails */
+/* Thumbnail size for half window / smaller are large! */
+@media all and (max-width: 950px) and (min-width: 0px) {
+	.streamWrapper img {
+		width: 550px;
+	}
+
+	nav.navbar {
+		float: center;
+	}
+	nav.navbar .selection {
+		display: inline-block;
+	}
+
+	.streams:only-child .streamWrapper {
+		left: 160px;
+	}
+
+
+	.container {
+		top: 300px;
+		margin: 30px;
+		left: 0;
+		text-align: center;
+
+	}
+	.container ul {
+		display: inline-block;
+		padding: 0;
+	}
+
+	.streamWrapper .stream-info {
+		height: 12%
+	}
+
+	.stream-info .stream-viewers {
+		left: 85%;
+	}
+
+	.game-info .game-title {
+		text-align: left;
+	}
+
+	.games li img {
+		width: 450px;
+	}
+
+	.streamWrapper .stream-favorite {
+		left:93%;
+	}
+
+	.gameWrapper {
+		margin-left: 10px;
+	}
+
+
+
+}
+
+
+@media all and (max-width: 755px) and (min-width: 0px) {
+
+	.gameWrapper img {
+		width: 400px;
+	}
+
+	.game-info {
+		vertical-align: middle;
+	}
+
+	.game-info .game-viewers {
+		left: 80%;
+	}
+}
+
+
+
+	/* Transistions for Elements added with Angular JS */
+	.ng-enter {
+		transition: 1s;
+		opacity: 0;
+	}
+
+	.ng-enter-active {
+		opacity: 1;
+	}
+
+	.ng-leave {
+		transition: 1s;
+		opacity: 1;
+	}
+
+	.ng-leave-active {
+		opacity: 0;
+	}

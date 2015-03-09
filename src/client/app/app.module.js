@@ -44,6 +44,7 @@
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         editableOptions.theme = 'bs3';
+
     }
     // TODO Finish adding strict dependency injection.
     angular
