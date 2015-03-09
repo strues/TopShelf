@@ -7,7 +7,7 @@ var $ = require('gulp-load-plugins')({lazy: true});
 require('require-dir')('./gulp', {recurse: true});
 
 gulp.paths = {
-  src: 'src',
+  src: 'src/client',
   dist: 'build',
   tmp: '.tmp',
   e2e: 'e2e'

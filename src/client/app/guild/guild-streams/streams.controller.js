@@ -18,18 +18,61 @@
         // TODO setup repeat for streamName to display multiple streams without repeating code.
 
         $scope.data = {};
-        var streamName = 'soopie';
-        Twitch.get(streamName).success(function(data) {
+        var streamName1 = 'soopie';
+        Twitch.get(streamName1).success(function(data) {
             $scope.stream = data.stream;
         });
 
         // TODO customize the stream viewer so that the popup window doesnt get covered by the navbar.
-        $rootScope.openStream = function(streamName) {
+        $rootScope.openStream1 = function(streamName1) {
 		// Set stream active to true, and apply scope
-            $rootScope.streamName = streamName;
+            $rootScope.streamName1 = streamName1;
             $rootScope.streamActive = true;
         };
 
+        var streamName2 = 'toxicpopsicles';
+        Twitch.get(streamName2).success(function(data) {
+            $scope.stream = data.stream;
+        });
+
+        $rootScope.openStream2 = function(streamName2) {
+		// Set stream active to true, and apply scope
+            $rootScope.streamName2 = streamName2;
+            $rootScope.streamActive = true;
+        };
+
+        var streamName3 = 'teomorassalt';
+        Twitch.get(streamName3).success(function(data) {
+            $scope.stream = data.stream;
+        });
+
+        $rootScope.openStream3 = function(streamName3) {
+		// Set stream active to true, and apply scope
+            $rootScope.streamName3 = streamName3;
+            $rootScope.streamActive = true;
+        };
+
+        var streamName4 = 'valkyrie89';
+        Twitch.get(streamName4).success(function(data) {
+            $scope.stream = data.stream;
+        });
+
+        $rootScope.openStream4 = function(streamName4) {
+        // Set stream active to true, and apply scope
+            $rootScope.streamName4 = streamName4;
+            $rootScope.streamActive = true;
+        };
+
+        var streamName5 = 'wtfbbqsaucee';
+        Twitch.get(streamName5).success(function(data) {
+            $scope.stream = data.stream;
+        });
+
+        $rootScope.openStream5 = function(streamName5) {
+        // Set stream active to true, and apply scope
+            $rootScope.streamName5 = streamName5;
+            $rootScope.streamActive = true;
+        };
         $rootScope.closeStream = function() {
 		// Set stream active to false, and apply scope
             $rootScope.streamActive = false;
@@ -51,5 +94,10 @@
                 return 'Leave?';
             }
         });
+        $scope.previewHover = function ($event, isHover) {
+         if ($event.toElement && $event.toElement.className.indexOf('btn-preview-close') === -1) {
+             $scope.showCloseButton = isHover;
+         }
+     };
     }
 })();

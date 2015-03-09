@@ -199,31 +199,42 @@
     </div><!--/panel-->
 <aside id="aside" class="application-sidebar col-xs-12 col-md-4 col-lg-4">
 <div class="clearfix"></div>
-    <div id="side-bar" class="box row">
-    <h3 class="white-text widget-title">Important Application Info</h3>
+    <div id="side-bar" class="box row expandcollapse-item">
+        <div ng-click="active = !active" ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
+    <h3 class="white-text widget-title"><i class="icon-right-open-big"></i> Important Application Info</h3></div>
+    <div class="slideDown" ng-hide="active">
+         <div class="expand-collapse-conten t">
         <ul class="list-unstyled applicationRightList">
-            <li> <i class="icono-asterisk"></i> The application must be filled out completely and correctly in order for it to submit. A preview of your application is shown below.</li>
-            <li><i class="icono-asterisk"></i> We ask that your UI Screenshot be from a raid, please make sure it is.</li>
-            <li><i class="icono-asterisk"></i> Our raids days are Tues through Thurs from 8:00pm until 12:00am CST.</li>
-            <li><i class="icono-asterisk"></i> Occasionally we go over, or add a Monday, but that is rare.</li>
+            <li> <i class="fa fa-star"></i> The application must be filled out completely and correctly in order for it to submit. A preview of your application is shown below.</li>
+            <li><i class="fa fa-star"></i> We ask that your UI Screenshot be from a raid, please make sure it is.</li>
+            <li><i class="fa fa-star"></i> Our raids days are Tues through Thurs from 8:00pm until 12:00am CST.</li>
+            <li><i class="fa fa-star"></i> Occasionally we go over, or add a Monday, but that is rare.</li>
           </ul>
+      </div>
+  </div>
           </div>
 <div class="clearfix"></div>
-    <div id="side-bar" class="box row">
-    <h3 class="white-text widget-title">Application Preview</h3>
-        <h6 class="app-preview">Character Name:</h6><span ng-bind="formData.charName"></span>
-        <h6 class="app-preview">Character Class:</h6><span ng-bind="formData.charClass"></span>
-        <h6 class="app-preview">Character Spec:</h6><span ng-bind="formData.charSpec"></span>
-        <h6 class="app-preview">Character Server:</h6><span ng-bind="formData.charServer"></span>
-        <h6 class="app-preview">Armory:</h6><span ng-bind="formData.charArmory"></span>
-        <h6 class="app-preview">First Name:</h6><span ng-bind="formData.applicantName"></span>
-        <h6 class="app-preview">Age:</h6><span ng-bind="formData.applicantAge"></span>
-        <h6 class="app-preview">RealId:</h6><span ng-bind="formData.applicantRealId"></span>
-        <h6 class="app-preview">Logs:</h6><span ng-bind="formData.charLogs"></span>
-        <h6 class="app-preview">Heroic Experience:</h6><span ng-bind="formData.heroicXP"></span>
-        <h6 class="app-preview">Guild History:</h6><span ng-bind="formData.pastGuilds"></span>
-        <h6 class="app-preview">UI Screenshot:</h6><span ng-bind="formData.screenshot"></span>
-        <h6 class="app-preview">Why Top Shelf:</h6><span ng-bind="formData.whyTS"></span>
+    <div id="side-bar" class="box row expandcollapse-item">
+        <div ng-click="active1 = !active1" ng-class="{'expandcollapse-heading-collapsed': active1, 'expandcollapse-heading-expanded': !active1}">
+    <h3 class="white-text widget-title"><i class="icon-right-open-big"></i> Application Preview</h3>
+</div>
+<div class="slideDown1" ng-hide="active1">
+    <div class="expand-collapse-content">
+        <h6 class="app-preview">Character Name:</h6><span class="app-pre-text" ng-bind="formData.charName"></span>
+        <h6 class="app-preview">Character Class:</h6><span class="app-pre-text" ng-bind="formData.charClass"></span>
+        <h6 class="app-preview">Character Spec:</h6><span class="app-pre-text" ng-bind="formData.charSpec"></span>
+        <h6 class="app-preview">Character Server:</h6><span class="app-pre-text" ng-bind="formData.charServer"></span>
+        <h6 class="app-preview">Armory:</h6><span class="app-pre-text" ng-bind="formData.charArmory"></span>
+        <h6 class="app-preview">First Name:</h6><span class="app-pre-text" ng-bind="formData.applicantName"></span>
+        <h6 class="app-preview">Age:</h6><span class="app-pre-text" ng-bind="formData.applicantAge"></span>
+        <h6 class="app-preview">RealId:</h6><span class="app-pre-text" ng-bind="formData.applicantRealId"></span>
+        <h6 class="app-preview">Logs:</h6><span class="app-pre-text" ng-bind="formData.charLogs"></span>
+        <h6 class="app-preview">Heroic Experience:</h6><span class="app-pre-text" ng-bind="formData.heroicXP"></span>
+        <h6 class="app-preview">Guild History:</h6><span class="app-pre-text" ng-bind="formData.pastGuilds"></span>
+        <h6 class="app-preview">UI Screenshot:</h6><span class="app-pre-text" ng-bind="formData.screenshot"></span>
+        <h6 class="app-preview">Why Top Shelf:</h6><span class="app-pre-text" ng-bind="formData.whyTS"></span>
+    </div>
+</div>
     </div>
   </aside>
   </div>

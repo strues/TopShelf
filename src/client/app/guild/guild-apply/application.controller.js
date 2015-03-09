@@ -12,7 +12,8 @@
 
     /* @ngInject */
     function ApplicationCtrl($scope, $location, $http, Application, ngFabForm, toastr) {
-
+        $scope.active = true;
+        $scope.active1 = true;
         $scope.defaultFormOptions = ngFabForm.config;
         $scope.customFormOptions = angular.copy(ngFabForm.config);
 
