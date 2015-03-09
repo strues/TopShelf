@@ -2,7 +2,7 @@
     'use strict';
   /**
    * @ngdoc controller
-   * @name StreamsCtrl
+   * @name app.guild.states:StreamsCtrl
    *
    * @description pulls streams from the Twitch.tv API
    *
@@ -15,14 +15,15 @@
     function StreamsCtrl($rootScope, $scope, $location, Twitch, $http) {
         /*jshint validthis: true */
         var vm = this;
-        // TODO setup repeat for streamName to display multiple
-        // streams without repeating code.
+        // TODO setup repeat for streamName to display multiple streams without repeating code.
+
         $scope.data = {};
         var streamName = 'soopie';
         Twitch.get(streamName).success(function(data) {
             $scope.stream = data.stream;
         });
 
+        // TODO customize the stream viewer so that the popup window doesnt get covered by the navbar.
         $rootScope.openStream = function(streamName) {
 		// Set stream active to true, and apply scope
             $rootScope.streamName = streamName;

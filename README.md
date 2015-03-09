@@ -1,19 +1,18 @@
 Top Shelf Guild
 ===========
 
-  
-A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.js, Express.js, and Node.js. 
+
+A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.js, Express.js, and Node.js.
 
 #### Intro  
-This is a repository for an SPA I'm building for my World of Warcraft guild. Please feel free to  
-leave comments, suggestions or use it as a base for your own project.  
-  
-##### Currently in early(ish) stages of development
+Top Shelf is an SPA for managing my World of Warcraft guild's website. Please feel free to leave comments, submit pull requests or use it as a base for your own project.  
+
+##### Currently in early(ish) stages of development: Version: 0.4-beta
 
 Before beginning you should have [NodeJS](http://www.nodejs.com) and [MongoDB](http://www.mongodb.org/downloads) installed on your computer. As a quick note, I do all of my work using a Mac so any commands I included might not work for Windows users.  
-  
 
-  
+
+
 ### Usage
 
 Clone the repo
@@ -21,11 +20,11 @@ Clone the repo
 `git clone git@github.com:strues/TopShelf.git yourApp`
 
 
-Run `npm install && bower install`, in order to get started.
+Run `npm install && bower install`
 
-Navigate to `server/config/environment` and rename index.example.js to index.js. Make sure to edit all the fields that have
+Navigate to `src/server/config/environment` and rename index.example.js to index.js. Make sure to edit all the fields that have
 caps for values to match your settings. You can either setup the MongoDB database yourself or use a BaaS such as [Mongolab](http://www.mongolab.com). You're going to need to change the development and production files inside the environment folder as well.  
-  
+
 Due to the fact that this is still fairly early in the development phases much of the frontend configuration will require you
 to manually change things such as Top Shelf to whatever your guild is named.
 
@@ -37,9 +36,9 @@ Run `gulp serve` to launch the development server.
 
 * Scripts: `JavaScript`
 * Markup:  `HTML`
-* Stylesheets: `Sass`
+* Stylesheets: `libSass`
 * Task Runner: `Gulp`
-* Angular: `1.3.12`
+* Angular: `1.3.14`
 
 
 **Server Side**
@@ -53,7 +52,7 @@ Run `gulp serve` to launch the development server.
 ## Project Structure
 
 Overview
-
+   src
     |── client
     |   ├── app                 - Everything related to our Angular app
     |   ├    ├── accounts       - Account / User module
@@ -89,7 +88,7 @@ A look inside the core component in `client/app/core`
     ├── directives              - Appwide directives
     ├── services                - Services for the entire app
     ├── filters                 - Filters for the entire app
-    ├── states                  - States  (home)
+    ├── core-home                  - your states  (home)
 
 Inside of the api at`server/api`
 
@@ -99,15 +98,13 @@ Inside of the api at`server/api`
     ├── user.model.js           - Mongoose model
 
 
-### To Do
-
-* `MODULARIZE` - ~~instead of having the entire application running from app.~~
-* `News Post Listing` - ~~Needs to be added to the routes~~
-* `Admin Navigation` - ~~needs proper ui-srefs again~~
-* `Session` - ~~Session appears to not store.~~
-* `Calendar` - Raid signup and creation module
-* `Roster` - Integrate with Battlenet Armory. Currently waiting for them to fix their API.
-* `Add Characters` - Link characters to user accounts
+### TODOs
+| Filename | line # | TODO
+|:------|:------:|:------
+| app.module.js | 49 | Finish adding strict dependency injection.
+| account/account-profile/profile.controller.js | 15 | Implement a members list with this information
+| account/services/auth.service.js | 16 | Require authorization and acesss control frontside to go with the backend. Currently the layout will load, but will contain no data unless the user has permission.
+| guild/guild-streams/streams.controller.js | 18 | setup repeat for streamName to display multiple
 
 ##### Credit Where Credit is Due
 You will find me referencing many people who are truly much more experienced than I am when it comes to this whole stack. I reference [John Papa](http://twitter.com/john_papa) and [Todd Motto](http://twitter.com/toddmotto) often. You will even see me modify or use snippets from [Angular-Fullstack](https://github.com/DaftMonk/generator-angular-fullstack) because I find those guys do a great job.  

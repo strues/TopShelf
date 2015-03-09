@@ -2,7 +2,7 @@
     'use strict';
 
     /* @ngdoc object
-     * @name topshelf.guild.states: config
+     * @name topshelf.guild.states:states
      * @requires $stateProvider
      *
      * @description holds the states relating to the guild module
