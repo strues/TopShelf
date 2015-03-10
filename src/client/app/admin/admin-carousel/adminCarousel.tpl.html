@@ -1,22 +1,21 @@
-<div ng-controller="AdminCarouselCtrl as vm">
-<div class="row">
-<h2>Carousel Images<a class="pull-right" href=""><button class="btn btn-xs btn-danger"><i class="fa fa-plus"></i>Add</button></a></h2>
-      <form novalidate ng-submit="vm.saveCarousel()">
-              <div class="col-sm-4 col-md-5">
-              <label>Image Source:</label>
+<div class="container-fluid">
+<div class="row" ng-controller="AdminCarouselCtrl as vm">
+<h2>Carousel Images</h2>
+<div class="well well-lg">
+      <form class="form-inline" novalidate ng-submit="vm.saveCarousel()">
+          <div class="form-group">
                 <input type="text"
-                      class="input-md form-control"
+                      class="input-lg"
                       placeholder="/assets/images/image.jpg"
                       ng-minLength=3
                       ng-maxLength=75
+                      placeholder="Image Source"
                       ng-model="vm.slideData.image"
                       required/>
-              </div>
-                <!-- Save Btn-->
-          <div style="padding-top: 20px; padding-right: 15px;">
-              <input type="submit" class="btn btn-primary pull-right" value="Save" />
-          </div> <!--./row-->
+                  </div>
+            <input type="submit" style="margin-left: 10px;" class="btn btn-primary" value="Save" />
       </form>
+  </div>
   </div>
   <div class="row">
    <div class="col-sm-4 col-lg-3" ng-repeat="slide in vm.slides">

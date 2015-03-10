@@ -3,10 +3,15 @@
 [Back to Repo](https://github.com/strues/TopShelf)
 ## [Unreleased][unreleased]
 
+## 2015-03-10
+### Version 0.5.0
+- Getting closer to full 1.0 beta version. This update fixes the full sized image embeds when
+viewing uploaded media. All twitch streams are implemented.
+
 ## 2015-02-09
-### Beta 1
+### Alpha 1
 - Things are starting to take shape and at this time I'd like to think that we're ready for  
-the first beta version. Everything implemented is working fairly well. The only way to find bugs
+the first alpha version. Everything implemented is working fairly well. The only way to find bugs
 is to get this out there and used.
 
 ## 2015-01-18

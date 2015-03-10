@@ -29,6 +29,7 @@
                 return this.queue.length < 10;
             }
         });
+        // TODO Add the ability to delete uploads. Expanded media functionality.
 
         // CALLBACKS
 

@@ -49,38 +49,7 @@ Run `gulp serve` to launch the development server.
 * Session: `Redis`
 
 
-## Project Structure
-
-Overview
-   src
-    |── client
-    |   ├── app                 - Everything related to our Angular app
-    |   ├    ├── accounts       - Account / User module
-    |   |    ├── guild          - Guild module
-    |   |    ├── core           - Core module
-    |   |    ├── admin          - Admin module
-    |   |-- index.html
-    |   |-- app.module.js       - Bootstrap of the entire application
-    |   ├── assets              - Fonts, Images, etc
-    |   |__ styles              - Sass files
-    |
-    |__ bower_components
-    |
-    |
-    ├── test                    - Testing
-    |
-    |__ gulp                    - Gulp tasks
-    |
-    |── server
-        ├── api                 - Our express REST api
-        ├── auth                - Passport Login strategies
-        ├── components          - Errors for the most part (404)
-        ├── config              - Express settings and environemtn
-        │   └── environment     - Node env configurations
-        └── views               - Server rendered views
-
-
-A look inside the core component in `client/app/core`
+A look inside the core component in `src/client/app/core`
 
 
     core
@@ -103,8 +72,10 @@ Inside of the api at`server/api`
 |:------|:------:|:------
 | app.module.js | 49 | Finish adding strict dependency injection.
 | account/account-profile/profile.controller.js | 15 | Implement a members list with this information
-| account/services/auth.service.js | 16 | Require authorization and acesss control frontside to go with the backend. Currently the layout will load, but will contain no data unless the user has permission.
-| guild/guild-streams/streams.controller.js | 18 | setup repeat for streamName to display multiple
+| account/services/auth.service.js | 16 | Require authorization and acesss control frontside to go with the backend.
+| admin/admin-media/adminMedia.controller.js | 32 | Add the ability to delete uploads. Expanded media functionality.
+| guild/guild-streams/streams.controller.js | 18 | setup repeat for streamName to display multiple streams without repeating code.
+| guild/guild-streams/streams.controller.js | 26 | customize the stream viewer so that the popup window doesnt get covered by the navbar.
 
 ##### Credit Where Credit is Due
 You will find me referencing many people who are truly much more experienced than I am when it comes to this whole stack. I reference [John Papa](http://twitter.com/john_papa) and [Todd Motto](http://twitter.com/toddmotto) often. You will even see me modify or use snippets from [Angular-Fullstack](https://github.com/DaftMonk/generator-angular-fullstack) because I find those guys do a great job.  
