@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js" ng-app="app">
-
 <head>
+  <base href="/">
   <style>
     .ng-hide {
       display: none!important;
     }
   </style>
-  <link href='//fonts.googleapis.com/css?family=Oswald:400,700,300|Roboto:400,700' rel='stylesheet' type='text/css'>
-
-  <base href="/">
+<link href='http://fonts.googleapis.com/css?family=Khand|Lato:300,400' rel='stylesheet' type='text/css'>
   <title>Top Shelf Guild</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="Top Shelf Sargeras US World of Warcraft Mythic Raiding Guild">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="always">
-  <meta property="og:image" content="https://topshelfguild.com/assets/images/logo.png" />
-  <meta property="og:title" content="Top Shelf - Sargeras Raiding Guild" />
-  <meta property="og:description" content="Top Shelf is a World of Warcraft mythic raiding guild on US-Sargeras" />
-  <meta property="og:url" content="https://topshelfguild.com" />
-  <meta property="og:site_name" content="Top Shelf" />
-  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://topshelfguild.com/assets/images/logo.png">
+  <meta property="og:title" content="Top Shelf - Sargeras Raiding Guild">
+  <meta property="og:description" content="Top Shelf is a World of Warcraft mythic raiding guild on US-Sargeras">
+  <meta property="og:url" content="https://topshelfguild.com">
+  <meta property="og:site_name" content="Top Shelf">
+  <meta property="og:type" content="website">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-TileImage" content="/assets/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
   <link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-touch-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
@@ -35,11 +36,6 @@
   <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/png" href="/assets/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="/manifest.json">
-  <meta name="msapplication-TileColor" content="#2b5797">
-  <meta name="msapplication-TileImage" content="/assets/mstile-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-
-
   <!-- build:css styles/lib.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="/bower_components/bootstrap-css-only/css/bootstrap.css" />
@@ -68,7 +64,7 @@
     <![endif]-->
   <div id="page" class="site">
 
-    <div ui-view></div>
+    <div ui-view="main"></div>
   </div>
   <!-- build:js js/lib.js -->
   <!-- bower:js -->
@@ -116,25 +112,19 @@
 
   <script src="/src/client/app/guild/guild.module.js"></script>
 
-  <script src="/src/client/app/account/account.states.js"></script>
-
-  <script src="/src/client/app/admin/admin.states.js"></script>
-
-  <script src="/src/client/app/core/core.config.js"></script>
-
-  <script src="/src/client/app/core/core.states.js"></script>
-
-  <script src="/src/client/app/guild/guild.states.js"></script>
-
   <script src="/src/client/app/account/account-login/login.controller.js"></script>
 
   <script src="/src/client/app/account/account-login/loginForm.directive.js"></script>
 
   <script src="/src/client/app/account/account-profile/profile.controller.js"></script>
 
+  <script src="/src/client/app/account/account-profile/profile.edit/profileEdit.controller.js"></script>
+
   <script src="/src/client/app/account/account-signup/signup.controller.js"></script>
 
   <script src="/src/client/app/account/account-signup/signupForm.directive.js"></script>
+
+  <script src="/src/client/app/account/account.states.js"></script>
 
   <script src="/src/client/app/account/services/auth.service.js"></script>
 
@@ -142,11 +132,13 @@
 
   <script src="/src/client/app/admin/admin-apps/adminApps.controller.js"></script>
 
+  <script src="/src/client/app/admin/admin-apps/app.details/appDetails.controller.js"></script>
+
+  <script src="/src/client/app/admin/admin-carousel/adminCarousel.controller.js"></script>
+
   <script src="/src/client/app/admin/admin-dashboard/adminDashboard.controller.js"></script>
 
   <script src="/src/client/app/admin/admin-dashboard/dashboardProgression.controller.js"></script>
-
-  <script src="/src/client/app/admin/admin-carousel/adminCarousel.controller.js"></script>
 
   <script src="/src/client/app/admin/admin-media/adminMedia.controller.js"></script>
 
@@ -154,13 +146,29 @@
 
   <script src="/src/client/app/admin/admin-news/adminNews.controller.js"></script>
 
+  <script src="/src/client/app/admin/admin-news/news.create/newsCreate.controller.js"></script>
+
+  <script src="/src/client/app/admin/admin-news/news.edit/newsEdit.controller.js"></script>
+
   <script src="/src/client/app/admin/admin-recruitment/adminRecruitment.controller.js"></script>
 
   <script src="/src/client/app/admin/admin-recruitment/recruitmentList.controller.js"></script>
 
   <script src="/src/client/app/admin/admin-resources/adminResource.controller.js"></script>
 
+  <script src="/src/client/app/admin/admin-resources/resource.create/resourceCreate.controller.js"></script>
+
+  <script src="/src/client/app/admin/admin-resources/resource.edit/resourceEdit.controller.js"></script>
+
   <script src="/src/client/app/admin/admin-users/adminUsers.controller.js"></script>
+
+  <script src="/src/client/app/admin/admin-users/user.details/userDetails.controller.js"></script>
+
+  <script src="/src/client/app/admin/admin.states.js"></script>
+
+  <script src="/src/client/app/admin/directives/asideNav/asideNav.controller.js"></script>
+
+  <script src="/src/client/app/admin/directives/asideNav/asideNav.directive.js"></script>
 
   <script src="/src/client/app/admin/services/resource.service.js"></script>
 
@@ -168,15 +176,31 @@
 
   <script src="/src/client/app/core/core-home/home.controller.js"></script>
 
+  <script src="/src/client/app/core/core-home/home.details/details.controller.js"></script>
+
+  <script src="/src/client/app/core/core.config.js"></script>
+
+  <script src="/src/client/app/core/core.states.js"></script>
+
+  <script src="/src/client/app/core/directives/brfPanel/brfPanel.directive.js"></script>
+
+  <script src="/src/client/app/core/directives/footer/footer.controller.js"></script>
+
+  <script src="/src/client/app/core/directives/footer/footer.directive.js"></script>
+
+  <script src="/src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
+
+  <script src="/src/client/app/core/directives/navbar/navbar.controller.js"></script>
+
+  <script src="/src/client/app/core/directives/navbar/navbar.directive.js"></script>
+
+  <script src="/src/client/app/core/directives/recruitingPanel/recruitingPanel.directive.js"></script>
+
   <script src="/src/client/app/core/filters/className.filter.js"></script>
 
   <script src="/src/client/app/core/filters/rankName.filter.js"></script>
 
   <script src="/src/client/app/core/filters/startFrom.filter.js"></script>
-
-  <script src="/src/client/app/guild/guild-apply/application.controller.js"></script>
-
-  <script src="/src/client/app/guild/guild-info/info.controller.js"></script>
 
   <script src="/src/client/app/core/services/authInterceptor.service.js"></script>
 
@@ -188,9 +212,15 @@
 
   <script src="/src/client/app/core/services/util.service.js"></script>
 
+  <script src="/src/client/app/guild/guild-apply/application.controller.js"></script>
+
+  <script src="/src/client/app/guild/guild-info/info.controller.js"></script>
+
   <script src="/src/client/app/guild/guild-roster/roster.controller.js"></script>
 
   <script src="/src/client/app/guild/guild-streams/streams.controller.js"></script>
+
+  <script src="/src/client/app/guild/guild.states.js"></script>
 
   <script src="/src/client/app/guild/services/application.service.js"></script>
 
@@ -203,40 +233,6 @@
   <script src="/src/client/app/guild/services/recruitment.service.js"></script>
 
   <script src="/src/client/app/guild/services/twitch.service.js"></script>
-
-  <script src="/src/client/app/account/account-profile/profile.edit/profileEdit.controller.js"></script>
-
-  <script src="/src/client/app/admin/admin-apps/app.details/appDetails.controller.js"></script>
-
-  <script src="/src/client/app/admin/admin-news/news.create/newsCreate.controller.js"></script>
-
-  <script src="/src/client/app/admin/admin-news/news.edit/newsEdit.controller.js"></script>
-
-  <script src="/src/client/app/admin/admin-resources/resource.create/resourceCreate.controller.js"></script>
-
-  <script src="/src/client/app/admin/admin-resources/resource.edit/resourceEdit.controller.js"></script>
-
-  <script src="/src/client/app/admin/admin-users/user.details/userDetails.controller.js"></script>
-
-  <script src="/src/client/app/admin/directives/asideNav/asideNav.controller.js"></script>
-
-  <script src="/src/client/app/admin/directives/asideNav/asideNav.directive.js"></script>
-
-  <script src="/src/client/app/core/core-home/home.details/details.controller.js"></script>
-
-  <script src="/src/client/app/core/directives/brfPanel/brfPanel.directive.js"></script>
-
-  <script src="/src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
-
-  <script src="/src/client/app/core/directives/footer/footer.controller.js"></script>
-
-  <script src="/src/client/app/core/directives/footer/footer.directive.js"></script>
-
-  <script src="/src/client/app/core/directives/navbar/navbar.controller.js"></script>
-
-  <script src="/src/client/app/core/directives/navbar/navbar.directive.js"></script>
-
-  <script src="/src/client/app/core/directives/recruitingPanel/recruitingPanel.directive.js"></script>
 
   <!-- endinject -->
 

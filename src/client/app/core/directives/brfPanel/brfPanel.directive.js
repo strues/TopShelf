@@ -1,24 +1,19 @@
-(function() {
+(function () {
     'use strict';
-
     function brfPanel() {
         return {
             templateUrl: 'app/core/directives/brfPanel/brfPanel.tpl.html',
             restrict: 'EA',
-            controller: function($scope, Progression, $log) {
-                Progression.all()
-                    .success(function(data) {
-                        $scope.progressions = data;
-                    }).
-                error(function(error) {
+            controller: function ($scope, Progression, $log) {
+                Progression.all().success(function (data) {
+                    $scope.progressions = data;
+                    $scope.status = data.dead;    //TODO better way to use ng-class?
+                }).error(function (error) {
                     $scope.status = 'Unable to retrieve progression information because: ' + error.message;
                     console.log($scope.status);
                 });
             }
         };
     }
-
-    angular
-        .module('app.core.directives')
-        .directive('brfPanel', brfPanel);
-})();
+    angular.module('app.core.directives').directive('brfPanel', brfPanel);
+}());

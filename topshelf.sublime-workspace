@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"dir",
+				"directory"
+			],
+			[
 				"com",
 				"_compass.scss"
 			],
@@ -53,11 +57,56 @@
 	[
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
-		"height": 129.0,
+		"height": 400.0,
+		"last_filter": "pack",
 		"selected_items":
 		[
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"csso",
+				"CssOrder"
+			],
+			[
+				"css comb",
+				"Run CSScomb"
+			],
+			[
+				"css c",
+				"Run CSScomb"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"pretty",
+				"HTMLPrettify"
+			],
+			[
+				"themr",
+				"Themr: List themes"
+			],
 			[
 				"jsb",
 				"Javascript Beautify"
@@ -69,10 +118,6 @@
 			[
 				"api",
 				"API Blueprint: Parse to JSON AST"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"commen",
@@ -103,10 +148,6 @@
 				"Javascript Beautify"
 			],
 			[
-				"themr",
-				"Themr: List themes"
-			],
-			[
 				"instl",
 				"npm: Install Package"
 			],
@@ -117,10 +158,6 @@
 			[
 				"comment",
 				"Toggle Block Comment"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"comm",
@@ -149,10 +186,6 @@
 			[
 				"trai",
 				"Trailing Spaces: Delete Trailing Spaces"
-			],
-			[
-				"pack",
-				"Package Control: Remove Package"
 			],
 			[
 				"package",
@@ -199,7 +232,7 @@
 				"Snippet: gulp.task('name',funciton)"
 			]
 		],
-		"width": 673.0
+		"width": 601.0
 	},
 	"console":
 	{
@@ -220,34 +253,58 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/steventruesdell/Webdev/TopShelf/web",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/login",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/profile",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/profile/edit",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/signup",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/services",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/users",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/users/details",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/navbar",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/auth/local",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/components",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/config"
+		"/Users/steventruesdell/Webdev/TopShelf/Develop",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-apply",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/pages"
 	],
 	"file_history":
 	[
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-apply/application.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/base/_fonts.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/pages/_loginSignup.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/index.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/layout/_navbar.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/layout/_grid.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/components/_asideNav.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/base/_settings.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-info/info.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/admin/admin-media/adminMedia.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-info/info.controller.spec.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.controller.js",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/Alignment/Default (OSX).sublime-keymap",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Base File.sublime-settings",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/admin/directives/asideNav/asideNav.controller.spec.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core.states.spec.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/gulp.config.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/gulpfile.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/.tmp/styles.css",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/package.json",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core-home/carousel.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/api/progression/progression.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/api/progression/index.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/gulp/check.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/gulp/optimize.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/brfPanel/brfPanel.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.details/details.home.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/brfPanel/brfPanel.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams/streams.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams/streams.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/api/progression/progression.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/api/recruitment/recruitment.model.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/services/progression.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/routes.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.tpl.html",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/user.controller.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/index.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/users/details/user-details.controller.js",
@@ -334,48 +391,7 @@
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/form-for.bootstrap.templates.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/bower_components/angular-form-for/.bower.json",
 		"/Users/steventruesdell/Webdev/TopShelf/web/bower_components/angular-form-for/bower.json",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/recruitment/guild.recruitment.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/admin.resource.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/components/_buttons.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/base/_fonts.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/applications/details/application-details.tpl.html",
-		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/codeivate-st.sublime-settings",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/applications/details/applicationDetails.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/create/admin.news-create.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/base/_settings.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/styles.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/recruitingPanel/core.recruitingPanel.tpl.html",
-		"/Users/steventruesdell/Downloads/_variables (1).scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/utilities/_mixins.scss",
-		"/Users/steventruesdell/Downloads/_bootswatch.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/vendor.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/config.rb",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/resource/resource.model.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/services/resourceModal.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/edit/admin.resource-edit.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/edit/admin.resource-edit.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/services/resource.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/styles/_bootswatch.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/resource/resource.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/inject.js",
-		"/Users/steventruesdell/Webdev/topshelf/web/client/styles/components/_hero.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/gulp/build.js",
-		"/Users/steventruesdell/Webdev/TopShelf/gulp/e2e-tests.js",
-		"/Users/steventruesdell/Webdev/TopShelf/gulp/inject.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/server.js",
-		"/Users/steventruesdell/Webdev/TopShelf/gulp/proxy.js",
-		"/Users/steventruesdell/Webdev/TopShelf/gulp/server.js",
-		"/Users/steventruesdell/Webdev/TopShelf/gulp/styles.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/styles.js",
-		"/Users/steventruesdell/Webdev/TopShelf/gulp/watch.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/gulp/watch.js",
-		"/Users/steventruesdell/Webdev/TopShelf/gulp/unit-tests.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/bower_components/angular-h-sweetalert/bower.json",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/config.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/recruitment/admin.recruitmentSites.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/services/guild.recruitment.service.js"
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/recruitment/guild.recruitment.tpl.html"
 	],
 	"find":
 	{
@@ -386,6 +402,8 @@
 		"height": 100.0,
 		"where_history":
 		[
+			"<current file>",
+			"",
 			"/Users/steventruesdell/Webdev/topshelf/web/",
 			"/Users/steventruesdell/Webdev/topshelf/web/server",
 			"/Users/steventruesdell/Webdev/topshelf/web",
@@ -400,6 +418,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"brandon",
+			" />",
+			"recruitment",
+			"Recruitment",
 			"\"",
 			"postData",
 			"postFactory",
@@ -523,11 +545,7 @@
 			"cleanConcat",
 			"home",
 			"views",
-			"\"",
-			"navbar",
-			"fav",
-			"sendFile",
-			"controller"
+			"\""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -535,6 +553,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			">",
+			"progression",
+			"Progression",
 			"'",
 			"characterData",
 			"characterFactory",
@@ -608,7 +629,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -648,12 +669,13 @@
 	"project": "topshelf.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -662,6 +684,7 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -670,6 +693,7 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],

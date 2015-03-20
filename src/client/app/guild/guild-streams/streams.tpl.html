@@ -7,7 +7,7 @@
   <div class="col-sm-12 col-lg-4"><!-- stream 1-->
       <div class=""><span class="blue-text">Soupy</span></div>
     <div class="streamWrapper streams">
-      <img ng-click="openStream1(stream.channel.name)" ng-src="{{ stream.preview.large }}">
+      <img ng-click="openStream(stream.channel.name)" ng-src="{{ stream.preview.large }}">
       <div class="stream-info">
         <div class="stream-title">{{ stream.channel.display_name }}</div>
         <div class="stream-viewers">{{ stream.viewers }} <i class="fa fa-eye"></i></div>
@@ -17,7 +17,7 @@
 <div class="col-sm-12 col-lg-4"><!-- stream 2-->
     <div class=""><span class="blue-text">Toxicpoptart</span></div>
   <div class="streamWrapper streams">
-    <img ng-click="openStream2(stream.channel.name)" ng-src="{{ stream.preview.large }}">
+    <img ng-click="openStream(stream.channel.name)" ng-src="{{ stream.preview.large }}">
     <div class="stream-info">
       <div class="stream-title" style="color: #fff;">{{ stream.channel.display_name }}</div>
       <div class="stream-viewers" style="color: #fff;">{{ stream.viewers }} <i class="fa fa-eye"></i></div>
@@ -27,7 +27,7 @@
 <div class="col-sm-12 col-lg-4"><!-- stream 3-->
     <div class=""><span class="blue-text">Teodin</span></div>
   <div class="streamWrapper streams">
-    <img ng-click="openStream3(stream.channel.name)" ng-src="{{ stream.preview.large }}">
+    <img ng-click="openStream(stream.channel.name)" ng-src="{{ stream.preview.large }}">
     <div class="stream-info">
       <div class="stream-title" style="color: #fff;">{{ stream.channel.display_name }}</div>
       <div class="stream-viewers" style="color: #fff;">{{ stream.viewers }} <i class="fa fa-eye"></i></div>
@@ -41,7 +41,7 @@
 <div class="col-sm-12 col-lg-4"><!-- stream 4-->
     <div class=""><span class="blue-text">Valkr</span></div>
 <div class="streamWrapper streams">
-  <img ng-click="openStream4(stream.channel.name)" ng-src="{{ stream.preview.large }}">
+  <img ng-click="openStream(stream.channel.name)" ng-src="{{ stream.preview.large }}">
   <div class="stream-info">
     <div class="stream-title" style="color: #fff;">{{ stream.channel.display_name }}</div>
     <div class="stream-viewers" style="color: #fff;">{{ stream.viewers }} <i class="fa fa-eye"></i></div>
@@ -51,7 +51,7 @@
 <div class="col-sm-12 col-lg-4"><!-- stream 5-->
     <div class=""><span class="blue-text">Tinkerbell</span></div>
 <div class="streamWrapper streams">
-<img ng-click="openStream5(stream.channel.name)" ng-src="{{ stream.preview.large }}">
+<img ng-click="openStream(stream.channel.name)" ng-src="{{ stream.preview.large }}">
 <div class="stream-info">
   <div class="stream-title" style="color: #fff;">{{ stream.channel.display_name }}</div>
   <div class="stream-viewers" style="color: #fff;">{{ stream.viewers }} <i class="fa fa-eye"></i></div>
@@ -62,12 +62,12 @@
 <hr>
   <div class="streamContainer" ng-show="streamActive">
     <div class="twitchContainer">
-      <object type="application/x-shockwave-flash" height="{HEIGHT}" width="{WIDTH}" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{ streamName }}" bgcolor="#000000">
+      <object type="application/x-shockwave-flash" height="{HEIGHT}" width="{WIDTH}" id="live_embed_player_flash" data="https://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?channel={{ streamName }}" bgcolor="#000000">
 
         <param name="allowFullScreen" value="true" />
         <param name="allowScriptAccess" value="always" />
         <param name="allowNetworking" value="all" />
-        <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />
+        <param name="movie" value="https://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" />
       </object>
       <i ng-click="closeStream()" class="fa fa-times"></i>
     </div>

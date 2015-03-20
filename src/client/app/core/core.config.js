@@ -1,13 +1,6 @@
-(function() {
+(function () {
     'use strict';
-
-    angular.module('app.core')
-        .config(configureToastr)
-        .config(configureDatepicker)
-        .config(configureTooltip)
-        .config(configureAside)
-        .config(configure);
-
+    angular.module('app.core').config(configureToastr).config(configureDatepicker).config(configureTooltip).config(configureAside).config(configure);
     configureToastr.$inject = ['toastrConfig'];
     /* @ngInject */
     function configureToastr(toastrConfig) {
@@ -35,11 +28,16 @@
             toastClass: 'toast'
         });
     }
-    configure.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider'];
+    configure.$inject = [
+        '$urlRouterProvider',
+        '$locationProvider',
+        '$httpProvider',
+        'cfpLoadingBarProvider'
+    ];
     /* @ngInject */
     function configure($urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.otherwise('/');
-       // $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
         cfpLoadingBarProvider.includeSpinner = true;
     }
@@ -67,4 +65,4 @@
             html: true
         });
     }
-})();
+}());

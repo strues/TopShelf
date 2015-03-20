@@ -1,69 +1,67 @@
-<!-- Topbar
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<div id="navbar" class="navbar-container container-fluid" ng-controller="NavbarCtrl as vm" bs-navbar>
-    <header role="banner">
-        <div class="navbar-background clearfix"></div>
-        <!--topbarbg cf-->
-        <!-- Topbar Group -->
-        <div class="navbar-group">
-            <div bs-collapse start-collapsed="true">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" bs-collapse-toggle>
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand brand-image" ui-sref="home" rel="home">
-                        <img src="/assets/images/crown.svg" height="60px" alt="Top Shelf Guild logo">
-                        <span class="brand-text">Top Shelf</span>
-                    </a>
-                </div>
-                <!-- END navbar header-->
-                <nav class="pull-right" role="navigation">
-                    <div class="navbar-collapse pull-right" ng-class="{collapse: isCollapsed}" bs-collapse-target>
-                        <ul id="top-menu" class="nav navbar-nav">
-                            <li><a ui-sref="apply">Apply</a>
-                            </li>
-                            <li><a ui-sref="information">Info</a>
-                            </li>
-                            <li><a ui-sref="streams">Streams</a>
-                            </li>
-                            <li><a ui-sref="roster">Roster</a>
-                            </li>
-                            <li><a href="https://topshelfguild.com/forums/" target="_blank">Forums</a>
-                            </li>
-                            <li ng-show="vm.Auth.isAdmin()" ui-sref-active="active">
-                                <a ui-sref="admin"> Admin</a>
-                            </li>
-                            <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                                <a ui-sref="account.signup">Sign up</a>
-                            </li>
-                            <li ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
-                                <a ui-sref="account.login"> Login</a>
-                            </li>
-                            <!-- Dropdown -->
-                            <li class="dropdown" ng-show="vm.Auth.isLoggedIn()">
-                                <a role="button" data-toggle="dropdown" bs-dropdown data-template="dropdownbody">
-                                {{ vm.Auth.getCurrentUser().name }}<b class="caret"></b>
-                                </a>
-                                <script type="text/ng-template" id="dropdownbody">
-                                    <ul class="dropdown-menu">
-                                        <li ng-show="vm.Auth.isLoggedIn()">
-                                            <a ui-sref="account.profileEdit"> Profile</a>
-                                        </li>
-                                        <li ng-show="vm.Auth.isLoggedIn()">
-                                            <a ui-sref="account.logout"> Logout</a>
-                                        </li>
-                                    </ul>
-                                </script>
-                            </li>
-                            <!-- END Dropdown -->
-                        </ul>
-                        <!-- END Navbar-nav -->
-                    </div>
-                </nav>
-                <!-- END Nav -->
-            </div>
-            <!-- END topbar-group -->
-    </header>
-  </div>
-    <!-- #navbar -->
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarCtrl as vm" role="navigation" bs-navbar>
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand-image" ui-sref="home" rel="home">
+        <img src="/assets/images/crown.svg" height="40px" style="margin-top: -10px;" alt="Top Shelf Guild logo">
+      </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse" ng-class="{collapse: isCollapsed}">
+      <ul class="nav navbar-nav navbar-right">
+        <li cdata-match-route="/"><a ui-sref="home">Home</a></li>
+        <li ><a ui-sref="guild.apply">Apply</a></li>
+        <li class="dropdown">
+        <a role="button" data-toggle="dropdown" bs-dropdown data-template="appDD">
+         Apply<b class="caret"></b>
+        </a>
+        <script type="text/ng-template" id="appDD">
+        <ul class="dropdown-menu">
+          <li>
+            <a ui-sref="guild.apply.info"> Info</a>
+          </li>
+          <li>
+            <a data-match-route="/guild/apply" ui-sref="guild.apply.app"> Application</a>
+          </li>
+        </ul>
+        </script>
+        </li>
+        <li data-match-route="/guild/info"><a ui-sref="guild.information">Info</a></li>
+        <li data-match-route="/guild/streams"><a ui-sref="guild.streams">Streams</a></li>
+        <li data-match-route="/guild/roster"><a ui-sref="guild.roster">Roster</a></li>
+        <li><a href="https://topshelfguild.com/forums/" target="_blank">Forums</a></li>
+        <li data-match-route="/admin" ng-show="vm.Auth.isAdmin()" ui-sref-active="active">
+          <a ui-sref="admin"> Admin</a>
+        </li>
+        <li data-match-route="/signup" ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
+          <a ui-sref="account.signup">Sign up</a>
+        </li>
+        <li data-match-route="/login" ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
+          <a ui-sref="account.login"> Login</a>
+        </li>
+        <!-- START dropdown -->
+        <li class="dropdown" ng-show="vm.Auth.isLoggedIn()">
+        <a role="button" data-toggle="dropdown" bs-dropdown data-template="dropdownbody">
+          {{ vm.Auth.getCurrentUser().name }}<b class="caret"></b>
+        </a>
+        <script type="text/ng-template" id="dropdownbody">
+        <ul class="dropdown-menu">
+          <li ng-show="vm.Auth.isLoggedIn()">
+            <a ui-sref="account.profileEdit"> Profile</a>
+          </li>
+          <li ng-show="vm.Auth.isLoggedIn()">
+            <a ui-sref="account.logout"> Logout</a>
+          </li>
+        </ul>
+        </script>
+        </li>
+      <!-- END Dropdown -->
+      </ul>
+    </div><!--/.nav-collapse -->
+</div>
+</nav>

@@ -6,26 +6,34 @@ module.exports = function() {
     var root = './';
     var specRunnerFile = 'specs.html';
     var temp = './.tmp/';
-    var assets = './src/client/assets/';
     var wiredep = require('wiredep');
     var bowerFiles = wiredep({devDependencies: true})['js'];
+    var bower = {
+        json: require('./bower.json'),
+        directory: './bower_components/',
+        ignorePath: '../..'
+    };
+    var nodeModules = 'node_modules';
 
     var config = {
         /**
          * File paths
          */
         // all javascript that we want to vet
-        alljs: './src/client/**/*.js',
+        alljs: [
+            './src/**/*.js',
+            './*.js'
+        ],
         build: './build/',
         client: client,
-        css: temp + 'styles',
+        css: temp + 'styles.css',
         fonts: [
-            './bower_components/font-awesome/fonts/**/*.*',
-            './bower_components/bootstrap-sass/assets/fonts/**/*.*'
+            bower.directory + 'font-awesome/fonts/**/*.*',
+            bower.directory + 'bootstrap-sass/assets/fonts/**/*.*'
         ],
         html: client + '**/*.html',
-        templates: clientApp + '**/*.tpl.html',
-        images: assets + 'images/**/*.*',
+        htmltemplates: clientApp + '**/*.tpl.html',
+        images: client + 'assets/images/**/*.*',
         index: client + 'index.html',
         // app js, with no specs
         js: [
@@ -38,12 +46,15 @@ module.exports = function() {
             '**/*.module.js',
             '**/*.js'
         ],
-        sass: client + 'styles/styles.scss',
+        sass: client + 'styles/**/*.scss',
         report: report,
-        assets: assets,
         root: root,
         server: server,
-        source: 'client/',
+        source: 'src/',
+        stubsjs: [
+            bower.directory + 'angular-mocks/angular-mocks.js',
+            client + 'stubs/**/*.js'
+        ],
         temp: temp,
 
         /**
@@ -53,14 +64,16 @@ module.exports = function() {
             app: 'app.js',
             lib: 'lib.js'
         },
-        /**
-         * browser sync
-         */
-        browserReloadDelay: 1000,
+
         /**
          * plato
          */
         plato: {js: clientApp + '**/*.js'},
+
+        /**
+         * browser sync
+         */
+        browserReloadDelay: 1000,
 
         /**
          * template cache
@@ -70,18 +83,14 @@ module.exports = function() {
             options: {
                 module: 'app.core',
                 root: 'app/',
-                standAlone: false,
+                standAlone: false
             }
         },
 
         /**
-         * Bower and NPM locations
+         * Bower and NPM files
          */
-        bower: {
-            json: require('./bower.json'),
-            directory: './bower_components/',
-            ignorePath: '../..'
-        },
+        bower: bower,
         packages: [
             './package.json',
             './bower.json'
@@ -104,14 +113,14 @@ module.exports = function() {
          *  6 templates
          */
         testlibraries: [
-            'node_modules/mocha/mocha.js',
-            'node_modules/chai/chai.js',
-            'node_modules/mocha-clean/index.js',
-            'node_modules/sinon-chai/lib/sinon-chai.js'
+            nodeModules + '/mocha/mocha.js',
+            nodeModules + '/chai/chai.js',
+            nodeModules + '/mocha-clean/index.js',
+            nodeModules + '/sinon-chai/lib/sinon-chai.js'
         ],
-        specHelpers: [root + 'tests/**/*.js'],
+        specHelpers: [client + 'test-helpers/*.js'],
         specs: [clientApp + '**/*.spec.js'],
-        serverIntegrationSpecs: [root + '/tests/server-integration/**/*.spec.js'],
+        serverIntegrationSpecs: [client + '/tests/server-integration/**/*.spec.js'],
 
         /**
          * Node settings

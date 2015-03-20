@@ -1,6 +1,5 @@
-(function() {
+(function () {
     'use strict';
-
     /**
      * @ngdoc directive
      * @name core.directive:navbar
@@ -12,10 +11,7 @@
      * @example
      *
      */
-    angular
-        .module('app.core.directives')
-        .directive('navbar', navbar);
-
+    angular.module('app.core.directives').directive('navbar', navbar);
     function navbar() {
         return {
             restrict: 'EA',
@@ -24,4 +20,4 @@
             controllerAs: 'vm'
         };
     }
-})();
+}());

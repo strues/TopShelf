@@ -1,7 +1,16 @@
-<ul ng-repeat="recruitment in recruitments">
-<li><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" height="32px" style="padding-right: 10px;"> {{ recruitment.classSpec }}
-<strong>{{ recruitment.priority }}</strong></li>
-</ul>
-<br>
-<a ui-sref="apply" class="btn btn-primary pull-right">Apply Now</a>
-<!--ng-click="open(admin-recruitment._id)"-->
+<div class="card">
+	<div class="card-image">
+		<img class="img-responsive" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7TDlCYzRROE84YWM/materialdesign_introduction.png">
+		<span class="card-title">Mythic Blackrock Foundry</span>
+	</div>
+	<div class="card-content">
+		<div class="recruitment-panel">
+			<ul ng-repeat="recruitment in recruitments">
+				<li><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" height="32px" style="padding-right: 10px;"> {{ recruitment.classSpec }}
+				<strong>{{ recruitment.priority }}</strong></li>
+			</ul>
+		</div>
+		<div class="card-action">
+			<a ui-sref="apply" class="btn btn-primary pull-right">Apply Now</a>
+		</div>
+	</div>

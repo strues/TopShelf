@@ -1,241 +1,239 @@
 <navbar></navbar>
-<div id="application-page" class="container-fluid">
-<div class="row" ng-controller="ApplicationCtrl as application">
-  <div class="box col-xs-12 col-sm-12 col-md-8 col-lg-8">
-      <h1><span style="color:#333;">Top</span> <span class="blue-text">Shelf</span> <small>Guild Application</small></h1>
+
+
+  <div class="container">
+    <div class="row" ng-controller="ApplicationCtrl as application">
+      <div class="col-sm-12 col-md-8">
+        <h1><span style="color:#333;">Top</span> <span class="blue-text">Shelf</span> <small>Guild Application</small></h1>
+        <!-- start form -->
         <form role="form"
               name="applicationForm"
               class="form-horizontal"
               ng-submit="submit(formData)"
               ng-fab-form-options="customFormOptions">
-               <fieldset>
+          <fieldset>
             <div class="form-group">
-                <label class="control-label">Character Name
+            <label class="control-label">Character Name</label>
+              <input type="text"
+                     class="form-control"
+                     placeholder="Laerel"
+                     ng-model="formData.charName"
+                     required>
+            </div><!-- /charname field -->
+            <div class="form-group">
+              <label>Class</label>
+              <select ng-model="formData.charClass"
+                      class="form-control"
+                      required>
+                  <option value=""></option>
+                  <option value="DeathKnight">Death Knight</option>
+                  <option value="Druid">Druid</option>
+                  <option value="Hunter">Hunter</option>
+                  <option value="Mage">Mage</option>
+                  <option value="Monk">Monk</option>
+                  <option value="Paladin">Paladin</option>
+                  <option value="Priest">Priest</option>
+                  <option value="Rogue">Rogue</option>
+                  <option value="Shaman">Shaman</option>
+                  <option value="Warlock">Warlock</option>
+                  <option value="Warrior">Warrior</option>
+              </select>
+            </div><!-- charclass -->
+            <div class="form-group">
+              <label>Specialization</label>
+              <select ng-model="formData.charSpec"
+                      class="form-control"
+                      required>
+                  <option value=""></option>
+                  <option value="Affliction">Affliction</option>
+                  <option value="Arcane">Arcane</option>
+                  <option value="Arms">Arms</option>
+                  <option value="Assasination">Assasination</option>
+                  <option value="Balance">Balance</option>
+                  <option value="Beast Mastery">Beast Mastery</option>
+                  <option value="Blood">Blood</option>
+                  <option value="Brewmaster">Brewmaster</option>
+                  <option value="Combat">Combat</option>
+                  <option value="Demonology">Demonology</option>
+                  <option value="Destruction">Destruction</option>
+                  <option value="Discipline">Discipline</option>
+                  <option value="Elemental">Elemental</option>
+                  <option value="Enhancement">Enhancement</option>
+                  <option value="Feral">Feral</option>
+                  <option value="Fire">Fire</option>
+                  <option value="Frost">Frost</option>
+                  <option value="Fury">Fury</option>
+                  <option value="Gladiator">Gladiator</option>
+                  <option value="Guardian">Guardian</option>
+                  <option value="Holy">Holy</option>
+                  <option value="Marksman">Marksman</option>
+                  <option value="Mistweaver">Mistweaver</option>
+                  <option value="Protection">Protection</option>
+                  <option value="Restoration">Restoration</option>
+                  <option value="Shadow">Shadow</option>
+                  <option value="Subtlety">Subtlety</option>
+                  <option value="Survival">Survival</option>
+                  <option value="Unholy">Unholy</option>
+                  <option value="Windwalker">Windwalker</option>
+                </select>
+              </div><!-- charSpec-->
+              <div class="form-group">
+                <label class="control-label">Armory</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="http://us.battle.net/wow/characters/"
+                       ng-model="formData.charArmory"
+                       required>
+              </div><!-- /chararmory field -->
+              <div class="form-group">
+                <label class="control-label">First Name</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Joe"
+                       ng-model="formData.applicantName"
+                       required>
+              </div><!-- /firstname field -->
+              <div class="form-group">
+                <label class="control-label">Age
+                </label>
+                <input type="number"
+                       class="form-control"
+                       placeholder="18"
+                       ng-model="formData.applicantAge"
+                       required>
+              </div><!-- /age field -->
+              <div class="form-group">
+                <label>Timezone</label>
+                <select ng-model="formData.applicantTZ"
+                        class="form-control"
+                        required>
+                  <option value=""></option>
+                  <option value="PST">Pacific (PST)</option>
+                  <option value="MST">Mountain (MST)</option>
+                  <option value="CST">Central (CST)</option>
+                  <option value="EST">Eastern (EST)</option>
+                </select>
+              </div><!-- applicantTZ -->
+               <div class="form-group">
+                  <label class="control-label">RealID
+                  </label>
+                  <input type="text"
+                         class="form-control"
+                         placeholder="battletag#123"
+                         ng-model="formData.applicantRealId"
+                         required>
+              </div><!-- /realid field -->
+              <div class="form-group">
+                <label class="control-label">Logs
                 </label>
                 <input type="text"
                        class="form-control"
-                       placeholder="Laerel"
-                       ng-model="formData.charName"
+                       placeholder="http://warcraftlogs.com"
+                       ng-model="formData.charLogs"
                        required>
-            </div><!-- /charname field -->
-            <div class="form-group">
-                    <label>Class</label>
-                    <select ng-model="formData.charClass"
-                            class="form-control"
-                            required>
-                        <option value=""></option>
-                        <option value="DeathKnight">Death Knight</option>
-                        <option value="Druid">Druid</option>
-                        <option value="Hunter">Hunter</option>
-                        <option value="Mage">Mage</option>
-                        <option value="Monk">Monk</option>
-                        <option value="Paladin">Paladin</option>
-                        <option value="Priest">Priest</option>
-                        <option value="Rogue">Rogue</option>
-                        <option value="Shaman">Shaman</option>
-                        <option value="Warlock">Warlock</option>
-                        <option value="Warrior">Warrior</option>
-                    </select>
-                </div><!-- charclass -->
-            <div class="form-group">
-                    <label>Specialization</label>
-                    <select ng-model="formData.charSpec"
-                            class="form-control"
-                            required>
-                        <option value=""></option>
-                        <option value="Affliction">Affliction</option>
-                        <option value="Arcane">Arcane</option>
-                        <option value="Arms">Arms</option>
-                        <option value="Assasination">Assasination</option>
-                        <option value="Balance">Balance</option>
-                        <option value="Beast Mastery">Beast Mastery</option>
-                        <option value="Blood">Blood</option>
-                        <option value="Brewmaster">Brewmaster</option>
-                        <option value="Combat">Combat</option>
-                        <option value="Demonology">Demonology</option>
-                        <option value="Destruction">Destruction</option>
-                        <option value="Discipline">Discipline</option>
-                        <option value="Elemental">Elemental</option>
-                        <option value="Enhancement">Enhancement</option>
-                        <option value="Feral">Feral</option>
-                        <option value="Fire">Fire</option>
-                        <option value="Frost">Frost</option>
-                        <option value="Fury">Fury</option>
-                        <option value="Gladiator">Gladiator</option>
-                        <option value="Guardian">Guardian</option>
-                        <option value="Holy">Holy</option>
-                        <option value="Marksman">Marksman</option>
-                        <option value="Mistweaver">Mistweaver</option>
-                        <option value="Protection">Protection</option>
-                        <option value="Restoration">Restoration</option>
-                        <option value="Shadow">Shadow</option>
-                        <option value="Subtlety">Subtlety</option>
-                        <option value="Survival">Survival</option>
-                        <option value="Unholy">Unholy</option>
-                        <option value="Windwalker">Windwalker</option>
-                    </select>
-                </div><!-- charSpec-->
-                <div class="form-group">
-                  <label>Realm</label>
-                  <input type="text" class="form-control" placeholder="Realm" ng-options="name for name in realms | filter:$viewValue | limitTo:8" ng-model="formData.charServer" bs-typeahead>
-                </div><!-- /charserver typeahead -->
-                <div class="form-group">
-                    <label class="control-label">Armory
-                    </label>
-                    <input type="text"
-                           class="form-control"
-                           placeholder="http://us.battle.net/wow/characters/"
-                           ng-model="formData.charArmory"
-                           required>
-                </div><!-- /chararmory field -->
-                <div class="form-group">
-                    <label class="control-label">First Name
-                    </label>
-                    <input type="text"
-                           class="form-control"
-                           placeholder="Joe"
-                           ng-model="formData.applicantName"
-                           required>
-                </div><!-- /firstname field -->
-                <div class="form-group">
-                    <label class="control-label">Age
-                    </label>
-                    <input type="number"
-                           class="form-control"
-                           placeholder="18"
-                           ng-model="formData.applicantAge"
-                           required>
-                </div><!-- /age field -->
-                <div class="form-group">
-                    <label>Timezone</label>
-                      <select ng-model="formData.applicantTZ"
-                              class="form-control"
-                              required>
-                        <option value=""></option>
-                        <option value="PST">Pacific (PST)</option>
-                        <option value="MST">Mountain (MST)</option>
-                        <option value="CST">Central (CST)</option>
-                        <option value="EST">Eastern (EST)</option>
-                        </select>
-                    </div><!-- applicantTZ -->
-                 <div class="form-group">
-                    <label class="control-label">RealID
-                    </label>
-                    <input type="text"
-                           class="form-control"
-                           placeholder="battletag#123"
-                           ng-model="formData.applicantRealId"
-                           required>
-                </div><!-- /realid field -->
-                <div class="form-group">
-                    <label class="control-label">Logs
-                    </label>
-                    <input type="text"
-                           class="form-control"
-                           placeholder="http://warcraftlogs.com"
-                           ng-model="formData.charLogs"
-                           required>
-                </div><!-- /logs field -->
-                <div class="form-group">
-                    <label>Mythic/Heroic Experience</label>
-                    <textarea ng-model="formData.heroicXP"
-                              ng-minlength="5"
-                              class="form-control"
-                              required></textarea>
-                </div><!-- heroicxp -->
-                <div class="form-group">
-                    <label>Guild History</label>
-                    <textarea ng-model="formData.pastGuilds"
-                              ng-minlength="5"
-                              class="form-control"
-                              required></textarea>
-                </div><!-- heroicxp -->
-                <div class="form-group">
-                    <label class="control-label">UI Screenshot
-                    </label>
-                    <input type="text"
-                           class="form-control"
-                           placeholder="http://imgur.com"
-                           ng-model="formData.screenshot"
-                           required>
-                </div><!-- /screenshot field -->
-                <div class="form-group">
-                    <label>Why Top Shelf?</label>
-                    <textarea ng-model="formData.whyTS"
-                              ng-minlength="5"
-                              class="form-control"
-                              required></textarea>
-                </div><!-- whyTS -->
-                <div class="form-group">
-                    <label class="control-label">Raiding Alt
-                    </label>
-                    <input type="text"
-                           class="form-control"
-                           placeholder="http://us.battle.net/wow/characters/"
-                           ng-model="formData.applicantAlt"
-                           required>
-                </div><!-- /applicantAlt field -->
-                <div class="form-group">
-                    <label>What resources do you use to improve your raid performance?</label>
-                    <textarea ng-model="formData.applicantSelfImprovement"
-                              ng-minlength="5"
-                              class="form-control"
-                              required></textarea>
-                </div><!-- applicantSelfImprovement -->
-                <div class="form-group">
-                    <label>Tell us a joke</label>
-                    <textarea ng-model="formData.applicantJoke"
-                              ng-minlength="5"
-                              class="form-control"
-                              required></textarea>
-                </div><!-- applicantSelfImprovement -->
-                 <div class="form-group">
-                    <button type="submit"
-                            class="btn btn-primary">Submit Form
-                    </button>
-                </div>
-                </fieldset>
-            </form>
-    </div><!--/panel-->
-<aside id="aside" class="application-sidebar col-xs-12 col-md-4 col-lg-4">
-<div class="clearfix"></div>
-    <div id="side-bar" class="box row expandcollapse-item">
-        <div ng-click="active = !active" ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
-    <h3 class="white-text widget-title"><i class="icon-right-open-big"></i> Important Application Info</h3></div>
-    <div class="slideDown" ng-hide="active">
-         <div class="expand-collapse-conten t">
-        <ul class="list-unstyled applicationRightList">
-            <li> <i class="fa fa-star"></i> The application must be filled out completely and correctly in order for it to submit. A preview of your application is shown below.</li>
-            <li><i class="fa fa-star"></i> We ask that your UI Screenshot be from a raid, please make sure it is.</li>
-            <li><i class="fa fa-star"></i> Our raids days are Tues through Thurs from 8:00pm until 12:00am CST.</li>
-            <li><i class="fa fa-star"></i> Occasionally we go over, or add a Monday, but that is rare.</li>
-          </ul>
-      </div>
-  </div>
+              </div><!-- /logs field -->
+              <div class="form-group">
+                <label>Mythic/Heroic Experience</label>
+                <textarea ng-model="formData.heroicXP"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+              </div><!-- heroicxp -->
+              <div class="form-group">
+                <label>Guild History</label>
+                <textarea ng-model="formData.pastGuilds"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+              </div><!-- heroicxp -->
+              <div class="form-group">
+                <label class="control-label">UI Screenshot</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="http://imgur.com"
+                       ng-model="formData.screenshot"
+                       required>
+              </div><!-- /screenshot field -->
+              <div class="form-group">
+                <label>Why Top Shelf?</label>
+                <textarea ng-model="formData.whyTS"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+              </div><!-- whyTS -->
+              <div class="form-group">
+                <label class="control-label">Raiding Alt</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="http://us.battle.net/wow/characters/"
+                       ng-model="formData.applicantAlt"
+                       >
+              </div><!-- /applicantAlt field -->
+              <div class="form-group">
+                <label>What resources do you use to improve your raid performance?</label>
+                <textarea ng-model="formData.applicantSelfImprovement"
+                        ng-minlength="5"
+                        class="form-control"
+                        required></textarea>
+              </div><!-- applicantSelfImprovement -->
+              <div class="form-group">
+                <label>Tell us a joke</label>
+                <textarea ng-model="formData.applicantJoke"
+                          ng-minlength="5"
+                          class="form-control"
+                          required></textarea>
+              </div><!-- applicantSelfImprovement -->
+              <div class="form-group">
+                <button type="submit"
+                        class="btn btn-primary">Submit Form
+                </button>
+              </div>
+            </fieldset>
+        </form>
+    </div><!--/column-->
+    <aside id="aside" class="application-sidebar col-xs-12 col-md-4">
+    <div class="clearfix"></div>
+      <div id="side-bar" class="row expandcollapse-item">
+        <div ng-click="active = !active"
+            ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
+          <h4 class="white-text widget-title"><i class="icon-right-open-big"></i> Important Application Info</h4>
+        </div>
+        <div class="slideDown" ng-hide="active">
+          <div class="expand-collapse-conten t">
+            <ul class="list-unstyled applicationRightList">
+              <li> <i class="fa fa-star"></i> The application must be filled out completely and correctly in order for it to submit. A preview of your application is shown below.</li>
+              <li><i class="fa fa-star"></i> We ask that your UI Screenshot be from a raid, please make sure it is.</li>
+              <li><i class="fa fa-star"></i> Our raids days are Tues through Thurs from 8:00pm until 12:00am CST.</li>
+              <li><i class="fa fa-star"></i> Occasionally we go over, or add a Monday, but that is rare.</li>
+            </ul>
           </div>
-<div class="clearfix"></div>
-    <div id="side-bar" class="box row expandcollapse-item">
-        <div ng-click="active1 = !active1" ng-class="{'expandcollapse-heading-collapsed': active1, 'expandcollapse-heading-expanded': !active1}">
-    <h3 class="white-text widget-title"><i class="icon-right-open-big"></i> Application Preview</h3>
-</div>
-<div class="slideDown1" ng-hide="active1">
-    <div class="expand-collapse-content">
-        <h6 class="app-preview">Character Name:</h6><span class="app-pre-text" ng-bind="formData.charName"></span>
-        <h6 class="app-preview">Character Class:</h6><span class="app-pre-text" ng-bind="formData.charClass"></span>
-        <h6 class="app-preview">Character Spec:</h6><span class="app-pre-text" ng-bind="formData.charSpec"></span>
-        <h6 class="app-preview">Character Server:</h6><span class="app-pre-text" ng-bind="formData.charServer"></span>
-        <h6 class="app-preview">Armory:</h6><span class="app-pre-text" ng-bind="formData.charArmory"></span>
-        <h6 class="app-preview">First Name:</h6><span class="app-pre-text" ng-bind="formData.applicantName"></span>
-        <h6 class="app-preview">Age:</h6><span class="app-pre-text" ng-bind="formData.applicantAge"></span>
-        <h6 class="app-preview">RealId:</h6><span class="app-pre-text" ng-bind="formData.applicantRealId"></span>
-        <h6 class="app-preview">Logs:</h6><span class="app-pre-text" ng-bind="formData.charLogs"></span>
-        <h6 class="app-preview">Heroic Experience:</h6><span class="app-pre-text" ng-bind="formData.heroicXP"></span>
-        <h6 class="app-preview">Guild History:</h6><span class="app-pre-text" ng-bind="formData.pastGuilds"></span>
-        <h6 class="app-preview">UI Screenshot:</h6><span class="app-pre-text" ng-bind="formData.screenshot"></span>
-        <h6 class="app-preview">Why Top Shelf:</h6><span class="app-pre-text" ng-bind="formData.whyTS"></span>
-    </div>
-</div>
-    </div>
-  </aside>
-  </div>
-  </div>
+        </div>
+      </div><!-- END sidebar box row expand-->
+        <div class="clearfix"></div>
+        <div id="side-bar" class="box row expandcollapse-item">
+          <div ng-click="active1 = !active1"
+            ng-class="{'expandcollapse-heading-collapsed': active1, 'expandcollapse-heading-expanded': !active1}">
+            <h4 class="white-text widget-title"><i class="icon-right-open-big"></i> Application Preview</h4>
+          </div>
+          <div class="slideDown1" ng-hide="active1">
+            <div class="expand-collapse-content">
+              <h6 class="app-preview">Character Name:</h6><span class="app-pre-text" ng-bind="formData.charName"></span>
+              <h6 class="app-preview">Character Class:</h6><span class="app-pre-text" ng-bind="formData.charClass"></span>
+              <h6 class="app-preview">Character Spec:</h6><span class="app-pre-text" ng-bind="formData.charSpec"></span>
+              <h6 class="app-preview">Character Server:</h6><span class="app-pre-text" ng-bind="formData.charServer"></span>
+              <h6 class="app-preview">Armory:</h6><span class="app-pre-text" ng-bind="formData.charArmory"></span>
+              <h6 class="app-preview">First Name:</h6><span class="app-pre-text" ng-bind="formData.applicantName"></span>
+              <h6 class="app-preview">Age:</h6><span class="app-pre-text" ng-bind="formData.applicantAge"></span>
+              <h6 class="app-preview">RealId:</h6><span class="app-pre-text" ng-bind="formData.applicantRealId"></span>
+              <h6 class="app-preview">Logs:</h6><span class="app-pre-text" ng-bind="formData.charLogs"></span>
+              <h6 class="app-preview">Heroic Experience:</h6><span class="app-pre-text" ng-bind="formData.heroicXP"></span>
+              <h6 class="app-preview">Guild History:</h6><span class="app-pre-text" ng-bind="formData.pastGuilds"></span>
+              <h6 class="app-preview">UI Screenshot:</h6><span class="app-pre-text" ng-bind="formData.screenshot"></span>
+              <h6 class="app-preview">Why Top Shelf:</h6><span class="app-pre-text" ng-bind="formData.whyTS"></span>
+            </div>
+          </div><!-- END App Preview slidedown1-->
+        </div> <!-- END sidebar app-pre-->
+      </aside> <!-- end app aside -->
+    </div><!-- END row -->
+  </div><!-- END container-->
+

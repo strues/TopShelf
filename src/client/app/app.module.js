@@ -1,6 +1,5 @@
-(function() {
+(function () {
     'use strict';
-
     /* @ngdoc object
      * @name app
      * @requires $urlRouterProvider
@@ -35,19 +34,21 @@
         'app.account',
         'app.guild',
         'app.admin'
-
     ]);
-    run.$inject = ['$rootScope', '$state', '$stateParams', 'Auth', 'editableOptions'];
+    run.$inject = [
+        '$rootScope',
+        '$state',
+        '$stateParams',
+        'Auth',
+        'editableOptions'
+    ];
     /* @ngInject */
     function run($rootScope, $state, $stateParams, Auth, editableOptions) {
         $rootScope.Auth = Auth;
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         editableOptions.theme = 'bs3';
-
     }
     // TODO Finish adding strict dependency injection.
-    angular
-        .module('app')
-        .run(run);
-})();
+    angular.module('app').run(run);
+}());

@@ -4,41 +4,34 @@
  * Collecting them in a single util service reduces repetitious dependency injection
  * and long lists of constructor parameters in those services.
  */
-(function() {
-
+(function () {
     'use strict';
     /* @ngInject */
     function util($q, $rootScope, $timeout, config, logger) {
-
         extendString();
-
         return {
             // bundle these so util clients don't have to get them
             $q: $q,
             $timeout: $timeout,
             config: config,
             logger: logger,
-
             // actual utilities
             $broadcast: $broadcast,
-
             deal: deal,
             defineProperty: defineProperty,
             filterById: filterById,
             filterByName: filterByName,
             filterByType: filterByType,
             filterHttpError: filterHttpError,
-
             groupArray: groupArray,
             keyArray: keyArray,
             toTitle: toTitle,
-            resolved: $q.when(true) // a re-usable resolved promise
+            resolved: $q.when(true)    // a re-usable resolved promise
         };
         /////////////////////
         function $broadcast() {
             return $rootScope.$broadcast.apply($rootScope, arguments);
         }
-
         // Assist in adding an ECMAScript 5 'definedProperty' to a class
         function defineProperty(klass, propertyName, getter, setter) {
             var config = {
@@ -50,39 +43,36 @@
             }
             Object.defineProperty(klass.prototype, propertyName, config);
         }
-
         /*********************************************************
          * Array filter factories
          *********************************************************/
         function filterById(array) {
-            return function(id) {
-                var item = array.filter(function(x) {
+            return function (id) {
+                var item = array.filter(function (x) {
                     return x.id === id;
-                }); //'==' ok; want coercion
+                });
+                //'==' ok; want coercion
                 return item[0] || null;
             };
         }
-
         function filterByName(array) {
             // name is either a regExp or a string which is converted to a regex ignore case
-            return function(name) {
-                var re = (typeof name === 'string') ? new RegExp(name, 'i') : name;
-                return array.filter(function(x) {
+            return function (name) {
+                var re = typeof name === 'string' ? new RegExp(name, 'i') : name;
+                return array.filter(function (x) {
                     return re.test(x.name);
                 });
             };
         }
-
         function filterByType(array) {
-            return function(type) {
+            return function (type) {
                 // type is either a regExp or a string which is converted to a regex ignore case
-                var re = (typeof type === 'string') ? new RegExp(type, 'i') : type;
-                return array.filter(function(x) {
+                var re = typeof type === 'string' ? new RegExp(type, 'i') : type;
+                return array.filter(function (x) {
                     return re.test(x.type);
                 });
             };
         }
-
         // filter some http errors
         function filterHttpError(error) {
             var message = error.message;
@@ -92,7 +82,6 @@
             }
             return error;
         }
-
         /*******************************************************
          * String extensions
          * Monkey punching JavaScript native String class
@@ -103,40 +92,34 @@
             var stringFn = String.prototype;
             if (stringFn.format) {
                 return;
-            } // already extended
-
+            }
+            // already extended
             // Ex: '{0} returned {1} item(s)'.format(queryName, count));
-            stringFn.format = stringFn.format || function() {
+            stringFn.format = stringFn.format || function () {
                 var s = this;
                 for (var i = 0, len = arguments.length; i < len; i++) {
                     var reg = new RegExp('\\{' + i + '\\}', 'gm');
                     s = s.replace(reg, arguments[i]);
                 }
-
                 return s;
             };
-
-            stringFn.endsWith = stringFn.endsWith || function(suffix) {
-                return (this.substr(this.length - suffix.length) === suffix);
+            stringFn.endsWith = stringFn.endsWith || function (suffix) {
+                return this.substr(this.length - suffix.length) === suffix;
             };
-
-            stringFn.startsWith = stringFn.startsWith || function(prefix) {
-                return (this.substr(0, prefix.length) === prefix);
+            stringFn.startsWith = stringFn.startsWith || function (prefix) {
+                return this.substr(0, prefix.length) === prefix;
             };
-
-            stringFn.contains = stringFn.contains || function(value) {
-                return (this.indexOf(value) !== -1);
+            stringFn.contains = stringFn.contains || function (value) {
+                return this.indexOf(value) !== -1;
             };
         }
-
         /*********************************************************
          * Deal an array of things into 'hands' as if dealing cards.
          * e.g. deal([1,2,3,4,5,6,7], 3) -> [[1,4,7],[2,5],[3,6]]
          *********************************************************/
         function deal(arr, numHands) {
             var hands = new Array(numHands);
-            var i, len = arr.length,
-                hand;
+            var i, len = arr.length, hand;
             for (i = 0; i < numHands; i++) {
                 hands[i] = [];
             }
@@ -146,7 +129,6 @@
             }
             return hands;
         }
-
         /*********************************************************
      // Group an array of objects by an object property. Each element of the returned array
      // is a object { keyName: key, valueName: [{...},...] }
@@ -162,7 +144,7 @@
             valueName = valueName || 'values';
             var groupMap = {};
             var groupList = [];
-            arr.forEach(function(o) {
+            arr.forEach(function (o) {
                 var key = keyfn(o);
                 var group = groupMap[key];
                 if (!group) {
@@ -176,7 +158,6 @@
             });
             return groupList;
         }
-
         /*********************************************************
      // Convert an array into an object.  The returned object has keys defined by the keyfn,
      // and values from the original array.  If there are duplicate keys, the resulting object
@@ -187,33 +168,25 @@
      *********************************************************/
         function keyArray(arr, keyfn) {
             var map = {};
-            arr.forEach(function(o) {
+            arr.forEach(function (o) {
                 var key = keyfn(o);
                 map[key] = o;
             });
             return map;
         }
-
         // Turn identifiers 'somethingLikeThis' into a title 'Something Like This'
         // Example in Zza: orderItem.html uses it to build tab headers from
         // product option types (e.g., 'saladDressing' -> 'Salad Dressing')
         function toTitle(text) {
             return text ? convert() : '';
-
             function convert() {
                 // space before leading caps & uppercase the 1st character
                 // runs of caps are their own word, e.g., 'anHTMLstring' -> 'An HTML String'
-                return text.replace(/([A-Z]*[^A-Z]*)/g, ' $1')
-                    .replace(/([A-Z]{2,})/g, '$1 ')
-                    .trim()
-                    .replace(/^\w/, function(c) {
-                        return c.toUpperCase();
-                    });
+                return text.replace(/([A-Z]*[^A-Z]*)/g, ' $1').replace(/([A-Z]{2,})/g, '$1 ').trim().replace(/^\w/, function (c) {
+                    return c.toUpperCase();
+                });
             }
         }
-
     }
-    angular
-        .module('app.core.services')
-        .factory('util', util);
-})();
+    angular.module('app.core.services').factory('util', util);
+}());

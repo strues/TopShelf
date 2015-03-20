@@ -1,6 +1,5 @@
-(function() {
+(function () {
     'use strict';
-
     /**
      * @ngdoc directive
      * @name core.directive:footer
@@ -12,7 +11,6 @@
      * @example
      *
      */
-
     function theFooter() {
         return {
             restrict: 'EA',
@@ -21,8 +19,5 @@
             controllerAs: 'vm'
         };
     }
-
-    angular
-        .module('app.core.directives')
-        .directive('theFooter', theFooter);
-})();
+    angular.module('app.core.directives').directive('theFooter', theFooter);
+}());

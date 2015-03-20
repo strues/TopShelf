@@ -1,3 +1,4 @@
+@import 'vendor/normalize';
 //
 // Theme
 //
@@ -8,21 +9,18 @@
 // Base
 //
 @import 'base/settings';
-@import 'base/fonts';
 @import 'base/icons';
 
 //
 // Utilities
 //
 
-@import 'utils/animations';
-@import 'utils/mixins';
-@import 'utils/theming';
+
 
 //
 // Vendor
 //
-@import 'vendor/normalize';
+
 @import 'vendor/bootstrap';
 @import 'vendor/andy';
 @import 'vendor/animate';
@@ -31,67 +29,108 @@
 //
 // Layout
 //
-
-@import 'layout/grid';
-@import 'layout/navbar';
-@import 'layout/footer';
-
+.toolbar {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 10px;
+  position: relative;
+  z-index: 2;
+  font-size: 1.3em;
+  min-height: 64px;
+  width: 100%;
+  background-color: $tsblue;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+.collection {
+  margin: .5rem 0 1rem;
+  border-radius: 2px;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+.collection .collection-item {
+  list-style-type: none;
+  background-color: #fff;
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
 //
 // Components
 //
+@import 'components/carousel';
 
-@import 'components/buttons';
-@import 'components/forms';
-@import 'components/home-carousel';
-@import 'components/asideNav';
-@import 'components/applicationForm';
-@import 'components/tables';
-@import 'components/card';
 
 //
 // Sections
 //
-
-@import 'sections/rosterHolder';
-@import 'sections/home-aside';
-@import 'sections/recruitingPanel';
-@import 'sections/profile/editProfile';
-@import 'sections/adminNav.scss';
-@import 'sections/adminNews';
-@import 'sections/news';
+@import 'sections/footer';
 
 //
 // Pages
 //
-@import 'pages/homepage';
-@import 'pages/infoPage';
-@import 'pages/application';
-@import 'pages/loginSignup';
-@import 'pages/streams';
 
-.box {
-  border-radius: 1px;
-  margin-top: 0px;
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05);
-  text-align: inherit;
+.card {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
-.textEditor {
+
+.card {
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+.card span.card-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.card .card-image {
+  position: relative;
   overflow: hidden;
-  font-family: inherit;
-  font-size: 100%;
 }
-.editorPanel{
-  margin-bottom: 25px;
-  padding: 20px 20px 20px 20px;
+.card .card-image img {
+  border-radius: 2px 2px 0 0;
+  background-clip: padding-box;
+  position: relative;
+  z-index: -1;
 }
-.list-group-item {
-  height: 30px;
+.card .card-image span.card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
 }
-#main {
-  padding-top: 20px;
+.card .card-content {
+  padding: 16px;
+  border-radius: 0 0 2px 2px;
+  background-clip: padding-box;
+  box-sizing: border-box;
 }
-#loading-bar-spinner .spinner-icon {
-  border-top-color:  #2c3e50;
-  border-left-color: #2c3e50;
-  float: right;
+.card .card-content p {
+  margin: 0;
+  color: inherit;
+}
+.card .card-content span.card-title {
+  line-height: 48px;
+}
+.card .card-action {
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 16px;
+}
+.card .card-action a {
+  color: #ffab40;
+  margin-right: 16px;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+.card .card-action a:hover {
+  color: #ffd8a6;
+  text-decoration: none;
 }

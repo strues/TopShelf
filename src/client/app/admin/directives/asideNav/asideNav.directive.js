@@ -1,6 +1,5 @@
-(function() {
+(function () {
     'use strict';
-
     /**
      * @ngdoc directive
      * @name admin.directive:asideNav
@@ -12,10 +11,7 @@
      * @example
      *
      */
-    angular
-        .module('app.admin.directives')
-        .directive('asideNav', asideNav);
-
+    angular.module('app.admin.directives').directive('asideNav', asideNav);
     function asideNav() {
         return {
             restrict: 'EA',
@@ -24,4 +20,4 @@
             controllerAs: 'vm'
         };
     }
-})();
+}());
