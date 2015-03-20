@@ -1,0 +1,32 @@
+.toolbar {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 10px;
+  position: relative;
+  z-index: 2;
+  font-size: 1.3em;
+  min-height: 64px;
+  width: 100%;
+  background-color: $tsblue;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+
+.collection {
+  margin: .5rem 0 1rem;
+  border-radius: 2px;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+
+.collection .collection-item {
+  list-style-type: none;
+  background-color: #fff;
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}

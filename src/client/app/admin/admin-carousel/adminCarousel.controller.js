@@ -2,7 +2,7 @@
     'use strict';
     angular.module('app.admin.states').controller('AdminCarouselCtrl', AdminCarouselCtrl);
     /* @ngInject */
-    function AdminCarouselCtrl(Slide) {
+    function AdminCarouselCtrl(Slide, toastr) {
         var vm = this;
         vm.processing = true;
         Slide.all().success(function (slideData) {
@@ -16,12 +16,11 @@
             vm.message = '';
             Slide.create(vm.slideData).success(function (data) {
                 toastr.success('Your slide was added to the database', 'Submitted!');
-                vm.processing = false;
+                vm.processing = false; // TODO add a delete button
                 vm.slideData = {};
                 vm.message = data.message;
             }).error(function (error) {
                 toastr.error('Unable to Create Post' + error.message, 'Error');
-                $scope.status = 'Unable to Create Post: ' + error.message;
             });
         };
     }

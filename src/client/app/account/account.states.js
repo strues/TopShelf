@@ -12,11 +12,17 @@
             abstract: true,
             url: '/account',
             template: '<ui-view />'
-        }).state('account.login', {
+        })
+        .state('account.login', {
             url: '/login',
-            templateUrl: 'app/account/account-login/login.tpl.html',
-            controller: 'LoginCtrl'
-        }).state('account.loginWithToken', {
+            views: {
+                'main@': {
+                    templateUrl: 'app/account/account-login/login.tpl.html',
+                    controller: 'LoginCtrl'
+                }
+            }
+        })
+        .state('account.loginWithToken', {
             url: '/login/:sessionToken',
             template: ' ',
             controller: function ($stateParams, Auth, $location) {
@@ -26,7 +32,8 @@
                     });
                 }
             }
-        }).state('account.logout', {
+        })
+        .state('account.logout', {
             url: '/logout?referrer',
             referrer: 'home',
             controller: function ($state, Auth) {
@@ -34,19 +41,34 @@
                 Auth.logout();
                 $state.go(referrer);
             }
-        }).state('account.signup', {
+        })
+        .state('account.signup', {
             url: '/signup',
-            templateUrl: 'app/account/account-signup/signup.tpl.html',
-            controller: 'SignupCtrl'
-        }).state('account.profile', {
+            views: {
+                'main@': {
+                    templateUrl: 'app/account/account-signup/signup.tpl.html',
+                    controller: 'SignupCtrl'
+                }
+            }
+        })
+        .state('account.profile', {
             url: '/profile',
-            templateUrl: 'app/account/account-profile/profile.tpl.html',
-            controller: 'ProfileCtrl'
-        }).state('account.profileEdit', {
+            views: {
+                'main@': {
+                    templateUrl: 'app/account/account-profile/profile.tpl.html',
+                    controller: 'ProfileCtrl'
+                }
+            }
+        })
+        .state('account.profileEdit', {
             url: '/profile/edit',
-            templateUrl: 'app/account/account-profile/profile.edit/profileEdit.tpl.html',
-            controller: 'ProfileEditCtrl',
-            controllerAs: 'vm',
+            views: {
+                'main@': {
+                    templateUrl: 'app/account/account-profile/profile.edit/profileEdit.tpl.html',
+                    controller: 'ProfileEditCtrl',
+                    controllerAs: 'vm',
+                }
+            },
             authenticate: true
         });
     }

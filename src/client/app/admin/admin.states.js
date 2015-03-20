@@ -12,11 +12,10 @@
         $stateProvider.state('admin', {
             url: '/admin',
             views: {
-                '': { templateUrl: 'app/admin/admin.tpl.html' },
-                'content@admin': {
+                'main@': {
                     controller: 'AdminDashboardCtrl',
                     controllerAs: 'dash',
-                    templateUrl: 'app/admin/admin-dashboard/adminDashboard.tpl.html'
+                    templateUrl: 'app/admin/admin.tpl.html'
                 },
                 'progression@admin': {
                     controller: 'ProgressionWidgetCtrl',
@@ -26,10 +25,6 @@
         }).state('admin.applications', {
             url: '/applications',
             views: {
-                '': {
-                    controller: 'AdminCtrl',
-                    templateUrl: 'app/admin/admin.tpl.html'
-                },
                 'content@admin': {
                     controller: 'ApplicationListCtrl',
                     templateUrl: 'app/admin/admin-apps/adminApps.tpl.html'
