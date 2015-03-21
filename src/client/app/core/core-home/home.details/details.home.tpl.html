@@ -8,7 +8,7 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row">
       <ui-breadcrumbs displayname-property="data.displayName" template-url="app/core/directives/breadcrumbs/uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-12">
             <!-- Article News Posting -->
             <article class="news-post-detail">
                 <!-- Post Image -->
@@ -22,7 +22,7 @@
                     </div>
                     <!-- post-meta -->
                     <div class="post-meta">
-                        <ul>
+                        <ul class="list-unstyled">
                             <li>{{ post.date | date:'MMM dd, yyyy' }}</li>
                             <li class="divider"></li>
                             <li>Posted by {{ post.author.name }}</li>

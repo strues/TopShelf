@@ -1,7 +1,3 @@
-<navbar></navbar>
-
-
-  <div class="container">
     <div class="row" ng-controller="ApplicationCtrl as application">
       <div class="col-sm-12 col-md-8">
         <h1><span style="color:#333;">Top</span> <span class="blue-text">Shelf</span> <small>Guild Application</small></h1>
@@ -191,12 +187,12 @@
             </fieldset>
         </form>
     </div><!--/column-->
-    <aside id="aside" class="application-sidebar col-xs-12 col-md-4">
+    <aside id="aside" class="application-sidebar col-sm-12 col-md-3 col-md-offset-1">
     <div class="clearfix"></div>
       <div id="side-bar" class="row expandcollapse-item">
         <div ng-click="active = !active"
             ng-class="{'expandcollapse-heading-collapsed': active, 'expandcollapse-heading-expanded': !active}">
-          <h4 class="white-text widget-title"><i class="icon-right-open-big"></i> Important Application Info</h4>
+          <h4 class="widget-title"><i class="icon-right-open-big"></i> Important Application Info</h4>
         </div>
         <div class="slideDown" ng-hide="active">
           <div class="expand-collapse-conten t">
@@ -213,7 +209,7 @@
         <div id="side-bar" class="box row expandcollapse-item">
           <div ng-click="active1 = !active1"
             ng-class="{'expandcollapse-heading-collapsed': active1, 'expandcollapse-heading-expanded': !active1}">
-            <h4 class="white-text widget-title"><i class="icon-right-open-big"></i> Application Preview</h4>
+            <h4 class="widget-title"><i class="icon-right-open-big"></i> Application Preview</h4>
           </div>
           <div class="slideDown1" ng-hide="active1">
             <div class="expand-collapse-content">
@@ -235,5 +231,5 @@
         </div> <!-- END sidebar app-pre-->
       </aside> <!-- end app aside -->
     </div><!-- END row -->
-  </div><!-- END container-->
+
 

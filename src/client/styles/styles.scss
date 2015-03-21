@@ -36,10 +36,13 @@
 @import 'components/carousel';
 @import 'components/toolbar';
 @import 'components/card';
+@import 'components/widgets';
+@import 'components/news';
 
 //
 // Sections
 //
+@import 'sections/navbar';
 @import 'sections/footer';
 
 //

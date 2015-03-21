@@ -7,7 +7,7 @@
     <!-- carousel row/column -->
     <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
     <!-- rn-carousel directive start -->
-      <ul rn-carousel rn-carousel-controls rn-carousel-index="carouselIndex" rn-carousel-buffered rn-carousel-auto-slide class="image">
+      <ul rn-carousel rn-carousel-controls rn-carousel-buffered rn-carousel-auto-slide class="image">
         <li ng-repeat="slide in carousel.slides">
          <div class="layer"><img ng-src="{{ slide.image }}" alt="carousel slide"></div>
         </li>
@@ -21,7 +21,7 @@
     <div class="row">
     <div class="col-sm-12 col-md-8">
     <!-- Article News Posting -->
-      <article class="news-post" ng-repeat="post in vm.posts | orderBy:'-date'">
+      <article class="news-post card" ng-repeat="post in vm.posts | orderBy:'-date'">
         <!-- Post Image -->
         <div class="post-image-wrapper">
           <img ng-src="{{post.image}}" class="img-responsive" alt="news post image">
@@ -33,7 +33,7 @@
           </div>
            <div class="post-meta">
            <ul class="list-inline list-unstyled">
-           <li>{{ post.date | date:'MMM dd, yyyy' }}</li>
+           <li><i class="fa fa-calendar-o"></i> {{ post.date | date:'MMM dd, yyyy' }}</li>
            <li class="divider"></li>
            <li>Posted by {{ post.author.name }}</li>
            </ul>
@@ -55,7 +55,7 @@
     <!-- recruitment-aside -->
       <div id="recruitment-widget">
           <!-- recruiting-panel ngDirective -->
-          <recruiting-panel></recruiting-panel>
+          <recruitment-widget></recruitment-widget>
       </div> <!-- END recruitment-aside -->
       <!-- HM raidprogress -->
       <div id="progression-widget">

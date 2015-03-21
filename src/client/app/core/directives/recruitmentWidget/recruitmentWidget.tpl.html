@@ -1,11 +1,10 @@
 <div class="card">
 	<div class="card-image">
-		<img class="img-responsive" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7TDlCYzRROE84YWM/materialdesign_introduction.png">
-		<span class="card-title">Mythic Blackrock Foundry</span>
+		<span class="card-title">Currently Recruiting</span>
 	</div>
 	<div class="card-content">
-		<div class="recruitment-panel">
-			<ul ng-repeat="recruitment in recruitments">
+		<div class="recruitment-widget">
+			<ul class="list-unstyled" ng-repeat="recruitment in recruitments">
 				<li><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" height="32px" style="padding-right: 10px;"> {{ recruitment.classSpec }}
 				<strong>{{ recruitment.priority }}</strong></li>
 			</ul>
@@ -14,3 +13,4 @@
 			<a ui-sref="apply" class="btn btn-primary pull-right">Apply Now</a>
 		</div>
 	</div>
+</div>

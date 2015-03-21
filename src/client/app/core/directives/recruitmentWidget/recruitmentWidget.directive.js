@@ -1,18 +1,17 @@
 (function () {
     'use strict';
-    function recruitingPanel() {
+    function recruitmentWidget() {
         return {
-            templateUrl: 'app/core/directives/recruitingPanel/recruitingPanel.tpl.html',
+            templateUrl: 'app/core/directives/recruitmentWidget/recruitmentWidget.tpl.html',
             restrict: 'EA',
             controller: function ($scope, Recruitment, $log) {
                 Recruitment.all().success(function (data) {
                     $scope.recruitments = data;
                 }).error(function (error) {
-                    $scope.status = 'Unable to Retrieve Recruitment Status: ' + error.message;
                     console.log($scope.status);
                 });
             }
         };
     }
-    angular.module('app.core.directives').directive('recruitingPanel', recruitingPanel);
+    angular.module('app.core.directives').directive('recruitmentWidget', recruitmentWidget);
 }());
