@@ -1,13 +1,12 @@
 <div class="card">
-	<div class="card-image">
-		<img class="img-responsive" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7TDlCYzRROE84YWM/materialdesign_introduction.png">
-		<span class="card-title">Mythic Blackrock Foundry</span>
+<div class="toolbar">
+		<span class="card-title yellow-text"><i class="icon-crown"></i> Mythic Progression</span>
 	</div>
 	<div class="card-content">
-		<div class="progression-brf" ng-repeat="progression in progressions">
-			<img ng-src="/assets/images/icons/{{progression.bossName}}.png"
-			ng-class="{'boss-killed': progression.dead}"
-			height="60px" width="60px">
+		<ul class="progression-brf list-unstyled" ng-repeat="progression in progressions">
+			<li><span ng-class="{'boss-killed': progression.dead}"> {{progression.bossName}}</span>
+			</li>
+		</ul>
 		</div>
 		<div class="card-action">
 			<a href="#" target="new_blank">Link</a>
