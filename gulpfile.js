@@ -6,6 +6,7 @@ var del = require('del'),
     gulp = require('gulp'),
     autoprefixer = require('autoprefixer-core'),
     path = require('path'),
+    minifyCSS = require('gulp-minify-css'),
     _ = require('lodash'),
     $ = require('gulp-load-plugins')({lazy: true});
 
@@ -130,7 +131,7 @@ gulp.task('templatecache', ['clean-code'], function() {
     return gulp
         .src(config.htmltemplates)
         .pipe($.if(args.verbose, $.bytediff.start()))
-        .pipe($.minifyHtml({empty: true}))
+        .pipe($.minifyHtml({empty: true, loose: true, comments: true, spare: true, quotes: true}))
         .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
         .pipe($.angularTemplatecache(
             config.templateCache.file,
@@ -247,11 +248,8 @@ gulp.task('optimize', ['inject'], function() {
         .pipe(assets) // Gather all assets from the html with useref
         // Get the css
         .pipe(cssFilter)
-        .pipe($.csscomb())
-        .pipe($.uncss({
-            html: ['./src/client/index.html', './src/client/app/**/*.tpl.html', 'https://topshelfguild.com']
-        }))
-        .pipe($.csso())
+
+        .pipe(minifyCSS())
         .pipe(cssFilter.restore())
         // Get the custom javascript
         .pipe(jsAppFilter)
