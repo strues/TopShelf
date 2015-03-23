@@ -1,5 +1,6 @@
     <div class="row" ng-controller="ApplicationCtrl as application">
       <div class="col-sm-12 col-md-8">
+        <div class="well">
         <h1><span style="color:#333;">Top</span> <span class="blue-text">Shelf</span> <small>Guild Application</small></h1>
         <!-- start form -->
         <form role="form"
@@ -181,13 +182,14 @@
               </div><!-- applicantSelfImprovement -->
               <div class="form-group">
                 <button type="submit"
-                        class="btn btn-primary">Submit Form
+                        class="btn btn-success pull-right">Submit Application <i class="mdi-action-assignment-turned-in"></i>
                 </button>
               </div>
             </fieldset>
         </form>
+      </div>
     </div><!--/column-->
-    <aside id="aside" class="application-sidebar col-sm-12 col-md-3 col-md-offset-1">
+    <aside id="aside" style="color: #fff;" class="application-sidebar col-sm-12 col-md-3 col-md-offset-1">
     <div class="clearfix"></div>
       <div id="side-bar" class="row expandcollapse-item">
         <div ng-click="active = !active"

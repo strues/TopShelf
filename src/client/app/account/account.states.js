@@ -39,7 +39,7 @@
             controller: function ($state, Auth) {
                 var referrer = $state.params.referrer || $state.current.referrer;
                 Auth.logout();
-                $state.go(referrer);
+                $state.go('app.home');
             }
         })
         .state('account.signup', {

@@ -1,4 +1,4 @@
-<div class="row" ng-controller="ApplicationListCtrl">
+<div class="row page-content" ng-controller="ApplicationListCtrl">
 <div class="col-sm-12">
        <h2 class="text-primary" style="text-align: right;">Applications</h2>
         <table class="table table-condensed">
@@ -17,13 +17,13 @@
 
                   <td>{{application.charSpec}}</td>
 
-                  <td>{{application.created}}</td>
+                  <td>{{application.created | date:'MM/dd/yyyy'}}</td>
                   <td>
                       <div class="btn-group">
                          <a ui-sref='admin.applicationViewID({id:application._id})'>
                            <button class="btn btn-success btn-sm"><i class="fa fa-check-circle-o"></i> View App</button>
                          </a>
-                          <a href="" ng-click="deleteApplication(application)">
+                          <a href="" ng-click="deleteApplication(application._id)">
                           <span class="glyphicon glyphicon-trash"></span></a>
                       </div>
                   </td>
