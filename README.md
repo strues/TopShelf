@@ -7,7 +7,7 @@ A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.
 #### Intro  
 Top Shelf is an SPA for managing my World of Warcraft guild's website. Please feel free to leave comments, submit pull requests or use it as a base for your own project.  
 
-##### Currently in early(ish) stages of development: Version: 0.6-beta/alpha
+##### Currently in early(ish) stages of development: Version: 0.0.6 - Alpha
 
 Before beginning you should have [NodeJS](http://www.nodejs.com) and [MongoDB](http://www.mongodb.org/downloads) installed on your computer. As a quick note, I do all of my work using a Mac so any commands I included might not work for Windows users.  
 
