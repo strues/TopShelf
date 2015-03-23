@@ -48,6 +48,22 @@ gulp.task('vet', function() {
 });
 
 /**
+ * Generate Todo
+ */
+gulp.task('todo', function() {
+    log('Compiling todo notes');
+
+    return gulp
+        .src(config.alljs)
+        .pipe($.if(args.verbose, $.print()))
+        .pipe($.todo())
+        .pipe(gulp.dest('./')) //output todo.md as markdown
+        .pipe($.todo.reporter('json', {fileName: 'todo.json'}))
+        .pipe(gulp.dest('./')); //output todo.json as json
+
+});
+
+/**
  * Create a visualizer report
  */
 gulp.task('plato', function(done) {

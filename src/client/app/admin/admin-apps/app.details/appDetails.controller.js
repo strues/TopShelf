@@ -17,6 +17,7 @@
         var loc = 'locale=en_US';
         /*
          * @todo refactor into its own service
+         * @todo fix character info retrieval
          */
         if (applicationId && applicationId.length > 0) {
             $http.get('/api/applications/' + applicationId).success(function (application) {

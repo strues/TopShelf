@@ -29,6 +29,9 @@
                 toastr.error('There was a problem with your post' + error.message, 'Something broke');
             });
         };
+        // TODO remove scope
+        // TODO fix typeahead
+        // TODO fix dependency injection errors from fabform
         $scope.goBack = function () {
             $location.path('/');
         };

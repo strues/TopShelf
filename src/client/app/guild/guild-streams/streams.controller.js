@@ -24,6 +24,7 @@
             $rootScope.streamName = streamName1;
             $rootScope.streamActive = true;
         };
+        //TODO Fix this fucking piece of shit
         var streamName2 = 'toxicpopsicles';
         Twitch.get(streamName2).success(function (data2) {
             $scope.stream = data2.stream;
