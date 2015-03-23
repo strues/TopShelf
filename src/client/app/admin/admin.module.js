@@ -5,6 +5,4 @@ angular.module('app.admin', [
     'app.admin.states',
     'app.admin.services'
 ]);
-//TODO link logo to homepage
-//TODO reduce gap between nav and content views
 //TODO add progression edit

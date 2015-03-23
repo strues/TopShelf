@@ -3,9 +3,7 @@
 |:------|:------:|:------
 | client/app/app.module.js | 52 | Finish adding strict dependency injection.
 | client/stubs/stubs.config.js | 14 | dynamically inject angular-mocks and stubs.js for dev stubbing mode only
-| client/app/admin/admin.module.js | 8 | link logo to homepage
-| client/app/admin/admin.module.js | 9 | reduce gap between nav and content views
-| client/app/admin/admin.module.js | 10 | add progression edit
+| client/app/admin/admin.module.js | 8 | add progression edit
 | client/app/account/account-profile/profile.controller.js | 10 | Implement a members list with this information
 | client/app/account/services/auth.service.js | 12 | Require authorization and acesss control frontside to go with the backend.
 | client/app/admin/admin-media/adminMedia.controller.js | 26 | Add the ability to delete uploads. Expanded media functionality.

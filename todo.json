@@ -13,21 +13,9 @@
   },
   {
     "file": "client/app/admin/admin.module.js",
-    "text": "link logo to homepage",
-    "kind": "TODO",
-    "line": 8
-  },
-  {
-    "file": "client/app/admin/admin.module.js",
-    "text": "reduce gap between nav and content views",
-    "kind": "TODO",
-    "line": 9
-  },
-  {
-    "file": "client/app/admin/admin.module.js",
     "text": "add progression edit",
     "kind": "TODO",
-    "line": 10
+    "line": 8
   },
   {
     "file": "client/app/account/account-profile/profile.controller.js",

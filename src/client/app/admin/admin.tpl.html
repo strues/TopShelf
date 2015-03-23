@@ -1,11 +1,10 @@
-<div class="container-fluid">
+<div class="container">
 <div class="row">
-	<div class="col-sm-2">
 		<nav class="menu" tabindex="0">
   			<div class="smartphone-menu-trigger"></div>
   			<header class="avatar">
-			    <img src="/assets/images/crown.png" />
-			    <h2 style="color: #fff;">{{Auth.getCurrentUser().name}}</h2>
+			    <a ui-sref="home"><img src="/assets/images/crown.png" />
+			    <h2 style="color: #fff;">{{Auth.getCurrentUser().name}}</h2></a>
   			</header>
 		  <ul>
 		    <li tabindex="0" class="mdi-action-home"><a ui-sref="home"> Home</a></li>
@@ -19,8 +18,8 @@
 		    <li tabindex="0" class="mdi-file-cloud-circle"><a ui-sref="admin.media"> Media</a></li>
 		  </ul>
 		</nav>
-	</div>
-    <div class="col-sm-10 col-sm-offset-2 info-container box">
+
+    <div class="col-sm-11 col-sm-offset-1 info-container box">
       <div ui-view="content"></div>
 	</div>
   </div>
