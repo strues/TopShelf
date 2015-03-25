@@ -1,41 +1,42 @@
-<div ng-controller="ResourceEditCtrl as vm">
-<div class="row">
-<div class="panel panel-default">
-<div class="panel-heading">
-  <h3>Editing Resource</h3>
-  </div>
-  <div class="panel-body">
-<form novalidate ng-submit="vm.saveResource()">
-        <div class="row">
-              <div class="col-sm-4 col-md-5">
+<div class="page-content" ng-controller="ResourceEditCtrl as vm">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Editing Resource</h3>
+      </div>
+      <div class="panel-body">
+        <form novalidate ng-submit="vm.saveResource()">
+          <div class="row">
+            <div class="col-sm-4 col-md-5">
               <label>Website Name:</label>
-                <input type="text"
-                      class="form-control"
-                      placeholder="MMO-Champion"
-                      ng-minLength=3
-                      ng-maxLength=75
-                      ng-model="vm.resourceData.websiteName"
-                      required/>
-              </div>
-              <div class="col-sm-8 col-md-7">
-                <label>URL:</label>
-                  <input type="text"
-                         class="form-control"
-                         placeholder="http://www.mmo-champion.com"
-                         ng-model="vm.resourceData.websiteUrl"
-                         />
-              </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','indent','outdent','undo','redo'], ['insertLink']]" class="textEditor" ng-model="vm.resourceData.resourceDesc"></text-angular>
+              <input type="text"
+              class="form-control"
+              placeholder="MMO-Champion"
+              ng-minLength=3
+              ng-maxLength=75
+              ng-model="vm.resourceData.websiteName"
+              required/>
             </div>
-        </div>
-                <!-- Save Btn-->
+            <div class="col-sm-8 col-md-7">
+              <label>URL:</label>
+              <input type="text"
+              class="form-control"
+              placeholder="http://www.mmo-champion.com"
+              ng-model="vm.resourceData.websiteUrl"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','indent','outdent','undo','redo'], ['insertLink']]" class="textEditor" ng-model="vm.resourceData.resourceDesc"></text-angular>
+            </div>
+          </div>
+          <!-- Save Btn-->
           <div class="row" style="padding-top: 20px; padding-right: 15px;">
-              <input type="submit" class="btn btn-primary pull-right" value="Save" />
-          </div> <!--./row-->
-      </form>
-       </div>
-</div>
-</div>
+            <input type="submit" class="btn btn-primary pull-right" value="Save" />
+            </div> <!--./row-->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

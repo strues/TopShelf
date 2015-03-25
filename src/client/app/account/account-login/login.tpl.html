@@ -1,9 +1,26 @@
 <navbar></navbar>
-<div class="container  nav-padding">
-  <div class="row">
-
-    <login-form></login-form>
-
-
+<div class="container nav-padding">
+<div class="row">
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Login</h1>
+			</div>
+			<form id="lsform" name="form" ng-submit="login(form)" novalidate>
+				<div class="login-form">
+					<div class="control-group">
+						<input class="login-field" type="email" id="login-name" name="email" ng-model="user.email" placeholder="Email" ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+						<label class="login-field-icon fui-user" for="login-name"></label>
+					</div>
+					<div class="control-group">
+						<input type="password" class="login-field" value=""  ng-model="user.password" placeholder="password" id="login-pass" required>
+						<label class="login-field-icon fui-lock" for="login-pass"></label>
+					</div>
+					<input class="btn btn-primary btn-large btn-block" type="submit">login</a>
+					<a class="login-link" ui-sref="account.signup">Need an account? Signup</a>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 </div>

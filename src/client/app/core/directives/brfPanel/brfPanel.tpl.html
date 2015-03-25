@@ -4,8 +4,7 @@
 	</div>
 	<div class="card-content">
 		<div class="progression-brf" ng-repeat="progression in progressions">
-			<span><img ng-class="{'boss-killed': progression.dead}" ng-src="/assets/images/icons/{{progression.bossName}}.png" width="65px"></span>
-
+			<div class="boss-container"><img ng-class="{'boss-killed': progression.dead}" ng-src="/assets/images/icons/{{progression.bossName}}.png" width="65px"></div>
 		</div>
 		</div>
 		<div class="card-action">

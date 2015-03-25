@@ -1,29 +1,21 @@
-<form id="lsform" name="form" ng-submit="login(form)" novalidate>
-  <fieldset>
-    <img src="/assets/images/crown.svg" alt="crown" height="90px" style="padding-bottom: 15px;">
-    <div class="input-group input-group-lg">
-      <span class="input-group-addon">
-        <span class="icon-email-plane"> </span>
-      </span>
-      <input class="form-control" type="email" id="email" name="email" ng-model="user.email" placeholder="Email" ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+<div class="login">
+  <div class="login-screen">
+    <div class="app-title">
+      <h1>Login</h1>
     </div>
-    <br>
-    <div class="input-group input-group-lg">
-      <span class="input-group-addon">
-        <span class="icon-lock"> </span>
-      </span>
-      <input class="form-control" type="password" name="password" ng-model="user.password" placeholder="•••••••••••" required>
-    </div>
-    <br>
-    <div class="submit">
-        <input type="submit" value="Login" id="button-blue"/>
-        <div class="ease"></div>
+    <form id="lsform" name="form" ng-submit="login(form)" novalidate>
+      <div class="login-form">
+        <div class="control-group">
+          <input class="login-field" type="email" id="login-name" name="email" ng-model="user.email" placeholder="Email" ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+          <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
+        <div class="control-group">
+          <input type="password" class="login-field" value=""  ng-model="user.password" placeholder="password" id="login-pass" required>
+          <label class="login-field-icon fui-lock" for="login-pass"></label>
+        </div>
+        <input class="btn btn-primary btn-large btn-block" type="submit">login</a>
+        <a class="login-link" ui-sref="account.signup">Need an account? Signup</a>
       </div>
-
-  </fieldset>
-  <section>
-
-    <p class="text-center text-muted text-small">Don't have an account yet? <a ui-sref="app.signup">Sign up</a>
-    </p>
-  </section>
-</form>
+    </form>
+  </div>
+</div>
