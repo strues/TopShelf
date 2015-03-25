@@ -3,8 +3,8 @@
   "version": "0.0.6",
   "dependencies": {
     "modernizr": "~2.8.3",
-    "jquery": "~2.1.3",
-    "lodash": "~3.3.1",
+    "jquery": "latest",
+    "lodash": "~3.6.0",
     "angular": "~1.3.15",
     "angular-resource": "~1.3.15",
     "angular-messages": "~1.3.15",
@@ -15,12 +15,12 @@
     "bootstrap-sass": "~3.3.4",
     "textAngular": "latest",
     "angular-loading-bar": "~0.7.1",
-    "angular-toastr": "~1.0.2",
+    "angular-toastr": "~1.1.0",
     "ng-fab-form": "latest",
     "angular-touch": "~1.3.15",
     "angular-strap": "~2.2.0",
     "angular-carousel": "~0.3.9",
-    "trNgGrid": "~3.0.4",
+    "trNgGrid": "latest",
     "andy": "~1.0.4",
     "angular-xeditable": "~0.1.8",
     "angular-file-upload": "~1.1.5"
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "angular-mocks": "~1.3.15",
-    "sinon": "~1.13.0",
-    "bardjs": "~0.0.9"
+    "sinon": "~1.14.1",
+    "bardjs": "~0.1.0"
   }
 }

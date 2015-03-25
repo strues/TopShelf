@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
     /**
      * @ngdoc controller
@@ -13,11 +13,11 @@
         // Application.getAllApplications().then(function (response) {
         //     $scope.dataForTable = response.data;
         // });
-        Application.getAllApplications().then(function (response) {
-            $scope.applications = response.data;
+        Application.getAllApplications().then(function(response) {
+            $scope.dataForTable = response.data;
         });
-        $scope.deleteApplication = function (id) {
-            $http.delete('/api/applications' + '/' + id).success(function () {
+        $scope.deleteApplication = function(id) {
+            $http.delete('/api/applications' + '/' + id).success(function() {
                 $state.reload();
                 toastr.success('Hopefully you meant to do that', 'Application Deleted');
             });

@@ -7,35 +7,39 @@
      */
     angular.module('app.guild.states').controller('ApplicationCtrl', ApplicationCtrl);
     /* @ngInject */
-    function ApplicationCtrl($scope, $location, $http, Application, ngFabForm, toastr) {
-        $scope.active = true;
-        $scope.active1 = true;
-        $scope.defaultFormOptions = ngFabForm.config;
-        $scope.customFormOptions = angular.copy(ngFabForm.config);
-        $scope.realms = [];
-        $http.jsonp('https://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
-        .success(function (data, status, headers, config) {
-            data.realms.map(function (realm) {
-                $scope.realms.push(realm.name);
-            });
-        }).error(function (data, status, headers, config) {
-        });
-        $scope.submit = function (formData) {
+    function ApplicationCtrl($location, $http, Application, ngFabForm, toastr) {
+        var vm = this;
+        vm.ctrlName = 'ApplicationCtrl';
+
+        vm.active = true;
+        vm.active1 = true;
+        vm.defaultFormOptions = ngFabForm.config;
+        vm.customFormOptions = angular.copy(ngFabForm.config);
+        vm.realms = [];
+
+        // $http.jsonp('https://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
+        // .success(function (data, status, headers, config) {
+        //     data.realms.map(function (realm) {
+        //         vm.realms.push(realm.name);
+        //     });
+        // }).error(function (data, status, headers, config) {
+        // });
+
+        vm.submit = function (formData) {
             Application.createApplication(formData).success(function () {
-                $scope.processing = false;
-                $scope.formData = {};
+                vm.processing = false;
+                vm.formData = {};
                 toastr.success('Your application submitted successfully', 'App Submitted!');
             }).error(function (error) {
                 toastr.error('There was a problem with your post' + error.message, 'Something broke');
             });
         };
-        // TODO remove scope
         // TODO fix typeahead
         // TODO fix dependency injection errors from fabform
-        $scope.goBack = function () {
+        vm.goBack = function () {
             $location.path('/');
         };
-        $scope.tooltip = {
+        vm.tooltip = {
             'title': 'Please read about our recruitment process first',
             'checked': false
         };

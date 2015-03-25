@@ -29,25 +29,28 @@
             views: {
                 'main@': {
                     templateUrl: 'app/guild/guild-apply/guild-application.tpl.html',
-                    controller: 'ApplicationCtrl'
+                    controller: 'ApplicationCtrl',
+                    controllerAs: 'vm'
                 }
             }
         })
         .state('guild.apply.app', {
-            url: '/guild/application',
+            url: '/application',
             views: {
                 'guildapp@guild': {
                     templateUrl: 'app/guild/guild-apply/application.tpl.html',
-                    controller: 'ApplicationCtrl'
+                    controller: 'ApplicationCtrl',
+                    controllerAs: 'vm'
                 }
             }
         })
         .state('guild.apply.info', {
-            url: '/guild/application/info',
+            url: '/info',
             views: {
                 'guildapp@guild': {
                     templateUrl: 'app/guild/guild-apply/application-info.tpl.html',
-                    controller: 'ApplicationCtrl'
+                    controller: 'ApplicationCtrl',
+                    controllerAs: 'vm'
                 }
             }
         })

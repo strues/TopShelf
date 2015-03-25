@@ -17,15 +17,14 @@ var express = require('express'),
     multer = require('multer'),
     logger = require('./logger'),
     config = require('./environment'),
-    redis = require('redis'),
     busboy = require('connect-busboy'),
     passport = require('passport'),
     session = require('express-session'),
-    redisStore = require('connect-redis')(session),
+    mongoose = require('mongoose'),
+    mongoStore = require('connect-mongo')(session),
     flash = require('express-flash');
 
 module.exports = function(app) {
-    var client = redis.createClient(); // Redis
     var env = app.get('env');
 
     // Should be placed before express.static
@@ -58,15 +57,9 @@ module.exports = function(app) {
     // Enable jsonp
     app.use(session({
         secret: config.secrets.session,
-        saveUninitialized: false, // don't news.create session until something stored,
-        resave: true, // don't save session if unmodified
-        store: new redisStore({
-            host: 'localhost',
-            port: 6379,
-            client: client
-        }),
-        cookie: config.sessionCookie,
-        name: config.sessionName
+        resave: true,
+        saveUninitialized: true,
+        store: new mongoStore({ mongoose_connection: mongoose.connection })
     }));
     app.use(busboy());
 
