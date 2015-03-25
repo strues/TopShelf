@@ -22,7 +22,7 @@ var express = require('express'),
     session = require('express-session'),
     mongoose = require('mongoose'),
     mongoStore = require('connect-mongo')(session),
-    flash = require('express-flash');
+    flash = require('connect-flash');
 
 module.exports = function(app) {
     var env = app.get('env');
@@ -59,7 +59,7 @@ module.exports = function(app) {
         secret: config.secrets.session,
         resave: true,
         saveUninitialized: true,
-        store: new mongoStore({ mongoose_connection: mongoose.connection })
+        store: new mongoStore({ mongooseConnection: mongoose.connection })
     }));
     app.use(busboy());
 

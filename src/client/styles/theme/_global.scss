@@ -29,7 +29,12 @@ h6 {
 
 .page-content {
   background-color: $porcelain;
-  padding: 10px;
+  padding: 15px;
+}
+
+.blue-area {
+  background-color: $tsblue;
+  padding: 15px;
 }
 
 .text-light {
@@ -39,7 +44,10 @@ h6 {
 .white-text {
     color: #fff;
 }
-
+#aside {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 article {
     position: relative;
     margin-bottom: 30px;
