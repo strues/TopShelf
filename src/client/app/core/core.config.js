@@ -1,6 +1,12 @@
 (function () {
     'use strict';
-    angular.module('app.core').config(configureToastr).config(configureDatepicker).config(configureTooltip).config(configureAside).config(configure);
+    angular.module('app.core')
+        .config(configureToastr)
+        .config(configureDatepicker)
+        .config(configureTooltip)
+        .config(configureAside)
+        .config(configure);
+
     configureToastr.$inject = ['toastrConfig'];
     /* @ngInject */
     function configureToastr(toastrConfig) {
@@ -21,7 +27,7 @@
             newestOnTop: true,
             onHidden: null,
             onShown: null,
-            positionClass: 'toast-bottom-full',
+            positionClass: 'toast-bottom-right',
             tapToDismiss: true,
             timeOut: 5000,
             titleClass: 'toast-title',

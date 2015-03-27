@@ -1,12 +1,15 @@
 .carousel-area {
   margin: 0 auto;
+  padding-top: 5px;
   padding-bottom: 30px;
+  background-color: #fff;
+  border-radius: 3px 3px 3px 3px;
 }
 
 ul[rn-carousel] {
-  height: 700px;
+  height: 600px;
   margin: 0 auto;
-  max-width: 1920px;
+  max-width: 1350px;
 }
 
 .carousel li {

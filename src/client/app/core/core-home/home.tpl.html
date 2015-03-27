@@ -3,9 +3,12 @@
 <navbar></navbar>
 <!-- home-page container
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<div id="home-page">
+<div id="home-page" class="container-fluid">
     <!-- carousel row/column -->
-    <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
+  <section class="page-content--home">
+  <div class="row">
+    <div class="carousel-area col-sm-12 col-lg-9" ng-controller="HomeCarouselCtrl as carousel">
+     <h1 style="text-align: right; padding-right: 20px;"><span style="color:#333;">Recent</span> <span class="blue-text">Kills</span></h1>
     <!-- rn-carousel directive start -->
       <ul rn-carousel rn-carousel-controls rn-carousel-buffered rn-carousel-auto-slide class="image">
         <li ng-repeat="slide in carousel.slides">
@@ -13,15 +16,33 @@
         </li>
       </ul>
     </div><!-- END carousel-area -->
-    <!-- END carousel row/column -->
+        <div class="col-sm-12 col-md-4 col-lg-3">
+    <aside class="home-sidebar">
+      <div class="clearfix"></div>
+    <!-- recruitment-aside -->
+      <div id="recruitment-widget">
+          <!-- recruiting-panel ngDirective -->
+          <recruitment-widget></recruitment-widget>
+      </div> <!-- END recruitment-aside -->
+<div id="progression-widget">
+          <brf-panel></brf-panel>
+        </div>
+      <!-- END BRF Widget -->
+      <!-- END BRF Widget -->
+    </aside> <!-- END sidebar -->
+    </div><!-- END col -->
+   </div> <!-- END carousel row/column -->
 <!-- Start News Posts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <main>
-  <div class="container" ng-controller="HomeCtrl as vm">
-    <div class="row">
-    <div class="col-sm-12 col-md-8">
-    <!-- Article News Posting -->
-      <article class="news-post card" ng-repeat="post in vm.posts | orderBy:'-date'">
+  <main ng-controller="HomeCtrl as vm">
+  <div class="row">
+    <div class="news-title-container">
+      <div class="news-title-bg">
+        <h1 class="news-title">Latest News</h1>
+      </div>
+   </div>
+  <div class="col-md-4" ng-repeat="post in vm.posts | orderBy:'-date'">
+ <article class="news-post card">
         <!-- Post Image -->
         <div class="post-image-wrapper">
           <img ng-src="{{post.image}}" class="img-responsive" alt="news post image">
@@ -41,30 +62,17 @@
             <div class="post-content">
               <div ta-bind ng-model="post.description"></div>
             </div><!-- post-content -->
-            <div id="post-footer" class="row"><a ui-sref='home.detail({id:post._id})'>
-             <button type="button" class="btn btn-md btn-primary pull-right">Read More</button></a>
+            <div id="post-footer" class="row">
+            <a ui-sref='home.detail({id:post._id})'>
+             <button type="button" class="btn btn-md btn-primary">Read More</button>
+            </a>
             </div><!-- END post footer -->
         </div><!-- END post-wrapper -->
       </article><!-- END article admin-news-post -->
-    </div><!-- END column -->
-<!-- Start Right Side aside
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="col-sm-12 col-md-4">
-    <aside class="home-sidebar">
-      <div class="clearfix"></div>
-    <!-- recruitment-aside -->
-      <div id="recruitment-widget">
-          <!-- recruiting-panel ngDirective -->
-          <recruitment-widget></recruitment-widget>
-      </div> <!-- END recruitment-aside -->
-     <div id="progression-widget">
-          <brf-panel></brf-panel>
-        </div>
-      <!-- END BRF Widget -->
-    </aside> <!-- END sidebar -->
-    </div><!-- END col -->
+      </div>
   </div><!-- END row -->
-  </div><!-- END container -->
   </main>
-</div> <!-- END home -->
+</section> <!-- end page-content home -->
+</div> <!-- END home --><!-- END container -->
 
+<the-footer></the-footer>

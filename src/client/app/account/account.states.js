@@ -36,10 +36,8 @@
         .state('account.logout', {
             url: '/logout?referrer',
             referrer: 'home',
-            controller: function ($state, Auth) {
-                var referrer = $state.params.referrer || $state.current.referrer;
+            controller: function (Auth) {
                 Auth.logout();
-                $state.go('app.home');
             }
         })
         .state('account.signup', {

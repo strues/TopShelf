@@ -9,11 +9,22 @@
   border-radius: 2px;
   background-clip: padding-box;
 }
-.card span.card-title {
+
+.card-title {
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 300;
+  text-shadow:1px 1px 0px #2b2a2b;
+}
+
+.card-title-icon {
     color: $amber;
-    font-size: 24px;
+    font-size: 44px;
     font-weight: 300;
+    margin-right: 10px;
     text-transform: uppercase;
+    text-shadow:6px -3px 5px #2b2a2b;
+    vertical-align: middle;
 }
 .card-image {
   height: 120px;

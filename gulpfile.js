@@ -264,7 +264,6 @@ gulp.task('optimize', ['inject'], function() {
         .pipe(assets) // Gather all assets from the html with useref
         // Get the css
         .pipe(cssFilter)
-
         .pipe(minifyCSS())
         .pipe(cssFilter.restore())
         // Get the custom javascript

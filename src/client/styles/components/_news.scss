@@ -1,3 +1,32 @@
 .post-wrapper {
 	padding: 1rem;
 }
+
+.news-title-bg {
+  //position: absolute;
+  width: 100%;
+  //right: -50%;
+  background-color: rgba(108, 122, 137, .7);
+  border-radius: 3px 3px 3px 3px;
+  //transform: rotate(0deg) scale(1) skew(1deg) translate(50%);
+}
+.news-title-container {
+  overflow-x: hidden;
+  position: relative;
+}
+
+.news-title {
+  font-weight: 700;
+  font-size: 130px;
+  line-height:100px;
+  text-shadow:6px -3px 5px #2b2a2b;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  letter-spacing:-3px!important;
+  color: $porcelain;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-transform: lowercase;
+
+}

@@ -7,10 +7,12 @@
      * @description
      *
      */
-    angular.module('app.account.services').factory('Auth', Auth);
-    /*
- * TODO Require authorization and acesss control frontside to go with the backend.
- */
+    angular
+      .module('app.account.services')
+      .factory('Auth', Auth);
+
+    // TODO Require authorization and acesss control frontside to go with the backend.
+
     function Auth($http, User, $localStorage, $q) {
         var currentUser = $localStorage.token ? User.get() : {};
         return {

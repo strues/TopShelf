@@ -12,7 +12,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Khand", "Arial Black" sans-serif;
+    font-family: "Raleway", "Arial Black" sans-serif;
 }
 
 .blue-text {
@@ -30,6 +30,12 @@ h6 {
 .page-content {
   background-color: $porcelain;
   padding: 15px;
+}
+.page-content--home {
+  //background-color: $porcelain;
+  margin-top: 70px;
+  padding: 15px;
+  border-radius: 3px 3px 3px 3px;
 }
 
 .blue-area {
