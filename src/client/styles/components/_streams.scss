@@ -1,0 +1,43 @@
+#stream-list {
+
+}
+
+.stream-preview {
+  margin-left: 5px;
+  display: inline-block;
+  position: relative;
+  transition: all 250ms ease;
+  z-index: 0;
+
+  &:hover {
+    transform: scale(1.1);
+    border-color: white;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+// h1 title
+.streamer {
+  color: $tsblue;
+}
+
+.streams-list {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+// .streamWrapper {
+
+// }
+
+// .stream-info {
+
+// }
+
+// .stream-title {
+
+// }
+
+// .stream-viewers {
+
+// }

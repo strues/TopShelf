@@ -1,50 +1,7 @@
-@import 'vendor/normalize';
-//
-// Theme
-//
-@import 'theme/palette';
-@import 'theme/global';
+// styles.scss
 
-//
-// Base
-//
-@import 'base/settings';
-@import 'base/icons';
-//@import 'base/fonts';
-
-//
-// Utilities
-//
-
-
-
-//
-// Vendor
-//
-
-@import 'vendor/bootstrap';
-@import 'vendor/andy';
-@import 'vendor/animate';
-@import 'vendor/ngStrapAdditions';
-
-//
-// Layout
-//
-
-//
-// Components
-//
-@import 'components/carousel';
-@import 'components/toolbar';
-@import 'components/card';
-@import 'components/widgets';
-@import 'components/news';
-@import 'components/login';
-
-//
-// Sections
-//
-@import 'sections/navbar';
-@import 'sections/footer';
-@import 'sections/adminNav';
-
+@import 'base/module';
+@import 'vendor/module';
+@import 'layout/module';
+@import 'pages/module';
+@import 'components/module';

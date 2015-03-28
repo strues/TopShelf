@@ -1,4 +1,4 @@
-$tsblue: #1976D2;
+$tsblue: #3399cc;
 $porcelain: rgb(236, 240, 241);
 $md-gray: rgba(59, 62, 64, .52);
 $med-gray: rgba(59, 62, 64, .52);
@@ -13,7 +13,8 @@ $palettes: (
     blue: (
         base:   #3399cc,
         light:  lighten(#3399cc, 15%),
-        dark:   #567
+        dark:   darken(#3399cc, 20%),
+        darker: darken(#3399cc, 40%)
     ),
     gray: (
         base:  $_color-base-grey,

@@ -3,67 +3,67 @@
 <h1>Top Shelf Guild Streams</h1>
 <h3 class="subtitle">Checkout our raids on Twitch.tv</h3>
 <div class="row">
-  <aside class="col-sm-4 col-md-3 col-lg-2"><!-- stream 1-->
+  <aside id="stream-list" class="col-sm-12 col-md-3 col-lg-2"><!-- stream 1-->
   <div class="stream-preview">
-    <span class="blue-text">Soupy</span>
-    <div class="streamWrapper streams">
+    <h1 class="streamer">Soupy</h1>
+    <div class="streamWrapper">
       <img ng-click="openStream(stream1.channel.name)" ng-src="{{ stream1.preview.medium }}">
-      <div class="stream-info">
-        <div class="stream-title">{{ stream1.channel.display_name }}</div>
-        <div class="stream-viewers">{{ stream1.viewers }} <i class="fa fa-eye"></i></div>
-      </div>
+      <ul class="list-inline stream-info">
+        <li class="stream-title"><h4>Viewers</h4></li>
+        <li class="mdi-social-people">{{ stream1.viewers }}</li>
+      </ul>
     </div>
   </div>
   <div class="stream-preview">
-    <span class="blue-text">Toxicpoptart</span>
-    <div class="streamWrapper streams">
+   <h1 class="streamer">Toxicpoptart</h1>
+    <div class="streamWrapper" >
       <img ng-click="openStream(stream2.channel.name)" ng-src="{{ stream2.preview.medium }}">
-      <div class="stream-info">
-        <div class="stream-title" style="color: #fff;">{{ stream2.channel.display_name }}</div>
-        <div class="stream-viewers" style="color: #fff;">{{ stream2.viewers }} <i class="fa fa-eye"></i></div>
-      </div>
+       <ul class="list-inline stream-info">
+        <li class="stream-title"><h4>Viewers</h4></li>
+        <li class="mdi-social-people">{{ stream2.viewers }}</li>
+      </ul>
     </div>
     </div>
     <div class="stream-preview">
-    <span class="blue-text">Teodin</span>
-    <div class="streamWrapper streams">
-      <img ng-click="openStream(stream.channel.name)" ng-src="{{ stream.preview.medium }}">
-      <div class="stream-info">
-        <div class="stream-title" style="color: #fff;">{{ stream.channel.display_name }}</div>
-        <div class="stream-viewers" style="color: #fff;">{{ stream.viewers }} <i class="fa fa-eye"></i></div>
-      </div>
+    <h1 class="streamer">Teodin</h1>
+    <div class="streamWrapper">
+      <img ng-click="openStream(stream3.channel.name)" ng-src="{{ stream3.preview.medium }}">
+      <ul class="list-inline stream-info">
+        <li class="stream-title"><h4>Viewers</h4></li>
+        <li class="mdi-social-people">{{ stream3.viewers }}</li>
+      </ul>
     </div>
   </div>
     <div class="stream-preview">
-    <span class="blue-text">Valkr</span>
-    <div class="streamWrapper streams">
-      <img ng-click="openStream(stream.channel.name)" ng-src="{{ stream.preview.medium }}">
-      <div class="stream-info">
-        <div class="stream-title" style="color: #fff;">{{ stream.channel.display_name }}</div>
-        <div class="stream-viewers" style="color: #fff;">{{ stream.viewers }} <i class="fa fa-eye"></i></div>
-      </div>
+  <h1 class="streamer">Valkr</h1>
+    <div class="streamWrapper">
+      <img ng-click="openStream(stream4.channel.name)" ng-src="{{ stream4.preview.medium }}">
+      <ul class="list-inline stream-info">
+        <li class="stream-title"><h4>Viewers</h4></li>
+        <li class="mdi-social-people">{{ stream4.viewers }}</li>
+      </ul>
     </div>
   </div>
 <div class="stream-preview">
-  <span class="blue-text">Tinkerbell</span>
-  <div class="streamWrapper streams">
-    <img ng-click="openStream(stream.channel.name)" ng-src="{{ stream.preview.medium }}">
-    <div class="stream-info">
-      <div class="stream-title" style="color: #fff;">{{ stream.channel.display_name }}</div>
-      <div class="stream-viewers" style="color: #fff;">{{ stream.viewers }} <i class="fa fa-eye"></i></div>
-    </div>
+  <h1 class="streamer">Tinkerbell</h1>
+  <div class="streamWrapper">
+    <img ng-click="openStream(stream5.channel.name)" ng-src="{{ stream5.preview.medium }}">
+     <ul class="list-inline stream-info">
+        <li class="stream-title"><h4>Viewers</h4></li>
+        <li class="mdi-social-people">{{ stream5.viewers }}</li>
+      </ul>
   </div>
 </div>
 </aside><!-- panel 5-->
-<div class="col-sm-12 col-md-9 col-lg-10">
-  <div class="streamContainer" ng-show="streamActive">
-    <object type="application/x-shockwave-flash" height="720px" width="1280px" id="live_embed_player_flash" data="//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?channel={{ streamName }}" bgcolor="#000000">
+  <div class="col-sm-12 col-md-9 col-lg-10">
+    <div class="streamContainer" ng-show="streamActive">
+    <object type="application/x-shockwave-flash" height="576px" width="1024px" id="live_embed_player_flash" data="//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?channel={{ streamName }}" bgcolor="#000000">
     <param name="allowFullScreen" value="true" />
       <param name="allowScriptAccess" value="always" />
         <param name="allowNetworking" value="all" />
           <param name="movie" value="//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf" />
             </object>
-            <i ng-click="closeStream()" class="fa fa-times"></i>
+            <i ng-click="closeStream()" class="mdi-content-clear"></i>
           </div>
         </div>
       </div>

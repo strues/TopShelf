@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
     /**
      * @ngdoc Service
@@ -6,8 +6,9 @@
      * @desc Communicates with backend handling recruitment status api calls
      */
     angular
-      .module('app.guild.services')
-      .service('Twitch', Twitch);
+        .module('app.guild.services')
+        .service('Twitch', Twitch);
+
     Twitch.$inject = ['$http'];
     /* @ngInject */
     function Twitch($http) {
@@ -16,7 +17,7 @@
         var cb = '?callback=JSON_CALLBACK';
         var service = {
             get: get
-          };
+        };
 
         return service;
 

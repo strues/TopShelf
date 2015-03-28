@@ -15,7 +15,7 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
+$brand-primary:         #3399cc;
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
@@ -30,7 +30,7 @@ $yellow: 				#ffeb3b;
 //** Background color for `<body>`.
 $body-bg:               $gray-lighter !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-dark !default;
+$text-color:            palette(blue, darker) !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary !default;
@@ -367,13 +367,13 @@ $navbar-collapse-max-height:       340px !default;
 
 $navbar-default-color:             $gray-lighter !default;
 $navbar-default-bg:                $tsblue !default;
-$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-border:            none !default;
 
 // Navbar links
 $navbar-default-link-color:                $gray-lighter !default;
-$navbar-default-link-hover-color:          $yellow !default;
+$navbar-default-link-hover-color:          $tsblue !default;
 $navbar-default-link-hover-bg:             transparent !default;
-$navbar-default-link-active-color:         $yellow !default;
+$navbar-default-link-active-color:         palette(blue, darker);
 $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
@@ -865,4 +865,3 @@ $page-header-border-color:    $gray-lighter !default;
 $dl-horizontal-offset:        $component-offset-horizontal !default;
 //** Horizontal line color.
 $hr-border:                   $gray-lighter !default;
-

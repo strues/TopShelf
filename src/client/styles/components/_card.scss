@@ -11,14 +11,13 @@
 }
 
 .card-title {
-  color: #fff;
+  color: palette(blue, darker);
   font-size: 2.4rem;
   font-weight: 300;
-  text-shadow:1px 1px 0px #2b2a2b;
 }
 
 .card-title-icon {
-    color: $amber;
+    color: $amber !important;
     font-size: 44px;
     font-weight: 300;
     margin-right: 10px;

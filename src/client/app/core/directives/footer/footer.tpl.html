@@ -1,23 +1,50 @@
 <footer id="thefoot" class="footer" role="contentinfo">
-<div class="container">
-<div id="footer-big" class="row-fluid">
-<div class="col-md-4 col-lg-4 pad-md-10 pad-lg-10">
-<h3>Guild Streams</h3>
+    <div id="footer-big">
+     <div class="container">
+      <div class="row">
 
-</div>
-<div class="col-md-4 col-lg-4 pad-md-10 pad-lg-10">
-<h3>Recent Logs</h3>
-<hr />
-<iframe src="https://www.warcraftlogs.com/guilds/recent_reports/7658/"></iframe>
-</div>
-<div class="col-md-4 col-lg-4 pad-md-10 pad-lg-10">
-<h3>Resources</h3>
-</div>
-</div><!-- ./row footer-big -->
-</div> <!--container-->
+        <div class="col-sm-8">
+          <h3>Guild Streams</h3>
+          <ul class="list-inline">
+            <li class="streams-list">
+              <h4>Soupy</h4>
+              <span ng-if="stream1.game" class="label label-success">Online!</span>
+              <span ng-if="!stream1.game" class="label label-danger">Offline</span>
+            </li>
+            <li class="streams-list">
+              <h4>Toxic</h4>
+              <span ng-if="stream2.game" class="label label-success">Online!</span>
+              <span ng-if="!stream2.game" class="label label-danger">Offline</span>
+            </li>
+            <li>
+              <h4>Teodin</h4>
+              <span ng-if="stream3.game" class="label label-success">Online!</span>
+              <span ng-if="!stream3.game" class="label label-danger">Offline</span>
+            </li>
+             <li class="streams-list">
+              <h4>Valkr</h4>
+              <span ng-if="stream4.game" class="label label-success">Online!</span>
+              <span ng-if="!stream4.game" class="label label-danger">Offline</span>
+            </li>
+            <li class="streams-list">
+              <h4>Tink</h4>
+              <span ng-if="stream5.game" class="label label-success">Online!</span>
+              <span ng-if="!stream5.game" class="label label-danger">Offline</span>
+            </li>
+          </ul>
+        </div>
 
-<div id="footer-small" class="row-fluid">
-Top Shelf Guild | by<a href="https://twitter.com/itsSoop">@itsSoop</a> |
-<a href="http://steventruesdell.com">Website</a>
-</div>
-</footer>
+        <div class="col-sm-4">
+          <h3>Resources</h3>
+        </div>
+        </div><!-- ./row footer-big -->
+        </div>
+        <div class="row">
+          <div id="footer-small">
+            <div class="container">
+              <span class="pull-right">Top Shelf Guild | by<a href="https://twitter.com/itsSoop"> @itsSoop</a> |
+              <a href="http://steventruesdell.com">Website</a></span>
+            </div>
+          </div>
+        </div>
+      </footer>

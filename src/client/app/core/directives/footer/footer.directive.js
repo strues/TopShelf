@@ -15,8 +15,7 @@
         return {
             restrict: 'EA',
             templateUrl: 'app/core/directives/footer/footer.tpl.html',
-            controller: 'FooterCtrl',
-            controllerAs: 'vm'
+            controller: 'FooterCtrl'
         };
     }
     angular.module('app.core.directives').directive('theFooter', theFooter);

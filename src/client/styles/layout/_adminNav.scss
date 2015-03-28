@@ -9,10 +9,10 @@ $menu-width-desktop: 180px;
 $menu-width-tablet: 90px;
 $menu-width-smartphone: 230px;
 
-main{
+main {
 	position:relative;
 	height:100vh;
-	
+
 	.helper{
 		background:rgba(0,0,0,0.2);
 		color:$color-1st;
@@ -25,7 +25,7 @@ main{
 		border-radius:20px;
 		font-size:2em;
 		font-weight:bold;
-		
+
 		span{
 			color:rgba(0,0,0,0.2);
 			font-size:0.4em;
@@ -34,40 +34,40 @@ main{
 	}
 }
 
-.menu{
+.menu {
 	background: darken($tsblue, 15%);
 	height:100vh;
-	width:$menu-width-desktop;
-	position:fixed;
-	top:0;
-	left:0;
-	z-index:5;
-	outline:none;
-	
+	width: $menu-width-desktop;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	outline: none;
+
 	.avatar{
 		background:rgba(0,0,0,0.1);
 		padding:2em 0.5em;
 		text-align:center;
-		
+
 		img{
 			width:100px;
 			border-radius:50%;
 			overflow:hidden;
 			border:4px solid $color-1st;
-			box-shadow:0 0 0 4px rgba(255,255,255,0.2);
+			box-shadow:0 0 0 4px rgba(255,255,255, .2);
 		}
-		
+
 		h2{
 			font-weight:normal;
 			margin-bottom:0;
 		}
 	}
-	
+
 	ul{
 		list-style:none;
 		padding:0.5em 0;
 		margin:0;
-		
+
 		li{
 			color: $porcelain;
 			padding: 0.5em 1em 0.5em 3em;
@@ -78,16 +78,16 @@ main{
 			background-size: auto 20px;
 			transition: all 0.15s linear;
 			cursor: pointer;
-			
+
 			&:hover{
 				background-color:rgba(0,0,0,0.1);
 				width: 100%;
 			}
-			
+
 			&:focus{
 				outline:none;
 			}
-			
+
 		}
 		li a {
 			color: $porcelain;
@@ -102,14 +102,14 @@ main{
 	}
 	.menu{
 		width:$menu-width-tablet;
-		
+
 		.avatar{
 			padding:0.5em;
 			position:relative;
 			img{
 				width:$menu-width-tablet - 30px;
 			}
-			
+
 			h2{
 				opacity:0;
 				position:absolute;
@@ -122,7 +122,7 @@ main{
 				transform:translate3d(-20px,-50%,0);
 				transition:all 0.15s ease-in-out;
 			}
-			
+
 			&:hover{
 				h2{
 					opacity:1;
@@ -130,7 +130,7 @@ main{
 				}
 			}
 		}
-		
+
 		ul{
 			li{
 				height:$menu-width-tablet/1.5;
@@ -149,7 +149,7 @@ main{
 					left:$menu-width-tablet - 10px;
 					transform:translate3d(-15px,-50%, 0);
 					transition:all 0.15s ease-in-out;
-					
+
 					&:before{
 						content:'';
 						width:0;
@@ -163,7 +163,7 @@ main{
 						transform:translateY(-50%);
 					}
 				}
-				
+
 				&:hover{
 					span{
 						opacity:1;
@@ -179,20 +179,20 @@ main{
 	body{
 		padding-left:0;
 	}
-	
+
 	.menu{
 		width:$menu-width-smartphone;
 		box-shadow:0 0 0 100em rgba(0,0,0,0);
 		transform:translate3d(-$menu-width-smartphone,0,0);
 		transition:all 0.3s ease-in-out;
-		
+
 		.smartphone-menu-trigger{
 			width:40px;
 			height:40px;
 			position:absolute;
 			left:100%;
 			background:$color-2nd;
-			
+
 			&:before, &:after{
 				content:'';
 				width:50%;
@@ -204,25 +204,25 @@ main{
 				left:50%;
 				transform:translate3d(-50%, -50%, 0);
 			}
-			
+
 			&:after{
 				top:55%;
 				transform:translate3d(-50%, -50%, 0);
 			}
 		}
-		
+
 		ul{
-			
+
 			li{
 				padding:1em 1em 1em 3em;
 				font-size:1.2em;
 			}
 		}
-		
+
 		&:focus{
 			transform:translate3d(0,0,0);
 			box-shadow:0 0 0 100em rgba(0,0,0,0.6);
-			
+
 			.smartphone-menu-trigger{
 				pointer-events:none;
 			}
