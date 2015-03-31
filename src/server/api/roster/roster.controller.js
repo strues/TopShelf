@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var Roster = require('./roster.model');
-var request = require('../../request');
+var blizReq = require('./blizReq.controller');
 var config = require('../../config/environment');
 
 exports.getRoster = function(req, res) {

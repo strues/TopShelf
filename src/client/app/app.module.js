@@ -27,6 +27,7 @@
         'xeditable',
         'toastr',
         'ngFabForm',
+        'ngMdIcons',
         'angularFileUpload',
         'trNgGrid',
         'angular-loading-bar',

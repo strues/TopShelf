@@ -59,7 +59,7 @@ module.exports = function(app) {
         secret: config.secrets.session,
         resave: true,
         saveUninitialized: true,
-        store: new mongoStore({ mongooseConnection: mongoose.connection })
+        store: new mongoStore({mongooseConnection: mongoose.connection})
     }));
     app.use(busboy());
 

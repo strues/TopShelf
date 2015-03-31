@@ -5,7 +5,7 @@ var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 
 var validationError = function(res, err) {
-    return res.json(422, err);
+    return res.status(422).json(err);
 };
 
 /**

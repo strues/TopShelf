@@ -23,7 +23,8 @@
     "trNgGrid": "latest",
     "andy": "~1.0.4",
     "angular-xeditable": "~0.1.8",
-    "angular-file-upload": "~1.1.5"
+    "angular-file-upload": "~1.1.5",
+    "angular-material-icons": "~0.4.0"
   },
   "ignore": [
     "**/.*",
