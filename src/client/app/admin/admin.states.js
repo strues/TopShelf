@@ -17,6 +17,10 @@
                     controllerAs: 'dash',
                     templateUrl: 'app/admin/admin.tpl.html'
                 },
+                'content@admin': {
+                    controller: 'AdminDashboardCtrl',
+                    templateUrl: 'app/admin/admin-dashboard/adminDashboard.tpl.html'
+                },
                 'progression@admin': {
                     controller: 'ProgressionWidgetCtrl',
                     templateUrl: 'app/admin/admin-dashboard/dashboardProgression.tpl.html'

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Stream",
+				"StreamsCtrl"
+			],
+			[
 				"dir",
 				"directory"
 			],
@@ -55,14 +59,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/client/app/guild/guild.module.js",
-			"settings":
-			{
-				"buffer_size": 178,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -71,10 +67,26 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 400.0,
-		"last_filter": "nginx",
+		"height": 219.0,
+		"last_filter": "install",
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"HTMLBeautify"
+			],
+			[
+				"comm",
+				"Toggle Comment"
+			],
+			[
+				"jsb",
+				"Javascript Beautify"
+			],
 			[
 				"nginx",
 				"Set Syntax: nginx"
@@ -84,20 +96,12 @@
 				"Tidy CSS"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"pack",
 				"Package Control: Remove Package"
 			],
 			[
 				"insta",
 				"Package Control: Install Package"
-			],
-			[
-				"html",
-				"HTMLPrettify"
 			],
 			[
 				"csso",
@@ -122,10 +126,6 @@
 			[
 				"themr",
 				"Themr: List themes"
-			],
-			[
-				"jsb",
-				"Javascript Beautify"
 			],
 			[
 				"remove",
@@ -174,10 +174,6 @@
 			[
 				"comment",
 				"Toggle Block Comment"
-			],
-			[
-				"comm",
-				"Toggle Comment"
 			],
 			[
 				"comme",
@@ -273,21 +269,49 @@
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/account",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/account/account-login",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/account/account-signup",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/admin",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core-home",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/brfPanel",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/footer",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/services",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/services",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/base",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/components",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/sections",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/theme",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/auth",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/config",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/config/environment"
 	],
 	"file_history":
 	[
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#0/nginx.conf",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/admin/admin.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/sections/_adminNav.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/components/_streams.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/footer/footer.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/footer/footer.directive.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/footer/footer.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/sections/_footer.scss",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams/streams.tpl.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/services/twitch.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams/streams.controller.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/styles.scss",
+		"/Users/steventruesdell/Webdev/TwitchAngular/app/views/top25/top25.html",
+		"/Users/steventruesdell/Webdev/TwitchAngular/app/views/top25/top25.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams/streams.embeddedPlayer.controller.js",
+		"/Users/steventruesdell/Webdev/TwitchAngular/app/components/embeddedplayer/embeddedplayer.html",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/services/embeddedPlayer.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core.config.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/account/services/auth.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/account/services/user.service.js",
+		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/account/account.states.js",
 		"/Users/steventruesdell/Webdev/wowg/app/server.js",
 		"/Users/steventruesdell/Webdev/wowg/app/config/keys.js",
 		"/Users/steventruesdell/Webdev/wowg/app/package.json",
@@ -305,10 +329,7 @@
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/theme/_global.scss",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/base/_settings.scss",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/components/_card.scss",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/sections/_footer.scss",
 		"/Users/steventruesdell/Downloads/flair/themeforest-7409369-flair-one-page-responsive-html5-template-/flair/templates/slider/blog.html",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/styles.scss",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/recruitmentWidget/recruitmentWidget.tpl.html",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/brfPanel/brfPanel.tpl.html",
 		"/Users/steventruesdell/Downloads/flair/themeforest-7409369-flair-one-page-responsive-html5-template-/flair/templates/slider/css/style.css",
@@ -340,8 +361,6 @@
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/gulp/optimize.js",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.details/details.home.tpl.html",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/brfPanel/brfPanel.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams/streams.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams/streams.tpl.html",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/api/progression/progression.model.js",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/api/recruitment/recruitment.model.js",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/services/progression.service.js",
@@ -398,24 +417,7 @@
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/home/core.carousel.controller.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/topshelf.module.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/streams/guild.streams.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/admin.resource.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/news/create/admin.news-create.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/recruitment/admin.recruitment.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/create/admin.resources-create.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/directives/loginForm.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/post.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/post.model.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/post/tag.model.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/recruitment/admin.recruitment.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/README.md",
-		"/Users/steventruesdell/Webdev/TopShelf/web/CHANGELOG.md",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/directives/admin.navbar/admin.navbar.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/controllers/user.password.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/controllers/user.profile.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/controllers/user.authorization.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/user/controllers/user.authentication.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/config/environment/index.js"
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/admin.resource.controller.js"
 	],
 	"find":
 	{
@@ -442,6 +444,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"li>",
+			"<li",
+			"$scope",
 			"webAdmin",
 			"blog",
 			"Blog",
@@ -566,10 +571,7 @@
 			"SoopUIv",
 			"DarkSoopUIv",
 			"ShestakUI",
-			"DarkShestakUIVer",
-			"less",
-			"test",
-			"callback"
+			"DarkShestakUIVer"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -577,6 +579,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"dd>",
+			"<dd",
+			"vm",
 			">",
 			"progression",
 			"Progression",
@@ -646,101 +651,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/client/app/guild/guild.module.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 178,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								178,
-								178
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -787,7 +699,7 @@
 	"project": "topshelf.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 74.0
 	},
 	"save_all_on_build": true,
 	"select_file":
