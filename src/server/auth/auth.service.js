@@ -11,8 +11,7 @@ var mongoose        = require('mongoose'),
     jwt             = require('jsonwebtoken'),
     expressJwt      = require('express-jwt'),
     compose         = require('composable-middleware'),
-    contextService  = require('request-context'),
-    User            = require('../api/user/user.model');
+    contextService  = require('request-context');
 
 var validateJwt = expressJwt({secret: config.secrets.session});
 
@@ -59,28 +58,45 @@ module.exports = {
 };
 
 /**
- * Attaches the user object to the request if authenticated
- * Otherwise returns 403
+ * Attaches the user object to the request if authenticated otherwise returns 403
+ * @return {express.middleware}
  */
 function isAuthenticated() {
-    return compose()
-      // Validate jwt
-    .use(function(req, res, next) {
-        // allow access_token to be passed through query parameter as well
-        if (req.query && req.query.hasOwnProperty('access_token')) {
-            req.headers.authorization = 'Bearer ' + req.query.access_token;
-        }
-        validateJwt(req, res, next);
-    })
-    // Attach user to request
-    .use(function(req, res, next) {
-        User.findById(req.user._id, function (err, user) {
-            if (err) return next(err);
-            if (!user) return res.sendStatus(401);
+  return compose()
+    // Validate jwt
+    .use(function (req, res, next) {
+      // allow access_token to be passed through query parameter as well
+      if (req.query && req.query.hasOwnProperty('access_token')) {
+        req.headers.authorization = 'Bearer ' + req.query.access_token;
+      }
 
-            req.user = user;
-            next();
-        });
+      validateJwt(req, res, next);
+    })
+
+    .use(function (req, res, next) { // Attach userInfo to request
+      // return if this request has already been authorized
+      if (req.hasOwnProperty('userInfo')) {
+        return next();
+      }
+
+      // load user model on demand
+      var User = require('../api/user/user.model').model;
+
+      // read the user id from the token information provided in req.user
+      User.findOne({_id: req.user._id}, function (err, user) {
+        if (err) {
+          return next(err);
+        }
+
+        if (!user) {
+          res.unauthorized();
+          return next();
+        }
+
+        // set the requests userInfo object as the authenticated user
+        req.userInfo = user;
+        next();
+      });
     });
 }
 
@@ -91,20 +107,21 @@ function isAuthenticated() {
  * @return {ServerResponse}
  */
 function hasRole(roleRequired) {
-    if (!roleRequired) {
-        throw new Error('Required role needs to be set');
-    }
+  if (!roleRequired) {
+    throw new Error('Required role needs to be set');
+  }
 
-    return compose()
-      .use(isAuthenticated())
+  return compose()
+    .use(isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
-        if (roles.hasRole(req.user.role, roleRequired)) {
-            next();
-        } else {
-            res.forbidden();
-        }
+      if (roles.hasRole(req.userInfo.role, roleRequired)) {
+        next();
+      } else {
+        res.forbidden();
+      }
     });
 }
+
 /**
  * Returns a jwt token signed by the app secret
  */
@@ -120,16 +137,12 @@ function signToken(id, role) {
  * Set token cookie directly for oAuth strategies
  */
 function setToken(req, res) {
-    if (!req.user) {
+   if (!req.userInfo) {
         return res.json(404, {message: 'Something went wrong, please try again.'});
     }
-    var token = signToken(req.user._id, req.user.role, {expiresInMinutes: 30 * 24 * 60});
+    var token = signToken(req.userInfo._id, req.userInfo.role);
     res.cookie('token', JSON.stringify(token));
-    res.send({
-        token: token,
-        user: User,
-        role: User.role
-    });
+      res.redirect('/');
 }
 
 /**
@@ -144,7 +157,7 @@ function addAuthContext(namespace) {
     }
 
     return function addAuthContextMiddleWare(req, res, next) {
-        contextService.setContext(namespace, req.user);
+        contextService.setContext(namespace, req.userInfo);
         next();
     };
 }

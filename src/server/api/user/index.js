@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./user.controller');
+var UserController = require('./user.controller');
 var auth = require('../../auth/auth.service');
 var contextService = require('request-context');
 
@@ -9,6 +9,11 @@ var router = express.Router();
 
 // Export the configured express router for the user api routes
 module.exports = router;
+/**
+ * The api controller
+ * @type {user:controller~UserController}
+ */
+var controller = new UserController(router);
 
 // add context for auth sensitive resources
 var addRequestContext = contextService.middleware('request');
@@ -22,10 +27,28 @@ var isAuthenticated = auth.isAuthenticated();
 // check if the authenticated user has at least the 'admin' role
 var isAdmin = auth.hasRole('admin');
 
-router.get('/', isAdmin, controller.index);
-router.delete('/:id', isAdmin, controller.destroy);
-router.get('/me', isAuthenticated, controller.me);
-router.put('/:id/password', isAuthenticated, controller.changePassword);
-router.put('/:id', isAuthenticated, controller.update);
-router.get('/:id', controller.show);
-router.post('/', controller.create);
+// register user routes
+router.route('/')
+  .get(addRequestContext, isAuthenticated, addUserContext, controller.index)
+  .post(addRequestContext, controller.create);
+
+// fetch authenticated user info
+router.route('/me')
+  .get(addRequestContext, isAuthenticated, addUserContext, controller.me);
+
+// user crud routes
+router.route('/' + controller.paramString)
+  .get(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.show)
+  .delete(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.destroy)
+  .put(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.update)
+  .patch(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.update);
+
+// set the password for a user
+router.route('/' + controller.paramString +  '/password')
+  .put(addRequestContext, isAuthenticated, addUserContext, controller.changePassword)
+  .patch(addRequestContext, isAuthenticated, addUserContext, controller.changePassword);
+
+// admin only - administrative tasks for a user resource (force set password)
+router.route('/' + controller.paramString + '/admin')
+  .put(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.setPassword)
+  .patch(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.setPassword);

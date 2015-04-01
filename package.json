@@ -46,6 +46,8 @@
     "modernizr": "^3.0.0-alpha.3",
     "moment": "^2.9.0",
     "mongoose": "^4.0.0",
+    "mongoose-createdmodified": "0.0.2",
+    "mongoose-request-context": "0.0.5",
     "morgan": "^1.5.2",
     "multer": "^0.1.8",
     "passport": "^0.2.1",

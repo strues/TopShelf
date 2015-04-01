@@ -15,7 +15,7 @@ var config = require('../config/environment');
  * The authentication model: User
  * @type {user:model~User}
  */
-var User = require('../api/user/user.model');
+var User = require('../api/user/user.model').model;
 
 // export the configures express router
 module.exports = router;

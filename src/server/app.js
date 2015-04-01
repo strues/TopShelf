@@ -27,6 +27,5 @@ server.listen(config.port, config.ip, function() {
 });
 
 process.on('uncaughtException', function(err) {
-    console.log(chalk('process.on handler'));
     console.log(err);
 });
