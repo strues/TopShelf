@@ -13,8 +13,8 @@
         vm.ctrlName = 'LoginCtrl';
 
         $scope.user = {};
-                $scope.errors = {};
-                $scope.login = function (form) {
+        $scope.errors = {};
+        $scope.login = function (form) {
                     $scope.submitted = true;
                     if (form.$valid) {
                         Auth.login({
@@ -29,7 +29,7 @@
                         });
                     }
                 };
-               $scope.loginOauth = function (provider) {
+        $scope.loginOauth = function (provider) {
                     $window.location.href = '/auth/' + provider;
                 };
     }
