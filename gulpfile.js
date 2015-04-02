@@ -77,7 +77,7 @@ gulp.task('plato', function(done) {
  * JS Copy/Paste
  */
 gulp.task('fixjs', function() {
-  log('Running copy/paste detector');
+    log('Running copy/paste detector');
 
     return gulp
       .src(config.js)
@@ -97,8 +97,8 @@ gulp.task('styles', ['clean-styles'], function() {
         .pipe($.sass())
 //        .on('error', errorLogger) // more verbose and dupe output. requires emit.
         .pipe($.sass({
-          sourceMap: 'sass',
-          outputStyle: 'nested'
+            sourceMap: 'sass',
+            outputStyle: 'nested'
         }))
         .pipe($.postcss([autoprefixer({browsers: ['last 2 version']})]))
         .on('error', function handleError(err) {

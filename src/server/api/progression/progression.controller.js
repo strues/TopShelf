@@ -1,132 +1,35 @@
+/**
+ * Module for the controller definition of the application api.
+ * The ApplicationController is handling /api/applications requests.
+ * @module {application:controller~ApplicationController} application:controller
+ * @requires {@link ParamController}
+ */
 'use strict';
 
-var _ = require('lodash');
-var Progression = require('./progression.model');
+module.exports = ProgressionController;
+
+var ParamController = require('../../components/controllers/param.controller');
 
 /**
- * @api {get} /progression Get Progression Status.
- * @apiName all
- * @apiGroup Progression
- *
- * @apiSuccess {String} bossName The name of the killed boss.
- * @apiSuccess {String} killdate When the boss was killed.
+ * The Application model instance
+ * @type {application:model~Application}
  */
-exports.all = function(req, res) {
-    Progression.find()
-        .exec(function(err, progressions) {
-            if (err) {
-                return handleError(res, err);
-            }
-            return res.status(200).json(progressions);
-        });
-};
+var Progression = require('./progression.model').model;
 
 /**
- * @api {get} /progression/:id Get Progression By Id
- * @apiName show
- * @apiGroup Progression
- *
- * @apiParam {Number} id Bosses unique ID.
- *
- * @apiSuccess {String} bossName The the name of the boss killed.
-
+ * ProgressionController constructor
+ * @classdesc Controller that handles /api/applications route requests
+ * for the application api.
+ * Uses the 'id' parameter and the 'application' request property
+ * to operate with the [main application API Model]{@link application:model~Application} model.
+ * @constructor
+ * @extends ParamController
+ * @see application:model~Application
  */
-exports.show = function(req, res) {
-    Progression.findById(req.params.id, function(err, progression) {
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!progression) {
-            return res.sendStatus(404);
-        }
-        return res.json(progression);
-    });
-};
-
-/**
- * @api {post} /progression Post Progression Needs
- * @apiName create
- * @apiGroup Progression
- *
- * @apiPermission admin
- *
- * @apiParam {String} bossName The name of the killed boss.
- * @apiParam {String} killdate When the boss was killed.
- */
-exports.create = function(req, res) {
-    Progression.create(req.body, function(err, progression) {
-        if (err) {
-            return handleError(res, err);
-        }
-        return res.status(201).json(progression);
-    });
-};
-
-/**
- * @api {put} /progression/:id Update Progression
- * @apiName update
- * @apiGroup Progression
- *
- * @apiParam {Number} id Bosses unique ID.
- *
- * @apiParam {String} bossName The the name of the boss killed.
- * @apiParam {String} zone Where the boss is located.
- * @apiParam {String} dead Is the boss dead or not?
- * @apiParam {Date} date of the boss kill
-
- */
-exports.update = function(req, res) {
-    Progression.findById(req.params.id, function(err, progression) {
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!progression) {
-            return res.sendStatus(404);
-        }
-
-        // set the new user information if it exists in the request
-        if (req.body.bossName) progression.bossName = req.body.bossName;
-        if (req.body.dead) progression.dead = req.body.dead;
-        if (req.body.zone) progression.zone = req.body.zone;
-        if (req.body.killDate) progression.killDate = req.body.killDate;
-
-        progression.save(function(err) {
-            if (err) {
-                return handleError(res, err);
-            }
-            console.log('progression updated');
-            return res.status(200).json(progression);
-        });
-    });
-};
-
-/**
- * @api {delete} /progression/:id Delete The Progression Need
- * @apiName destroy
- * @apiGroup Progression
- *
- * @apiPermission admin
- *
- * @apiSuccessExample Success-Response:
- *     HTTP/1.1 204 OK
- */
-exports.destroy = function(req, res) {
-    Progression.findById(req.params.id, function(err, progression) {
-        if (err) {
-            return handleError(res, err);
-        }
-        if (!progression) {
-            return res.sendStatus(404);
-        }
-        progression.remove(function(err) {
-            if (err) {
-                return handleError(res, err);
-            }
-            return res.sendStatus(204);
-        });
-    });
-};
-
-function handleError(res, err) {
-    return res.status(500).json(err);
+function ProgressionController(router) {
+  ParamController.call(this, Progression, 'progressionId', 'progressionDocument', router);
+  this.defaultReturn = 'progressionDocument';
 }
+
+ProgressionController.prototype = Object.create(ParamController.prototype);
+ProgressionController.prototype.constructor = ProgressionController;

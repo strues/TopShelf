@@ -38,17 +38,27 @@
     ]);
     run.$inject = [
         '$rootScope',
+        '$location',
         '$state',
         '$stateParams',
         'Auth',
         'editableOptions'
     ];
     /* @ngInject */
-    function run($rootScope, $state, $stateParams, Auth, editableOptions) {
+    function run($rootScope, $state, $stateParams, $location, Auth, editableOptions) {
         $rootScope.Auth = Auth;
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        editableOptions.theme = 'bs3';
+        // Redirect to login if route requires auth and you're not logged in
+        $rootScope.$on('$stateChangeStart', function (event, next) {
+            Auth.isLoggedInAsync(function(loggedIn) {
+                if (next.authenticate && !loggedIn) {
+                    $location.path('/login');
+                }
+            });
+
+            editableOptions.theme = 'bs3';
+        });
     }
     // TODO Finish adding strict dependency injection.
     angular.module('app').run(run);
