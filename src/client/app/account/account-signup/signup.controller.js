@@ -10,7 +10,7 @@
     angular
         .module('app.account.states')
         .controller('SignupCtrl', SignupCtrl);
-
+    /* @ngInject */
     function SignupCtrl($scope, Auth, toastr, $location, $window) {
         var vm = this;
         vm.ctrlName = 'SignupCtrl';

@@ -6,14 +6,13 @@ var ParamController = require('../../components/controllers/param.controller');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 
-exports = module.exports = UserController;
-
 /**
  * The User model instance
  * @type {user:model~User}
  */
 var User = require('./user.model').model;
 
+exports = module.exports = UserController;
 /**
  * UserController constructor
  * @classdesc Controller that handles /api/users route requests
@@ -32,6 +31,11 @@ function UserController(router) {
 }
 
 UserController.prototype = {
+    /**
+     * Set our own constructor property for instanceof checks
+     * @private
+     */
+    constructor: UserController,
 
     /**
      * @api {post} /users Add New User
@@ -49,11 +53,11 @@ UserController.prototype = {
      *     HTTP/1.1 201 OK
      */
     create: function(req, res, next) {
-    var newUser = new User(req.body);
-    newUser.provider = 'local';
-    newUser.role = 'user';
-    newUser.save(function(err, user) {
-        if (err) return validationError(res, err);
+        var newUser = new User(req.body);
+        newUser.provider = 'local';
+        newUser.role = 'user';
+        newUser.save(function(err, user) {
+        if (err) return res.handleError(err);
         var token = jwt.sign({
             _id: user._id
         }, config.secrets.session, {
@@ -70,7 +74,7 @@ UserController.prototype = {
      * restriction: 'admin'
      */
     destroy: function(req, res) {
-    User.findByIdAndRemove(req.params.id, function(err, user) {
+        User.findByIdAndRemove(req.params.id, function(err, user) {
         if (err) return res.status(500).json(err);
         return res.sendStatus(204);
     });

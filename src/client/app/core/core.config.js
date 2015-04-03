@@ -43,7 +43,7 @@
     /* @ngInject */
     function configure($urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.otherwise('/');
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true).hashPrefix('!');
         $httpProvider.interceptors.push('authInterceptor');
         cfpLoadingBarProvider.includeSpinner = true;
     }

@@ -15,10 +15,10 @@
 
         $scope.data = {};
         var streamName1 = 'Soopie';
-        var streamName2 = 'Toxicpoptart';
-        var streamName3 = 'Teodin';
-        var streamName4 = 'Valkr';
-        var streamName5 = 'Tinkerbell';
+        var streamName2 = 'toxicpopsicles';
+        var streamName3 = 'teomorassalt';
+        var streamName4 = 'valkyrie89';
+        var streamName5 = 'wtfbbqsaucee';
 
         Twitch.get(streamName1).success(function(data) {
             $scope.stream1 = data.stream;

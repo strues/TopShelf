@@ -8,6 +8,7 @@
      *
      */
     angular.module('app.account.states').controller('LoginCtrl', LoginCtrl);
+        /* @ngInject */
     function LoginCtrl($scope, Auth, $location, $window, toastr) {
         var vm = this;
         vm.ctrlName = 'LoginCtrl';

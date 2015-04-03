@@ -15,21 +15,21 @@
             url: '/',
             views: {
                 'main@': {
-                   templateUrl: 'app/core/core-home/home.tpl.html'
+                    templateUrl: 'app/core/core-home/home.tpl.html'
                 }
             },
             controller: 'HomeCtrl as vm'
-            })
+        })
         .state('home.detail', {
             url: '/news/:id',
             views: {
                 'main@': {
-            templateUrl: 'app/core/core-home/home.details/details.home.tpl.html',
-            controller: function ($stateParams) {
+                    templateUrl: 'app/core/core-home/home.details/details.home.tpl.html',
+                    controller: function ($stateParams) {
                 console.log($stateParams);
             }
+                }
             }
-        }
         });
     }
 }());

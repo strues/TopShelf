@@ -15,8 +15,8 @@ module.exports = registerProgressionParams;
  * @param router {express.Router} - The router to attach the parameters to
  */
 function registerProgressionParams(router) {
-  // router.param('id', registerParamName);
-  // add params below
+    // router.param('id', registerParamName);
+    // add params below
 }
 
 /*

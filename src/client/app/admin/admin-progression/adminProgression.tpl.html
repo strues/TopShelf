@@ -1,0 +1,10 @@
+<div ng-controller="ProgressionCtrl as vm">
+<div class="row page-content">
+<h2>Guild Progression<a class="pull-right" href="" ui-sref="admin.resourceCreate"><button class="btn btn-xs btn-danger"><i class="fa fa-plus"></i>Add</button></a></h2>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-repeat="progression in vm.progressionData">
+            {{progression.bossName}}
+            {{progression.dead}}
+            </div>
+        </div>
+</div>
+

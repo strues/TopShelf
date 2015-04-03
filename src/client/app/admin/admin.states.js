@@ -22,8 +22,14 @@
                     templateUrl: 'app/admin/admin-dashboard/adminDashboard.tpl.html'
                 },
                 'progression@admin': {
-                    controller: 'ProgressionWidgetCtrl',
-                    templateUrl: 'app/admin/admin-dashboard/dashboardProgression.tpl.html'
+                    controller: 'ProgressionCtrl',
+                    templateUrl: 'app/admin/admin-progression/adminProgression.tpl.html',
+                    resolve: {
+                        progression: function($http) {
+                            // $http returns a promise for the url data
+                            return $http({method: 'GET', url: '/api/progression'});
+                        }
+                    }
                 }
             }
         }).state('admin.applications', {
@@ -31,7 +37,13 @@
             views: {
                 'content@admin': {
                     controller: 'ApplicationListCtrl',
-                    templateUrl: 'app/admin/admin-apps/adminApps.tpl.html'
+                    templateUrl: 'app/admin/admin-apps/adminApps.tpl.html',
+                    resolve: {
+                        applications: function($http) {
+                            // $http returns a promise for the url data
+                            return $http({method: 'GET', url: '/api/applications'});
+                        }
+                    }
                 }
             }
         }).state('admin.applicationViewID', {
