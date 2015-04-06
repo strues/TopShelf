@@ -18,6 +18,7 @@
         var streamName3 = 'teomorassalt';
         var streamName4 = 'valkyrie89';
         var streamName5 = 'wtfbbqsaucee';
+        var streamName6 = 'bredba';
 
         Twitch.get(streamName1).success(function(data) {
             $scope.stream1 = data.stream;
@@ -37,6 +38,10 @@
 
         Twitch.get(streamName5).success(function(data) {
             $scope.stream5 = data.stream;
+        });
+
+        Twitch.get(streamName6).success(function(data) {
+            $scope.stream6 = data.stream;
         });
     }
 

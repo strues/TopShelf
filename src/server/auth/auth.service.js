@@ -62,41 +62,41 @@ module.exports = {
  * @return {express.middleware}
  */
 function isAuthenticated() {
-  return compose()
-    // Validate jwt
+    return compose()
+      // Validate jwt
     .use(function (req, res, next) {
-      // allow access_token to be passed through query parameter as well
-      if (req.query && req.query.hasOwnProperty('access_token')) {
-        req.headers.authorization = 'Bearer ' + req.query.access_token;
-      }
+        // allow access_token to be passed through query parameter as well
+        if (req.query && req.query.hasOwnProperty('access_token')) {
+            req.headers.authorization = 'Bearer ' + req.query.access_token;
+        }
 
-      validateJwt(req, res, next);
+        validateJwt(req, res, next);
     })
 
     .use(function (req, res, next) { // Attach userInfo to request
-      // return if this request has already been authorized
-      if (req.hasOwnProperty('userInfo')) {
-        return next();
-      }
-
-      // load user model on demand
-      var User = require('../api/user/user.model').model;
-
-      // read the user id from the token information provided in req.user
-      User.findOne({_id: req.user._id}, function (err, user) {
-        if (err) {
-          return next(err);
+        // return if this request has already been authorized
+        if (req.hasOwnProperty('userInfo')) {
+            return next();
         }
 
-        if (!user) {
-          res.unauthorized();
-          return next();
-        }
+        // load user model on demand
+        var User = require('../api/user/user.model').model;
 
-        // set the requests userInfo object as the authenticated user
-        req.userInfo = user;
-        next();
-      });
+        // read the user id from the token information provided in req.user
+        User.findOne({_id: req.user._id}, function (err, user) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!user) {
+                res.unauthorized();
+                return next();
+            }
+
+            // set the requests userInfo object as the authenticated user
+            req.userInfo = user;
+            next();
+        });
     });
 }
 
@@ -107,18 +107,18 @@ function isAuthenticated() {
  * @return {ServerResponse}
  */
 function hasRole(roleRequired) {
-  if (!roleRequired) {
-    throw new Error('Required role needs to be set');
-  }
+    if (!roleRequired) {
+        throw new Error('Required role needs to be set');
+    }
 
-  return compose()
-    .use(isAuthenticated())
+    return compose()
+      .use(isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
-      if (roles.hasRole(req.userInfo.role, roleRequired)) {
-        next();
-      } else {
-        res.forbidden();
-      }
+        if (roles.hasRole(req.userInfo.role, roleRequired)) {
+            next();
+        } else {
+            res.forbidden();
+        }
     });
 }
 
@@ -137,12 +137,12 @@ function signToken(id, role) {
  * Set token cookie directly for oAuth strategies
  */
 function setToken(req, res) {
-   if (!req.userInfo) {
+    if (!req.userInfo) {
         return res.json(404, {message: 'Something went wrong, please try again.'});
     }
     var token = signToken(req.userInfo._id, req.userInfo.role);
     res.cookie('token', JSON.stringify(token));
-      res.redirect('/');
+    res.redirect('/');
 }
 
 /**

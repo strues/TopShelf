@@ -42,9 +42,9 @@ gulp.task('vet', function() {
         .src(config.alljs)
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}));
+        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
         //.pipe($.jshint.reporter('fail'))
-        //.pipe($.jscs());
+        .pipe($.jscs());
 });
 
 /**
@@ -94,11 +94,11 @@ gulp.task('styles', ['clean-styles'], function() {
     return gulp
         .src(config.sass)
         .pipe($.plumber()) // exit gracefully if something fails after this
-        .pipe($.sass())
 //        .on('error', errorLogger) // more verbose and dupe output. requires emit.
         .pipe($.sass({
+            sourceComments: global.isProd ? 'none' : 'map',
             sourceMap: 'sass',
-            outputStyle: 'nested'
+            outputStyle: global.isProd ? 'compressed' : 'nested'
         }))
         .pipe($.postcss([autoprefixer({browsers: ['last 2 version']})]))
         .on('error', function handleError(err) {
@@ -129,7 +129,7 @@ gulp.task('images', ['clean-images'], function() {
 
     return gulp
         .src(config.images)
-        .pipe($.imagemin({optimizationLevel: 4}))
+        .pipe($.imagemin({optimizationLevel: 6}))
         .pipe(gulp.dest(config.build + 'images'));
 });
 

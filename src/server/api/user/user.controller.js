@@ -74,9 +74,9 @@ UserController.prototype = {
      * restriction: 'admin'
      */
     destroy: function(req, res) {
-        User.findByIdAndRemove(req.params.id, function(err, user) {
+        User.findByIdAndRemove(req[this.paramName].id, function(err, user) {
         if (err) return res.status(500).json(err);
-        return res.sendStatus(204);
+        return res.sendStatus(200);
     });
     },
     /**README

@@ -21,7 +21,7 @@
             controller: 'HomeCtrl as vm'
         })
         .state('home.detail', {
-            url: '/news/:id',
+            url: 'news/:id',
             views: {
                 'main@': {
                     templateUrl: 'app/core/core-home/home.details/details.home.tpl.html',

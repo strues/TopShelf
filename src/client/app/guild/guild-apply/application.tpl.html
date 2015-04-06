@@ -15,13 +15,13 @@
                      class="form-control"
                      placeholder="Laerel"
                      ng-model="vm.formData.charName"
-                     required>
+                     >
             </div><!-- /charname field -->
             <div class="form-group">
               <label>Class</label>
               <select ng-model="vm.formData.charClass"
                       class="form-control"
-                      required>
+                      >
                   <option value=""></option>
                   <option value="DeathKnight">Death Knight</option>
                   <option value="Druid">Druid</option>
@@ -40,7 +40,7 @@
               <label>Specialization</label>
               <select ng-model="vm.formData.charSpec"
                       class="form-control"
-                      required>
+                      >
                   <option value=""></option>
                   <option value="Affliction">Affliction</option>
                   <option value="Arcane">Arcane</option>
@@ -81,7 +81,7 @@
                        class="form-control"
                        placeholder="http://us.battle.net/wow/characters/"
                        ng-model="vm.formData.charArmory"
-                       required>
+                       >
               </div><!-- /chararmory field -->
               <div class="form-group">
                 <label class="control-label">First Name</label>
@@ -89,7 +89,7 @@
                        class="form-control"
                        placeholder="Joe"
                        ng-model="vm.formData.applicantName"
-                       required>
+                       >
               </div><!-- /firstname field -->
               <div class="form-group">
                 <label class="control-label">Age
@@ -98,13 +98,13 @@
                        class="form-control"
                        placeholder="18"
                        ng-model="vm.formData.applicantAge"
-                       required>
+                       >
               </div><!-- /age field -->
               <div class="form-group">
                 <label>Timezone</label>
                 <select ng-model="vm.formData.applicantTZ"
                         class="form-control"
-                        required>
+                        >
                   <option value=""></option>
                   <option value="PST">Pacific (PST)</option>
                   <option value="MST">Mountain (MST)</option>
@@ -119,7 +119,7 @@
                          class="form-control"
                          placeholder="battletag#123"
                          ng-model="vm.formData.applicantRealId"
-                         required>
+                         >
               </div><!-- /realid field -->
               <div class="form-group">
                 <label class="control-label">Logs
@@ -128,21 +128,21 @@
                        class="form-control"
                        placeholder="http://warcraftlogs.com"
                        ng-model="vm.formData.charLogs"
-                       required>
+                       >
               </div><!-- /logs field -->
               <div class="form-group">
                 <label>Mythic/Heroic Experience</label>
                 <textarea ng-model="vm.formData.heroicXP"
                           ng-minlength="5"
                           class="form-control"
-                          required></textarea>
+                          ></textarea>
               </div><!-- heroicxp -->
               <div class="form-group">
                 <label>Guild History</label>
                 <textarea ng-model="vm.formData.pastGuilds"
                           ng-minlength="5"
                           class="form-control"
-                          required></textarea>
+                          ></textarea>
               </div><!-- heroicxp -->
               <div class="form-group">
                   <label class="control-label">Server
@@ -151,7 +151,7 @@
                          class="form-control"
                          placeholder="Sargeras"
                          ng-model="vm.formData.charServer"
-                         required>
+                         >
               </div><!-- /realm field -->
               <div class="form-group">
                 <label class="control-label">UI Screenshot</label>
@@ -159,36 +159,28 @@
                        class="form-control"
                        placeholder="http://imgur.com"
                        ng-model="vm.formData.screenshot"
-                       required>
+                       >
               </div><!-- /screenshot field -->
               <div class="form-group">
                 <label>Why Top Shelf?</label>
                 <textarea ng-model="vm.formData.whyTS"
                           ng-minlength="5"
                           class="form-control"
-                          required></textarea>
+                          ></textarea>
               </div><!-- whyTS -->
-              <div class="form-group">
-                <label class="control-label">Raiding Alt</label>
-                <input type="text"
-                       class="form-control"
-                       placeholder="http://us.battle.net/wow/characters/"
-                       ng-model="vm.formData.applicantAlt"
-                       >
-              </div><!-- /applicantAlt field -->
               <div class="form-group">
                 <label>What resources do you use to improve your raid performance?</label>
                 <textarea ng-model="vm.formData.applicantSelfImprovement"
                         ng-minlength="5"
                         class="form-control"
-                        required></textarea>
+                        ></textarea>
               </div><!-- applicantSelfImprovement -->
               <div class="form-group">
                 <label>Tell us a joke</label>
                 <textarea ng-model="vm.formData.applicantJoke"
                           ng-minlength="5"
                           class="form-control"
-                          required></textarea>
+                          ></textarea>
               </div><!-- applicantSelfImprovement -->
               <div class="form-group">
                 <button type="submit"

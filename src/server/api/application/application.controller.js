@@ -18,7 +18,7 @@ var User        = require('../user/user.model');
  * @apiSuccess {Date} created The date the application was submitted.
  */
 exports.all = function(req, res) {
-    Application.find().populate('user', 'name')
+    Application.find().populate('author', 'name')
         .exec(function(err, applications) {
             if (err) {
                 return handleError(res, err);
@@ -56,7 +56,7 @@ exports.all = function(req, res) {
  */
 exports.get = function(req, res) {
     Application.findById(req.params.id)
-        .populate('user', 'name')
+        .populate('author', 'name')
         .exec(function(err, application) {
             if (err) {
                 return handleError(res, err);
@@ -93,7 +93,9 @@ exports.get = function(req, res) {
  * @apiParam {Date} created The date the application was submitted.
  */
 exports.create = function(req, res) {
-    Application.create(req.body, function(err, application) {
+    Application.create(_.merge({
+        author: req.userInfo
+    }, req.body), function(err, application) {
         if (err) {
             return handleError(res, err);
         }
