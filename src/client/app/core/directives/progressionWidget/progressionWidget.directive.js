@@ -1,8 +1,12 @@
 (function () {
     'use strict';
-    function brfPanel() {
+    angular
+        .module('app.core.directives')
+        .directive('progressionWidget', progressionWidget);
+
+    function progressionWidget() {
         return {
-            templateUrl: 'app/core/directives/brfPanel/brfPanel.tpl.html',
+            templateUrl: 'app/core/directives/progressionWidget/progressionWidget.tpl.html',
             restrict: 'EA',
             controller: function ($scope, Progression, $log) {
                 Progression.all().success(function (data) {
@@ -15,5 +19,5 @@
             }
         };
     }
-    angular.module('app.core.directives').directive('brfPanel', brfPanel);
+
 }());

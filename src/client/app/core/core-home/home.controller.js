@@ -7,11 +7,7 @@
      *
      */
     angular.module('app.core.states').controller('HomeCtrl', HomeCtrl);
-    HomeCtrl.$inject = [
-        'Post',
-        '$scope',
-        '$location'
-    ];
+    HomeCtrl.$inject = ['Post', '$scope', '$location'];
     /* @ngInject */
     function HomeCtrl(Post, $scope, $location) {
         var vm = this;

@@ -9,7 +9,9 @@
      * event, given the response status codes from the server.
      *
      */
-    angular.module('app.core.services').factory('authInterceptor', authInterceptor);
+    angular
+        .module('app.core.services')
+        .factory('authInterceptor', authInterceptor);
     /* @ngInject */
     function authInterceptor($rootScope, $q, $localStorage, $location) {
         return {

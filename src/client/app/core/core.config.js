@@ -4,7 +4,6 @@
         .config(configureToastr)
         .config(configureDatepicker)
         .config(configureTooltip)
-        .config(configureAside)
         .config(configure);
 
     configureToastr.$inject = ['toastrConfig'];
@@ -35,10 +34,7 @@
         });
     }
     configure.$inject = [
-        '$urlRouterProvider',
-        '$locationProvider',
-        '$httpProvider',
-        'cfpLoadingBarProvider'
+        '$urlRouterProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider'
     ];
     /* @ngInject */
     function configure($urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
@@ -61,14 +57,6 @@
         angular.extend($tooltipProvider.defaults, {
             animation: 'am-flip-x',
             trigger: 'hover'
-        });
-    }
-    configureAside.$inject = ['$asideProvider'];
-    /* @ngInject */
-    function configureAside($asideProvider) {
-        angular.extend($asideProvider.defaults, {
-            container: 'body',
-            html: true
         });
     }
 }());

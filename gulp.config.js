@@ -27,11 +27,7 @@ module.exports = function() {
         build: './build/',
         client: client,
         css: temp + 'styles.css',
-        fonts: [
-            client + 'fonts/**/*.*',
-            bower.directory + 'font-awesome/fonts/**/*.*',
-            bower.directory + 'bootstrap-sass/assets/fonts/**/*.*'
-        ],
+        fonts: client + 'fonts/**/*.*',
         html: client + '**/*.html',
         htmltemplates: clientApp + '**/*.tpl.html',
         images: client + 'assets/images/**/*.*',

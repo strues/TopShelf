@@ -18,7 +18,13 @@
                     templateUrl: 'app/core/core-home/home.tpl.html'
                 }
             },
-            controller: 'HomeCtrl as vm'
+            controller: 'HomeCtrl',
+            controllerAs: 'vm',
+            resolve: {
+                posts: function(Post) {
+                    return Post.all();
+                }
+            }
         })
         .state('home.detail', {
             url: 'news/:id',
@@ -26,8 +32,13 @@
                 'main@': {
                     templateUrl: 'app/core/core-home/home.details/details.home.tpl.html',
                     controller: function ($stateParams) {
-                console.log($stateParams);
-            }
+
+                    }
+                }
+            },
+            resolve: {
+                post: function($stateParams, Post) {
+                    return Post.get($stateParams.id);
                 }
             }
         });
