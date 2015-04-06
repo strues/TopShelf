@@ -5,7 +5,9 @@
      * @name app.guild.services.service:Recruitment
      * @desc Communicates with backend handling recruitment status api calls
      */
-    angular.module('app.guild.services').service('Recruitment', Recruitment);
+    angular
+        .module('app.guild')
+        .service('Recruitment', Recruitment);
     Recruitment.$inject = ['$http'];
     /* @ngInject */
     function Recruitment($http) {

@@ -1,17 +1,17 @@
 <navbar></navbar>
-<div class="container nav-padding" ng-controller="ProfileEditCtrl as vm">
+<div class="container nav-padding" ng-controller="ProfileEditController as editProf">
 
 <div class="panel panel-default">
     <div class="panel-heading">
-Hello, {{ vm.Auth.getCurrentUser().name }}</div>
+Hello, {{ editProf.Auth.getCurrentUser().name }}</div>
     <div class="panel-body">
       <legend class="legendHeader"><i class="ion-clipboard"></i> Edit Your Profile</legend>
-      <form class="form" name="form" ng-submit="vm.changePassword()" novalidate>
+      <form class="form" name="form" ng-submit="editProf.changePassword()" novalidate>
 
         <div class="form-group">
           <label>Current Password</label>
 
-          <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
+          <input type="password" name="password" class="form-control" ng-model="editProf.user.oldPassword"
                  mongoose-error/>
           <p class="help-block" ng-show="form.password.$error.mongoose">
               {{ errors.other }}
@@ -21,7 +21,7 @@ Hello, {{ vm.Auth.getCurrentUser().name }}</div>
         <div class="form-group">
           <label>New Password</label>
 
-          <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
+          <input type="password" name="newPassword" class="form-control" ng-model="editProf.user.newPassword"
                  ng-minlength="3"
                  required/>
           <p class="help-block"

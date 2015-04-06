@@ -13,5 +13,5 @@
             }
         };
     }
-    angular.module('app.core.directives').directive('recruitmentWidget', recruitmentWidget);
+    angular.module('app.core').directive('recruitmentWidget', recruitmentWidget);
 }());

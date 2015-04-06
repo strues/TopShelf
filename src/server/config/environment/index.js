@@ -42,6 +42,18 @@ var all = {
     options: {
       db: {
         safe: true
+      },
+      server: {
+        socketOptions: {
+          keepAlive: 1,
+          connectTimeoutMS: 10000
+        }
+      },
+      replset: {
+        socketOptions: {
+          keepAlive: 1,
+          connectTimeoutMS: 10000
+        }
       }
     }
   },

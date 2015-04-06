@@ -6,7 +6,7 @@
      * @requires (mgcrea.ngStrap)
      * @memberOf topshelf.core.states
      */
-    angular.module('app.core.states').controller('HomePostDetailsCtrl', HomePostDetailsCtrl);
+    angular.module('app.core').controller('HomePostDetailsCtrl', HomePostDetailsCtrl);
     function HomePostDetailsCtrl($scope, $stateParams, $http, $timeout, $location) {
         var hdetail = this;
         var postId = $stateParams.id;

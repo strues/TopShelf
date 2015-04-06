@@ -6,7 +6,7 @@
      * @description Controller for the home page
      *
      */
-    angular.module('app.core.states').controller('HomeCtrl', HomeCtrl);
+    angular.module('app.core').controller('HomeCtrl', HomeCtrl);
     HomeCtrl.$inject = ['Post', '$scope', '$location'];
     /* @ngInject */
     function HomeCtrl(Post, $scope, $location) {

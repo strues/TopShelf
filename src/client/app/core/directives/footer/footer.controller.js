@@ -8,7 +8,9 @@
      *
      */
 
-    angular.module('app.core.directives').controller('FooterCtrl', FooterCtrl);
+    angular
+        .module('app.core')
+        .controller('FooterCtrl', FooterCtrl);
     function FooterCtrl($scope, Auth, Twitch) {
         var vm = this;
         vm.Auth = Auth;

@@ -14,5 +14,5 @@
             }
         };
     }
-    angular.module('app.core.directives').directive('mongooseError', mongooseError);
+    angular.module('app.core').directive('mongooseError', mongooseError);
 }());

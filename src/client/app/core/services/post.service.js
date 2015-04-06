@@ -7,7 +7,7 @@
      * @memberOf app.core.services
      */
     angular
-        .module('app.core.services')
+        .module('app.core')
         .factory('Post', Post);
     /* @ngInject */
     function Post($http) {

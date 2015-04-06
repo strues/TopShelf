@@ -6,7 +6,7 @@
      * @requires (mgcrea.ngStrap)
      * @memberOf topshelf.core.states
      */
-    angular.module('app.core.states').controller('HomeCarouselCtrl', HomeCarouselCtrl);
+    angular.module('app.core').controller('HomeCarouselCtrl', HomeCarouselCtrl);
     function HomeCarouselCtrl(Slide) {
         var carousel = this;
         carousel.slides = {};

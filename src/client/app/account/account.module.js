@@ -8,12 +8,12 @@
  */
 
 (function () {
-	'use strict';
+    'use strict';
 
-	// register the route config on the application
-	angular
-		.module('app.account', ['app.core', 'app.guild', 'app.admin'])
-  		.config(config);
+    // register the route config on the application
+    angular
+    .module('app.account', ['app.core', 'app.guild', 'app.admin'])
+    .config(config);
 
     function config($stateProvider) {
         $stateProvider.state('account', {

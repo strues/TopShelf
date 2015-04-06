@@ -8,7 +8,7 @@
      *
      */
     angular
-        .module('app.guild.states')
+        .module('app.guild')
         .controller('StreamsCtrl', StreamsCtrl);
     /* @ngInject */
     function StreamsCtrl($rootScope, $scope, $location, Twitch, $http) {

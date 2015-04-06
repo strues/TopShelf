@@ -7,7 +7,7 @@
      * @description Controller for the Navbar
      *
      */
-    angular.module('app.core.directives').controller('NavbarCtrl', NavbarCtrl);
+    angular.module('app.core').controller('NavbarCtrl', NavbarCtrl);
     function NavbarCtrl(Auth, $scope, $rootScope, $aside, $location) {
         var vm = this;
         vm.Auth = Auth;

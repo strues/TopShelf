@@ -5,7 +5,9 @@
      * @name app.guild.states.controller:ApplicationCtrl
      * @description Form to submit an application
      */
-    angular.module('app.guild.states').controller('ApplicationCtrl', ApplicationCtrl);
+    angular
+        .module('app.guild')
+        .controller('ApplicationCtrl', ApplicationCtrl);
     /* @ngInject */
     function ApplicationCtrl($location, $http, Application, ngFabForm, toastr) {
         var vm = this;

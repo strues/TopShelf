@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular
-        .module('app.core.directives')
+        .module('app.core')
         .directive('progressionWidget', progressionWidget);
 
     function progressionWidget() {

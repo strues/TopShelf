@@ -5,7 +5,10 @@
      * @name app.guild.services.service:Application
      * @description Handles requests for guild applications to the server
      */
-    angular.module('app.guild.services').service('Application', Application);
+    angular
+        .module('app.guild')
+        .service('Application', Application);
+
     Application.$inject = ['$http'];
     /* @ngInject */
     function Application($http) {

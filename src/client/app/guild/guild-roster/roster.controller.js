@@ -7,17 +7,22 @@
    * @description pulls information relating to the roster from battle.net
    *
    */
-    angular.module('app.guild.states').controller('RosterCtrl', RosterCtrl);
+    angular
+      .module('app.guild')
+      .controller('RosterCtrl', RosterCtrl);
     /* @ngInject */
-    function RosterCtrl($http) {
+    function RosterCtrl(Armory) {
         /*jshint validthis: true */
         var vm = this;
         vm.filterMaxOnly = function (member) {
             return member.level === 100;
         };
         vm.characters = [];
-        $http.get('/api/roster').then(function (data) {
-            vm.data = data.data;
+
+        Armory.getRoster().success(function (data) {
+            vm.members = data.members;
+        }).error(function (error) {
+            vm.status = 'Unable to retrieve roster: ' + error.message;
         });
     }
 }());
