@@ -139,20 +139,6 @@ UserSchema.methods.encryptPassword = function encryptPassword(password) {
     var salt = new Buffer(this.salt, 'base64');
     return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
 };
-/**
- * Pre-save hook
- */
-UserSchema
-    .pre('save', function(callback) {
-        var user = this;
-        // Break out if the password hasn't changed
-        if (!user.isModified('password')) return callback();
-
-        if (!validatePresenceOf(this.hashedPassword))
-            next(new Error('Invalid password'));
-        else
-            callback();
-    });
 
 /**
  * Attach post hook plugins
@@ -277,35 +263,6 @@ function preSave(next) {
     if (this.isNew && !validatePresenceOf(this.hashedPassword)) {
         return next(new MongooseError.ValidationError('Missing password'));
     }
-
-    // check if the root user should be updated
-    // return an error if some not root tries to touch the root document
-    self.constructor.getRoot(function (err, rootUser) {
-        if (err) {
-            throw err;
-        }
-
-        // will we update the root user?
-        if (rootUser && self.id === rootUser.id) {
-
-            // delete the role to prevent loosing the root status
-            delete self.role;
-
-            // get the user role to check if a root user will perform the update
-            var userRole = self.getContext('request:acl.user.role');
-            if (!userRole) { // no user role - no root user check
-                return next();
-            }
-
-            if (!auth.roles.isRoot(userRole)) {
-                // return error, only root can update root
-                return next(new MongooseError.ValidationError('Forbidden root update request'));
-            }
-        }
-
-        // normal user update
-        return next();
-    });
 }
 
 module.exports = {

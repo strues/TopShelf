@@ -8,7 +8,7 @@
      *
      */
     angular
-        .module('app.account.services')
+        .module('app.account')
         .factory('Auth', Auth);
 
     // TODO Require authorization and acesss control frontside to go with the backend.

@@ -26,7 +26,7 @@
             newestOnTop: true,
             onHidden: null,
             onShown: null,
-            positionClass: 'toast-bottom-right',
+            positionClass: 'toast-bottom-full-width',
             tapToDismiss: true,
             timeOut: 5000,
             titleClass: 'toast-title',

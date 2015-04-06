@@ -10,7 +10,7 @@
      *
      */
     angular
-        .module('app.core.services')
+        .module('app.core')
         .factory('authInterceptor', authInterceptor);
     /* @ngInject */
     function authInterceptor($rootScope, $q, $localStorage, $location) {

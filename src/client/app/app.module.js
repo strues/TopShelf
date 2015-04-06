@@ -21,6 +21,7 @@
         'mgcrea.ngStrap',
         'textAngular',
         'xeditable',
+        'btford.socket-io',
         'toastr',
         'ngFabForm',
         'ngMdIcons',

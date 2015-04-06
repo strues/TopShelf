@@ -96,6 +96,7 @@
   <script src="/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
   <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
   <script src="/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+  <script src="/bower_components/angular-socket-io/socket.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:js js/app.js-->
@@ -111,19 +112,17 @@
 
   <script src="/src/client/app/guild/guild.module.js"></script>
 
-  <script src="/src/client/app/account/account-login/login.controller.js"></script>
+  <script src="/src/client/app/account/account-services/auth.service.js"></script>
 
-  <script src="/src/client/app/account/account-profile/profile.controller.js"></script>
+  <script src="/src/client/app/account/account-services/user.service.js"></script>
 
-  <script src="/src/client/app/account/account-profile/profile.edit/profileEdit.controller.js"></script>
+  <script src="/src/client/app/account/login/login.controller.js"></script>
 
-  <script src="/src/client/app/account/account-signup/signup.controller.js"></script>
+  <script src="/src/client/app/account/profile/profile.controller.js"></script>
 
-  <script src="/src/client/app/account/account.states.js"></script>
+  <script src="/src/client/app/account/profile/profile.edit/profileEdit.controller.js"></script>
 
-  <script src="/src/client/app/account/services/auth.service.js"></script>
-
-  <script src="/src/client/app/account/services/user.service.js"></script>
+  <script src="/src/client/app/account/signup/signup.controller.js"></script>
 
   <script src="/src/client/app/admin/admin-apps/adminApps.controller.js"></script>
 
@@ -199,11 +198,17 @@
 
   <script src="/src/client/app/core/services/authInterceptor.service.js"></script>
 
+  <script src="/src/client/app/core/services/io.service.js"></script>
+
+  <script src="/src/client/app/core/services/lodash.service.js"></script>
+
   <script src="/src/client/app/core/services/logger.service.js"></script>
 
   <script src="/src/client/app/core/services/post.service.js"></script>
 
   <script src="/src/client/app/core/services/slide.service.js"></script>
+
+  <script src="/src/client/app/core/services/socket.service.js"></script>
 
   <script src="/src/client/app/guild/guild-apply/application.controller.js"></script>
 

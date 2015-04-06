@@ -9,15 +9,15 @@
    */
     angular.module('app.guild.states').controller('RosterCtrl', RosterCtrl);
     /* @ngInject */
-    function RosterCtrl($scope, $http) {
+    function RosterCtrl($http) {
         /*jshint validthis: true */
         var vm = this;
-        $scope.filterMaxOnly = function (member) {
+        vm.filterMaxOnly = function (member) {
             return member.level === 100;
         };
-        $scope.characters = [];
+        vm.characters = [];
         $http.get('/api/roster').then(function (data) {
-            $scope.data = data.data;
+            vm.data = data.data;
         });
     }
 }());

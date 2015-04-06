@@ -7,7 +7,7 @@
      * @description
      *
      */
-    angular.module('app.account.services').factory('User', User);
+    angular.module('app.account').factory('User', User);
     function User($resource) {
         return $resource('/api/users/:id/:controller', { id: '@_id' }, {
             changePassword: {

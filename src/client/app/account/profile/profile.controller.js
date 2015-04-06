@@ -1,11 +1,13 @@
 (function () {
     'use strict';
-    angular.module('app.account.states').controller('ProfileCtrl', ProfileCtrl);
+    angular
+        .module('app.account')
+        .controller('ProfileController', ProfileController);
     /* @ngInject */
-    function ProfileCtrl() {
+    function ProfileController() {
         /*jshint validthis: true */
         var vm = this;
-        vm.title = 'ProfileCtrl';
+        vm.title = 'ProfileController';
         activate();
         // TODO Implement a members list with this information
         function activate() {

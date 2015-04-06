@@ -1,0 +1,42 @@
+<navbar></navbar>
+<div class="container nav-padding">
+<div class="row">
+<div class="login">
+<div class="login-screen">
+	<div class="app-title">
+		<h1>Signup</h1>
+	</div>
+	<form id="lsform" name="signupForm" ng-submit="signup.register(signupForm)" novalidate>
+		<div class="login-form">
+			<div class="control-group"  ng-class="{ 'has-error' : signupForm.username.$invalid && signupForm.name.$dirty }">
+				<input class="login-field" type="text" id="login-name" name="username" ng-model="signup.user.name" placeholder="Username" required>
+				<label class="login-field-icon fui-user" for="login-name"></label>
+			</div>
+			<div class="control-group" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
+				<input class="login-field" type="email" id="login-name" name="email" ng-model="signup.user.email" placeholder="Email" ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				<div class="help-block text-danger" ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error">
+					<div ng-message="required">Your email address is required.</div>
+					<div ng-message="pattern">Your email address is invalid.</div>
+				</div>
+			</div>
+			<div class="control-group"  ng-class="{ 'has-error' : signupForm.username.$invalid && signupForm.name.$dirty }">
+				<input class="login-field" type="text" id="login-name" name="battletag" ng-model="signup.user.battletag" placeholder="RealID" required>
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				<div class="help-block text-danger"
+					ng-if="signupForm.battletag.$dirty"
+					ng-messages="signupForm.battletag.$error">
+					<div ng-message="required">You must enter a battletag.</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<input type="password" class="login-field" value=""  ng-model="signup.user.password" placeholder="password" id="login-pass" required>
+				<label class="login-field-icon fui-lock" for="login-pass"></label>
+			</div>
+			<input class="btn-login" type="submit"></a>
+			<a class="login-link" ui-sref="account.login">Have an account? Login</a>
+		</div>
+	</form>
+</div>
+</div>
+</div>
