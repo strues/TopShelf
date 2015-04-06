@@ -1,10 +1,23 @@
+/**
+ * An module for defining and initializing the User model.
+ * Exporting the User model definition, schema and model instance.
+ * @module {Object} user:model
+ * @property {Object} definition - The [definition object]{@link user:model~UserDefinition}
+ * @property {Schema} schema - The [mongoose model schema]{@link user:model~UserSchema}
+ * @property {Model} model - The [mongoose model]{@link user:model~User}
+ */
 'use strict';
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var MongooseError = require('mongoose/lib/error');
 var crypto = require('crypto');
+var requestContext = require('mongoose-request-context');
+var createdModifiedPlugin = require('mongoose-createdmodified').createdModifiedPlugin;
+var auth = require('../../auth/auth.service');
 
-var UserSchema = new Schema({
+var Schema = mongoose.Schema;
+
+var UserDefinition = {
     name: String,
     email: {
         type: String,
@@ -18,6 +31,10 @@ var UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Post'
     },
+    application: {
+        type: Schema.Types.ObjectId,
+        ref: 'Application'
+    },
     characters: {
         type: Schema.Types.ObjectId,
         ref: 'Character'
@@ -29,136 +46,244 @@ var UserSchema = new Schema({
     hashedPassword: String,
     provider: String,
     salt: String
-});
+};
 
 /**
- * Virtuals
+ * The User model schema
+ * @type {Schema}
+ */
+var UserSchema = new Schema(UserDefinition);
+
+/**
+ * Virtual 'password'
+ * Used for getting and setting the internal hashedPassword property
+ * @memberOf UserSchema
  */
 UserSchema
-    .virtual('password')
-    .set(function(password) {
-        this._password = password;
-        this.salt = this.makeSalt();
-        this.hashedPassword = this.encryptPassword(password);
-    })
-    .get(function() {
-        return this._password;
-    });
+  .virtual('password')
+  .set(setPassword)
+  .get(getPassword);
 
-// Public account-profile information
+/**
+ * Virtual 'profile'
+ * Public profile information
+ * @memberOf UserSchema
+ */
 UserSchema
-    .virtual('profile')
-    .get(function() {
-        return {
-            'name': this.name,
-            'role': this.role,
-            'characters': this.characters,
-            'battletag': this.battletag,
-            'twitch': this.twitch
-        };
-    });
+  .virtual('profile')
+  .get(getProfile);
 
-// Non-sensitive info we'll be putting in the token
+/**
+ * Virtual 'token'
+ * Non-sensitive info we'll be putting in the token
+ * @memberOf UserSchema
+ */
 UserSchema
-    .virtual('token')
-    .get(function() {
-        return {
-            '_id': this._id,
-            'role': this.role
-        };
-    });
+  .virtual('token')
+  .get(getToken);
 
 /**
  * Validations
  */
 
-// Validate empty email
+// Validate username is not taken
 UserSchema
-    .path('email')
-    .validate(function(email) {
-        return email.length;
-    }, 'Email cannot be blank');
+  .path('email')
+  .validate(validateUniqueEmail, 'The specified email address is already in use.');
 
 // Validate empty password
 UserSchema
-    .path('hashedPassword')
-    .validate(function(hashedPassword) {
-        return hashedPassword.length;
-    }, 'Password cannot be blank');
+  .path('hashedPassword')
+  .validate(validateHashedPassword, 'Password cannot be blank');
 
-// Validate email is not taken
-UserSchema
-    .path('email')
-    .validate(function(value, respond) {
-        var self = this;
-        this.constructor.findOne({
-            email: value
-        }, function(err, user) {
-            if (err) throw err;
-            if (user) {
-                if (self.id === user.id) return respond(true);
-                return respond(false);
-            }
-            respond(true);
-        });
-    }, 'The specified email address is already in use.');
-
-var validatePresenceOf = function(value) {
-    return value && value.length;
+/**
+ * Attach pre hook plugins
+ */
+UserSchema.plugin(requestContext, {
+    propertyName: 'modifiedBy',
+    contextPath: 'request:acl.user.name'
+});
+/**
+ * Authenticate - check if the password is correct
+ *
+ * @param {String} plainText
+ * @return {Boolean}
+ * @api public
+ */
+UserSchema.methods.authenticate = function authenticate(plainText) {
+    return this.encryptPassword(plainText) === this.hashedPassword;
 };
 
 /**
- * Pre-save hook
+ * Make salt
+ *
+ * @return {String}
+ * @api public
  */
-UserSchema
-    .pre('save', function(callback) {
-        var user = this;
-        // Break out if the password hasn't changed
-        if (!user.isModified('password')) return callback();
-
-        if (!validatePresenceOf(this.hashedPassword))
-            next(new Error('Invalid password'));
-        else
-            callback();
-    });
+UserSchema.methods.makeSalt = function makeSalt() {
+    return crypto.randomBytes(16).toString('base64');
+};
 
 /**
- * Methods
+ * Encrypt password
+ *
+ * @param {String} password
+ * @return {String}
+ * @api public
  */
-UserSchema.methods = {
-    /**
-     * Authenticate - check if the passwords are the same
-     *
-     * @param {String} plainText
-     * @return {Boolean}
-     * @api public
-     */
-    authenticate: function(plainText) {
-        return this.encryptPassword(plainText) === this.hashedPassword;
-    },
-
-    /**
-     * Make salt
-     *
-     * @return {String}
-     * @api public
-     */
-    makeSalt: function() {
-        return crypto.randomBytes(16).toString('base64');
-    },
-
-    /**
-     * Encrypt password
-     *
-     * @param {String} password
-     * @return {String}
-     * @api public
-     */
-    encryptPassword: function(password) {
-        if (!password || !this.salt) return '';
-        var salt = new Buffer(this.salt, 'base64');
-        return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+UserSchema.methods.encryptPassword = function encryptPassword(password) {
+    if (!password || !this.salt) {
+        return '';
     }
+
+    var salt = new Buffer(this.salt, 'base64');
+    return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
 };
 
-module.exports = mongoose.model('User', UserSchema);
+/**
+ * Attach post hook plugins
+ */
+UserSchema.plugin(createdModifiedPlugin);
+
+/**
+ * Set the virtual password property
+ *
+ * @api private
+ * @param {String} password - The user password to set
+ */
+function setPassword(password) {
+    // jshint validthis: true
+    this._password = password;
+    this.salt = this.makeSalt();
+    this.hashedPassword = this.encryptPassword(password);
+}
+
+/**
+ * Get the value of the virtual password property
+ *
+ * @api private
+ * @returns {String|*} The value of the virtual password property
+ */
+function getPassword() {
+    // jshint validthis: true
+    return this._password;
+}
+
+/**
+ * Return the value of the virtual profile property
+ *
+ * @api private
+ * @returns {{_id: *, name: *, prename: *, surname: *, email: *, active: *, role: *, info: *}}
+ */
+function getProfile() {
+    // jshint validthis: true
+    return {
+        '_id': this._id,
+        'name': this.name,
+        'role': this.role,
+        'battletag': this.battletag,
+        'twitch': this.twitch,
+        'info': this.info
+    };
+}
+/**
+ * Return the value of the virtual token property
+ *
+ * @api private
+ * @returns {{_id: *, role: *}}
+ */
+function getToken() {
+    // jshint validthis: true
+    return {
+        '_id': this._id,
+        'role': this.role
+    };
+}
+/**
+ * Check if the hashed password is specified.
+ *
+ * @api private
+ * @param {String} hashedPassword
+ * @returns {Boolean} True if the hashed password has a length
+ */
+function validateHashedPassword(hashedPassword) {
+    return hashedPassword.length;
+}
+
+/**
+ * Check existence and length of the given value.
+ *
+ * @api private
+ * @param {String} value - The value to check
+ * @returns {Boolean} True if a value with a truthy length property is given
+ */
+function validatePresenceOf(value) {
+    return value && value.length;
+}
+
+/**
+ * Validate the uniqueness of the given username
+ *
+ * @api private
+ * @param {String} value - The username to check for uniqueness
+ * @param {Function} respond - The callback function
+ */
+function validateUniqueEmail(value, respond) {
+    // jshint validthis: true
+    var self = this;
+
+    // check for uniqueness of user email
+    this.constructor.findOne({email: value}, function (err, user) {
+        if (err) {
+            throw err;
+        }
+
+        if (user) {
+            // the searched email is my email or a duplicate
+            return respond(self.id === user.id);
+        }
+
+        respond(true);
+    });
+}
+
+/**
+ * Pre save hook for the User model. Validates the existence of the
+ * hashedPassword property if the document is saved for the first time.
+ * Ensure that only the root user can update itself.
+ *
+ * @api private
+ * @param {Function} next - The mongoose middleware callback
+ * @returns {*} If an error occurs the passed callback with an Error as its argument is called
+ */
+function preSave(next) {
+    // jshint validthis: true
+    var self = this;
+
+    if (this.isNew && !validatePresenceOf(this.hashedPassword)) {
+        return next(new MongooseError.ValidationError('Missing password'));
+    }
+}
+
+module.exports = {
+
+    /**
+     * The User model definition object
+     * @type {Object}
+     * @see user:UserModel~UserDefinition
+     */
+    definition: UserDefinition,
+
+    /**
+     * The User model schema
+     * @type {Schema}
+     * @see user:model~UserSchema
+     */
+    schema: UserSchema,
+
+    /**
+     *  The registered mongoose model instance of the User model
+     *  @type {User}
+     */
+    model: mongoose.model('User', UserSchema)
+};

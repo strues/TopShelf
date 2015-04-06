@@ -4,7 +4,6 @@
         .config(configureToastr)
         .config(configureDatepicker)
         .config(configureTooltip)
-        .config(configureAside)
         .config(configure);
 
     configureToastr.$inject = ['toastrConfig'];
@@ -27,7 +26,7 @@
             newestOnTop: true,
             onHidden: null,
             onShown: null,
-            positionClass: 'toast-bottom-right',
+            positionClass: 'toast-bottom-full-width',
             tapToDismiss: true,
             timeOut: 5000,
             titleClass: 'toast-title',
@@ -35,15 +34,12 @@
         });
     }
     configure.$inject = [
-        '$urlRouterProvider',
-        '$locationProvider',
-        '$httpProvider',
-        'cfpLoadingBarProvider'
+        '$urlRouterProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider'
     ];
     /* @ngInject */
     function configure($urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.otherwise('/');
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true).hashPrefix('!');
         $httpProvider.interceptors.push('authInterceptor');
         cfpLoadingBarProvider.includeSpinner = true;
     }
@@ -61,14 +57,6 @@
         angular.extend($tooltipProvider.defaults, {
             animation: 'am-flip-x',
             trigger: 'hover'
-        });
-    }
-    configureAside.$inject = ['$asideProvider'];
-    /* @ngInject */
-    function configureAside($asideProvider) {
-        angular.extend($asideProvider.defaults, {
-            container: 'body',
-            html: true
         });
     }
 }());

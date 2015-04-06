@@ -4,14 +4,10 @@
      * @name app
      * @requires $urlRouterProvider
      *
-     * @description main application file
+     * @description Main module for app
      *
      */
-    angular.module('app.core', []);
-    angular.module('app.guild', []);
-    angular.module('app.account', []);
-    angular.module('app.admin', []);
-    angular.module('app', []);
+
     /* @ngInject */
     angular.module('app', [
         'ngStorage',
@@ -25,8 +21,10 @@
         'mgcrea.ngStrap',
         'textAngular',
         'xeditable',
+        'btford.socket-io',
         'toastr',
         'ngFabForm',
+        'ngMdIcons',
         'angularFileUpload',
         'trNgGrid',
         'angular-loading-bar',
@@ -37,16 +35,30 @@
     ]);
     run.$inject = [
         '$rootScope',
+        '$location',
         '$state',
         '$stateParams',
         'Auth',
         'editableOptions'
     ];
     /* @ngInject */
-    function run($rootScope, $state, $stateParams, Auth, editableOptions) {
+    function run($rootScope, $state, $stateParams, $location, Auth, editableOptions) {
         $rootScope.Auth = Auth;
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+        // Redirect to login if route requires auth and you're not logged in
+        $rootScope.$on('$stateChangeStart', function (event, next) {
+            if (!next.authenticate) {
+                return;
+            }
+
+            Auth.isLoggedInAsync(function (loggedIn) {
+                if (!loggedIn || next.role && !Auth.hasRole(next.role)) {
+                    $location.path('/login');
+                }
+            });
+        });
+
         editableOptions.theme = 'bs3';
     }
     // TODO Finish adding strict dependency injection.

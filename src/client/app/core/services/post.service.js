@@ -6,31 +6,36 @@
      * @desc Communicates with backend returning posts
      * @memberOf app.core.services
      */
-    angular.module('app.core.services').factory('Post', Post);
+    angular
+        .module('app.core')
+        .factory('Post', Post);
     /* @ngInject */
     function Post($http) {
         var urlBase = 'api/posts';
-        var postFactory = {};
-        postFactory.all = function () {
-            console.log('Getting all posts');
+        var service = {
+            all: all,
+            get: get,
+            create: create,
+            update: update,
+            destroy: destroy
+        };
+        return service;
+
+        function all() {
             return $http.get(urlBase);
-        };
-        postFactory.get = function (id) {
-            console.log('Getting the post with this id: ' + id);
+        }
+        function get(id) {
             return $http.get(urlBase + '/' + id);
-        };
-        postFactory.create = function (postData) {
-            console.log(postData);
+        }
+        function create(postData) {
             return $http.post(urlBase, postData);
-        };
-        postFactory.update = function (id, postData) {
-            console.log('Updated post' + postData);
+        }
+        function update(id, postData) {
             return $http.put(urlBase + '/' + id, postData);
-        };
-        postFactory.delete = function (id) {
-            console.log('Deleted post' + id);
+        }
+        function destroy(id) {
             return $http.delete(urlBase + '/' + id);
-        };
-        return postFactory;
+        }
+
     }
 }());

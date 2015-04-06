@@ -54,6 +54,16 @@
       </ul>
   </div>
 </div>
+<div class="stream-preview">
+  <h1 class="streamer">Abderb</h1>
+  <div class="streamWrapper">
+    <img ng-click="openStream(stream6.channel.name)" ng-src="{{ stream6.preview.medium }}">
+     <ul class="list-inline stream-info">
+        <li class="stream-title"><h4>Viewers</h4></li>
+        <li class="mdi-social-people">{{ stream6.viewers }}</li>
+      </ul>
+  </div>
+</div>
 </aside><!-- panel 5-->
   <div class="col-sm-12 col-md-9 col-lg-10">
     <div class="streamContainer" ng-show="streamActive">

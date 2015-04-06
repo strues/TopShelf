@@ -67,10 +67,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 219.0,
-		"last_filter": "install",
+		"height": 113.0,
+		"last_filter": "jscs",
 		"selected_items":
 		[
+			[
+				"jscs",
+				"JSCS Formatter: Format this file"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -244,7 +248,7 @@
 				"Snippet: gulp.task('name',funciton)"
 			]
 		],
-		"width": 601.0
+		"width": 579.0
 	},
 	"console":
 	{
@@ -265,31 +269,49 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/steventruesdell/Webdev/TopShelf/Develop",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/admin",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/core-home",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/brfPanel",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/footer",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/core/services",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/guild/services",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/base",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/components",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/auth",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/config",
-		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/server/config/environment"
+		"/Users/steven/Webdev/TopShelf/Develop",
+		"/Users/steven/Webdev/TopShelf/Develop/src",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.create",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-apply",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/components",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/helpers",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/layout",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/pages",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/vendor",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/application",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth"
 	],
 	"file_history":
 	[
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.create/newsCreate.tpl.html",
+		"/Users/steven/Webdev/material/client/styles/app.scss",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/application/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_global.scss",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-apply/application-info.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-apply/guild-application.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.create/newsCreate.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/index.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/application/application.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps/adminApps.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/application/application.model.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.model.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth/auth.service.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/post.model.js",
 		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#0/nginx.conf",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/app/admin/admin.tpl.html",
 		"/Users/steventruesdell/Webdev/TopShelf/Develop/src/client/styles/sections/_adminNav.scss",
@@ -401,23 +423,7 @@
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/admin.states.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/character/character.model.js",
 		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/account/states/profile/edit/profileEdit.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/services/guild.character.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/character/character.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/server/api/character/index.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/roster/guild.roster.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/roster/guild.roster.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/filters/level.filter.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/services/guild.armory.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/services/wowHelper.service.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/core.constants.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/navbar/core.navbar.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/directives/recruitingPanel/core.recruitingPanel.directive.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/home/core.home.tpl.html",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/home/core.home.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/core/states/home/core.carousel.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/topshelf.module.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/states/streams/guild.streams.controller.js",
-		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/admin/states/resources/admin.resource.controller.js"
+		"/Users/steventruesdell/Webdev/TopShelf/web/client/app/guild/services/guild.character.service.js"
 	],
 	"find":
 	{

@@ -2,10 +2,13 @@
     'use strict';
     /**
      * @ngdoc Service
-     * @name app.core.services.service:Slide
+     * @name app.core.service:Slide
      * @desc Communicates with backend handling recruitment status api calls
      */
-    angular.module('app.core.services').service('Slide', Slide);
+    angular
+        .module('app.core')
+        .factory('Slide', Slide);
+
     Slide.$inject = ['$http'];
     /* @ngInject */
     function Slide($http) {

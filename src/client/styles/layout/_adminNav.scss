@@ -78,10 +78,11 @@ main {
 			background-size: auto 20px;
 			transition: all 0.15s linear;
 			cursor: pointer;
+			width: 100%;
 
 			&:hover{
 				background-color:rgba(0,0,0,0.1);
-				width: 100%;
+				//width: 100%;
 			}
 
 			&:focus{

@@ -6,10 +6,12 @@
      * @desc Communicates with backend returning character information
      * @memberOf app.guild.services
      */
-    angular.module('app.core.services').factory('Character', Character);
+    angular
+        .module('app.guild')
+        .factory('Character', Character);
     /* @ngInject */
     function Character($http) {
-        console.log('Character Factory: topshelf.core.services');
+
         var urlBase = 'api/characters';
         var characterFactory = {};
         characterFactory.all = function () {

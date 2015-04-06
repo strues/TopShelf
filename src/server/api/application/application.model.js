@@ -66,17 +66,17 @@ var ApplicationSchema = new Schema({
         default: moment()
     },
     state: {
-      type: String,
-      enum: ['declined', 'accepted', 'pending']
+        type: String,
+        enum: ['declined', 'accepted', 'pending']
     },
-    user: {
+    author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
 });
 
 ApplicationSchema.statics = {
-  loadInfo: function(cb) {
+    loadInfo: function(cb) {
       this.find({})
       .populate({path:'User', select: 'name'})
       .exec(cb);

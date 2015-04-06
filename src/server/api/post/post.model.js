@@ -6,38 +6,38 @@ var mongoose = require('mongoose'),
     _        = require('lodash');
 
 var PostSchema = new Schema({
-  title: {
-    type: String
-  },
-  seoTitle: {
-    type: String
-  },
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  date: {
-    type: Date,
-    default: moment()
-  },
-  lastUpdated: {
-    type: Date
-  },
-  description: {
-    type: String
-  },
-  content: {
-    type: String
-  },
-  tags: {
-    type: Array
-  },
-  state: {
-    type: String,
-    enum: ['Draft','Published', 'Archived']
-  },
-  image: String,
-  lrgImage: String
+    title: {
+        type: String
+    },
+    seoTitle: {
+        type: String
+    },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    date: {
+        type: Date,
+        default: moment()
+    },
+    lastUpdated: {
+        type: Date
+    },
+    description: {
+        type: String
+    },
+    content: {
+        type: String
+    },
+    tags: {
+        type: Array
+    },
+    state: {
+        type: String,
+        enum: ['Draft', 'Published', 'Archived']
+    },
+    image: String,
+    lrgImage: String
 });
 
 PostSchema.statics = {

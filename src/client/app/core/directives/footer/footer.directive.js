@@ -18,5 +18,5 @@
             controller: 'FooterCtrl'
         };
     }
-    angular.module('app.core.directives').directive('theFooter', theFooter);
+    angular.module('app.core').directive('theFooter', theFooter);
 }());

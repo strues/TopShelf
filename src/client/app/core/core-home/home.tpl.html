@@ -1,78 +1,78 @@
 <!-- Topbar
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <navbar></navbar>
 <!-- home-page container
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div id="home-page" class="container-fluid">
-    <!-- carousel row/column -->
-  <section class="page-content--home">
+<!-- carousel row/column -->
+<section class="page-content--home">
   <div class="row">
     <div class="carousel-area col-sm-12 col-lg-9" ng-controller="HomeCarouselCtrl as carousel">
-     <h1 style="text-align: right; padding-right: 20px;"><span style="color:#333;">Recent</span> <span class="blue-text">Kills</span></h1>
-    <!-- rn-carousel directive start -->
+      <h1 style="text-align: right; padding-right: 20px;"><span style="color:#333;">Recent</span> <span class="blue-text">Kills</span></h1>
+      <!-- rn-carousel directive start -->
       <ul rn-carousel rn-carousel-controls rn-carousel-buffered rn-carousel-auto-slide class="image">
         <li ng-repeat="slide in carousel.slides">
-         <div class="layer"><img ng-src="{{ slide.image }}" alt="carousel slide"></div>
+          <div class="layer"><img ng-src="{{ slide.image }}" alt="carousel slide"></div>
         </li>
       </ul>
-    </div><!-- END carousel-area -->
-        <div class="col-sm-12 col-md-4 col-lg-3">
-    <aside class="home-sidebar">
-      <div class="clearfix"></div>
-    <!-- recruitment-aside -->
-      <div id="recruitment-widget">
-          <!-- recruiting-panel ngDirective -->
-          <recruitment-widget></recruitment-widget>
-      </div> <!-- END recruitment-aside -->
-<div id="progression-widget">
-          <brf-panel></brf-panel>
-        </div>
-      <!-- END BRF Widget -->
-      <!-- END BRF Widget -->
-    </aside> <!-- END sidebar -->
-    </div><!-- END col -->
-   </div> <!-- END carousel row/column -->
-</div>
-  <div class="home-page--bottom" ng-controller="HomeCtrl as vm">
-    <div class="container-fluid">
-  <div class="row">
-    <div class="news-title-container">
-      <div class="news-title-bg">
-        <h1 class="news-title">Latest News</h1>
-      </div>
-   </div>
-  <div class="col-md-4" ng-repeat="post in vm.posts | orderBy:'-date'">
- <article class="news-post card">
-        <!-- Post Image -->
-        <div class="post-image-wrapper">
-          <img ng-src="{{post.image}}" class="img-responsive" alt="news post image">
-        </div>
-        <!-- END post-image -->
-        <div class="post-wrapper box">
-          <div class="post-title">
-           <h1 class="post-title-text">{{post.title}}</h1>
+      </div><!-- END carousel-area -->
+      <aside class="home-sidebar">
+       <!-- recruitment widget -->
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div id="recruitment-widget">
+            <recruitment-widget></recruitment-widget>
           </div>
-           <div class="post-meta">
-           <ul class="list-inline list-unstyled">
-           <li><i class="fa fa-calendar-o"></i> {{ post.date | date:'MMM dd, yyyy' }}</li>
-           <li class="divider"></li>
-           <li>Posted by {{ post.author.name }}</li>
-           </ul>
-           </div>
-            <div class="post-content">
-              <div ta-bind ng-model="post.description"></div>
-            </div><!-- post-content -->
-
-            <a ui-sref='home.detail({id:post._id})'>
-             <button type="button" class="btn btn-md btn-primary">Read More</button>
-            </a>
-            
-        </div><!-- END post-wrapper -->
-      </article><!-- END article admin-news-post -->
-      </div>
-  </div><!-- END row -->
-</div>
-</section> <!-- end page-content home -->
-</div> <!-- END home --><!-- END container -->
-
-<the-footer></the-footer>
+          </div>
+         <!-- END recruitment widget -->
+          <!-- progression widget -->
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <div id="progression-widget">
+              <progression-widget></progression-widget>
+            </div>
+          </div>
+          <!-- END Progression Widget -->
+      </aside>
+      <!-- END sidebar -->
+          </div><!-- END col -->
+          </div> <!-- END carousel row/column -->
+        </div>
+        <div class="home-page--bottom" ng-controller="HomeCtrl as vm">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="news-title-container">
+                <div class="news-title-bg">
+                  <h1 class="news-title">Latest News</h1>
+                </div>
+              </div>
+              <div class="col-md-4" ng-repeat="post in vm.posts | orderBy:'-date'">
+                <article class="news-post card">
+                  <!-- Post Image -->
+                  <div class="post-image-wrapper">
+                    <img ng-src="{{post.image}}" class="img-responsive" alt="news post image">
+                  </div>
+                  <!-- END post-image -->
+                  <div class="post-wrapper box">
+                    <div class="post-title">
+                      <h1 class="post-title-text">{{post.title}}</h1>
+                    </div>
+                    <div class="post-meta">
+                      <ul class="list-inline list-unstyled">
+                        <li><i class="fa fa-calendar-o"></i> {{ post.date | date:'MMM dd, yyyy' }}</li>
+                        <li class="divider"></li>
+                        <li>Posted by {{ post.author.name }}</li>
+                      </ul>
+                    </div>
+                    <div class="post-content">
+                      <div ta-bind ng-model="post.description"></div>
+                      </div><!-- post-content -->
+                      <a ui-sref='home.detail({id:post._id})'>
+                        <button type="button" class="btn btn-md btn-primary">Read More</button>
+                      </a>
+                      </div><!-- END post-wrapper -->
+                      </article><!-- END article admin-news-post -->
+                    </div>
+                    </div><!-- END row -->
+                  </div>
+                  </section> <!-- end page-content home -->
+                  </div> <!-- END home --><!-- END container -->
+                <the-footer></the-footer>

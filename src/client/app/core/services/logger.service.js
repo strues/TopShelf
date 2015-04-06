@@ -1,35 +1,46 @@
-(function () {
+(function() {
     'use strict';
-    /**
-     * @ngdoc Service
-     * @apiName logger
-     * @propertyOf topshelf.core.services
-     * @description Passes alerts to both toastr as well as the console.
-     */
-    angular.module('app.core.services').factory('logger', logger);
+
+    angular
+        .module('app.core')
+        .factory('logger', logger);
+
+    logger.$inject = ['$log', 'toastr'];
+
     function logger($log, toastr) {
-        return {
-            error: error,
-            info: info,
-            success: success,
-            warning: warning,
-            log: $log.log
+        var service = {
+            showToasts: true,
+
+            error   : error,
+            info    : info,
+            success : success,
+            warning : warning,
+
+            // straight to console; bypass toastr
+            log     : $log.log
         };
-        function error(message, title) {
-            toastr.error(message, title, 'error');
-            $log.error('Error: ' + message);
+
+        return service;
+        /////////////////////
+
+        function error(message, data, title) {
+            toastr.error(message, title);
+            $log.error('Error: ' + message, data);
         }
-        function info(message, title) {
+
+        function info(message, data, title) {
             toastr.info(message, title);
-            $log.info('Info: ' + message);
+            $log.info('Info: ' + message, data);
         }
-        function success(message, title) {
+
+        function success(message, data, title) {
             toastr.success(message, title);
-            $log.info('Success: ' + message, 'success');
+            $log.info('Success: ' + message, data);
         }
-        function warning(message, title) {
+
+        function warning(message, data, title) {
             toastr.warning(message, title);
-            $log.warn('Warning: ' + message);
+            $log.warn('Warning: ' + message, data);
         }
     }
-}(this.angular));
+}());

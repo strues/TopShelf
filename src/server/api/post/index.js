@@ -6,6 +6,15 @@ var auth = require('../../auth/auth.service');
 var Post = require('./post.model');
 var router = express.Router();
 
+// Export the configured express router for the post api routes
+module.exports = router;
+
+// check if the used is authenticated at all
+var isAuthenticated = auth.isAuthenticated();
+
+// check if the authenticated user has at least the 'admin' role
+var isAdmin = auth.hasRole('admin');
+
 router.param('post', function(req, res, next, id) {
     var query = Post.findById(id);
 
@@ -27,9 +36,7 @@ router.param('author', controller.getListByAuthor);
 router.get('/', controller.index);
 router.get('/author/:author', controller.index);
 router.get('/:id', controller.show);
-router.post('/', auth.hasRole('admin'), controller.create);
-router.put('/:id', auth.hasRole('admin'), controller.update);
-router.patch('/:id', auth.hasRole('admin'), controller.update);
-router.delete('/:id', auth.hasRole('admin'), controller.destroy);
-
-module.exports = router;
+router.post('/', isAdmin, controller.create);
+router.put('/:id', isAdmin, controller.update);
+router.patch('/:id', isAdmin, controller.update);
+router.delete('/:id', isAdmin, controller.destroy);

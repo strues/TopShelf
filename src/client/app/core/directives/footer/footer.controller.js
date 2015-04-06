@@ -8,16 +8,19 @@
      *
      */
 
-angular.module('app.core.directives').controller('FooterCtrl', FooterCtrl);
+    angular
+        .module('app.core')
+        .controller('FooterCtrl', FooterCtrl);
     function FooterCtrl($scope, Auth, Twitch) {
         var vm = this;
         vm.Auth = Auth;
 
         var streamName1 = 'Soopie';
-        var streamName2 = 'Toxicpoptart';
-        var streamName3 = 'Teodin';
-        var streamName4 = 'Valkr';
-        var streamName5 = 'Tinkerbell';
+        var streamName2 = 'toxicpopsicles';
+        var streamName3 = 'teomorassalt';
+        var streamName4 = 'valkyrie89';
+        var streamName5 = 'wtfbbqsaucee';
+        var streamName6 = 'bredba';
 
         Twitch.get(streamName1).success(function(data) {
             $scope.stream1 = data.stream;
@@ -37,6 +40,10 @@ angular.module('app.core.directives').controller('FooterCtrl', FooterCtrl);
 
         Twitch.get(streamName5).success(function(data) {
             $scope.stream5 = data.stream;
+        });
+
+        Twitch.get(streamName6).success(function(data) {
+            $scope.stream6 = data.stream;
         });
     }
 

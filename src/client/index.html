@@ -2,11 +2,6 @@
 <html lang="en" class="no-js" ng-app="app">
 <head>
   <base href="/">
-  <style>
-    .ng-hide {
-      display: none!important;
-    }
-  </style>
 <link href='//fonts.googleapis.com/css?family=Khand|Raleway:300,400' rel='stylesheet' type='text/css'>
   <title>Top Shelf Guild</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -44,7 +39,7 @@
   <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.css" />
   <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css" />
   <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css" />
-  <link rel="stylesheet" href="/bower_components/trNgGrid/release/trNgGrid.min.css" />
+  <link rel="stylesheet" href="/bower_components/trNgGrid/trNgGrid.css" />
   <link rel="stylesheet" href="/bower_components/angular-xeditable/dist/css/xeditable.css" />
   <!-- endbower -->
   <!-- endbuild -->
@@ -81,10 +76,12 @@
   <script src="/bower_components/ngstorage/ngStorage.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-  <script src="/bower_components/rangy/rangy-core.min.js"></script>
-  <script src="/bower_components/rangy/rangy-cssclassapplier.min.js"></script>
-  <script src="/bower_components/rangy/rangy-selectionsaverestore.min.js"></script>
-  <script src="/bower_components/rangy/rangy-serializer.min.js"></script>
+  <script src="/bower_components/rangy/rangy-core.js"></script>
+  <script src="/bower_components/rangy/rangy-classapplier.js"></script>
+  <script src="/bower_components/rangy/rangy-highlighter.js"></script>
+  <script src="/bower_components/rangy/rangy-selectionsaverestore.js"></script>
+  <script src="/bower_components/rangy/rangy-serializer.js"></script>
+  <script src="/bower_components/rangy/rangy-textrange.js"></script>
   <script src="/bower_components/textAngular/src/textAngular.js"></script>
   <script src="/bower_components/textAngular/src/textAngular-sanitize.js"></script>
   <script src="/bower_components/textAngular/src/textAngularSetup.js"></script>
@@ -95,9 +92,11 @@
   <script src="/bower_components/angular-strap/dist/angular-strap.js"></script>
   <script src="/bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
   <script src="/bower_components/angular-carousel/dist/angular-carousel.js"></script>
-  <script src="/bower_components/trNgGrid/release/trNgGrid.min.js"></script>
+  <script src="/bower_components/trNgGrid/trNgGrid.js"></script>
   <script src="/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
   <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
+  <script src="/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+  <script src="/bower_components/angular-socket-io/socket.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:js js/app.js-->
@@ -113,23 +112,17 @@
 
   <script src="/src/client/app/guild/guild.module.js"></script>
 
-  <script src="/src/client/app/account/account-login/login.controller.js"></script>
+  <script src="/src/client/app/account/account-services/auth.service.js"></script>
 
-  <script src="/src/client/app/account/account-login/loginForm.directive.js"></script>
+  <script src="/src/client/app/account/account-services/user.service.js"></script>
 
-  <script src="/src/client/app/account/account-profile/profile.controller.js"></script>
+  <script src="/src/client/app/account/login/login.controller.js"></script>
 
-  <script src="/src/client/app/account/account-profile/profile.edit/profileEdit.controller.js"></script>
+  <script src="/src/client/app/account/profile/profile.controller.js"></script>
 
-  <script src="/src/client/app/account/account-signup/signup.controller.js"></script>
+  <script src="/src/client/app/account/profile/profile.edit/profileEdit.controller.js"></script>
 
-  <script src="/src/client/app/account/account-signup/signupForm.directive.js"></script>
-
-  <script src="/src/client/app/account/account.states.js"></script>
-
-  <script src="/src/client/app/account/services/auth.service.js"></script>
-
-  <script src="/src/client/app/account/services/user.service.js"></script>
+  <script src="/src/client/app/account/signup/signup.controller.js"></script>
 
   <script src="/src/client/app/admin/admin-apps/adminApps.controller.js"></script>
 
@@ -150,6 +143,10 @@
   <script src="/src/client/app/admin/admin-news/news.create/newsCreate.controller.js"></script>
 
   <script src="/src/client/app/admin/admin-news/news.edit/newsEdit.controller.js"></script>
+
+  <script src="/src/client/app/admin/admin-progression/adminProgression.controller.js"></script>
+
+  <script src="/src/client/app/admin/admin-progression/progression.edit/progressionEdit.controller.js"></script>
 
   <script src="/src/client/app/admin/admin-recruitment/adminRecruitment.controller.js"></script>
 
@@ -177,10 +174,6 @@
 
   <script src="/src/client/app/core/core.config.js"></script>
 
-  <script src="/src/client/app/core/core.states.js"></script>
-
-  <script src="/src/client/app/core/directives/brfPanel/brfPanel.directive.js"></script>
-
   <script src="/src/client/app/core/directives/footer/footer.controller.js"></script>
 
   <script src="/src/client/app/core/directives/footer/footer.directive.js"></script>
@@ -190,6 +183,8 @@
   <script src="/src/client/app/core/directives/navbar/navbar.controller.js"></script>
 
   <script src="/src/client/app/core/directives/navbar/navbar.directive.js"></script>
+
+  <script src="/src/client/app/core/directives/progressionWidget/progressionWidget.directive.js"></script>
 
   <script src="/src/client/app/core/directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
 
@@ -201,13 +196,17 @@
 
   <script src="/src/client/app/core/services/authInterceptor.service.js"></script>
 
+  <script src="/src/client/app/core/services/io.service.js"></script>
+
+  <script src="/src/client/app/core/services/lodash.service.js"></script>
+
   <script src="/src/client/app/core/services/logger.service.js"></script>
 
   <script src="/src/client/app/core/services/post.service.js"></script>
 
   <script src="/src/client/app/core/services/slide.service.js"></script>
 
-  <script src="/src/client/app/core/services/util.service.js"></script>
+  <script src="/src/client/app/core/services/socket.service.js"></script>
 
   <script src="/src/client/app/guild/guild-apply/application.controller.js"></script>
 
@@ -216,8 +215,6 @@
   <script src="/src/client/app/guild/guild-roster/roster.controller.js"></script>
 
   <script src="/src/client/app/guild/guild-streams/streams.controller.js"></script>
-
-  <script src="/src/client/app/guild/guild.states.js"></script>
 
   <script src="/src/client/app/guild/services/application.service.js"></script>
 

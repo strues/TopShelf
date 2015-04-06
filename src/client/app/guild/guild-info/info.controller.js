@@ -2,14 +2,16 @@
     'use strict';
     /**
    * @ngdoc Controller
-   * @name topshelf.guild.states:GuildInfoCtrl
+   * @name app.guild.controller:GuildInfoController
    *
    * @description Currently is just "there"
    *
    */
-    angular.module('app.guild.states').controller('GuildInfoCtrl', GuildInfoCtrl);
-    function GuildInfoCtrl() {
+    angular
+      .module('app.guild')
+      .controller('GuildInfoController', GuildInfoController);
+    function GuildInfoController() {
         var vm = this;
-        vm.ctrlName = 'GuildInfoCtrl';
+        vm.ctrlName = 'GuildInfoController';
     }
 }());

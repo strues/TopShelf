@@ -1,11 +1,28 @@
+/**
+ * Main application routes
+ * All responses are routed through the middleware.extendResponse middleware.
+ * POST, PUT, PATCH and DELETE requests are
+ * routed through the middleware.removeReservedSchemaKeywords middleware.
+ */
+
 'use strict';
 
 var errors = require('./components/errors');
 var path = require('path');
-var config = require('./config/environment');
+var middleware = require('./components/middleware');
 
 module.exports = function(app) {
+    // extend response with custom methods
+    app.use(middleware.extendResponse);
 
+    // default CUD middleware
+    app
+      .put(middleware.removeReservedSchemaKeywords)
+      .patch(middleware.removeReservedSchemaKeywords)
+      .delete(middleware.removeReservedSchemaKeywords)
+      .post(middleware.removeReservedSchemaKeywords);
+
+    // Insert routes below
     // Routes
 
     app.use('/api/users', require('./api/user'));
@@ -22,28 +39,14 @@ module.exports = function(app) {
 
     // All undefined asset or api routes should return a 404
     app.route('/:url(api|auth|components|app|bower_components|assets)/*')
-        .get(errors[404]);
+        .get(function invalidRoute(req, res) { return res.notFound(); });
 
-    // handle pretty urls
-    app.get('*', function(req, res) {
-        res.redirect('/#' + req.originalUrl);
+    // All other routes should redirect to the index.html
+    app.route('/*')
+    .get(function getIndexFile(req, res) {
+        res.sendFile(path.resolve(app.get('appPath') + '/index.html'));
     });
 
-    app.all('*', function(req, res, next) {
-        res.set('Access-Control-Allow-Origin', '*');
-        res.set('Access-Control-Allow-Credentials', true);
-        res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
-        res.set('Access-Control-Allow-Headers',
-            'X-Requested-With, Content-Type, Authorization');
-        if ('OPTIONS' === req.method) {
-            return res.sendStatus(200);
-        }
-        next();
-    });
-    // error handling
-    app.use(function(err, req, res) {
-        res.status(500).body({
-            message: err.message
-        });
-    });
+    // register the default error handler
+    app.use(middleware.defaultErrorHandler);
 };

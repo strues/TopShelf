@@ -6,7 +6,7 @@
      * @desc Communicates with backend handling recruitment status api calls
      */
     angular
-        .module('app.guild.services')
+        .module('app.guild')
         .service('Twitch', Twitch);
 
     Twitch.$inject = ['$http'];
