@@ -6,22 +6,21 @@
  *
  * @requires ui.router
  */
-
 (function () {
     'use strict';
-
     // register the route config on the application
-    angular
-    .module('app.account', ['app.core', 'app.guild', 'app.admin'])
-    .config(config);
-
+    angular.module('app.account', [
+      'app.core',
+      'app.guild',
+      'app.admin'
+    ]).config(config);
+        /* @ngInject */
     function config($stateProvider) {
         $stateProvider.state('account', {
             abstract: true,
             url: '/account',
             template: '<ui-view />'
-        })
-        .state('account.login', {
+        }).state('account.login', {
             url: '/login',
             views: {
                 'main@': {
@@ -30,15 +29,13 @@
                     controllerAs: 'login'
                 }
             }
-        })
-        .state('account.logout', {
+        }).state('account.logout', {
             url: '/logout?referrer',
             referrer: 'home',
             controller: function (Auth) {
                 Auth.logout();
             }
-        })
-        .state('account.signup', {
+        }).state('account.signup', {
             url: '/signup',
             views: {
                 'main@': {
@@ -47,8 +44,7 @@
                     controllerAs: 'signup'
                 }
             }
-        })
-        .state('account.profile', {
+        }).state('account.profile', {
             url: '/profile',
             views: {
                 'main@': {
@@ -57,18 +53,17 @@
                     controllerAs: 'profile'
                 }
             }
-        })
-        .state('account.profileEdit', {
+        }).state('account.profileEdit', {
             url: '/profile/edit',
             views: {
                 'main@': {
-                    templateUrl: 'app/account/profile/profile.edit/profileEdit.tpl.html',
+                    templateUrl:
+                    'app/account/profile/profile.edit/profileEdit.tpl.html',
                     controller: 'ProfileEditController',
-                    controllerAs: 'editProf',
+                    controllerAs: 'editProf'
                 }
             },
             authenticate: true
         });
     }
-
 }());

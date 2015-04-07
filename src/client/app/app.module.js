@@ -7,7 +7,6 @@
      * @description Main module for app
      *
      */
-
     /* @ngInject */
     angular.module('app', [
         'ngStorage',
@@ -33,14 +32,7 @@
         'app.guild',
         'app.admin'
     ]);
-    run.$inject = [
-        '$rootScope',
-        '$location',
-        '$state',
-        '$stateParams',
-        'Auth',
-        'editableOptions'
-    ];
+
     /* @ngInject */
     function run($rootScope, $state, $stateParams, $location, Auth, editableOptions) {
         $rootScope.Auth = Auth;
@@ -51,16 +43,14 @@
             if (!next.authenticate) {
                 return;
             }
-
             Auth.isLoggedInAsync(function (loggedIn) {
                 if (!loggedIn || next.role && !Auth.hasRole(next.role)) {
                     $location.path('/login');
                 }
             });
         });
-
         editableOptions.theme = 'bs3';
     }
-    // TODO Finish adding strict dependency injection.
+        /* @ngInject */
     angular.module('app').run(run);
 }());

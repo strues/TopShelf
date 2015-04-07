@@ -1,6 +1,9 @@
 (function () {
     'use strict';
-    angular.module('app.admin.services').factory('Resource', Resource);
+    angular
+      .module('app.admin.services')
+      .factory('Resource', Resource);
+          /* @ngInject */
     function Resource($http) {
         console.log('resource.service.js');
         var urlBase = 'api/resources';

@@ -1,7 +1,9 @@
 (function () {
     'use strict';
-    angular.module('app.admin.states').controller('AdminCarouselCtrl', AdminCarouselCtrl);
-    /* @ngInject */
+    angular
+      .module('app.admin.states')
+      .controller('AdminCarouselCtrl', AdminCarouselCtrl);
+                         /* @ngInject */
     function AdminCarouselCtrl(Slide, toastr) {
         var vm = this;
         vm.processing = true;
@@ -15,7 +17,8 @@
             vm.processing = true;
             vm.message = '';
             Slide.create(vm.slideData).success(function (data) {
-                toastr.success('Your slide was added to the database', 'Submitted!');
+                toastr.success('Your slide was added to the database',
+                  'Submitted!');
                 vm.processing = false;
                 vm.slideData = {};
                 vm.message = data.message;

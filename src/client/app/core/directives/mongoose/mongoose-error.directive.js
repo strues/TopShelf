@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     /**
-     * Removes server error when user updates input
-     */
+       * Removes server error when user updates input
+       */
     function mongooseError() {
         return {
             restrict: 'A',

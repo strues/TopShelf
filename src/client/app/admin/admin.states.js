@@ -1,13 +1,14 @@
 (function () {
     'use strict';
     /* @ngdoc object
-     * @name admin
-     * @requires $stateProvider
-     *
-     * @description States for the admin
-     *
-     */
+       * @name admin
+       * @requires $stateProvider
+       *
+       * @description States for the admin
+       *
+       */
     angular.module('app.admin').config(config);
+        /* @ngInject */
     function config($stateProvider) {
         $stateProvider.state('admin', {
             url: '/admin',
@@ -19,15 +20,20 @@
                 },
                 'content@admin': {
                     controller: 'AdminDashboardCtrl',
-                    templateUrl: 'app/admin/admin-dashboard/adminDashboard.tpl.html'
+                    templateUrl:
+                    'app/admin/admin-dashboard/adminDashboard.tpl.html'
                 },
                 'progression@admin': {
                     controller: 'ProgressionCtrl',
-                    templateUrl: 'app/admin/admin-progression/adminProgression.tpl.html',
+                    templateUrl:
+                    'app/admin/admin-progression/adminProgression.tpl.html',
                     resolve: {
-                        progression: function($http) {
+                        progression: function ($http) {
                             // $http returns a promise for the url data
-                            return $http({method: 'GET', url: '/api/progression'});
+                            return $http({
+                                method: 'GET',
+                                url: '/api/progression'
+                            });
                         }
                     }
                 }
@@ -39,9 +45,12 @@
                     controller: 'ApplicationListCtrl',
                     templateUrl: 'app/admin/admin-apps/adminApps.tpl.html',
                     resolve: {
-                        applications: function($http) {
+                        applications: function ($http) {
                             // $http returns a promise for the url data
-                            return $http({method: 'GET', url: '/api/applications'});
+                            return $http({
+                                method: 'GET',
+                                url: '/api/applications'
+                            });
                         }
                     }
                 }
@@ -74,7 +83,8 @@
             url: '/news/:postId/edit',
             views: {
                 'content@admin': {
-                    templateUrl: 'app/admin/admin-news/news.edit/newsEdit.tpl.html',
+                    templateUrl:
+                    'app/admin/admin-news/news.edit/newsEdit.tpl.html',
                     controller: function ($stateParams) {
                         console.log($stateParams);
                     }
@@ -85,7 +95,8 @@
             views: {
                 'content@admin': {
                     controller: 'AdminCarouselCtrl as vm',
-                    templateUrl: 'app/admin/admin-carousel/adminCarousel.tpl.html'
+                    templateUrl:
+                    'app/admin/admin-carousel/adminCarousel.tpl.html'
                 }
             }
         }).state('admin.recruitmentStatus', {
@@ -93,7 +104,8 @@
             views: {
                 'content@admin': {
                     controller: 'RecruitmentCtrl',
-                    templateUrl: 'app/admin/admin-recruitment/adminRecruitment.tpl.html'
+                    templateUrl:
+                    'app/admin/admin-recruitment/adminRecruitment.tpl.html'
                 }
             }
         }).state('admin.users', {
@@ -109,7 +121,8 @@
             views: {
                 'content@admin': {
                     controller: 'AdminUserDetailsCtrl',
-                    templateUrl: 'app/admin/admin-users/user.details/userDetails.tpl.html'
+                    templateUrl:
+                    'app/admin/admin-users/user.details/userDetails.tpl.html'
                 }
             }
         }).state('admin.resources', {
@@ -117,15 +130,18 @@
             views: {
                 'content@admin': {
                     controller: 'ResourceCtrl as vm',
-                    templateUrl: 'app/admin/admin-resources/adminResource.tpl.html'
+                    templateUrl:
+                    'app/admin/admin-resources/adminResource.tpl.html'
                 }
             }
-        }).state('admin.resourceCreate', {
+        })
+        .state('admin.resourceCreate', {
             url: '/resources/new',
             views: {
                 'content@admin': {
                     controller: 'ResourceCreateCtrl as vm',
-                    templateUrl: 'app/admin/admin-resources/resource.create/resourceCreate.tpl.html'
+                    templateUrl:
+                    'app/admin/admin-resources/resource.create/resourceCreate.tpl.html'
                 }
             }
         }).state('admin.resourceEdit', {

@@ -4,7 +4,6 @@ var config = require('./gulp.config')();
 var del = require('del'),
     glob = require('glob'),
     gulp = require('gulp'),
-    autoprefixer = require('autoprefixer-core'),
     path = require('path'),
     minifyCSS = require('gulp-minify-css'),
     _ = require('lodash'),
@@ -39,12 +38,12 @@ gulp.task('vet', function() {
     log('Analyzing source with JSHint and JSCS');
 
     return gulp
-        .src(config.alljs)
+        .src(config.js)
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}));
-        //.pipe($.jshint.reporter('fail'))
-        //.pipe($.jscs());
+        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+        .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
+        .pipe($.jscs());
 });
 
 /**
@@ -54,7 +53,7 @@ gulp.task('todo', function() {
     log('Compiling todo notes');
 
     return gulp
-        .src(config.alljs)
+        .src(config.js)
         .pipe($.if(args.verbose, $.print()))
         .pipe($.todo())
         .pipe(gulp.dest('./')) //output todo.md as markdown
@@ -77,12 +76,12 @@ gulp.task('plato', function(done) {
  * JS Copy/Paste
  */
 gulp.task('fixjs', function() {
-  log('Running copy/paste detector');
+    log('Running copy/paste detector');
 
     return gulp
-      .src(config.js)
+      .src('./src/client/app/**/*.js')
       .pipe($.fixmyjs())
-      .pipe(gulp.dest('src/client/app'));
+      .pipe(gulp.dest('./src/client/app'));
 });
 /**
  * Compile Sass to css
@@ -94,17 +93,20 @@ gulp.task('styles', ['clean-styles'], function() {
     return gulp
         .src(config.sass)
         .pipe($.plumber()) // exit gracefully if something fails after this
-        .pipe($.sass())
-//        .on('error', errorLogger) // more verbose and dupe output. requires emit.
+        .pipe($.sourcemaps.init())
         .pipe($.sass({
-          sourceMap: 'sass',
-          outputStyle: 'nested'
+            sourceMap: 'sass',
+            outputStyle: 'compressed'
         }))
-        .pipe($.postcss([autoprefixer({browsers: ['last 2 version']})]))
+        .pipe($.postcss([
+            require('autoprefixer-core')({browsers: ['last 2 version']})
+            ]))
+        .pipe($.sourcemaps.write())
         .on('error', function handleError(err) {
               console.error(err.toString());
               this.emit('end');
           })
+        .pipe($.plumber.stop())
         .pipe(gulp.dest(config.temp));
 });
 
@@ -129,7 +131,7 @@ gulp.task('images', ['clean-images'], function() {
 
     return gulp
         .src(config.images)
-        .pipe($.imagemin({optimizationLevel: 4}))
+        .pipe($.imagemin({optimizationLevel: 6}))
         .pipe(gulp.dest(config.build + 'images'));
 });
 
@@ -241,6 +243,20 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function() {
     notify(msg);
 });
 
+gulp.task('ngAcheck', function() {
+    var ngAnnotateCheck = require('gulp-ng-annotate-check');
+
+    return gulp
+        .src(config.js)
+        .pipe(ngAnnotateCheck({
+            options: {'single_quotes': true, 'add': true},
+            callback: function (diff, fileName) {
+                        console.log(fileName);
+                        console.log(diff);
+                    }
+        }));
+});
+
 /**
  * Optimize all files, move to a build folder,
  * and inject them into the new index.html
@@ -268,9 +284,11 @@ gulp.task('optimize', ['inject'], function() {
         .pipe(cssFilter.restore())
         // Get the custom javascript
         .pipe(jsAppFilter)
+        .pipe($.sourcemaps.init({debug: true, loadMaps: true}))
         .pipe($.ngAnnotate({add: true}))
         .pipe($.uglify())
         .pipe(getHeader())
+        .pipe($.sourcemaps.write())
         .pipe(jsAppFilter.restore())
         // Get the vendor javascript
         .pipe(jslibFilter)

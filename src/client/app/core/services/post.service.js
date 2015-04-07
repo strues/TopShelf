@@ -1,14 +1,12 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc Service
-     * @name Post
-     * @desc Communicates with backend returning posts
-     * @memberOf app.core.services
-     */
-    angular
-        .module('app.core')
-        .factory('Post', Post);
+         * @ngdoc Service
+         * @name Post
+         * @desc Communicates with backend returning posts
+         * @memberOf app.core.services
+         */
+    angular.module('app.core').factory('Post', Post);
     /* @ngInject */
     function Post($http) {
         var urlBase = 'api/posts';
@@ -20,7 +18,6 @@
             destroy: destroy
         };
         return service;
-
         function all() {
             return $http.get(urlBase);
         }
@@ -36,6 +33,5 @@
         function destroy(id) {
             return $http.delete(urlBase + '/' + id);
         }
-
     }
 }());

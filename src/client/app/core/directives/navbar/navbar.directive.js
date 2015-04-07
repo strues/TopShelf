@@ -1,16 +1,16 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc directive
-     * @name core.directive:navbar
-     * @restrict EA
-     * @element
-     *
-     * @description
-     *
-     * @example
-     *
-     */
+       * @ngdoc directive
+       * @name core.directive:navbar
+       * @restrict EA
+       * @element
+       *
+       * @description
+       *
+       * @example
+       *
+       */
     angular.module('app.core').directive('navbar', navbar);
     function navbar() {
         return {

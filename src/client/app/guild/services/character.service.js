@@ -1,17 +1,16 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc Service
-     * @name Character
-     * @desc Communicates with backend returning character information
-     * @memberOf app.guild.services
-     */
+       * @ngdoc Service
+       * @name Character
+       * @desc Communicates with backend returning character information
+       * @memberOf app.guild.services
+       */
     angular
-        .module('app.guild')
-        .factory('Character', Character);
+      .module('app.guild')
+      .factory('Character', Character);
     /* @ngInject */
     function Character($http) {
-
         var urlBase = 'api/characters';
         var characterFactory = {};
         characterFactory.all = function () {

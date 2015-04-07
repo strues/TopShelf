@@ -1,17 +1,15 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc service
-     * @name authInterceptor
-     * @description
-     * This interceptor will make sure that, after each $http request
-     * if the user doesn't have access to something runs the according
-     * event, given the response status codes from the server.
-     *
-     */
-    angular
-        .module('app.core')
-        .factory('authInterceptor', authInterceptor);
+       * @ngdoc service
+       * @name authInterceptor
+       * @description
+       * This interceptor will make sure that, after each $http request
+       * if the user doesn't have access to something runs the according
+       * event, given the response status codes from the server.
+       *
+       */
+    angular.module('app.core').factory('authInterceptor', authInterceptor);
     /* @ngInject */
     function authInterceptor($rootScope, $q, $localStorage, $location) {
         return {
@@ -19,7 +17,8 @@
             request: function (config) {
                 config.headers = config.headers || {};
                 if ($localStorage.token) {
-                    config.headers.Authorization = 'Bearer ' + $localStorage.token;
+                    config.headers.Authorization = 'Bearer ' +
+                    $localStorage.token;
                 }
                 return config;
             },

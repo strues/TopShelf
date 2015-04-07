@@ -1,12 +1,12 @@
-(function() {
+(function () {
     'use strict';
-    angular.module('app.core')
+    angular
+        .module('app.core')
         .config(configureToastr)
         .config(configureDatepicker)
         .config(configureTooltip)
         .config(configure);
 
-    configureToastr.$inject = ['toastrConfig'];
     /* @ngInject */
     function configureToastr(toastrConfig) {
         angular.extend(toastrConfig, {
@@ -33,17 +33,12 @@
             toastClass: 'toast'
         });
     }
-    configure.$inject = [
-        '$urlRouterProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider'
-    ];
     /* @ngInject */
-    function configure($urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
+    function configure($urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true).hashPrefix('!');
         $httpProvider.interceptors.push('authInterceptor');
-        cfpLoadingBarProvider.includeSpinner = true;
     }
-    configureDatepicker.$inject = ['$datepickerProvider'];
     /* @ngInject */
     function configureDatepicker($datepickerProvider) {
         angular.extend($datepickerProvider.defaults, {
@@ -51,7 +46,6 @@
             startWeek: 1
         });
     }
-    configureTooltip.$inject = ['$tooltipProvider'];
     /* @ngInject */
     function configureTooltip($tooltipProvider) {
         angular.extend($tooltipProvider.defaults, {

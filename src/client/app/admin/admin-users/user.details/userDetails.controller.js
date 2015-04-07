@@ -1,13 +1,15 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc controller
-     * @name admin.states.controller:AdminUserDetailsCtrl
-     *
-     * @description shows the admin-users account-profile
-     *
-     */
-    angular.module('app.admin.states').controller('AdminUserDetailsCtrl', AdminUserDetailsCtrl);
+       * @ngdoc controller
+       * @name admin.states.controller:AdminUserDetailsCtrl
+       *
+       * @description shows the admin-users account-profile
+       *
+       */
+    angular
+      .module('app.admin.states')
+      .controller('AdminUserDetailsCtrl', AdminUserDetailsCtrl);
     /* @ngInject */
     function AdminUserDetailsCtrl($scope, $http, User, $stateParams, $filter) {
         var vm = this;
@@ -21,20 +23,20 @@
             $scope.userData = data;
         });
         $scope.roles = [
-            {
-                value: 'user',
-                text: 'User'
-            },
-            {
-                value: 'admin',
-                text: 'Admin'
-            }
-        ];
+      {
+          value: 'user',
+          text: 'User'
+      },
+      {
+          value: 'admin',
+          text: 'Admin'
+      }
+    ];
         $scope.saveUser = function () {
             // $scope.user already updated!
-            return $http.put('/api/users/' + userId, $scope.user).error(function (err) {
+            return $http.put('/api/users/' + userId, $scope.user)
+            .error(function (err) {
                 if (err.field && err.msg) {
-                    // err like {field: "name", msg: "Server-side error for this username!"}
                     $scope.editableForm.$setError(err.field, err.msg);
                 } else {
                     // unknown error

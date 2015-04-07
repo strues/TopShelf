@@ -1,11 +1,13 @@
 (function () {
     'use strict';
     /*
-     * @ngdoc Controller
-     * @name ResourceCtrl
-     * @description Logic for displaying admin-resources in admin area
-     */
-    angular.module('app.admin.states').controller('MediaCtrl', MediaCtrl);
+       * @ngdoc Controller
+       * @name ResourceCtrl
+       * @description Logic for displaying admin-resources in admin area
+       */
+    angular
+      .module('app.admin.states')
+      .controller('MediaCtrl', MediaCtrl);
     /* @ngInject */
     function MediaCtrl($rootScope, FileUploader, $state, $scope, $http, toastr, $location) {
         $scope.files = {};
@@ -43,16 +45,20 @@
         uploader.onProgressAll = function (progress) {
             console.info('onProgressAll', progress);
         };
-        uploader.onSuccessItem = function (fileItem, response, status, headers) {
+        uploader.onSuccessItem = function (
+          fileItem, response, status, headers) {
             console.info('onSuccessItem', fileItem, response, status, headers);
         };
-        uploader.onErrorItem = function (fileItem, response, status, headers) {
+        uploader.onErrorItem = function (
+          fileItem, response, status, headers) {
             console.info('onErrorItem', fileItem, response, status, headers);
         };
-        uploader.onCancelItem = function (fileItem, response, status, headers) {
+        uploader.onCancelItem = function (
+          fileItem, response, status, headers) {
             console.info('onCancelItem', fileItem, response, status, headers);
         };
-        uploader.onCompleteItem = function (fileItem, response, status, headers) {
+        uploader.onCompleteItem = function (
+          fileItem, response, status, headers) {
             console.info('onCompleteItem', fileItem, response, status, headers);
         };
         uploader.onCompleteAll = function () {
