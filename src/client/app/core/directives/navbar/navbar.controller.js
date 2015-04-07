@@ -7,8 +7,11 @@
        * @description Controller for the Navbar
        *
        */
-    angular.module('app.core').controller('NavbarCtrl', NavbarCtrl);
-    function NavbarCtrl(Auth, $scope, $rootScope, $aside, $location) {
+    angular
+      .module('app.core')
+      .controller('NavbarCtrl', NavbarCtrl);
+          /* @ngInject */
+    function NavbarCtrl(Auth, $scope, $rootScope, $location) {
         var vm = this;
         vm.Auth = Auth;
         vm.isCollapsed = false;

@@ -14,7 +14,7 @@
       'app.account',
       'app.admin'
     ]).config(config);
-    config.$inject = ['$stateProvider'];
+    /* @ngInject */
     function config($stateProvider) {
         $stateProvider.state('guild', {
             abstract: true,

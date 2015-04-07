@@ -7,7 +7,7 @@
         return {
             templateUrl:
             'app/core/directives/progressionWidget/progressionWidget.tpl.html',
-            restrict: 'EA',
+            restrict: 'EA',    /* @ngInject */
             controller: function ($scope, Progression, $log) {
                 Progression.all().success(function (data) {
                     $scope.progressions = data;

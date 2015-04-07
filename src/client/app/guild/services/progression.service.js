@@ -9,7 +9,7 @@
     angular
       .module('app.guild')
       .factory('Progression', Progression);
-    Progression.$inject = ['$http'];
+
     /* @ngInject */
     function Progression($http) {
         var urlBase = '/api/progression';

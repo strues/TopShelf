@@ -10,12 +10,6 @@
     angular
       .module('app.account')
       .controller('LoginController', LoginController);
-    LoginController.$inject = [
-      'Auth',
-      '$location',
-      '$window',
-      'toastr'
-    ];
     /* @ngInject */
     function LoginController(Auth, $location, $window, toastr) {
         var vm = this;

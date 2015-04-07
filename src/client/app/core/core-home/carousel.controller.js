@@ -9,7 +9,7 @@
     angular
       .module('app.core')
       .controller('HomeCarouselCtrl', HomeCarouselCtrl);
-
+    /* @ngInject */
     function HomeCarouselCtrl(Slide) {
         var carousel = this;
         carousel.slides = {};

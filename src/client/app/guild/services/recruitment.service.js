@@ -8,7 +8,7 @@
     angular
       .module('app.guild')
       .factory('Recruitment', Recruitment);
-    Recruitment.$inject = ['$http'];
+
     /* @ngInject */
     function Recruitment($http) {
         var urlBase = '/api/recruitment';

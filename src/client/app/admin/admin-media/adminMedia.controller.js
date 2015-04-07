@@ -9,8 +9,7 @@
       .module('app.admin.states')
       .controller('MediaCtrl', MediaCtrl);
     /* @ngInject */
-    function MediaCtrl($rootScope, FileUploader, $state,
-      $scope, $http, toastr, $location) {
+    function MediaCtrl($rootScope, FileUploader, $state, $scope, $http, toastr, $location) {
         $scope.files = {};
         $scope.current = {};
         $scope.selectedImages = {};

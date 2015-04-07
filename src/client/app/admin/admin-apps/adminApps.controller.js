@@ -11,8 +11,7 @@
       .module('app.admin.states')
       .controller('ApplicationListCtrl', ApplicationListCtrl);
     /* @ngInject */
-    function ApplicationListCtrl($scope, Application,
-      toastr, $http, $state, $location) {
+    function ApplicationListCtrl($scope, Application, toastr, $http, $state, $location) {
         // Application.getAllApplications().then(function (response) {
         //     $scope.dataForTable = response.data;
         // });

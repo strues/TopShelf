@@ -8,7 +8,7 @@
         return {
             templateUrl:
             'app/core/directives/recruitmentWidget/recruitmentWidget.tpl.html',
-            restrict: 'EA',
+            restrict: 'EA',     /* @ngInject */
             controller: function ($scope, Recruitment, $log) {
                 Recruitment.all().success(function (data) {
                     $scope.recruitments = data;

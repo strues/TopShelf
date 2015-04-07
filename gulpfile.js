@@ -4,7 +4,6 @@ var config = require('./gulp.config')();
 var del = require('del'),
     glob = require('glob'),
     gulp = require('gulp'),
-    autoprefixer = require('autoprefixer-core'),
     path = require('path'),
     minifyCSS = require('gulp-minify-css'),
     _ = require('lodash'),
@@ -43,7 +42,7 @@ gulp.task('vet', function() {
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
-        .pipe($.jshint.reporter('fail'))
+        .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
         .pipe($.jscs());
 });
 
@@ -94,15 +93,20 @@ gulp.task('styles', ['clean-styles'], function() {
     return gulp
         .src(config.sass)
         .pipe($.plumber()) // exit gracefully if something fails after this
+        .pipe($.sourcemaps.init())
         .pipe($.sass({
             sourceMap: 'sass',
             outputStyle: 'compressed'
         }))
-        .pipe($.postcss([autoprefixer({browsers: ['last 2 version']})]))
+        .pipe($.postcss([
+            require('autoprefixer-core')({browsers: ['last 2 version']})
+            ]))
+        .pipe($.sourcemaps.write())
         .on('error', function handleError(err) {
               console.error(err.toString());
               this.emit('end');
           })
+        .pipe($.plumber.stop())
         .pipe(gulp.dest(config.temp));
 });
 
@@ -239,6 +243,20 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function() {
     notify(msg);
 });
 
+gulp.task('ngAcheck', function() {
+    var ngAnnotateCheck = require('gulp-ng-annotate-check');
+
+    return gulp
+        .src(config.js)
+        .pipe(ngAnnotateCheck({
+            options: {'single_quotes': true, 'add': true},
+            callback: function (diff, fileName) {
+                        console.log(fileName);
+                        console.log(diff);
+                    }
+        }));
+});
+
 /**
  * Optimize all files, move to a build folder,
  * and inject them into the new index.html
@@ -266,9 +284,11 @@ gulp.task('optimize', ['inject'], function() {
         .pipe(cssFilter.restore())
         // Get the custom javascript
         .pipe(jsAppFilter)
+        .pipe($.sourcemaps.init({debug: true, loadMaps: true}))
         .pipe($.ngAnnotate({add: true}))
         .pipe($.uglify())
         .pipe(getHeader())
+        .pipe($.sourcemaps.write())
         .pipe(jsAppFilter.restore())
         // Get the vendor javascript
         .pipe(jslibFilter)

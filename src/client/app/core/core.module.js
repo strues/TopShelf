@@ -9,11 +9,14 @@
 (function () {
     'use strict';
     // register the route config on the application
-    angular.module('app.core', [
-      'app.account',
-      'app.guild',
-      'app.admin'
-    ]).config(config);
+    angular
+        .module('app.core', [
+          'app.account',
+          'app.guild',
+          'app.admin'
+        ])
+        .config(config);
+            /* @ngInject */
     function config($stateProvider) {
         $stateProvider.state('home', {
             url: '/',

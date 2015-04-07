@@ -10,8 +10,7 @@
     angular
       .module('app.account')
       .factory('Auth', Auth);
-    // TODO Require authorization and acesss control frontside
-    // to go with the backend.
+          /* @ngInject */
     function Auth($http, User, $localStorage, $q) {
         var currentUser = $localStorage.token ? User.get() : {};
         //var currentUser = {};

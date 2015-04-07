@@ -10,6 +10,7 @@
     angular
       .module('app.guild')
       .controller('GuildInfoController', GuildInfoController);
+          /* @ngInject */
     function GuildInfoController() {
         var vm = this;
         vm.ctrlName = 'GuildInfoController';

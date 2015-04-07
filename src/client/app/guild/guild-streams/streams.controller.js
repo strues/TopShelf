@@ -10,7 +10,7 @@
     angular
       .module('app.guild')
       .controller('StreamsCtrl', StreamsCtrl);
-    /* @ngInject */
+                         /* @ngInject */
     function StreamsCtrl($rootScope, $scope, $location, Twitch, $http) {
         $scope.data = {};
         var streamName1 = 'Soopie';

@@ -9,10 +9,11 @@
               $scope.appGrid.data = response.data;
           });
      */
-    /* @ngInject */
+
     angular
       .module('app.admin.states')
       .controller('AdminUsersCtrl', AdminUsersCtrl);
+          /* @ngInject */
     function AdminUsersCtrl($scope, User, toastr, $state, $http, $location) {
         $http.get('/api/users').then(function (response) {
             $scope.dataForTable = response.data;

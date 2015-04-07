@@ -3,8 +3,7 @@
     angular.module('app.account')
       .controller('ProfileEditController', ProfileEditController);
     /* @ngInject */
-    function ProfileEditController($http, $scope, Auth,
-      Character, User, ngFabForm, toastr) {
+    function ProfileEditController($http, $scope, Auth, Character, User, ngFabForm, toastr) {
         /*jshint validthis: true */
         var vm = this;
         vm.title = 'ProfileEditController';

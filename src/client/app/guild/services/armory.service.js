@@ -6,6 +6,7 @@
     angular
       .module('app.guild')
       .factory('Armory', Armory);
+          /* @ngInject */
     function Armory($http) {
         var data = {
             region: 'us',

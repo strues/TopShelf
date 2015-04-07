@@ -3,7 +3,7 @@
     angular
       .module('app.admin.states')
       .controller('AdminCarouselCtrl', AdminCarouselCtrl);
-    /* @ngInject */
+                         /* @ngInject */
     function AdminCarouselCtrl(Slide, toastr) {
         var vm = this;
         vm.processing = true;

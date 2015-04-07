@@ -10,6 +10,7 @@
     angular
       .module('app.core')
       .controller('FooterCtrl', FooterCtrl);
+          /* @ngInject */
     function FooterCtrl($scope, Auth, Twitch) {
         var vm = this;
         vm.Auth = Auth;

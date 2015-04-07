@@ -11,8 +11,7 @@
       .module('app.admin.states')
       .controller('ApplicationViewCtrl', ApplicationViewCtrl);
     /* @ngInject */
-    function ApplicationViewCtrl($scope, $http, $stateParams,
-      Application, $location) {
+    function ApplicationViewCtrl($scope, $http, $stateParams, Application, $location) {
         var applicationId = $stateParams.id;
         var urlBase = 'https://us.api.battle.net/wow/character/';
         var jspcb = 'jsonp=JSON_CALLBACK';

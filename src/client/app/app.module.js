@@ -32,17 +32,9 @@
         'app.guild',
         'app.admin'
     ]);
-    run.$inject = [
-        '$rootScope',
-        '$location',
-        '$state',
-        '$stateParams',
-        'Auth',
-        'editableOptions'
-    ];
+
     /* @ngInject */
-    function run($rootScope, $state, $stateParams, $location,
-        Auth, editableOptions) {
+    function run($rootScope, $state, $stateParams, $location, Auth, editableOptions) {
         $rootScope.Auth = Auth;
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
@@ -59,6 +51,6 @@
         });
         editableOptions.theme = 'bs3';
     }
-    // TODO Finish adding strict dependency injection.
+        /* @ngInject */
     angular.module('app').run(run);
 }());

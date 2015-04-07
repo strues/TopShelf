@@ -3,6 +3,7 @@
     angular
       .module('app.admin.states')
       .controller('ProgressionCtrl', ProgressionCtrl);
+          /* @ngInject */
     function ProgressionCtrl(Progression) {
         var vm = this;
         Progression.all().success(function (data) {

@@ -8,7 +8,7 @@
     angular
       .module('app.guild')
       .service('Twitch', Twitch);
-    Twitch.$inject = ['$http'];
+
     /* @ngInject */
     function Twitch($http) {
         var urlBase = 'https://api.twitch.tv/kraken/streams';

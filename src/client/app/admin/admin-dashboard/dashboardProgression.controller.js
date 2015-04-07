@@ -3,6 +3,7 @@
     angular
       .module('app.admin.states')
       .controller('ProgressionWidgetCtrl', ProgressionWidgetCtrl);
+          /* @ngInject */
     function ProgressionWidgetCtrl($scope, Progression, toastr, $filter) {
         Progression.all().success(function (data) {
             $scope.processing = false;

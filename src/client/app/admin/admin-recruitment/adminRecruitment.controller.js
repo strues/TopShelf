@@ -10,12 +10,7 @@
     angular
       .module('app.admin.states')
       .controller('RecruitmentCtrl', RecruitmentCtrl);
-    RecruitmentCtrl.$inject = [
-      '$scope',
-      'Recruitment',
-      '$state',
-      'toastr'
-    ];
+
     /* @ngInject */
     function RecruitmentCtrl($scope, Recruitment, $state, toastr) {
         $scope.formData = {};
