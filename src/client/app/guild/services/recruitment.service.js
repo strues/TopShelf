@@ -1,13 +1,13 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc Service
-     * @name app.guild.services.service:Recruitment
-     * @desc Communicates with backend handling recruitment status api calls
-     */
+       * @ngdoc Service
+       * @name app.guild.services.service:Recruitment
+       * @desc Communicates with backend handling recruitment status api calls
+       */
     angular
-        .module('app.guild')
-        .service('Recruitment', Recruitment);
+      .module('app.guild')
+      .factory('Recruitment', Recruitment);
     Recruitment.$inject = ['$http'];
     /* @ngInject */
     function Recruitment($http) {

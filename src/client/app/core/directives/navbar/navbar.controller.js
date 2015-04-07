@@ -1,12 +1,12 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc controller
-     * @name app.core.controller:NavbarCtrl
-     *
-     * @description Controller for the Navbar
-     *
-     */
+       * @ngdoc controller
+       * @name app.core.controller:NavbarCtrl
+       *
+       * @description Controller for the Navbar
+       *
+       */
     angular.module('app.core').controller('NavbarCtrl', NavbarCtrl);
     function NavbarCtrl(Auth, $scope, $rootScope, $aside, $location) {
         var vm = this;

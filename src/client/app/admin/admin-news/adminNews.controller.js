@@ -1,6 +1,8 @@
 (function () {
     'use strict';
-    angular.module('app.admin.states').controller('NewsListCtrl', NewsListCtrl);
+    angular
+      .module('app.admin.states')
+      .controller('NewsListCtrl', NewsListCtrl);
     /* @ngInject */
     function NewsListCtrl($http, Post, Slide) {
         var vm = this;

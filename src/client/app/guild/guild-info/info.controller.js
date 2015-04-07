@@ -1,12 +1,12 @@
 (function () {
     'use strict';
     /**
-   * @ngdoc Controller
-   * @name app.guild.controller:GuildInfoController
-   *
-   * @description Currently is just "there"
-   *
-   */
+     * @ngdoc Controller
+     * @name app.guild.controller:GuildInfoController
+     *
+     * @description Currently is just "there"
+     *
+     */
     angular
       .module('app.guild')
       .controller('GuildInfoController', GuildInfoController);

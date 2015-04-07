@@ -1,12 +1,12 @@
 (function () {
     'use strict';
     /**
-   * @ngdoc controller
-   * @name RosterCtrl
-   *
-   * @description pulls information relating to the roster from battle.net
-   *
-   */
+     * @ngdoc controller
+     * @name RosterCtrl
+     *
+     * @description pulls information relating to the roster from battle.net
+     *
+     */
     angular
       .module('app.guild')
       .controller('RosterCtrl', RosterCtrl);
@@ -18,7 +18,6 @@
             return member.level === 100;
         };
         vm.characters = [];
-
         Armory.getRoster().success(function (data) {
             vm.members = data.members;
         }).error(function (error) {

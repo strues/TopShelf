@@ -1,13 +1,14 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc Service
-     * @name app.guild.services.service:Progression
-     * @desc Communicates with backend delivering information about progression.
-     */
+       * @ngdoc Service
+       * @name app.guild.services.service:Progression
+       * @desc Communicates with backend delivering
+       * information about progression
+       */
     angular
-        .module('app.guild')
-        .service('Progression', Progression);
+      .module('app.guild')
+      .factory('Progression', Progression);
     Progression.$inject = ['$http'];
     /* @ngInject */
     function Progression($http) {

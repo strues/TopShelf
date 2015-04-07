@@ -1,6 +1,7 @@
-(function() {
+(function () {
     'use strict';
-    angular.module('app.core')
+    angular
+        .module('app.core')
         .config(configureToastr)
         .config(configureDatepicker)
         .config(configureTooltip)
@@ -34,10 +35,14 @@
         });
     }
     configure.$inject = [
-        '$urlRouterProvider', '$locationProvider', '$httpProvider', 'cfpLoadingBarProvider'
+        '$urlRouterProvider',
+        '$locationProvider',
+        '$httpProvider',
+        'cfpLoadingBarProvider'
     ];
     /* @ngInject */
-    function configure($urlRouterProvider, $locationProvider, $httpProvider, cfpLoadingBarProvider) {
+    function configure($urlRouterProvider, $locationProvider,
+        $httpProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true).hashPrefix('!');
         $httpProvider.interceptors.push('authInterceptor');

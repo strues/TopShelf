@@ -1,12 +1,15 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc controller
-     * @name HomeCtrl as vm
-     * @description Controller for the home page
-     *
-     */
-    angular.module('app.core').controller('HomeCtrl', HomeCtrl);
+       * @ngdoc controller
+       * @name HomeCtrl as vm
+       * @description Controller for the home page
+       *
+       */
+    angular
+      .module('app.core')
+      .controller('HomeCtrl', HomeCtrl);
+
     HomeCtrl.$inject = ['Post', '$scope', '$location'];
     /* @ngInject */
     function HomeCtrl(Post, $scope, $location) {

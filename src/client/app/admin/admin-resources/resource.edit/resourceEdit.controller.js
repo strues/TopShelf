@@ -1,10 +1,12 @@
 (function () {
     'use strict';
     /*
-     * @ngdoc Controller
-     * @name ResourceEditCtrl
-     */
-    angular.module('app.admin.states').controller('ResourceEditCtrl', ResourceEditCtrl);
+       * @ngdoc Controller
+       * @name ResourceEditCtrl
+       */
+    angular
+      .module('app.admin.states')
+      .controller('ResourceEditCtrl', ResourceEditCtrl);
     /* @ngInject */
     function ResourceEditCtrl(Resource, $scope, $stateParams, toastr) {
         /*jshint validthis: true */
@@ -24,7 +26,8 @@
             vm.processing = true;
             vm.message = '';
             // call the userService function to update
-            Resource.update($stateParams.resourceId, vm.resourceData).success(function (data) {
+            Resource.update($stateParams.resourceId, vm.resourceData)
+            .success(function (data) {
                 vm.processing = false;
                 // clear the form
                 vm.resourceData = {};

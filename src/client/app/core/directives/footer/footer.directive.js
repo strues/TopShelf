@@ -1,16 +1,16 @@
 (function () {
     'use strict';
     /**
-     * @ngdoc directive
-     * @name core.directive:footer
-     * @restrict EA
-     * @element
-     *
-     * @description
-     *
-     * @example
-     *
-     */
+       * @ngdoc directive
+       * @name core.directive:footer
+       * @restrict EA
+       * @element
+       *
+       * @description
+       *
+       * @example
+       *
+       */
     function theFooter() {
         return {
             restrict: 'EA',

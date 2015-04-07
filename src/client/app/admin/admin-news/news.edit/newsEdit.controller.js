@@ -1,6 +1,8 @@
 (function () {
     'use strict';
-    angular.module('app.admin.states').controller('NewsEditCtrl', NewsEditCtrl);
+    angular
+      .module('app.admin.states')
+      .controller('NewsEditCtrl', NewsEditCtrl);
     /* @ngInject */
     function NewsEditCtrl(Post, $stateParams) {
         /*jshint validthis: true */
@@ -18,7 +20,8 @@
             vm.processing = true;
             vm.message = '';
             // call the userService function to update
-            Post.update($stateParams.postId, vm.postData).success(function (data) {
+            Post.update($stateParams.postId, vm.postData)
+            .success(function (data) {
                 vm.processing = false;
                 // clear the form
                 vm.postData = {};

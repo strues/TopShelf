@@ -7,7 +7,6 @@
      * @description Main module for app
      *
      */
-
     /* @ngInject */
     angular.module('app', [
         'ngStorage',
@@ -42,7 +41,8 @@
         'editableOptions'
     ];
     /* @ngInject */
-    function run($rootScope, $state, $stateParams, $location, Auth, editableOptions) {
+    function run($rootScope, $state, $stateParams, $location,
+        Auth, editableOptions) {
         $rootScope.Auth = Auth;
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
@@ -51,14 +51,12 @@
             if (!next.authenticate) {
                 return;
             }
-
             Auth.isLoggedInAsync(function (loggedIn) {
                 if (!loggedIn || next.role && !Auth.hasRole(next.role)) {
                     $location.path('/login');
                 }
             });
         });
-
         editableOptions.theme = 'bs3';
     }
     // TODO Finish adding strict dependency injection.

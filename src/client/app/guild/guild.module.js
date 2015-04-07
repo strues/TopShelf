@@ -6,42 +6,38 @@
  *
  * @requires ui.router
  */
-
 (function () {
     'use strict';
-
     // register the route config on the application
-    angular
-    .module('app.guild', ['app.core', 'app.account', 'app.admin'])
-    .config(config);
-
+    angular.module('app.guild', [
+      'app.core',
+      'app.account',
+      'app.admin'
+    ]).config(config);
     config.$inject = ['$stateProvider'];
     function config($stateProvider) {
-        $stateProvider
-        .state('guild', {
+        $stateProvider.state('guild', {
             abstract: true,
             url: '/guild'
-        })
-        .state('guild.information', {
+        }).state('guild.information', {
             url: '/info',
             views: {
                 'main@': {
                     templateUrl: 'app/guild/guild-info/info.tpl.html',
-                    controller: 'GuildInfoCtrl as ginfo'
+                    controller: 'GuildInfoController'
                 }
             }
-        })
-        .state('guild.apply', {
+        }).state('guild.apply', {
             url: '/apply',
             views: {
                 'main@': {
-                    templateUrl: 'app/guild/guild-apply/guild-application.tpl.html',
+                    templateUrl:
+                    'app/guild/guild-apply/guild-application.tpl.html',
                     controller: 'ApplicationCtrl',
                     controllerAs: 'vm'
                 }
             }
-        })
-        .state('guild.apply.app', {
+        }).state('guild.apply.app', {
             url: '/application',
             views: {
                 'guildapp@guild': {
@@ -50,18 +46,17 @@
                     controllerAs: 'vm'
                 }
             }
-        })
-        .state('guild.apply.info', {
+        }).state('guild.apply.info', {
             url: '/info',
             views: {
                 'guildapp@guild': {
-                    templateUrl: 'app/guild/guild-apply/application-info.tpl.html',
+                    templateUrl:
+                    'app/guild/guild-apply/application-info.tpl.html',
                     controller: 'ApplicationCtrl',
                     controllerAs: 'vm'
                 }
             }
-        })
-        .state('guild.streams', {
+        }).state('guild.streams', {
             url: '/streams',
             views: {
                 'main@': {
@@ -69,8 +64,7 @@
                     controller: 'StreamsCtrl'
                 }
             }
-        })
-        .state('guild.roster', {
+        }).state('guild.roster', {
             url: '/roster',
             views: {
                 'main@': {
@@ -79,7 +73,7 @@
                 }
             },
             resolve: {
-                members: function(Armory) {
+                members: function (Armory) {
                     return Armory.getRoster();
                 }
             }

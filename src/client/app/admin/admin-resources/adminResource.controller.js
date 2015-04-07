@@ -1,11 +1,13 @@
 (function () {
     'use strict';
     /*
-     * @ngdoc Controller
-     * @name ResourceCtrl
-     * @description Logic for displaying admin-resources in admin area
-     */
-    angular.module('app.admin.states').controller('ResourceCtrl', ResourceCtrl);
+       * @ngdoc Controller
+       * @name ResourceCtrl
+       * @description Logic for displaying admin-resources in admin area
+       */
+    angular
+      .module('app.admin.states')
+      .controller('ResourceCtrl', ResourceCtrl);
     /* @ngInject */
     function ResourceCtrl(Resource) {
         var vm = this;
@@ -24,7 +26,8 @@
             vm.processing = true;
             Resource.delete(id).success(function (data) {
                 // get all admin-users to update the table
-                // you can also set up your api to return the list of admin-users with the delete call
+                // you can also set up your api to return the list
+                // of admin-users with the delete call
                 Resource.all().success(function (data) {
                     vm.processing = false;
                     vm.resource = data;

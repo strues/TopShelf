@@ -39,12 +39,12 @@ gulp.task('vet', function() {
     log('Analyzing source with JSHint and JSCS');
 
     return gulp
-        .src(config.alljs)
+        .src(config.js)
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}));
-        //.pipe($.jshint.reporter('fail'))
-        //.pipe($.jscs());
+        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+        .pipe($.jshint.reporter('fail'))
+        .pipe($.jscs());
 });
 
 /**
@@ -54,7 +54,7 @@ gulp.task('todo', function() {
     log('Compiling todo notes');
 
     return gulp
-        .src(config.alljs)
+        .src(config.js)
         .pipe($.if(args.verbose, $.print()))
         .pipe($.todo())
         .pipe(gulp.dest('./')) //output todo.md as markdown
@@ -77,12 +77,12 @@ gulp.task('plato', function(done) {
  * JS Copy/Paste
  */
 gulp.task('fixjs', function() {
-  log('Running copy/paste detector');
+    log('Running copy/paste detector');
 
     return gulp
-      .src(config.js)
+      .src('./src/client/app/**/*.js')
       .pipe($.fixmyjs())
-      .pipe(gulp.dest('src/client/app'));
+      .pipe(gulp.dest('./src/client/app'));
 });
 /**
  * Compile Sass to css
@@ -94,11 +94,9 @@ gulp.task('styles', ['clean-styles'], function() {
     return gulp
         .src(config.sass)
         .pipe($.plumber()) // exit gracefully if something fails after this
-        .pipe($.sass())
-//        .on('error', errorLogger) // more verbose and dupe output. requires emit.
         .pipe($.sass({
-          sourceMap: 'sass',
-          outputStyle: 'nested'
+            sourceMap: 'sass',
+            outputStyle: 'compressed'
         }))
         .pipe($.postcss([autoprefixer({browsers: ['last 2 version']})]))
         .on('error', function handleError(err) {
@@ -129,7 +127,7 @@ gulp.task('images', ['clean-images'], function() {
 
     return gulp
         .src(config.images)
-        .pipe($.imagemin({optimizationLevel: 4}))
+        .pipe($.imagemin({optimizationLevel: 6}))
         .pipe(gulp.dest(config.build + 'images'));
 });
 

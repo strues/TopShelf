@@ -1,10 +1,12 @@
 (function () {
     'use strict';
     /*
-     * @ngdoc Controller
-     * @name ResourceCreateCtrl
-     */
-    angular.module('app.admin.states').controller('ResourceCreateCtrl', ResourceCreateCtrl);
+       * @ngdoc Controller
+       * @name ResourceCreateCtrl
+       */
+    angular
+      .module('app.admin.states')
+      .controller('ResourceCreateCtrl', ResourceCreateCtrl);
     /* @ngInject */
     function ResourceCreateCtrl($scope, Resource, toastr, Auth) {
         var vm = this;
@@ -14,7 +16,7 @@
             vm.processing = true;
             vm.message = '';
             Resource.create(vm.resourceData).success(function (data) {
-                toastr.success('Your resource was added to the database', 'Submitted!');
+                toastr.success('Saved to the database', 'Submitted!');
                 vm.processing = false;
                 vm.resourceData = {};
                 vm.message = data.message;

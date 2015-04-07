@@ -1,8 +1,10 @@
 (function () {
     'use strict';
-    angular.module('app.account').controller('ProfileEditController', ProfileEditController);
+    angular.module('app.account')
+      .controller('ProfileEditController', ProfileEditController);
     /* @ngInject */
-    function ProfileEditController($http, $scope, Auth, Character, User, ngFabForm, toastr) {
+    function ProfileEditController($http, $scope, Auth,
+      Character, User, ngFabForm, toastr) {
         /*jshint validthis: true */
         var vm = this;
         vm.title = 'ProfileEditController';
@@ -10,7 +12,8 @@
         vm.errors = {};
         $scope.formData = {};
         vm.changePassword = function () {
-            Auth.changePassword(vm.user.oldPassword, vm.user.newPassword).then(function () {
+            Auth.changePassword(vm.user.oldPassword, vm.user.newPassword)
+            .then(function () {
                 toastr.success('Your password has been changed.', 'All Set!');
             }).catch(function () {
                 vm.message = '';
@@ -23,7 +26,8 @@
                 $scope.characterData = {};
                 toastr.success('Character Added!');
             }).error(function (error) {
-                toastr.error('There was a problem with your character' + error.message, 'Something broke');
+                toastr.error('There was a problem with your character' +
+                  error.message, 'Something broke');
             });
         };
         $scope.changeBattletag = function (form) {
