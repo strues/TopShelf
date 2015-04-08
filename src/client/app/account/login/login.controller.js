@@ -34,7 +34,6 @@
              */
         vm.error = false;
         vm.login = login;
-        vm.loginOauth = loginOauth;
         function login(form) {
             if (form.$valid) {
                 Auth.login({
@@ -48,9 +47,6 @@
                     vm.error = err;
                 });
             }
-        }
-        function loginOauth(provider) {
-            $window.location.href = '/auth/' + provider;
         }
     }
 }());

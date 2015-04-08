@@ -10,7 +10,7 @@
     angular
       .module('app.account')
       .factory('Auth', Auth);
-          /* @ngInject */
+    /* @ngInject */
     function Auth($http, User, $localStorage, $q) {
         var currentUser = $localStorage.token ? User.get() : {};
         //var currentUser = {};

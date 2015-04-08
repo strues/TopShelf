@@ -41,9 +41,9 @@ gulp.task('vet', function() {
         .src(config.js)
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
-        .pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
-        .pipe($.jscs());
+        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}));
+        //.pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
+        //.pipe($.jscs());
 });
 
 /**
@@ -421,25 +421,6 @@ gulp.task('bump', function() {
         .pipe($.bump(options))
         .pipe(gulp.dest(config.root));
 });
-
-////////////////
-
-/**
- * Add watches to build and reload using browser-sync.
- * Use this XOR the browser-sync option.files, not both.
- * @param  {Boolean} isDev - dev or build mode
- */
-//function addWatchForFileReload(isDev) {
-//    if (isDev) {
-//        gulp.watch([config.less], ['styles', browserSync.reload]);
-//        gulp.watch([config.client + '**/*', '!' + config.less], browserSync.reload)
-//            .on('change', function(event) { changeEvent(event); });
-//    }
-//    else {
-//        gulp.watch([config.less, config.js, config.html], ['build', browserSync.reload])
-//            .on('change', function(event) { changeEvent(event); });
-//    }
-//}
 
 /**
  * When files change, log it

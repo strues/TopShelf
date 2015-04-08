@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular
-      .module('app.admin.services')
+      .module('app.admin')
       .factory('Resource', Resource);
           /* @ngInject */
     function Resource($http) {

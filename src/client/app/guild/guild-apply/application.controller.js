@@ -8,7 +8,7 @@
     angular
       .module('app.guild')
       .controller('ApplicationCtrl', ApplicationCtrl);
-                                /* @ngInject */
+    /* @ngInject */
     function ApplicationCtrl($location, $http, Application, ngFabForm, toastr) {
         var vm = this;
         vm.ctrlName = 'ApplicationCtrl';
