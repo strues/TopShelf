@@ -1,92 +1,38 @@
 [
   {
-    "file": "client/app/app.module.js",
-    "text": "Finish adding strict dependency injection.",
-    "kind": "TODO",
-    "line": 52
-  },
-  {
-    "file": "client/stubs/stubs.config.js",
-    "text": "dynamically inject angular-mocks and stubs.js for dev stubbing mode only",
-    "kind": "TODO",
-    "line": 14
-  },
-  {
-    "file": "client/app/admin/admin.module.js",
-    "text": "add progression edit",
-    "kind": "TODO",
-    "line": 8
-  },
-  {
-    "file": "client/app/account/account-profile/profile.controller.js",
+    "file": "account/profile/profile.controller.js",
     "text": "Implement a members list with this information",
-    "kind": "TODO",
-    "line": 10
-  },
-  {
-    "file": "client/app/account/services/auth.service.js",
-    "text": "Require authorization and acesss control frontside to go with the backend.",
     "kind": "TODO",
     "line": 12
   },
   {
-    "file": "client/app/admin/admin-media/adminMedia.controller.js",
+    "file": "admin/media/adminMedia.controller.js",
     "text": "Add the ability to delete uploads. Expanded media functionality.",
     "kind": "TODO",
-    "line": 26
+    "line": 28
   },
   {
-    "file": "client/app/guild/guild-apply/application.controller.js",
-    "text": "remove scope",
-    "kind": "TODO",
-    "line": 32
-  },
-  {
-    "file": "client/app/guild/guild-apply/application.controller.js",
+    "file": "guild/guild-apply/application.controller.js",
     "text": "fix typeahead",
     "kind": "TODO",
-    "line": 33
+    "line": 37
   },
   {
-    "file": "client/app/guild/guild-apply/application.controller.js",
+    "file": "guild/guild-apply/application.controller.js",
     "text": "fix dependency injection errors from fabform",
     "kind": "TODO",
-    "line": 34
+    "line": 38
   },
   {
-    "file": "client/app/guild/guild-streams/streams.controller.js",
-    "text": "setup repeat for streamName to display multiple streams without repeating code.",
-    "kind": "TODO",
-    "line": 15
-  },
-  {
-    "file": "client/app/guild/guild-streams/streams.controller.js",
-    "text": "customize the stream viewer so that the popup window doesnt get covered by the navbar.",
-    "kind": "TODO",
-    "line": 21
-  },
-  {
-    "file": "client/app/guild/guild-streams/streams.controller.js",
-    "text": "Fix this fucking piece of shit",
-    "kind": "TODO",
-    "line": 27
-  },
-  {
-    "file": "client/app/admin/admin-apps/app.details/appDetails.controller.js",
+    "file": "admin/applications/details/ApplicationView.controller.js",
     "text": "refactor into its own service",
     "kind": "TODO",
-    "line": 19
+    "line": 22
   },
   {
-    "file": "client/app/admin/admin-apps/app.details/appDetails.controller.js",
-    "text": "fix character info retrieval",
-    "kind": "TODO",
-    "line": 20
-  },
-  {
-    "file": "client/app/admin/admin-news/news.create/newsCreate.controller.js",
+    "file": "admin/news/create/NewsCreate.controller.js",
     "text": "implement image upload",
     "kind": "TODO",
-    "line": 19
+    "line": 21
   }
 ]

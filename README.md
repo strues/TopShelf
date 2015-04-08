@@ -7,7 +7,11 @@ A website built for Top Shelf, a World of Warcraft guild using MongoDB, Angular.
 #### Intro  
 Top Shelf is an SPA for managing my World of Warcraft guild's website. Please feel free to leave comments, submit pull requests or use it as a base for your own project.  
 
-##### Currently in early(ish) stages of development: Version: 0.0.6 - Alpha
+##### Currently in early(ish) stages of development: Version: 0.0.9 - Alpha
+
+###### Everything is in a usable state as long as you know the basics.
+
+Alpha 1 ETA: This weekend.
 
 Before beginning you should have [NodeJS](http://www.nodejs.com) and [MongoDB](http://www.mongodb.org/downloads) installed on your computer. As a quick note, I do all of my work using a Mac so any commands I included might not work for Windows users.  
 
@@ -38,7 +42,7 @@ Run `gulp serve` to launch the development server.
 * Markup:  `HTML`
 * Stylesheets: `libSass`
 * Task Runner: `Gulp`
-* Angular: `1.3.14`
+* Angular: `1.3.15`
 
 
 **Server Side**
@@ -46,8 +50,6 @@ Run `gulp serve` to launch the development server.
 * Server: `Express.js`
 * Database: `MongoDB`
 * Authentication: `Passport Local w/ JWT`
-* Session: `Redis`
-
 
 A look inside the core component in `src/client/app/core`
 
@@ -70,21 +72,12 @@ Inside of the api at`server/api`
 ### TODOs
 | Filename | line # | TODO
 |:------|:------:|:------
-| client/app/app.module.js | 52 | Finish adding strict dependency injection.
-| client/stubs/stubs.config.js | 14 | dynamically inject angular-mocks and stubs.js for dev stubbing mode only
-| client/app/admin/admin.module.js | 8 | add progression edit
-| client/app/account/account-profile/profile.controller.js | 10 | Implement a members list with this information
-| client/app/account/services/auth.service.js | 12 | Require authorization and acesss control frontside to go with the backend.
-| client/app/admin/admin-media/adminMedia.controller.js | 26 | Add the ability to delete uploads. Expanded media functionality.
-| client/app/guild/guild-apply/application.controller.js | 32 | remove scope
-| client/app/guild/guild-apply/application.controller.js | 33 | fix typeahead
-| client/app/guild/guild-apply/application.controller.js | 34 | fix dependency injection errors from fabform
-| client/app/guild/guild-streams/streams.controller.js | 15 | setup repeat for streamName to display multiple streams without repeating code.
-| client/app/guild/guild-streams/streams.controller.js | 21 | customize the stream viewer so that the popup window doesnt get covered by the navbar.
-| client/app/guild/guild-streams/streams.controller.js | 27 | Fix this fucking piece of shit
-| client/app/admin/admin-apps/app.details/appDetails.controller.js | 19 | refactor into its own service
-| client/app/admin/admin-apps/app.details/appDetails.controller.js | 20 | fix character info retrieval
-| client/app/admin/admin-news/news.create/newsCreate.controller.js | 19 | implement image upload
+| account/profile/profile.controller.js | 12 | Implement a members list with this information
+| admin/media/adminMedia.controller.js | 28 | Add the ability to delete uploads. Expanded media functionality.
+| guild/guild-apply/application.controller.js | 37 | fix typeahead
+| guild/guild-apply/application.controller.js | 38 | fix dependency injection errors from fabform
+| admin/applications/details/ApplicationView.controller.js | 22 | refactor into its own service
+| admin/news/create/NewsCreate.controller.js | 21 | implement image upload
 
 ##### Credit Where Credit is Due
 You will find me referencing many people who are truly much more experienced than I am when it comes to this whole stack. I reference [John Papa](http://twitter.com/john_papa) and [Todd Motto](http://twitter.com/toddmotto) often. You will even see me modify or use snippets from [Angular-Fullstack](https://github.com/DaftMonk/generator-angular-fullstack) because I find those guys do a great job.  

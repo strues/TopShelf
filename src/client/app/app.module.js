@@ -51,6 +51,6 @@
         });
         editableOptions.theme = 'bs3';
     }
-        /* @ngInject */
+    /* @ngInject */
     angular.module('app').run(run);
 }());
