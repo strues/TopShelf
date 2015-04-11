@@ -4,7 +4,6 @@
         .module('app.core')
         .config(configureToastr)
         .config(configureDatepicker)
-        .config(configureTooltip)
         .config(configure);
 
     /* @ngInject */
@@ -46,11 +45,5 @@
             startWeek: 1
         });
     }
-    /* @ngInject */
-    function configureTooltip($tooltipProvider) {
-        angular.extend($tooltipProvider.defaults, {
-            animation: 'am-flip-x',
-            trigger: 'hover'
-        });
-    }
+
 }());

@@ -26,7 +26,6 @@
         'ngMdIcons',
         'angularFileUpload',
         'trNgGrid',
-        'angular-loading-bar',
         'app.core',
         'app.account',
         'app.guild',
