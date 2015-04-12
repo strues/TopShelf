@@ -23,7 +23,6 @@
         'btford.socket-io',
         'toastr',
         'ngFabForm',
-        'ngMdIcons',
         'angularFileUpload',
         'trNgGrid',
         'app.core',

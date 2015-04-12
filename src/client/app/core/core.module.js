@@ -16,7 +16,7 @@
           'app.admin'
         ])
         .config(config);
-            /* @ngInject */
+    /* @ngInject */
     function config($stateProvider) {
         $stateProvider.state('home', {
             url: '/',

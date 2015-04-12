@@ -9,31 +9,6 @@ $menu-width-desktop: 180px;
 $menu-width-tablet: 90px;
 $menu-width-smartphone: 230px;
 
-main {
-	position:relative;
-	height:100vh;
-
-	.helper{
-		background:rgba(0,0,0,0.2);
-		color:$color-1st;
-		position:absolute;
-		top:50%;
-		left:50%;
-		transform:translate3d(-50%,-50%,0);
-		padding:1.2em 2em;
-		text-align:center;
-		border-radius:20px;
-		font-size:2em;
-		font-weight:bold;
-
-		span{
-			color:rgba(0,0,0,0.2);
-			font-size:0.4em;
-			display:block;
-		}
-	}
-}
-
 .menu {
 	background: darken($tsblue, 15%);
 	height:100vh;

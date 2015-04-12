@@ -18,7 +18,24 @@
     <div id="navbar" class="navbar-collapse collapse" ng-class="{collapse: isCollapsed}">
       <ul class="nav navbar-nav navbar-right">
         <li cdata-match-route="/"><a ui-sref="home">Home</a></li>
-        <li ><a ui-sref="guild.apply.info">Apply</a></li>
+
+        <!-- START dropdown -->
+        <li class="dropdown">
+        <a role="button" data-toggle="appDD" bs-dropdown data-template="appDDb">
+          Apply<b class="caret"></b>
+        </a>
+        <script type="text/ng-template" id="appDDb">
+        <ul class="dropdown-menu">
+          <li>
+            <a ui-sref="guild.apply.info">Information</a>
+          </li>
+          <li>
+          <a ui-sref="guild.apply.app">Application</a>
+          </li>
+        </ul>
+        </script>
+        </li>
+      <!-- END Dropdown -->
         <li data-match-route="/guild/info"><a ui-sref="guild.information">Info</a></li>
         <li data-match-route="/guild/streams"><a ui-sref="guild.streams">Streams</a></li>
         <li data-match-route="/guild/roster"><a ui-sref="guild.roster">Roster</a></li>

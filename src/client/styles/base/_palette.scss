@@ -1,3 +1,6 @@
+// material icons path
+$material-font-path: "../fonts" !default;
+
 $tsblue: #3399cc;
 $porcelain: rgb(236, 240, 241);
 $md-gray: rgba(59, 62, 64, .52);
@@ -7,6 +10,7 @@ $darker-gray: rgb(21, 21, 21);
 $gray-text: #333;
 $yellow: #ffeb3b;
 $amber: #ffca28;
+
 $_color-base-grey: rgba(144, 164, 174, 1);
 // Material colors palette
 $red: #F44336 !default;
@@ -35,8 +39,10 @@ $warning: $deeporange !default;
 $danger: $red !default;
 $lightbg-text: rgba(0,0,0,0.84);
 $btn-default-text: $lightbg-text;
-// Typography elements for Material
 $darkbg-text: rgba(255,255,255,0.84);
+$lightbg-text: rgba(0,0,0,0.84);
+$icon-color: rgba(0,0,0,0.5);
+
 $btn-primary: $primary;
 $btn-primary-text: $darkbg-text;
 
