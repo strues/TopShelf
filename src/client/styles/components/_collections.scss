@@ -1,0 +1,83 @@
+// Collections
+.collection {
+  margin: $element-top-margin 0 $element-bottom-margin 0;
+  border: 1px solid $collection-border-color;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  .collection-item {
+    background-color: $collection-bg-color;
+    line-height: 1.5rem;
+    padding: 10px 0px;
+    margin: 0;
+    border-bottom: 1px solid $collection-border-color;
+
+    // Avatar Collection
+    &.avatar {
+      height: 84px;
+      padding-left: 72px;
+      position: relative;
+
+      .circle {
+        position: absolute;
+        width: 42px;
+        height: 42px;
+        overflow: hidden;
+        left: 15px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      i.circle {
+        font-size: 18px;
+        line-height: 42px;
+        color: #fff;
+        background-color: #999;
+        text-align: center;
+      }
+
+
+      .title {
+        font-size: 16px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .secondary-content {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+      }
+
+    }
+
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+  }
+  a.collection-item{
+    display: block;
+    &:not(.active) {
+      &:hover {
+
+      }
+    }
+  }
+
+  &.with-header {
+    .collection-header {
+      background-color: $collection-bg-color;
+      border-bottom: 1px solid $collection-border-color;
+      padding: 10px 0px;
+    }
+    .collection-item {
+     padding-left: 0;
+    }
+  }
+
+}

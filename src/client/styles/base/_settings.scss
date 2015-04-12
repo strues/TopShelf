@@ -44,7 +44,7 @@ $link-hover-decoration: underline !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Raleway", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -122,6 +122,11 @@ $caret-width-base:          4px !default;
 //** Carets increase slightly in size for larger components.
 $caret-width-large:         5px !default;
 
+/*** Collections ***/
+$collection-border-color: #e0e0e0 !default;
+$collection-bg-color: #fff !default;
+
+$collection-hover-bg-color: #ddd !default;
 
 //== Tables
 //
@@ -321,7 +326,9 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 //== Grid system
 //
 //## Define your custom responsive grid.
-
+$gutter-width: 1.5rem !default;
+$element-top-margin: $gutter-width/3 !default;
+$element-bottom-margin: ($gutter-width*2)/3 !default;
 //** Number of columns in the grid.
 $grid-columns:              12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
@@ -370,11 +377,11 @@ $navbar-default-bg:                #01579b;
 $navbar-default-border:            none !default;
 
 // Navbar links
-$navbar-default-link-color:                $gray-lighter !default;
-$navbar-default-link-hover-color:          $tsblue !default;
+$navbar-default-link-color:                rgba(0,0,0,0.84);
+$navbar-default-link-hover-color:          $amber;
 $navbar-default-link-hover-bg:             transparent !default;
 $navbar-default-link-active-color:         palette(blue, darker);
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-link-active-bg:            #3399cc !default;
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 

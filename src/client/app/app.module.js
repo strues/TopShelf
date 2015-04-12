@@ -13,6 +13,7 @@
         'ngResource',
         'ngMessages',
         'ngCookies',
+        'ngSanitize',
         'ngTouch',
         'ngAnimate',
         'ui.router',

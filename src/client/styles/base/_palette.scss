@@ -12,7 +12,6 @@ $yellow: #ffeb3b;
 $amber: #ffca28;
 
 $_color-base-grey: rgba(144, 164, 174, 1);
-// Material colors palette
 $red: #F44336 !default;
 $pink: #E91E63 !default;
 $purple: #9C27B0 !default;
@@ -35,7 +34,7 @@ $btn-default: #FFF;
 $primary: #4285F4 !default;
 $success: #0F9D58 !default;
 $info: $lightblue !default;
-$warning: $deeporange !default;
+$warning: $amber !default;
 $danger: $red !default;
 $lightbg-text: rgba(0,0,0,0.84);
 $btn-default-text: $lightbg-text;

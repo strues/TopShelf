@@ -10,7 +10,7 @@ $menu-width-tablet: 90px;
 $menu-width-smartphone: 230px;
 
 .menu {
-	background: darken($tsblue, 15%);
+	background: darken($tsblue, 1%);
 	height:100vh;
 	width: $menu-width-desktop;
 	position: fixed;
@@ -28,7 +28,7 @@ $menu-width-smartphone: 230px;
 			width:100px;
 			border-radius:50%;
 			overflow:hidden;
-			border:4px solid $color-1st;
+			border:4px solid $tsblue;
 			box-shadow:0 0 0 4px rgba(255,255,255, .2);
 		}
 
