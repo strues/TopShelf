@@ -8,11 +8,11 @@
 <section class="page-content--home">
   <div class="row">
     <div class="carousel-area col-sm-12 col-lg-9" ng-controller="HomeCarouselCtrl as carousel">
-      <h1 style="text-align: right; padding-right: 20px;"><span style="color:#333;">Recent</span> <span class="blue-text">Kills</span></h1>
+      <h1 style="text-align: right; padding-right: 20px; padding-bottom: 15px;"><span style="color:#333;">Recent</span> <span class="blue-text">Kills</span></h1>
       <!-- rn-carousel directive start -->
       <ul rn-carousel rn-carousel-controls rn-carousel-buffered rn-carousel-auto-slide class="image">
         <li ng-repeat="slide in carousel.slides">
-          <div class="layer"><img ng-src="{{ slide.image }}" alt="carousel slide"></div>
+          <div class="layer"><img ng-src="{{ slide.image }}" class="img-responsive" alt="carousel slide"></div>
         </li>
       </ul>
       </div><!-- END carousel-area -->
@@ -35,7 +35,6 @@
       <!-- END sidebar -->
           </div><!-- END col -->
           </div> <!-- END carousel row/column -->
-        </div>
         <div class="home-page--bottom" ng-controller="HomeCtrl as vm">
           <div class="container-fluid">
             <div class="row">

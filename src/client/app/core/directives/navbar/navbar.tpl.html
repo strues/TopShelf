@@ -1,6 +1,5 @@
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top shadow-z-2" ng-controller="NavbarCtrl as vm" role="navigation" bs-navbar>
-  <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
       <span class="sr-only">Toggle navigation</span>
@@ -9,15 +8,15 @@
       <span class="icon-bar"></span>
       </button>
       <div class="row">
-      <a class="navbar-brand brand-image" ui-sref="home" rel="home">
+      <a class="navbar-brand" ui-sref="home" rel="home">
         <span class="brand-text"> Top Shelf</span>
-        <img src="/assets/images/crown.svg" height="40px" style="margin-top: -10px;" alt="Top Shelf Guild logo">
+        <img src="/assets/images/crown.svg" class="guild-logo" alt="Top Shelf Guild logo">
       </a>
     </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse" ng-class="{collapse: isCollapsed}">
       <ul class="nav navbar-nav navbar-right">
-        <li cdata-match-route="/"><a ui-sref="home">Home</a></li>
+        <li data-match-route="/"><a ui-sref="home">Home</a></li>
 
         <!-- START dropdown -->
         <li class="dropdown">
@@ -30,8 +29,9 @@
             <a ui-sref="guild.apply.info">Information</a>
           </li>
           <li>
-          <a ui-sref="guild.apply.app">Application</a>
+          <a href="https://topshelfguild.com/forums/applicationform/raider.2/form" target="_blank">Application</a>
           </li>
+          <li> </li>
         </ul>
         </script>
         </li>
@@ -60,13 +60,13 @@
             <a ui-sref="account.profileEdit"> Profile</a>
           </li>
           <li ng-show="vm.Auth.isLoggedIn()">
-            <a ng-click="vm.Auth.logout()"> Logout</a>
+            <a href="#" ng-click="vm.Auth.logout()"> Logout</a>
           </li>
+          <li> </li>
         </ul>
         </script>
         </li>
       <!-- END Dropdown -->
       </ul>
     </div><!--/.nav-collapse -->
-</div>
 </nav>

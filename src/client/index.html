@@ -30,7 +30,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/png" href="/assets/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="/manifest.json">
-  <link href='//fonts.googleapis.com/css?family=Khand|Raleway:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
   <!-- build:css styles/lib.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="/bower_components/textAngular/src/textAngular.css" />
@@ -38,6 +38,8 @@
   <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css" />
   <link rel="stylesheet" href="/bower_components/trNgGrid/trNgGrid.css" />
   <link rel="stylesheet" href="/bower_components/angular-xeditable/dist/css/xeditable.css" />
+  <link rel="stylesheet" href="/bower_components/valitycss/dist/vality.css" />
+  <link rel="stylesheet" href="/bower_components/v-modal/dist/v-modal.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css styles/app.css-->
@@ -57,7 +59,7 @@
 
     <div ui-view="main"></div>
 
-
+    <script src="socket.io-client/socket.io.js"></script>
   <!-- build:js js/lib.js -->
   <!-- bower:js -->
   <script src="/bower_components/es5-shim/es5-shim.js"></script>
@@ -90,13 +92,12 @@
   <script src="/bower_components/trNgGrid/trNgGrid.js"></script>
   <script src="/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
   <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
-  <script src="/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
   <script src="/bower_components/angular-socket-io/socket.js"></script>
-  <script src="/bower_components/quill/dist/quill.js"></script>
-  <script src="/bower_components/ngquill/src/ng-quill.min.js"></script>
-  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/v-modal/dist/v-modal.js"></script>
+  <script src="/bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
+
   <!-- build:js js/app.js-->
   <!-- inject:js -->
 
@@ -130,8 +131,6 @@
 
   <script src="/src/client/app/admin/dashboard/dashboard.controller.js"></script>
 
-  <script src="/src/client/app/admin/dashboard/dashboardProgression.controller.js"></script>
-
   <script src="/src/client/app/admin/media/adminMedia.controller.js"></script>
 
   <script src="/src/client/app/admin/news/NewsList.controller.js"></script>
@@ -155,6 +154,8 @@
   <script src="/src/client/app/admin/resources/create/resourceCreate.controller.js"></script>
 
   <script src="/src/client/app/admin/resources/edit/resourceEdit.controller.js"></script>
+
+  <script src="/src/client/app/admin/services/progressionModal.service.js"></script>
 
   <script src="/src/client/app/admin/services/resource.service.js"></script>
 

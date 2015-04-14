@@ -11,7 +11,7 @@
       .module('app.admin', [])
       .config(config);
     /* @ngInject */
-    function config($stateProvider) {
+    function config($stateProvider, $stickyStateProvider) {
         $stateProvider
         .state('admin', {
             url: '/admin',
@@ -41,6 +41,16 @@
                       }
                   }
               }
+        })
+        .state('admin.progressionEdit', {
+          url: '/:progressionId',
+          views: {
+
+      'progression@admin': {
+          controller: 'ProgressionEditController',
+          controllerAs: 'vm',
+          templateUrl: 'app/admin/progression/edit/progressionEdit.tpl.html'}
+        }
         })
         .state('admin.applications', {
             url: '/applications',
@@ -176,5 +186,5 @@
                 }
             }
         });
-    }
+      }
 }());

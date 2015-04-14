@@ -390,7 +390,7 @@ gulp.task('serve-dev', ['inject', 'styles'], function() {
  * --nosync
  */
 gulp.task('serve-build', ['build'], function() {
-    serve(false /*isDev*/);
+    serve(true /*isDev*/);
 });
 
 /**
@@ -518,7 +518,7 @@ function getNodeOptions(isDev) {
         delayTime: 1,
         env: {
             'PORT': port,
-            'NODE_ENV': isDev ? 'development' : 'build'
+            'NODE_ENV': isDev ? 'development' : 'production'
         },
         watch: [config.server]
     };

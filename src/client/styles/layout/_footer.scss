@@ -1,8 +1,8 @@
 footer {
 	background-color: #3399cc;//palette(blue, dark);
-	margin-top: 20px;
 	padding-top: 20px;
-
+	border-top: 2px solid darken(#3399cc, 3%);
+}
 
 .footer-copyright {
 	overflow: hidden;
@@ -10,5 +10,9 @@ footer {
 	line-height: 50px;
 	color: rgba(255,255,255,.8);
   background-color: darken(#3399cc, 3%);
+
+	& a {
+		color: palette(blue, darker);
 	}
+
 }
