@@ -301,7 +301,6 @@ gulp.task('optimize', ['inject'], function() {
         .pipe($.useref())
         // Replace the file names in the html with rev numbers
         .pipe($.revReplace())
-        .pipe($.minifyHtml())
         .pipe(gulp.dest(config.build));
 });
 
