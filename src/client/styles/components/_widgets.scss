@@ -10,13 +10,13 @@
 	filter: grayscale(100%);
 }
 
+.progression-brf {
+	display: inline-block;
+}
 .recruitment-widget {
 	background-color: palette(blue, darker);
 }
 
-.progression-brf {
-	display: inline-block;
-}
 .modal-backdrop.am-fade {
   opacity: .5;
   transition: opacity .15s linear;

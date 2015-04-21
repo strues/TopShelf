@@ -1,8 +1,6 @@
 .blue-ico {
-    color: $brand-primary;
+    color: $guild-main;
 }
-
-@charset "UTF-8";
 
 @font-face {
   font-family: "topshelf-icons";
@@ -14,6 +12,7 @@
   font-style: normal;
 
 }
+
 @font-face {
     font-family: 'Material-Design-Icons';
     src:url('#{$material-font-path}/Material-Design-Icons.eot?3ocs8m');
@@ -24,7 +23,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
 
 [class^="mdi-"], [class*="mdi-"] {
     speak: none;
@@ -251,6 +249,9 @@
   content: "0";
 }
 
+/**
+ * #2 MATERIAL DESIGN ICONS
+ **/
 
 [class^="mdi-device-signal-cellular-"],
 [class^="mdi-device-battery-"],

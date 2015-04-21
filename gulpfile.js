@@ -149,7 +149,7 @@ gulp.task('templatecache', ['clean-code'], function() {
     return gulp
         .src(config.htmltemplates)
         .pipe($.if(args.verbose, $.bytediff.start()))
-        .pipe($.minifyHtml({empty: true, loose: true, comments: true, spare: true, quotes: true}))
+        .pipe($.minifyHtml({comments: true, spare: true, quotes: true}))
         .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
         .pipe($.angularTemplatecache(
             config.templateCache.file,
@@ -301,6 +301,7 @@ gulp.task('optimize', ['inject'], function() {
         .pipe($.useref())
         // Replace the file names in the html with rev numbers
         .pipe($.revReplace())
+        .pipe($.minifyHtml())
         .pipe(gulp.dest(config.build));
 });
 

@@ -10,7 +10,7 @@ $menu-width-tablet: 90px;
 $menu-width-smartphone: 230px;
 
 .menu {
-	background: darken($tsblue, 1%);
+	background: darken($guild-main, 1%);
 	height:100vh;
 	width: $menu-width-desktop;
 	position: fixed;
@@ -28,7 +28,7 @@ $menu-width-smartphone: 230px;
 			width:100px;
 			border-radius:50%;
 			overflow:hidden;
-			border:4px solid $tsblue;
+			border:4px solid $guild-main;
 			box-shadow:0 0 0 4px rgba(255,255,255, .2);
 		}
 
@@ -44,7 +44,7 @@ $menu-width-smartphone: 230px;
 		margin:0;
 
 		li{
-			color: $porcelain;
+			color: $lt-grey;
 			padding: 0.5em 1em 0.5em 3em;
 			font-size: 0.95em;
 			font-weight: regular;
@@ -66,7 +66,7 @@ $menu-width-smartphone: 230px;
 
 		}
 		li a {
-			color: $porcelain;
+			color: $lt-grey;
 			text-decoration: none;
 		}
 	}

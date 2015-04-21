@@ -1,56 +1,186 @@
-.brand-text {
-	display: inline;
-	float: right;
-	position: relative;
-	padding-left: 10px;
-	font-size: 1.5em;
-	font-weight: 300;
+/*************************
+*******Header******
+**************************/
+
+#header .search{
+  display: inline-block;
 }
 
-.navbar-header {
-	display: inline;
+.navbar>.container .navbar-brand{
+  margin-left: 0;
+}
+
+.top-bar {
+  padding: 10px 0;
+  background: $drkr-grey;
+  border-bottom: 1px solid #222;
+  line-height: 28px;
+}
+
+.top-number{
+  color: #fff;
+}
+
+.top-number p{
+  margin: 0
+}
+
+.social{
+  text-align: right;
+}
+
+.social-share{
+ display: inline-block;
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+ul.social-share li {
+  display: inline-block;
+}
+
+ul.social-share li a {
+  display: inline-block;
+  color: #fff;
+  background: #404040;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+ul.social-share li a:hover {
+  background: $guild-main;
+  color: #fff;
+}
+
+.search i {
+  color: #fff;
+}
+
+input.search-form{
+  background: transparent;
+  border: 0 none;
+  width: 60px;
+  padding: 0 10px;
+  color: #FFF;
+  -webkit-transition: all 400ms;
+  -moz-transition: all 400ms;
+  -ms-transition: all 400ms;
+  -o-transition: all 400ms;
+  transition: all 400ms;
+}
+
+input.search-form::-webkit-input-placeholder{
+  color: transparent;
+}
+
+input.search-form:hover::-webkit-input-placeholder {
+  color: #fff;
+}
+
+input.search-form:hover {
+  width: 180px;
+}
+
+.navbar-brand {
+  padding: 0;
+  margin:0;
 }
 
 .navbar {
-	background-color: #3399cc;
-
-	& ul li:last-child {
-		border-right: none;
-		margin-right: 35px;
-		}
+  border-radius: 0;
+  margin-bottom: 0;
+  background: $drk-grey;
+  padding: 15px 0;
+  padding-bottom: 0;
 }
 
-.navbar li a {
-	border-right: 1px solid darken($tsblue, 4%);
-	font-size: 16px;
-	font-weight: 500;
-	letter-spacing: 0px;
-	text-transform: uppercase;
-	line-height: 20px;
-&:hover {
-	text-decoration: underline;
-	font-weight: 700;
-	color: #fff;
-	background-color: darken($tsblue, 3%);
-	}
-}
-.dropdown-menu {
-    border: 0;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    .divider {
-        background-color: rgba(229, 229, 229, 0.12);
-    }
-    li {
-        overflow: hidden;
-        position: relative;
-        a:hover {
-            background: rgba(0,0,0,0.08);
-        }
-    }
+ .navbar-nav{
+  margin-top: 12px;
+ }
+
+.navbar-nav>li{
+  margin-left: 35px;
+  padding-bottom: 28px;
 }
 
-.guild-logo {
-	height: 60px;
-	margin-top: -20px;
-	margin-left: 30px;
+.navbar-inverse .navbar-nav > li > a {
+  padding: 5px 12px;
+  margin: 0;
+  border-radius: 3px;
+  color: #fff;
+  line-height: 24px;
+  display: inline-block;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover{
+	background-color: $guild-main;
+  color: #fff;
+}
+
+.navbar-inverse {
+  border: none;
+}
+
+.navbar-inverse .navbar-brand {
+  font-size: 36px;
+  line-height: 50px;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: $guild-main;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav .dropdown-menu {
+  background-color: rgba(0,0,0,.85);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  border: 0;
+  padding: 0;
+  margin-top: 0;
+  border-top: 0;
+  border-radius: 0;
+  left: 0;
+}
+
+.navbar-inverse .navbar-nav .dropdown-menu:before{
+  position: absolute;
+  top:0;
+}
+
+.navbar-inverse .navbar-nav .dropdown-menu > li > a {
+  padding: 8px 15px;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav .dropdown-menu > li:hover > a,
+.navbar-inverse .navbar-nav .dropdown-menu > li:focus > a,
+.navbar-inverse .navbar-nav .dropdown-menu > li.active > a {
+  background-color: $guild-main;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav .dropdown-menu > li:last-child > a {
+  border-radius: 0 0 3px 3px;
+}
+
+.navbar-inverse .navbar-nav .dropdown-menu > li.divider {
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-top: 0;
+  padding-bottom: 0;
 }

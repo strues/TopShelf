@@ -43,14 +43,14 @@
               }
         })
         .state('admin.progressionEdit', {
-          url: '/:progressionId',
-          views: {
+            url: '/:progressionId',
+            views: {
 
-      'progression@admin': {
-          controller: 'ProgressionEditController',
-          controllerAs: 'vm',
-          templateUrl: 'app/admin/progression/edit/progressionEdit.tpl.html'}
-        }
+                'progression@admin': {
+                    controller: 'ProgressionEditController',
+                    controllerAs: 'vm',
+                    templateUrl: 'app/admin/progression/edit/progressionEdit.tpl.html'}
+            }
         })
         .state('admin.applications', {
             url: '/applications',
@@ -186,5 +186,5 @@
                 }
             }
         });
-      }
+    }
 }());

@@ -5,8 +5,12 @@
 	<div class="card-content" style="background-color: #0a1f29;">
 		<div class="recruitment-widget">
 			<ul class="collection" ng-repeat="recruitment in recruitments">
-				<li class="collection-item"><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" height="32px"> {{ recruitment.classSpec }}
-				<strong>{{ recruitment.priority }}</strong></li>
+				<li class="collection-item">
+					<div>
+					<img ng-src="assets/images/icons/class/{{recruitment.classType | lowercase}}.png"
+						style="padding-left: 10px;" height="32px" alt="icon for {{recruitment.classType}}">
+					<span style="padding-left: 10px;">{{ recruitment.classSpec }}</span>
+				<strong>{{ recruitment.priority }}</strong></div></li>
 			</ul>
 		</div>
 	</div>

@@ -38,8 +38,8 @@
         $locationProvider.html5Mode(true).hashPrefix('!');
         $httpProvider.interceptors.push('authInterceptor');
         angular.extend($modalProvider.defaults, {
-         html: true
-       });
+            html: true
+        });
     }
     /* @ngInject */
     function configureDatepicker($datepickerProvider) {

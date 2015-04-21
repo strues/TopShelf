@@ -3,9 +3,10 @@
 		<span class="card-title"><i class="icon-crown card-title-icon"></i> Mythic Progression</span>
 	</div>
 	<div class="card-content" style="background-color: #0a1f29;">
-		<div class="progression-brf" ng-repeat="progression in progressions">
-			<div class="boss-container"><img ng-class="{'boss-killed': progression.dead}" ng-src="/assets/images/icons/{{progression.bossName}}.png" width="65px"></div>
-		</div>
+		<ul class="progression-brf" ng-repeat="progression in progressions">
+			<li><img ng-class="{'boss-killed': progression.dead}" ng-src="/assets/images/icons/{{progression.bossName}}.png" width="65px"
+				alt="{{progression.bossName}} icon"></li>
+		</ul>
 		</div>
 		<div class="card-action">
 			<a href="http://www.wowprogress.com/guild/us/sargeras/Top+Shelf" target="new_blank">WoW Progress</a><span style="margin-left: 10px;"><a href="http://guildox.com/guild/us/sargeras/Top%20Shelf" target="new_blank">GuildOx</a></span>
