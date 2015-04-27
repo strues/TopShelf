@@ -25,7 +25,7 @@ exports.show = function(req, res) {
             return handleError(res, err);
         }
         if (!file) {
-            return res.send(404);
+            return res.sendStatus(404);
         }
         return res.json(file);
     });
@@ -127,5 +127,5 @@ exports.destroy = function(req, res) {
 };
 
 function handleError(res, err) {
-    return res.send(500, err);
+    return res.status(500).json(err);
 }

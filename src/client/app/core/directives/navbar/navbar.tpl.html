@@ -39,11 +39,11 @@
 
             <div class="collapse navbar-collapse navbar-right" ng-class="{collapse: isCollapsed}">
                 <ul class="nav navbar-nav">
-                  <li class="active" data-match-route="/"><a ui-sref="home">Home</a></li>
+                  <li><a ui-sref="home"><i class="mdi-action-home"></i> Home</a></li>
                   <!-- START dropdown -->
                   <li class="dropdown">
                   <a role="button" data-toggle="appDD" bs-dropdown data-template="appDDb">
-                    Apply<b class="caret"></b>
+                    <i class="mdi-social-pages"></i> Apply<b class="caret"></b>
                   </a>
                   <script type="text/ng-template" id="appDDb">
                   <ul class="dropdown-menu">
@@ -58,12 +58,12 @@
                   </script>
                   </li>
                   <!-- END Dropdown -->
-                  <li data-match-route="/guild/info"><a ui-sref="guild.information">Info</a></li>
-                  <li data-match-route="/guild/streams"><a ui-sref="guild.streams">Streams</a></li>
-                  <li data-match-route="/guild/roster"><a ui-sref="guild.roster">Roster</a></li>
-                  <li><a href="https://topshelfguild.com/forums/" target="_blank">Forums</a></li>
+                  <li data-match-route="/guild/info"><a ui-sref="guild.information"><i class="mdi-action-info"></i> Info</a></li>
+                  <li data-match-route="/guild/streams"><a ui-sref="guild.streams"><i class="mdi-av-video-collection"></i> Streams</a></li>
+                  <li data-match-route="/guild/roster"><a ui-sref="guild.roster"><i class="mdi-communication-contacts"></i> Roster</a></li>
+                  <li><a href="https://topshelfguild.com/forums/" target="_blank"><i class="mdi-communication-forum"></i> Forums</a></li>
                   <li data-match-route="/admin" ng-show="vm.Auth.isAdmin()" ui-sref-active="active">
-                    <a ui-sref="admin"> Admin</a>
+                    <a ui-sref="admin"><i class="mdi-navigation-apps"></i> Admin</a>
                   </li>
                   <li data-match-route="/signup" ng-hide="vm.Auth.isLoggedIn()" ui-sref-active="active">
                     <a ui-sref="account.signup">Sign up</a>
@@ -74,7 +74,7 @@
                   <!-- START dropdown -->
                   <li class="dropdown" ng-show="vm.Auth.isLoggedIn()">
                   <a role="button" data-toggle="dropdown" bs-dropdown data-template="dropdownbody">
-                    {{ vm.Auth.getCurrentUser().name }}<b class="caret"></b>
+                    <i class="mdi-action-account-box"></i> {{ vm.Auth.getCurrentUser().name }}<b class="caret"></b>
                   </a>
                   <script type="text/ng-template" id="dropdownbody">
                   <ul class="dropdown-menu">

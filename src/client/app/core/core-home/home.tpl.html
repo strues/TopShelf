@@ -3,9 +3,8 @@
 <navbar></navbar>
 <!-- home-page container
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<div id="home-page" class="container-fluid" style="background-color: #0a1f29;">
   <!-- carousel row/column -->
-  <section class="page-content--home">
+
     <div class="row">
       <div class="col-sm-12 col-lg-9">
       <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
@@ -22,10 +21,33 @@
           </li>
         </ul>
       </div>
-        <div class="clearfix"></div>
+    </div>
+    <!-- END carousel/news column
+          START aside -->
+      <aside class="home-sidebar col-lg-3">
+        <!-- recruitment widget -->
         <div class="row">
-          <div class="col-sm-12 col-lg-9">
-            <div class="home-page--bottom" ng-controller="HomeCtrl as vm">
+          <div id="recruitment-widget">
+            <recruitment-widget></recruitment-widget>
+          </div>
+        </div>
+        <!-- END recruitment widget -->
+        <!-- progression widget -->
+        <div class="row">
+          <div id="progression-widget">
+            <progression-widget></progression-widget>
+          </div>
+        </div>
+        <!-- END Progression Widget -->
+      </aside>
+    </div>
+      <!-- END sidebar -->
+      <!-- END carousel-area
+          START news -->
+        <div class="row no-gutters home-page--bottom">
+          <div class="container">
+          <div class="col-sm-12">
+            <div class="" ng-controller="HomeCtrl as vm">
               <div class="news-title-container">
                 <div class="news-title-bg">
                   <h1 class="news-title">Latest News</h1>
@@ -66,27 +88,6 @@
         </div>
       </div>
     </div>
-      <!-- END carousel-area -->
-      <aside class="home-sidebar col-lg-3">
-        <!-- recruitment widget -->
-        <div class="row">
-          <div id="recruitment-widget">
-            <recruitment-widget></recruitment-widget>
-          </div>
-        </div>
-        <!-- END recruitment widget -->
-        <!-- progression widget -->
-        <div class="row">
-          <div id="progression-widget">
-            <progression-widget></progression-widget>
-          </div>
-        </div>
-        <!-- END Progression Widget -->
-      </aside>
-      <!-- END sidebar -->
-</div>
-  </section>
-  <!-- end page-content home -->
-  </div>
+
   <!-- END home -->
 <the-footer></the-footer>

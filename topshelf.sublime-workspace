@@ -75,21 +75,25 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 152.0,
-		"last_filter": "jscs",
+		"height": 188.0,
+		"last_filter": "jsb",
 		"selected_items":
 		[
-			[
-				"jscs",
-				"JSCS Formatter: Format this file"
-			],
 			[
 				"jsb",
 				"Javascript Beautify"
 			],
 			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"jscs",
+				"JSCS Formatter: Format this file"
 			],
 			[
 				"remove",
@@ -122,10 +126,6 @@
 			[
 				"pack",
 				"Package Control: Remove Package"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"csso",
@@ -289,55 +289,41 @@
 		"/Users/steven/Webdev/TopShelf/Develop/src",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account-services",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/login",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/profile",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/profile/profile.edit",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps/app.details",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-carousel",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-dashboard",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-media",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.create",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.edit",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-progression",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-progression/progression.edit",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-recruitment",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources/resource.create",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources/resource.edit",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-users",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-users/user.details",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/services",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.details",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/footer",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/mongoose",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/progressionWidget",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/recruitmentWidget",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/filters",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-apply",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-info",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-roster",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/components/controllers",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/config"
 	],
 	"file_history":
 	[
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/file/file.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/tag/tag.socket.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/app.module.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/post.model.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/tag/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/tag/tag.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/post.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/tag/tag.model.js",
+		"/Users/steven/Webdev/TopShelf/Develop/bower.json",
+		"/Users/steven/Webdev/ngpoly/app/app/user/user-module.js",
+		"/Users/steven/Webdev/ngpoly/app/app/guild/guild-controller.js",
+		"/Users/steven/Webdev/ngpoly/app/app/user/user-routes.js",
+		"/Users/steven/Webdev/ngpoly/app/app/index.html",
+		"/Users/steven/Webdev/ngpoly/app/build/app/index.html",
+		"/Users/steven/Webdev/ngpoly/app/app/guild/guild-controller_test.js",
+		"/Users/steven/Webdev/ngpoly/app/app/app-module.js",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#0/topshelfguild.conf",
+		"/Users/steven/Webdev/TopShelf/Develop/package.json",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#1/donation_manager_callback.php",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/pages/_home.scss",
+		"/Users/steven/Downloads/[SkinXF.Net]_Frag-Zone-1.4.5/xml/style-Frag-Zone.xml",
+		"/Users/steven/Downloads/[SkinXF.Net]_Adara1.4.5/[SkinXF.Net]_Adara1.4.5/XML/style-Adara.xml",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.details/details.home.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/components/_news.scss",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_palette.scss",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#0/xenforo.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account.module.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps/adminApps.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.details/details.controller.js",
@@ -371,12 +357,10 @@
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-media/adminMedia.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-dashboard/adminDashboard.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core.module.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/app.module.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/index.html",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/logger.service.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core.config.js",
 		"/Users/steven/Webdev/TopShelf/Develop/.jshintrc",
-		"/Users/steven/Webdev/TopShelf/Develop/package.json",
 		"/Users/steven/Webdev/TopShelf/Develop/gulp.config.js",
 		"/Users/steven/.zshrc",
 		"/Users/steven/.aliases",
@@ -440,32 +424,7 @@
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account.states.js",
 		"/Users/steven/Webdev/material/server/config/socketio.js",
 		"/Users/steven/Webdev/material/client/app/components/auth/auth.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/socketio.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/app.js",
-		"/Users/steven/Webdev/material/client/app/app.controller.js",
-		"/Users/steven/Webdev/material/client/app/admin/user/list/list.controller.js",
-		"/Users/steven/Webdev/material/client/app/admin/user/list/list.js",
-		"/Users/steven/Webdev/material/client/app/admin/user/user.controller.js",
-		"/Users/steven/Webdev/material/client/app/components/auth/user.service.js",
-		"/Users/steven/Webdev/material/client/app/components/socket/socket.mock.js",
-		"/Users/steven/Webdev/material/client/app/components/socket/socket.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/express.js",
-		"/Users/steven/Webdev/material/client/app/components/lodash/lodash.service.js",
-		"/Users/steven/Webdev/material/client/app/components/io/io.service.js",
-		"/Users/steven/Webdev/material/server/app.js",
-		"/Users/steven/Webdev/material/client/app/components/resource/resource.service.js",
-		"/Users/steven/Webdev/material/client/app/app.js",
-		"/Users/steven/Webdev/material/client/app/components/auth/authinterceptor.service.js",
-		"/Users/steven/Webdev/material/bower.json",
-		"/Users/steven/Webdev/material/server/api/user/index.js",
-		"/Users/steven/Webdev/material/server/api/user/user.controller.js",
-		"/Users/steven/Webdev/material/server/lib/auth/auth.service.js",
-		"/Users/steven/Webdev/material/server/lib/middleware/index.js",
-		"/Users/steven/Webdev/material/server/routes.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.socket.js",
-		"/Users/steven/Webdev/material/server/api/user/user.socket.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.controller.js"
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/socketio.js"
 	],
 	"find":
 	{
@@ -492,6 +451,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"240, 24",
+			"F0F1F1",
 			"opti",
 			"styles",
 			"brows",
@@ -617,9 +578,7 @@
 			"party",
 			"view",
 			"@",
-			"navbar",
-			"$localStorage",
-			"\""
+			"navbar"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -710,7 +669,7 @@
 	},
 	"input":
 	{
-		"height": 29.0
+		"height": 51.0
 	},
 	"layout":
 	{

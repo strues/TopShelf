@@ -29,21 +29,23 @@ var PostSchema = new Schema({
     content: {
         type: String
     },
-    tags: {
-        type: Array
-    },
+    tags: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tag'
+    }],
     state: {
         type: String,
         enum: ['Draft', 'Published', 'Archived']
     },
     image: String,
-    lrgImage: String
+    lrgImage: String,
 });
 
 PostSchema.statics = {
     loadInfo: function(cb) {
         this.find({})
         .populate({path:'User', select: 'name'})
+        .populate({path:'Tag', select: 'name'})
         .sort('-date')
         .limit(20)
         .exec(cb);

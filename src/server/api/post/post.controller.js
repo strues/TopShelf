@@ -4,11 +4,15 @@
 var _ = require('lodash');
 var async = require('async');
 var Post = require('./post.model'),
+    Tag = require('../tag/tag.model'),
     User = require('../user/user.model');
 
 // Get list of posts
-exports.index = function(req, res) {
-    Post.find().populate('author', 'name')
+exports.index = function(req, res, next) {
+    Post.find()
+        .populate('author', 'name')
+        .populate('tags', 'tagName')
+        .sort('-CreateDate')
         .exec(function(err, posts) {
             if (err) {
                 return handleError(res, err);
@@ -105,18 +109,18 @@ exports.getListByAuthor = function(req, res, next, author) {
             return res.end();
         } else {
             return Post.find({
-                author: user._id,
-                Status: 'Published'
-            }).populate('author', 'name').populate('tags', 'tagName')/*.populate('Category', 'CategoryName')*/
-              .sort('-createDate').exec(function(err, posts) {
-                if (err) {
-                    return next(new Error('Failed to load posts of author(' +
-                      author + '): ' + err));
-                } else {
-                    req.posts = posts;
-                    return next();
-                }
-            });
+                    author: user._id,
+                    Status: 'Published'
+                }).populate('author', 'name').populate('tags', 'tagName') /*.populate('Category', 'CategoryName')*/
+                .sort('-createDate').exec(function(err, posts) {
+                    if (err) {
+                        return next(new Error('Failed to load posts of author(' +
+                            author + '): ' + err));
+                    } else {
+                        req.posts = posts;
+                        return next();
+                    }
+                });
         }
     });
 };
@@ -140,13 +144,13 @@ exports.getListByTag = function(req, res, next, tagName) {
             }
             return async.map(tags, (function(tag, callback) {
                 return tag.Post.populate('author tags', 'name tagName',
-                  function(err, post) {
-                    if (err) {
-                        return callback(err);
-                    } else {
-                        return callback(null, post);
-                    }
-                });
+                    function(err, post) {
+                        if (err) {
+                            return callback(err);
+                        } else {
+                            return callback(null, post);
+                        }
+                    });
             }), function(err, posts) {
                 if (err) {
                     return next(err);
@@ -157,6 +161,16 @@ exports.getListByTag = function(req, res, next, tagName) {
             });
         }
     });
+};
+
+Array.prototype.unique = function() {
+    var key, output, _i, _ref, _results;
+    output = {};
+    _results = [];
+    for (key = _i = 0, _ref = this.length; 0 <= _ref ? _i < _ref : _i > _ref; key = 0 <= _ref ? ++_i : --_i) {
+        _results.push(output[this[key]] = this[key]);
+    }
+    return _results;
 };
 
 function handleError(res, err) {

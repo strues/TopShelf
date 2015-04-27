@@ -20,7 +20,7 @@
             url: '/info',
             views: {
                 'main@': {
-                    templateUrl: 'app/guild/guild-info/info.tpl.html',
+                    templateUrl: 'app/guild/info/info.tpl.html',
                     controller: 'GuildInfoController'
                 }
             }
@@ -29,7 +29,7 @@
             views: {
                 'main@': {
                     templateUrl:
-                    'app/guild/guild-apply/guild-application.tpl.html',
+                    'app/guild/apply/guild-application.tpl.html',
                     controller: 'ApplicationCtrl',
                     controllerAs: 'vm'
                 }
@@ -38,7 +38,7 @@
             url: '/application',
             views: {
                 'guildapp@guild': {
-                    templateUrl: 'app/guild/guild-apply/application.tpl.html',
+                    templateUrl: 'app/guild/apply/application.tpl.html',
                     controller: 'ApplicationCtrl',
                     controllerAs: 'vm'
                 }
@@ -48,7 +48,7 @@
             views: {
                 'guildapp@guild': {
                     templateUrl:
-                    'app/guild/guild-apply/application-info.tpl.html',
+                    'app/guild/apply/application-info.tpl.html',
                     controller: 'ApplicationCtrl',
                     controllerAs: 'vm'
                 }
@@ -57,7 +57,7 @@
             url: '/streams',
             views: {
                 'main@': {
-                    templateUrl: 'app/guild/guild-streams/streams.tpl.html',
+                    templateUrl: 'app/guild/streams/streams.tpl.html',
                     controller: 'StreamsCtrl'
                 }
             }
@@ -65,7 +65,7 @@
             url: '/roster',
             views: {
                 'main@': {
-                    templateUrl: 'app/guild/guild-roster/roster.tpl.html',
+                    templateUrl: 'app/guild/roster/roster.tpl.html',
                     controller: 'RosterCtrl'
                 }
             },
