@@ -1,16 +1,16 @@
 (function () {
     'use strict';
     /**
-       * @name HomeCarouselCtrl as carousel
+       * @name CarouselCtrl as carousel
        * @desc Carousel controller
        * @requires (mgcrea.ngStrap)
        * @memberOf topshelf.core.states
        */
     angular
-      .module('app.core')
-      .controller('HomeCarouselCtrl', HomeCarouselCtrl);
+      .module('app.guild')
+      .controller('CarouselCtrl', CarouselCtrl);
     /* @ngInject */
-    function HomeCarouselCtrl(Slide) {
+    function CarouselCtrl(Slide) {
         var carousel = this;
         carousel.slides = {};
         Slide.all().success(function (data) {

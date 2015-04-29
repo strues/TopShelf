@@ -31,12 +31,24 @@
     ]);
 
     /* @ngInject */
-    function run($rootScope, $state, $stateParams, $location, Auth, editableOptions) {
+    function run($rootScope, $state, _, $stateParams, $location, $timeout, Auth, editableOptions) {
         $rootScope.Auth = Auth;
         $rootScope.$state = $state;
-        $rootScope.$stateParams = $stateParams;
         // Redirect to login if route requires auth and you're not logged in
-        $rootScope.$on('$stateChangeStart', function (event, next) {
+        $rootScope.$on('$stateChangeStart', function (event, next, e, toState, toParams, fromState, fromParams) {
+            $state.previous = _.clone($state);
+            $state.toState = toState;
+            $state.toParams = toParams;
+            $state.fromState = fromState;
+            $state.fromParams = fromParams;
+
+$rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
+        $timeout(function() {
+            $rootScope.$emit('$stateChangeRender');
+        });
+
+    });
+
             if (!next.authenticate) {
                 return;
             }

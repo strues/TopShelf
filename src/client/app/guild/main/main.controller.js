@@ -1,18 +1,16 @@
 (function () {
     'use strict';
-    /**
-       * @ngdoc controller
-       * @name HomeCtrl as vm
-       * @description Controller for the home page
-       *
-       */
+    /*
+      @ngdoc object
+      @name app.guild.controller:MainCtrl:
+    */
     angular
-      .module('app.core')
-      .controller('HomeCtrl', HomeCtrl);
+      .module('app.guild')
+      .controller('MainCtrl', MainCtrl);
 
-    HomeCtrl.$inject = ['Post', '$scope', '$location'];
+    MainCtrl.$inject = ['Post', '$scope', '$location'];
     /* @ngInject */
-    function HomeCtrl(Post, $scope, $location) {
+    function MainCtrl(Post, $scope, $location) {
         var vm = this;
         vm.posts = {};
         Post.all().success(function (data) {
@@ -22,7 +20,7 @@
             vm.status = 'Unable to Retrieve Postas: ' + error.message;
         });
         vm.viewMore = function (post) {
-            $location.path('/view-post/' + post._id);
+            $location.path('/post/' + post._id);
         };
     }
 }());

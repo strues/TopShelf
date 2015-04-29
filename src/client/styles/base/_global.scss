@@ -7,8 +7,8 @@ html body {
 }
 
 .page-content {
-  background-color: $lt-grey;
   padding: 15px;
+  background-color: $lt-grey;
 }
 
 .blue-area {
@@ -36,7 +36,7 @@ hr {
 }
 
 .aside-backdrop {
-  opacity: 0.1;
+  opacity: .1;
 }
 
 .row.no-gutters > [class^="col-"],
@@ -76,17 +76,17 @@ hr {
 }
 
 .center-block {
-  display: block;
   margin-left: auto;
   margin-right: auto;
+  display: block;
 }
 
 .truncate {
-  white-space: nowrap;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .no-padding {
-  padding: 0 !important;
+  padding: 0px !important;
 }

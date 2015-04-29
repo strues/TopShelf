@@ -1,16 +1,16 @@
 (function () {
     'use strict';
     /**
-     * @name HomePostDetailsCtrl as carousel
+     * @name PostDetailCtrl as carousel
      * @desc Carousel controller
      * @requires (mgcrea.ngStrap)
      * @memberOf topshelf.core.states
      */
     angular
-        .module('app.core')
-        .controller('HomePostDetailsCtrl', HomePostDetailsCtrl);
+        .module('app.guild')
+        .controller('PostDetailCtrl', PostDetailCtrl);
     /* @ngInject */
-    function HomePostDetailsCtrl($scope, $stateParams, $http, $location) {
+    function PostDetailCtrl($scope, $stateParams, $http, $location) {
         var hdetail = this;
         var postId = $stateParams.id;
         if (postId && postId.length > 0) {

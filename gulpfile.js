@@ -30,6 +30,10 @@ var port = process.env.PORT || config.defaultPort;
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
 
+gulp.task('bootlint', function() {
+    return gulp.src([config.index, config.htmltemplates])
+        .pipe($.bootlint());
+});
 /**
  * vet the code and create coverage report
  * @return {Stream}

@@ -7,7 +7,7 @@
 
     <div class="row">
       <div class="col-sm-12 col-lg-9">
-      <div class="carousel-area" ng-controller="HomeCarouselCtrl as carousel">
+      <div class="carousel-area" ng-controller="CarouselCtrl as carousel">
         <h1 style="text-align: right; padding-right: 20px; padding-bottom: 15px;">
           <span style="color:#333;">Recent</span>
           <span class="blue-text">Kills</span>
@@ -47,7 +47,7 @@
         <div class="row no-gutters home-page--bottom">
           <div class="container">
           <div class="col-sm-12">
-            <div class="" ng-controller="HomeCtrl as vm">
+            <div class="" ng-controller="MainCtrl as vm">
               <div class="news-title-container">
                 <div class="news-title-bg">
                   <h1 class="news-title">Latest News</h1>
@@ -75,7 +75,7 @@
                       <div ng-bind-html ng-model="post.description"></div>
                     </div>
                     <!-- post-content -->
-                    <a ui-sref='home.detail({id:post._id})' class="btn btn-md btn-primary">
+                    <a ui-sref='guild.main.post({id:post._id})' class="btn btn-md btn-primary">
                           Read More
                           </a>
                   </div>

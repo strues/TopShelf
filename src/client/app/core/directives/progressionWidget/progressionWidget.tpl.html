@@ -1,6 +1,9 @@
-		<div class="well">
-		<h2 class="progression-title">Mythic Highmaul</h2>
-		<dl class="dl-horizontal">
+		<div class="well" bs-collapse>
+    <div class="tbar">
+		<span class="widget-title" bs-collapse-toggle>Mythic Highmaul <i class="mdi-navigation-unfold-more"></i></span>
+    </div>
+    <div class="panel panel-default">
+		<dl class="dl-horizontal" bs-collapse-target>
 			<dt>{{charData.progression.raids[32].bosses[0].name}}</dt>
 				<dd>{{charData.progression.raids[32].bosses[0].mythicKills}}</dd>
 			<dt>{{charData.progression.raids[32].bosses[1].name}}</dt>
@@ -16,10 +19,14 @@
 			<dt>{{charData.progression.raids[32].bosses[6].name}}</dt>
 				<dd>{{charData.progression.raids[32].bosses[6].mythicKills}}</dd>
 		</dl>
+    </div>
 	</div>
-	<div class="well">
-		<h2 class="progression-title">Mythic Blackrock Foundry</h2>
-		<dl class="dl-horizontal">
+	<div class="well" bs-collapse>
+  <div class="tbar">
+		<span class="widget-title" bs-collapse-toggle>Mythic Blackrock Foundry <i class="mdi-navigation-unfold-more"></i></span>
+    </div>
+    <div class="panel panel-default">
+		<dl class="dl-horizontal" bs-collapse-target>
 			<dt>{{charData.progression.raids[33].bosses[0].name}}</dt>
 				<dd>{{charData.progression.raids[33].bosses[0].mythicKills}}</dd>
 			<dt>{{charData.progression.raids[33].bosses[1].name}}</dt>
@@ -41,4 +48,5 @@
 			<dt>{{charData.progression.raids[33].bosses[9].name}}</dt>
 				<dd>{{charData.progression.raids[33].bosses[9].mythicKills}}</dd>
 			</dl>
+      </div>
 </div>

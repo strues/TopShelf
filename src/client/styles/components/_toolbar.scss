@@ -10,9 +10,27 @@
   margin-top: 5px;
   z-index: 2;
   font-size: 1.3em;
+  width: 100%;
+  text-align: center;
+  background-color: palette(blue, base);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+
+.tbar-alt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 5px;
+  position: relative;
+  margin-top: 5px;
+  z-index: 2;
+  font-size: 1.3em;
   height: 70px;
   width: 100%;
-  background-color: palette(blue, base);
+  background-color: $drk-grey;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
 }
 

@@ -2,7 +2,8 @@
  * @ngdoc overview
  * @name app.guild
  * @description
- * The `app.guild` module
+ * The `app.guild` module contains the locations
+ * and definitions for each state relating to guild info
  *
  * @requires ui.router
  */
@@ -12,11 +13,39 @@
     angular.module('app.guild', [])
     .config(config);
     /* @ngInject */
+    config.$inject = ['$stateProvider'];
     function config($stateProvider) {
-        $stateProvider.state('guild', {
+        $stateProvider
+        .state('guild', {
             abstract: true,
-            url: '/guild'
-        }).state('guild.information', {
+            templateUrl: '<ui-view></ui-view>'
+        })
+        .state('guild.main', {
+            url: '/',
+            views: {'main@': {templateUrl: 'app/guild/main/main.tpl.html'}},
+            controller: 'MainCtrl',
+            controllerAs: 'vm',
+            resolve: {/* @ngInject */
+                posts: function (Post) {
+                    return Post.all();
+                }
+            }
+        }).state('guild.main.post', {
+            url: 'post/:id',
+            views: {
+                'main@': {
+                    templateUrl:
+                    'app/guild/main/post-detail/post-detail.tpl.html'
+                }
+            },
+            controller: 'PostDetailCtrl',
+            resolve: {/* @ngInject */
+                post: function ($stateParams, Post) {
+                    return Post.get($stateParams.id);
+                }
+            }
+        })
+        .state('guild.information', {
             url: '/info',
             views: {
                 'main@': {

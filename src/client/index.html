@@ -5,15 +5,16 @@
 <!--[if gt IE 8]><!-->
 <html lang="en" class="no-js" ng-app="app"><!--<![endif]-->
 <head>
+  <meta charset="utf-8">
   <base href="/">
   <title>Top Shelf - Sargeras US Mythic Raiding Guild</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="Top Shelf is a World of Warcraft mythic raiding guild on Sargeras US. Formed
   in Mists of Pandaria, we are looking to conquer Warlords of Draenor and beyond. Top Shelf is always recruiting
   new members.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="always">
 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta property="og:image" content="https://topshelfguild.com/assets/images/logo.png">
   <meta property="og:title" content="Top Shelf - Sargeras Raiding Guild">
   <meta property="og:description" content="Top Shelf is a World of Warcraft mythic raiding guild on US-Sargeras">
@@ -70,8 +71,8 @@
   <div ui-view="main"></div>
   <!-- build:js js/lib.js -->
   <!-- bower:js -->
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
   <script src="/bower_components/es5-shim/es5-shim.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
   <script src="/bower_components/modernizr/modernizr.js"></script>
   <script src="/bower_components/lodash/lodash.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
@@ -136,9 +137,6 @@
   <script src="/src/client/app/admin/services/resource.service.js"></script>
   <script src="/src/client/app/admin/users/Users.controller.js"></script>
   <script src="/src/client/app/admin/users/details/userDetails.controller.js"></script>
-  <script src="/src/client/app/core/core-home/carousel.controller.js"></script>
-  <script src="/src/client/app/core/core-home/home.controller.js"></script>
-  <script src="/src/client/app/core/core-home/home.details/details.controller.js"></script>
   <script src="/src/client/app/core/core.config.js"></script>
   <script src="/src/client/app/core/directives/footer/footer.controller.js"></script>
   <script src="/src/client/app/core/directives/footer/footer.directive.js"></script>
@@ -157,6 +155,9 @@
   <script src="/src/client/app/core/services/slide.service.js"></script>
   <script src="/src/client/app/guild/apply/application.controller.js"></script>
   <script src="/src/client/app/guild/info/info.controller.js"></script>
+  <script src="/src/client/app/guild/main/carousel.controller.js"></script>
+  <script src="/src/client/app/guild/main/main.controller.js"></script>
+  <script src="/src/client/app/guild/main/post-detail/details.controller.js"></script>
   <script src="/src/client/app/guild/roster/roster.controller.js"></script>
   <script src="/src/client/app/guild/services/application.service.js"></script>
   <script src="/src/client/app/guild/services/armory.service.js"></script>
