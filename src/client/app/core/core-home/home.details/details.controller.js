@@ -9,7 +9,7 @@
     angular
         .module('app.core')
         .controller('HomePostDetailsCtrl', HomePostDetailsCtrl);
-            /* @ngInject */
+    /* @ngInject */
     function HomePostDetailsCtrl($scope, $stateParams, $http, $location) {
         var hdetail = this;
         var postId = $stateParams.id;

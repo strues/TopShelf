@@ -119,7 +119,7 @@ gulp.task('fonts', ['clean-fonts'], function() {
 
     return gulp
         .src(config.fonts)
-        .pipe(gulp.dest(config.build + 'fonts'));
+        .pipe(gulp.dest(config.build + 'assets/fonts'));
 });
 
 /**
@@ -132,7 +132,7 @@ gulp.task('images', ['clean-images'], function() {
     return gulp
         .src(config.images)
         .pipe($.imagemin({optimizationLevel: 6}))
-        .pipe(gulp.dest(config.build + 'images'));
+        .pipe(gulp.dest(config.build + 'assets/images'));
 });
 
 gulp.task('sass-watcher', function() {
@@ -319,7 +319,7 @@ gulp.task('clean', function(done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-fonts', function(done) {
-    clean(config.build + 'fonts/**/*.*', done);
+    clean(config.build + 'assets/fonts/**/*.*', done);
 });
 
 /**
@@ -327,7 +327,7 @@ gulp.task('clean-fonts', function(done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-images', function(done) {
-    clean(config.build + 'images/**/*.*', done);
+    clean(config.build + 'assets/images/**/*.*', done);
 });
 
 /**

@@ -23,7 +23,7 @@
             views: {'main@': {templateUrl: 'app/core/core-home/home.tpl.html'}},
             controller: 'HomeCtrl',
             controllerAs: 'vm',
-            resolve: {
+            resolve: {/* @ngInject */
                 posts: function (Post) {
                     return Post.all();
                 }
@@ -33,12 +33,11 @@
             views: {
                 'main@': {
                     templateUrl:
-                    'app/core/core-home/home.details/details.home.tpl.html',
-                    controller: function ($stateParams) {
-          }
+                    'app/core/core-home/home.details/details.home.tpl.html'
                 }
             },
-            resolve: {
+            controller: 'HomePostDetailsCtrl',
+            resolve: {/* @ngInject */
                 post: function ($stateParams, Post) {
                     return Post.get($stateParams.id);
                 }

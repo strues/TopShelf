@@ -24,6 +24,7 @@ var all = {
     secrets: {
         session: 'topk3k'
     },
+    //seedDB: false,
     redis: {
         host: '127.0.0.1',
         port: 6379

@@ -5,9 +5,9 @@
  */
 'use strict';
 
-var mongoose = require('mongoose');
-var config = require('./environment');
-var chalk = require('chalk');
+var mongoose     = require('mongoose'),
+    chalk        = require('chalk'),
+    config       = require('./environment');
 
 // connect to mongodb
 var connection = mongoose.connect(config.mongo.uri, config.mongo.options);
@@ -38,8 +38,9 @@ mongoose.connection.on('error', function connectionError(err) {
 // register the connection handler once only
 mongoose.connection.once('open', function connectionOpen() {
     console.log(chalk.green('Database connection open'));
-/*    // Populate DB with sample data
+
+    // Populate DB with sample data
     if (config.seedDB) {
         require('./seed');
-    }*/
+    }
 });

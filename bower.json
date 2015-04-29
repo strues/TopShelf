@@ -22,7 +22,6 @@
     "trNgGrid": "~3.1.2",
     "angular-xeditable": "~0.1.8",
     "angular-file-upload": "~1.1.5",
-    "angular-socket-io": "~0.7.0",
     "v-modal": "~1.2.0",
     "ui-router-extras": "~0.0.13"
   },

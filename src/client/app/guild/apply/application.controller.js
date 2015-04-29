@@ -9,13 +9,12 @@
       .module('app.guild')
       .controller('ApplicationCtrl', ApplicationCtrl);
     /* @ngInject */
-    function ApplicationCtrl($location, $http, Application, ngFabForm, toastr) {
+    function ApplicationCtrl($location, $http, Application, toastr) {
         var vm = this;
         vm.ctrlName = 'ApplicationCtrl';
         vm.active = true;
         vm.active1 = true;
-        vm.defaultFormOptions = ngFabForm.config;
-        vm.customFormOptions = angular.copy(ngFabForm.config);
+
         vm.realms = [];
         // $http.jsonp('https://us.battle.net/api/wow/realm/status?jsonp=JSON_CALLBACK')
         // .success(function (data, status, headers, config) {

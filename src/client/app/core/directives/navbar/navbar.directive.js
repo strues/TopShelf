@@ -11,7 +11,8 @@
        * @example
        *
        */
-    angular.module('app.core').directive('navbar', navbar);
+    angular.module('app.core')
+    .directive('navbar', navbar);
     function navbar() {
         return {
             restrict: 'EA',

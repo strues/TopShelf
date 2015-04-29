@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" ng-app="app">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js" ng-app="app"><!--<![endif]-->
 <head>
   <base href="/">
   <title>Top Shelf - Sargeras US Mythic Raiding Guild</title>
@@ -63,14 +67,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-
-    <div ui-view="main"></div>
-
-    <script src="socket.io-client/socket.io.js"></script>
+  <div ui-view="main"></div>
   <!-- build:js js/lib.js -->
   <!-- bower:js -->
-  <script src="/bower_components/es5-shim/es5-shim.js"></script>
   <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/es5-shim/es5-shim.js"></script>
   <script src="/bower_components/modernizr/modernizr.js"></script>
   <script src="/bower_components/lodash/lodash.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
@@ -97,7 +98,6 @@
   <script src="/bower_components/trNgGrid/trNgGrid.js"></script>
   <script src="/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
   <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
-  <script src="/bower_components/angular-socket-io/socket.js"></script>
   <script src="/bower_components/v-modal/dist/v-modal.js"></script>
   <script src="/bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
   <!-- endbower -->
@@ -151,12 +151,10 @@
   <script src="/src/client/app/core/filters/rankName.filter.js"></script>
   <script src="/src/client/app/core/filters/startFrom.filter.js"></script>
   <script src="/src/client/app/core/services/authInterceptor.service.js"></script>
-  <script src="/src/client/app/core/services/io.service.js"></script>
   <script src="/src/client/app/core/services/lodash.service.js"></script>
   <script src="/src/client/app/core/services/logger.service.js"></script>
   <script src="/src/client/app/core/services/post.service.js"></script>
   <script src="/src/client/app/core/services/slide.service.js"></script>
-  <script src="/src/client/app/core/services/socket.service.js"></script>
   <script src="/src/client/app/guild/apply/application.controller.js"></script>
   <script src="/src/client/app/guild/info/info.controller.js"></script>
   <script src="/src/client/app/guild/roster/roster.controller.js"></script>

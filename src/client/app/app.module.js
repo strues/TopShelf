@@ -1,10 +1,9 @@
 (function () {
     'use strict';
-    /* @ngdoc object
+    /* @ngdoc overview
      * @name app
-     * @requires $urlRouterProvider
-     *
-     * @description Main module for app
+     * @description
+     * Main module for the Top Shelf guild website
      *
      */
     /* @ngInject */
@@ -22,9 +21,7 @@
         'mgcrea.ngStrap',
         'textAngular',
         'xeditable',
-        'btford.socket-io',
         'toastr',
-        'ngFabForm',
         'angularFileUpload',
         'trNgGrid',
         'app.core',

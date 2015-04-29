@@ -4,25 +4,24 @@
 
 'use strict';
 
-var express = require('express'),
-    favicon = require('serve-favicon'),
-    morgan = require('morgan'),
-    compression = require('compression'),
-    bodyParser = require('body-parser'),
+var express        = require('express'),
+    logger         = require('./logger'),
+    config         = require('./environment'),
+    favicon        = require('serve-favicon'),
+    morgan         = require('morgan'),
+    compression    = require('compression'),
+    bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
-    cookieParser = require('cookie-parser'),
-    errorHandler = require('errorhandler'),
-    path = require('path'),
-    cors = require('cors'),
-    multer = require('multer'),
-    logger = require('./logger'),
-    config = require('./environment'),
-    busboy = require('connect-busboy'),
-    passport = require('passport'),
-    session = require('express-session'),
-    mongoose = require('mongoose'),
-    mongoStore = require('connect-mongo')(session),
-    flash = require('connect-flash');
+    cookieParser   = require('cookie-parser'),
+    errorHandler   = require('errorhandler'),
+    path           = require('path'),
+    multer         = require('multer'),
+    busboy         = require('connect-busboy'),
+    passport       = require('passport'),
+    session        = require('express-session'),
+    mongoose       = require('mongoose'),
+    mongoStore     = require('connect-mongo')(session),
+    flash          = require('connect-flash');
 
 module.exports = function(app) {
     var env = app.get('env');
@@ -59,7 +58,6 @@ module.exports = function(app) {
         next();
     });
     app.use(cookieParser());
-    // Enable jsonp
     app.use(session({
         secret: config.secrets.session,
         resave: true,
@@ -69,8 +67,6 @@ module.exports = function(app) {
     app.use(busboy());
 
     app.use(passport.initialize());
-    app.use(passport.session());
-
     // connect flash for flash messages
     app.use(flash());
 
