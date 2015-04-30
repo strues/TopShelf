@@ -17,7 +17,7 @@
         return service;
         function get(streamName) {
             console.log('Getting this ' + streamName);
-            return $http.jsonp(urlBase + '/' + streamName + cb);
+            //return $http.jsonp(urlBase + '/' + streamName + cb);
         }
     }
 }());

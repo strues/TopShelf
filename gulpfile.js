@@ -46,8 +46,8 @@ gulp.task('vet', function() {
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish', {verbose: true}));
-        //.pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
-        //.pipe($.jscs());
+    //.pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
+    //.pipe($.jscs());
 });
 
 /**
@@ -135,8 +135,13 @@ gulp.task('images', ['clean-images'], function() {
 
     return gulp
         .src(config.images)
-        .pipe($.imagemin({optimizationLevel: 6}))
-        .pipe(gulp.dest(config.build + 'assets/images'));
+        .pipe($.changed(config.build + 'assets/images'))
+        .pipe($.imagemin({
+            optimizationLevel: 3,
+            progressive: true,
+            interlaced: true
+        }))
+    .pipe(gulp.dest(config.build + 'assets/images'));
 });
 
 gulp.task('sass-watcher', function() {
@@ -285,6 +290,7 @@ gulp.task('optimize', ['inject'], function() {
         // Get the css
         .pipe(cssFilter)
         .pipe(minifyCSS())
+        .pipe($.size({showFiles: true}))
         .pipe(cssFilter.restore())
         // Get the custom javascript
         .pipe(jsAppFilter)
@@ -292,11 +298,13 @@ gulp.task('optimize', ['inject'], function() {
         .pipe($.ngAnnotate({add: true}))
         .pipe($.uglify())
         .pipe(getHeader())
+        .pipe($.size({showFiles: true}))
         .pipe($.sourcemaps.write())
         .pipe(jsAppFilter.restore())
         // Get the vendor javascript
         .pipe(jslibFilter)
         .pipe($.uglify()) // another option is to override wiredep to use min files
+        .pipe($.size({showFiles: true}))
         .pipe(jslibFilter.restore())
         // Take inventory of the file names for future rev numbers
         .pipe($.rev())
@@ -305,7 +313,13 @@ gulp.task('optimize', ['inject'], function() {
         .pipe($.useref())
         // Replace the file names in the html with rev numbers
         .pipe($.revReplace())
-        .pipe(gulp.dest(config.build));
+        .pipe(gulp.dest(config.build))
+        .pipe($.notify({
+            onLast: true,
+            message: function() {
+                return 'Total build size ' + $.size.prettySize;
+            }
+        }));
 });
 
 /**
