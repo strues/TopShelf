@@ -167,26 +167,6 @@ UserController.prototype = {
   },
 
   /**
-   * OAuth callback
-   */
-  oauthCallback: function(strategy) {
-    return function(req, res, next) {
-      passport.authenticate(strategy, function(err, user, redirectURL) {
-        if (err || !user) {
-          return res.redirect('/#!/login');
-        }
-        req.login(user, function(err) {
-          if (err) {
-            return res.redirect('/#!/login');
-          }
-
-          return res.redirect(redirectURL || '/');
-        });
-      })(req, res, next);
-    };
-  },
-
-  /**
    * Authentication callback function, redirecting to '/'.
    * @param {IncomingMessage} req - The request message object
    * @param {ServerResponse} res - The outgoing response object that is redirected

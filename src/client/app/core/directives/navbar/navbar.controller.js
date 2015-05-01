@@ -21,7 +21,7 @@
      * @description
      * Logout the current user
      */
-    vm.logout = Auth.logout;
+    vm.logout = Auth.logout();
 
     /**
      * @ngdoc function
@@ -30,7 +30,7 @@
      * @description
      * See {@link components/auth.service:Auth#isLoggedIn isLoggedIn} of the Auth service
      */
-    vm.isLoggedIn = Auth.isLoggedIn;
+    vm.isLoggedIn = Auth.isLoggedIn();
 
     /**
      * @ngdoc function
@@ -41,7 +41,7 @@
      */
     vm.currentUser = Auth.getCurrentUser();
 
-    vm.isAdmin = Auth.isAdmin;
+    vm.isAdmin = Auth.isAdmin();
     vm.isActive = function (route) {
       return route === $location.path();
     };

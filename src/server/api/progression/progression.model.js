@@ -18,10 +18,10 @@ var mongoose = require('mongoose');
  * @property {Boolean} active - Flag indicating this application is active
  */
 var ProgressionDefinition = {
-    bossName: String,
-    dead: Boolean,
-    zone: String,
-    killDate: {
+  bossName: String,
+  dead: Boolean,
+  zone: String,
+  killDate: {
       type: Date
     }
 };
@@ -52,7 +52,6 @@ ProgressionSchema
  *  @type {Application}
  */
 var Progression = mongoose.model('Progression', ProgressionSchema);
-
 
 /**
  * Validate the uniqueness of the given name
