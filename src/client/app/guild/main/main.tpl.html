@@ -53,29 +53,29 @@
                   <h1 class="news-title">Latest News</h1>
                 </div>
               </div>
-              <div class="col-md-4" ng-repeat="post in vm.posts | orderBy:'-date'">
+              <div class="col-md-4" ng-repeat="article in vm.articles | orderBy:'-created'">
                 <article class="news-post card">
                   <!-- Post Image -->
                   <div class="post-image-wrapper">
-                    <img ng-src="{{post.image}}" class="img-responsive" alt="news post image">
+                    <img ng-src="{{article.image}}" class="img-responsive" alt="news post image">
                   </div>
                   <!-- END post-image -->
                   <div class="post-wrapper box">
                     <div class="post-title">
-                      <h1 class="post-title-text">{{post.title}}</h1>
+                      <h1 class="post-title-text">{{article.title}}</h1>
                     </div>
                     <div class="post-meta">
                       <ul class="list-inline list-unstyled">
-                        <li><i class="fa fa-calendar-o"></i> {{ post.date | date:'MMM dd, yyyy' }}</li>
+                        <li><i class="fa fa-calendar-o"></i> {{ article.created | date:'MMM dd, yyyy' }}</li>
                         <li class="divider"></li>
-                        <li>Posted by {{ post.author.username }}</li>
+                        <li>Posted by {{ article.author.username }}</li>
                       </ul>
                     </div>
                     <div class="post-content">
-                      <div ng-bind-html ng-model="post.description"></div>
+                      <div ng-bind-html ng-model="article.description"></div>
                     </div>
                     <!-- post-content -->
-                    <a ui-sref='guild.main.post({id:post._id})' class="btn btn-md btn-primary">
+                    <a ui-sref='guild.main.article({id:article._id})' class="btn btn-md btn-primary">
                           Read More
                           </a>
                   </div>

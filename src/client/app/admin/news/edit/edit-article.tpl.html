@@ -1,34 +1,34 @@
-<div ng-controller="NewsCreateController as vm">
+<div ng-controller="NewsEditController as vm">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <h1 class="text-primary">New Post</h1>
-     <form novalidate ng-submit="vm.savePost()">
+    <h1 class="text-primary">Editing Article: <small>{{vm.articleData.title}}</small></h1>
+     <form novalidate ng-submit="vm.saveArticle()">
      <div class="row">
         <div class="col-sm-12 col-lg-7 form-group">
         <input type="text"
               class="form-control"
-              placeholder="Post Title"
+              placeholder="Article Title"
               ng-minLength=3
               ng-maxLength=75
-              ng-model="vm.postData.title"
+              ng-model="vm.articleData.title"
               required>
         </div><!-- END -->
         <div class="col-lg-3" ng-controller="DatepickerCtrl">
-          <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
-            <input type="text" placeholder="Date" class="form-control" ng-model="vm.postData.date" name="date" bs-datepicker>
+          <div class="form-group" ng-class="{'has-error': datepickerForm.created.$invalid}">
+            <input type="text" placeholder="Date" class="form-control" ng-model="vm.articleData.created" name="date" bs-datepicker>
           </div>
         </div>
      </div> <!-- END row-->
      <div class="row"><!-- textangular -->
       <div class="col-sm-12 col-lg-10">
-           <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage', 'insertVideo', 'html']]" class="textEditor" ng-model="vm.postData.content"></text-angular>
+          <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage', 'insertVideo', 'html']]" class="textEditor" ng-model="vm.articleData.content"></text-angular>
       </div>
     </div><!-- END row /textangular-->
     <div class="row">
     <div class="col-sm-12 col-lg-10">
           <textarea class="form-control"
                     placeholder="Description / summary of your post. This will show on the home page and is limited to 140 characters."
-                    ng-model="vm.postData.description"
+                    ng-model="vm.articleData.description"
                     rows="3"
                     ></textarea>
       </div>
@@ -38,7 +38,7 @@
         <input type="text"
                   class="form-control"
                   placeholder="Home Image 750x450"
-                  ng-model="vm.postData.image"
+                  ng-model="vm.articleData.image"
                   style="padding-left: 15px;"
                   />
       </div>
@@ -46,14 +46,14 @@
         <input type="text"
                   class="form-control"
                   placeholder="Detailed View Image 1140x450"
-                  ng-model="vm.postData.lrgImage"
+                  ng-model="vm.articleData.lrgImage"
                   style="padding-left: 15px;"
                   />
       </div>
       </div><!-- END row-->
       <div class="row">
-        <div class="col-sm-3 col-sm-offset-4" style="padding-top: 15px;">
-          <input type="submit" class="btn btn-primary" value="Save Post" />
+        <div class="col-sm-3 col-sm-offset-8" style="padding-top: 15px;">
+          <input type="submit" class="btn btn-primary" value="Save Article" />
         </div>
       </div> <!--./row-->
      </form><!-- END form -->

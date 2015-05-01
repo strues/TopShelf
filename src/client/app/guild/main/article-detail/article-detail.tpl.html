@@ -3,7 +3,7 @@
 <navbar></navbar>
 <!-- admin-news-detail-page container
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<div id="news-detail-page" class="container nav-padding page-content" ng-controller="PostDetailCtrl">
+<div class="container nav-padding page-content" id="news-detail-page" ng-controller="ArticleDetailCtrl">
     <!-- Start News Posts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row">
@@ -12,25 +12,25 @@
             <article class="news-post-detail">
                 <!-- Post Image -->
                 <div>
-                    <img class="post-detail-image" ng-src="{{post.lrgImage}}" alt="{{post.title}} image">
+                    <img class="post-detail-image" ng-src="{{article.lrgImage}}" alt="{{article.title}} image">
                 </div>
                 <!-- END post-image -->
                 <div class="post-wrapper box">
                     <div class="post-title">
-                        <h1 class="post-title-text">{{post.title}}</h1>
+                        <h1 class="post-title-text">{{article.title}}</h1>
                     </div>
                     <!-- post-meta -->
                     <div class="post-meta">
                         <ul class="list-unstyled">
-                            <li>{{ post.date | date:'MMM dd, yyyy' }}</li>
+                            <li>{{ article.created | date:'MMM dd, yyyy' }}</li>
                             <li class="divider"></li>
-                            <li>Posted by {{ post.author.username }}</li>
+                            <li>Posted by {{ article.author.username }}</li>
                         </ul>
                     </div>
                     <!-- END post-meta -->
                     <!-- post-content -->
                     <div class="post-content">
-                        <div ta-bind ng-model="post.content"></div>
+                        <div ta-bind ng-model="article.content"></div>
                     </div>
                     <!-- END post-content -->
                     <!-- post-footer -->
