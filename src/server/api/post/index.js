@@ -34,7 +34,7 @@ router.param('post', function(req, res, next, id) {
 router.param('author', controller.getListByAuthor);
 
 router.get('/', controller.index);
-router.get('/author/:author', controller.index);
+router.get('/author/:author', controller.getListByAuthor);
 router.get('/:id', controller.show);
 router.post('/', isAdmin, controller.create);
 router.put('/:id', isAdmin, controller.update);

@@ -8,11 +8,10 @@ var Post = require('./post.model'),
     User = require('../user/user.model');
 
 // Get list of posts
-exports.index = function(req, res, next) {
+exports.index = function(req, res) {
     Post.find()
-        .populate('author', 'name')
-        .populate('tags', 'tagName')
-        .sort('-CreateDate')
+        .sort('-created')
+        .populate('author', 'username')
         .exec(function(err, posts) {
             if (err) {
                 return handleError(res, err);
@@ -24,7 +23,7 @@ exports.index = function(req, res, next) {
 // Get a single post
 exports.show = function(req, res) {
     Post.findById(req.params.id)
-        .populate('author', 'name')
+        .populate('author', 'username')
         .exec(function(err, post) {
             if (err) {
                 return handleError(res, err);
@@ -62,7 +61,7 @@ exports.update = function(req, res) {
         if (req.body.title) post.title = req.body.title;
         if (req.body.date) post.date = req.body.date;
         if (req.body.lastUpdated) post.lastUpdated = req.body.date;
-        if (req.body.seoTitle) post.seoTitle = req.body.seoTitle;
+        if (req.body.slug) post.slug = req.body.slug;
         if (req.body.description) post.description = req.body.description;
         if (req.body.content) post.content = req.body.content;
         if (req.body.state) post.state = req.body.state;
@@ -97,10 +96,10 @@ exports.destroy = function(req, res) {
         });
     });
 };
-
+// TODO: Broken get by author
 exports.getListByAuthor = function(req, res, next, author) {
     return User.findOne({
-        name: author
+        author: author
     }).exec(function(err, user) {
         if (err) {
             return next(new Error('Find user(' + author + ') failed: ' + err));
@@ -111,10 +110,11 @@ exports.getListByAuthor = function(req, res, next, author) {
             return Post.find({
                     author: user._id,
                     Status: 'Published'
-                }).populate('author', 'name').populate('tags', 'tagName') /*.populate('Category', 'CategoryName')*/
-                .sort('-createDate').exec(function(err, posts) {
+                }).populate('author', 'username')
+                .sort('-created').exec(function(err, posts) {
                     if (err) {
-                        return next(new Error('Failed to load posts of author(' +
+                        return next(new Error(
+                          'Failed to load posts of author(' +
                             author + '): ' + err));
                     } else {
                         req.posts = posts;
@@ -124,7 +124,7 @@ exports.getListByAuthor = function(req, res, next, author) {
         }
     });
 };
-
+// TODO: Broken get by tag
 exports.getListByTag = function(req, res, next, tagName) {
     return Tag.find({
         TagName: tagName
@@ -167,7 +167,8 @@ Array.prototype.unique = function() {
     var key, output, _i, _ref, _results;
     output = {};
     _results = [];
-    for (key = _i = 0, _ref = this.length; 0 <= _ref ? _i < _ref : _i > _ref; key = 0 <= _ref ? ++_i : --_i) {
+    for (key = _i = 0, _ref = this.length; 0 <= _ref ? _i < _ref : _i > _ref;
+      key = 0 <= _ref ? ++_i : --_i) {
         _results.push(output[this[key]] = this[key]);
     }
     return _results;

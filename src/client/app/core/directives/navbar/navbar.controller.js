@@ -10,7 +10,7 @@
     angular
       .module('app.core')
       .controller('NavbarCtrl', NavbarCtrl);
-          /* @ngInject */
+    /* @ngInject */
     function NavbarCtrl(Auth, $scope, $rootScope, $location) {
         var vm = this;
         vm.Auth = Auth;

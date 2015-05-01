@@ -7,49 +7,58 @@ var mongoose = require('mongoose'),
 
 var PostSchema = new Schema({
     title: {
-        type: String
-    },
-    seoTitle: {
-        type: String
+        type: String,
+        trim: true,
+        default: '',
+        required: 'Title must be provided',
+        unique: true,
+        validate: [
+        function(title) {
+            return typeof title !== 'undefined' && title.length <= 120;
+        },
+        'Title must not be empty or exceed 120 character max limit'
+        ]
     },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    date: {
+    created: {
         type: Date,
-        default: moment()
+        default: Date.now
     },
     lastUpdated: {
         type: Date
     },
     description: {
-        type: String
+        type: String,
+        trim: true,
+        required: 'Description must be provided'
     },
-    content: {
+    content:{
+        type: String,
+        default: '',
+        trim: true
+    },
+    slug: {
         type: String
     },
     tags: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Tag'
+        type:String,
+        lowercase: true,
+        default: '',
+        trim: true
     }],
     state: {
         type: String,
+        default: 'Draft',
         enum: ['Draft', 'Published', 'Archived']
     },
-    image: String,
-    lrgImage: String,
-});
+    coverImage: String,
+    uploads: [String],
 
-PostSchema.statics = {
-    loadInfo: function(cb) {
-        this.find({})
-        .populate({path:'User', select: 'name'})
-        .populate({path:'Tag', select: 'name'})
-        .sort('-date')
-        .limit(20)
-        .exec(cb);
-    }
-};
+    image: String,
+    lrgImage: String
+});
 
 module.exports = mongoose.model('Post', PostSchema);

@@ -7,13 +7,12 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express'),
-    db = require('./config/mongoose'),
-    chalk = require('chalk'),
-    config = require('./config/environment');
+    db      = require('./config/mongoose'),
+    chalk   = require('chalk'),
+    config  = require('./config/environment');
 
 // Expose App
 var app = express();
-exports = module.exports = app;
 
 var server = require('http').createServer(app);
 
@@ -28,3 +27,5 @@ server.listen(config.port, config.ip, function() {
 process.on('uncaughtException', function(err) {
     console.log(err);
 });
+
+exports = module.exports = app;

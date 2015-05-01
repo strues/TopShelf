@@ -74,7 +74,7 @@
                   <!-- START dropdown -->
                   <li class="dropdown" ng-show="vm.Auth.isLoggedIn()">
                   <a role="button" data-toggle="dropdown" bs-dropdown data-template="dropdownbody">
-                    <i class="mdi-action-account-box"></i> {{ vm.Auth.getCurrentUser().name }}<b class="caret"></b>
+                    <i class="mdi-action-account-box"></i> {{ vm.Auth.getCurrentUser().username }}<b class="caret"></b>
                   </a>
                   <script type="text/ng-template" id="dropdownbody">
                   <ul class="dropdown-menu">

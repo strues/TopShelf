@@ -12,20 +12,24 @@ var mongoose = require('mongoose');
 var MongooseError = require('mongoose/lib/error');
 var crypto = require('crypto');
 var requestContext = require('mongoose-request-context');
-var createdModifiedPlugin = require('mongoose-createdmodified').createdModifiedPlugin;
+var createdModifiedPlugin = require('mongoose-createdmodified')
+  .createdModifiedPlugin;
 var auth = require('../../auth/auth.service');
 
 var Schema = mongoose.Schema;
 
 var UserDefinition = {
-    name: String,
+    username: {
+        type: String
+    },
+    firstName: {
+        type: String
+    },
     email: {
         type: String,
-        lowercase: true
-    },
-    role: {
-        type: String,
-        default: 'user'
+        lowercase: true,
+        trim: true,
+        match: [/.+\@.+\..+/, 'Please fill a valid email address']
     },
     articles: {
         type: Schema.Types.ObjectId,
@@ -42,10 +46,46 @@ var UserDefinition = {
     twitch: {
         type: String
     },
-    battletag: String,
-    hashedPassword: String,
-    provider: String,
-    salt: String
+    battletag:{
+        type: String
+    },
+    hashedPassword:{
+        type: String
+    },
+    salt: {
+        type: String
+    },
+    provider: {
+        type: String,
+        required: 'Provider is required'
+    },
+    providerData: {},
+    additionalProvidersData: {},
+    roles: {
+        type: [{
+            type: String,
+            enum: ['user', 'admin']
+        }],
+        default: ['user']
+    },
+    role:{
+        type: String,
+        default: ''
+    },
+    updated: {
+        type: Date
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    /* For reset password */
+    resetPasswordToken: {
+        type: String
+    },
+    resetPasswordExpires: {
+        type: Date
+    }
 };
 
 /**
@@ -89,7 +129,8 @@ UserSchema
 // Validate username is not taken
 UserSchema
   .path('email')
-  .validate(validateUniqueEmail, 'The specified email address is already in use.');
+  .validate(validateUniqueEmail,
+    'The specified email address is already in use.');
 
 // Validate empty password
 UserSchema
@@ -179,7 +220,7 @@ function getProfile() {
     // jshint validthis: true
     return {
         '_id': this._id,
-        'name': this.name,
+        'username': this.username,
         'role': this.role,
         'battletag': this.battletag,
         'twitch': this.twitch,
@@ -222,10 +263,10 @@ function validatePresenceOf(value) {
 }
 
 /**
- * Validate the uniqueness of the given username
+ * Validate the uniqueness of the given email
  *
  * @api private
- * @param {String} value - The username to check for uniqueness
+ * @param {String} value - The email to check for uniqueness
  * @param {Function} respond - The callback function
  */
 function validateUniqueEmail(value, respond) {
@@ -244,6 +285,32 @@ function validateUniqueEmail(value, respond) {
         }
 
         respond(true);
+    });
+}
+
+/**
+ * Find possible not used username
+ *
+ * @api private
+ */
+function findUniqueUsername(username, suffix, callback) {
+    // jshint validthis: true
+    var self = this;
+    var possibleUsername = username + (suffix || '');
+
+    this.findOne({
+        username: possibleUsername
+    }, function(err, user) {
+        if (!err) {
+            if (!user) {
+                callback(possibleUsername);
+            } else {
+                return this.findUniqueUsername(username,
+                  (suffix || 0) + 1, callback);
+            }
+        } else {
+            callback(null);
+        }
     });
 }
 

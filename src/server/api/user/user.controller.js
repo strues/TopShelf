@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var ParamController = require('../../components/controllers/param.controller');
-
+var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 
@@ -132,6 +132,25 @@ UserController.prototype = {
     },
 
     /**
+     * Lookup a user by its id
+     * @param  {incomingMessage}   req  The request message object the user object is read from
+     * @param  {[type]}   res  [description]
+     * @param  {Function} next [description]
+     * @param  {[type]}   id   [description]
+     * @return {[type]}        [description]
+     */
+    userByID: function(req, res, next, id) {
+        User.findOne({
+            _id: id
+        }).exec(function(err, user) {
+            if (err) return next(err);
+            if (!user) return next(new Error('Failed to load User ' + id));
+            req.profile = user;
+            next();
+        });
+    },
+
+    /**
      * Get the authenticated user for the current request.
      * The requested user id is read from the userInfo parameter of the request object.
      * @param {IncomingMessage} req - The request message object the user object is read from
@@ -148,6 +167,26 @@ UserController.prototype = {
     },
 
     /**
+     * OAuth callback
+     */
+    oauthCallback: function(strategy) {
+        return function(req, res, next) {
+            passport.authenticate(strategy, function(err, user, redirectURL) {
+                if (err || !user) {
+                    return res.redirect('/#!/login');
+                }
+                req.login(user, function(err) {
+                    if (err) {
+                        return res.redirect('/#!/login');
+                    }
+
+                    return res.redirect(redirectURL || '/');
+                });
+            })(req, res, next);
+        };
+    },
+
+    /**
      * Authentication callback function, redirecting to '/'.
      * @param {IncomingMessage} req - The request message object
      * @param {ServerResponse} res - The outgoing response object that is redirected
@@ -155,7 +194,6 @@ UserController.prototype = {
     authCallback: function (req, res) {
         res.redirect('/');
     }
-
 };
 
 UserController.prototype = _.create(ParamController.prototype, UserController.prototype);

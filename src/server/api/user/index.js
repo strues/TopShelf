@@ -38,17 +38,34 @@ router.route('/me')
 
 // user crud routes
 router.route('/' + controller.paramString)
-  .get(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.show)
-  .delete(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.destroy)
-  .put(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.update)
-  .patch(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.update);
+  .get(addRequestContext, isAuthenticated, addUserContext,
+        isAdmin, controller.show)
+  .delete(addRequestContext, isAuthenticated, addUserContext,
+        isAdmin, controller.destroy)
+  .put(addRequestContext, isAuthenticated, addUserContext,
+        isAdmin, controller.update)
+  .patch(addRequestContext, isAuthenticated, addUserContext,
+        isAdmin, controller.update);
 
 // set the password for a user
 router.route('/' + controller.paramString +  '/password')
-  .put(addRequestContext, isAuthenticated, addUserContext, controller.changePassword)
-  .patch(addRequestContext, isAuthenticated, addUserContext, controller.changePassword);
+  .put(addRequestContext, isAuthenticated, addUserContext,
+        controller.changePassword)
+  .patch(addRequestContext, isAuthenticated, addUserContext,
+        controller.changePassword);
 
 // admin only - administrative tasks for a user resource (force set password)
 router.route('/' + controller.paramString + '/admin')
-  .put(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.setPassword)
-  .patch(addRequestContext, isAuthenticated, addUserContext, isAdmin, controller.setPassword);
+  .put(addRequestContext, isAuthenticated, addUserContext,
+        isAdmin, controller.setPassword)
+  .patch(addRequestContext, isAuthenticated, addUserContext,
+        isAdmin, controller.setPassword);
+
+// Finish by binding the user middleware
+router.param('userId', controller.userByID);
+
+// Setting the facebook oauth routes
+// app.route('/auth/facebook').get(passport.authenticate('facebook', {
+//     scope: ['email']
+// }));
+// app.route('/auth/facebook/callback').get(users.oauthCallback('facebook'));

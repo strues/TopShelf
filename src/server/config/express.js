@@ -35,6 +35,7 @@ module.exports = function(app) {
         // zlib option for compression level
         level: 3
     }));
+
     // Showing stack errors
     app.set('showStackError', true);
 
@@ -51,12 +52,7 @@ module.exports = function(app) {
     }));
     app.use(bodyParser.json());
     app.use(methodOverride('X-HTTP-Method-Override'));
-    app.use(function(req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-        next();
-    });
+
     app.use(cookieParser());
     app.use(session({
         secret: config.secrets.session,
@@ -64,11 +60,14 @@ module.exports = function(app) {
         saveUninitialized: true,
         store: new mongoStore({mongooseConnection: mongoose.connection})
     }));
-    app.use(busboy());
 
+    // use passport session
     app.use(passport.initialize());
+    app.use(passport.session());
     // connect flash for flash messages
     app.use(flash());
+    // busboy to handle file uploading
+    app.use(busboy());
 
     app.set('appPath', path.join(config.root, 'client'));
 
