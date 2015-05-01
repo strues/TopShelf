@@ -8,16 +8,25 @@ var Article = require('./article.model'),
     User = require('../user/user.model');
 
 // Get list of articles
-exports.index = function(req, res) {
+exports.list = function(req, res) {
+  var page = +req.query.page || 1,
+    limit = +req.query.limit || 9;
+
   Article.find()
       .sort('-created')
       .populate('author', 'username')
+      .limit(limit).skip((page - 1) * limit)
         .exec(function(err, articles) {
           if (err) {
             return handleError(res, err);
           }
           return res.status(200).json(articles);
         });
+};
+
+exports.read = function(req, res) {
+  req.article.update({'$inc': {views: 1}}, {w: 1}, function() {});
+  res.jsonp(req.article);
 };
 
 // Get a single post
@@ -67,6 +76,7 @@ exports.update = function(req, res) {
     if (req.body.tags) article.tags = req.body.tags;
     if (req.body.image) article.image = req.body.image;
     if (req.body.lrgImage) article.lrgImage = req.body.lrgImage;
+    if (req.body.views) article.views = req.body.views;
 
     article.save(function(err) {
       if (err) {

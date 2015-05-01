@@ -41,6 +41,8 @@ module.exports = function(app) {
   }));
   app.use(bodyParser.json());
   app.use(methodOverride('X-HTTP-Method-Override'));
+  // Enable jsonp
+  app.enable('jsonp callback');
 
   app.use(cookieParser());
   app.use(session({

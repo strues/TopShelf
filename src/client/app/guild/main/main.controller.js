@@ -9,15 +9,16 @@
     .module('app.guild')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['Article', '$scope', '$location'];
+  MainCtrl.$inject = ['Article', '$location'];
   /* @ngInject */
-  function MainCtrl(Article, $scope, $location) {
+  function MainCtrl(Article, $location) {
     var vm = this;
     vm.articles = {};
     Article.all().success(function (data) {
-      // bind the posts that come back to vm.posts
+      // bind the articles that come back to vm.articles
       vm.articles = data;
-    }).error(function (error) {
+    })
+    .error(function (error) {
       vm.status = 'Unable to Retrieve articles cause: ' + error.message;
     });
     vm.viewMore = function (article) {

@@ -10,16 +10,14 @@
       .module('app.guild')
       .controller('ArticleDetailCtrl', ArticleDetailCtrl);
   /* @ngInject */
-  function ArticleDetailCtrl($scope, $stateParams, $http, $location) {
-    var hdetail = this;
+  function ArticleDetailCtrl(Article, $stateParams) {
+    var vm = this;
     var articleId = $stateParams.id;
     if (articleId && articleId.length > 0) {
-      $http.get('/api/v1/articles/' + articleId).success(function (article) {
-        $scope.article = article;
+
+      Article.get(articleId).success(function (article) {
+        vm.article = article;
       });
     }
-    $http.get('/api/v1/articles').success(function (data) {
-      $scope.userData = data;
-    });
   }
 }());

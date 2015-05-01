@@ -3,6 +3,7 @@
 var mongoose = require('mongoose'),
     Schema   = mongoose.Schema,
     moment   = require('moment'),
+    URLSlugs = require('mongoose-url-slugs'),
     _        = require('lodash');
 
 var ArticleSchema = new Schema({
@@ -54,11 +55,15 @@ var ArticleSchema = new Schema({
     default: 'Draft',
     enum: ['Draft', 'Published', 'Archived']
   },
-  coverImage: String,
-  uploads: [String],
-
   image: String,
-  lrgImage: String
+  lrgImage: String,
+  views: {
+    type: Number,
+    default: 1
+  }
 });
+ArticleSchema.index({user: 1});
+ArticleSchema.index({tags: 1});
+ArticleSchema.plugin(URLSlugs('title'));
 
 module.exports = mongoose.model('Article', ArticleSchema);

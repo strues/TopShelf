@@ -2,12 +2,12 @@
   'use strict';
   /**
        * @ngdoc service
-       * @name app.core.service:Article
+       * @name app.guild.service:Article
        * @desc Communicates with backend returning posts
-       * @memberOf app.core
+       * @memberOf app.guild
        */
   angular
-    .module('app.core')
+    .module('app.guild')
     .factory('Article', Article);
   /* @ngInject */
   function Article($http) {

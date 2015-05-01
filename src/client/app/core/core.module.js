@@ -7,12 +7,12 @@
  * @requires ui.router
  */
 (function () {
-    'use strict';
-    // register the route config on the application
-    angular
-        .module('app.core', [
-          'app.account',
-          'app.guild',
-          'app.admin'
-        ]);
+  'use strict';
+  // register the route config on the application
+  angular
+      .module('app.core', [
+        'app.account',
+        'app.guild',
+        'app.admin'
+      ]);
 }());

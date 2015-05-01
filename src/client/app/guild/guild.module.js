@@ -18,7 +18,7 @@
     $stateProvider
         .state('guild', {
           abstract: true,
-          templateUrl: '<ui-view></ui-view>'
+          templateUrl: '"<ui-view></ui-view>"'
         })
         .state('guild.main', {
           url: '/',

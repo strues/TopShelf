@@ -25,7 +25,7 @@ router.param('article', function(req, res, next, id) {
     if (!article) {
       return next(new Error('cant find article'));
     }
-
+    req.article.update({'$inc': {views: 1}}, {w: 1}, function() {});
     req.article = article;
     return next();
   });
@@ -33,7 +33,7 @@ router.param('article', function(req, res, next, id) {
 
 router.param('author', controller.getListByAuthor);
 
-router.get('/', controller.index);
+router.get('/', controller.list);
 router.get('/author/:author', controller.getListByAuthor);
 router.get('/:id', controller.show);
 router.post('/', isAdmin, controller.create);
