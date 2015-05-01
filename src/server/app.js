@@ -20,12 +20,12 @@ require('./config/express')(app);
 require('./routes')(app);
 
 server.listen(config.port, config.ip, function() {
-    console.log(chalk.yellow('Express is running on love',
-        config.port, app.get('env')));
+  console.log(chalk.yellow('Express is running on love',
+      config.port, app.get('env')));
 });
 
 process.on('uncaughtException', function(err) {
-    console.log(err);
+  console.log(err);
 });
 
 exports = module.exports = app;

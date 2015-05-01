@@ -14,78 +14,85 @@ var crypto = require('crypto');
 var requestContext = require('mongoose-request-context');
 var createdModifiedPlugin = require('mongoose-createdmodified')
   .createdModifiedPlugin;
-var auth = require('../../auth/auth.service');
 
 var Schema = mongoose.Schema;
 
 var UserDefinition = {
-    username: {
-        type: String
-    },
-    firstName: {
-        type: String
-    },
-    email: {
-        type: String,
-        lowercase: true,
-        trim: true,
-        match: [/.+\@.+\..+/, 'Please fill a valid email address']
-    },
-    articles: {
-        type: Schema.Types.ObjectId,
-        ref: 'Post'
-    },
-    application: {
-        type: Schema.Types.ObjectId,
-        ref: 'Application'
-    },
-    characters: {
-        type: Schema.Types.ObjectId,
-        ref: 'Character'
-    },
-    twitch: {
-        type: String
-    },
-    battletag:{
-        type: String
-    },
-    hashedPassword:{
-        type: String
-    },
-    salt: {
-        type: String
-    },
-    provider: {
-        type: String,
-        required: 'Provider is required'
-    },
-    providerData: {},
-    additionalProvidersData: {},
-    roles: {
-        type: [{
-            type: String,
-            enum: ['user', 'admin']
-        }],
-        default: ['user']
-    },
-    role:{
-        type: String,
-        default: ''
-    },
-    updated: {
-        type: Date
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    /* For reset password */
-    resetPasswordToken: {
-        type: String
-    },
-    resetPasswordExpires: {
-        type: Date
-    }
+  username: {
+    type: String,
+    trim: true,
+    default: ''
+  },
+  firstName: {
+    type: String,
+    trim: true,
+    default: ''
+  },
+  email: {
+    type: String,
+    lowercase: true,
+    trim: true,
+    match: [/.+\@.+\..+/, 'Please fill a valid email address']
+  },
+  articles: {
+    type: Schema.Types.ObjectId,
+    ref: 'Article'
+  },
+  application: {
+    type: Schema.Types.ObjectId,
+    ref: 'Application'
+  },
+  characters: {
+    type: Schema.Types.ObjectId,
+    ref: 'Character'
+  },
+  twitch: {
+    type: String,
+    trim: true,
+    default: ''
+  },
+  battletag:{
+    type: String,
+    trim: true,
+    default: ''
+  },
+  hashedPassword:{
+    type: String
+  },
+  salt: {
+    type: String
+  },
+  provider: {
+    type: String,
+    required: 'Provider is required'
+  },
+  providerData: {},
+  additionalProvidersData: {},
+  roles: {
+    type: [{
+      type: String,
+      enum: ['user', 'admin']
+    }],
+    default: ['user']
+  },
+  role:{
+    type: String,
+    default: ''
+  },
+  updated: {
+    type: Date
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  /* For reset password */
+  resetPasswordToken: {
+    type: String
+  },
+  resetPasswordExpires: {
+    type: Date
+  }
 };
 
 /**
@@ -141,8 +148,8 @@ UserSchema
  * Attach pre hook plugins
  */
 UserSchema.plugin(requestContext, {
-    propertyName: 'modifiedBy',
-    contextPath: 'request:acl.user.name'
+  propertyName: 'modifiedBy',
+  contextPath: 'request:acl.user.name'
 });
 /**
  * Authenticate - check if the password is correct
@@ -152,7 +159,7 @@ UserSchema.plugin(requestContext, {
  * @api public
  */
 UserSchema.methods.authenticate = function authenticate(plainText) {
-    return this.encryptPassword(plainText) === this.hashedPassword;
+  return this.encryptPassword(plainText) === this.hashedPassword;
 };
 
 /**
@@ -162,7 +169,7 @@ UserSchema.methods.authenticate = function authenticate(plainText) {
  * @api public
  */
 UserSchema.methods.makeSalt = function makeSalt() {
-    return crypto.randomBytes(16).toString('base64');
+  return crypto.randomBytes(16).toString('base64');
 };
 
 /**
@@ -173,12 +180,12 @@ UserSchema.methods.makeSalt = function makeSalt() {
  * @api public
  */
 UserSchema.methods.encryptPassword = function encryptPassword(password) {
-    if (!password || !this.salt) {
-        return '';
-    }
+  if (!password || !this.salt) {
+    return '';
+  }
 
-    var salt = new Buffer(this.salt, 'base64');
-    return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+  var salt = new Buffer(this.salt, 'base64');
+  return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
 };
 
 /**
@@ -193,10 +200,10 @@ UserSchema.plugin(createdModifiedPlugin);
  * @param {String} password - The user password to set
  */
 function setPassword(password) {
-    // jshint validthis: true
-    this._password = password;
-    this.salt = this.makeSalt();
-    this.hashedPassword = this.encryptPassword(password);
+  // jshint validthis: true
+  this._password = password;
+  this.salt = this.makeSalt();
+  this.hashedPassword = this.encryptPassword(password);
 }
 
 /**
@@ -206,39 +213,41 @@ function setPassword(password) {
  * @returns {String|*} The value of the virtual password property
  */
 function getPassword() {
-    // jshint validthis: true
-    return this._password;
+  // jshint validthis: true
+  return this._password;
 }
 
 /**
  * Return the value of the virtual profile property
  *
  * @api private
- * @returns {{_id: *, name: *, prename: *, surname: *, email: *, active: *, role: *, info: *}}
+ * @returns {{_id: *, username: *, firstName: *, role: *, battletag: *, twitch: *, info: *}}
  */
 function getProfile() {
-    // jshint validthis: true
-    return {
-        '_id': this._id,
-        'username': this.username,
-        'role': this.role,
-        'battletag': this.battletag,
-        'twitch': this.twitch,
-        'info': this.info
-    };
+  // jshint validthis: true
+  return {
+    '_id': this._id,
+    'username': this.username,
+    'firstName': this.firstName,
+    'role': this.role,
+    'battletag': this.battletag,
+    'twitch': this.twitch,
+    'info': this.info
+  };
 }
 /**
  * Return the value of the virtual token property
  *
  * @api private
- * @returns {{_id: *, role: *}}
+ * @returns {{_id: *, username: *, role: *}}
  */
 function getToken() {
-    // jshint validthis: true
-    return {
-        '_id': this._id,
-        'role': this.role
-    };
+  // jshint validthis: true
+  return {
+    '_id': this._id,
+    'username': this.username,
+    'role': this.role
+  };
 }
 /**
  * Check if the hashed password is specified.
@@ -248,7 +257,7 @@ function getToken() {
  * @returns {Boolean} True if the hashed password has a length
  */
 function validateHashedPassword(hashedPassword) {
-    return hashedPassword.length;
+  return hashedPassword.length;
 }
 
 /**
@@ -259,7 +268,7 @@ function validateHashedPassword(hashedPassword) {
  * @returns {Boolean} True if a value with a truthy length property is given
  */
 function validatePresenceOf(value) {
-    return value && value.length;
+  return value && value.length;
 }
 
 /**
@@ -270,22 +279,22 @@ function validatePresenceOf(value) {
  * @param {Function} respond - The callback function
  */
 function validateUniqueEmail(value, respond) {
-    // jshint validthis: true
-    var self = this;
+  // jshint validthis: true
+  var self = this;
 
-    // check for uniqueness of user email
-    this.constructor.findOne({email: value}, function (err, user) {
-        if (err) {
-            throw err;
-        }
+  // check for uniqueness of user email
+  this.constructor.findOne({email: value}, function (err, user) {
+    if (err) {
+      throw err;
+    }
 
-        if (user) {
-            // the searched email is my email or a duplicate
-            return respond(self.id === user.id);
-        }
+    if (user) {
+      // the searched email is my email or a duplicate
+      return respond(self.id === user.id);
+    }
 
-        respond(true);
-    });
+    respond(true);
+  });
 }
 
 /**
@@ -294,24 +303,24 @@ function validateUniqueEmail(value, respond) {
  * @api private
  */
 function findUniqueUsername(username, suffix, callback) {
-    // jshint validthis: true
-    var self = this;
-    var possibleUsername = username + (suffix || '');
+  // jshint validthis: true
+  var self = this;
+  var possibleUsername = username + (suffix || '');
 
-    this.findOne({
-        username: possibleUsername
-    }, function(err, user) {
-        if (!err) {
-            if (!user) {
-                callback(possibleUsername);
-            } else {
-                return this.findUniqueUsername(username,
-                  (suffix || 0) + 1, callback);
-            }
-        } else {
-            callback(null);
-        }
-    });
+  this.findOne({
+    username: possibleUsername
+  }, function(err, user) {
+    if (!err) {
+      if (!user) {
+        callback(possibleUsername);
+      } else {
+        return this.findUniqueUsername(username,
+          (suffix || 0) + 1, callback);
+      }
+    } else {
+      callback(null);
+    }
+  });
 }
 
 /**
@@ -324,33 +333,33 @@ function findUniqueUsername(username, suffix, callback) {
  * @returns {*} If an error occurs the passed callback with an Error as its argument is called
  */
 function preSave(next) {
-    // jshint validthis: true
-    var self = this;
+  // jshint validthis: true
+  var self = this;
 
-    if (this.isNew && !validatePresenceOf(this.hashedPassword)) {
-        return next(new MongooseError.ValidationError('Missing password'));
-    }
+  if (this.isNew && !validatePresenceOf(this.hashedPassword)) {
+    return next(new MongooseError.ValidationError('Missing password'));
+  }
 }
 
 module.exports = {
 
-    /**
-     * The User model definition object
-     * @type {Object}
-     * @see user:UserModel~UserDefinition
-     */
-    definition: UserDefinition,
+  /**
+   * The User model definition object
+   * @type {Object}
+   * @see user:UserModel~UserDefinition
+   */
+  definition: UserDefinition,
 
-    /**
-     * The User model schema
-     * @type {Schema}
-     * @see user:model~UserSchema
-     */
-    schema: UserSchema,
+  /**
+   * The User model schema
+   * @type {Schema}
+   * @see user:model~UserSchema
+   */
+  schema: UserSchema,
 
-    /**
-     *  The registered mongoose model instance of the User model
-     *  @type {User}
-     */
-    model: mongoose.model('User', UserSchema)
+  /**
+   *  The registered mongoose model instance of the User model
+   *  @type {User}
+   */
+  model: mongoose.model('User', UserSchema)
 };

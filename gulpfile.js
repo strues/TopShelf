@@ -289,17 +289,17 @@ gulp.task('optimize', ['inject'], function() {
         .pipe(assets) // Gather all assets from the html with useref
         // Get the css
         .pipe(cssFilter)
-        .pipe(minifyCSS())
+        .pipe($.csso())
         .pipe($.size({showFiles: true}))
         .pipe(cssFilter.restore())
         // Get the custom javascript
         .pipe(jsAppFilter)
-        .pipe($.sourcemaps.init({debug: true, loadMaps: true}))
+        //.pipe($.sourcemaps.init({debug: true, loadMaps: true}))
         .pipe($.ngAnnotate({add: true}))
         .pipe($.uglify())
         .pipe(getHeader())
         .pipe($.size({showFiles: true}))
-        .pipe($.sourcemaps.write())
+        //.pipe($.sourcemaps.write())
         .pipe(jsAppFilter.restore())
         // Get the vendor javascript
         .pipe(jslibFilter)

@@ -24,62 +24,62 @@ var express        = require('express'),
     flash          = require('connect-flash');
 
 module.exports = function(app) {
-    var env = app.get('env');
+  var env = app.get('env');
+  // Showing stack errors
+  app.set('showStackError', true);
 
-    // Should be placed before express.static
-    app.use(compression({
-        // only compress files for the following content types
-        filter: function(req, res) {
-            return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
-        },
-        // zlib option for compression level
-        level: 3
-    }));
+  app.set('views', config.root + '/server/views');
+  app.engine('html', require('ejs').renderFile);
+  app.set('view engine', 'html');
 
-    // Showing stack errors
-    app.set('showStackError', true);
+  // Enable logger (morgan)
+  app.use(morgan(logger.getLogFormat(), logger.getLogOptions()));
 
-    app.set('views', config.root + '/server/views');
-    app.engine('html', require('ejs').renderFile);
-    app.set('view engine', 'html');
+  // Request body parsing middleware should be above methodOverride
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+  app.use(bodyParser.json());
+  app.use(methodOverride('X-HTTP-Method-Override'));
 
-    // Enable logger (morgan)
-    app.use(morgan(logger.getLogFormat(), logger.getLogOptions()));
+  app.use(cookieParser());
+  app.use(session({
+    secret: config.secrets.session,
+    resave: true,
+    saveUninitialized: true,
+    store: new mongoStore({mongooseConnection: mongoose.connection})
+  }));
 
-    // Request body parsing middleware should be above methodOverride
-    app.use(bodyParser.urlencoded({
-        extended: true
-    }));
-    app.use(bodyParser.json());
-    app.use(methodOverride('X-HTTP-Method-Override'));
+  // use passport session
+  app.use(passport.initialize());
+  app.use(passport.session());
+  // connect flash for flash messages
+  app.use(flash());
+  // busboy to handle file uploading
+  app.use(busboy());
 
-    app.use(cookieParser());
-    app.use(session({
-        secret: config.secrets.session,
-        resave: true,
-        saveUninitialized: true,
-        store: new mongoStore({mongooseConnection: mongoose.connection})
-    }));
+  app.set('appPath', path.join(config.root, 'client'));
+  // Should be placed before express.static
+  app.use(compression({
+    // only compress files for the following content types
+    filter: function(req, res) {
+      return (/json|text|javascript|css/)
+      .test(res.getHeader('Content-Type'));
+    },
+    // zlib option for compression level
+    level: 3
+  }));
 
-    // use passport session
-    app.use(passport.initialize());
-    app.use(passport.session());
-    // connect flash for flash messages
-    app.use(flash());
-    // busboy to handle file uploading
-    app.use(busboy());
+  if ('production' === env) {
+    app.use(favicon(path.join(config.root, 'client',
+      'assets/favicon.ico')));
+    app.use(express.static(app.get('appPath')));
+  }
 
-    app.set('appPath', path.join(config.root, 'client'));
-
-    if ('production' === env) {
-        app.use(favicon(path.join(config.root, 'client', 'assets/favicon.ico')));
-        app.use(express.static(app.get('appPath')));
-    }
-
-    if ('development' === env || 'test' === env) {
-        app.use(express.static('./src/client/'));
-        app.use(express.static('./'));
-        app.use(express.static('./tmp'));
-        app.use(errorHandler()); // Error handler - has to be last
-    }
+  if ('development' === env || 'test' === env) {
+    app.use(express.static('./src/client/'));
+    app.use(express.static('./'));
+    app.use(express.static('./tmp'));
+    app.use(errorHandler()); // Error handler - has to be last
+  }
 };

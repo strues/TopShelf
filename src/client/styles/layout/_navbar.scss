@@ -93,9 +93,11 @@ input.search-form:hover {
 .navbar {
   border-radius: 0;
   margin-bottom: 0;
+  padding-left: 0px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   background: $drk-grey;
-  padding: 15px 0;
-  padding-bottom: 0;
 }
 
  .navbar-nav{

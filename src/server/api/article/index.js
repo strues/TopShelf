@@ -1,12 +1,12 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./post.controller');
+var controller = require('./article.controller');
 var auth = require('../../auth/auth.service');
-var Post = require('./post.model');
+var Article = require('./article.model');
 var router = express.Router();
 
-// Export the configured express router for the post api routes
+// Export the configured express router for the article api routes
 module.exports = router;
 
 // check if the used is authenticated at all
@@ -15,20 +15,20 @@ var isAuthenticated = auth.isAuthenticated();
 // check if the authenticated user has at least the 'admin' role
 var isAdmin = auth.hasRole('admin');
 
-router.param('post', function(req, res, next, id) {
-    var query = Post.findById(id);
+router.param('article', function(req, res, next, id) {
+  var query = Article.findById(id);
 
-    query.exec(function (err, post) {
-        if (err) {
-            return next(err);
-        }
-        if (!post) {
-            return next(new Error('cant find post'));
-        }
+  query.exec(function (err, article) {
+    if (err) {
+      return next(err);
+    }
+    if (!article) {
+      return next(new Error('cant find article'));
+    }
 
-        req.post = post;
-        return next();
-    });
+    req.article = article;
+    return next();
+  });
 });
 
 router.param('author', controller.getListByAuthor);
