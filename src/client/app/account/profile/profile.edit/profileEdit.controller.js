@@ -7,7 +7,7 @@
     /*jshint validthis: true */
     var vm = this;
     vm.title = 'ProfileEditController';
-    vm.Auth = Auth;
+    vm.currentUser = Auth.getCurrentUser();
     vm.errors = {};
     $scope.formData = {};
     vm.changePassword = function () {

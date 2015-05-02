@@ -3,11 +3,11 @@
 		<nav class="menu">
   			<div class="smartphone-menu-trigger"></div>
   			<header class="avatar">
-			    <a ui-sref="home"><img src="/assets/images/crown.png" />
-			    <h2 style="color: #fff;">{{Auth.getCurrentUser().name}}</h2></a>
+			    <a ui-sref="guild.main"><img src="/assets/images/crown.png" />
+			    <h2 style="color: #fff;">{{Auth.getCurrentUser().username}}</h2></a>
   			</header>
 		  <ul>
-		    <li class="mdi-action-home"><a ui-sref="home"> Home</a></li>
+		    <li class="mdi-action-home"><a ui-sref="guild.main"> Home</a></li>
 		    <li class="mdi-action-dashboard"><a ui-sref="admin"> Dashboard</a></li>
 		    <li class="mdi-editor-insert-drive-file"><a ui-sref="admin.news"> News</a></li>
 		    <li class="mdi-image-slideshow"><a ui-sref="admin.carousel"> Carousel</a></li>
