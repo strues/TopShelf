@@ -16,7 +16,8 @@
   function config($stateProvider) {
     $stateProvider.state('account', {
       abstract: true,
-      url: '/account'
+      url: '/account',
+      template: '"<ui-view></ui-view>"'
     })
     .state('account.login', {
       url: '/login',

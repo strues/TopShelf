@@ -29,10 +29,10 @@ module.exports = function(app) {
   app.use('/auth', require('./auth'));
   app.use('/api/characters', require('./api/character'));
   app.use('/api/files', require('./api/file'));
-  app.use('/api/guild', require('./api/guild'));
   app.use('/api/progression', require('./api/progression'));
   app.use('/api/resources', require('./api/resource'));
   app.use('/api/recruitment', require('./api/recruitment'));
+  app.use('/api/roster', require('./api/roster'));
   app.use('/api/slides', require('./api/slide'));
   app.use('/api/users', require('./api/user'));
   //app.use('/api/tags', require('./api/tag'));

@@ -14,12 +14,12 @@ var Recruitment = require('./recruitment.model');
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
 exports.all = function(req, res) {
-  Recruitment.find()
+    Recruitment.find()
         .exec(function(err, recruitments) {
-          if (err) {
-            return handleError(res, err);
-          }
-          return res.status(200).json(recruitments);
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.status(200).json(recruitments);
         });
 };
 
@@ -36,15 +36,15 @@ exports.all = function(req, res) {
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
 exports.show = function(req, res) {
-  Recruitment.findById(req.params.id, function(err, recruitment) {
-    if (err) {
-      return handleError(res, err);
-    }
-    if (!recruitment) {
-      return res.sendStatus(404);
-    }
-    return res.json(recruitment);
-  });
+    Recruitment.findById(req.params.id, function(err, recruitment) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!recruitment) {
+            return res.sendStatus(404);
+        }
+        return res.json(recruitment);
+    });
 };
 
 /**
@@ -60,12 +60,12 @@ exports.show = function(req, res) {
  * @apiParam {String} status Whether or not recruitment is necessary.
  */
 exports.create = function(req, res) {
-  Recruitment.create(req.body, function(err, recruitment) {
-    if (err) {
-      return handleError(res, err);
-    }
-    return res.status(201).json(recruitment);
-  });
+    Recruitment.create(req.body, function(err, recruitment) {
+        if (err) {
+            return handleError(res, err);
+        }
+        return res.status(201).json(recruitment);
+    });
 };
 
 /**
@@ -79,22 +79,22 @@ exports.create = function(req, res) {
  *     HTTP/1.1 204 OK
  */
 exports.destroy = function(req, res) {
-  Recruitment.findById(req.params.id, function(err, recruitment) {
-    if (err) {
-      return handleError(res, err);
-    }
-    if (!recruitment) {
-      return res.sendStatus(404);
-    }
-    recruitment.remove(function(err) {
-      if (err) {
-        return handleError(res, err);
-      }
-      return res.sendStatus(204);
+    Recruitment.findById(req.params.id, function(err, recruitment) {
+        if (err) {
+            return handleError(res, err);
+        }
+        if (!recruitment) {
+            return res.sendStatus(404);
+        }
+        recruitment.remove(function(err) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.sendStatus(204);
+        });
     });
-  });
 };
 
 function handleError(res, err) {
-  return res.status(500).json(err);
+    return res.status(500).json(err);
 }

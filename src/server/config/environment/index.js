@@ -75,7 +75,7 @@ var all = {
   bnet: {
     clientID:     process.env.BNET_ID || 'urtsw3rtx2p5x4hy48efamnw39x8s7qw',
     clientSecret: process.env.BNET_SECRET || 'uk8AAtvP5ZsMM5tSdSn3kJ8YHxYWypw3',
-    callbackURL: 'https://localhost:8443/auth/bnet/callback'
+    callbackURL:  (process.env.DOMAIN || '') + '/auth/bnet/callback'
   },
   twitter: {
     clientID:     process.env.TWITTER_ID || 'id',
