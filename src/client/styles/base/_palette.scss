@@ -1,42 +1,55 @@
-$tsblue: #3399cc;
-$porcelain: rgb(236, 240, 241);
-$md-gray: rgba(59, 62, 64, .52);
-$med-gray: rgba(59, 62, 64, .52);
-$dark-gray: rgb(20, 21, 23);
-$darker-gray: rgb(21, 21, 21);
-$gray-text: #333;
-$yellow: #ffeb3b;
-$amber: #ffca28;
+// material icons path
+$material-font-path: "../assets/fonts" !default;
+
+$guild-main: #3399cc;
+$guild-blue: #3399cc;
+
+// Greys
 $_color-base-grey: rgba(144, 164, 174, 1);
-// Material colors palette
-$red: #F44336 !default;
-$pink: #E91E63 !default;
-$purple: #9C27B0 !default;
-$deeppurple: #673AB7 !default;
+$grey: $_color-base-grey;
+$lt-grey: rgb(236, 240, 241);
+$md-grey: rgba(59, 62, 64, .52);
+$drk-grey: #0A1F29;
+$drkr-grey: rgb(21, 21, 21);
+$gray-text: #333;
+// Blues
+$bluegrey: #607D8B !default;
 $indigo: #3F51B5 !default;
 $lightblue: #03A9F4 !default;
 $cyan: #00BCD4 !default;
+// Red
+$red: #F44336 !default;
+$pink: #E91E63 !default;
+// Purple
+$purple: #9C27B0 !default;
+$deeppurple: #673AB7 !default;
+// Greens
 $teal: #009688 !default;
 $lightgreen: #8BC34A !default;
 $lime: #CDDC39 !default;
+// Yellows
 $lightyellow: #FFEB3B !default;
+$yellow: #ffeb3b;
+$amber: #ffca28;
+// Orange
 $orange: #FF9800 !default;
 $deeporange: #FF5722 !default;
-$grey: #9E9E9E !default;
-$bluegrey: #607D8B !default;
 $brown: #795548 !default;
-$lightgrey: #ECECEC !default;
+
+
 // Bootstrap variables
 $btn-default: #FFF;
-$primary: #4285F4 !default;
+$primary: $guild-main !default;
 $success: #0F9D58 !default;
 $info: $lightblue !default;
-$warning: $deeporange !default;
+$warning: $amber !default;
 $danger: $red !default;
 $lightbg-text: rgba(0,0,0,0.84);
 $btn-default-text: $lightbg-text;
-// Typography elements for Material
 $darkbg-text: rgba(255,255,255,0.84);
+$lightbg-text: rgba(0,0,0,0.84);
+$icon-color: rgba(0,0,0,0.5);
+
 $btn-primary: $primary;
 $btn-primary-text: $darkbg-text;
 

@@ -3,7 +3,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-Hello, {{ editProf.Auth.getCurrentUser().name }}</div>
+Hello, {{ editProf.currentUser.username }}</div>
     <div class="panel-body">
       <legend class="legendHeader"><i class="ion-clipboard"></i> Edit Your Profile</legend>
       <form class="form" name="form" ng-submit="editProf.changePassword()" novalidate>

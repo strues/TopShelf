@@ -1,59 +1,26 @@
 html body {
   min-height: 100%;
-  background-image: url(../../assets/images/bg.jpg);
+  //background-image: url(../../assets/images/bg.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Raleway", "Arial Black" sans-serif;
-}
-
-.blue-text {
-    color: $tsblue;
-}
-
-.inverse-text {
-    color: $dark-gray;
-}
-
-.sm-caps {
-    font-variant: small-caps;
-}
-
 .page-content {
-  background-color: $porcelain;
   padding: 15px;
-}
-.page-content--home {
-  //background-color: $porcelain;
-  margin-top: 70px;
-  padding: 15px;
-  border-radius: 3px 3px 3px 3px;
+  background-color: $lt-grey;
 }
 
 .blue-area {
-  background-color: $tsblue;
+  background-color: $guild-main;
   padding: 15px;
 }
 
-.text-light {
-    color: #eaeaea;
-}
-
-.white-text {
-    color: #fff;
-}
 #aside {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 article {
     position: relative;
     margin-bottom: 30px;
@@ -67,15 +34,59 @@ hr {
     background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0, .75), rgba(0,0,0,0));
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0, .75), rgba(0,0,0,0));
 }
+
 .aside-backdrop {
-  opacity: 0.1;
+  opacity: .1;
 }
+
 .row.no-gutters > [class^="col-"],
 .row.no-gutters > [class*=" col-"] {
   padding-right: 0;
   padding-left: 0;
 }
 
-.nav-padding {
-  padding-top: 80px;
+/*******************
+  Utility Classes
+*******************/
+
+.hide {
+  display: none !important;
+}
+
+.left {
+  float: left !important;
+}
+.right {
+  float: right !important;
+}
+
+// No Text Select
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// Circle
+.circle {
+  border-radius: 50%;
+}
+
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.no-padding {
+  padding: 0px !important;
 }

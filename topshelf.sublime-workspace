@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"html",
+				"htmltemplates"
+			],
+			[
 				"local",
 				"localStorage"
 			],
@@ -67,6 +71,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/config/karma.js",
+			"settings":
+			{
+				"buffer_size": 742,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -75,7 +87,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 152.0,
+		"height": 225.0,
 		"last_filter": "jscs",
 		"selected_items":
 		[
@@ -84,11 +96,31 @@
 				"JSCS Formatter: Format this file"
 			],
 			[
+				"comm",
+				"Toggle Comment"
+			],
+			[
+				"them",
+				"Themr: List themes"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
 				"jsb",
 				"Javascript Beautify"
 			],
 			[
-				"install",
+				"comme",
+				"Toggle Comment"
+			],
+			[
+				"ngdoc",
+				"Snippet: $ngdoc - @name"
+			],
+			[
+				"insta",
 				"Package Control: Install Package"
 			],
 			[
@@ -108,10 +140,6 @@
 				"HTMLBeautify"
 			],
 			[
-				"comm",
-				"Toggle Comment"
-			],
-			[
 				"nginx",
 				"Set Syntax: nginx"
 			],
@@ -122,10 +150,6 @@
 			[
 				"pack",
 				"Package Control: Remove Package"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"csso",
@@ -196,10 +220,6 @@
 				"Toggle Block Comment"
 			],
 			[
-				"comme",
-				"Toggle Comment"
-			],
-			[
 				"sort",
 				"StyleSorter: Sort Stylesheet"
 			],
@@ -264,7 +284,7 @@
 				"Snippet: gulp.task('name',funciton)"
 			]
 		],
-		"width": 569.0
+		"width": 651.0
 	},
 	"console":
 	{
@@ -285,187 +305,152 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/steven/Webdev/TopShelf/Develop",
 		"/Users/steven/Webdev/TopShelf/Develop/src",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account-services",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/login",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/profile",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/profile/profile.edit",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps/app.details",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-carousel",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-dashboard",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-media",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.create",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.edit",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-progression",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-progression/progression.edit",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-recruitment",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources/resource.create",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources/resource.edit",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-users",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-users/user.details",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/services",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.details",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/footer",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/mongoose",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/progressionWidget",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/recruitmentWidget",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/filters",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-apply",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-info",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-roster",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/post-detail",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/config"
 	],
 	"file_history":
 	[
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account.module.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps/adminApps.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.details/details.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home/carousel.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/footer/footer.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/progressionWidget/progressionWidget.directive.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/recruitmentWidget/recruitmentWidget.directive.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-info/info.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account-services/user.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/login/login.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account-services/auth.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services/twitch.service.js",
+		"/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/index.js",
+		"/Users/steven/Webdev/TopShelf/guild-audit/routes/mongoose.js",
+		"/Users/steven/Webdev/TopShelf/guild-audit/routes/index.js",
+		"/Users/steven/Webdev/TopShelf/guild-audit/bin/www",
+		"/Users/steven/Webdev/TopShelf/guild-audit/app.js",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#0/index.html",
+		"/Users/steven/Webdev/TopShelf/guild-audit/views/index.jade",
+		"/Users/steven/Webdev/sandbox-api/src/post/post.controller.js",
+		"/Users/steven/Webdev/sandbox-api/src/utils/model-utils.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/post.controller.js",
+		"/Users/steven/Webdev/TopShelf/app/server/api/article/index.js",
+		"/Users/steven/Webdev/TopShelf/app/server/routes.js",
+		"/Users/steven/Webdev/TopShelf/app/server/lib/auth/auth.service.js",
+		"/Users/steven/Webdev/TopShelf/app/server/api/article/article.params.js",
+		"/Users/steven/Webdev/TopShelf/app/server/api/user/user.model.js",
+		"/Users/steven/Webdev/sandbox-api/src/user/user.model.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/test/utils/helpers.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/test/utils",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services/recruitment.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-streams/streams.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/services/resource.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps/app.details/appDetails.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-users/adminUsers.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/profile/profile.edit/profileEdit.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-recruitment/adminRecruitment.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-progression/adminProgression.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/adminDatePicker.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild.module.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-dashboard/dashboardProgression.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-carousel/adminCarousel.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services/progression.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services/armory.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulpfile.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-apply/application.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin.states.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-media/adminMedia.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-dashboard/adminDashboard.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core.module.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/app.module.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/index.html",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/logger.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core.config.js",
-		"/Users/steven/Webdev/TopShelf/Develop/.jshintrc",
-		"/Users/steven/Webdev/TopShelf/Develop/package.json",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp.config.js",
-		"/Users/steven/.zshrc",
-		"/Users/steven/.aliases",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/authInterceptor.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/lodash.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/socket.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-users/user.details/userDetails.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin.module.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources/adminResource.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources/resource.edit/resourceEdit.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-resources/resource.create/resourceCreate.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-recruitment/recruitmentList.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/adminNews.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.edit/newsEdit.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-news/news.create/newsCreate.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin-apps/app.details/appDetails.tpl.html",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup/signup.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/profile/profile.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-roster/roster.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services/application.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services/character.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.directive.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/mongoose/mongoose-error.directive.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/footer/footer.directive.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/io.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core-home/home.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/post.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/slide.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/karma.conf.js",
-		"/Users/steven/Webdev/gulp.config.js",
-		"/Users/steven/Webdev/gulpfile.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/test.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/serve.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/styles.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/vet.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/template-cache.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/plato.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/optimize.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/inject.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/clean.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulp-tasks/assets.js",
-		"/Users/steven/Webdev/TopShelf/gulp.config.js",
-		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/codeivate-st.sublime-settings",
-		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/Users/steven/Downloads/b88eeed2bfafec0040b668ca7f20e5aa608d0418.png",
-		"/Users/steven/Webdev/material/gulp/tasks/dev.js",
-		"/Users/steven/Webdev/material/gulp/config.js",
-		"/Users/steven/Webdev/material/gulp/tasks/tests.js",
-		"/Users/steven/Webdev/material/gulp/tasks/build.js",
-		"/Users/steven/Webdev/material/package.json",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-roster/roster.tpl.html",
-		"/Users/steven/Webdev/material/client/app/admin/admin.js",
-		"/Users/steven/Webdev/material/client/app/admin/user/user.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-info/info.controller.spec.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/filters/startFrom.filter.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/filters/rankName.filter.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/filters/className.filter.js",
-		"/Users/steven/Webdev/material/server/config/index.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup/signup.tpl.html",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/login/login.tpl.html",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account.states.js",
-		"/Users/steven/Webdev/material/server/config/socketio.js",
-		"/Users/steven/Webdev/material/client/app/components/auth/auth.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/socketio.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/app.js",
-		"/Users/steven/Webdev/material/client/app/app.controller.js",
-		"/Users/steven/Webdev/material/client/app/admin/user/list/list.controller.js",
-		"/Users/steven/Webdev/material/client/app/admin/user/list/list.js",
-		"/Users/steven/Webdev/material/client/app/admin/user/user.controller.js",
-		"/Users/steven/Webdev/material/client/app/components/auth/user.service.js",
-		"/Users/steven/Webdev/material/client/app/components/socket/socket.mock.js",
-		"/Users/steven/Webdev/material/client/app/components/socket/socket.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/express.js",
-		"/Users/steven/Webdev/material/client/app/components/lodash/lodash.service.js",
-		"/Users/steven/Webdev/material/client/app/components/io/io.service.js",
-		"/Users/steven/Webdev/material/server/app.js",
-		"/Users/steven/Webdev/material/client/app/components/resource/resource.service.js",
-		"/Users/steven/Webdev/material/client/app/app.js",
-		"/Users/steven/Webdev/material/client/app/components/auth/authinterceptor.service.js",
-		"/Users/steven/Webdev/material/bower.json",
-		"/Users/steven/Webdev/material/server/api/user/index.js",
-		"/Users/steven/Webdev/material/server/api/user/user.controller.js",
-		"/Users/steven/Webdev/material/server/lib/auth/auth.service.js",
-		"/Users/steven/Webdev/material/server/lib/middleware/index.js",
-		"/Users/steven/Webdev/material/server/routes.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.socket.js",
-		"/Users/steven/Webdev/material/server/api/user/user.socket.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/post-detail/post-detail.tpl.html",
+		"/Users/steven/Webdev/mean-rsvp/app/api.js",
+		"/Users/steven/Webdev/mean-rsvp/app/config.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/main.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup/signup.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.model.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/post.model.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.controller.js"
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/app.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/logger.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/express.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/passport.js",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/Alignment/Default (OSX).sublime-keymap",
+		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/tag/tag.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/routes.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/tag/index.js",
+		"/Users/steven/Webdev/tournament/auth.js",
+		"/Users/steven/Webdev/tournament/server.js",
+		"/Users/steven/Webdev/tournament/main.js",
+		"/Users/steven/Webdev/tournament/webpack.config.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/tag/tag.model.js",
+		"/Users/steven/Webdev/TopShelf/Develop/.jscsrc",
+		"/Users/steven/Webdev/sandbox-api/src/nodes/error.js",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#5/topshelfguild.conf",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/footer/footer.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/footer/footer.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/streams/streams.controller.js",
+		"/Users/steven/Webdev/sandbox-api/src/config/express.js",
+		"/Users/steven/Webdev/sandbox-api/src/category/category.routes.js",
+		"/Users/steven/Webdev/node.js-blog-engine/server.js",
+		"/Users/steven/Webdev/node.js-blog-engine/config/mongoose.js",
+		"/Users/steven/Webdev/node.js-blog-engine/config/express.js",
+		"/Users/steven/Webdev/node.js-blog-engine/package.json",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/services/twitch.service.js",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#7/nginx.conf",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#6/topshelfguild.conf",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#4/topshelf-ssl.crt",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#2/nginx.conf",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#3/pagespeed.conf",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/index.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_module.scss",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#1/topshelfguild.conf",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#0/nginx.conf",
+		"/Users/steven/Webdev/TopShelf/Develop/bower.json",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/app.module.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/main.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/components/_widgets.scss",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/spinner.directive.js",
+		"/Users/steven/Webdev/AngularJS-Boilerplate/gulpfile.js",
+		"/Users/steven/Webdev/TopShelf/Develop/gulpfile.js",
+		"/Users/steven/Webdev/TopShelf/Develop/build/styles/lib-16ae6c6c.css",
+		"/Users/steven/Webdev/AngularJS-Boilerplate/index.html",
+		"/Users/steven/Webdev/AngularJS-Boilerplate/_build/index.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_typography.scss",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_global.scss",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/progressionWidget/progressionWidget.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/carousel.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild.module.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/components/_toolbar.scss",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_palette.scss",
+		"/Users/steven/Downloads/angular-materialize-master/src/angular-materialize.js",
+		"/Users/steven/Downloads/angular-materialize-master/index.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/layout/layout.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/core.module.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/post-detail/details.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/local/passport.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/auth.service.js",
+		"/Users/steven/Webdev/material/server/api/user/user.model.js",
+		"/Users/steven/Webdev/material/server/app.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/index.js",
+		"/Users/steven/Webdev/material/server/api/user/user.controller.js",
+		"/Users/steven/Webdev/material/server/routes.js",
+		"/Users/steven/Webdev/material/server/api/user/index.js",
+		"/Users/steven/Webdev/material/server/api/user/user.socket.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/roster/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/progression/progression.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/progression/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/roles.js",
+		"/Users/steven/Webdev/material/bin/server.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/application/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/character/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/file/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/recruitment/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/resource/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/components/controllers/param.controller.spec.js",
+		"/Users/steven/Webdev/material/server/lib/auth/roles.js",
+		"/Users/steven/Webdev/material/client/app/articles/create/create.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/components/middleware.js",
+		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/library/Dark/TaigaChat/Model/TaigaChat.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#6/Global.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#7/TaigaChat.php",
+		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/library/Dark/TaigaChat/DataWriter/User.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#8/TemplateHook.php",
+		"/Users/steven/Downloads/HashTagging v1.1.4/addon-PHCTags.xml",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#1/User.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#2/Message.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#3/Post.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#4/JsonInternal.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#5/Post.php",
+		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/js/dark/taigachat.js",
+		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/library/Dark/TaigaChat/ControllerPublic/TaigaChat.php",
+		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/addon-TaigaChat.xml"
 	],
 	"find":
 	{
@@ -476,6 +461,8 @@
 		"height": 100.0,
 		"where_history":
 		[
+			"<current file>",
+			"<current file>,<open folders>",
 			"<current file>",
 			"",
 			"/Users/steventruesdell/Webdev/topshelf/web/",
@@ -492,6 +479,15 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\"",
+			"fonts.gstatic.com/s/robotocondensed",
+			"serve-b",
+			"$material-font-path",
+			"VXN",
+			"bot",
+			"nul",
+			"240, 24",
+			"F0F1F1",
 			"opti",
 			"styles",
 			"brows",
@@ -610,16 +606,7 @@
 			"NAv",
 			"Nav",
 			"editor",
-			"name",
-			"label",
-			"postsFactory",
-			"parties",
-			"party",
-			"view",
-			"@",
-			"navbar",
-			"$localStorage",
-			"\""
+			"name"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -627,6 +614,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"dd>'",
 			"dd>",
 			"<dd",
 			"vm",
@@ -699,8 +687,101 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/config/karma.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								334,
+								334
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -710,7 +791,7 @@
 	},
 	"input":
 	{
-		"height": 29.0
+		"height": 51.0
 	},
 	"layout":
 	{
@@ -785,7 +866,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 304.0,
+	"side_bar_width": 267.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -11,12 +11,12 @@
 					novalidate>
 				<div class="login-form">
 					<div class="control-group"
-						ng-class="{ 'has-error' : signupForm.username.$invalid && signupForm.name.$dirty }">
+						ng-class="{ 'has-error' : signupForm.username.$invalid && signupForm.username.$dirty }">
 						<input class="login-field"
 								type="text"
 								id="login-name"
 								name="username"
-								ng-model="signup.user.name"
+								ng-model="signup.user.username"
 								placeholder="Username"
 								required>
 					</div>

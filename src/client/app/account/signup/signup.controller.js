@@ -20,7 +20,7 @@
         function register(form) {
             if (form.$valid) {
                 Auth.createUser({
-                    name: vm.user.name,
+                    username: vm.user.username,
                     email: vm.user.email,
                     battletag: vm.user.battletag,
                     password: vm.user.password

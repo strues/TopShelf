@@ -1,18 +1,15 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Khand", "Arial Black" sans-serif;
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+// Text Coloring
+
 .blue-text {
-    color: $tsblue;
+    color: $guild-main;
 }
 
 .inverse-text {
-    color: $dark-gray;
+    color: $drk-grey;
 }
 
 .sm-caps {
@@ -20,7 +17,7 @@ h6 {
 }
 
 .text-light {
-    color: #eaeaea;
+    color: $lt-grey;
 }
 
 .white-text {
@@ -29,4 +26,19 @@ h6 {
 
 .yellow-text {
 	color: $yellow;
+}
+
+// Text Alignment
+
+.left-align {
+  text-align: left;
+}
+
+.right-align {
+  text-align: right
+}
+
+.center,
+.center-align {
+  text-align: center;
 }

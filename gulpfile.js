@@ -30,6 +30,10 @@ var port = process.env.PORT || config.defaultPort;
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
 
+gulp.task('bootlint', function() {
+    return gulp.src([config.index, config.htmltemplates])
+        .pipe($.bootlint());
+});
 /**
  * vet the code and create coverage report
  * @return {Stream}
@@ -42,8 +46,8 @@ gulp.task('vet', function() {
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish', {verbose: true}));
-        //.pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
-        //.pipe($.jscs());
+    //.pipe($.if(!browserSync.active, $.jshint.reporter('fail')))
+    //.pipe($.jscs());
 });
 
 /**
@@ -119,7 +123,7 @@ gulp.task('fonts', ['clean-fonts'], function() {
 
     return gulp
         .src(config.fonts)
-        .pipe(gulp.dest(config.build + 'fonts'));
+        .pipe(gulp.dest(config.build + 'assets/fonts'));
 });
 
 /**
@@ -131,8 +135,13 @@ gulp.task('images', ['clean-images'], function() {
 
     return gulp
         .src(config.images)
-        .pipe($.imagemin({optimizationLevel: 6}))
-        .pipe(gulp.dest(config.build + 'images'));
+        .pipe($.changed(config.build + 'assets/images'))
+        .pipe($.imagemin({
+            optimizationLevel: 3,
+            progressive: true,
+            interlaced: true
+        }))
+    .pipe(gulp.dest(config.build + 'assets/images'));
 });
 
 gulp.task('sass-watcher', function() {
@@ -149,7 +158,7 @@ gulp.task('templatecache', ['clean-code'], function() {
     return gulp
         .src(config.htmltemplates)
         .pipe($.if(args.verbose, $.bytediff.start()))
-        .pipe($.minifyHtml({empty: true, loose: true, comments: true, spare: true, quotes: true}))
+        .pipe($.minifyHtml({comments: true, spare: true, quotes: true}))
         .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
         .pipe($.angularTemplatecache(
             config.templateCache.file,
@@ -280,19 +289,22 @@ gulp.task('optimize', ['inject'], function() {
         .pipe(assets) // Gather all assets from the html with useref
         // Get the css
         .pipe(cssFilter)
-        .pipe(minifyCSS())
+        .pipe($.csso())
+        .pipe($.size({showFiles: true}))
         .pipe(cssFilter.restore())
         // Get the custom javascript
         .pipe(jsAppFilter)
-        .pipe($.sourcemaps.init({debug: true, loadMaps: true}))
+        //.pipe($.sourcemaps.init({debug: true, loadMaps: true}))
         .pipe($.ngAnnotate({add: true}))
         .pipe($.uglify())
         .pipe(getHeader())
-        .pipe($.sourcemaps.write())
+        .pipe($.size({showFiles: true}))
+        //.pipe($.sourcemaps.write())
         .pipe(jsAppFilter.restore())
         // Get the vendor javascript
         .pipe(jslibFilter)
         .pipe($.uglify()) // another option is to override wiredep to use min files
+        .pipe($.size({showFiles: true}))
         .pipe(jslibFilter.restore())
         // Take inventory of the file names for future rev numbers
         .pipe($.rev())
@@ -301,7 +313,13 @@ gulp.task('optimize', ['inject'], function() {
         .pipe($.useref())
         // Replace the file names in the html with rev numbers
         .pipe($.revReplace())
-        .pipe(gulp.dest(config.build));
+        .pipe(gulp.dest(config.build))
+        .pipe($.notify({
+            onLast: true,
+            message: function() {
+                return 'Total build size ' + $.size.prettySize;
+            }
+        }));
 });
 
 /**
@@ -319,7 +337,7 @@ gulp.task('clean', function(done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-fonts', function(done) {
-    clean(config.build + 'fonts/**/*.*', done);
+    clean(config.build + 'assets/fonts/**/*.*', done);
 });
 
 /**
@@ -327,7 +345,7 @@ gulp.task('clean-fonts', function(done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-images', function(done) {
-    clean(config.build + 'images/**/*.*', done);
+    clean(config.build + 'assets/images/**/*.*', done);
 });
 
 /**
@@ -390,7 +408,7 @@ gulp.task('serve-dev', ['inject', 'styles'], function() {
  * --nosync
  */
 gulp.task('serve-build', ['build'], function() {
-    serve(false /*isDev*/);
+    serve(true /*isDev*/);
 });
 
 /**
@@ -518,7 +536,7 @@ function getNodeOptions(isDev) {
         delayTime: 1,
         env: {
             'PORT': port,
-            'NODE_ENV': isDev ? 'development' : 'build'
+            'NODE_ENV': isDev ? 'development' : 'production'
         },
         watch: [config.server]
     };

@@ -1,3 +1,19 @@
 .home-page--bottom {
-  background-color: $tsblue;
+  background-color: palette(blue, darker);
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.page-content--home {
+  padding: 15px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: $lt-grey;
+}
+
+.home-sidebar {
+  min-height: 75vh;
+}
+
+.post-detail-image {
+	max-width: 1140px;
 }

@@ -4,16 +4,16 @@ var path = require('path');
 var _ = require('lodash');
 
 function requiredProcessEnv(name) {
-    if (!process.env[name]) {
-        throw new Error('You must set the ' + name + ' environment variable');
-    }
-    return process.env[name];
+  if (!process.env[name]) {
+    throw new Error('You must set the ' + name + ' environment variable');
+  }
+  return process.env[name];
 }
 
 // All configurations will extend these options
 // ============================================
 var all = {
- env: process.env.NODE_ENV,
+  env: process.env.NODE_ENV,
 
   // Root path of server
   root: path.normalize(__dirname + '/../../..'),
@@ -24,6 +24,7 @@ var all = {
   secrets: {
     session: 'topk3k'
   },
+  //seedDB: false,
   redis: {
     host: '127.0.0.1',
     port: 6379
@@ -57,7 +58,7 @@ var all = {
       }
     }
   },
-log: {
+  log: {
     // Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
     format: 'dev',
     // Stream defaults to process.stdout
@@ -72,8 +73,8 @@ log: {
     callbackURL:  (process.env.DOMAIN || '') + '/auth/facebook/callback'
   },
   bnet: {
-    clientID:     process.env.BNET_ID || '4gfahazrsuk3qaw4ja4ddhxcreg4qwy7',
-    clientSecret: process.env.BNET_SECRET || '2qSuv8kgtg9PDyTj2UB5Ey2Q624ERaED',
+    clientID:     process.env.BNET_ID || 'urtsw3rtx2p5x4hy48efamnw39x8s7qw',
+    clientSecret: process.env.BNET_SECRET || 'uk8AAtvP5ZsMM5tSdSn3kJ8YHxYWypw3',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/bnet/callback'
   },
   twitter: {

@@ -8,18 +8,18 @@ $bootstrap-sass-asset-helper: true !default;
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-base:              #000 !default;
+$gray-base:              $grey !default;
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              lighten($gray-base, 20%) !default;   // #333
 $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         #3399cc;
-$brand-success:         #5cb85c !default;
-$brand-info:            #5bc0de !default;
-$brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
+$brand-primary:         $guild-main;
+$brand-success:         $lightgreen !default;
+$brand-info:            $deeppurple !default;
+$brand-warning:         $amber !default;
+$brand-danger:          $red !default;
 
 $yellow: 				#ffeb3b;
 
@@ -28,7 +28,7 @@ $yellow: 				#ffeb3b;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               $gray-lighter !default;
+$body-bg:               $lt-grey !default;
 //** Global text color on `<body>`.
 $text-color:            palette(blue, darker) !default;
 
@@ -44,7 +44,7 @@ $link-hover-decoration: underline !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Raleway", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -122,6 +122,11 @@ $caret-width-base:          4px !default;
 //** Carets increase slightly in size for larger components.
 $caret-width-large:         5px !default;
 
+/*** Collections ***/
+$collection-border-color: #e0e0e0 !default;
+$collection-bg-color: #fff !default;
+
+$collection-hover-bg-color: #ddd !default;
 
 //== Tables
 //
@@ -187,7 +192,7 @@ $input-bg:                       #fff !default;
 $input-bg-disabled:              $gray-lighter !default;
 
 //** Text color for `<input>`s
-$input-color:                    $gray !default;
+$input-color:                    #0a1f29 !default;
 //** `<input>` border color
 $input-border:                   #ccc !default;
 
@@ -321,7 +326,9 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 //== Grid system
 //
 //## Define your custom responsive grid.
-
+$gutter-width: 1.5rem !default;
+$element-top-margin: $gutter-width/3 !default;
+$element-bottom-margin: ($gutter-width*2)/3 !default;
 //** Number of columns in the grid.
 $grid-columns:              12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
@@ -358,7 +365,7 @@ $container-lg:                 $container-large-desktop !default;
 //##
 
 // Basics of a navbar
-$navbar-height:                    65px !default;
+$navbar-height:                    85px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
@@ -370,11 +377,11 @@ $navbar-default-bg:                #01579b;
 $navbar-default-border:            none !default;
 
 // Navbar links
-$navbar-default-link-color:                $gray-lighter !default;
-$navbar-default-link-hover-color:          $tsblue !default;
+$navbar-default-link-color:                rgba(0,0,0,0.84);
+$navbar-default-link-hover-color:          #FFF;
 $navbar-default-link-hover-bg:             transparent !default;
 $navbar-default-link-active-color:         palette(blue, darker);
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-link-active-bg:            #3399cc !default;
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 

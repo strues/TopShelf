@@ -1,0 +1,211 @@
+<div class="row" ng-controller="ApplicationCtrl as vm">
+  <div class="container">
+  <div class="col-sm-12 col-md-10 col-md-offset-1">
+    <div class="well">
+    <h1><span style="color:#333;">Top</span> <span class="blue-text">Shelf</span> <small>Guild Application</small></h1>
+    <!-- start form -->
+    <form role="form"
+          name="applicationForm"
+          class="form"
+          ng-submit="vm.submit(vm.formData)"
+          ng-fab-form-options="customFormOptions">
+      <fieldset>
+        <div class="row">
+          <div class="col-sm-4">
+        <label class="control-label">Character Name</label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="Laerel"
+                 ng-model="vm.formData.charName"
+                 >
+          </div>
+        <!-- /charname field -->
+        <div class="col-sm-4">
+          <label>Class</label>
+          <select ng-model="vm.formData.charClass"
+                  class="form-control"
+                  >
+              <option value=""></option>
+              <option value="DeathKnight">Death Knight</option>
+              <option value="Druid">Druid</option>
+              <option value="Hunter">Hunter</option>
+              <option value="Mage">Mage</option>
+              <option value="Monk">Monk</option>
+              <option value="Paladin">Paladin</option>
+              <option value="Priest">Priest</option>
+              <option value="Rogue">Rogue</option>
+              <option value="Shaman">Shaman</option>
+              <option value="Warlock">Warlock</option>
+              <option value="Warrior">Warrior</option>
+          </select>
+        </div><!-- charclass -->
+        <div class="col-sm-4">
+          <label>Specialization</label>
+          <select ng-model="vm.formData.charSpec"
+                  class="form-control"
+                  >
+              <option value=""></option>
+              <option value="Affliction">Affliction</option>
+              <option value="Arcane">Arcane</option>
+              <option value="Arms">Arms</option>
+              <option value="Assasination">Assasination</option>
+              <option value="Balance">Balance</option>
+              <option value="Beast Mastery">Beast Mastery</option>
+              <option value="Blood">Blood</option>
+              <option value="Brewmaster">Brewmaster</option>
+              <option value="Combat">Combat</option>
+              <option value="Demonology">Demonology</option>
+              <option value="Destruction">Destruction</option>
+              <option value="Discipline">Discipline</option>
+              <option value="Elemental">Elemental</option>
+              <option value="Enhancement">Enhancement</option>
+              <option value="Feral">Feral</option>
+              <option value="Fire">Fire</option>
+              <option value="Frost">Frost</option>
+              <option value="Fury">Fury</option>
+              <option value="Gladiator">Gladiator</option>
+              <option value="Guardian">Guardian</option>
+              <option value="Holy">Holy</option>
+              <option value="Marksman">Marksman</option>
+              <option value="Mistweaver">Mistweaver</option>
+              <option value="Protection">Protection</option>
+              <option value="Restoration">Restoration</option>
+              <option value="Retribution">Retribution</option>
+              <option value="Shadow">Shadow</option>
+              <option value="Subtlety">Subtlety</option>
+              <option value="Survival">Survival</option>
+              <option value="Unholy">Unholy</option>
+              <option value="Windwalker">Windwalker</option>
+            </select>
+          </div><!-- charSpec-->
+        </div>
+        <!-- first row end-->
+          <div class="row">
+            <div class="col-sm-6">
+            <label class="control-label">Armory</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="http://us.battle.net/wow/characters/"
+                   ng-model="vm.formData.charArmory"
+                   >
+          </div><!-- /chararmory field -->
+          <div class="col-sm-3">
+            <label class="control-label">First Name</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Joe"
+                   ng-model="vm.formData.applicantName"
+                   >
+          </div><!-- /firstname field -->
+          <div class="col-sm-3">
+            <label class="control-label">Age
+            </label>
+            <input type="number"
+                   class="form-control"
+                   placeholder="18"
+                   ng-model="vm.formData.applicantAge"
+                   >
+          </div><!-- /age field -->
+        </div> <!-- /2nd row -->
+          <div class="row">
+            <div class="col-sm-3">
+            <label>Timezone</label>
+            <select ng-model="vm.formData.applicantTZ"
+                    class="form-control"
+                    >
+              <option value=""></option>
+              <option value="PST">Pacific (PST)</option>
+              <option value="MST">Mountain (MST)</option>
+              <option value="CST">Central (CST)</option>
+              <option value="EST">Eastern (EST)</option>
+            </select>
+          </div><!-- applicantTZ -->
+           <div class="col-sm-3">
+              <label class="control-label">RealID
+              </label>
+              <input type="text"
+                     class="form-control"
+                     placeholder="battletag#123"
+                     ng-model="vm.formData.applicantRealId"
+                     >
+          </div><!-- /realid field -->
+          <div class="col-sm-6">
+            <label class="control-label">Logs
+            </label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="http://warcraftlogs.com"
+                   ng-model="vm.formData.charLogs"
+                   >
+          </div><!-- /logs field -->
+        </div>
+          <div class="form-group">
+            <label>Mythic/Heroic Experience</label>
+            <textarea ng-model="vm.formData.heroicXP"
+                      ng-minlength="5"
+                      rows="6"
+                      class="form-control"
+                      ></textarea>
+          </div><!-- heroicxp -->
+          <div class="form-group">
+            <label>Guild History</label>
+            <textarea ng-model="vm.formData.pastGuilds"
+                      ng-minlength="5"
+                      rows="6"
+                      class="form-control"
+                      ></textarea>
+          </div><!-- heroicxp -->
+          <div class="row">
+            <div class="col-sm-6">
+              <label class="control-label">Server
+              </label>
+              <input type="text"
+                     class="form-control"
+                     placeholder="Sargeras"
+                     ng-model="vm.formData.charServer"
+                     >
+          </div><!-- /realm field -->
+          <div class="col-sm-6">
+            <label class="control-label">UI Screenshot</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="http://imgur.com"
+                   ng-model="vm.formData.screenshot"
+                   >
+          </div><!-- /screenshot field -->
+        </div> <!-- end row -->
+          <div class="form-group">
+            <label>Why Top Shelf?</label>
+            <textarea ng-model="vm.formData.whyTS"
+                      ng-minlength="5"
+                      rows="6"
+                      class="form-control"
+                      ></textarea>
+          </div><!-- whyTS -->
+          <div class="form-group">
+            <label>What resources do you use to improve your raid performance?</label>
+            <textarea ng-model="vm.formData.applicantSelfImprovement"
+                    ng-minlength="5"
+                    rows="6"
+                    class="form-control"
+                    ></textarea>
+          </div><!-- applicantSelfImprovement -->
+          <div class="form-group">
+            <label>Tell us a joke</label>
+            <textarea ng-model="vm.formData.applicantJoke"
+                      ng-minlength="5"
+                      rows="6"
+                      class="form-control"
+                      ></textarea>
+          </div><!-- applicantSelfImprovement -->
+          <div class="form-group">
+            <button type="submit"
+                    class="btn btn-success pull-right">Submit Application <i class="mdi-action-assignment-turned-in"></i>
+            </button>
+          </div>
+        </fieldset>
+    </form>
+  </div>
+</div><!--/column-->
+</div><!-- END row -->
+</div>

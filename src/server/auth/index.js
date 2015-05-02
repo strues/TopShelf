@@ -9,6 +9,7 @@
 'use strict';
 
 var router = require('express').Router();
+
 var config = require('../config/environment');
 
 /**
@@ -22,6 +23,5 @@ module.exports = router;
 
 // Passport Configuration
 require('./local/passport').setup(User, config);
-
 // apply authentication routes for the providers
 router.use('/local', require('./local/index'));

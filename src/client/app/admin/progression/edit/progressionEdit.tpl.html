@@ -1,0 +1,38 @@
+<div ng-controller="ProgressionEditController as vm">
+<form role="form"
+  class="form"
+  name="progressionData"
+  ng-submit="vm.saveProgression(vm.progressionData)">
+      <label>Boss Name</label>
+      <select ng-model="vm.progressionData.bossName"
+        class="form-control"
+        required>
+        <option value=""></option>
+        <option value="oregorger">Oregorger</option>
+        <option value="gruul">Gruul</option>
+        <option value="blastfurnace">Blast Furnace</option>
+        <option value="beastlord">Beastlord</option>
+        <option value="operator">Operator Thogar</option>
+        <option value="hans-and-franze-">Hans and Franz</option>
+        <option value="flamebender">Flamebender</option>
+        <option value="iron-maidens">Iron Maidens</option>
+        <option value="kromog">Kromog</option>
+        <option value="blackhand">Blackhand</option>
+      </select>
+
+        <label>Status</label>
+        <select ng-model="vm.progressionData.dead"
+          class="form-control"
+          required>
+          <option value=""></option>
+          <option value="false">Alive</option>
+          <option value="true">Dead</option>
+
+
+        </select>
+          <button style="margin-top: 5px"type="submit"
+          class="btn btn-success btn-block">Save <i class="mdi-action-assignment-turned-in"></i>
+          </button>
+
+      </form>
+</div>

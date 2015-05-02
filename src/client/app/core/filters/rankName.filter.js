@@ -1,5 +1,6 @@
 'use strict';
-angular.module('app.core').filter('rankName', function () {
+angular.module('app.core')
+.filter('rankName', function () {
     return function (rankId) {
         switch (rankId) {
         case 0:
