@@ -72,18 +72,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/client/app/account/account-services/auth.service.js",
+			"file": "/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/config/karma.js",
 			"settings":
 			{
-				"buffer_size": 5151,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/steven/Webdev/TopShelf/app/client/app/components/auth/auth.service.js",
-			"settings":
-			{
-				"buffer_size": 8649,
+				"buffer_size": 742,
 				"line_ending": "Unix"
 			}
 		}
@@ -95,7 +87,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 275.0,
+		"height": 225.0,
 		"last_filter": "jscs",
 		"selected_items":
 		[
@@ -292,7 +284,7 @@
 				"Snippet: gulp.task('name',funciton)"
 			]
 		],
-		"width": 671.0
+		"width": 651.0
 	},
 	"console":
 	{
@@ -313,39 +305,24 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/steven/Webdev/TopShelf/Develop",
 		"/Users/steven/Webdev/TopShelf/Develop/src",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account-services",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/login",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/progressionWidget",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/recruitmentWidget",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/post-detail",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth/local",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/environment"
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/config"
 	],
 	"file_history":
 	[
-		"/Users/steven/Webdev/TopShelf/Develop 2/src/client/app/account/account-services/auth.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth/auth.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account-services/auth.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/express.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/authInterceptor.service.js",
-		"/Users/steven/Webdev/TopShelf/Develop 2/src/client/app/core/services/authInterceptor.service.js",
-		"/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/config/karma.js",
 		"/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/index.js",
 		"/Users/steven/Webdev/TopShelf/guild-audit/routes/mongoose.js",
 		"/Users/steven/Webdev/TopShelf/guild-audit/routes/index.js",
@@ -379,6 +356,7 @@
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/app.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/logger.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/express.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth/index.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/passport.js",
 		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
@@ -466,7 +444,13 @@
 		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#8/TemplateHook.php",
 		"/Users/steven/Downloads/HashTagging v1.1.4/addon-PHCTags.xml",
 		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#1/User.php",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#2/Message.php"
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#2/Message.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#3/Post.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#4/JsonInternal.php",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#5/Post.php",
+		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/js/dark/taigachat.js",
+		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/library/Dark/TaigaChat/ControllerPublic/TaigaChat.php",
+		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/addon-TaigaChat.xml"
 	],
 	"find":
 	{
@@ -708,32 +692,51 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/client/app/account/account-services/auth.service.js",
+					"file": "/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/config/karma.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5151,
+						"buffer_size": 742,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2275,
-								2275
+								334,
+								334
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
-							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -744,46 +747,26 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"editorconfig": true,
 							"ensure_newline_at_eof_on_save": true,
@@ -793,102 +776,10 @@
 							"trim_trailing_white_space_on_save": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1150.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Users/steven/Webdev/TopShelf/app/client/app/components/auth/auth.service.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8649,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2854,
-								2231
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content"
-							],
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": false,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1366.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]

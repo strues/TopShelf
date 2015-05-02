@@ -63,3 +63,9 @@ router.route('/' + controller.paramString + '/admin')
 
 // Finish by binding the user middleware
 router.param('userId', controller.userByID);
+
+// Setting the facebook oauth routes
+// app.route('/auth/facebook').get(passport.authenticate('facebook', {
+//     scope: ['email']
+// }));
+// app.route('/auth/facebook/callback').get(users.oauthCallback('facebook'));
