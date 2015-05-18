@@ -72,10 +72,18 @@
 	"buffers":
 	[
 		{
-			"file": "/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/config/karma.js",
+			"file": "src/client/app/guild/guild-services/progression.service.js",
 			"settings":
 			{
-				"buffer_size": 742,
+				"buffer_size": 861,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js",
+			"settings":
+			{
+				"buffer_size": 488,
 				"line_ending": "Unix"
 			}
 		}
@@ -87,13 +95,21 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 225.0,
+		"height": 223.0,
 		"last_filter": "jscs",
 		"selected_items":
 		[
 			[
 				"jscs",
 				"JSCS Formatter: Format this file"
+			],
+			[
+				"jsb",
+				"Javascript Beautify"
+			],
+			[
+				"themr",
+				"Themr: List themes"
 			],
 			[
 				"comm",
@@ -106,10 +122,6 @@
 			[
 				"install",
 				"Package Control: Install Package"
-			],
-			[
-				"jsb",
-				"Javascript Beautify"
 			],
 			[
 				"comme",
@@ -170,10 +182,6 @@
 			[
 				"pretty",
 				"HTMLPrettify"
-			],
-			[
-				"themr",
-				"Themr: List themes"
 			],
 			[
 				"api",
@@ -305,24 +313,54 @@
 	},
 	"expanded_folders":
 	[
+		"/Users/steven/Webdev/TopShelf/Develop",
+		"/Users/steven/Webdev/TopShelf/Develop/build",
+		"/Users/steven/Webdev/TopShelf/Develop/build/styles",
 		"/Users/steven/Webdev/TopShelf/Develop/src",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account-services",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/progressionWidget",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/recruitmentWidget",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-services",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/post-detail",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/config"
 	],
 	"file_history":
 	[
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/progressionWidget/progressionWidget.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/express.js",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#2/lib-1cea3174.css",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#0/topshelfguild.conf",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#1/app-56b6249e.css",
+		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#0/app-56b6249e.css",
+		"/Users/steven/Webdev/TopShelf/Develop/gulpfile.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-services/character.service.js",
+		"/Users/steven/Downloads/optimized_contents/css/font-awesome.min.css",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/recruitmentWidget/recruitmentWidget.directive.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/progressionWidget/progressionWidget.directive.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/admin/admin.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/index.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/profile/profile.edit/profileEdit.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/profile/profile.edit/profileEdit.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.tpl.html",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/app.module.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.controller.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/index.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild.module.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account.module.js",
+		"/Users/steven/Webdev/TopShelf/app/client/app/components/auth/auth.service.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/account-services/auth.service.js",
+		"/Users/steven/Webdev/TopShelf/Develop 2/src/client/app/account/account-services/auth.service.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth/auth.service.js",
+		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/services/authInterceptor.service.js",
+		"/Users/steven/Webdev/TopShelf/Develop 2/src/client/app/core/services/authInterceptor.service.js",
+		"/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/config/karma.js",
 		"/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/index.js",
 		"/Users/steven/Webdev/TopShelf/guild-audit/routes/mongoose.js",
 		"/Users/steven/Webdev/TopShelf/guild-audit/routes/index.js",
@@ -341,22 +379,17 @@
 		"/Users/steven/Webdev/sandbox-api/src/user/user.model.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/test/utils/helpers.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/test/utils",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup/signup.tpl.html",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/index.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/post-detail/post-detail.tpl.html",
 		"/Users/steven/Webdev/mean-rsvp/app/api.js",
 		"/Users/steven/Webdev/mean-rsvp/app/config.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/navbar/navbar.tpl.html",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/main.tpl.html",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/account/signup/signup.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.model.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/post/post.model.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/index.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/app.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/user/user.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/logger.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/express.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/auth/index.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/passport.js",
 		"/Users/steven/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
@@ -388,17 +421,14 @@
 		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#4/topshelf-ssl.crt",
 		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#2/nginx.conf",
 		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#3/pagespeed.conf",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/index.html",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_module.scss",
 		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#1/topshelfguild.conf",
 		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#0/nginx.conf",
 		"/Users/steven/Webdev/TopShelf/Develop/bower.json",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/app.module.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/main.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/components/_widgets.scss",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/spinner.directive.js",
 		"/Users/steven/Webdev/AngularJS-Boilerplate/gulpfile.js",
-		"/Users/steven/Webdev/TopShelf/Develop/gulpfile.js",
 		"/Users/steven/Webdev/TopShelf/Develop/build/styles/lib-16ae6c6c.css",
 		"/Users/steven/Webdev/AngularJS-Boilerplate/index.html",
 		"/Users/steven/Webdev/AngularJS-Boilerplate/_build/index.html",
@@ -406,7 +436,6 @@
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_global.scss",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/core/directives/progressionWidget/progressionWidget.tpl.html",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/carousel.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild.module.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/components/_toolbar.scss",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/styles/base/_palette.scss",
 		"/Users/steven/Downloads/angular-materialize-master/src/angular-materialize.js",
@@ -428,29 +457,7 @@
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/progression/index.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/roles.js",
 		"/Users/steven/Webdev/material/bin/server.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/application/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/character/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/file/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/recruitment/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/resource/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/components/controllers/param.controller.spec.js",
-		"/Users/steven/Webdev/material/server/lib/auth/roles.js",
-		"/Users/steven/Webdev/material/client/app/articles/create/create.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/components/middleware.js",
-		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/library/Dark/TaigaChat/Model/TaigaChat.php",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#6/Global.php",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#7/TaigaChat.php",
-		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/library/Dark/TaigaChat/DataWriter/User.php",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#8/TemplateHook.php",
-		"/Users/steven/Downloads/HashTagging v1.1.4/addon-PHCTags.xml",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#1/User.php",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#2/Message.php",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#3/Post.php",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#4/JsonInternal.php",
-		"/Users/steven/Library/Caches/com.binarynights.ForkLift2/#5/Post.php",
-		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/js/dark/taigachat.js",
-		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/upload/library/Dark/TaigaChat/ControllerPublic/TaigaChat.php",
-		"/Users/steven/Webdev/TaigaChat Pro 1.4.3/addon-TaigaChat.xml"
+		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/application/index.js"
 	],
 	"find":
 	{
@@ -687,41 +694,42 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/steven/Webdev/gulp-boilerplate/gulpfile.js/config/karma.js",
+					"file": "src/client/app/guild/guild-services/progression.service.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 742,
+						"buffer_size": 861,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								334,
-								334
+								680,
+								685
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"auto_complete": false,
 							"bh_regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
@@ -732,41 +740,134 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 488,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								488,
+								488
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
-								"bh_c_define_content"
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
 							"editorconfig": true,
 							"ensure_newline_at_eof_on_save": true,

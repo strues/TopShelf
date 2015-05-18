@@ -1,36 +1,36 @@
 (function () {
-    'use strict';
-    /**
-       * @ngdoc Service
-       * @name Character
-       * @desc Communicates with backend returning character information
-       * @memberOf app.guild.services
-       */
-    angular
-      .module('app.guild')
-      .factory('Character', Character);
-    /* @ngInject */
-    function Character($http) {
-        var urlBase = 'api/characters';
-        var characterFactory = {};
-        characterFactory.all = function () {
-            console.log('Getting all characters');
-            return $http.get(urlBase);
-        };
-        characterFactory.get = function (id) {
-            console.log('Getting this ' + id);
-            return $http.get(urlBase + '/' + id);
-        };
-        characterFactory.create = function (characterData) {
-            console.log(characterData);
-            return $http.post(urlBase, characterData);
-        };
-        characterFactory.update = function (id, characterData) {
-            return $http.put(urlBase + '/' + id, characterData);
-        };
-        characterFactory.delete = function (id) {
-            return $http.delete(urlBase + '/' + id);
-        };
-        return characterFactory;
-    }
+  'use strict';
+  /**
+     * @ngdoc Service
+     * @name Character
+     * @desc Communicates with backend returning character information
+     * @memberOf app.guild.services
+     */
+  angular
+    .module('app.guild')
+    .factory('Character', Character);
+  /* @ngInject */
+  function Character($http) {
+    var urlBase = 'api/characters';
+    var characterFactory = {};
+    characterFactory.all = function () {
+      console.log('Getting all characters');
+      return $http.get(urlBase);
+    };
+    characterFactory.get = function (id) {
+      console.log('Getting this ' + id);
+      return $http.get(urlBase + '/' + id);
+    };
+    characterFactory.create = function (characterData) {
+      console.log(characterData);
+      return $http.post(urlBase, characterData);
+    };
+    characterFactory.update = function (id, characterData) {
+      return $http.put(urlBase + '/' + id, characterData);
+    };
+    characterFactory.delete = function (id) {
+      return $http.delete(urlBase + '/' + id);
+    };
+    return characterFactory;
+  }
 }());

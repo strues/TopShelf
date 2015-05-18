@@ -69,7 +69,7 @@ module.exports = function(app) {
       .test(res.getHeader('Content-Type'));
     },
     // zlib option for compression level
-    level: 3
+    level: 6
   }));
 
   if ('production' === env) {

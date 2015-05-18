@@ -25,24 +25,26 @@
   <meta name="msapplication-TileImage" content="/assets/faves/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <!-- build:css styles/lib.css -->
-  <!-- bower:css -->
-  <link rel="stylesheet" href="/bower_components/bootstrap-css-only/css/bootstrap.css" />
-  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
-  <link rel="stylesheet" href="/bower_components/textAngular/src/textAngular.css" />
-  <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css" />
-  <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css" />
-  <link rel="stylesheet" href="/bower_components/trNgGrid/trNgGrid.css" />
-  <link rel="stylesheet" href="/bower_components/angular-xeditable/dist/css/xeditable.css" />
-  <link rel="stylesheet" href="/bower_components/valitycss/dist/vality.css" />
-  <link rel="stylesheet" href="/bower_components/v-modal/dist/v-modal.css" />
-  <!-- endbower -->
-  <!-- endbuild -->
-  <!-- build:css styles/app.css -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="/.tmp/styles.css">
-  <!-- endinject -->
-  <!-- endbuild -->
+   <!-- build:css styles/lib.css -->
+  <link rel="stylesheet" href="/.tmp/vendor.css">
+    <!-- inject:bower:css -->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css">
+    <link rel="stylesheet" href="/bower_components/trNgGrid/trNgGrid.css">
+    <link rel="stylesheet" href="/bower_components/angular-xeditable/dist/css/xeditable.css">
+    <link rel="stylesheet" href="/bower_components/valitycss/dist/vality.css">
+    <link rel="stylesheet" href="/bower_components/textAngular/src/textAngular.css">
+    <link rel="stylesheet" href="/bower_components/v-modal/dist/v-modal.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/app.css-->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/.tmp/style.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <link rel="apple-touch-icon" sizes="72x72" href="/assets/faves/apple-touch-icon-72x72.png">
   <link rel="apple-touch-icon" sizes="120x120" href="/assets/faves/apple-touch-icon-120x120.png">
@@ -61,11 +63,9 @@
 
   <div ui-view="main"></div>
 
-  <!-- build:js js/lib.js -->
-  <!-- bower:js -->
-  <script src="/bower_components/es5-shim/es5-shim.js"></script>
+ <!-- build:js js/lib.js -->
+  <!-- inject:bower:js -->
   <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <script src="/bower_components/modernizr/modernizr.js"></script>
   <script src="/bower_components/lodash/lodash.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
@@ -74,14 +74,12 @@
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
   <script src="/bower_components/ngstorage/ngStorage.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-  <script src="/bower_components/rangy/rangy-core.min.js"></script>
-  <script src="/bower_components/rangy/rangy-cssclassapplier.min.js"></script>
-  <script src="/bower_components/rangy/rangy-selectionsaverestore.min.js"></script>
-  <script src="/bower_components/rangy/rangy-serializer.min.js"></script>
-  <script src="/bower_components/textAngular/src/textAngular.js"></script>
-  <script src="/bower_components/textAngular/src/textAngular-sanitize.js"></script>
-  <script src="/bower_components/textAngular/src/textAngularSetup.js"></script>
+  <script src="/bower_components/rangy/rangy-core.js"></script>
+  <script src="/bower_components/rangy/rangy-classapplier.js"></script>
+  <script src="/bower_components/rangy/rangy-highlighter.js"></script>
+  <script src="/bower_components/rangy/rangy-selectionsaverestore.js"></script>
+  <script src="/bower_components/rangy/rangy-serializer.js"></script>
+  <script src="/bower_components/rangy/rangy-textrange.js"></script>
   <script src="/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
   <script src="/bower_components/angular-touch/angular-touch.js"></script>
   <script src="/bower_components/angular-strap/dist/angular-strap.js"></script>
@@ -89,14 +87,18 @@
   <script src="/bower_components/angular-carousel/dist/angular-carousel.js"></script>
   <script src="/bower_components/trNgGrid/trNgGrid.js"></script>
   <script src="/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+  <script src="/bower_components/es5-shim/es5-shim.js"></script>
+  <script src="/bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
+  <script src="/bower_components/textAngular/src/textAngular.js"></script>
+  <script src="/bower_components/textAngular/src/textAngular-sanitize.js"></script>
+  <script src="/bower_components/textAngular/src/textAngularSetup.js"></script>
   <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
   <script src="/bower_components/v-modal/dist/v-modal.js"></script>
-  <script src="/bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
-  <!-- endbower -->
+  <!-- endinject -->
   <!-- endbuild -->
 
   <!-- build:js js/app.js -->
-    <!-- inject:js -->
+  <!-- inject:js -->
   <script src="/src/client/app/app.module.js"></script>
   <script src="/src/client/app/account/account.module.js"></script>
   <script src="/src/client/app/admin/admin.module.js"></script>
@@ -117,8 +119,6 @@
   <script src="/src/client/app/admin/news/adminDatePicker.controller.js"></script>
   <script src="/src/client/app/admin/news/create/NewsCreate.controller.js"></script>
   <script src="/src/client/app/admin/news/edit/newsEdit.controller.js"></script>
-  <script src="/src/client/app/admin/progression/adminProgression.controller.js"></script>
-  <script src="/src/client/app/admin/progression/edit/progressionEdit.controller.js"></script>
   <script src="/src/client/app/admin/recruiting/Recruitment.controller.js"></script>
   <script src="/src/client/app/admin/recruiting/recruitmentList.controller.js"></script>
   <script src="/src/client/app/admin/resources/adminResource.controller.js"></script>
@@ -134,14 +134,14 @@
   <script src="/src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
   <script src="/src/client/app/core/directives/navbar/navbar.controller.js"></script>
   <script src="/src/client/app/core/directives/navbar/navbar.directive.js"></script>
-  <script src="/src/client/app/core/directives/progressionWidget/progressionWidget.directive.js"></script>
-  <script src="/src/client/app/core/directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
   <script src="/src/client/app/core/filters/className.filter.js"></script>
   <script src="/src/client/app/core/filters/rankName.filter.js"></script>
   <script src="/src/client/app/core/filters/startFrom.filter.js"></script>
   <script src="/src/client/app/core/services/authInterceptor.service.js"></script>
   <script src="/src/client/app/core/services/logger.service.js"></script>
   <script src="/src/client/app/guild/apply/application.controller.js"></script>
+  <script src="/src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js"></script>
+  <script src="/src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
   <script src="/src/client/app/guild/guild-services/application.service.js"></script>
   <script src="/src/client/app/guild/guild-services/armory.service.js"></script>
   <script src="/src/client/app/guild/guild-services/article.service.js"></script>
@@ -157,10 +157,8 @@
   <script src="/src/client/app/guild/roster/roster.controller.js"></script>
   <script src="/src/client/app/guild/streams/streams.controller.js"></script>
   <!-- endinject -->
-
-  <!-- inject:templates:js -->
+  <!-- inject:templatecache:js -->
   <!-- endinject -->
-
   <!-- endbuild -->
 </body>
 

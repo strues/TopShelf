@@ -25,31 +25,7 @@
               controller: 'DashboardController',
               templateUrl:
               'app/admin/dashboard/dashboard.tpl.html'
-            },
-            'progression@admin': {
-              controller: 'ProgressionCtrl',
-              templateUrl:
-              'app/admin/progression/adminProgression.tpl.html',
-              resolve: {
-                progression: function ($http) {
-                  // $http returns a promise for the url data
-                  return $http({
-                    method: 'GET',
-                    url: '/api/progression'
-                  });
-                }
-              }
             }
-          }
-        })
-        .state('admin.progressionEdit', {
-          url: '/:progressionId',
-          views: {
-
-            'progression@admin': {
-                controller: 'ProgressionEditController',
-                controllerAs: 'vm',
-                templateUrl: 'app/admin/progression/edit/progressionEdit.tpl.html'}
           }
         })
         .state('admin.applications', {
