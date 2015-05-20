@@ -3,10 +3,10 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" class="no-js" ng-app="app"><!--<![endif]-->
+<html lang="en" class="no-js"><!--<![endif]-->
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
   <title>Top Shelf - Sargeras US Mythic Raiding Guild</title>
   <base href="/">
   <meta name="description" content="Top Shelf is a World of Warcraft mythic raiding guild on Sargeras US. Formed
@@ -26,15 +26,11 @@
   <meta name="theme-color" content="#ffffff">
 
    <!-- build:css styles/lib.css -->
-  <link rel="stylesheet" href="/.tmp/vendor.css">
+    <link rel="stylesheet" href="/.tmp/vendor.css">
     <!-- inject:bower:css -->
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css">
-    <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css">
-    <link rel="stylesheet" href="/bower_components/trNgGrid/trNgGrid.css">
-    <link rel="stylesheet" href="/bower_components/angular-xeditable/dist/css/xeditable.css">
     <link rel="stylesheet" href="/bower_components/valitycss/dist/vality.css">
-    <link rel="stylesheet" href="/bower_components/textAngular/src/textAngular.css">
+    <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css">
     <link rel="stylesheet" href="/bower_components/v-modal/dist/v-modal.css">
     <!-- endinject -->
     <!-- endbuild -->
@@ -56,17 +52,99 @@
   <link rel="manifest" href="/manifest.json">
 </head>
 
-<body>
+<body ng-app="app">
   <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+<header>
+    <div class="container">
+        <a href="#" data-activates="nav-mobile" class="button-collapse top-nav" data-sidenav="left" data-closeonclick="false">
+        <i class="mdi-navigation-menu"></i></a>
+    </div>
+  <ul id="nav-mobile" class="side-nav fixed">
+    <li class="logo">
+      <a id="logo-container" ui-sref="guild.main" class="brand-logo">
+        <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo">
+      </a>
+    </li>
+    <li class="bold">
+      <a href="#!" ui-sref="guild.main" class="waves-effect waves-blue">
+      <i class="mdi-action-home"></i> Home</a>
+    </li>
+    <li class="bold">
+      <a href="#" class="waves-effect waves-blue">
+      <i class="mdi-social-pages"></i> Apply</a>
+    </li>
+    <li class="no-padding">
+      <ul class="collapsible collapsible-accordion">
+          <li class="bold">
+            <a class="collapsible-header waves-effect waves-blue active">
+              Guild Info</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="guild.apply.info">
+                        <i class="mdi-action-info"></i> Recruitment</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="guild.information">
+                        <i class="mdi-action-help"></i> About Us</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="guild.roster">
+                        <i class="mdi-communication-contacts"></i> Roster</a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+    </li>
+    <li class="bold">
+      <a class="waves-effect waves-blue" href="https://topshelfguild.com/forums/" target="_blank">
+       <i class="mdi-communication-forum"></i> Forums</a>
+    </li>
+    <li class="bold" ng-show="Auth.isAdmin()">
+      <a class="waves-effect waves-blue" ui-sref="admin"><i class="mdi-navigation-apps"></i> Admin</a>
+    </li>
+    <li class="bold" ng-hide="Auth.isLoggedIn()">
+      <a class="waves-effect waves-blue" ui-sref="account.signup"><i class="mdi-action-exit-to-app"></i> Sign up</a>
+    </li>
+    <li class="bold" ng-hide="Auth.isLoggedIn()">
+      <a class="waves-effect waves-blue" ui-sref="account.login"><i class="mdi-action-account-circle"></i>Login</a>
+    </li>
+    <li class="no-padding" ng-show="Auth.isLoggedIn()">
+      <ul class="collapsible collapsible-accordion">
+          <li class="bold" ng-controller="NavbarCtrl as navbar">
+            <a class="collapsible-header waves-effect waves-ripple waves-blue active">
+              Hello, {{ Auth.getCurrentUser().username }}</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="account.profileEdit">
+                       <i class="mdi-action-account-box"></i> Profile</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" href="#" ng-click="navbar.logout()">
+                         <i class="mdi-action-lock-open"></i> Logout</a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+    </li>
+  </ul>
+</header>
+<main>
   <div ui-view="main"></div>
+  </main>
+    <!-- END home -->
+<the-footer></the-footer>
 
  <!-- build:js js/lib.js -->
   <!-- inject:bower:js -->
   <script src="/bower_components/jquery/dist/jquery.js"></script>
   <script src="/bower_components/lodash/lodash.js"></script>
+  <script src="/bower_components/materialize/bin/materialize.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
   <script src="/bower_components/angular-messages/angular-messages.js"></script>
@@ -74,29 +152,17 @@
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
   <script src="/bower_components/ngstorage/ngStorage.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="/bower_components/rangy/rangy-core.js"></script>
-  <script src="/bower_components/rangy/rangy-classapplier.js"></script>
-  <script src="/bower_components/rangy/rangy-highlighter.js"></script>
-  <script src="/bower_components/rangy/rangy-selectionsaverestore.js"></script>
-  <script src="/bower_components/rangy/rangy-serializer.js"></script>
-  <script src="/bower_components/rangy/rangy-textrange.js"></script>
   <script src="/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
   <script src="/bower_components/angular-touch/angular-touch.js"></script>
-  <script src="/bower_components/angular-strap/dist/angular-strap.js"></script>
-  <script src="/bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
-  <script src="/bower_components/angular-carousel/dist/angular-carousel.js"></script>
-  <script src="/bower_components/trNgGrid/trNgGrid.js"></script>
-  <script src="/bower_components/angular-xeditable/dist/js/xeditable.js"></script>
   <script src="/bower_components/es5-shim/es5-shim.js"></script>
   <script src="/bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
-  <script src="/bower_components/textAngular/src/textAngular.js"></script>
-  <script src="/bower_components/textAngular/src/textAngular-sanitize.js"></script>
-  <script src="/bower_components/textAngular/src/textAngularSetup.js"></script>
+  <script src="/bower_components/angular-materialize/src/angular-materialize.js"></script>
+  <script src="/bower_components/angular-carousel/dist/angular-carousel.js"></script>
   <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
   <script src="/bower_components/v-modal/dist/v-modal.js"></script>
   <!-- endinject -->
   <!-- endbuild -->
-
+  <!-- Compiled and minified JavaScript -->
   <!-- build:js js/app.js -->
   <!-- inject:js -->
   <script src="/src/client/app/app.module.js"></script>

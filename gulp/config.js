@@ -24,10 +24,10 @@ module.exports = function() {
     client: client,
     css: temp + 'style.css',
     cssVend: temp + 'lib.css',
-    fonts: client + 'assets/fonts/**/*.*',
+    fonts: client + 'fonts/**/*.*',
     html: client + '**/*.html',
     htmltemplates: clientApp + '**/*.tpl.html',
-    images: client + 'assets/img/**/*.{png,jpg}',
+    images: client + 'img/**/*.{png,jpg}',
     index: client + 'index.html',
     // app js, with no specs
     js: [

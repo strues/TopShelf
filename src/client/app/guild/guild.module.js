@@ -17,14 +17,13 @@
   function config($stateProvider) {
     $stateProvider
         .state('guild', {
-          abstract: true,
-          templateUrl: '"<ui-view></ui-view>"'
+          abstract: true
         })
         .state('guild.main', {
           url: '/',
           views: {'main@': {templateUrl: 'app/guild/main/main.tpl.html'}},
           controller: 'MainCtrl',
-          controllerAs: 'vm',
+          controllerAs: 'main',
           resolve: {/* @ngInject */
             posts: function (Article) {
               return Article.all();

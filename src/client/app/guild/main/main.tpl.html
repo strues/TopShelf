@@ -1,17 +1,21 @@
 <!-- Topbar
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<navbar></navbar>
+
 <!-- home-page container
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!-- carousel row/column -->
-
+    <div class="section" id="index-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h1 class="header center-on-small-only">Whats Happening On The Shelf?</h1>
+                    <p style="color: white;" class="center-on-small-only">Checkout our most recent raiding accomplishments.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
-      <div class="col-sm-12 col-lg-9">
       <div class="carousel-area" ng-controller="CarouselCtrl as carousel">
-        <h1 style="text-align: right; padding-right: 20px; padding-bottom: 15px;">
-          <span style="color:#333;">Recent</span>
-          <span class="blue-text">Kills</span>
-        </h1>
         <!-- rn-carousel directive start -->
         <ul rn-carousel rn-carousel-controls rn-carousel-buffered rn-carousel-auto-slide class="image">
           <li ng-repeat="slide in carousel.slides">
@@ -21,39 +25,14 @@
           </li>
         </ul>
       </div>
-    </div>
-    <!-- END carousel/news column
-          START aside -->
-      <aside class="home-sidebar col-lg-3">
-        <!-- recruitment widget -->
-        <div class="row">
-          <div id="recruitment-widget">
-            <recruitment-widget></recruitment-widget>
-          </div>
-        </div>
-        <!-- END recruitment widget -->
-        <!-- progression widget -->
-        <div class="row">
-          <div id="progression-widget">
-            <progression-widget></progression-widget>
-          </div>
-        </div>
-        <!-- END Progression Widget -->
-      </aside>
-    </div>
-      <!-- END sidebar -->
-      <!-- END carousel-area
-          START news -->
-        <div class="row no-gutters home-page--bottom">
-          <div class="container">
-          <div class="col-sm-12">
-            <div class="" ng-controller="MainCtrl as vm">
+      <div class="row">
+           <div class="col s9" ng-controller="MainCtrl as main">
               <div class="news-title-container">
                 <div class="news-title-bg">
                   <h1 class="news-title">Latest News</h1>
                 </div>
               </div>
-              <div class="col-md-4" ng-repeat="article in vm.articles | orderBy:'-created'">
+              <div class="col s3" ng-repeat="article in main.articles | orderBy:'-created'">
                 <article class="news-post card">
                   <!-- Post Image -->
                   <div class="post-image-wrapper">
@@ -84,10 +63,25 @@
                 <!-- END article admin-news-post -->
               </div>
             </div>
-            <!-- END row -->
-        </div>
-      </div>
-    </div>
 
-  <!-- END home -->
-<the-footer></the-footer>
+    <!-- END carousel/news column
+          START aside -->
+      <aside class="home-sidebar col s3">
+        <!-- recruitment widget -->
+        <div class="row">
+          <div id="recruitment-widget">
+            <recruitment-widget></recruitment-widget>
+          </div>
+        </div>
+        <!-- END recruitment widget -->
+        <!-- progression widget -->
+        <div class="row">
+          <div id="progression-widget">
+            <progression-widget></progression-widget>
+          </div>
+        </div>
+        <!-- END Progression Widget -->
+      </aside>
+    </div>
+      <!-- END sidebar -->
+</div>

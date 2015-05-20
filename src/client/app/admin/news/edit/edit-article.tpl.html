@@ -13,16 +13,10 @@
               ng-model="vm.articleData.title"
               required>
         </div><!-- END -->
-        <div class="col-lg-3" ng-controller="DatepickerCtrl">
-          <div class="form-group" ng-class="{'has-error': datepickerForm.created.$invalid}">
-            <input type="text" placeholder="Date" class="form-control" ng-model="vm.articleData.created" name="date" bs-datepicker>
-          </div>
-        </div>
+
      </div> <!-- END row-->
      <div class="row"><!-- textangular -->
-      <div class="col-sm-12 col-lg-10">
-          <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage', 'insertVideo', 'html']]" class="textEditor" ng-model="vm.articleData.content"></text-angular>
-      </div>
+
     </div><!-- END row /textangular-->
     <div class="row">
     <div class="col-sm-12 col-lg-10">

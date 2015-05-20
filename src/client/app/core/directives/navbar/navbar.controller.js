@@ -12,8 +12,8 @@
     .controller('NavbarCtrl', NavbarCtrl);
   /* @ngInject */
   function NavbarCtrl(Auth, $scope, $rootScope, $location) {
-    var vm = this;
-    vm.isCollapsed = false;
+    var navbar = this;
+    navbar.isCollapsed = false;
     /**
      * @ngdoc function
      * @name logout
@@ -21,7 +21,7 @@
      * @description
      * Logout the current user
      */
-    vm.logout = Auth.logout;
+    navbar.logout = Auth.logout();
 
     /**
      * @ngdoc function
@@ -30,7 +30,7 @@
      * @description
      * See {@link components/auth.service:Auth#isLoggedIn isLoggedIn} of the Auth service
      */
-    vm.isLoggedIn = Auth.isLoggedIn();
+    navbar.isLoggedIn = Auth.isLoggedIn();
 
     /**
      * @ngdoc function
@@ -39,10 +39,10 @@
      * @description
      * See {@link components/auth.service:Auth#getCurrentUser getCurrentUser} of the Auth service
      */
-    vm.currentUser = Auth.getCurrentUser();
+    navbar.currentUser = Auth.getCurrentUser();
 
-    vm.isAdmin = Auth.isAdmin();
-    vm.isActive = function (route) {
+    navbar.isAdmin = Auth.isAdmin();
+    navbar.isActive = function (route) {
       return route === $location.path();
     };
   }

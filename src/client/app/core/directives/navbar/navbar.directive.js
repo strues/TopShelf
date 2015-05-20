@@ -18,7 +18,7 @@
       restrict: 'EA',
       templateUrl: 'app/core/directives/navbar/navbar.tpl.html',
       controller: 'NavbarCtrl',
-      controllerAs: 'vm'
+      controllerAs: 'navbar'
     };
   }
 }());

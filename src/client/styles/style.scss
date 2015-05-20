@@ -1,7 +1,7 @@
 // styles.scss
-
+@import 'vendor/materialize';
 @import 'base/module';
-@import 'vendor/module';
+
 @import 'helpers/module';
 @import 'layout/module';
 @import 'pages/module';

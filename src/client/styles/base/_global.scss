@@ -1,5 +1,6 @@
 html body {
   min-height: 100%;
+  background-color: #ecf0f1;
   //background-image: url(../../assets/images/bg.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -39,12 +40,6 @@ hr {
   opacity: .1;
 }
 
-.row.no-gutters > [class^="col-"],
-.row.no-gutters > [class*=" col-"] {
-  padding-right: 0;
-  padding-left: 0;
-}
-
 /*******************
   Utility Classes
 *******************/
@@ -70,6 +65,11 @@ hr {
   user-select: none;
 }
 
+.waves-effect.waves-blue .waves-ripple {
+ /* The alpha value allows the text and background color
+ of the button to still show through. */
+  background-color: $guild-blue;
+}
 // Circle
 .circle {
   border-radius: 50%;

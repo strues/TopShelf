@@ -1,97 +1,75 @@
-<header id="header">
-    <div class="top-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-xs-4">
-                    <div class="top-number"><p></div>
-                </div>
-                <div class="col-sm-6 col-xs-8">
-                   <div class="social">
-                        <ul class="social-share">
-                            <li><a href="https://facebook.com/topshelfguild"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/topshelfguild"><i class="fa fa-twitter"></i></a></li>
-
-                        </ul>
-                        <div class="search">
-                            <form role="form">
-                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                <i class="fa fa-search"></i>
-                            </form>
-                       </div>
-                   </div>
-                </div>
-            </div>
-        </div><!--/.container-->
-    </div><!--/.top-bar-->
-
-    <nav class="navbar navbar-inverse" role="banner" ng-controller="NavbarCtrl as vm" bs-navbar>
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" aria-expanded="false" aria-controls="navbar" data-target="navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" ui-sref="guild.main" rel="home">
-                  <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo"></a>
-            </div>
-
-            <div class="collapse navbar-collapse navbar-right" style="padding-left: 0px;" ng-class="{collapse: isCollapsed}">
-                <ul class="nav navbar-nav">
-                  <li><a ui-sref="guild.main"><i class="mdi-action-home"></i> Home</a></li>
-                  <!-- START dropdown -->
-                  <li class="dropdown">
-                  <a role="button" data-toggle="appDD" bs-dropdown data-template="appDDb">
-                    <i class="mdi-social-pages"></i> Apply<b class="caret"></b>
-                  </a>
-                  <script type="text/ng-template" id="appDDb">
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a ui-sref="guild.apply.info">Information</a>
-                    </li>
-                    <li>
-                    <a href="https://topshelfguild.com/forums/applicationform/raider.2/form" target="_blank">Application</a>
-                    </li>
-                    <li> </li>
+<header>
+  <ul id="nav-mobile" class="side-nav fixed" ng-controller="NavbarCtrl as vm">
+    <!--Maybe a logo?-->
+    <li class="logo" style="margin-left: -15px;">
+      <a id="logo-container" ui-sref="guild.main" class="brand-logo">
+      <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo"></a>
+    </li>
+    <div class="section"></div>
+    <li class="bold">
+      <a ui-sref="guild.main" class="waves-effect waves-teal">
+      <i class="mdi-action-home"></i> Home</a>
+    </li>
+    <li class="bold"><a href="#about" class="waves-effect waves-teal"><i class="mdi-social-pages"></i> Apply<b class="caret"></b></a></li>
+    <li class="bold">
+      <a ui-sref="guild.apply.info">
+      <i class="mdi-action-info"></i> Recruitment Info</a>
+    </li>
+    <li class="bold">
+      <a ui-sref="guild.roster"><i class="mdi-communication-contacts"></i> Roster</a>
+    </li>
+    <li>
+      <ul class="collapsible collapsible-accordion">
+          <li class="bold">
+            <a class="collapsible-header waves-effect waves-teal">
+              Guild Info</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li>
+                        <a ui-sref="guild.apply.info">
+                        <i class="mdi-action-info"></i> Recruitment</a>
+                      </li>
+                      <li>
+                        <a ui-sref="guild.about">
+                        <i class="mdi-action-help"></i> About Us</a>
+                      </li>
+                      <li>
+                        <a ui-sref="guild.roster">
+                        <i class="mdi-communication-contacts"></i> Roster</a>
+                      </li>
                   </ul>
-                  </script>
-                  </li>
-                  <!-- END Dropdown -->
-                  <li data-match-route="/guild/info"><a ui-sref="guild.information"><i class="mdi-action-info"></i> Info</a></li>
-                  <li data-match-route="/guild/streams"><a ui-sref="guild.streams"><i class="mdi-av-video-collection"></i> Streams</a></li>
-                  <li data-match-route="/guild/roster"><a ui-sref="guild.roster"><i class="mdi-communication-contacts"></i> Roster</a></li>
-                  <li><a href="https://topshelfguild.com/forums/" target="_blank"><i class="mdi-communication-forum"></i> Forums</a></li>
-                  <li data-match-route="/admin" ng-show="vm.isAdmin" ui-sref-active="active">
-                    <a ui-sref="admin"><i class="mdi-navigation-apps"></i> Admin</a>
-                  </li>
-                  <li data-match-route="/signup" ng-hide="vm.isLoggedIn" ui-sref-active="active">
-                    <a ui-sref="account.signup">Sign up</a>
-                  </li>
-                  <li data-match-route="/login" ng-hide="vm.isLoggedIn" ui-sref-active="active">
-                    <a ui-sref="account.login"> Login</a>
-                  </li>
-                  <!-- START dropdown -->
-                  <li class="dropdown" ng-show="vm.isLoggedIn">
-                  <a role="button" data-toggle="dropdown" bs-dropdown data-template="dropdownbody">
-                    <i class="mdi-action-account-box"></i> {{ vm.currentUser.username }}<b class="caret"></b>
-                  </a>
-                  <script type="text/ng-template" id="dropdownbody">
-                  <ul class="dropdown-menu">
-                    <li ng-show="vm.isLoggedIn">
-                      <a ui-sref="account.profileEdit"> Profile</a>
-                    </li>
-                    <li ng-show="vm.isLoggedIn">
-                      <a href="#" ng-click="vm.logout"> Logout</a>
-                    </li>
-                    <li> </li>
-                  </ul>
-                  </script>
-                  </li>
-                  <!-- END Dropdown -->
-                  </ul>
-            </div>
-        </div><!--/.container-->
-    </nav><!--/nav-->
-
-</header><!--/header-->
+              </div>
+          </li>
+      </ul>
+    </li>
+    <li class="bold">
+      <a ui-sref="guild.about"><i class="mdi-action-help"></i> About Us</a>
+    </li>
+    <li class="bold">
+      <a href="https://topshelfguild.com/forums/" target="_blank">
+        <i class="mdi-communication-forum"></i> Forums</a>
+    </li>
+    <li class="bold" ng-show="vm.isAdmin" ui-sref-active="active">
+      <a ui-sref="admin"><i class="mdi-navigation-apps"></i> Admin</a>
+    </li>
+    <li class="bold" ng-hide="vm.isLoggedIn" ui-sref-active="active">
+      <a ui-sref="account.signup"><i class="mdi-action-exit-to-app"></i> Sign up</a>
+    </li>
+    <li class="bold" ng-hide="vm.isLoggedIn" ui-sref-active="active">
+      <a ui-sref="account.login"><i class="mdi-action-account-circle"></i> Login</a>
+    </li>
+    <li class="dropdown" ng-show="vm.isLoggedIn">
+      <a role="button" data-toggle="dropdown" bs-dropdown data-template="dropdownbody">
+        <i class="mdi-action-account-box"></i> {{ vm.currentUser.username }}<b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li ng-show="vm.isLoggedIn">
+          <a ui-sref="account.profileEdit"> Profile</a>
+        </li>
+        <li ng-show="vm.isLoggedIn">
+          <a href="#" ng-click="vm.logout"> Logout</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</header>

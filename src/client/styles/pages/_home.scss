@@ -17,3 +17,26 @@
 .post-detail-image {
 	max-width: 1140px;
 }
+
+#index-banner {
+    background-color: $guild-main; }
+#index-banner .container {
+    position: relative; }
+#index-banner .header {
+    color: #FFF; }
+#index-banner h4 {
+    margin-bottom: 40px; }
+#index-banner h1 {
+    margin-top: 16px; }
+
+@media only screen and (max-width : 992px) {
+    #index-banner h1 {
+        margin-top: 60px; }
+    #index-banner h4 {
+        margin-bottom: 15px; }
+}
+
+@media only screen and (max-width : 600px) {
+    #index-banner h4 {
+        margin-bottom: 0; }
+}

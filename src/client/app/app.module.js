@@ -13,17 +13,13 @@
       'ngMessages',
       'ngCookies',
       'vModal',
-      'ngTouch',
       'ngAnimate',
       'ui.router',
+      'ui.materialize',
       'ct.ui.router.extras',
       'angular-carousel',
-      'mgcrea.ngStrap',
-      'textAngular',
-      'xeditable',
       'toastr',
       'angularFileUpload',
-      'trNgGrid',
       'app.core',
       'app.account',
       'app.guild',
@@ -32,7 +28,7 @@
 
   /* @ngInject */
   function run($rootScope, $state, $stateParams,
-    $location, $timeout, Auth, editableOptions) {
+    $location, $timeout, Auth) {
 
     $rootScope.Auth = Auth;
     $rootScope.$state = $state;
@@ -62,7 +58,6 @@
         }
       });
     });
-    editableOptions.theme = 'bs3';
   }
   /* @ngInject */
   angular.module('app').run(run);
