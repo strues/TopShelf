@@ -1,2 +1,8 @@
+<div class="row" ng-controller="AccountCtrl as account">
 <h2>user</h2>
-<p>{{user.ctrlName}}</p>
+  <div class="form-group">
+            <label class="sr-only" for="displayName">Name</label>
+            <input id="displayName" type="text" class="form-control" ng-model="account.user.displayName"
+                 placeholder="Name" ng-required />
+          </div>
+</div>

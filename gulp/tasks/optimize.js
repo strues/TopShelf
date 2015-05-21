@@ -9,7 +9,7 @@ var args = require('yargs').argv;
 var browserSync = require('browser-sync'),
     glob        = require('glob'),
     _           = require('lodash'),
-    plg         = require('gulp-load-plugins')({lazy: true}),
+    plg         = require('gulp-load-plugins')({lazy: true}), // jshint ignore:line
     config      = require('../config')(),
     gulp        = require('gulp'),
     path        = require('path'),
@@ -24,7 +24,7 @@ var browserSync = require('browser-sync'),
  * and inject them into the new index.html
  * @return {Stream}
  */
-gulp.task('optimize', ['inject'], function() {
+gulp.task('optimize', ['inject', 'vet'], function() {
   plg.notify('Optimizing the js, css, and html');
 
   var assets = plg.useref.assets({searchPath: './'});

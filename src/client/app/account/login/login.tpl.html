@@ -3,21 +3,24 @@
   <div class="card-panel white">
     <form id="lsform" name="loginForm" ng-submit="login.login(loginForm)" novalidate>
       <div class="login-form">
-        <div class="control-group">
-          <input class="login-field" type="email" id="login-name" name="email" ng-model="login.user.email" placeholder="Email" ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
-          <label class="login-field-icon fui-user" for="login-name"></label>
-          <div class="help-block text-danger"
-            ng-if="loginForm.username.$dirty"
-            ng-messages="loginForm.username.$error">
-            <div ng-message="required">You must enter a username.</div>
-          </div>
+        <div class="input-field">
+          <i class="mdi-communication-email prefix"></i>
+          <input class="validate" type="email" id="login-email" name="email" ng-model="login.email" required>
+          <label for="login-email">Email Address</label>
         </div>
-        <div class="control-group">
-          <input type="password" class="login-field" value=""  ng-model="login.user.password" placeholder="password" id="login-pass" required>
-          <label class="login-field-icon fui-lock" for="login-pass"></label>
+        <div class="input-field">
+          <i class="mdi-action-lock prefix"></i>
+          <input type="password" value="" class="validate" ng-model="login.password" id="login-password" required>
+          <label for="login-password">Password</label>
         </div>
-        <input class="btn-login" type="submit"></a>
-        <a class="login-link" ui-sref="account.signup">Need an account? Signup</a>
+                <div class="divider"></div>
+         <button class="btn waves-effect waves-green" type="submit" name="action">Login
+          <i class="mdi-content-send right"></i>
+        </button>
+
+        <br>
+        <p>
+        <a class="login-link" ui-sref="account.signup">Need an account? Signup</a></p>
       </div>
     </form>
     </div>

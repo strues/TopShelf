@@ -10,8 +10,6 @@ var router = express.Router();
 // add context for auth sensitive resources
 var addRequestContext = contextService.middleware('request');
 
-// add the authenticated user to the created request context
-var addUserContext = auth.addAuthContext('request:acl.user');
 
 router.param('application', function(req, res, next, id) {
     var query = Application.findById(id);

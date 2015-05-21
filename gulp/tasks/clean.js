@@ -11,7 +11,7 @@ var gulp        = require('gulp'),
     config      = require('../config')(),
     error       = require('../util/error'),
     del         = require('del'),
-    plg         = require('gulp-load-plugins')({lazy: true});
+    plg         = require('gulp-load-plugins')({lazy: true});// jshint ignore:line
 
 /**
  * Remove all files from the build, temp, and reports folders

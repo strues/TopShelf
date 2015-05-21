@@ -19,18 +19,20 @@ var wiredep = require('wiredep').stream;
  * @return {Stream}
  */
 
-gulp.task('inject', ['bower', 'templatecache', 'sass'], function () {
+gulp.task('inject', ['templatecache', 'sass'], function () {
     var injectStyles = gulp.src([
       config.tmp + '/**/*.css',
       '!' + config.tmp + '/vendor.css'
     ], {read: false});
 
     var injectScripts = gulp.src([
-      '{' + config.js,
-      '!' + config.client + '/app/**/*.spec.js',
-      '!' + config.client + '/app/**/*.mock.js'
-    ])
-    .pipe(plg.angularFilesort()).on('error', error);
+      config.client + '/app/app.module.js',
+      config.client + '/app/app.config.js',
+      config.client + '/app/**/*.module.js',
+      config.client + '/app/**/*.config.js',
+      config.client + '/**/*.js',
+      '!' + config.client + '/**/*.spec.js'
+    ]);
 
     var injectOptions = {
       ignorePath: [config.root],

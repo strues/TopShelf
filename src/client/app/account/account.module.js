@@ -19,6 +19,16 @@
       abstract: true,
       url: '/account'
     })
+    .state('account.profile', {
+      url: '',
+      views: {
+        'main@': {
+          templateUrl: 'app/account/account.tpl.html',
+          controller: 'AccountCtrl',
+          controllerAs: 'account'
+        }
+      }
+    })
     .state('account.login', {
       url: '/login',
       views: {
@@ -45,28 +55,6 @@
           controllerAs: 'signup'
         }
       }
-    })
-    .state('account.profile', {
-      url: '/profile',
-      views: {
-        'main@': {
-          templateUrl: 'app/account/profile/profile.tpl.html',
-          controller: 'ProfileController',
-          controllerAs: 'profile'
-        }
-      }
-    })
-    .state('account.profileEdit', {
-      url: '/profile/edit',
-      views: {
-        'main@': {
-          templateUrl:
-          'app/account/profile/profile.edit/profileEdit.tpl.html',
-          controller: 'ProfileEditController',
-          controllerAs: 'editProf'
-        }
-      },
-      authenticate: true
     });
   }
 }());

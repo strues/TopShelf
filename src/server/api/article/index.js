@@ -9,8 +9,6 @@ var router = express.Router();
 // Export the configured express router for the article api routes
 module.exports = router;
 
-// check if the used is authenticated at all
-var isAuthenticated = auth.isAuthenticated();
 
 // check if the authenticated user has at least the 'admin' role
 var isAdmin = auth.hasRole('admin');

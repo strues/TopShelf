@@ -17,9 +17,9 @@ function isOnlyChange(event) {
   return event.type === 'changed';
 }
 
-gulp.task('watch', ['inject'], function () {
+gulp.task('watch', ['templatecache', 'inject'], function () {
 
-  //gulp.watch([config.client + '/*.html', 'bower.json'], ['inject', 'bower']);
+  gulp.watch([config.client + '/*.html', 'bower.json'], ['inject', 'bower']);
 
   gulp.watch([
     config.sass

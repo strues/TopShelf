@@ -12,8 +12,7 @@ var banner = [
   ' * http://github.com/<%= package.homepage %>\n' +
   ' * @author <%= package.author %>\n' +
   ' * @version <%= package.version %>\n' +
-  ' * Copyright ' + new Date().getFullYear() +
-  '. <%= package.license %> licensed.\n' +
+  ' * Copyright ' + new Date().getFullYear() + '. <%= package.license %> licensed.\n' +
   ' */\n'
 ];
 

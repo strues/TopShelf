@@ -13,7 +13,6 @@
 'use strict';
 
 var express = require('express');
-var contextService = require('request-context');
 var middleware = require('../../components/middleware');
 var ProgressionController = require('./progression.controller');
 var auth = require('../../auth/auth.service');
@@ -28,15 +27,6 @@ module.exports = router;
  * @type {application:controller~ApplicationController}
  */
 var controller = new ProgressionController(router);
-
-// add context for auth sensitive resources
-var addRequestContext = contextService.middleware('request');
-
-// add the authenticated user to the created request context
-var addUserContext = auth.addAuthContext('request:acl.user');
-
-// check if the used is authenticated at all
-var isAuthenticated = auth.isAuthenticated();
 
 // check if the authenticated user has at least the 'admin' role
 var isAdmin = auth.hasRole('admin');

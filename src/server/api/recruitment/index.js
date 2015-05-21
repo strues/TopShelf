@@ -10,7 +10,6 @@ var router = express.Router();
 module.exports = router;
 
 // check if the used is authenticated at all
-var isAuthenticated = auth.isAuthenticated();
 
 // check if the authenticated user has at least the 'admin' role
 var isAdmin = auth.hasRole('admin');
