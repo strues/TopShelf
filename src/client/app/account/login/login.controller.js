@@ -10,8 +10,10 @@
   angular
     .module('app.account')
     .controller('LoginController', LoginController);
+
+  LoginController.$inject = ['Auth', '$state'];
   /* @ngInject */
-  function LoginController(Auth, $location, $window, toastr) {
+  function LoginController(Auth, $state) {
     var vm = this;
     // view model bindings
     /**
@@ -40,16 +42,14 @@
           email: vm.user.email,
           password: vm.user.password
         }).then(function () {
-          toastr.success('Successfully logged in', 'Welcome Back!');
+          Materialize.toast('Successfully logged in', 4000);
           // Logged in, redirect to home
-          $location.path('/');
+          $state.go('guild.main');
         }).catch(function (err) {
           vm.error = err;
+          Materialize.toast(err, 3000);
         });
       }
     }
-    vm.loginOauth = function(provider) {
-      $window.location.href = '/auth/' + provider;
-    };
   }
 }());

@@ -19,7 +19,7 @@ var wiredep = require('wiredep').stream;
  * @return {Stream}
  */
 
-gulp.task('inject', ['templatecache', 'sass'], function () {
+gulp.task('inject', ['bower', 'templatecache', 'sass'], function () {
     var injectStyles = gulp.src([
       config.tmp + '/**/*.css',
       '!' + config.tmp + '/vendor.css'

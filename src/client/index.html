@@ -20,10 +20,8 @@
   <meta property="og:site_name" content="Top Shelf">
   <meta property="og:type" content="website">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="apple-mobile-web-app-status-bar-style" content="transparent">
   <meta name="msapplication-TileImage" content="/assets/faves/mstile-144x144.png">
-  <meta name="theme-color" content="#ffffff">
 
    <!-- build:css styles/lib.css -->
     <link rel="stylesheet" href="/.tmp/vendor.css">
@@ -34,7 +32,6 @@
     <link rel="stylesheet" href="/bower_components/v-modal/dist/v-modal.css">
     <!-- endinject -->
     <!-- endbuild -->
-
     <!-- build:css styles/app.css-->
     <!-- inject:css -->
     <link rel="stylesheet" href="/.tmp/style.css">
@@ -67,6 +64,26 @@
         <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo">
       </a>
     </li>
+    <li class="no-padding" ng-show="Auth.isLoggedIn()">
+      <ul class="collapsible collapsible-accordion">
+          <li class="bold" ng-controller="NavbarCtrl as navbar">
+            <a class="collapsible-header waves-effect waves-ripple waves-blue active">
+              Hello, {{ Auth.getCurrentUser().username }}</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="account.profileEdit">
+                       <i class="mdi-action-account-box"></i> Profile</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" href="#" ng-click="navbar.logout()">
+                         <i class="mdi-action-lock-open"></i> Logout</a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+    </li>
     <li class="bold">
       <a href="#!" ui-sref="guild.main" class="waves-effect waves-blue">
       <i class="mdi-action-home"></i> Home</a>
@@ -75,6 +92,7 @@
       <a href="#" class="waves-effect waves-blue">
       <i class="mdi-social-pages"></i> Apply</a>
     </li>
+
     <li class="no-padding">
       <ul class="collapsible collapsible-accordion">
           <li class="bold">
@@ -103,8 +121,41 @@
       <a class="waves-effect waves-blue" href="https://topshelfguild.com/forums/" target="_blank">
        <i class="mdi-communication-forum"></i> Forums</a>
     </li>
-    <li class="bold" ng-show="Auth.isAdmin()">
-      <a class="waves-effect waves-blue" ui-sref="admin"><i class="mdi-navigation-apps"></i> Admin</a>
+    <li class="no-padding" ng-show="Auth.isAdmin()">
+      <ul class="collapsible collapsible-accordion">
+          <li class="bold">
+            <a class="collapsible-header waves-effect waves-ripple waves-blue active">
+              <i class="mdi-navigation-apps"></i> Admin</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin">
+                        <i class="mdi-action-dashboard"></i> Dashboard</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.news">
+                        <i class="mdi-editor-insert-drive-file"></i> News</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.carousel">
+                        <i class="mdi-image-slideshow"></i> Slider</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.recruiting">
+                        <i class="mdi-social-group-add"></i> Recruiting</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.resources">
+                        <i class="mdi-communication-call-made"></i> Resources</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.media">
+                        <i class="mdi-file-cloud-circle"></i> Media</a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
     </li>
     <li class="bold" ng-hide="Auth.isLoggedIn()">
       <a class="waves-effect waves-blue" ui-sref="account.signup"><i class="mdi-action-exit-to-app"></i> Sign up</a>
@@ -112,26 +163,7 @@
     <li class="bold" ng-hide="Auth.isLoggedIn()">
       <a class="waves-effect waves-blue" ui-sref="account.login"><i class="mdi-action-account-circle"></i>Login</a>
     </li>
-    <li class="no-padding" ng-show="Auth.isLoggedIn()">
-      <ul class="collapsible collapsible-accordion">
-          <li class="bold" ng-controller="NavbarCtrl as navbar">
-            <a class="collapsible-header waves-effect waves-ripple waves-blue active">
-              Hello, {{ Auth.getCurrentUser().username }}</a>
-              <div class="collapsible-body">
-                  <ul>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="account.profileEdit">
-                       <i class="mdi-action-account-box"></i> Profile</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" href="#" ng-click="navbar.logout()">
-                         <i class="mdi-action-lock-open"></i> Logout</a>
-                      </li>
-                  </ul>
-              </div>
-          </li>
-      </ul>
-    </li>
+
   </ul>
 </header>
 <main>
@@ -142,6 +174,7 @@
 
  <!-- build:js js/lib.js -->
   <!-- inject:bower:js -->
+  <script src="/bower_components/modernizr/modernizr.js"></script>
   <script src="/bower_components/jquery/dist/jquery.js"></script>
   <script src="/bower_components/lodash/lodash.js"></script>
   <script src="/bower_components/materialize/bin/materialize.js"></script>

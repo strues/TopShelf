@@ -5,7 +5,7 @@ module.exports = function() {
   var server         = './src/server/';
   var clientApp      = client + 'app/';
   var report         = './docs/';
-  var doc                    = './docs/';
+  var doc            = './docs/';
   var root           = './';
   var specRunnerFile = 'specs.html';
   var temp           = './.tmp/';
@@ -17,8 +17,8 @@ module.exports = function() {
 
   var config = {
     alljs: [
-    './src/**/*.js',
-    './*.js'
+      './src/**/*.js',
+      './*.js'
     ],
     build: './build/',
     client: client,
@@ -31,16 +31,16 @@ module.exports = function() {
     index: client + 'index.html',
     // app js, with no specs
     js: [
-    clientApp + '**/*.module.js',
-    clientApp + '**/*.config.js',
-    clientApp + '**/*.controller.js',
-    clientApp + '**/*.js',
-    '!' + clientApp + '**/*.spec.js'
+      clientApp + '**/*.module.js',
+      clientApp + '**/*.config.js',
+      clientApp + '**/*.controller.js',
+      clientApp + '**/*.js',
+      '!' + clientApp + '**/*.spec.js'
     ],
     jsOrder: [
-    '**/app.module.js',
-    '**/*.module.js',
-    '**/*.js'
+      '**/app.module.js',
+      '**/*.module.js',
+      '**/*.js'
     ],
     sass: client + 'styles/**/*.scss',
     report: report,
@@ -48,7 +48,6 @@ module.exports = function() {
     server: server,
     source: 'src/',
     temp: temp,
-
     optimized: {
       app: 'app.js',
       lib: 'lib.js'
@@ -56,7 +55,7 @@ module.exports = function() {
     e2e: './e2e',
     wiredep: {
       directory: 'bower_components',
-      exclude: [/bootstrap-sass-official\/.*\.js/, /bootstrap\.css/]
+      exclude: [/materialize\/.*\.css/, /materialize\.css/]
     },
 
     plato: {js: clientApp + '**/*.js'},

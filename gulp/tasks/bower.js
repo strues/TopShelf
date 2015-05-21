@@ -10,7 +10,7 @@
 var gulp     = require('gulp'),
 bowerFiles   = require('main-bower-files'),
 config       = require('../config')(),
-bowerExclude = require('../util/bowerExclusions'),
+//bowerExclude = require('../util/bowerExclusions'),
 error        = require('../util/error'),
 plg          = require('gulp-load-plugins')({lazy: true});
 
@@ -19,8 +19,7 @@ gulp.task('bower', function() {
   gulp.src(config.client + '/index.html')
         .pipe(plg.inject(gulp.src(bowerFiles(), {
           read: false
-        }, {relative: 'true',
-          ignorePath: bowerExclude
+        }, {relative: 'true'
         }), {
           starttag: '<!-- inject:bower:{{ext}} -->'
         }))

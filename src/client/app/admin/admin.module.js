@@ -11,10 +11,12 @@
     .module('app.admin', [])
     .config(config);
   /* @ngInject */
-  function config($stateProvider, $stickyStateProvider) {
+  config.$inject = ['$stateProvider'];
+  function config($stateProvider) {
     $stateProvider
         .state('admin', {
           url: '/admin',
+          authenticate: true,
           views: {
             'main@': {
               controller: 'DashboardController',

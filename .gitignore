@@ -6,7 +6,10 @@
 bin
 obj
 /packages
-src/client/assets/fonts/
+src/client/fonts/*
+src/client/assets/*
+src/client/img/*
+src/client/styles/vendor/
 
 # Ignore Node & Bower
 ###################

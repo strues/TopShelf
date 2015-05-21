@@ -42,11 +42,10 @@ gulp.task('serve-build', ['build'], function() {
 function getNodeOptions(isDev) {
   return {
     script: config.nodeServer,
-    ext: 'html js scss css',
     delayTime: 1,
     env: {
       'PORT': config.defaultPort,
-      'NODE_ENV': isDev ? 'development' : 'production'
+      'NODE_ENV': isDev ? 'development' : 'build'
     },
     watch: [config.server]
   };
@@ -97,8 +96,8 @@ function serve(isDev) {
           plg.notify('files changed:\n' + ev);
           setTimeout(function() {
             browserSync.notify('reloading now ...');
-            browserSync.reload({stream: true});
-          }, config.browserReloadDelay);
+            browserSync.reload({stream: false});
+          }, 5000);
         })
         .on('start', function() {
           plg.notify('*** nodemon started');
@@ -142,6 +141,7 @@ function startBrowserSync(isDev, specRunner) {
     },
     injectChanges: true,
     logFileChanges: true,
+    reloadDelay: 0,
     logLevel: 'debug',
     logPrefix: 'topshelf',
     notify: true
@@ -153,13 +153,13 @@ function startBrowserSync(isDev, specRunner) {
 
   // If build: watches the files, builds, and restarts browser-sync.
   // If dev: watches sass, compiles it to css, browser-sync handles reload
-  if (isDev) {
-    gulp.watch([config.sass], ['sass', 'sass-watcher', browserSync.reload])
-        .on('change', changeEvent);
-  } else {
-    gulp.watch([config.sass, config.js, config.html],
-['optimize', browserSync.reload])
-        .on('change', changeEvent);
-  }
+  //   if (isDev) {
+  //     gulp.watch([config.sass], ['sass', browserSync.reload])
+  //         .on('change', changeEvent);
+  //   } else {
+  //     gulp.watch([config.sass, config.js, config.html],
+  // ['optimize', browserSync.reload])
+  //         .on('change', changeEvent);
+  //   }
 
 }

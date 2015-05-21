@@ -27,9 +27,7 @@
     "test",
     "tests"
   ],
-  "overrides": {
-
-  },
+  "overrides": {},
   "devDependencies": {
     "angular-mocks": "~1.4.0-rc.2",
     "sinon": "~1.14.1",

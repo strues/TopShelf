@@ -10,8 +10,11 @@
   angular
       .module('app.account')
       .factory('Auth', Auth);
+
+  Auth.$inject = ['$http', 'User', '$localStorage', '$q'];
   /* @ngInject */
   function Auth($http, User, $localStorage, $q) {
+
     var currentUser = $localStorage.token ? User.get() : {};
     return {
       /**
@@ -26,25 +29,27 @@
        * @return {Promise} A promise
        */
       login: function(user, callback) {
-        var cb = callback || angular.noop;
+        // do nothing on the success callback,
+        // hence replacing the success callbck function with angular.noop()
+        var cb = callback || angular.noop; // if no `callback` provided, don't break :)
         var deferred = $q.defer();
 
         $http.post('/auth/local', {
           email: user.email,
           password: user.password
         })
-        .success(function(data) {
-          $localStorage.token = data.token;
-          currentUser = User.get();
-          deferred.resolve(data);
-          return cb();
-        })
-        .error(function(err) {
-          this.logout();
-          deferred.reject(err);
-          return cb(err);
-        }
-        .bind(this));
+                    .success(function(data) {
+                      $localStorage.token = data.token;
+                      currentUser = User.get();
+                      deferred.resolve(data);
+                      return cb();
+                    })
+                    .error(function(err) {
+                      this.logout();
+                      deferred.reject(err);
+                      return cb(err);
+                    }
+                    .bind(this));
         return deferred.promise;
       },
       /**
@@ -58,7 +63,6 @@
        */
       logout: function() {
         delete $localStorage.token;
-        currentUser = {};
       },
       /**
        * @ngdoc function

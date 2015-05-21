@@ -36,25 +36,7 @@ Hello, {{ editProf.currentUser.username }}</div>
       </form>
 
       <button class="btn btn-md btn-warning" ui-sref="account.logout"><i class="ico-user-minus"></i> Logout</button>
-      <form role="form"
-              name="customOptionsForm"
-              ng-submit="submit()"
-              ng-fab-form-options="customFormOptions">
-            <div class="form-group">
-                <label class="control-label">Character (required)
-                </label>
-                <input type="text"
-                       class="form-control"
-                       placeholder="Character"
-                       ng-model="characterData.name"
-                       required>
-            </div>
-              <div class="form-group">
-                <button type="submit"
-                        class="btn btn-primary">Submit Form
-                </button>
-            </div>
-        </form>
+
     </div>
   </div>
 
