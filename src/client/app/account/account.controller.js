@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   /* jshint latedef: nofunc */
@@ -10,150 +10,67 @@
    * provides the ability to update profile information.
    */
   angular
-      .module('app.account')
-      .controller('AccountCtrl', AccountCtrl);
+    .module('app.account')
+    .controller('AccountCtrl', AccountCtrl);
 
-  AccountCtrl.$inject = ['$scope', '$auth', 'User', 'userData', '$timeout',
-    'OAUTH', '$location'];
+  AccountCtrl.$inject = ['$auth', 'userData'];
 
-  function AccountCtrl($scope, $auth, userData, $timeout,
-    OAUTH, User, $location) {
-    var account = this;
-
+  function AccountCtrl($auth, userData) {
+    var vm = this;
     /**
-     * Is the user authenticated?
-     *
-     * @returns {boolean}
+     * Get user's profile information.
      */
-    account.isAuthenticated = function() {
-      return $auth.isAuthenticated();
+    vm.getProfile = function() {
+      userData.getProfile().success(function(data) {
+        vm.user = data;
+      })
+        .error(function(error) {
+          console.log(error);
+        });
     };
 
     /**
-     * Get user's profile information
+     * Update user's profile information.
      */
-    account.getProfile = function() {
-      /**
-       * Function for successful API call getting user's profile data
-       * Show Account UI
-       * @private
-       */
-      function _getUserSuccess(data) {
-        account.user = data;
-        account.administrator = account.user.isAdmin;
-        account.linkedAccounts =
-          User.getLinkedAccounts(account.user, 'account');
-        account.showAccount = true;
-      }
-
-      /**
-       * Function for error API call getting user's profile data
-       * Show an error alert in the UI
-       * @private
-       */
-      function _getUserError(error) {
-        account.errorGettingUser = true;
-      }
-
-      userData.getUser().then(_getUserSuccess, _getUserError);
+    vm.updateProfile = function() {
+      userData.updateProfile({
+        displayName: vm.user.displayName,
+        email: vm.user.email
+      }).then(function() {
+        console.log('updated');
+      });
     };
 
     /**
-     * Reset profile save button to initial state
-     *
-     * @private
+     * Link third-party provider.
      */
-    function _btnSaveReset() {
-      account.btnSaved = false;
-      account.btnSaveText = 'Save';
-    }
-
-    _btnSaveReset();
-
-    /**
-     * Watch display name changes to check for empty or null string
-     * Set button text accordingly
-     * @private
-     */
-    function _watchDisplayName(newVal, oldVal) {
-      if (newVal === '' || newVal === null) {
-        account.btnSaveText = 'Enter Name';
-      } else {
-        account.btnSaveText = 'Save';
-      }
-    }
-    $scope.$watch('account.user.displayName', _watchDisplayName);
-
-    /**
-     * Update user's profile information
-     * Called on submission of update form
-     */
-    account.updateProfile = function() {
-      var profileData = {
-        displayName: account.user.displayName
-      };
-
-      /**
-       * Success callback when profile has been updated
-       *
-       * @private
-       */
-      function _updateSuccess() {
-        account.btnSaved = true;
-        account.btnSaveText = 'Saved!';
-
-        $timeout(_btnSaveReset, 2500);
-      }
-
-      /**
-       * Error callback when profile update has failed
-       *
-       * @private
-       */
-      function _updateError() {
-        account.btnSaved = 'error';
-        account.btnSaveText = 'Error saving!';
-      }
-
-      if (!!account.user.displayName) {
-        // Set status to Saving... and update upon success or error in callbacks
-        account.btnSaveText = 'Saving...';
-
-        // Update the user, passing profile data and assigning success and error callbacks
-        userData.updateUser(profileData).then(_updateSuccess, _updateError);
-      }
+    vm.link = function(provider) {
+      $auth.link(provider).then(function() {
+        console.log('success');
+      })
+        .then(function() {
+          vm.getProfile();
+        })
+        .catch(function(response) {
+          console.log(response);
+        });
     };
 
     /**
-     * Link third-party provider
-     *
-     * @param {string} provider
+     * Unlink third-party provider.
      */
-    account.link = function(provider) {
-      $auth.link(provider)
-                .then(function() {
-                  account.getProfile();
-                })
-                .catch(function(response) {
-                  Materialize.toast(response.data.message, 3000);
-                });
-    };
-
-    /**
-     * Unlink third-party provider
-     *
-     * @param {string} provider
-     */
-    account.unlink = function(provider) {
+    vm.unlink = function(provider) {
       $auth.unlink(provider)
-                .then(function() {
-                  account.getProfile();
-                })
-                .catch(function(response) {
-                  Materialize.toast(response.data ? response.data.message : // jshint ignore:line
-                    'Could not unlink ' + provider + ' account', 3000);
-                });
+        .then(function() {
+          console.log('success');
+        })
+        .then(function() {
+          vm.getProfile();
+        })
+        .catch(function(response) {
+          console.log(response);
+        });
     };
-
+    vm.getProfile();
   }
 })();

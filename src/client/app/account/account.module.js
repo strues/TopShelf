@@ -25,7 +25,20 @@
         'main@': {
           templateUrl: 'app/account/account.tpl.html',
           controller: 'AccountCtrl',
-          controllerAs: 'account'
+          controllerAs: 'vm',
+          resolve: { /*@ngInject */
+            authenticated: function($q, $location, $auth) {
+              var deferred = $q.defer();
+
+              if (!$auth.isAuthenticated()) {
+                $location.path('/login');
+              } else {
+                deferred.resolve();
+              }
+
+              return deferred.promise;
+            }
+          }
         }
       }
     })

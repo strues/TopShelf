@@ -1,8 +1,4 @@
-<div class="row" ng-controller="AccountCtrl as account">
+<div class="row">
 <h2>user</h2>
-  <div class="form-group">
-            <label class="sr-only" for="displayName">Name</label>
-            <input id="displayName" type="text" class="form-control" ng-model="account.user.displayName"
-                 placeholder="Name" ng-required />
-          </div>
+  {{vm.user.displayName}}
 </div>
