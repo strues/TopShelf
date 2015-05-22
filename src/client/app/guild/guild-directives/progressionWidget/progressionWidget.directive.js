@@ -9,12 +9,7 @@
       templateUrl:
       'app/guild/guild-directives/progressionWidget/progressionWidget.tpl.html',
       restrict: 'EA',
-      /* @ngInject */
-      controller: function($scope, Progression) {
-        Progression.all().success(function(data) {
-          $scope.charData = data;
-        });
-      }
+      controller: 'ProgressionWidgetCtrl'
     };
   }
 })();

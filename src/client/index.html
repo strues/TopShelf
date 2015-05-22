@@ -48,7 +48,7 @@
   <link rel="manifest" href="/manifest.json">
 </head>
 
-<body ng-app="app">
+<body ng-app="app" ng-strict-di>
   <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -224,22 +224,24 @@
     <script src="src/client/app/core/core.module.js"></script>
     <script src="src/client/app/guild/guild.module.js"></script>
     <script src="src/client/app/core/core.config.js"></script>
-    <script src="src/client/app/admin/news/edit/newsEdit.controller.js"></script>
     <script src="src/client/app/admin/news/create/NewsCreate.controller.js"></script>
-    <script src="src/client/app/admin/resources/edit/resourceEdit.controller.js"></script>
+    <script src="src/client/app/admin/news/edit/newsEdit.controller.js"></script>
     <script src="src/client/app/admin/resources/create/resourceCreate.controller.js"></script>
+    <script src="src/client/app/admin/resources/edit/resourceEdit.controller.js"></script>
     <script src="src/client/app/admin/users/details/userDetails.controller.js"></script>
     <script src="src/client/app/core/directives/footer/footer.controller.js"></script>
     <script src="src/client/app/core/directives/footer/footer.directive.js"></script>
     <script src="src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
+    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.controller.js"></script>
     <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js"></script>
+    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.controller.js"></script>
     <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
     <script src="src/client/app/guild/main/article-detail/details.controller.js"></script>
     <script src="src/client/app/account/account.controller.js"></script>
     <script src="src/client/app/account/account-services/user.service.js"></script>
     <script src="src/client/app/account/account-services/userData.service.js"></script>
-    <script src="src/client/app/account/login/login.controller.js"></script>
     <script src="src/client/app/account/signup/signup.controller.js"></script>
+    <script src="src/client/app/account/login/login.controller.js"></script>
     <script src="src/client/app/admin/carousel/carousel.controller.js"></script>
     <script src="src/client/app/admin/dashboard/dashboard.controller.js"></script>
     <script src="src/client/app/admin/media/adminMedia.controller.js"></script>
