@@ -1,22 +1,23 @@
 'use strict';
-angular.module('app.core')
-.filter('rankName', function () {
+angular
+  .module('app.core')
+  .filter('rankName', function () {
     return function (rankId) {
-        switch (rankId) {
+      switch (rankId) {
         case 0:
-            return 'Guild Master';
+          return 'Guild Master';
         case 1:
-            return 'Guild Commander';
+          return 'Guild Commander';
         case 2:
-            return 'Commander Alt';
+          return 'Commander Alt';
         case 3:
-            return 'Veteran Raider';
+          return 'Veteran Raider';
         case 4:
-            return 'Raider';
+          return 'Raider';
         case 5:
-            return 'Raiding Alt';
+          return 'Raiding Alt';
         case 6:
-            return 'Probationary';
-        }
+          return 'Probationary';
+      }
     };
-});
+  });

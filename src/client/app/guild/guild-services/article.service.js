@@ -9,6 +9,8 @@
   angular
     .module('app.guild')
     .factory('Article', Article);
+
+  Article.$inject = ['$http'];
   /* @ngInject */
   function Article($http) {
     var urlBase = 'api/v1/articles';

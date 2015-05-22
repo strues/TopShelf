@@ -10,6 +10,7 @@
     .module('app.guild')
     .factory('Progression', Progression);
 
+  Progression.$inject = ['$http'];
   /* @ngInject */
   function Progression($http) {
     var urlBase = 'https://us.api.battle.net/wow/character/';

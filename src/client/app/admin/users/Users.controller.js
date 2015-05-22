@@ -1,29 +1,27 @@
 (function () {
-    'use strict';
-    /**
-     * @ngdoc object
-     * @name admin.admin-users.controller:AdminUsersCtrl
-     *
-     * @description
-     *        ApplicationFactory.getAllApplications().then(function(response) {
-              $scope.appGrid.data = response.data;
-          });
-     */
+  'use strict';
+  /**
+   * @ngdoc object
+   * @name app.admin.controller:UsersCtrl
+   */
 
-    angular
-      .module('app.admin')
-      .controller('UsersController', UsersController);
-          /* @ngInject */
-    function UsersController($scope, User, toastr, $state, $http, $location) {
-        $http.get('/api/users').then(function (response) {
-            $scope.dataForTable = response.data;
-        });
-        $scope.deleteUser = function (id) {
-            $http.delete('/api/users' + '/' + id).success(function () {
-                $state.reload();
-                toastr.success('No going back now', 'User Deleted');
-            });
-        };
-    }
+  angular
+    .module('app.admin')
+    .controller('UsersCtrl', UsersCtrl);
+
+  UsersCtrl.$inject = ['$scope', 'User', '$state', '$http'];
+  /* @ngInject */
+  function UsersCtrl($scope, User, $state, $http) {
+    $http.get('/api/users').then(function (response) {
+      $scope.dataForTable = response.data;
+    });
+
+    $scope.deleteUser = function (id) {
+      $http.delete('/api/users/' + id).then(function () {
+        $state.reload();
+        Materialize.toast('User Deleted', 3000); // jshint ignore:line
+      });
+    };
+  }
 
 }());

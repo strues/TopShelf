@@ -36,9 +36,9 @@
         password: vm.password
       })
       .then(function(response) {
-          Materialize.toast('Welcome back!', 3000);
+          Materialize.toast('Welcome back!', 3000); //jshint ignore:line
           console.log(response);
-        })
+        });
     };
 
     /**

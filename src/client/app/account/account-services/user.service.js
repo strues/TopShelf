@@ -15,7 +15,7 @@
      * @param userObj
      * @returns {Array}
      */
-    function getLinkedAccounts(userObj) {
+    function getLinkedAccounts(userObj, s) {
       var linkedAccounts = [];
 
       angular.forEach(OAUTH.LOGINS, function(actObj) {

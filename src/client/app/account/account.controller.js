@@ -36,22 +36,19 @@
       /**
        * Function for successful API call getting user's profile data
        * Show Account UI
-       *
-       * @param data {object} promise provided by $http success
        * @private
        */
       function _getUserSuccess(data) {
         account.user = data;
         account.administrator = account.user.isAdmin;
-        account.linkedAccounts = User.getLinkedAccounts(account.user, 'account');
+        account.linkedAccounts =
+          User.getLinkedAccounts(account.user, 'account');
         account.showAccount = true;
       }
 
       /**
        * Function for error API call getting user's profile data
        * Show an error alert in the UI
-       *
-       * @param error
        * @private
        */
       function _getUserError(error) {
@@ -76,9 +73,6 @@
     /**
      * Watch display name changes to check for empty or null string
      * Set button text accordingly
-     *
-     * @param newVal {string} updated displayName value from input field
-     * @param oldVal {*} previous displayName value
      * @private
      */
     function _watchDisplayName(newVal, oldVal) {
@@ -156,7 +150,7 @@
                   account.getProfile();
                 })
                 .catch(function(response) {
-                  Materialize.toast(response.data ? response.data.message :
+                  Materialize.toast(response.data ? response.data.message : // jshint ignore:line
                     'Could not unlink ' + provider + ' account', 3000);
                 });
     };

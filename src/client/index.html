@@ -26,7 +26,6 @@
    <!-- build:css styles/lib.css -->
     <link rel="stylesheet" href="/.tmp/vendor.css">
     <!-- inject:bower:css -->
-    <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css">
     <link rel="stylesheet" href="/bower_components/valitycss/dist/vality.css">
     <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css">
     <link rel="stylesheet" href="/bower_components/v-modal/dist/v-modal.css">
@@ -197,8 +196,6 @@
 
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    <script src="/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
-
     <script src="/bower_components/angular-touch/angular-touch.js"></script>
 
     <script src="/bower_components/es5-shim/es5-shim.js"></script>
@@ -227,11 +224,10 @@
     <script src="src/client/app/core/core.module.js"></script>
     <script src="src/client/app/guild/guild.module.js"></script>
     <script src="src/client/app/core/core.config.js"></script>
-    <script src="src/client/app/admin/applications/details/ApplicationView.controller.js"></script>
-    <script src="src/client/app/admin/news/create/NewsCreate.controller.js"></script>
     <script src="src/client/app/admin/news/edit/newsEdit.controller.js"></script>
-    <script src="src/client/app/admin/resources/create/resourceCreate.controller.js"></script>
+    <script src="src/client/app/admin/news/create/NewsCreate.controller.js"></script>
     <script src="src/client/app/admin/resources/edit/resourceEdit.controller.js"></script>
+    <script src="src/client/app/admin/resources/create/resourceCreate.controller.js"></script>
     <script src="src/client/app/admin/users/details/userDetails.controller.js"></script>
     <script src="src/client/app/core/directives/footer/footer.controller.js"></script>
     <script src="src/client/app/core/directives/footer/footer.directive.js"></script>
@@ -244,18 +240,16 @@
     <script src="src/client/app/account/account-services/userData.service.js"></script>
     <script src="src/client/app/account/login/login.controller.js"></script>
     <script src="src/client/app/account/signup/signup.controller.js"></script>
-    <script src="src/client/app/admin/applications/ApplicationList.controller.js"></script>
-    <script src="src/client/app/admin/carousel/Carousel.controller.js"></script>
+    <script src="src/client/app/admin/carousel/carousel.controller.js"></script>
     <script src="src/client/app/admin/dashboard/dashboard.controller.js"></script>
     <script src="src/client/app/admin/media/adminMedia.controller.js"></script>
-    <script src="src/client/app/admin/news/NewsList.controller.js"></script>
     <script src="src/client/app/admin/news/adminDatePicker.controller.js"></script>
-    <script src="src/client/app/admin/recruiting/Recruitment.controller.js"></script>
+    <script src="src/client/app/admin/news/newsList.controller.js"></script>
+    <script src="src/client/app/admin/recruiting/recruitment.controller.js"></script>
     <script src="src/client/app/admin/recruiting/recruitmentList.controller.js"></script>
     <script src="src/client/app/admin/resources/adminResource.controller.js"></script>
-    <script src="src/client/app/admin/services/progressionModal.service.js"></script>
     <script src="src/client/app/admin/services/resource.service.js"></script>
-    <script src="src/client/app/admin/users/Users.controller.js"></script>
+    <script src="src/client/app/admin/users/users.controller.js"></script>
     <script src="src/client/app/core/components/oauth.const.js"></script>
     <script src="src/client/app/core/components/sidebar.controller.js"></script>
     <script src="src/client/app/core/filters/className.filter.js"></script>
@@ -263,19 +257,15 @@
     <script src="src/client/app/core/filters/startFrom.filter.js"></script>
     <script src="src/client/app/core/services/logger.service.js"></script>
     <script src="src/client/app/guild/apply/application.controller.js"></script>
-    <script src="src/client/app/guild/guild-services/application.service.js"></script>
     <script src="src/client/app/guild/guild-services/armory.service.js"></script>
     <script src="src/client/app/guild/guild-services/article.service.js"></script>
-    <script src="src/client/app/guild/guild-services/character.service.js"></script>
     <script src="src/client/app/guild/guild-services/progression.service.js"></script>
     <script src="src/client/app/guild/guild-services/recruitment.service.js"></script>
     <script src="src/client/app/guild/guild-services/slide.service.js"></script>
-    <script src="src/client/app/guild/guild-services/twitch.service.js"></script>
     <script src="src/client/app/guild/info/info.controller.js"></script>
     <script src="src/client/app/guild/main/carousel.controller.js"></script>
     <script src="src/client/app/guild/main/main.controller.js"></script>
     <script src="src/client/app/guild/roster/roster.controller.js"></script>
-    <script src="src/client/app/guild/streams/streams.controller.js"></script>
     <!-- endinject -->
 
   <!-- endbuild -->

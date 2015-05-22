@@ -10,6 +10,7 @@
   angular
     .module('app.admin')
     .controller('DatepickerCtrl', DatepickerCtrl);
+  DatepickerCtrl.$inject = ['$scope'];
   /* @ngInject */
   function DatepickerCtrl($scope) {
     $scope.selectedDate = new Date();

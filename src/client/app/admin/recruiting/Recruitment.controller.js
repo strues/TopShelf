@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
   /**
    * @ngdoc controller
@@ -8,11 +8,12 @@
    *
    */
   angular
-      .module('app.admin')
-      .controller('RecruitmentController', RecruitmentController);
+    .module('app.admin')
+    .controller('RecruitmentCtrl', RecruitmentCtrl);
 
+  RecruitmentCtrl.$inject = ['$scope', 'Recruitment', '$state'];
   /* @ngInject */
-  function RecruitmentController($scope, Recruitment, $state, toastr) {
+  function RecruitmentCtrl($scope, Recruitment, $state) {
     // select options
     $scope.countries = [];
     $scope.states = [];
@@ -364,11 +365,11 @@
     // };
 
     $scope.formData = {};
-    $scope.submit = function(formData) {
-      Recruitment.create($scope.formData).success(function() {
+    $scope.submit = function (formData) {
+      Recruitment.create($scope.formData).success(function () {
         console.log('admin-recruitment status submitted:',
-            $scope.formData);
-        toastr.success('Recruitment changed', 'Status Updated');
+          $scope.formData);
+        Materialize.toast('Recruitment changed', 3000); //jshint ignore:line
         $state.reload();
       });
     };

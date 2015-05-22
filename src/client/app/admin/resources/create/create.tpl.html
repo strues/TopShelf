@@ -1,4 +1,4 @@
-<div class="page-content" ng-controller="ResourceCreateController as vm">
+<div class="page-content" ng-controller="ResourceCreateCtrl as vm">
   <div class="row">
   <div class="col-sm-12">
             <h1>New Resource</h1>
@@ -29,11 +29,7 @@
                          />
               </div>
         </div>
-        <div class="row" ng-show="vm.toggle">
-            <div class="col-sm-12">
-                <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','indent','outdent','undo','redo'], ['insertLink']]" class="textEditor" ng-model="vm.resourceData.resourceDesc"></text-angular>
-            </div>
-        </div>
+
                 <!-- Save Btn-->
           <div class="row" style="padding-top: 20px; padding-right: 15px;">
               <input type="submit" class="btn btn-primary pull-right" value="Save" />

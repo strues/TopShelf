@@ -2,9 +2,11 @@
   'use strict';
   angular
     .module('app.admin')
-    .controller('NewsListController', NewsListController);
+    .controller('NewsListCtrl', NewsListCtrl);
+
+  NewsListCtrl.$inject = ['$http', 'Article'];
   /* @ngInject */
-  function NewsListController($http, Article, Slide) {
+  function NewsListCtrl($http, Article) {
     var vm = this;
     vm.processing = true;
     Article.all().success(function (data) {

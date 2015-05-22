@@ -3,12 +3,13 @@
   /**
      * @name CarouselCtrl as carousel
      * @desc Carousel controller
-     * @requires (mgcrea.ngStrap)
-     * @memberOf topshelf.core.states
+     * @memberOf app.guild
      */
   angular
     .module('app.guild')
     .controller('CarouselCtrl', CarouselCtrl);
+
+  CarouselCtrl.$inject = ['Slide'];
   /* @ngInject */
   function CarouselCtrl(Slide) {
     var carousel = this;

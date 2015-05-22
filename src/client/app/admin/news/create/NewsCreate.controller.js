@@ -1,15 +1,16 @@
 (function () {
   'use strict';
   /**
-     * @ngdoc controller
-     * @name NewsCreateCtrl
-     * @description Controller to news.create admin-news posting.
-     */
+   * @ngdoc controller
+   * @name NewsCreateCtrl
+   * @description Controller to news.create admin-news posting.
+   */
   angular
     .module('app.admin')
-    .controller('NewsCreateController', NewsCreateController);
+    .controller('NewsCreateCtrl', NewsCreateCtrl);
+  NewsCreateCtrl.$inject = ['Article'];
   /* @ngInject */
-  function NewsCreateController(Article, toastr, Auth) {
+  function NewsCreateCtrl(Article) {
     var vm = this;
     // variable to hide/show elements of the view
     // differentiates between news.create or profile.news.edit pages
@@ -18,18 +19,16 @@
       vm.processing = true;
       vm.message = '';
       /*
- @TODO implement image upload
- */
+       @TODO implement image upload
+       */
       Article.create(vm.articleData).success(function (data) {
         vm.processing = false;
         vm.articleData = {};
         vm.message = data.message;
-        toastr.success('Your post should now appear on the main page',
-          'Article Saved!');
+        Materialize.toast('Your post should now appear on the main page', 3000); //jshint ignore:line
         vm.status = 'Created Post! Refreshing Post List.';
       }).error(function (error) {
-        toastr.error('There was a problem with your post' +
-          error.message, 'Something broke');
+        Materialize.toast('There was a problem with your post' + error.message, 3000);  //jshint ignore:line
         vm.status = 'Unable to Create Post: ' + error.message;
         console.log('status:', vm.status);
       });

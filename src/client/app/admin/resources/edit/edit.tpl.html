@@ -1,4 +1,4 @@
-<div class="page-content" ng-controller="ResourceEditController as vm">
+<div class="page-content" ng-controller="ResourceEditCtrl as vm">
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -26,11 +26,7 @@
               />
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','indent','outdent','undo','redo'], ['insertLink']]" class="textEditor" ng-model="vm.resourceData.resourceDesc"></text-angular>
-            </div>
-          </div>
+
           <!-- Save Btn-->
           <div class="row" style="padding-top: 20px; padding-right: 15px;">
             <input type="submit" class="btn btn-primary pull-right" value="Save" />

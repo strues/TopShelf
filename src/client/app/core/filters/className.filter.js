@@ -1,30 +1,30 @@
 'use strict';
 angular.module('app.core')
-.filter('className', function () {
-    return function(classId) {
-        switch (classId) {
+  .filter('className', function () {
+    return function (classId) {
+      switch (classId) {
         case 1:
-            return 'Warrior';
+          return 'Warrior';
         case 2:
-            return 'Paladin';
+          return 'Paladin';
         case 3:
-            return 'Hunter';
+          return 'Hunter';
         case 4:
-            return 'Rogue';
+          return 'Rogue';
         case 5:
-            return 'Priest';
+          return 'Priest';
         case 6:
-            return 'Deathknight';
+          return 'Deathknight';
         case 7:
-            return 'Shaman';
+          return 'Shaman';
         case 8:
-            return 'Mage';
+          return 'Mage';
         case 9:
-            return 'Warlock';
+          return 'Warlock';
         case 10:
-            return 'Monk';
+          return 'Monk';
         case 11:
-            return 'Druid';
-        }
+          return 'Druid';
+      }
     };
-});
+  });

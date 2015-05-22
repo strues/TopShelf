@@ -25,7 +25,6 @@
       'ui.materialize',
       'ct.ui.router.extras',
       'angular-carousel',
-      'toastr',
       'angularFileUpload',
       'app.account',
       'app.core',
