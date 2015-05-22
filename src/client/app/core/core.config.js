@@ -14,11 +14,15 @@
   angular
       .module('app.core')
       .config(authConfig)
-      .run(authRun)
+      .run(authRun);
 
   authConfig.$inject = ['$authProvider'];
 
   function authConfig($authProvider) {
+    $authProvider.loginUrl = '/auth/login';
+    $authProvider.signupUrl = '/auth/signup';
+    $authProvider.tokenPrefix = 'topshelf'; // Local Storage name prefix
+    $authProvider.storage = 'localStorage';
     $authProvider.facebook({
       clientId: '360173197505650'
     });
@@ -39,7 +43,7 @@
   authRun.$inject = ['$rootScope', '$location', '$auth'];
 
   function authRun($rootScope, $location, $auth) {
-    $rootScope.$on('$routeChangeStart', function(event, next, current) {
+    $rootScope.$on('$routeChangeStart', function(event, next) {
       if (next && next.$$route && next.$$route.secure &&
         !$auth.isAuthenticated()) {
         $rootScope.authPath = $location.path();

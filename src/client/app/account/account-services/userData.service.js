@@ -12,7 +12,6 @@
    * @description
    * Service for getting user information
    */
-
   angular
     .module('app.account')
     .factory('userData', userData);
@@ -27,10 +26,10 @@
        * @returns {promise}
        */
       getUser: function () {
-        return $http.get('/api/users/me');
+        return $http.get('/api/v1/users/me');
       },
       getProfile: function () {
-        return $http.get('/api/users/me');
+        return $http.get('/api/v1/users/me');
       },
       isAdmin: function () {
         var payload = $auth.getPayload();
@@ -44,11 +43,11 @@
        */
       updateUser: function (profileData) {
         return $http
-          .put('/api/users/me', profileData);
+          .put('/api/v1/users/me', profileData);
       },
       updateProfile: function (profileData) {
         return $http
-          .put('/api/users/me', profileData);
+          .put('/api/v1/users/me', profileData);
       },
       /**
        * Get all users (admin authorized only)
@@ -57,7 +56,7 @@
        */
       getAllUsers: function () {
         return $http
-          .get('/api/users')
+          .get('/api/v1/users')
           .then(_getRes);
       }
     };

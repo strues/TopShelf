@@ -1,0 +1,116 @@
+#logo-container {
+    height: 57px;
+    margin-bottom: 32px;
+}
+
+.side-nav a {
+    height: 44px !important;
+    line-height: 44px !important;
+}
+
+ul.side-nav.fixed li.logo {
+    text-align: center;
+    height: 180px;
+    background-color: #3399cc;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #ddd;
+}
+
+ul.side-nav.fixed li.logo:hover {
+    background-color: darken(#3399cc, 3%);
+}
+
+ul.side-nav.fixed {
+    overflow: hidden;
+}
+
+ul.side-nav.fixed li {
+    line-height: 44px;
+}
+
+ul.side-nav.fixed li:hover, ul.side-nav.fixed li.active {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+ul.side-nav.fixed li a {
+    font-size: 13px;
+}
+
+ul.side-nav.fixed ul.collapsible-accordion {
+    background-color: #FFF;
+}
+
+ul.side-nav.fixed:hover {
+    overflow-y: auto;
+}
+
+.bold > a {
+    font-weight: bold;
+}
+
+nav.top-nav {
+    height: 122px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+nav.top-nav a.page-title {
+    line-height: 122px;
+    font-size: 48px;
+}
+
+a.button-collapse.top-nav {
+    position: absolute;
+    left: 7.5%;
+    top: 0;
+    float: none;
+    margin-left: 1.5rem;
+    color: #fff;
+    font-size: 32px;
+    z-index: 2;
+}
+
+a.button-collapse.top-nav.full {
+    line-height: 122px;
+}
+
+@media only screen and (max-width : 600px) {
+    a.button-collapse.top-nav {
+        left: 5%;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    nav .nav-wrapper {
+        text-align: center;
+    }
+    nav .nav-wrapper a.page-title {
+        font-size: 36px;
+    }
+}
+
+#front-page-logo {
+    display: inline-block;
+    height: 100%;
+    pointer-events: none;
+}
+
+@media only screen and (max-width: 992px) {
+    #front-page-nav ul.side-nav li {
+        float: none;
+        padding: 0 15px;
+    }
+
+  #front-page-nav ul.side-nav li:hover {
+        background-color: #ddd;
+  }
+
+  #front-page-nav ul.side-nav li .active {
+        background-color: transparent;
+  }
+    #front-page-nav ul.side-nav a {
+        color: #444;
+  }
+}

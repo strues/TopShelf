@@ -25,7 +25,7 @@
         vm.user = data;
       })
         .error(function(error) {
-          console.log(error);
+          Materialize.toast(error, 3000);
         });
     };
 
@@ -37,7 +37,7 @@
         displayName: vm.user.displayName,
         email: vm.user.email
       }).then(function() {
-        console.log('updated');
+        Materialize.toast('Successfully updated your account info', 3000);
       });
     };
 
@@ -46,13 +46,13 @@
      */
     vm.link = function(provider) {
       $auth.link(provider).then(function() {
-        console.log('success');
+        Materialize.toast('Successfully linked with your account', 3000);
       })
         .then(function() {
           vm.getProfile();
         })
         .catch(function(response) {
-          console.log(response);
+          Materialize.toast(response, 3000);
         });
     };
 
@@ -62,13 +62,13 @@
     vm.unlink = function(provider) {
       $auth.unlink(provider)
         .then(function() {
-          console.log('success');
+          Materialize.toast('Successfully unlinked from your account', 3000);
         })
         .then(function() {
           vm.getProfile();
         })
         .catch(function(response) {
-          console.log(response);
+          Materialize.toast(response, 3000);
         });
     };
     vm.getProfile();

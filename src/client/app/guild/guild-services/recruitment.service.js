@@ -9,10 +9,10 @@
     .module('app.guild')
     .factory('Recruitment', Recruitment);
 
-  Recruitment.$inject= ['$http'];
+  Recruitment.$inject = ['$http'];
   /* @ngInject */
   function Recruitment($http) {
-    var urlBase = '/api/recruitment';
+    var urlBase = '/api/v1/recruitment';
     var service = {
       all: all,
       get: get,

@@ -1,4 +1,4 @@
-/* global Materialize:false, moment:false */
+/* global Materialize:false*/
 (function () {
   'use strict';
   /**

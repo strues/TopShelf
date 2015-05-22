@@ -41,7 +41,7 @@
       data.region = region;
     };
     exports.getRoster = function () {
-      return $http.get('/api/roster');
+      return $http.get('/api/v1/roster');
     };
     exports.saveInStorage = function () {
       if (typeof Storage !== 'undefined') {

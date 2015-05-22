@@ -1,0 +1,108 @@
+
+  <ul id="slide-out" class="side-nav fixed">
+    <li class="logo">
+      <a id="logo-container" ui-sref="guild.main" class="brand-logo">
+        <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo">
+      </a>
+    </li>
+    <li class="no-padding" ng-if="sidebar.isAuthenticated()">
+      <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+          <li class="bold">
+            <a class="collapsible-header waves-effect waves-ripple waves-blue active">
+              My Account</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="account.profile">
+                       <i class="mdi-action-account-box"></i> Profile</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" href="#" ng-click="sidebar.logout()">
+                         <i class="mdi-action-lock-open"></i> Logout</a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+    </li>
+    <li class="bold">
+      <a href="#!" ui-sref="guild.main" class="waves-effect waves-blue">
+      <i class="mdi-action-home"></i> Home</a>
+    </li>
+    <li class="bold">
+      <a href="#" class="waves-effect waves-blue">
+      <i class="mdi-social-pages"></i> Apply</a>
+    </li>
+
+    <li class="no-padding">
+      <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+          <li class="bold">
+            <a class="collapsible-header waves-effect waves-blue active">
+              Guild Info</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="guild.apply.info">
+                        <i class="mdi-action-info"></i> Recruitment</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="guild.information">
+                        <i class="mdi-action-help"></i> About Us</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="guild.roster">
+                        <i class="mdi-communication-contacts"></i> Roster</a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+    </li>
+    <li class="bold">
+      <a class="waves-effect waves-blue" href="https://topshelfguild.com/forums/" target="_blank">
+       <i class="mdi-communication-forum"></i> Forums</a>
+    </li>
+    <li class="no-padding" ng-if="sidebar.isAuthenticated() && sidebar.isAdmin">
+      <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+          <li class="bold">
+            <a class="collapsible-header waves-effect waves-ripple waves-blue active">
+              <i class="mdi-navigation-apps"></i> Admin</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin">
+                        <i class="mdi-action-dashboard"></i> Dashboard</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.news">
+                        <i class="mdi-editor-insert-drive-file"></i> News</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.carousel">
+                        <i class="mdi-image-slideshow"></i> Slider</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.recruiting">
+                        <i class="mdi-social-group-add"></i> Recruiting</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.resources">
+                        <i class="mdi-communication-call-made"></i> Resources</a>
+                      </li>
+                      <li>
+                        <a class="waves-effect waves-blue" ui-sref="admin.media">
+                        <i class="mdi-file-cloud-circle"></i> Media</a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+    </li>
+    <li class="bold" ng-if="!sidebar.isAuthenticated()">
+      <a class="waves-effect waves-blue" ui-sref="account.signup"><i class="mdi-action-exit-to-app"></i> Sign up</a>
+    </li>
+    <li class="bold" ng-if="!sidebar.isAuthenticated()">
+      <a class="waves-effect waves-blue" ui-sref="account.login"><i class="mdi-action-account-circle"></i>Login</a>
+    </li>
+
+  </ul>

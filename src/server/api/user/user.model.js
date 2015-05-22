@@ -54,14 +54,6 @@ var userSchema = new mongoose.Schema({
   articles: {
     type: Schema.Types.ObjectId,
     ref: 'Article'
-  },
-  application: {
-    type: Schema.Types.ObjectId,
-    ref: 'Application'
-  },
-  characters: {
-    type: Schema.Types.ObjectId,
-    ref: 'Character'
   }
 });
 

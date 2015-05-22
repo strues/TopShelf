@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" class="no-js"><!--<![endif]-->
+<html lang="en" class="no-js" ng-app="app" ng-strict-di><!--<![endif]-->
 <head>
-    <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Top Shelf - Sargeras US Mythic Raiding Guild</title>
   <base href="/">
   <meta name="description" content="Top Shelf is a World of Warcraft mythic raiding guild on Sargeras US. Formed
   in Mists of Pandaria, we are looking to conquer Warlords of Draenor and beyond. Top Shelf is always recruiting
   new members.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="always">
   <meta property="og:image" content="https://topshelfguild.com/assets/images/logo.png">
   <meta property="og:title" content="Top Shelf - Sargeras Raiding Guild">
@@ -49,129 +50,17 @@
   <link rel="manifest" href="/manifest.json">
 </head>
 
-<body ng-app="app" ng-strict-di>
+<body>
   <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
-<header ng-controller="SidebarCtrl as sidebar">
-    <div class="container">
-        <a href="#" data-activates="nav-mobile" class="button-collapse top-nav" data-sidenav="left" data-closeonclick="false">
-        <i class="mdi-navigation-menu"></i></a>
-    </div>
-  <ul id="nav-mobile" class="side-nav fixed">
-    <li class="logo">
-      <a id="logo-container" ui-sref="guild.main" class="brand-logo">
-        <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo">
-      </a>
-    </li>
-    <li class="no-padding" ng-if="sidebar.isAuthenticated()">
-      <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-          <li class="bold">
-            <a class="collapsible-header waves-effect waves-ripple waves-blue active">
-              My Account</a>
-              <div class="collapsible-body">
-                  <ul>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="account.profile">
-                       <i class="mdi-action-account-box"></i> Profile</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" href="#" ng-click="sidebar.logout()">
-                         <i class="mdi-action-lock-open"></i> Logout</a>
-                      </li>
-                  </ul>
-              </div>
-          </li>
-      </ul>
-    </li>
-    <li class="bold">
-      <a href="#!" ui-sref="guild.main" class="waves-effect waves-blue">
-      <i class="mdi-action-home"></i> Home</a>
-    </li>
-    <li class="bold">
-      <a href="#" class="waves-effect waves-blue">
-      <i class="mdi-social-pages"></i> Apply</a>
-    </li>
 
-    <li class="no-padding">
-      <ul class="collapsible collapsible-accordion">
-          <li class="bold">
-            <a class="collapsible-header waves-effect waves-blue active">
-              Guild Info</a>
-              <div class="collapsible-body">
-                  <ul>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="guild.apply.info">
-                        <i class="mdi-action-info"></i> Recruitment</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="guild.information">
-                        <i class="mdi-action-help"></i> About Us</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="guild.roster">
-                        <i class="mdi-communication-contacts"></i> Roster</a>
-                      </li>
-                  </ul>
-              </div>
-          </li>
-      </ul>
-    </li>
-    <li class="bold">
-      <a class="waves-effect waves-blue" href="https://topshelfguild.com/forums/" target="_blank">
-       <i class="mdi-communication-forum"></i> Forums</a>
-    </li>
-    <li class="no-padding" ng-if="sidebar.isAuthenticated() && sidebar.isAdmin">
-      <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-          <li class="bold">
-            <a class="collapsible-header waves-effect waves-ripple waves-blue active">
-              <i class="mdi-navigation-apps"></i> Admin</a>
-              <div class="collapsible-body">
-                  <ul>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="admin">
-                        <i class="mdi-action-dashboard"></i> Dashboard</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="admin.news">
-                        <i class="mdi-editor-insert-drive-file"></i> News</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="admin.carousel">
-                        <i class="mdi-image-slideshow"></i> Slider</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="admin.recruiting">
-                        <i class="mdi-social-group-add"></i> Recruiting</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="admin.resources">
-                        <i class="mdi-communication-call-made"></i> Resources</a>
-                      </li>
-                      <li>
-                        <a class="waves-effect waves-blue" ui-sref="admin.media">
-                        <i class="mdi-file-cloud-circle"></i> Media</a>
-                      </li>
-                  </ul>
-              </div>
-          </li>
-      </ul>
-    </li>
-    <li class="bold" ng-if="!sidebar.isAuthenticated()">
-      <a class="waves-effect waves-blue" ui-sref="account.signup"><i class="mdi-action-exit-to-app"></i> Sign up</a>
-    </li>
-    <li class="bold" ng-if="!sidebar.isAuthenticated()">
-      <a class="waves-effect waves-blue" ui-sref="account.login"><i class="mdi-action-account-circle"></i>Login</a>
-    </li>
+    <!-- HEADER -->
+<header id="header" class="header clearfix" ng-include="'app/core/components/sidenav.tpl.html'" ng-controller="SidebarCtrl as sidebar"></header>
 
-  </ul>
-</header>
 <main>
   <div ui-view="main"></div>
   </main>
-    <!-- END home -->
-<the-footer></the-footer>
 
  <!-- build:js js/lib.js -->
   <!-- inject:bower:js -->
@@ -225,8 +114,8 @@
     <script src="src/client/app/app.config.js"></script>
     <script src="src/client/app/account/account.module.js"></script>
     <script src="src/client/app/admin/admin.module.js"></script>
-    <script src="src/client/app/core/core.module.js"></script>
     <script src="src/client/app/guild/guild.module.js"></script>
+    <script src="src/client/app/core/core.module.js"></script>
     <script src="src/client/app/core/core.config.js"></script>
     <script src="src/client/app/admin/news/create/newsCreate.controller.js"></script>
     <script src="src/client/app/admin/news/edit/newsEdit.controller.js"></script>
@@ -236,10 +125,10 @@
     <script src="src/client/app/core/directives/footer/footer.controller.js"></script>
     <script src="src/client/app/core/directives/footer/footer.directive.js"></script>
     <script src="src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
-    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.controller.js"></script>
-    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
     <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.controller.js"></script>
     <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js"></script>
+    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.controller.js"></script>
+    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
     <script src="src/client/app/guild/main/article-detail/details.controller.js"></script>
     <script src="src/client/app/account/account.controller.js"></script>
     <script src="src/client/app/account/account-services/user.service.js"></script>
@@ -261,7 +150,6 @@
     <script src="src/client/app/core/filters/className.filter.js"></script>
     <script src="src/client/app/core/filters/rankName.filter.js"></script>
     <script src="src/client/app/core/filters/startFrom.filter.js"></script>
-    <script src="src/client/app/core/services/logger.service.js"></script>
     <script src="src/client/app/guild/apply/application.controller.js"></script>
     <script src="src/client/app/guild/guild-services/armory.service.js"></script>
     <script src="src/client/app/guild/guild-services/article.service.js"></script>

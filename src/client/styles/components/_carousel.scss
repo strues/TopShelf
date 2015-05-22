@@ -7,15 +7,15 @@
 
 ul[rn-carousel] {
   height: 625px;
-  margin: 0 auto;
   max-width: 1680px;
+  margin: 0 auto;
 }
 
 .carousel li {
+  width: 100%;
+  max-height: 625px;
   background-color: #ccc;
   font-size: 30px;
-  width: 100%;
-  max-height: 700px;
 }
 
 input.tiny {

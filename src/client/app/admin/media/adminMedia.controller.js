@@ -16,9 +16,9 @@
     $scope.current = {};
     $scope.selectedImages = {};
     $scope.showMediaLibrary = true;
-    var uploader = $scope.uploader = new FileUploader({url: '/api/files'});
+    var uploader = $scope.uploader = new FileUploader({url: '/api/v1/files'});
     // FILTERS
-    $http.get('/api/files').success(function (files) {
+    $http.get('/api/v1/files').success(function (files) {
       $scope.files = files;
     });
     $scope.uploader.filters.push({
@@ -60,7 +60,7 @@
       console.info('onCompleteItem', fileItem, response, status, headers);
     };
     uploader.onCompleteAll = function () {
-      $http.get('/api/files').success(function (files) {
+      $http.get('/api/v1/files').success(function (files) {
         $scope.files = files;
       });
     };

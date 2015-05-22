@@ -30,11 +30,11 @@ exports.create = function (req, res) {
   User.create(req.body, function (err, user) {
     if (err) { return handleError(res, err); }
     var token = jwt.sign(
-      { _id: user._id },
+      {_id: user._id},
       config.secrets.session,
-      { expiresInMinutes: 60 * 5 }
+      {expiresInMinutes: 60 * 5}
     );
-    res.status(201).json({ token: token, user: user });
+    res.status(201).json({token: token, user: user});
   });
 };
 
@@ -53,9 +53,9 @@ exports.getMe = function (req, res) {
 };
 
 exports.editMe = function(req, res) {
-      User.findById(req.user, function(err, user) {
+  User.findById(req.user, function(err, user) {
       if (!user) {
-        return res.status(400).send({ message: 'User not found' });
+        return res.status(400).send({message: 'User not found'});
       }
       user.displayName = req.body.displayName || user.displayName;
       // user.email = req.body.email || user.email;
@@ -66,7 +66,7 @@ exports.editMe = function(req, res) {
 }
 
 exports.list = function(req, res) {
-      User.find({}, function(err, users) {
+  User.find({}, function(err, users) {
       var userArr = [];
 
       users.forEach(function(user) {

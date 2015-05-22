@@ -39,7 +39,7 @@ module.exports = {
   ensureAdmin: ensureAdmin
 
 };
-
+var roles = config.userRoles;
 /**
  * Attaches the user object to the request if authenticated
  * otherwise returns 403
@@ -114,11 +114,10 @@ function ensureAdmin(req, res, next) {
       return res.status(401).send({message: 'Token has expired'});
     }
     req.user = payload.sub;
-    req.role = payload.role;
+    req.isAdmin = payload.role;
 
-    if (roles.hasRole(!req.role)) {
-      return res.status(401).send({message: 'Not authorized'});
-    }
-    next();
+  		if (!req.isAdmin) {
+  			return res.status(401).send({ message: 'Not authorized' });
+  		}
+  		next();
   }
-

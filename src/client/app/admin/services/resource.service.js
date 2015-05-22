@@ -8,7 +8,7 @@
   /* @ngInject */
   function Resource($http) {
     console.log('resource.service.js');
-    var urlBase = 'api/resources';
+    var urlBase = 'api/v1/resources';
     var resourceFactory = {};
     resourceFactory.all = function () {
       return $http.get(urlBase);

@@ -3,7 +3,6 @@
 var mongoose = require('mongoose'),
     Schema   = mongoose.Schema,
     moment   = require('moment'),
-    URLSlugs = require('mongoose-url-slugs'),
     _        = require('lodash');
 
 var ArticleSchema = new Schema({
@@ -29,12 +28,13 @@ var ArticleSchema = new Schema({
     default: Date.now
   },
   lastUpdated: {
-    type: Date
+    type: Date,
+    default: Date.now
   },
   description: {
     type: String,
     trim: true,
-    required: 'Description must be provided'
+    required: 'A 140 character description must be provided'
   },
   content:{
     type: String,
@@ -64,6 +64,5 @@ var ArticleSchema = new Schema({
 });
 ArticleSchema.index({user: 1});
 ArticleSchema.index({tags: 1});
-ArticleSchema.plugin(URLSlugs('title'));
 
 module.exports = mongoose.model('Article', ArticleSchema);
