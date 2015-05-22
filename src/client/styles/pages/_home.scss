@@ -19,7 +19,10 @@
 }
 
 #index-banner {
-    background-color: $guild-main; }
+  height: 179px;
+  background-color: $guild-main;
+}
+
 #index-banner .container {
     position: relative; }
 #index-banner .header {

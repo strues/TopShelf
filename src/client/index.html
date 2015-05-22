@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="/.tmp/vendor.css">
     <!-- inject:bower:css -->
     <link rel="stylesheet" href="/bower_components/valitycss/dist/vality.css">
+    <link rel="stylesheet" href="/bower_components/ng-wig/dist/css/ng-wig.css">
     <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.css">
     <link rel="stylesheet" href="/bower_components/v-modal/dist/v-modal.css">
     <!-- endinject -->
@@ -52,6 +53,7 @@
   <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    
 <header ng-controller="SidebarCtrl as sidebar">
     <div class="container">
         <a href="#" data-activates="nav-mobile" class="button-collapse top-nav" data-sidenav="left" data-closeonclick="false">
@@ -206,6 +208,8 @@
 
     <script src="/bower_components/satellizer/satellizer.js"></script>
 
+    <script src="/bower_components/ng-wig/dist/ng-wig.js"></script>
+
     <script src="/bower_components/angular-carousel/dist/angular-carousel.js"></script>
 
     <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
@@ -224,7 +228,7 @@
     <script src="src/client/app/core/core.module.js"></script>
     <script src="src/client/app/guild/guild.module.js"></script>
     <script src="src/client/app/core/core.config.js"></script>
-    <script src="src/client/app/admin/news/create/NewsCreate.controller.js"></script>
+    <script src="src/client/app/admin/news/create/newsCreate.controller.js"></script>
     <script src="src/client/app/admin/news/edit/newsEdit.controller.js"></script>
     <script src="src/client/app/admin/resources/create/resourceCreate.controller.js"></script>
     <script src="src/client/app/admin/resources/edit/resourceEdit.controller.js"></script>
@@ -232,10 +236,10 @@
     <script src="src/client/app/core/directives/footer/footer.controller.js"></script>
     <script src="src/client/app/core/directives/footer/footer.directive.js"></script>
     <script src="src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
-    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.controller.js"></script>
-    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js"></script>
     <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.controller.js"></script>
     <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
+    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.controller.js"></script>
+    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js"></script>
     <script src="src/client/app/guild/main/article-detail/details.controller.js"></script>
     <script src="src/client/app/account/account.controller.js"></script>
     <script src="src/client/app/account/account-services/user.service.js"></script>

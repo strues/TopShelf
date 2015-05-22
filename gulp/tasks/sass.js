@@ -55,7 +55,7 @@ gulp.task('sass', ['clean-sass'], function() {
         .pipe(plg.sourcemaps.init())
         .pipe(plg.sass({
           sourceMap: 'sass',
-          outputStyle: 'compressed'
+          outputStyle: 'expanded'
         }))
         .pipe(plg.postcss([
             require('autoprefixer-core')({
@@ -66,7 +66,7 @@ gulp.task('sass', ['clean-sass'], function() {
           console.error(err.toString());
           this.emit('end');
         })
-        .pipe(plg.sourcemaps.write())
+        .pipe(plg.sourcemaps.write('./'))
         .pipe(plg.plumber.stop())
         .pipe(gulp.dest(config.temp))
         .pipe(browserSync.reload({

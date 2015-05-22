@@ -9,10 +9,6 @@
 
   function appConfig($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
-    $locationProvider
-      .html5Mode({
-        enabled: true
-      })
-      .hashPrefix('!');
+    $locationProvider.html5Mode({enabled: true}).hashPrefix('!');
   }
 })();

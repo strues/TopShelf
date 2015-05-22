@@ -26,6 +26,7 @@
       'ct.ui.router.extras',
       'angular-carousel',
       'angularFileUpload',
+      'ngWig',
       'app.account',
       'app.core',
       'app.guild',

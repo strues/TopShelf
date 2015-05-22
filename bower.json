@@ -18,7 +18,8 @@
     "v-modal": "~1.3.0",
     "ui-router-extras": "~0.0.13",
     "angular-materialize": "*",
-    "satellizer": "~0.10.1"
+    "satellizer": "~0.10.1",
+    "ng-wig": "~1.1.8"
   },
   "ignore": [
     "**/.*",

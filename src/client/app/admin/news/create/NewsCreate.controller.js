@@ -8,9 +8,9 @@
   angular
     .module('app.admin')
     .controller('NewsCreateCtrl', NewsCreateCtrl);
-  NewsCreateCtrl.$inject = ['Article'];
+  NewsCreateCtrl.$inject = ['Article', '$scope'];
   /* @ngInject */
-  function NewsCreateCtrl(Article) {
+  function NewsCreateCtrl(Article, $scope) {
     var vm = this;
     // variable to hide/show elements of the view
     // differentiates between news.create or profile.news.edit pages
@@ -18,6 +18,7 @@
     vm.saveArticle = function () {
       vm.processing = true;
       vm.message = '';
+
       /*
        @TODO implement image upload
        */

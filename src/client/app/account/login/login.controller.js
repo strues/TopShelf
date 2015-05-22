@@ -52,8 +52,6 @@
       /**
        * Successfully authenticated
        * Go to initially intended authenticated path
-       *
-       * @param response {promise}
        * @private
        */
       function _authSuccess(response) {
@@ -66,12 +64,10 @@
 
       /**
        * Error authenticating
-       *
-       * @param response {promise}
        * @private
        */
       function _authCatch(response) {
-        console.log(response.data);
+        Materialize.toast(response, 3000);
         vm.loggingIn = 'error';
         vm.loginMsg = '';
       }

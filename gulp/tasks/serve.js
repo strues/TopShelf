@@ -97,7 +97,7 @@ function serve(isDev) {
           plg.notify('files changed:\n' + ev);
           setTimeout(function() {
             browserSync.notify('reloading now ...');
-            browserSync.reload({stream: true});
+            browserSync.reload({stream: false});
           }, config.browserReloadDelay);
         })
         .on('start', function() {
