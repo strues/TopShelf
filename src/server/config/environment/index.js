@@ -64,7 +64,7 @@ var all = {
     clientSecret: process.env.FACEBOOK_SECRET || 'secret'
   },
   bnet: {
-    clientSecret: process.env.BNET_SECRET || ''
+    clientSecret: process.env.BNET_SECRET || 'uk8AAtvP5ZsMM5tSdSn3kJ8YHxYWypw3'
   },
   twitter: {
     clientSecret: process.env.TWITTER_SECRET || 'secret'
@@ -75,7 +75,7 @@ var all = {
   },
   mailgun: {
       user: process.env.MAILGUN_USER || 'mail@topshelfguild.com',
-      password: process.env.MAILGUN_PASSWORD || ''
+      password: process.env.MAILGUN_PASSWORD || 'nssteven0889'
     }
 };
 

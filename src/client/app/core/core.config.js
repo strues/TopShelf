@@ -22,7 +22,7 @@
     $authProvider.loginUrl = '/auth/login';
     $authProvider.signupUrl = '/auth/signup';
     $authProvider.tokenPrefix = 'topshelf'; // Local Storage name prefix
-    $authProvider.storage = 'localStorage';
+    $authProvider.storage = 'sessionStorage';
     $authProvider.facebook({
       clientId: '360173197505650'
     });

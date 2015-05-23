@@ -10,6 +10,7 @@ src/client/fonts/*
 src/client/assets/*
 src/client/img/*
 src/client/styles/vendor/
+src/server/config/environment/index.js
 
 # Ignore Node & Bower
 ###################

@@ -9,6 +9,7 @@ var express        = require('express'),
     config         = require('./environment'),
     favicon        = require('serve-favicon'),
     morgan         = require('morgan'),
+    Redis          = require('ioredis'),
     compression    = require('compression'),
     bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
@@ -17,10 +18,9 @@ var express        = require('express'),
     path           = require('path'),
     multer         = require('multer'),
     busboy         = require('connect-busboy'),
-    passport       = require('passport'),
     session        = require('express-session'),
     mongoose       = require('mongoose'),
-    mongoStore     = require('connect-mongo')(session),
+    RedisStore     = require('connect-redis')(session),
     flash          = require('connect-flash');
 
 module.exports = function(app) {
@@ -31,6 +31,7 @@ module.exports = function(app) {
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
+
 
   // Enable logger (morgan)
   app.use(morgan(logger.getLogFormat(), logger.getLogOptions()));
@@ -48,13 +49,15 @@ module.exports = function(app) {
   app.use(session({
     secret: config.secrets.session,
     resave: true,
+    prefix: 'sess',
     saveUninitialized: true,
-    store: new mongoStore({mongooseConnection: mongoose.connection})
+    store: new RedisStore({
+      port: 6379,          // Redis port
+      host: '127.0.0.1',   // Redis host
+      family: 4,           // 4(IPv4) or 6(IPv6)
+      db: 0})
   }));
 
-  // use passport session
-  app.use(passport.initialize());
-  app.use(passport.session());
   // connect flash for flash messages
   app.use(flash());
   // busboy to handle file uploading
