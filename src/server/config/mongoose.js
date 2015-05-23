@@ -7,6 +7,7 @@
 
 var mongoose     = require('mongoose'),
     chalk        = require('chalk'),
+    debug        = require('debug')('app:mongoose:' + process.pid),
     config       = require('./environment');
 
 // connect to mongodb
@@ -23,22 +24,22 @@ module.exports = connection;
 if (connection.state === 0 || connection.state === 3) {
   connection.open(function connectionReconnect(err) {
     if (err) {
-      console.error(chalk.red(
+      debug(chalk.red(
         'Error while reinitializing the database connection: %s', err));
       throw err; // throw error to stop application launch
     }
-    console.log(chalk.green('Database Connection reopened'));
+    debug(chalk.green('Database Connection reopened'));
   });
 }
 
 // register global database error handler
 mongoose.connection.on('error', function connectionError(err) {
-  console.error(chalk.red('Database Error: ', err));
+  debug(chalk.red('Database Error: ', err));
 });
 
 // register the connection handler once only
 mongoose.connection.once('open', function connectionOpen() {
-  console.log(chalk.green('Database connection open'));
+  debug(chalk.green('Database connection open'));
 
   // Populate DB with sample data
   if (config.seedDB) {

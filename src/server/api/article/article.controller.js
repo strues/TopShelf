@@ -4,28 +4,30 @@
 var _ = require('lodash');
 var async = require('async');
 var Article = require('./article.model'),
-    Tag = require('../tag/tag.model'),
     User = require('../user/user.model');
-
+var utils = require('../../components/middleware')
+var extend = require('util')._extend
 function handleError(res, err) {
       return res.status(500).json(err);
     }
 
 // Get list of articles
 exports.list = function(req, res) {
-  var page = +req.query.page || 1,
-    limit = +req.query.limit || 9;
-
-  Article.find()
-      .sort('-created')
-      .populate('author', 'displayName')
-      .limit(limit).skip((page - 1) * limit)
-        .exec(function(err, articles) {
-          if (err) {
+  var page = (req.params.page > 0 ? req.params.page : 1) - 1;
+  var perPage = 30;
+  var options = {
+    perPage: perPage,
+    page: page
+  };
+Article.list(options, function (err, articles) {
+     if (err) {
             return handleError(res, err);
           }
-          return res.status(200).json(articles);
+    Article.count().exec(function (err, count) {
+ return res.status(200).json(articles);
         });
+    });
+
 };
 
 exports.read = function(req, res) {

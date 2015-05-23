@@ -5,7 +5,7 @@
 'use strict';
 
 var express        = require('express'),
-    logger         = require('./logger'),
+    debug          = require('debug')('app:express' + process.pid),
     config         = require('./environment'),
     favicon        = require('serve-favicon'),
     morgan         = require('morgan'),
@@ -20,6 +20,7 @@ var express        = require('express'),
     busboy         = require('connect-busboy'),
     session        = require('express-session'),
     mongoose       = require('mongoose'),
+    genuuid        = require('./uuid'),
     RedisStore     = require('connect-redis')(session),
     flash          = require('connect-flash');
 
@@ -32,9 +33,9 @@ module.exports = function(app) {
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
 
-
+  var redisClient = new Redis();
   // Enable logger (morgan)
-  app.use(morgan(logger.getLogFormat(), logger.getLogOptions()));
+  app.use(morgan('dev'));
 
   // Request body parsing middleware should be above methodOverride
   app.use(bodyParser.urlencoded({
@@ -44,20 +45,16 @@ module.exports = function(app) {
   app.use(methodOverride('X-HTTP-Method-Override'));
   // Enable jsonp
   app.enable('jsonp callback');
-
+  debug('Setup session with Redis');
   app.use(cookieParser());
   app.use(session({
-    secret: config.secrets.session,
-    resave: true,
-    prefix: 'sess',
-    saveUninitialized: true,
-    store: new RedisStore({
-      port: 6379,          // Redis port
-      host: '127.0.0.1',   // Redis host
-      family: 4,           // 4(IPv4) or 6(IPv6)
-      db: 0})
+      key: 'topk3k',
+      saveUninitialized: true,
+      resave: true,
+      prefix: 'sess:',
+      secret: 'kqsdjfmlksdhfhzirzeoibrzecrbzuzefcuercazeafxzeokwdfzeijfxcerig',
+      store: new RedisStore({ host: '127.0.0.1', port: 6379, client: redisClient })
   }));
-
   // connect flash for flash messages
   app.use(flash());
   // busboy to handle file uploading

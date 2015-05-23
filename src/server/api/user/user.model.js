@@ -100,4 +100,22 @@ userSchema.methods.comparePassword = function(password, done) {
   });
 };
 
+userSchema.statics = {
+
+  /**
+   * Load
+   *
+   * @param {Object} options
+   * @param {Function} cb
+   * @api private
+   */
+
+  load: function (options, cb) {
+    options.select = options.select || 'displayName battletag';
+    this.findOne(options.criteria)
+      .select(options.select)
+      .exec(cb);
+  }
+}
+
 module.exports = mongoose.model('User', userSchema);

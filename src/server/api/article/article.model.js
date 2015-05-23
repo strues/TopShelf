@@ -5,7 +5,23 @@ var mongoose = require('mongoose'),
     moment   = require('moment'),
     _        = require('lodash');
 
-var ArticleSchema = new Schema({
+/**
+ * Getters
+ */
+
+var getTags = function (tags) {
+  return tags.join(',');
+};
+
+/**
+ * Setters
+ */
+
+var setTags = function (tags) {
+  return tags.split(',');
+};
+
+var articleSchema = new Schema({
   title: {
     type: String,
     trim: true,
@@ -44,12 +60,11 @@ var ArticleSchema = new Schema({
   slug: {
     type: String
   },
-  tags: [{
-    type:String,
-    lowercase: true,
-    default: '',
-    trim: true
-  }],
+  tags: {
+    type: [],
+    get: getTags,
+    set: setTags
+  },
   state: {
     type: String,
     default: 'Draft',
@@ -62,7 +77,47 @@ var ArticleSchema = new Schema({
     default: 1
   }
 });
-ArticleSchema.index({user: 1});
-ArticleSchema.index({tags: 1});
+articleSchema.index({user: 1});
+articleSchema.index({tags: 1});
 
-module.exports = mongoose.model('Article', ArticleSchema);
+/**
+ * Statics
+ */
+
+articleSchema.statics = {
+
+  /**
+   * Find article by id
+   *
+   * @param {ObjectId} id
+   * @param {Function} cb
+   * @api private
+   */
+
+  load: function (id, cb) {
+    this.findOne({ _id : id })
+      .populate('user', 'displayName email battletag')
+      .exec(cb);
+  },
+
+  /**
+   * List articles
+   *
+   * @param {Object} options
+   * @param {Function} cb
+   * @api private
+   */
+
+  list: function (options, cb) {
+    var criteria = options.criteria || {}
+
+    this.find(criteria)
+      .populate('user', 'displayName battletag')
+      .sort({'createdAt': -1}) // sort by date
+      .limit(options.perPage)
+      .skip(options.perPage * options.page)
+      .exec(cb);
+  }
+}
+
+module.exports = mongoose.model('Article', articleSchema);
