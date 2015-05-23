@@ -68,6 +68,32 @@
           controllerAs: 'signup'
         }
       }
+    })
+    .state('account.password', {
+      abstract: true,
+      url: '/password',
+      templateUrl: '<ui-view/>'
+    })
+    .state('account.password.forgot', {
+      url: '/forgot',
+      templateUrl: 'app/account/password/forgot/forgot.tpl.html',
+      controller: 'ForgotCtrl',
+      controllerAs: 'forgot'
+    })
+    .state('account.password.reset', {
+      abstract: true,
+      url: '/reset',
+      template: '<ui-view/>'
+    })
+    .state('account.password.reset.invalid', {
+      url: '/invalid',
+      templateUrl: 'app/account/password/reset/invalid/reset-invalid.tpl.html'
+    })
+    .state('account.password.reset.form', {
+      url: '/:token',
+      templateUrl: 'app/account/password/reset/form/reset-form.tpl.html',
+      controller: 'ResetFormCtrl',
+      controllerAs: 'reset'
     });
   }
 }());

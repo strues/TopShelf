@@ -56,7 +56,7 @@
     <![endif]-->
 
     <!-- HEADER -->
-<header id="header" class="header clearfix" ng-include="'app/core/components/sidenav.tpl.html'" ng-controller="SidebarCtrl as sidebar"></header>
+<header id="header" class="header clearfix" ng-include="'app/core/components/sidenav.tpl.html'" ng-controller="SidenavCtrl as sidenav"></header>
 
 <main>
   <div ui-view="main"></div>
@@ -112,25 +112,14 @@
   <!-- inject:js -->
     <script src="src/client/app/app.module.js"></script>
     <script src="src/client/app/app.config.js"></script>
-    <script src="src/client/app/account/account.module.js"></script>
     <script src="src/client/app/admin/admin.module.js"></script>
+    <script src="src/client/app/account/account.module.js"></script>
     <script src="src/client/app/guild/guild.module.js"></script>
     <script src="src/client/app/core/core.module.js"></script>
     <script src="src/client/app/core/core.config.js"></script>
-    <script src="src/client/app/admin/news/create/newsCreate.controller.js"></script>
-    <script src="src/client/app/admin/news/edit/newsEdit.controller.js"></script>
-    <script src="src/client/app/admin/resources/create/resourceCreate.controller.js"></script>
-    <script src="src/client/app/admin/resources/edit/resourceEdit.controller.js"></script>
-    <script src="src/client/app/admin/users/details/userDetails.controller.js"></script>
-    <script src="src/client/app/core/directives/footer/footer.controller.js"></script>
-    <script src="src/client/app/core/directives/footer/footer.directive.js"></script>
-    <script src="src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
-    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.controller.js"></script>
-    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js"></script>
-    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.controller.js"></script>
-    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
-    <script src="src/client/app/guild/main/article-detail/details.controller.js"></script>
+    <script src="src/client/app/account/password/reset/form/resetForm.controller.js"></script>
     <script src="src/client/app/account/account.controller.js"></script>
+    <script src="src/client/app/account/account-services/password.service.js"></script>
     <script src="src/client/app/account/account-services/user.service.js"></script>
     <script src="src/client/app/account/account-services/userData.service.js"></script>
     <script src="src/client/app/account/login/login.controller.js"></script>
@@ -146,7 +135,8 @@
     <script src="src/client/app/admin/services/resource.service.js"></script>
     <script src="src/client/app/admin/users/users.controller.js"></script>
     <script src="src/client/app/core/components/oauth.const.js"></script>
-    <script src="src/client/app/core/components/sidebar.controller.js"></script>
+    <script src="src/client/app/core/components/passwordMatch.directive.js"></script>
+    <script src="src/client/app/core/components/sidenav.controller.js"></script>
     <script src="src/client/app/core/filters/className.filter.js"></script>
     <script src="src/client/app/core/filters/rankName.filter.js"></script>
     <script src="src/client/app/core/filters/startFrom.filter.js"></script>
@@ -160,6 +150,20 @@
     <script src="src/client/app/guild/main/carousel.controller.js"></script>
     <script src="src/client/app/guild/main/main.controller.js"></script>
     <script src="src/client/app/guild/roster/roster.controller.js"></script>
+    <script src="src/client/app/account/password/forgot/forgot.controller.js"></script>
+    <script src="src/client/app/admin/news/create/newsCreate.controller.js"></script>
+    <script src="src/client/app/admin/news/edit/newsEdit.controller.js"></script>
+    <script src="src/client/app/admin/resources/edit/resourceEdit.controller.js"></script>
+    <script src="src/client/app/admin/resources/create/resourceCreate.controller.js"></script>
+    <script src="src/client/app/admin/users/details/userDetails.controller.js"></script>
+    <script src="src/client/app/core/directives/footer/footer.controller.js"></script>
+    <script src="src/client/app/core/directives/footer/footer.directive.js"></script>
+    <script src="src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
+    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.controller.js"></script>
+    <script src="src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js"></script>
+    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.controller.js"></script>
+    <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js"></script>
+    <script src="src/client/app/guild/main/article-detail/details.controller.js"></script>
     <!-- endinject -->
 
   <!-- endbuild -->

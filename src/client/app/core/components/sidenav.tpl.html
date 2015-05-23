@@ -1,11 +1,10 @@
-
-  <ul id="slide-out" class="side-nav fixed">
+<ul id="slide-out" class="side-nav fixed">
     <li class="logo">
       <a id="logo-container" ui-sref="guild.main" class="brand-logo">
         <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo">
       </a>
     </li>
-    <li class="no-padding" ng-if="sidebar.isAuthenticated()">
+    <li class="no-padding" ng-if="sidenav.isAuthenticated()">
       <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
           <li class="bold">
             <a class="collapsible-header waves-effect waves-ripple waves-blue active">
@@ -17,7 +16,7 @@
                        <i class="mdi-action-account-box"></i> Profile</a>
                       </li>
                       <li>
-                        <a class="waves-effect waves-blue" href="#" ng-click="sidebar.logout()">
+                        <a class="waves-effect waves-blue" href="#" ng-click="sidenav.logout()">
                          <i class="mdi-action-lock-open"></i> Logout</a>
                       </li>
                   </ul>
@@ -62,7 +61,7 @@
       <a class="waves-effect waves-blue" href="https://topshelfguild.com/forums/" target="_blank">
        <i class="mdi-communication-forum"></i> Forums</a>
     </li>
-    <li class="no-padding" ng-if="sidebar.isAuthenticated() && sidebar.isAdmin">
+    <li class="no-padding" ng-if="sidenav.isAuthenticated() && sidenav.isAdmin">
       <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
           <li class="bold">
             <a class="collapsible-header waves-effect waves-ripple waves-blue active">
@@ -98,10 +97,10 @@
           </li>
       </ul>
     </li>
-    <li class="bold" ng-if="!sidebar.isAuthenticated()">
+    <li class="bold" ng-if="!sidenav.isAuthenticated()">
       <a class="waves-effect waves-blue" ui-sref="account.signup"><i class="mdi-action-exit-to-app"></i> Sign up</a>
     </li>
-    <li class="bold" ng-if="!sidebar.isAuthenticated()">
+    <li class="bold" ng-if="!sidenav.isAuthenticated()">
       <a class="waves-effect waves-blue" ui-sref="account.login"><i class="mdi-action-account-circle"></i>Login</a>
     </li>
 

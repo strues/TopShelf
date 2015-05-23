@@ -10,7 +10,7 @@ var router = express.Router();
 module.exports = router;
 
 // check if the authenticated user has at least the 'admin' role
-var isAdmin = auth.hasRole('admin');
+var isAdmin = auth.ensureAdmin;
 
 router.get('/', controller.list);
 router.get('/:id', controller.show);

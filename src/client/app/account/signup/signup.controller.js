@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   /** @ngdoc controller
@@ -18,7 +18,7 @@
   function SignupController($auth) {
     var vm = this;
 
-   vm.signup = function() {
+    vm.signup = function() {
       $auth.signup({
         displayName: vm.displayName,
         email: vm.email,
@@ -26,10 +26,10 @@
       }).catch(function(response) {
         if (typeof response.data.message === 'object') {
           angular.forEach(response.data.message, function(message) {
-              Materialize.toast(message, 3000);
+            Materialize.toast(message, 3000);
           });
         } else {
-          Materialize.toast(error, 3000);
+          Materialize.toast(response, 3000);
           console.log('error');
         }
       });

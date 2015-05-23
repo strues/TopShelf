@@ -34,13 +34,13 @@ var userSchema = new mongoose.Schema({
   },
   isAdmin: Boolean,
   facebook: String,
-  foursquare: String,
+  battlenet: String,
+  xenforo: String,
   google: String,
-  github: String,
-  linkedin: String,
-  live: String,
-  yahoo: String,
   twitter: String,
+  providers: [],
+  resetPasswordToken: String,
+  resetPasswordTokenExpiration: Date,
   twitch: {
     type: String,
     trim: true,
@@ -77,7 +77,7 @@ function getToken() {
   // jshint validthis: true
   return {
     '_id': this._id,
-    'role': this.role
+    'isAdmin': this.isAdmin
   };
 }
 

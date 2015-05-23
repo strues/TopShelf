@@ -29,7 +29,7 @@ module.exports = router;
 var controller = new ProgressionController(router);
 
 // check if the authenticated user has at least the 'admin' role
-var isAdmin = auth.hasRole('admin');
+var isAdmin = auth.ensureAdmin;
 
 // register application route parameters, uncomment if needed
 // var registerApplicationParameters = require('./application.params');

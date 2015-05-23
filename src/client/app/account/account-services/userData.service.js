@@ -33,7 +33,7 @@
       },
       isAdmin: function () {
         var payload = $auth.getPayload();
-        return payload.role === 'admin';
+        return payload.isAdmin === true;
       },
       /**
        * Update current user's profile data

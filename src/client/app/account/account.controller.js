@@ -23,6 +23,7 @@
     vm.getProfile = function() {
       userData.getProfile().success(function(data) {
         vm.user = data;
+        vm.administrator = vm.user.isAdmin;
       })
         .error(function(error) {
           Materialize.toast(error, 3000);
@@ -35,9 +36,17 @@
     vm.updateProfile = function() {
       userData.updateProfile({
         displayName: vm.user.displayName,
-        email: vm.user.email
+        email: vm.user.email,
+        newPassword: vm.user.newPassword,
+        oldPassword: vm.user.oldPassword
       }).then(function() {
         Materialize.toast('Successfully updated your account info', 3000);
+      })
+      .then(function() {
+        vm.getProfile();
+      })
+      .catch(function(response) {
+        Materialize.toast(response, 3000);
       });
     };
 

@@ -1,29 +1,29 @@
-(function () {
+(function() {
   'use strict';
 
   /** @ngdoc controller
-   * @name app.core.SidebarCtrl
+   * @name app.core.SidenavCtrl
    * @description
    * Controller
    */
   angular
     .module('app.core')
-    .controller('SidebarCtrl', SidebarCtrl);
+    .controller('SidenavCtrl', SidenavCtrl);
 
-  SidebarCtrl.$inject = ['$scope', '$location', '$auth', 'userData'];
+  SidenavCtrl.$inject = ['$scope', '$location', '$auth', 'userData'];
   /* @ngInject */
-  function SidebarCtrl($scope, $location, $auth, userData) {
+  function SidenavCtrl($scope, $location, $auth, userData) {
     // controllerAs ViewModel
     var vm = this;
 
     /**
      * Log the user out of whatever authentication they've signed in with
      */
-    vm.logout = function () {
+    vm.logout = function() {
       vm.adminUser = undefined;
       $auth.logout()
-        .then(function () {
-          Materialize.toast('See ya later', 3000);  // jshint ignore:line
+        .then(function() {
+          Materialize.toast('See ya later', 3000); // jshint ignore:line
         });
     };
 
@@ -40,7 +40,7 @@
       // if user is authenticated and not defined yet, check if they're an admin
       if ($auth.isAuthenticated() && vm.adminUser === undefined) {
         userData.getUser()
-          .then(function (data) {
+          .then(function(data) {
             vm.adminUser = data.isAdmin;
           });
       }
@@ -55,12 +55,13 @@
      *
      * @returns {boolean}
      */
-    vm.isAuthenticated = function () {
+    vm.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
 
-    vm.isAdmin = function () {
-      return $auth.isAdmin();
+    vm.isAdmin = function() {
+      var payload = $auth.getPayload();
+      return payload.role === 'admin';
     };
 
     /**
@@ -69,7 +70,7 @@
      * @param {string} path
      * @returns {boolean}
      */
-    vm.indexIsActive = function (path) {
+    vm.indexIsActive = function(path) {
       // path should be '/'
       return $location.path() === path;
     };
@@ -80,7 +81,7 @@
      * @param {string} path
      * @returns {boolean}
      */
-    vm.navIsActive = function (path) {
+    vm.navIsActive = function(path) {
       return $location.path().substr(0, path.length) === path;
     };
   }
