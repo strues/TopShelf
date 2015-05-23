@@ -96,7 +96,7 @@ articleSchema.statics = {
 
   load: function (id, cb) {
     this.findOne({ _id : id })
-      .populate('user', 'displayName email battletag')
+      .populate('author', 'displayName email battletag')
       .exec(cb);
   },
 
@@ -112,7 +112,7 @@ articleSchema.statics = {
     var criteria = options.criteria || {}
 
     this.find(criteria)
-      .populate('user', 'displayName battletag')
+      .populate('author', 'displayName battletag')
       .sort({'createdAt': -1}) // sort by date
       .limit(options.perPage)
       .skip(options.perPage * options.page)

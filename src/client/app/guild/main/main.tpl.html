@@ -58,12 +58,13 @@
                       <ul class="list-inline list-unstyled">
                         <li><i class="fa fa-calendar-o"></i> {{ article.created | date:'MMM dd, yyyy' }}</li>
                         <li class="divider"></li>
-                        <li>Posted by {{ article.author.username }}</li>
+                        <li>Posted by {{ article.author.displayName }}</li>
                       </ul>
                     </div>
                     <div class="post-content">
                       <div ng-bind-html ng-model="article.description"></div>
                     </div>
+                    {{article.tags}}
                     <!-- post-content -->
                     <a ui-sref='guild.main.article({id:article._id})' class="btn btn-md btn-primary">
                           Read More

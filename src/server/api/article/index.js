@@ -27,7 +27,7 @@ router.param('article', function(req, res, next, id) {
     return next();
   });
 });
-
+router.param('id', controller.load);
 router.param('author', controller.getListByAuthor);
 
 router.get('/', controller.list);

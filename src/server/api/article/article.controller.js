@@ -7,10 +7,21 @@ var Article = require('./article.model'),
     User = require('../user/user.model');
 var utils = require('../../components/middleware')
 var extend = require('util')._extend
+
 function handleError(res, err) {
       return res.status(500).json(err);
     }
 
+exports.load = function (req, res, next, id){
+  var User = require('../user/user.model');
+
+  Article.load(id, function (err, article) {
+    if (err) return next(err);
+    if (!article) return next(err);
+    req.article = article;
+    next();
+  });
+};
 // Get list of articles
 exports.list = function(req, res) {
   var page = (req.params.page > 0 ? req.params.page : 1) - 1;

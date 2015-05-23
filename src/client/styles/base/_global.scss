@@ -49,19 +49,14 @@ nav ul li:hover, nav ul li.active {
   background-color: $lt-grey;
 }
 
-// Padding to accomodate sidebar
-header, main {
-    padding-left: 240px;
-}
-
-@media only screen and (max-width : 992px) {
-    header, main, footer {
-        padding-left: 0; }
-}
-
 .blue-area {
   background-color: $guild-main;
   padding: 15px;
+}
+
+.fill-space {
+  min-height: 100vH;
+  background-color: $secondary-color;
 }
 
 #aside {
@@ -129,3 +124,8 @@ article {
 .no-padding {
   padding: 0px;
 }
+
+.img-responsive {
+    width: 80%;
+    display: block;
+    margin: 0 auto; }
