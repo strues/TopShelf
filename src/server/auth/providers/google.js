@@ -94,6 +94,7 @@ router.post('/', function(req, res) {
           user.picture = profile.picture.replace('sz=50', 'sz=200');
           user.displayName = profile.name;
           user.email = profile.email;
+          user.isAdmin = false;
           user.providers = ['google'];
           user.save(function(err) {
             if (err) {

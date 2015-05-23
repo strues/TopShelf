@@ -18,6 +18,8 @@ var router = express.Router();
 router.use('/', require('./providers/local'));
 router.use('/facebook', require('./providers/facebook'));
 router.use('/google', require('./providers/google'));
+router.use('/xenforo', require('./providers/xenforo'));
+router.use('/battlenet', require('./providers/battlenet'));
 router.use('/unlink', require('./providers/unlink'));
 
 module.exports = router;
