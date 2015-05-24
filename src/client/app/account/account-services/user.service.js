@@ -29,6 +29,7 @@
       return linkedAccounts;
     }
 
+
     return {
       getLinkedAccounts: getLinkedAccounts
     };

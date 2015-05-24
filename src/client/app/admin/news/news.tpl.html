@@ -2,7 +2,7 @@
   <div class="col-sm-12 col-md-10">
 <h2 class="text-primary">News Listing</h2>
 <p class="lead"> The most recent posts on the homepage.
-  <a ui-sref="admin.news.create"><button class="btn btn-success btn-med pull-right">
+  <a ui-sref="news.create"><button class="btn btn-success btn-med pull-right">
     <i class="fa fa-plus-square"></i> New Post</button></a></p>
  <table class="table table-hover">
     <thead>
@@ -16,7 +16,7 @@
       <td ng-bind-html="article.description | limitTo : 100"></td>
       <td>{{article.created | date:'MM/dd/yyyy'}}</td>
       <td>
-        <a ui-sref='admin.news.edit({articleId: article._id})'>
+        <a ui-sref='news.edit({articleId: article._id})'>
           <i class="fa fa-pencil"></i></a> | <i ng-click="vm.deleteArticle(article._id)" class="fa fa-trash"></i>
       </td>
     </tr>

@@ -77,8 +77,6 @@ var articleSchema = new Schema({
     default: 1
   }
 });
-articleSchema.index({user: 1});
-articleSchema.index({tags: 1});
 
 /**
  * Statics
@@ -96,7 +94,7 @@ articleSchema.statics = {
 
   load: function (id, cb) {
     this.findOne({ _id : id })
-      .populate('author', 'displayName email battletag')
+      .populate({path: 'User', select:'displayName email battletag'})
       .exec(cb);
   },
 
@@ -112,7 +110,7 @@ articleSchema.statics = {
     var criteria = options.criteria || {}
 
     this.find(criteria)
-      .populate('author', 'displayName battletag')
+      .populate({path: 'User', select:'displayName email battletag'})
       .sort({'createdAt': -1}) // sort by date
       .limit(options.perPage)
       .skip(options.perPage * options.page)

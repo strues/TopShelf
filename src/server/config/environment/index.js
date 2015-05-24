@@ -63,19 +63,22 @@ var all = {
   facebook: {
     clientSecret: process.env.FACEBOOK_SECRET || 'secret'
   },
-  bnet: {
-    clientSecret: process.env.BNET_SECRET || 'asdfasdfsdf'
+  battlenet: {
+    clientSecret: process.env.BNET_SECRET || 'QdUnwZkQndvpHfVFfUbhQPZMMFss48jr'
   },
   twitter: {
     clientSecret: process.env.TWITTER_SECRET || 'secret'
   },
 
   google: {
-    clientSecret: process.env.GOOGLE_SECRET || 'secret'
+    clientSecret: process.env.GOOGLE_SECRET || '2ilni7_vnwBQLlgWQmWwVPS0'
+  },
+  xenforo: {
+    clientSecret: process.env.XENFORO_SECRET || 'g3tr3kt'
   },
   mailgun: {
-      user: process.env.MAILGUN_USER || 'mail@asdfasdfasdf.com',
-      password: process.env.MAILGUN_PASSWORD || 'asdfasdfsadf'
+      user: process.env.MAILGUN_USER || 'mail@topshelfguild.com',
+      password: process.env.MAILGUN_PASSWORD || 'nssteven0889'
     }
 };
 

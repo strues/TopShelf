@@ -25,12 +25,12 @@ var userSchema = new mongoose.Schema({
     select: false
   },
   displayName: String,
-  username: String,
+  avatar: String,
   picture: String,
   role: {
     type: String,
-    default: 'user',
-    enum: ['user', 'admin']
+    default: 'User',
+    enum: ['User', 'Raider', 'Admin']
   },
   isAdmin: Boolean,
   facebook: String,

@@ -148,7 +148,7 @@ exports.getListByAuthor = function(req, res, next, author) {
       return Article.find({
         author: req.user._id,
         Status: 'Published'
-      }).populate('author', 'username')
+      }).populate('author', 'displayName')
                 .sort('-created').exec(function(err, articles) {
                   if (err) {
                     return next(new Error(

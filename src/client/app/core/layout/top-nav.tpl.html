@@ -1,0 +1,57 @@
+<nav class="top-nav" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" ui-sref="main" class="brand-logo">
+        <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo">
+    </a>
+    <ul class="right hide-on-med-and-down">
+      <li class="bold">
+        <a href="#" class="waves-effect waves-blue">
+        <i id="nav-txt" class="mdi-social-pages"> Apply</i></a>
+      </li>
+      <li class="bold">
+        <a class="waves-effect waves-blue" ui-sref="apply-info">
+        <i id="nav-txt" class="mdi-action-info"> Recruiting</i></a>
+      </li>
+      <li class="bold">
+        <a class="waves-effect waves-blue" href="https://topshelfguild.com/forums/" target="_blank">
+       <i id="nav-txt" class="mdi-communication-forum"> Forums</i></a>
+      </li>
+      <li class="bold">
+        <a class="waves-effect waves-blue" ui-sref="guild-info">
+        <i id="nav-txt" class="mdi-action-help"> About Us</i></a>
+      </li>
+      <li class="bold">
+        <a class="waves-effect waves-blue" ui-sref="roster">
+        <i id="nav-txt" class="mdi-communication-contacts"> Roster</i></a>
+      </li>
+      <li class="bold" ng-if="!vm.isAuthenticated()">
+        <a class="waves-effect waves-blue" ui-sref="account.signup">
+        <i id="nav-txt" class="mdi-action-exit-to-app"> Sign up</i></a>
+      </li>
+      <li class="bold" ng-if="!vm.isAuthenticated()">
+        <a class="waves-effect waves-blue" ui-sref="login">
+        <i id="nav-txt" class="mdi-action-account-circle"> Login</i></a>
+      </li>
+      <li ng-if="vm.isAuthenticated()">
+       <a href='javascript:void(0);'
+          data-activates='accountDropdown'
+          data-hover="true" dropdown><i class="medium mdi-action-account-box"></i></a>
+                <!-- Dropdown Structure -->
+          <ul id='accountDropdown' class='dropdown-content'>
+            <li>
+              <a class="waves-effect waves-blue" ui-sref="account">
+              <i id="nav-txt" class="mdi-action-account-box">Profile</i> </a>
+            </li>
+            <li>
+              <a class="waves-effect waves-blue" href="#" ng-click="vm.logout()">
+              <i id="nav-txt" class="mdi-action-lock-open">Logout</i> </a>
+            </li>
+          </ul>
+        </li>
+    </ul>
+    <ul id="nav-mobile" class="side-nav">
+      <li><a href="#">Navbar Link</a></li>
+    </ul>
+    <a href="#" data-ng-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+  </div>
+</nav>

@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   /**
@@ -9,20 +9,24 @@
    *
    */
   angular
-    .module('app.core')
-    .factory('authInterceptor', authInterceptor);
+      .module('app.core')
+      .factory('authInterceptor', authInterceptor);
 
-    authInterceptor.$inject = ['$rootScope', '$q', '$cookieStore', '$location']
+  authInterceptor.$inject = ['$rootScope', '$q', '$cookieStore', '$location']
+
   function authInterceptor($rootScope, $q, $cookieStore, $location) {
     return {
-      request: function (config) {
+      request: function(config) {
         config.headers = config.headers || {};
-        if ($cookieStore.get('token')) {
-          config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+        var token = localStorage.getItem('topshelf_token');
+        if (token && config.httpInterceptor) {
+          token = config.authHeader ===
+          'Authorization' ? 'Bearer ' + token : token;
+          httpConfig.headers[config.authHeader] = token;
         }
         return config;
       },
-      responseError: function (response) {
+      responseError: function(response) {
         if (response.status === 401) {
           $location.path('/account/login');
           $cookieStore.remove('token');

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.core')
     .constant('OAUTH', {
       LOGINS: [
         {
@@ -21,6 +21,11 @@
           account: 'github',
           name: 'GitHub',
           url: 'http://github.com'
+        },
+        {
+          account: 'battlenet',
+          name: 'Battlenet',
+          url: 'https://us.battle.net'
         }
       ]
     });

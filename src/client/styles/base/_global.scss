@@ -16,15 +16,13 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-font-smoothing: antialiased;
 }
 
-nav {
-    overflow: hidden;
-}
-
 nav a {
+    font-size: 18px !important;
     -webkit-font-smoothing: antialiased;
 }
 
 nav ul li:hover, nav ul li.active {
+    overflow: visible;
     background-color: #ea454b;
 }
 

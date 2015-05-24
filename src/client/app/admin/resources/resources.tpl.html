@@ -1,7 +1,7 @@
 <div ng-controller="ResourceCtrl as vm">
   <div class="row page-content">
     <h2>Guild Resources
-      <a class="pull-right" href="" ui-sref="admin.resources.create">
+      <a class="pull-right" href="" ui-sref="resources.create">
         <button class="btn btn-xs btn-danger"><i class="fa fa-plus"></i>Add</button>
       </a>
     </h2>
@@ -21,7 +21,7 @@
               <i class="fa fa-trash"></i>
             </button>
           </a>
-          <a class="pull-left" ui-sref='admin.resources.edit({resourceId: resource._id})'>
+          <a class="pull-left" ui-sref='resources.edit({resourceId: resource._id})'>
             <button class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
           </a>
           <a ng-href="{{resource.websiteUrl}}" target="_blank">

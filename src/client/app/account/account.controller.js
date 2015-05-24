@@ -13,9 +13,9 @@
     .module('app.account')
     .controller('AccountCtrl', AccountCtrl);
 
-  AccountCtrl.$inject = ['$auth', 'userData'];
+  AccountCtrl.$inject = ['$auth', 'userData', 'User'];
 
-  function AccountCtrl($auth, userData) {
+  function AccountCtrl($auth, userData, User) {
     var vm = this;
     /**
      * Get user's profile information.
@@ -24,6 +24,7 @@
       userData.getProfile().success(function(data) {
         vm.user = data;
         vm.administrator = vm.user.isAdmin;
+        vm.linkedAccounts = User.getLinkedAccounts(vm.user, 'account');
       })
         .error(function(error) {
           Materialize.toast(error, 3000);

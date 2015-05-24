@@ -60,7 +60,7 @@
      $rootScope.$on('$stateChangeStart', function (event, next) {
       $auth.isAuthenticated(function (loggedIn) {
         if (next.authenticate && !loggedIn) {
-          $location.path('/account/login');
+          $location.path('/login');
         }
       });
     });

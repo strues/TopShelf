@@ -21,8 +21,6 @@
   <meta property="og:site_name" content="Top Shelf">
   <meta property="og:type" content="website">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="transparent">
-  <meta name="msapplication-TileImage" content="/assets/faves/mstile-144x144.png">
 
    <!-- build:css styles/lib.css -->
     <link rel="stylesheet" href="/.tmp/vendor.css">
@@ -55,14 +53,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-
-    <!-- HEADER -->
-<header id="header" class="header clearfix" ng-include="'app/core/components/sidenav.tpl.html'" ng-controller="SidenavCtrl as sidenav"></header>
-
-<main>
-  <div ui-view="main"></div>
-  </main>
-
+    <div>
+        <div ng-include="'app/core/layout/shell.tpl.html'"></div>
+    </div>
 
  <!-- build:js js/lib.js -->
   <!-- inject:bower:js -->
@@ -121,6 +114,8 @@
     <script src="src/client/app/core/core.config.js"></script>
     <script src="src/client/app/account/password/reset/form/resetForm.controller.js"></script>
     <script src="src/client/app/account/account.controller.js"></script>
+    <script src="src/client/app/account/account.states.js"></script>
+    <script src="src/client/app/guild/guild.states.js"></script>
     <script src="src/client/app/account/account-services/password.service.js"></script>
     <script src="src/client/app/account/account-services/user.service.js"></script>
     <script src="src/client/app/account/account-services/userData.service.js"></script>
@@ -138,10 +133,12 @@
     <script src="src/client/app/admin/users/users.controller.js"></script>
     <script src="src/client/app/core/components/oauth.const.js"></script>
     <script src="src/client/app/core/components/passwordMatch.directive.js"></script>
-    <script src="src/client/app/core/components/sidenav.controller.js"></script>
     <script src="src/client/app/core/filters/className.filter.js"></script>
     <script src="src/client/app/core/filters/rankName.filter.js"></script>
     <script src="src/client/app/core/filters/startFrom.filter.js"></script>
+    <script src="src/client/app/core/layout/shell.controller.js"></script>
+    <script src="src/client/app/core/layout/the-footer.directive.js"></script>
+    <script src="src/client/app/core/layout/top-nav.directive.js"></script>
     <script src="src/client/app/core/services/interceptor.service.js"></script>
     <script src="src/client/app/guild/apply/application.controller.js"></script>
     <script src="src/client/app/guild/guild-services/armory.service.js"></script>
@@ -159,8 +156,6 @@
     <script src="src/client/app/admin/resources/create/resourceCreate.controller.js"></script>
     <script src="src/client/app/admin/resources/edit/resourceEdit.controller.js"></script>
     <script src="src/client/app/admin/users/details/userDetails.controller.js"></script>
-    <script src="src/client/app/core/directives/footer/footer.controller.js"></script>
-    <script src="src/client/app/core/directives/footer/footer.directive.js"></script>
     <script src="src/client/app/core/directives/mongoose/mongoose-error.directive.js"></script>
     <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.controller.js"></script>
     <script src="src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js"></script>

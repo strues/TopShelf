@@ -3,61 +3,23 @@
     margin-bottom: 32px;
 }
 
-.side-nav a {
-    height: 44px !important;
-    line-height: 44px !important;
+#nav-txt {
+  font-size: 18px;
 }
-
-ul.side-nav.fixed li.logo {
-    text-align: center;
-    height: 180px;
-    background-color: #3399cc;
-    padding-top: 32px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid #ddd;
-}
-
-ul.side-nav.fixed li.logo:hover {
-    background-color: darken(#3399cc, 3%);
-}
-
-ul.side-nav.fixed {
-    overflow: hidden;
-}
-
-ul.side-nav.fixed li {
-    line-height: 44px;
-}
-
-ul.side-nav.fixed li:hover, ul.side-nav.fixed li.active {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-ul.side-nav.fixed li a {
-    font-size: 13px;
-}
-
-ul.side-nav.fixed ul.collapsible-accordion {
-    background-color: #FFF;
-}
-
-ul.side-nav.fixed:hover {
-    overflow-y: auto;
-}
-
 .bold > a {
+    font-size: 18px;
     font-weight: bold;
 }
 
 nav.top-nav {
-    height: 122px;
+    height: 80px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
 
 nav.top-nav a.page-title {
-    line-height: 122px;
+    line-height: 80px;
     font-size: 48px;
 }
 
@@ -73,7 +35,7 @@ a.button-collapse.top-nav {
 }
 
 a.button-collapse.top-nav.full {
-    line-height: 122px;
+    line-height: 18px;
 }
 
 @media only screen and (max-width : 600px) {
