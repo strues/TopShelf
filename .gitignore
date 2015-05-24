@@ -81,3 +81,6 @@ client/assets/*
 ehthumbs.db
 Icon?
 Thumbs.db
+.jshintignore
+dump.rdb
+untitled.html

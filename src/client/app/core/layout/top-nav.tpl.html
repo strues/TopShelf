@@ -1,6 +1,6 @@
 <nav class="top-nav" role="navigation">
   <div class="nav-wrapper container">
-    <a id="logo-container" ui-sref="main" class="brand-logo">
+    <a id="logo-container" ui-sref="guild.main" class="brand-logo">
         <img src="/img/logo.png" class="guild-logo" alt="Top Shelf Guild logo">
     </a>
     <ul class="right hide-on-med-and-down">
@@ -9,7 +9,7 @@
         <i id="nav-txt" class="mdi-social-pages"> Apply</i></a>
       </li>
       <li class="bold">
-        <a class="waves-effect waves-blue" ui-sref="apply-info">
+        <a class="waves-effect waves-blue" ui-sref="guild.apply">
         <i id="nav-txt" class="mdi-action-info"> Recruiting</i></a>
       </li>
       <li class="bold">
@@ -17,11 +17,11 @@
        <i id="nav-txt" class="mdi-communication-forum"> Forums</i></a>
       </li>
       <li class="bold">
-        <a class="waves-effect waves-blue" ui-sref="guild-info">
+        <a class="waves-effect waves-blue" ui-sref="guild.information">
         <i id="nav-txt" class="mdi-action-help"> About Us</i></a>
       </li>
       <li class="bold">
-        <a class="waves-effect waves-blue" ui-sref="roster">
+        <a class="waves-effect waves-blue" ui-sref="guild.roster">
         <i id="nav-txt" class="mdi-communication-contacts"> Roster</i></a>
       </li>
       <li class="bold" ng-if="!vm.isAuthenticated()">
@@ -29,7 +29,7 @@
         <i id="nav-txt" class="mdi-action-exit-to-app"> Sign up</i></a>
       </li>
       <li class="bold" ng-if="!vm.isAuthenticated()">
-        <a class="waves-effect waves-blue" ui-sref="login">
+        <a class="waves-effect waves-blue" ui-sref="account.login">
         <i id="nav-txt" class="mdi-action-account-circle"> Login</i></a>
       </li>
       <li ng-if="vm.isAuthenticated()">
@@ -39,7 +39,7 @@
                 <!-- Dropdown Structure -->
           <ul id='accountDropdown' class='dropdown-content'>
             <li>
-              <a class="waves-effect waves-blue" ui-sref="account">
+              <a class="waves-effect waves-blue" ui-sref="account.profile">
               <i id="nav-txt" class="mdi-action-account-box">Profile</i> </a>
             </li>
             <li>

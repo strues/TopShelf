@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
   /**
    * @ngdoc object
@@ -18,60 +18,69 @@
   guildStates.$inject = ['$stateProvider'];
 
   function guildStates($stateProvider) {
-
-     var mainState = {
-          name: 'main',
-          url: '/',
+     $stateProvider
+    .state('guild', {
+      abstract: true
+    })
+    .state('guild.main', {
+      url: '/',
+      views: {
+        'main@': {
           templateUrl: 'app/guild/main/main.tpl.html',
           controller: 'MainCtrl',
-          controllerAs: 'vm',
-          resolve: {/* @ngInject */
-            posts: function (Article) {
-              return Article.all();
-            }
-          }
-        };
-
-      var articleState = {
-        name: 'main.article',
-        url: '/article/:id',
-        templateUrl: 'app/guild/main/article-detail/article-detail.tpl.html',
-        controller: 'ArticleDetailCtrl',
-          resolve: {/* @ngInject */
-            article: function ($stateParams, Article) {
-              return Article.get($stateParams.id);
-            }
-          }
+          controllerAs: 'main'
         }
-
-      var guildInfoState = {
-        name: 'guild-info',
-        url: '/info',
-        templateUrl: 'app/guild/info/info.tpl.html',
-        controller: 'GuildInfoCtrl',
-        controllerAs: 'ginfo'
+      },
+      resolve: { /* @ngInject */
+        posts: function(Article) {
+          return Article.all();
+        }
       }
-
-      var appInfoState = {
-        name: 'apply-info',
-        url: '/application/info',
-        templateUrl: 'app/guild/apply/application-info.tpl.html',
-        controller: 'ApplicationCtrl',
-        controllerAs: 'vm'
+    }).state('guild.main.article', {
+      url: 'article/:id',
+      views: {
+        'main@': {
+          templateUrl: 'app/guild/main/article-detail/article-detail.tpl.html',
+          controller: 'ArticleDetailCtrl'
+        }
+      },
+      resolve: { /* @ngInject */
+        article: function($stateParams, Article) {
+          return Article.get($stateParams.id);
+        }
       }
-
-      var rosterState = {
-        name: 'roster',
-        url: '/roster',
-        templateUrl: 'app/guild/roster/roster.tpl.html',
-        controller: 'RosterCtrl'
+    })
+    .state('guild.information', {
+      url: '/info',
+      views: {
+        'main@': {
+          templateUrl: 'app/guild/info/info.tpl.html',
+          controller: 'GuildInfoCtrl',
+          controllerAs: 'ginfo'
+        }
       }
-
-    $stateProvider
-        .state(mainState)
-        .state(articleState)
-        .state(guildInfoState)
-        .state(appInfoState)
-        .state(rosterState);
+    }).state('guild.apply', {
+      url: '/apply',
+      views: {
+        'main@': {
+          templateUrl: 'app/guild/apply/application-info.tpl.html',
+          controller: 'ApplicationCtrl',
+          controllerAs: 'vm'
+        }
+      }
+    }).state('guild.roster', {
+      url: '/roster',
+      views: {
+        'main@': {
+          templateUrl: 'app/guild/roster/roster.tpl.html',
+          controller: 'RosterCtrl'
+        }
+      },
+      resolve: {
+        members: function(Armory) {
+          return Armory.getRoster();
+        }
+      }
+    });
   }
-})();
+}());
