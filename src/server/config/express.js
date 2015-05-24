@@ -9,7 +9,6 @@ var express        = require('express'),
     config         = require('./environment'),
     favicon        = require('serve-favicon'),
     morgan         = require('morgan'),
-    Redis          = require('ioredis'),
     compression    = require('compression'),
     bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
@@ -20,8 +19,7 @@ var express        = require('express'),
     busboy         = require('connect-busboy'),
     session        = require('express-session'),
     mongoose       = require('mongoose'),
-    genuuid        = require('./uuid'),
-    RedisStore     = require('connect-redis')(session),
+    mongoStore     = require('connect-mongo')(session),
     flash          = require('connect-flash');
 
 module.exports = function(app) {
@@ -32,9 +30,6 @@ module.exports = function(app) {
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
-
-  var redisClient = new Redis();
-  // Enable logger (morgan)
   app.use(morgan('dev'));
 
   // Request body parsing middleware should be above methodOverride
@@ -48,12 +43,10 @@ module.exports = function(app) {
   debug('Setup session with Redis');
   app.use(cookieParser());
   app.use(session({
-      key: 'topk3k',
-      saveUninitialized: true,
-      resave: true,
-      prefix: 'sess:',
-      secret: 'kqsdjfmlksdhfhzirzeoibrzecrbzuzefcuercazeafxzeokwdfzeijfxcerig',
-      store: new RedisStore({ host: '127.0.0.1', port: 6379, client: redisClient })
+    secret: config.secrets.session,
+    resave: true,
+    saveUninitialized: true,
+    store: new mongoStore({mongooseConnection: mongoose.connection})
   }));
   // connect flash for flash messages
   app.use(flash());

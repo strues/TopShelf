@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('app.core')
+  .module('app.common')
   .filter('rankName', function () {
     return function (rankId) {
       switch (rankId) {

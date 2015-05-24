@@ -18,7 +18,7 @@
   guildStates.$inject = ['$stateProvider'];
 
   function guildStates($stateProvider) {
-     $stateProvider
+    $stateProvider
     .state('guild', {
       abstract: true
     })

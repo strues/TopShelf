@@ -13,8 +13,7 @@
 
   angular
       .module('app.core')
-      .config(authConfig)
-      .run(authRun);
+      .config(authConfig);
 
   authConfig.$inject = ['$authProvider'];
 
@@ -22,7 +21,7 @@
     $authProvider.loginUrl = '/auth/login';
     $authProvider.signupUrl = '/auth/signup';
     $authProvider.tokenPrefix = 'topshelf'; // Local Storage name prefix
-    $authProvider.storage = 'sessionStorage';
+    $authProvider.storage = 'localStorage';
     $authProvider.facebook({
       clientId: '360173197505650'
     });
@@ -50,20 +49,7 @@
       requiredUrlParams: ['scope'],
       display: 'popup',
       type: '2.0',
-      popupOptions: { width: 452, height: 633 }
+      popupOptions: {width: 452, height: 633}
     });
   }
-
-  authRun.$inject = ['$rootScope', '$location', '$auth'];
-
-  function authRun($rootScope, $location, $auth) {
-     $rootScope.$on('$stateChangeStart', function (event, next) {
-      $auth.isAuthenticated(function (loggedIn) {
-        if (next.authenticate && !loggedIn) {
-          $location.path('/login');
-        }
-      });
-    });
-  }
-
 }());

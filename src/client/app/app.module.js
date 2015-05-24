@@ -8,27 +8,15 @@
    * Main module for the application
    *
    * @requires
-   * ngResource, ngAnimate, ngMessages, ui.router, ui.bootstrap, satellizer,
-   * app.core, app.account
+   * app.core, app.common, app.account, app.guild, app.admin
    */
 
   /* @ngInject */
   angular.module('app', [
-      'ngStorage',
-      'ngResource',
-      'ngMessages',
-      'ngCookies',
-      'vModal',
-      'ngAnimate',
-      'satellizer',
-      'ui.router',
-      'ui.materialize',
-      'ct.ui.router.extras',
-      'angular-carousel',
-      'angularFileUpload',
-      'ngWig',
-      'app.account',
       'app.core',
+      'app.common',
+      // application modules
+      'app.account',
       'app.guild',
       'app.admin'
   ]);

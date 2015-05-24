@@ -1,5 +1,5 @@
 'use strict';
-angular.module('app.core')
+angular.module('app.common')
   .filter('className', function () {
     return function (classId) {
       switch (classId) {

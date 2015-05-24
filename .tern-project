@@ -1,0 +1,21 @@
+{
+  "libs": [
+    "browser",
+    "ecma5",
+    "ecma6"
+  ],
+  "loadEagerly": [
+    "src/client/**/*.js"
+  ],
+  "dontLoad": [
+    "bower_components/**/*.js",
+    "node_modules/**/*.js"
+  ],
+  "plugins": {
+    "complete_strings": {},
+    "angular": true,
+    "doc_comment": {
+     "fullDocs": true
+    }
+  }
+}

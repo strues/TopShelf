@@ -1,4 +1,3 @@
-/* global Materialize:false*/
 (function () {
   'use strict';
   /**
@@ -11,8 +10,18 @@
    */
   angular
       .module('app.core', [
-        'app.account',
-        'app.guild',
-        'app.admin'
-      ]).constant('Materialize', Materialize);
+        'ngStorage',
+        'ngResource',
+        'ngMessages',
+        'ngCookies',
+        'vModal',
+        'ngAnimate',
+        'satellizer',
+        'ui.router',
+        'ui.materialize',
+        'ct.ui.router.extras',
+        'angular-carousel',
+        'angularFileUpload',
+        'ngWig'
+      ]);
 }());
