@@ -1,18 +1,27 @@
-/**
- * @ngdoc overview
- * @name app.core
- * @description
- * The `app.core` module
- *
- * @requires ui.router
- */
 (function () {
   'use strict';
-  // register the route config on the application
+  /**
+   * @ngdoc overview
+   * @name app.core
+   * @description
+   * The `app.core` module
+   *
+   * @requires ui.router
+   */
   angular
       .module('app.core', [
-        'app.account',
-        'app.guild',
-        'app.admin'
+        'ngStorage',
+        'ngResource',
+        'ngMessages',
+        'ngCookies',
+        'vModal',
+        'ngAnimate',
+        'satellizer',
+        'ui.router',
+        'ui.materialize',
+        'ct.ui.router.extras',
+        'angular-carousel',
+        'angularFileUpload',
+        'ngWig'
       ]);
 }());

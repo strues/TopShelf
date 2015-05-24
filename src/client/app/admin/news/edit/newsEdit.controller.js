@@ -2,9 +2,11 @@
   'use strict';
   angular
     .module('app.admin')
-    .controller('NewsEditController', NewsEditController);
+    .controller('NewsEditCtrl', NewsEditCtrl);
+
+  NewsEditCtrl.$inject = ['Article', '$stateParams'];
   /* @ngInject */
-  function NewsEditController(Article, $stateParams) {
+  function NewsEditCtrl(Article, $stateParams) {
     /*jshint validthis: true */
     var vm = this;
     // variable to hide/show elements of the view

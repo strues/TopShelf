@@ -9,6 +9,8 @@
   angular
       .module('app.guild')
       .controller('ArticleDetailCtrl', ArticleDetailCtrl);
+
+  ArticleDetailCtrl.$inject = ['Article', '$stateParams'];
   /* @ngInject */
   function ArticleDetailCtrl(Article, $stateParams) {
     var vm = this;

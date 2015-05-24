@@ -1,70 +1,44 @@
-<navbar></navbar>
-<div class="container nav-padding">
-	<div class="row login">
-		<div class="login-screen">
-			<div class="app-title">
-				<h1>Signup</h1>
-			</div>
-				<form id="lsform"
-					name="signupForm"
-					ng-submit="signup.register(signupForm)"
-					novalidate>
-				<div class="login-form">
-					<div class="control-group"
-						ng-class="{ 'has-error' : signupForm.username.$invalid && signupForm.username.$dirty }">
-						<input class="login-field"
-								type="text"
-								id="login-name"
-								name="username"
-								ng-model="signup.user.username"
-								placeholder="Username"
-								required>
-					</div>
-					<div class="control-group"
-						ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
-						<input class="login-field"
-								type="email"
-								id="login-name"
-								name="email"
-								ng-model="signup.user.email"
-								placeholder="Email"
-								ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-								required>
-						<div class="help-block text-danger"
-							ng-if="signupForm.email.$dirty"
-							ng-messages="signupForm.email.$error">
-							<div ng-message="required">Your email address is required.</div>
-							<div ng-message="pattern">Your email address is invalid.</div>
-						</div>
-					</div>
-					<div class="control-group"
-						ng-class="{ 'has-error' : signupForm.username.$invalid && signupForm.name.$dirty }">
-						<input class="login-field"
-								type="text"
-								id="login-name"
-								name="battletag"
-								ng-model="signup.user.battletag"
-								placeholder="RealID"
-								required>
-						<div class="help-block text-danger"
-							ng-if="signupForm.battletag.$dirty"
-							ng-messages="signupForm.battletag.$error">
-							<div ng-message="required">You must enter a battletag.</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<input type="password"
-								class="login-field"
-								value=""
-								ng-model="signup.user.password"
-								placeholder="Password"
-								id="login-pass"
-								required>
-					</div>
-					<input class="btn-login" type="submit"></a>
-					<a class="login-link" ui-sref="account.login">Have an account? Login</a>
-				</div>
-			</form>
-		</div>
-	</div>
+<div class="row">
+  <div class="container app-presentation">
+    <h3 class="center-align">Signup</h3>
+    <p class="flow-text center-align">Register an account.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m6 l4 offset-m3 offset-l4">
+    <div class="card-panel">
+    <form class="login-signup-form" name="signupForm" ng-submit="signup.signup(signupForm)">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="mdi-social-person prefix"></i>
+          <input class="validate" type="text" id="signup-name" name="displayName" ng-model="signup.displayName" required>
+          <label for="signup-name">Username</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="mdi-communication-email prefix"></i>
+          <input class="validate" type="email" id="signup-email" name="email" ng-model="signup.email" required>
+          <label for="signup-email">Email Address</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="mdi-action-lock prefix"></i>
+          <input type="password" value="" class="validate" ng-model="signup.password" id="signup-password" required>
+          <label for="signup-password">Password</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="mdi-communication-vpn-key prefix"></i>
+          <input class="validate" password-match="password" id="confirm-password" name="confirmPassword" value="" type="password"  ng-model="signup.confirmPassword" required>
+          <label for="confirm-password">Confirm Password</label>
+        </div>
+        <div class="divider"></div>
+         <button class="btn waves-effect waves-green" type="submit" name="action">Signup
+          <i class="mdi-content-send right"></i>
+        </button>
+
+        <br>
+        <p>
+        Already have an account? <a ui-sref="account.login">login</a></p>
+      </div>
+    </form>
+    </div>
+  </div>
 </div>

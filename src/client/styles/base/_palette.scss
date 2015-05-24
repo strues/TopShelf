@@ -1,11 +1,19 @@
 // material icons path
-$material-font-path: "../assets/fonts" !default;
+$material-font-path: "../fonts";
 
 $guild-main: #3399cc;
 $guild-blue: #3399cc;
+$primary-color: #3399cc;
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
+
+$secondary-color: color("light-blue", "darken-4");
+$success-color: color("green", "base");
+$error-color: color("red", "base");
+$link-color: color("light-blue", "darken-1");
 
 // Greys
-$_color-base-grey: rgba(144, 164, 174, 1);
+$_color-base-grey: rgba(144, 164, 174, .74);
 $grey: $_color-base-grey;
 $lt-grey: rgb(236, 240, 241);
 $md-grey: rgba(59, 62, 64, .52);
@@ -13,101 +21,36 @@ $drk-grey: #0A1F29;
 $drkr-grey: rgb(21, 21, 21);
 $gray-text: #333;
 // Blues
-$bluegrey: #607D8B !default;
-$indigo: #3F51B5 !default;
-$lightblue: #03A9F4 !default;
-$cyan: #00BCD4 !default;
+$bluegrey: #607D8B;
+$indigo: #3F51B5;
+$lightblue: #03A9F4;
+$cyan: #00BCD4;
 // Red
-$red: #F44336 !default;
-$pink: #E91E63 !default;
+$red: #F44336;
+$pink: #E91E63;
 // Purple
-$purple: #9C27B0 !default;
-$deeppurple: #673AB7 !default;
+$purple: #9C27B0;
+$deeppurple: #673AB7;
 // Greens
-$teal: #009688 !default;
-$lightgreen: #8BC34A !default;
-$lime: #CDDC39 !default;
+$teal: #009688;
+$lightgreen: #8BC34A;
+$lime: #CDDC39;
 // Yellows
-$lightyellow: #FFEB3B !default;
+$lightyellow: #FFEB3B;
 $yellow: #ffeb3b;
 $amber: #ffca28;
 // Orange
-$orange: #FF9800 !default;
-$deeporange: #FF5722 !default;
-$brown: #795548 !default;
+$orange: #FF9800;
+$deeporange: #FF5722;
+$brown: #795548;
 
+$primary: $guild-main;
+$success: #0F9D58;
+$info: $lightblue;
+$warning: $amber;
+$danger: $red;
 
-// Bootstrap variables
-$btn-default: #FFF;
-$primary: $guild-main !default;
-$success: #0F9D58 !default;
-$info: $lightblue !default;
-$warning: $amber !default;
-$danger: $red !default;
-$lightbg-text: rgba(0,0,0,0.84);
-$btn-default-text: $lightbg-text;
+$icon-color: rgba(0,0,0,0.5);
+
 $darkbg-text: rgba(255,255,255,0.84);
 $lightbg-text: rgba(0,0,0,0.84);
-$icon-color: rgba(0,0,0,0.5);
-
-$btn-primary: $primary;
-$btn-primary-text: $darkbg-text;
-
-$btn-success: $success;
-$btn-success-text: $darkbg-text;
-
-$btn-info: $info;
-$btn-info-text: $darkbg-text;
-
-$btn-warning: $warning;
-$btn-warning-text: $darkbg-text;
-
-$btn-danger: $danger;
-$btn-danger-text: $darkbg-text;
-
-$input-unchecked: rgba(137, 137, 137, 0.3);
-$input-checked: rgba(15, 157, 88, 0.3);
-
-$radio-default: $lightbg-text;
-$radio-primary: $primary;
-$radio-success: $success;
-$radio-info:    $info;
-$radio-warning: $warning;
-$radio-danger:  $danger;
-
-$input-danger: $danger;
-$input-default: $primary;
-$input-warning: $warning;
-$input-success: $success;
-$input-info:    $info;
-
-$icon-color: rgba(0,0,0,0.5);
-$alert-success: $success;
-$alert-info: $info;
-$alert-warning: $warning;
-$alert-danger: $danger;
-
-$progress-success: $success;
-$progress-info: $info;
-$progress-warning: $warning;
-$progress-danger: $danger;
-
-$palettes: (
-    blue: (
-        base:   #3399cc,
-        light:  lighten(#3399cc, 15%),
-        dark:   darken(#3399cc, 20%),
-        darker: darken(#3399cc, 40%)
-    ),
-    gray: (
-        base:  $_color-base-grey,
-        light: lighten($_color-base-grey, 50%),
-        dark: darken($_color-base-grey, 15%),
-        darkest: darken($_color-base-grey, 75%)
-    )
-);
-
-// Palette function,
-@function palette($palette, $tone: 'base') {
-    @return map-get(map-get($palettes, $palette), $tone);
-}

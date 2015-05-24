@@ -1,53 +1,56 @@
-<div class="hbox hbox-auto-xs hbox-auto-sm page-content" ng-controller="MediaController"  nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
-  <div class="col">
-    <div class="wrapper-md bg-light dk b-b">
+<div class="row" ng-controller="MediaCtrl" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+<div class="col s12 m4">
+    <div>
       <span class="pull-right m-t-xs">Queue length: <b class="badge bg-info">{{ uploader.queue.length }}</b></span>
-      <h3 class="m-n font-thin">Upload queue</h3>
+      <h2>Media</h2>
+      <h5>Upload files pictures or videos to use elsewhere.</h5>
     </div>
-    <div class="wrapper-md">
-      <table class="table bg-white-only b-a">
-          <thead>
-              <tr>
-                  <th width="50%">Name</th>
-                  <th ng-show="uploader.isHTML5">Size</th>
-                  <th ng-show="uploader.isHTML5">Progress</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr ng-repeat="item in uploader.queue">
-                  <td><strong>{{ item.file.name }}</strong></td>
-                  <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
-                  <td ng-show="uploader.isHTML5">
-                      <div class="progress progress-sm m-b-none m-t-xs">
-                          <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-                      </div>
-                  </td>
-                  <td class="text-center">
-                      <span ng-show="item.isSuccess" class="text-success"><i class="glyphicon glyphicon-ok"></i></span>
-                      <span ng-show="item.isCancel" class="text-warning"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                      <span ng-show="item.isError" class="text-danger"><i class="glyphicon glyphicon-remove"></i></span>
-                  </td>
-                  <td nowrap>
-                      <button type="button" class="btn btn-default btn-xs" ng-click="item.upload()" ng-model="image" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                          Upload
-                      </button>
-                      <button type="button" class="btn btn-default btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                          Cancel
-                      </button>
-                      <button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
-                          Remove
-                      </button>
-                  </td>
-              </tr>
-          </tbody>
+    <div class="card upload-container">
+      <table>
+        <thead>
+          <tr>
+            <th data-field="id" width="50%">Name</th>
+            <th data-field="size" ng-show="uploader.isHTML5">Size</th>
+            <th data-field="progress" ng-show="uploader.isHTML5">Progress</th>
+            <th data-field="status">Status</th>
+            <th data-field="actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in uploader.queue">
+            <td>
+              <strong>{{ item.file.name }}</strong>
+            </td>
+            <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+            <td ng-show="uploader.isHTML5">
+              <div class="progress progress-sm m-b-none m-t-xs">
+                <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+              </div>
+            </td>
+            <td class="text-center">
+              <span ng-show="item.isSuccess" class="text-success"><i class="glyphicon glyphicon-ok"></i></span>
+              <span ng-show="item.isCancel" class="text-warning"><i class="glyphicon glyphicon-ban-circle"></i></span>
+              <span ng-show="item.isError" class="text-danger"><i class="glyphicon glyphicon-remove"></i></span>
+            </td>
+            <td>
+              <button type="button" class="btn btn-default btn-xs" ng-click="item.upload()" ng-model="image" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                Upload
+              </button>
+              <button type="button" class="btn btn-default btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                Cancel
+              </button>
+              <button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
       </table>
       <div>
         <div>
           <p>Queue progress:</p>
           <div class="progress bg-light dker" style="">
-              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
           </div>
         </div>
         <button type="button" class="btn btn-addon btn-success" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
@@ -57,16 +60,16 @@
           <i class="fa fa-ban"></i> Cancel all
         </button>
         <button type="button" class="btn btn-addon btn-danger" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
-            <i class="fa fa-trash-o"></i> Remove all
+          <i class="fa fa-trash-o"></i> Remove all
         </button>
         <p class="text-muted m-t-xl">Files are uploaded to "/assets/files/foo.extension"</p>
       </div>
     </div>
   </div>
-  <div class="row">
-   <div class="col-sm-4 col-lg-3" ng-repeat="file in files">
-       <img ng-src="/assets/files/{{file.fileName}}" class="img-responsive" alt="uploaded image"/>
-   </div>
-</div>
-
+  <div class="col s12 m8">
+    <div ng-repeat="file in files">
+      <img ng-src="/assets/files/{{file.fileName}}" class="img-responsive" alt="uploaded image" />
+    </div>
   </div>
+
+</div>

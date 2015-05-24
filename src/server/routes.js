@@ -12,30 +12,18 @@ var path = require('path');
 var middleware = require('./components/middleware');
 
 module.exports = function(app) {
-  // extend response with custom methods
-  app.use(middleware.extendResponse);
 
-  // default CUD middleware
-  app
-    .put(middleware.removeReservedSchemaKeywords)
-    .patch(middleware.removeReservedSchemaKeywords)
-    .delete(middleware.removeReservedSchemaKeywords)
-    .post(middleware.removeReservedSchemaKeywords);
-
-  // Insert routes below
   // Routes
-  app.use('/api/applications', require('./api/application'));
   app.use('/api/v1/articles', require('./api/article'));
   app.use('/auth', require('./auth'));
-  app.use('/api/characters', require('./api/character'));
-  app.use('/api/files', require('./api/file'));
-  app.use('/api/progression', require('./api/progression'));
-  app.use('/api/resources', require('./api/resource'));
-  app.use('/api/recruitment', require('./api/recruitment'));
-  app.use('/api/roster', require('./api/roster'));
-  app.use('/api/slides', require('./api/slide'));
-  app.use('/api/users', require('./api/user'));
-  //app.use('/api/tags', require('./api/tag'));
+  app.use('/api/v1/files', require('./api/file'));
+  //app.use('/api/progression', require('./api/progression'));
+  app.use('/api/v1/resources', require('./api/resource'));
+  app.use('/api/v1/recruitment', require('./api/recruitment'));
+  app.use('/api/v1/roster', require('./api/roster'));
+  app.use('/api/v1/slides', require('./api/slide'));
+  app.use('/api/v1/users', require('./api/user'));
+  app.use('/api/v1/tags', require('./api/tag'));
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

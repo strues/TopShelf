@@ -4,24 +4,41 @@
 var _ = require('lodash');
 var async = require('async');
 var Article = require('./article.model'),
-    Tag = require('../tag/tag.model'),
     User = require('../user/user.model');
+var utils = require('../../components/middleware')
+var extend = require('util')._extend
 
+function handleError(res, err) {
+      return res.status(500).json(err);
+    }
+
+exports.load = function (req, res, next, id){
+  var User = require('../user/user.model');
+
+  Article.load(id, function (err, article) {
+    if (err) return next(err);
+    if (!article) return next(err);
+    req.article = article;
+    next();
+  });
+};
 // Get list of articles
 exports.list = function(req, res) {
-  var page = +req.query.page || 1,
-    limit = +req.query.limit || 9;
-
-  Article.find()
-      .sort('-created')
-      .populate('author', 'username')
-      .limit(limit).skip((page - 1) * limit)
-        .exec(function(err, articles) {
-          if (err) {
+  var page = (req.params.page > 0 ? req.params.page : 1) - 1;
+  var perPage = 30;
+  var options = {
+    perPage: perPage,
+    page: page
+  };
+Article.list(options, function (err, articles) {
+     if (err) {
             return handleError(res, err);
           }
-          return res.status(200).json(articles);
+    Article.count().exec(function (err, count) {
+ return res.status(200).json(articles);
         });
+    });
+
 };
 
 exports.read = function(req, res) {
@@ -40,12 +57,25 @@ exports.show = function(req, res) {
           if (!article) {
             return res.sendStatus(404);
           }
-          return res.json(article);
+          return res.status(200).json(article);
         });
 };
 
-// Creates a new article in the DB.
-exports.create = function(req, res) {
+/**
+ * @api {post} /articles Create a new article
+ * @apiVersion 0.1.0
+ * @apiName createArticle
+ * @apiDescription Create a new article in the database.
+ * @apiGroup Article
+ *
+ * @apiParam {String} title Title of the article.
+ * @apiParam {Date} date Date of creation.
+ * @apiParam {String} slug Short name for the article.
+ * @apiParam {String} description 140 character description of the article.
+ * @apiParam {String} content The main portion of the article.
+ * @apiParam {String} state Draft, Pushblished or Archived.
+ */
+exports.createArticle = function(req, res) {
   Article.create(_.merge({author: req.user._id}, req.body),
     function(err, article) {
     if (err) {
@@ -56,7 +86,7 @@ exports.create = function(req, res) {
 };
 
 // Updates an existing article in the DB.
-exports.update = function(req, res) {
+exports.updateArticle = function(req, res) {
   Article.findById(req.params.id, function(err, article) {
     if (err) {
       return handleError(res, err);
@@ -118,7 +148,7 @@ exports.getListByAuthor = function(req, res, next, author) {
       return Article.find({
         author: req.user._id,
         Status: 'Published'
-      }).populate('author', 'username')
+      }).populate('author', 'displayName')
                 .sort('-created').exec(function(err, articles) {
                   if (err) {
                     return next(new Error(
@@ -150,7 +180,7 @@ exports.getListByTag = function(req, res, next, tagName) {
           tags.splice(index, 1);
         }
       }
-      return async.map(tags, (function(tag, callback) {
+      return async.map(tags, function (tag, callback) {
         return tag.Article.populate('author tags', 'name tagName',
                     function(err, article) {
                       if (err) {
@@ -166,7 +196,7 @@ exports.getListByTag = function(req, res, next, tagName) {
           req.articles = articles;
           return next();
         }
-      });
+      };
     }
   });
 };
@@ -181,7 +211,3 @@ Array.prototype.unique = function() {
   }
   return _results;
 };
-
-function handleError(res, err) {
-  return res.status(500).json(err);
-}

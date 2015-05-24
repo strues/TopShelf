@@ -1,22 +1,21 @@
 .carousel-area {
-  margin: 0 auto;
   height: 625px;
-  margin-top: 35px;
+  margin: 0 auto;
+  overflow: hidden;
   background-color: #fff;
-  border-radius: 3px 3px 3px 3px;
 }
 
 ul[rn-carousel] {
-  height: 550px;
+  height: 625px;
+  max-width: 1680px;
   margin: 0 auto;
-  max-width: 1350px;
 }
 
 .carousel li {
+  width: 100%;
+  max-height: 625px;
   background-color: #ccc;
   font-size: 30px;
-  width: 100%;
-  max-height: 700px;
 }
 
 input.tiny {
@@ -28,6 +27,6 @@ input.tiny {
   transition: all .3s ease-in;
 
   &.active {
-    color: $brand-warning !important;
+    color: $red !important;
   }
 }

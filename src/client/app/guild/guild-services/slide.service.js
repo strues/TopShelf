@@ -14,7 +14,7 @@
   Slide.$inject = ['$http'];
   /* @ngInject */
   function Slide($http) {
-    var urlBase = '/api/slides';
+    var urlBase = '/api/v1/slides';
     var service = {
       all: all,
       get: get,

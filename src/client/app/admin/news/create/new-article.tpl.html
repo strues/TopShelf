@@ -1,56 +1,67 @@
-<div ng-controller="NewsCreateController as vm">
+<div ng-controller="NewsCreateCtrl as vm">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <h1 class="text-primary">New Article</h1>
-     <form novalidate ng-submit="vm.saveArticle()">
+    <div class="col s12 m10 l8 offset-m1 offset-l2">
+    <h1 class="header center-on-small-only">New Article</h1>
+     <form class="col s12" ng-submit="vm.saveArticle()">
      <div class="row">
-        <div class="col-sm-12 col-lg-7 form-group">
+        <div class="col s12 m8" input-field>
         <input type="text"
-              class="form-control"
-              placeholder="Article Title"
+              class="validate"
+              id="title"
               ng-minLength=3
               ng-maxLength=75
               ng-model="vm.articleData.title"
               required>
+          <label for="title">Article Title</label>
         </div><!-- END -->
-        <div class="col-lg-3" ng-controller="DatepickerCtrl">
-          <div class="form-group" ng-class="{'has-error': datepickerForm.created.$invalid}">
-            <input type="text" placeholder="Date" class="form-control" ng-model="vm.articleData.created" name="date" bs-datepicker>
-          </div>
-        </div>
+
      </div> <!-- END row-->
-     <div class="row"><!-- textangular -->
-      <div class="col-sm-12 col-lg-10">
-           <text-angular ta-toolbar="[['h1','h2','h3','p','quote'],['bold','italics','underline'],['justifyLeft','justifyCenter','ul','ol','indent','outdent','undo','redo'], ['insertLink','insertImage', 'insertVideo', 'html']]" class="textEditor" ng-model="vm.articleData.content"></text-angular>
+     <div class="row">
+     <div class="col s12" input-field>
+       <textarea ng-wig="vm.articleData.content" ng-model="vm.articleData.content" class="editor1"></textarea>
       </div>
-    </div><!-- END row /textangular-->
+    </div>
     <div class="row">
-    <div class="col-sm-12 col-lg-10">
-          <textarea class="form-control"
-                    placeholder="Description / summary of your post. This will show on the home page and is limited to 140 characters."
-                    ng-model="vm.articleData.description"
-                    rows="3"
-                    ></textarea>
+    <div class="col s12 m10 offset-m1" input-field>
+      <textarea class="materialize-textarea"
+                id="descTextArea"
+                placeholder="140 characters or less"
+                ng-model="vm.articleData.description"
+                rows="2"
+                ></textarea>
+        <label for="descTextArea">Article Description</label>
       </div>
     </div><!-- END row / description-->
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col s6" input-field>
         <input type="text"
-                  class="form-control"
-                  placeholder="Home Image 750x450"
                   ng-model="vm.articleData.image"
-                  style="padding-left: 15px;"
+                  id="smallImage"
                   />
+        <label for="smallImage">Home Image</label>
       </div>
-      <div class="col-sm-4">
+      <div class="col s6" input-field>
         <input type="text"
-                  class="form-control"
-                  placeholder="Detailed View Image 1140x450"
+                  id="heroImage"
                   ng-model="vm.articleData.lrgImage"
-                  style="padding-left: 15px;"
                   />
+            <label for="heroImage">Hero Image</label>
       </div>
       </div><!-- END row-->
+      <div class="row">
+        <div class="col s8" input-field>
+          <input type="text"
+                  ng-model="vm.articleData.tags"
+                  id="tags"
+                  />
+            <label for="tags">Tags</label>
+        </div>
+        <div class="col s4">
+        <select class="" ng-model="vm.articleData.state" material-select>
+          <option ng-repeat="value in vm.select.choices">{{value}}</option>
+      </select>
+      </div>
+      </div>
       <div class="row">
         <div class="col-sm-3 col-sm-offset-4" style="padding-top: 15px;">
           <input type="submit" class="btn btn-primary" value="Create Article" />

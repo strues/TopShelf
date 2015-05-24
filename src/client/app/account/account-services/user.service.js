@@ -1,27 +1,37 @@
-(function () {
+(function() {
   'use strict';
-  /**
-     * @ngdoc service
-     * @name app.account.service:User
-     *
-     * @description
-     * Handles the user data
-     */
+
   angular
     .module('app.account')
     .factory('User', User);
-  /* @ngInject */
-  function User($resource) {
-    return $resource('/api/users/:id/:controller', {id: '@_id'}, {
-      changePassword: {
-        method: 'PUT',
-        params: {controller: 'password'}
-      },
-      get: {
-        method: 'GET',
-        params: {id: 'me'}
-      },
-      update: {method: 'PUT'}
-    });
+
+  User.$inject = ['OAUTH'];
+
+  function User(OAUTH) {
+
+    /**
+     * Create array of a user's currently-linked account logins
+     *
+     * @param userObj
+     * @returns {Array}
+     */
+    function getLinkedAccounts(userObj, s) {
+      var linkedAccounts = [];
+
+      angular.forEach(OAUTH.LOGINS, function(actObj) {
+        var act = actObj.account;
+
+        if (userObj[act]) {
+          linkedAccounts.push(act);
+        }
+      });
+
+      return linkedAccounts;
+    }
+
+
+    return {
+      getLinkedAccounts: getLinkedAccounts
+    };
   }
-}());
+})();

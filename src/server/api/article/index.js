@@ -9,11 +9,8 @@ var router = express.Router();
 // Export the configured express router for the article api routes
 module.exports = router;
 
-// check if the used is authenticated at all
-var isAuthenticated = auth.isAuthenticated();
-
 // check if the authenticated user has at least the 'admin' role
-var isAdmin = auth.hasRole('admin');
+var isAdmin = auth.ensureAdmin;
 
 router.param('article', function(req, res, next, id) {
   var query = Article.findById(id);
@@ -30,13 +27,13 @@ router.param('article', function(req, res, next, id) {
     return next();
   });
 });
-
+router.param('id', controller.load);
 router.param('author', controller.getListByAuthor);
 
 router.get('/', controller.list);
 router.get('/author/:author', controller.getListByAuthor);
 router.get('/:id', controller.show);
-router.post('/', isAdmin, controller.create);
-router.put('/:id', isAdmin, controller.update);
-router.patch('/:id', isAdmin, controller.update);
+router.post('/', isAdmin, controller.createArticle);
+router.put('/:id', isAdmin, controller.updateArticle);
+router.patch('/:id', isAdmin, controller.updateArticle);
 router.delete('/:id', isAdmin, controller.destroy);

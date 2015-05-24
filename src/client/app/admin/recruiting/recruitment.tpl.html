@@ -1,102 +1,50 @@
-<div class="row page-content">
-  <h1 class="text-primary">Guild Recruitment</h1>
+ <div class="row">
+ <h1 class="text-primary">Guild Recruitment</h1>
   <p class="lead">Make changes to the guild's recruitment needs.</p>
-  <div class="col-sm-6 col-md-3" class="adminRecruitP" ng-controller="RecruitmentController">
+  <div class="col s12 m4" ng-controller="RecruitmentCtrl">
+  <h4>Update Recruitment</h4>
+    <form role="form" name="recruitmentStatusForm" ng-submit="submit()">
+      <div class="row">
+<!--         <select class="" ng-model="formData.classType" material-select>
+            <option ng-repeat="ct in classType.options">{{ct}}</option>
+        </select> -->
+   <select class="browser-default" ng-model="userCountry" ng-options="country.name for country in countries track by country.name"material-select>
+   </select>
 
-    <div class="well">
-          <h4>Update Recruitment</h4>
-      <form role="form"
-        class="form-horizontal"
-        name="recruitmentStatusForm"
-        ng-submit="submit()">
-        <div class="row">
-
-            <label>Class Type</label>
-            <select ng-model="formData.classType"
-              class="form-control"
-              required>
-              <option value=""></option>
-              <option value="DeathKnight">Death Knight</option>
-              <option value="Druid">Druid</option>
-              <option value="Hunter">Hunter</option>
-              <option value="Mage">Mage</option>
-              <option value="Monk">Monk</option>
-              <option value="Paladin">Paladin</option>
-              <option value="Priest">Priest</option>
-              <option value="Rogue">Rogue</option>
-              <option value="Shaman">Shaman</option>
-              <option value="Warlock">Warlock</option>
-              <option value="Warrior">Warrior</option>
-            </select>
-
-              <label>Specialization</label>
-              <select ng-model="formData.classSpec"
-                class="form-control"
-                required>
-                <option value=""></option>
-                <option value="Affliction">Affliction</option>
-                <option value="Arcane">Arcane</option>
-                <option value="Arms">Arms</option>
-                <option value="Assasination">Assasination</option>
-                <option value="Balance">Balance</option>
-                <option value="Beast Mastery">Beast Mastery</option>
-                <option value="Blood">Blood</option>
-                <option value="Brewmaster">Brewmaster</option>
-                <option value="Combat">Combat</option>
-                <option value="Demonology">Demonology</option>
-                <option value="Destruction">Destruction</option>
-                <option value="Discipline">Discipline</option>
-                <option value="Elemental">Elemental</option>
-                <option value="Enhancement">Enhancement</option>
-                <option value="Feral">Feral</option>
-                <option value="Fire">Fire</option>
-                <option value="Frost">Frost</option>
-                <option value="Fury">Fury</option>
-                <option value="Gladiator">Gladiator</option>
-                <option value="Guardian">Guardian</option>
-                <option value="Holy">Holy</option>
-                <option value="Marksman">Marksman</option>
-                <option value="Mistweaver">Mistweaver</option>
-                <option value="Protection">Protection</option>
-                <option value="Restoration">Restoration</option>
-                <option value="Retribution">Retribution</option>
-                <option value="Shadow">Shadow</option>
-                <option value="Subtlety">Subtlety</option>
-                <option value="Survival">Survival</option>
-                <option value="Unholy">Unholy</option>
-                <option value="Windwalker">Windwalker</option>
-              </select>
-              </div><!-- row-->
-              <div class="row">
-
-                    <label>Priority</label>
-                    <select ng-model="formData.priority"
-                      class="form-control"
-                      required>
-                      <option value=""></option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
-                    </select>
-
-                    <label>Status</label>
-                    <select ng-model="formData.status"
-                      class="form-control"
-                      required>
-                      <option value=""></option>
-                      <option value="Open">Open</option>
-                      <option value="Closed">Closed</option>
-                    </select>
-              </div>
-
-                <button style="margin-top: 5px"type="submit"
-                class="btn btn-success btn-block">Save <i class="mdi-action-assignment-turned-in"></i>
-                </button>
-
-            </form>
-          </div>
-          </div> <!-- end form container and RecruitmentCtrl -->
-          <div class="col-sm-6 col-md-6 col-md-offset-1" style="background-color: #fff;" ng-controller="RecruitmentListCtrl as vm">
+  <br><br>
+  Select your state:<br>
+  <select class="browser-default" ng-model="userState" ng-options="state.name for state in ( states | filter: {country: { code: userCountry.code }}) track by state.name" material-select>
+  </select>
+      <select class="" ng-model="needClass" ng-options="classDef.name for classDef in classDefs track by classDef.name" material-select>
+   </select>
+     <select ng-model="formData.classSpec" ng-options="specialization.name for specialization in ( specializations | filter: {classType: { name: needClass.name }}) track by specialization.name">
+  </select>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled">Disabled</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+    </form>
+    </div>
+    <div class="col s12 m8"ng-controller="RecruitmentListCtrl as vm">
             <h2 class="text-primary" style="text-align: right;">Currently Recruiting</h2>
             <table class="table table-condensed">
               <thead>
@@ -123,4 +71,5 @@
                 </tbody>
               </table>
             </div>
-          </div>
+  </div>
+

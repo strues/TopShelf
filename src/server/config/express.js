@@ -5,7 +5,7 @@
 'use strict';
 
 var express        = require('express'),
-    logger         = require('./logger'),
+    debug          = require('debug')('app:express' + process.pid),
     config         = require('./environment'),
     favicon        = require('serve-favicon'),
     morgan         = require('morgan'),
@@ -17,7 +17,6 @@ var express        = require('express'),
     path           = require('path'),
     multer         = require('multer'),
     busboy         = require('connect-busboy'),
-    passport       = require('passport'),
     session        = require('express-session'),
     mongoose       = require('mongoose'),
     mongoStore     = require('connect-mongo')(session),
@@ -31,9 +30,7 @@ module.exports = function(app) {
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
-
-  // Enable logger (morgan)
-  app.use(morgan(logger.getLogFormat(), logger.getLogOptions()));
+  app.use(morgan('dev'));
 
   // Request body parsing middleware should be above methodOverride
   app.use(bodyParser.urlencoded({
@@ -43,7 +40,7 @@ module.exports = function(app) {
   app.use(methodOverride('X-HTTP-Method-Override'));
   // Enable jsonp
   app.enable('jsonp callback');
-
+  debug('Setup session with Redis');
   app.use(cookieParser());
   app.use(session({
     secret: config.secrets.session,
@@ -51,10 +48,6 @@ module.exports = function(app) {
     saveUninitialized: true,
     store: new mongoStore({mongooseConnection: mongoose.connection})
   }));
-
-  // use passport session
-  app.use(passport.initialize());
-  app.use(passport.session());
   // connect flash for flash messages
   app.use(flash());
   // busboy to handle file uploading
@@ -69,7 +62,7 @@ module.exports = function(app) {
       .test(res.getHeader('Content-Type'));
     },
     // zlib option for compression level
-    level: 3
+    level: 6
   }));
 
   if ('production' === env) {

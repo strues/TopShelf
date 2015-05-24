@@ -1,0 +1,26 @@
+// styles.scss
+@import 'vendor/materialize';
+@import 'base/module';
+
+@import 'helpers/module';
+@import 'layout/module';
+@import 'pages/module';
+@import 'components/module';
+
+// injector
+// endinjector
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}

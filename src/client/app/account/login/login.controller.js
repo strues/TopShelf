@@ -1,55 +1,88 @@
 (function () {
   'use strict';
-  /**
-     * @ngdoc controller
-     * @name app.account.controller:LoginController
-     *
-     * @description
-     * Controller for the login page
-     */
+
+  /** @ngdoc controller
+   * @name app.account.controller:LoginCtrl
+   *
+   * @description
+   * Interface to login a registered user
+   */
   angular
     .module('app.account')
     .controller('LoginController', LoginController);
+
+  LoginController.$inject = ['$auth', '$rootScope', '$location', 'OAUTH'];
   /* @ngInject */
-  function LoginController(Auth, $location, $window, toastr) {
+  function LoginController($auth, OAUTH, $rootScope, $location) {
     var vm = this;
-    // view model bindings
-    /**
-         * @ngdoc property
-         * @name user
-         * @propertyOf app.account.controller:LoginController
-         * @description
-         * The user data to use as login
-         *
-         * @returns {User} The user data
-         */
-    vm.user = {};
-    /**
-         * @ngdoc property
-         * @name error
-         * @propertyOf app.account.controller:LoginController
-         * @description
-         * Error flag
-         * @returns {Boolean} True if there is an error
-         */
+
     vm.error = false;
-    vm.login = login;
-    function login(form) {
-      if (form.$valid) {
-        Auth.login({
-          email: vm.user.email,
-          password: vm.user.password
-        }).then(function () {
-          toastr.success('Successfully logged in', 'Welcome Back!');
-          // Logged in, redirect to home
-          $location.path('/');
-        }).catch(function (err) {
-          vm.error = err;
-        });
-      }
-    }
-    vm.loginOauth = function(provider) {
-      $window.location.href = '/auth/' + provider;
+
+    vm.logins = OAUTH.LOGINS;
+    //$scope.login = login;
+
+    /**
+     * Check if user is authenticated
+     *
+     * @returns {boolean}
+     */
+    vm.isAuthenticated = function() {
+      return $auth.isAuthenticated();
     };
+
+    vm.login = function() {
+      $auth.login({
+        email: vm.email,
+        password: vm.password
+      })
+      .then(function(response) {
+          Materialize.toast('Welcome back!', 3000); //jshint ignore:line
+          console.log(response);
+        });
+    };
+
+    /**
+     * Authenticate the user via Oauth with the specified provider
+     *
+     * @param {string} provider - (twitter, facebook, github, google)
+     */
+    vm.authenticate = function(provider) {
+      vm.loggingIn = true;
+
+      /**
+       * Successfully authenticated
+       * Go to initially intended authenticated path
+       * @private
+       */
+      function _authSuccess(response) {
+        vm.loggingIn = false;
+
+        if ($rootScope.authPath) {
+          $location.path($rootScope.authPath);
+        }
+      }
+
+      /**
+       * Error authenticating
+       * @private
+       */
+      function _authCatch(response) {
+        Materialize.toast(response, 3000);
+        vm.loggingIn = 'error';
+        vm.loginMsg = '';
+      }
+
+      $auth.authenticate(provider)
+        .then(_authSuccess)
+        .catch(_authCatch);
+    };
+
+    /**
+     * Log the user out of whatever authentication they've signed in with
+     */
+    vm.logout = function() {
+      $auth.logout('/login');
+    };
+
   }
 }());

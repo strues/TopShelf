@@ -19,7 +19,7 @@
       vm.articles = data;
     })
     .error(function (error) {
-      vm.status = 'Unable to Retrieve articles cause: ' + error.message;
+      Materialize.toast(error, 3000); // jshint ignore:line
     });
     vm.viewMore = function (article) {
       $location.path('/article/' + article._id);

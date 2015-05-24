@@ -3,10 +3,25 @@
 var mongoose = require('mongoose'),
     Schema   = mongoose.Schema,
     moment   = require('moment'),
-    URLSlugs = require('mongoose-url-slugs'),
     _        = require('lodash');
 
-var ArticleSchema = new Schema({
+/**
+ * Getters
+ */
+
+var getTags = function (tags) {
+  return tags.join(',');
+};
+
+/**
+ * Setters
+ */
+
+var setTags = function (tags) {
+  return tags.split(',');
+};
+
+var articleSchema = new Schema({
   title: {
     type: String,
     trim: true,
@@ -29,12 +44,13 @@ var ArticleSchema = new Schema({
     default: Date.now
   },
   lastUpdated: {
-    type: Date
+    type: Date,
+    default: Date.now
   },
   description: {
     type: String,
     trim: true,
-    required: 'Description must be provided'
+    required: 'A 140 character description must be provided'
   },
   content:{
     type: String,
@@ -44,12 +60,11 @@ var ArticleSchema = new Schema({
   slug: {
     type: String
   },
-  tags: [{
-    type:String,
-    lowercase: true,
-    default: '',
-    trim: true
-  }],
+  tags: {
+    type: [],
+    get: getTags,
+    set: setTags
+  },
   state: {
     type: String,
     default: 'Draft',
@@ -62,8 +77,45 @@ var ArticleSchema = new Schema({
     default: 1
   }
 });
-ArticleSchema.index({user: 1});
-ArticleSchema.index({tags: 1});
-ArticleSchema.plugin(URLSlugs('title'));
 
-module.exports = mongoose.model('Article', ArticleSchema);
+/**
+ * Statics
+ */
+
+articleSchema.statics = {
+
+  /**
+   * Find article by id
+   *
+   * @param {ObjectId} id
+   * @param {Function} cb
+   * @api private
+   */
+
+  load: function (id, cb) {
+    this.findOne({ _id : id })
+      .populate({path: 'User', select:'displayName email battletag'})
+      .exec(cb);
+  },
+
+  /**
+   * List articles
+   *
+   * @param {Object} options
+   * @param {Function} cb
+   * @api private
+   */
+
+  list: function (options, cb) {
+    var criteria = options.criteria || {}
+
+    this.find(criteria)
+      .populate({path: 'User', select:'displayName email battletag'})
+      .sort({'createdAt': -1}) // sort by date
+      .limit(options.perPage)
+      .skip(options.perPage * options.page)
+      .exec(cb);
+  }
+}
+
+module.exports = mongoose.model('Article', articleSchema);

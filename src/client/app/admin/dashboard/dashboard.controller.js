@@ -1,13 +1,15 @@
 (function () {
-    'use strict';
-    angular
+  'use strict';
+  angular
     .module('app.admin')
-    .controller('DashboardController', DashboardController);
-    /* @ngInject */
-    function DashboardController(Auth, $http, User) {
-        var vm = this;
-        vm.users = {};
+    .controller('DashboardCtrl', DashboardCtrl);
 
-    }
+  DashboardCtrl.$inject = [];
+  /* @ngInject */
+  function DashboardCtrl() {
+    var vm = this;
+    vm.users = {};
+
+  }
 
 }());

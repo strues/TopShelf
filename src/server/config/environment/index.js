@@ -1,14 +1,7 @@
 'use strict';
 
 var path = require('path');
-var _ = require('lodash');
-
-function requiredProcessEnv(name) {
-  if (!process.env[name]) {
-    throw new Error('You must set the ' + name + ' environment variable');
-  }
-  return process.env[name];
-}
+var _ = require('lodash'); //jshint ignore:line
 
 // All configurations will extend these options
 // ============================================
@@ -68,26 +61,25 @@ var all = {
     }
   },
   facebook: {
-    clientID:     process.env.FACEBOOK_ID || 'id',
-    clientSecret: process.env.FACEBOOK_SECRET || 'secret',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/facebook/callback'
+    clientSecret: process.env.FACEBOOK_SECRET || 'secret'
   },
-  bnet: {
-    clientID:     process.env.BNET_ID || 'urtsw3rtx2p5x4hy48efamnw39x8s7qw',
-    clientSecret: process.env.BNET_SECRET || 'uk8AAtvP5ZsMM5tSdSn3kJ8YHxYWypw3',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/bnet/callback'
+  battlenet: {
+    clientSecret: process.env.BNET_SECRET || 'QdUnwZkQndvpHfVFfUbhQPZMMFss48jr'
   },
   twitter: {
-    clientID:     process.env.TWITTER_ID || 'id',
-    clientSecret: process.env.TWITTER_SECRET || 'secret',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/twitter/callback'
+    clientSecret: process.env.TWITTER_SECRET || 'secret'
   },
 
   google: {
-    clientID:     process.env.GOOGLE_ID || 'id',
-    clientSecret: process.env.GOOGLE_SECRET || 'secret',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/google/callback'
-  }
+    clientSecret: process.env.GOOGLE_SECRET || '2ilni7_vnwBQLlgWQmWwVPS0'
+  },
+  xenforo: {
+    clientSecret: process.env.XENFORO_SECRET || 'g3tr3kt'
+  },
+  mailgun: {
+      user: process.env.MAILGUN_USER || 'mail@topshelfguild.com',
+      password: process.env.MAILGUN_PASSWORD || 'nssteven0889'
+    }
 };
 
 // Export the config object based on the NODE_ENV
