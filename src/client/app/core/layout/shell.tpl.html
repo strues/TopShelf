@@ -1,24 +1,24 @@
 <div ng-controller="ShellCtrl as vm">
-    <header class="clearfix">
-    <top-nav></top-nav>
-    </header>
-    <section id="content" class="content">
-       <!-- <div ng-include="'app/core/layout/sidebar.html'"></div>-->
-
-        <div ui-view="main"></div>
-        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-if="vm.isAuthenticated() && vm.isAdmin">
-          <a class="btn-floating btn-large red" data-activates="slide-out" data-sidenav="left" data-closeonclick="false">
-            <i class="large mdi-navigation-menu"></i>
-          </a>
-        <ul>
-          <li><a class="btn-floating red" ui-sref="admin.dashboard"><i class="large mdi-action-dashboard"></i></a></li>
-          <li><a class="btn-floating yellow darken-1" ui-sref="admin.news"><i class="large mdi-editor-insert-drive-file"></i></a></li>
-          <li><a class="btn-floating green" ui-sref="admin.media"><i class="mdi-file-cloud-circle"></i></a></li>
-          <li><a class="btn-floating blue" ui-sref="admin.recruiting"><i class="large mdi-social-group-add"></i></a></li>
-        </ul>
-      </div>
-    </section>
-    <footer class="main-footer">
-<the-footer></the-footer>
-    </footer>
+  <header class="clearfix">
+    <top-nav></top-nav> <!-- navigation directive -->
+  </header>
+  <section id="content" class="content">
+    <!-- Main State Content Loads Here -->
+  <div ui-view="main"></div>
+  <!-- End Main State Content Loads Here -->
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-if="vm.isAuthenticated() && vm.isAdmin">
+    <a class="btn-floating btn-large red" data-activates="slide-out" data-sidenav="left" data-closeonclick="false">
+      <i class="large mdi-navigation-menu"></i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red" ui-sref="admin.dashboard"><i class="large mdi-action-dashboard"></i></a></li>
+      <li><a class="btn-floating yellow darken-1" ui-sref="admin.news"><i class="large mdi-editor-insert-drive-file"></i></a></li>
+      <li><a class="btn-floating green" ui-sref="admin.media"><i class="mdi-file-cloud-circle"></i></a></li>
+      <li><a class="btn-floating blue" ui-sref="admin.recruiting"><i class="large mdi-social-group-add"></i></a></li>
+    </ul>
+  </div><!-- end admin nav button -->
+  </section>
+  <footer class="main-footer">
+    <the-footer></the-footer> <!-- footer directive -->
+  </footer>
 </div>

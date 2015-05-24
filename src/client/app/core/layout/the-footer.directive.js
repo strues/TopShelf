@@ -18,6 +18,7 @@
     /* @ngInject */
     function FooterCtrl() {
       var vm = this;
+      vm.ctrl = 'crtlName';
     }
 
     return directive;
