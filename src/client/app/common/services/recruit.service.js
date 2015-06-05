@@ -13,7 +13,8 @@
       list: list,
       show: show,
       create: create,
-      change: change
+      change: change,
+      destroy: destroy
     };
 
     return service;
@@ -32,6 +33,9 @@
     }
     function change(id, recruitData) {
       return $http.put(apiBase + '/' + id, recruitData);
+    }
+    function destroy(id) {
+      return $http.delete(apiBase + '/' + id);
     }
 
   }
