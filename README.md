@@ -16,6 +16,9 @@ A CMS inspired, web application and Gulp workflow for guild management, specific
 
 #### How Do I Use It?
 
+###### The current version is still under heavy development -- Use at your own risk
+Most things are indeed functioning (some very well) however, there are changes happening all the time.
+
 ```
 git clone git@github.com:strues/topshelf.git
 ```
