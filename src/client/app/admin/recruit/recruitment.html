@@ -20,7 +20,7 @@
                   <th>Class Type:</th>
                   <th>Class Spec:</th>
                   <th>Priority:</th>
-                  <th>Status:</th>
+                  <th>Recruiting:</th>
                 </tr>
               </thead>
               <tbody>
@@ -28,10 +28,10 @@
                   <td><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" style="padding-right: 10px;" height="30px"></td>
                   <td>{{recruitment.classSpec}}</td>
                   <td>{{recruitment.priority}}</td>
-                  <td>{{recruitment.status}}</td>
+                  <td>{{recruitment.currentlyRecruiting}}</td>
                   <td>
                     <div class="btn-group">
-                      <a href="" ng-click="vm.deleteRecruitment(recruitment)" class="btn btn-sm btn-danger">
+                      <a href="" ng-click="vm.deleteRecruitment(recruitment._id)" class="btn btn-sm btn-danger">
                         <span class="mdi-action-delete"></span></a>
                       </div>
                     </td>

@@ -23,20 +23,20 @@
     });
 
     $scope.trustUrl = function(url) {
-        return $sce.trustAsResourceUrl(url);
+      return $sce.trustAsResourceUrl(url);
     }
     vm.rosterlist = {
       maxLevelOnly: true
     };
 
     $scope.filterMaxOnly = function(member) {
-        return member.rank <= 5;
+      return member.rank <= 5;
     };
     $scope.filterNoAlt = function(member) {
-        return member.rank !== 2;
+      return member.rank !== 2;
     };
     $scope.filterNoRAlt = function(member) {
-        return member.rank !== 5;
+      return member.rank !== 5;
     };
   }
 })();

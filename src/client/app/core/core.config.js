@@ -16,15 +16,15 @@
     $locationProvider.html5Mode(true).hashPrefix('!');
 
     angular.extend(toastrConfig, {
-     autoDismiss: true,
-     closeButton: true,
-     positionClass: 'toast-top-right',
-     tapToDismiss: true,
-     target: 'body',
-     timeOut: 5000,
-     titleClass: 'toast-title',
-     toastClass: 'toast'
-   });
+      autoDismiss: true,
+      closeButton: true,
+      positionClass: 'toast-top-right',
+      tapToDismiss: true,
+      target: 'body',
+      timeOut: 5000,
+      titleClass: 'toast-title',
+      toastClass: 'toast'
+    });
   }
 
   authConfig.$inject = ['$authProvider'];
@@ -39,8 +39,7 @@
     });
 
     $authProvider.google({
-      clientId:
-      '100095293840-2um3nivdsb64d33c34tf9f64pbf8977t.apps.googleusercontent.com'
+      clientId: '100095293840-2um3nivdsb64d33c34tf9f64pbf8977t.apps.googleusercontent.com'
     });
 
     $authProvider.twitter({
@@ -64,7 +63,10 @@
       responseType: 'code',
       display: 'popup',
       type: '2.0',
-      popupOptions: {width: 452, height: 633}
+      popupOptions: {
+        width: 452,
+        height: 633
+      }
     });
   }
   authRun.$inject = ['$rootScope', '$location', '$auth'];

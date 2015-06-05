@@ -15,8 +15,8 @@
   ],
   "dependencies": {
     "angular": "1.4.1-build.4037+sha.2c3cd81",
-    "angular-animate":  "1.4.1-build.4037+sha.2c3cd81",
-    "angular-messages":  "1.4.1-build.4037+sha.2c3cd81",
+    "angular-animate": "1.4.1-build.4037+sha.2c3cd81",
+    "angular-messages": "1.4.1-build.4037+sha.2c3cd81",
     "angular-resource": "1.4.1-build.4037+sha.2c3cd81",
     "satellizer": "~0.11.0",
     "angular-ui-router": "~0.2.15",
