@@ -16,9 +16,8 @@ A CMS inspired, web application and Gulp workflow for guild management, specific
 
 #### How Do I Use It?
 
-##### I would only recommend using the Gulp tasks at the moment
 ```
-git clone git@github.com:strues/tsg.git
+git clone git@github.com:strues/topshelf.git
 ```
 
 Then
@@ -41,7 +40,25 @@ npm install && bower install
 - Livereloading w/ BrowserSync and Nodemon
 - Fully working Express server
 - Swag and lots of it
+-----------------------------------------------
+A look inside the core component in `src/client/app/core`
 
+
+    core
+    ├── core.module.js          - Routes
+    ├── directives              - Appwide directives
+    ├── services                - Services for the entire app
+    ├── filters                 - Filters for the entire app
+    ├── core-home                  - your states  (home)
+
+Inside of the api at`server/api`
+
+    users
+    ├── index.js                - Routes
+    ├── user.controller.js      - Controller for the users endpoint
+    ├── user.model.js           - Mongoose model
+
+----------------------------------------------------
 ## Gulp Tasks
 | Tasks        | Are           |
 | ------------- |:-------------:| -----:|
