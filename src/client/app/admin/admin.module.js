@@ -1,146 +1,105 @@
-(function () {
+(function() {
   'use strict';
+
   /* @ngdoc object
-     * @name admin
-     * @requires $stateProvider
-     *
-     * @description States for the admin
-     *
-     */
+   * @name app.admin
+   * @description
+   * Module for admin things
+   */
   angular
     .module('app.admin', [])
-    .config(config);
+    .config(configure);
 
-  config.$inject = ['$stateProvider'];
-  /* @ngInject */
-  function config($stateProvider) {
+  configure.$inject = ['$stateProvider'];
+
+  function configure($stateProvider) {
     $stateProvider
-        .state('admin', {
-          url: '/admin',
-          authenticate: true,
-          views: {
-            'main@': {
-              controller: 'DashboardCtrl',
-              controllerAs: 'dash',
-              templateUrl: 'app/admin/admin.tpl.html'
-            },
-            'content@admin': {
-              controller: 'DashboardCtrl',
-              templateUrl:
-              'app/admin/dashboard/dashboard.tpl.html'
-            }
+      .state('admin', {
+        title: 'Admin - TSG Admin',
+        url: '/admin',
+        views: {
+          'main@': {
+            templateUrl: 'app/admin/admin.html',
+            controller: 'AdminDashboardCtrl',
+            controllerAs: 'vm'
+          },
+          'workspace': {
+            template: '<div ui-view="workspace"></div>',
+            controller: 'AdminDashboardCtrl'
           }
-        })
-        .state('admin.news', {
-          url: '/news',
-          views: {
-            'content@admin': {
-              controller: 'NewsListCtrl',
-              controllerAs: 'vm',
-              templateUrl: 'app/admin/news/news.tpl.html'
-            }
+        }
+      })
+      .state('admin.dashboard', {
+        title: 'Dashboard - TSG Admin',
+        url: '/dashboard',
+        views: {
+          'workspace@admin': {
+            templateUrl: 'app/admin/dashboard/admin-dashboard.html',
+            controller: 'AdminDashboardCtrl',
+            controllerAs: 'dash'
           }
-        })
-        .state('admin.news.create', {
-          url: '/create',
-          views: {
-            'content@admin': {
-              controller: 'NewsCreateCtrl',
-              controllerAs: 'vm',
-              templateUrl: 'app/admin/news/create/new-article.tpl.html'
-            }
+        }
+      })
+      .state('admin.media', {
+        url: '/media',
+        views: {
+          'workspace@root.admin': {
+            templateUrl: 'app/admin/media/media.html',
+            controller: 'MediaController'
           }
-        })
-        .state('admin.news.edit', {
-          url: '/:articleId',
-          views: {
-            'content@admin': {
-              templateUrl:
-              'app/admin/news/edit/edit-article.tpl.html',
-              controller: function ($stateParams) {
-                console.log($stateParams);
+        }
+      })
+      .state('admin.news', {
+        title: 'Article List - TSG Admin',
+        url: '/news',
+        views: {
+          'workspace@admin': {
+            templateUrl: 'app/admin/news/listing.html',
+            controller: 'NewsListingCtrl',
+            controllerAs: 'nlc',
+            resolve: { /* @ngInject */
+              articles: function(articleSvc) {
+                return articleSvc.all();
               }
             }
           }
-        })
-        .state('admin.carousel', {
-          url: '/carousel',
-          views: {
-            'content@admin': {
-              controller: 'CarouselCtrl',
-              controllerAs: 'vm',
-              templateUrl: 'app/admin/carousel/carousel.tpl.html'
-            }
-          }
-        })
-        .state('admin.recruiting', {
-          url: '/recruitment',
-          views: {
-            'content@admin': {
-              controller: 'RecruitmentCtrl',
-              templateUrl:
-              'app/admin/recruiting/recruitment.tpl.html'
-            }
-          }
-        })
-        .state('admin.users', {
-          url: '/users',
-          views: {
-            'content@admin': {
-              controller: 'UsersCtrl',
-              templateUrl: 'app/admin/users/users.tpl.html'
-            }
-          }
-        })
-        .state('admin.users.details', {
-          url: '/:id',
-          views: {
-            'content@admin': {
-              controller: 'UserDetailsCtrl',
-              templateUrl: 'app/admin/users/details/user.tpl.html'
-            }
-          }
-        })
-        .state('admin.resources', {
-          url: '/resources',
-          views: {
-            'content@admin': {
-              controller: 'ResourceCtrl',
-              controllerAs: 'vm',
-              templateUrl: 'app/admin/resources/resources.tpl.html'
-            }
-          }
-        })
-        .state('admin.resources.create', {
-          url: '/create',
-          views: {
-            'content@admin': {
-              controller: 'ResourceCreateCtrl',
-              controllerAs: 'vm',
-              templateUrl: 'app/admin/resources/create/create.tpl.html'
-            }
-          }
-        })
-        .state('admin.resources.edit', {
-          url: '/:resourceId',
-          views: {
-            'content@admin': {
-              templateUrl: 'app/admin/resources/edit/edit.tpl.html',
-              controller: function ($stateParams) {
-                console.log($stateParams);
+        }
+      })
+      .state('admin.news.article', {
+        url: '/:id',
+        views: {
+          'workspace@admin': {
+            templateUrl: 'app/admin/news/article/article.html',
+            controller: 'EditArticleCtrl',
+            controllerAs: 'eac',
+            resolve: { /* @ngInject */
+              article: function($stateParams, articleSvc) {
+                return articleSvc.get($stateParams.id);
               }
             }
           }
-        })
-        .state('admin.media', {
-          url: '/media',
-          views: {
-            'content@admin': {
-              controller: 'MediaCtrl',
-              controllerAs: 'vm',
-              templateUrl: 'app/admin/media/media.tpl.html'
-            }
+        }
+      })
+      .state('admin.news.create', {
+        title: 'Article Composer - TSG Admin',
+        url: '/create',
+        views: {
+          'workspace@admin': {
+            templateUrl: 'app/admin/news/create/create.html',
+            controller: 'NewsCreateCtrl',
+            controllerAs: 'ncc'
           }
-        });
+        }
+      })
+      .state('admin.recruitment', {
+        title: 'Recruitment - TSG Admin',
+        url: '/recruit',
+        views: {
+          'workspace@admin': {
+            templateUrl: 'app/admin/recruit/recruitment.html',
+            controller: 'RecruitmentCtrl as recruit'
+          }
+        }
+      });
   }
 }());

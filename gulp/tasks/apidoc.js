@@ -7,7 +7,6 @@
 
 var gulp         = require('gulp'),
     config       = require('../config')(),
-    error        = require('../util/error'),
     plg          = require('gulp-load-plugins')({lazy: true});// jshint ignore:line
 
 gulp.task('apidoc', function() {

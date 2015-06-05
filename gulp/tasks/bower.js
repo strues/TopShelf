@@ -11,7 +11,6 @@ var gulp     = require('gulp'),
 bowerFiles   = require('main-bower-files'),
 config       = require('../config')(),
 bowerExclude = require('../util/bowerExclusions'),
-error        = require('../util/error'),
 plg          = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('bower', function() {

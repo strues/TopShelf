@@ -6,12 +6,13 @@
 
 'use strict';
 
-var args         = require('yargs').argv;
 var gulp         = require('gulp'),
     config       = require('../config')(),
-    error        = require('../util/error'),
-    es           = require('event-stream'),
-    plg          = require('gulp-load-plugins')({lazy: true});// jshint ignore:line
+    plg          = require('gulp-load-plugins')({
+                            pattern: ['gulp-*', 'gulp.*'],
+                            replaceString: /^gulp(-|\.)/,
+                            camelize: true,
+                            lazy: true});
 var wiredep = require('wiredep').stream;
 
 /**
@@ -19,30 +20,29 @@ var wiredep = require('wiredep').stream;
  * @return {Stream}
  */
 
-gulp.task('inject', ['templatecache', 'sass'], function () {
-    var injectStyles = gulp.src([
-      config.tmp + '/**/*.css',
-      '!' + config.tmp + '/vendor.css'
-    ], {read: false});
+gulp.task('inject', ['partials', 'sass'], function () {
 
-    var injectScripts = gulp.src([
-      config.client + '/app/app.module.js',
-      config.client + '/app/app.config.js',
-      config.client + '/app/**/*.module.js',
-      config.client + '/app/**/*.config.js',
-      config.client + '/**/*.js',
-      '!' + config.client + '/**/*.spec.js'
-    ]);
+  var injectStyles = gulp.src([config.temp + '**/*.css',
+    '!' + config.temp + '/vendor.css'], {read: false});
 
-    var injectOptions = {
-      ignorePath: [config.root],
+  var injectScripts = gulp.src([
+    config.ngApp + 'app.module.js',
+    config.ngApp + '**/*.module.js',
+    config.ngApp + '**/*.config.js',
+    config.ngApp + '**/*.js',
+    '!' + config.client + '/**/*.spec.js',
+    '!' + config.client + '/**/*.mock.js'
+  ]);
+  var injectPartials = gulp.src([config.temp + 'partials.min.js']);
+  var injectOptions = {
+      ignorePath: '../..',
       addRootSlash: false
     };
 
-    return gulp.src(config.client + '/*.html')
-      .pipe(plg.inject(injectStyles, injectOptions))
-      .pipe(plg.inject(injectScripts, injectOptions))
-      .pipe(wiredep(config.wiredep))
-      .pipe(gulp.dest(config.client));
-
-  });
+  return gulp.src(config.index)
+    .pipe(plg.inject(injectStyles, injectOptions))
+    .pipe(plg.inject(injectPartials, injectOptions))
+    .pipe(plg.inject(injectScripts, injectOptions))
+    .pipe(wiredep(config.wiredep))
+    .pipe(gulp.dest(config.client));
+});

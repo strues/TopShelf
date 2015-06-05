@@ -1,0 +1,28 @@
+
+<div class="container" ng-controller="NewsListingCtrl as nlc">
+  <div class="row"
+  <h2 class="text-primary">News Listing</h2>
+  <p class="lead"> The most recent posts on the homepage.
+    <a ui-sref="root.admin.news.create"><button class="btn btn-success btn-med pull-right">
+      <i class="fa fa-plus-square"></i> New Article</button></a></p>
+   <table class="table table-hover">
+      <thead>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Created</th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="article in nlc.articles | orderBy:'-created':reverse">
+        <td>{{article.title}}</td>
+        <td ta-bind-html="article.description | limitTo : 100"></td>
+        <td>{{article.created | date:'MM/dd/yyyy'}}</td>
+        <td>
+          <button class="btn btn-default" ui-sref="admin.news.article({id:article._id})">Read</button>
+          <a ui-sref="admin.news.article({id:article._id})">
+            <i class="fa fa-pencil"></i></a> | <i ng-click="nlc.deleteArticle(article._id)" class="fa fa-trash"></i>
+        </td>
+      </tr>
+      </tbody>
+     </table>
+</div>
+</div>

@@ -1,9 +1,9 @@
 'use strict';
 
 var express = require('express');
-var router = express.Router();
 var controller = require('./user.controller');
 var auth = require('../../auth/auth.service');
+var router = express.Router();
 
 router.get('/me', auth.ensureAuthenticated, controller.getMe);
 router.put('/me', auth.ensureAuthenticated, controller.editMe);

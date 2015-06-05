@@ -1,13 +1,13 @@
-var express = require('express');
+'use strict';
+var express     = require('express'),
+    crypto      = require('crypto'),
+    async       = require('async'),
+    nodemailer  = require('nodemailer'),
+    config      = require('../../config/environment'),
+    auth        = require('../auth.service'),
+    User        = require('../../api/user/user.model');
+
 var router = express.Router();
-var crypto = require('crypto');
-var async = require('async');
-var nodemailer = require('nodemailer');
-
-var config = require('../../config/environment');
-var auth = require('../auth.service');
-var User = require('../../api/user/user.model');
-
 /*
  * Log in with Email.
  * */
@@ -22,9 +22,7 @@ router.post('/login', function(req, res) {
     }
     user.comparePassword(req.body.password, function(err, isMatch) {
       if (!isMatch) {
-        return res.status(401).send({
-          message: 'Wrong email and/or password'
-        });
+        return res.status(401).send({message: 'Wrong email and/or password'});
       }
       res.send({
         token: auth.createToken(user)
@@ -41,9 +39,7 @@ router.post('/signup', function(req, res) {
     email: req.body.email
   }, function(err, existingUser) {
     if (existingUser) {
-      return res.status(409).send({
-        message: 'Email is already taken'
-      });
+      return res.status(409).json('Email is already taken');
     }
     var user = new User({
       displayName: req.body.displayName,

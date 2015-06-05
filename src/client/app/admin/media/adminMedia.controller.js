@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
   /*
    * @ngdoc Controller
@@ -7,62 +7,50 @@
    */
   angular
     .module('app.admin')
-    .controller('MediaCtrl', MediaCtrl);
-
-  MediaCtrl.$inject = ['FileUploader', '$scope', '$http'];
+    .controller('MediaController', MediaController);
   /* @ngInject */
-  function MediaCtrl(FileUploader, $scope, $http) {
+  MediaController.$inject = ['$rootScope', 'FileUploader',
+    '$state', '$scope', '$http'];
+
+  function MediaController($rootScope, FileUploader, $state, $scope, $http) {
     $scope.files = {};
     $scope.current = {};
     $scope.selectedImages = {};
     $scope.showMediaLibrary = true;
-    var uploader = $scope.uploader = new FileUploader({url: '/api/v1/files'});
+    var uploader = $scope.uploader = new FileUploader({
+      url: '/api/files'
+    });
     // FILTERS
-    $http.get('/api/v1/files').success(function (files) {
+    $http.get('/api/files').success(function(files) {
       $scope.files = files;
     });
     $scope.uploader.filters.push({
       name: 'customFilter',
-      fn: function (item, options) {
+      fn: function() {
         return this.queue.length < 10;
       }
     });
-    // TODO Add the ability to delete uploads. Expanded media functionality.
-    // CALLBACKS
-    uploader.onWhenAddingFileFailed = function (item, filter, options) {
-      console.info('onWhenAddingFileFailed', item, filter, options);
-    };
-    uploader.onAfterAddingFile = function (fileItem) {
-      console.info('onAfterAddingFile', fileItem);
-    };
-    uploader.onAfterAddingAll = function (addedFileItems) {
-      console.info('onAfterAddingAll', addedFileItems);
-    };
-    uploader.onBeforeUploadItem = function (item) {
-      console.info('onBeforeUploadItem', item);
-    };
-    uploader.onProgressItem = function (fileItem, progress) {
-      console.info('onProgressItem', fileItem, progress);
-    };
-    uploader.onProgressAll = function (progress) {
-      console.info('onProgressAll', progress);
-    };
-    uploader.onSuccessItem = function (fileItem, response, status, headers) {
-      console.info('onSuccessItem', fileItem, response, status, headers);
-    };
-    uploader.onErrorItem = function (fileItem, response, status, headers) {
-      console.info('onErrorItem', fileItem, response, status, headers);
-    };
-    uploader.onCancelItem = function (fileItem, response, status, headers) {
-      console.info('onCancelItem', fileItem, response, status, headers);
-    };
-    uploader.onCompleteItem = function (fileItem, response, status, headers) {
-      console.info('onCompleteItem', fileItem, response, status, headers);
-    };
-    uploader.onCompleteAll = function () {
-      $http.get('/api/v1/files').success(function (files) {
+
+    uploader.onCompleteAll = function() {
+      $http.get('/api/files').success(function(files) {
         $scope.files = files;
       });
+    };
+
+    $scope.class = 'col-sm-3';
+
+    $scope.changeSize = function(btnNum) {
+      switch (btnNum) {
+        case 1:
+          $scope.class = 'col-sm-2';
+          break;
+        case 2:
+          $scope.class = 'col-sm-3';
+          break;
+        case 3:
+          $scope.class = 'col-sm-4';
+          break;
+      }
     };
   }
 }());

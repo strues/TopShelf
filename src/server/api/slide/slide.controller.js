@@ -3,12 +3,8 @@
 var _ = require('lodash');
 var Slide = require('./slide.model');
 
-function handleError(res, err) {
-  return res.status(500).json(err);
-}
-
 // Get list of slides
-exports.list = function(req, res) {
+exports.index = function(req, res) {
   Slide.find()
     .exec(function(err, slides) {
       if (err) {
@@ -21,37 +17,41 @@ exports.list = function(req, res) {
 // Get a single slide
 exports.show = function(req, res) {
   Slide.findById(req.params.id)
-    .exec(function (err, slide) {
+    .exec(function(err, slide) {
       if (err) {
         return handleError(res, err);
       }
       if (!slide) {
         return res.sendStatus(404);
       }
-      return res.status(200).json(slide);
+      return res.json(slide);
     });
 };
 
 // Creates a new resource in the DB.
 exports.create = function(req, res) {
   var slide = new Slide(); // news.create a new instance of the Resource model
-  slide.image = req.body.image;  // set the resource name (comes from the request)
-  slide.title = req.body.title;  // set the resource url (comes from the request)
+  slide.image = req.body.image; // set the resource name (comes from the request)
+  slide.title = req.body.title; // set the resource url (comes from the request)
   slide.caption = req.body.caption;
 
   slide.save(function(err) {
     if (err) {
       // duplicate entry
       if (err.code === 11000)
-      return res.json({success: false,
-        message: 'A slide with that name already exists. '});
+        return res.json({
+          success: false,
+          message: 'A slide with that name already exists. '
+        });
       else {
         return res.send(err);
       }
     }
 
     // return a message
-    res.json({message: 'Slide created!'});
+    res.json({
+      message: 'Slide created!'
+    });
   });
 
 };
@@ -83,7 +83,7 @@ exports.update = function(req, res) {
 
 // Deletes a resource from the DB.
 exports.destroy = function(req, res) {
-  Slide.findById(req.params.id, function (err, slide) {
+  Slide.findById(req.params.id, function(err, slide) {
     if (err) {
       return handleError(res, err);
     }
@@ -98,3 +98,7 @@ exports.destroy = function(req, res) {
     });
   });
 };
+
+function handleError(res, err) {
+  return res.status(500).json(err);
+}

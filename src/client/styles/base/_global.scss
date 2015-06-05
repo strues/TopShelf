@@ -1,129 +1,74 @@
+html {
+  min-width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding-top: 75px;
+  position: relative;
+  overflow-x: hidden;
+}
+
 body {
-    background-color: #fcfcfc;
+  background: #2c3338;
+  overflow-x: hidden;
+}
+main {
+  padding-bottom: 180px;
 }
 
-p.box {
-    padding: 20px;
+footer {
+  background-color: $flat_white;
 }
 
-p {
-    color: rgba(0, 0, 0, 0.71);
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
+$transition-default: all 0.2s ease-in-out;
+
+.line {
+    margin: 20px 0;
+    border-bottom: 1px solid #fff;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    -webkit-font-smoothing: antialiased;
-}
+ .ap-menu ul li,
+ .article-header ul li,
+ .article-manage-item ul li,
+ .article-wrap ul li,
+ .block-type-btn ul li,
+ .last-news-block ul li,
+ .other-article-data ul li,
+ .text-wrap ul li {
+     list-style-type: none;
+ }
 
-nav a {
-    font-size: 18px !important;
-    -webkit-font-smoothing: antialiased;
-}
+ .cf {
+     zoom: 1;
+ }
 
-nav ul li:hover, nav ul li.active {
-    overflow: visible;
-    background-color: #ea454b;
-}
+ .cf:after,
+ .cf:before {
+     content: "";
+     display: table;
+ }
 
-.header {
-    color: #ee6e73;
-    font-weight: 300; }
+ .cf:after {
+     clear: both;
+ }
 
-.caption {
-    font-size: 1.25rem;
-    font-weight: 300;
-    margin-bottom: 30px;
-}
-
-.preview {
-    background-color: #FFF;
-    border: 1px solid #eee;
-    padding: 20px 20px;
-}
-
-.page-content {
-  padding: 15px;
-  background-color: $lt-grey;
-}
-
-.blue-area {
-  background-color: $guild-main;
-  padding: 15px;
-}
-
-.fill-space {
-  min-height: 100vH;
-  background-color: $secondary-color;
-}
-
-#aside {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-article {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.aside-backdrop {
-  opacity: .1;
-}
-
-/*******************
-  Utility Classes
-*******************/
-
-.hide {
-  display: none !important;
-}
-
-.left {
-  float: left !important;
-}
-.right {
-  float: right !important;
-}
-
-// No Text Select
-.no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.waves-effect.waves-blue .waves-ripple {
- /* The alpha value allows the text and background color
- of the button to still show through. */
-  background-color: $guild-blue;
-}
-
-// Circle
-.circle {
-  border-radius: 50%;
-}
-
-.center-block {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.truncate {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.no-padding {
-  padding: 0px;
-}
-
-.img-responsive {
-    width: 80%;
-    display: block;
-    margin: 0 auto; }
+ .block-type-btn {
+     margin-top: 30px
+ }
+ .block-type-btn ul {
+     padding: 0
+ }
+ .block-type-btn ul li {
+     -webkit-transition: color .3s;
+     -moz-transition: color .3s;
+     -o-transition: color .3s;
+     transition: color .3s;
+     list-style-type: none;
+     font-size: 2em;
+     color: #9E9E9E;
+     float: left;
+     margin: 0 10px
+ }
+ .block-type-btn ul li:hover {
+     color: #717171;
+     cursor: pointer
+ }

@@ -1,15 +1,30 @@
-(function () {
+(function() {
   'use strict';
+
+  /* jshint latedef: nofunc */
+  /** @ngdoc controller
+   * @name app.admin.AdminDashboardCtrl
+   * @description
+   * Controller
+   */
   angular
     .module('app.admin')
-    .controller('DashboardCtrl', DashboardCtrl);
+    .controller('AdminDashboardCtrl', AdminDashboardCtrl);
 
-  DashboardCtrl.$inject = [];
+  AdminDashboardCtrl.$inject = ['$auth'];
   /* @ngInject */
-  function DashboardCtrl() {
+  function AdminDashboardCtrl($auth) {
     var vm = this;
-    vm.users = {};
 
+    //Page.setTitle('Admin');
+
+    /**
+     * Determines if the user is authenticated
+     *
+     * @returns {boolean}
+     */
+    vm.isAuthenticated = function() {
+      return $auth.isAuthenticated();
+    };
   }
-
-}());
+})();

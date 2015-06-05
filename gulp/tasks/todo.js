@@ -1,15 +1,17 @@
 'use strict';
-/**
- * Todo Creation Task
- *
- * Creates a todo document from @TODO: inline code
- *
- */
 
+/**
+  * @title Todo
+  * @description Creates a todo document from @TODO: inline code
+  * @example (cli) gulp todo
+  */
 var gulp    = require('gulp'),
     config  = require('../config')(),
-    error   = require('../util/error'),
-    plg     = require('gulp-load-plugins')({lazy: true});
+    plg     = require('gulp-load-plugins')({
+                        pattern: ['gulp-*', 'gulp.*'],
+                        replaceString: /^gulp(-|\.)/,
+                        camelize: true,
+                        lazy: true});
 
 var args    = require('yargs').argv;
 
@@ -24,5 +26,5 @@ gulp.task('todo', function() {
         .pipe(plg.todo.reporter('json', {
           fileName: 'todo.json'
         }))
-        .pipe(gulp.dest('./docs')); //output todo.json as json
+      .pipe(gulp.dest('./docs')); //output todo.json as json
 });

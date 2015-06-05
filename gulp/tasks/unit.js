@@ -5,18 +5,9 @@
 
 'use strict';
 
-var args = require('yargs').argv;
-var browserSync = require('browser-sync'),
-    glob        = require('glob'),
-    _           = require('lodash'),
-    plg         = require('gulp-load-plugins')({lazy: true}), // jshint ignore:line
+var plg         = require('gulp-load-plugins')({lazy: true}), // jshint ignore:line
     config      = require('../config')(),
     gulp        = require('gulp'),
-    path        = require('path'),
-    minifyCSS   = require('gulp-minify-css'),
-    ngFS        = require('gulp-angular-filesort'),
-    error       = require('../util/error'),
-    colors      = plg.util.colors,
     wiredep     = require('wiredep'),
     karma       = require('karma'),
     concat      = require('concat-stream');

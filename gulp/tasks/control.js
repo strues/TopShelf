@@ -17,7 +17,7 @@ gulp.task('build', function(callback) {
     'sass',
     'inject',
     'images',
-    'templatecache',
+    'partials',
     'optimize',
     'fonts',
     callback);
@@ -27,6 +27,7 @@ gulp.task('vet', function(callback) {
   rs(
   'lint',
   'jscs',
+  'eslint',
   'scsslint',
   callback);
 });

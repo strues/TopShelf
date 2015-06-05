@@ -5,35 +5,13 @@ var mongoose = require('mongoose'),
     moment   = require('moment'),
     _        = require('lodash');
 
-/**
- * Getters
- */
-
-var getTags = function (tags) {
-  return tags.join(',');
-};
-
-/**
- * Setters
- */
-
-var setTags = function (tags) {
-  return tags.split(',');
-};
-
-var articleSchema = new Schema({
+var ArticleSchema = new Schema({
   title: {
     type: String,
     trim: true,
     default: '',
     required: 'Title must be provided',
-    unique: true,
-    validate: [
-        function(title) {
-          return typeof title !== 'undefined' && title.length <= 120;
-        },
-        'Title must not be empty or exceed 120 character max limit'
-        ]
+    unique: true
   },
   author: {
     type: Schema.Types.ObjectId,
@@ -50,7 +28,7 @@ var articleSchema = new Schema({
   description: {
     type: String,
     trim: true,
-    required: 'A 140 character description must be provided'
+    required: 'Description must be provided'
   },
   content:{
     type: String,
@@ -60,62 +38,23 @@ var articleSchema = new Schema({
   slug: {
     type: String
   },
-  tags: {
-    type: [],
-    get: getTags,
-    set: setTags
-  },
+  tags: [{
+    type:String,
+    lowercase: true,
+    default: '',
+    trim: true
+  }],
   state: {
     type: String,
     default: 'Draft',
     enum: ['Draft', 'Published', 'Archived']
   },
   image: String,
-  lrgImage: String,
+  featImage: String,
   views: {
     type: Number,
     default: 1
   }
 });
 
-/**
- * Statics
- */
-
-articleSchema.statics = {
-
-  /**
-   * Find article by id
-   *
-   * @param {ObjectId} id
-   * @param {Function} cb
-   * @api private
-   */
-
-  load: function (id, cb) {
-    this.findOne({ _id : id })
-      .populate({path: 'User', select:'displayName email battletag'})
-      .exec(cb);
-  },
-
-  /**
-   * List articles
-   *
-   * @param {Object} options
-   * @param {Function} cb
-   * @api private
-   */
-
-  list: function (options, cb) {
-    var criteria = options.criteria || {}
-
-    this.find(criteria)
-      .populate({path: 'User', select:'displayName email battletag'})
-      .sort({'createdAt': -1}) // sort by date
-      .limit(options.perPage)
-      .skip(options.perPage * options.page)
-      .exec(cb);
-  }
-}
-
-module.exports = mongoose.model('Article', articleSchema);
+module.exports = mongoose.model('Article', ArticleSchema);

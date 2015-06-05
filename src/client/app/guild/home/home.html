@@ -1,0 +1,87 @@
+<div class="container-fluid">
+
+<div class="row">
+<carousel current-index="selected" data-interval="4000" data-pause="false">
+  <slide ng-repeat="article in home.articles | limitTo: 3" active="article.active"><img ng-src="{{article.image}}" alt=""/>
+    <div class="caption">
+      <h3><a ui-sref="guild.home.article({id:article._id})">{{::article.title | limitTo: 31}}</a></h3>
+      <p>Author: {{::article.author.displayName}}</p>
+    </div>
+  </slide>
+</carousel>
+</div>
+</div><!-- container-fluid top half -->
+
+  <section class="tagline-area">
+    <div class="block-area">
+      <div class="container"
+      <div class="row text-center">
+          <div class="col-sm-12 col-md-4 block-area-col">
+            <i class="fa fa-play-circle fa-5x"></i>
+            <h1 class="text-center">Kill Videos</h1>
+          </div>
+          <div class="col-sm-12 col-md-4 block-area-col">
+            <i class="fa fa-comments fa-5x"></i>
+            <h1 class="text-center">Forums</h1>
+          </div>
+          <div class="col-sm-12 col-md-4 block-area-col">
+            <i class="fa fa-tasks fa-5x"></i>
+            <h1 class="text-center">Apply Now</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- start news area -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="home-page-hl col-sm-9 col-sm-offset-3">
+    <div class="col-sm-3 cf">
+      <h3 class="tagline">Latest News</h3>
+    </div>
+    <div class="col-sm-7 cf">
+      <div class="line"></div>
+    </div>
+    <div class="col-sm-2 cf">
+      <div class="block-type-btn cf">
+        <ul>
+          <li>
+            <div ng-click="home.changeSize(1)" class="glyphicon glyphicon-th"></div>
+          </li>
+          <li>
+            <div ng-click="home.changeSize(2)" class="glyphicon glyphicon-th-large"></div>
+          </li>
+          <li>
+            <div ng-click="home.changeSize(3)" class="glyphicon glyphicon-th-list"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-3">
+    <recruiting-widget></recruiting-widget>
+  </div>
+	<div ng-repeat="article in home.articles | limitTo: 9" ng-class="home.class" class="home-page-ab-wrap">
+	  <div class="home-page-article-block"><!-- 170px img -->
+	    <div class="home-page-ab-img"><img ng-src="{{article.image}}" alt=""/></div>
+	    <div class="home-page-ab-header">
+	      <h3><a ui-sref="guild.home.article({id:article._id})">{{::article.title | limitTo: 61}}</a></h3>
+	    </div>
+	    <div class="other-article-data">
+	      <ul>
+	        <li>
+	          <p>{{article.author.displayName}}</p>
+	        </li>
+	        <li>
+	          <p>{{article.created | date:'MMM dd, yyyy'}}</p>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+</div>
+</div>
+<the-footer></the-footer>

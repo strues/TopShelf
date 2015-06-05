@@ -1,29 +1,42 @@
-(function () {
+(function() {
   'use strict';
+
   /**
    * @ngdoc controller
-   * @name RosterCtrl
-   *
-   * @description pulls information relating to the roster from battle.net
-   *
+   * @name app.guild.controller:RosterCtrl
+   * @description < description placeholder >
    */
+
   angular
     .module('app.guild')
     .controller('RosterCtrl', RosterCtrl);
 
-  RosterCtrl.$inject = ['Armory'];
+  RosterCtrl.$inject = ['armorySvc', '$scope', '$sce'];
   /* @ngInject */
-  function RosterCtrl(Armory) {
+  function RosterCtrl(armorySvc, $scope, $sce) {
+
     /*jshint validthis: true */
     var vm = this;
-    vm.filterMaxOnly = function (member) {
-      return member.level === 100;
-    };
-    vm.characters = [];
-    Armory.getRoster().success(function (data) {
+    armorySvc.getMembers().success(function(data) {
       vm.members = data.members;
-    }).error(function (error) {
-      vm.status = 'Unable to retrieve roster: ' + error.message;
+
     });
+
+    $scope.trustUrl = function(url) {
+        return $sce.trustAsResourceUrl(url);
+    }
+    vm.rosterlist = {
+      maxLevelOnly: true
+    };
+
+    $scope.filterMaxOnly = function(member) {
+        return member.rank <= 5;
+    };
+    $scope.filterNoAlt = function(member) {
+        return member.rank !== 2;
+    };
+    $scope.filterNoRAlt = function(member) {
+        return member.rank !== 5;
+    };
   }
-}());
+})();

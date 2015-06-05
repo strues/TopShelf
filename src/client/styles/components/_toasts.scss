@@ -1,0 +1,27 @@
+#toast-container > [class*="toast-"] {
+    background-image: none !important;
+}
+
+.toast[class*="toast-"]:before {
+    font-family: FontAwesome;
+    font-size: 2em;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.toast.toast-success:before {
+    content: '\f058';
+}
+
+.toast.toast-info:before {
+    content: '\f05a';
+}
+
+.toast.toast-error:before {
+    content: '\f057';
+}
+
+.toast.toast-warning:before {
+    content: '\f071';
+}

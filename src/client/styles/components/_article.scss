@@ -1,0 +1,226 @@
+.indicators li,
+.home-page-article-block {
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2)
+}
+.home-page-article-block {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    background: #fff;
+    height: 330px;
+    position: relative;
+}
+.article-form,
+.article-form input[type=text] {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin: 7px 0;
+    color: #333;
+}
+.ap-view {
+    margin-left: 200px;
+}
+.ap-view h1 {
+    font-size: 4em;
+}
+
+.article-list-wrap img,
+.article-wrap img {
+    width: 100%;
+}
+.article-list-wrap {
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    padding: 0!important;
+    background: #fff;
+    margin: 10px 0;
+}
+.article-thumb {
+    width: 100%;
+    height: 350px;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+.last-news-block {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    padding: 20px;
+    margin: 10px 0;
+    background: #fff;
+}
+.article-wrap,
+.last-news-block {
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2)
+}
+.last-news-block a {
+    color: #555;
+    font-size: 1.2em
+}
+.last-news-block a:hover {
+    color: #337ab7;
+    text-decoration: none
+}
+.last-news-block h3 {
+    margin-left: 20px
+}
+.last-news-block p {
+    margin-top: 10px;
+    color: #7C7C7C
+}
+.last-news-block ul {
+    margin: 0 20px;
+    padding: 0
+}
+.article-wrap h1,
+.article-wrap p {
+    margin-left: 20px
+}
+.article-wrap {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    padding: 20px;
+    background: #fff
+}
+.article-wrap p {
+    margin-right: 20px
+}
+.article-wrap ul {
+    padding: 0
+}
+.article-wrap ul li {
+    float: left;
+    margin-right: 20px
+}
+.article-list-manage {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0
+}
+.article-header {
+    margin: 0 auto 10px;
+    background: #333;
+    color: #fff
+}
+.article-header input {
+    border-radius: 3px;
+    border-color: 1px solid #dedede;
+    color: #333;
+    padding: 3px
+}
+.article-header ul {
+    margin: 0
+}
+.article-header ul li {
+    width: 20%;
+    float: left;
+    padding: 10px
+}
+.article-header ul li:first-child {
+    margin-left: 15px;
+    width: 35%
+}
+.indicators .active,
+.indicators li:hover {
+    background-color: transparent
+}
+.article-header ul li:nth-child(2) {
+    width: 20%
+}
+.article-header ul li:last-child {
+    width: 15%
+}
+.article-header ul li p {
+    font-size: 1.2em;
+    margin: 0
+}
+.article-manage-item ul {
+    -webkit-transition: opacity .3s;
+    -moz-transition: opacity .3s;
+    -o-transition: opacity .3s;
+    transition: opacity .3s;
+    border: 1px solid #dedede;
+    background: #fff;
+    padding: 4px 4px 4px 30px;
+    margin: 5px
+}
+.article-manage-item ul li {
+    width: 22%;
+    list-style-type: none;
+    float: left
+}
+.article-manage-item ul li:first-child {
+    margin-left: 15px;
+    padding-top: 5px;
+    width: 35%
+}
+.article-manage-item ul li:nth-child(2) {
+    width: 20%
+}
+.article-manage-item ul li:last-child {
+    width: 15%;
+    margin: 0;
+}
+.article-manage-item ul li p {
+    float: left;
+    margin: 5px 10px;
+}
+.caption h3,
+.caption p {
+    padding: 5px;
+    margin: 6px
+}
+.article-manage-item ul li a {
+    text-decoration: none
+}
+.article-manage-item ul:hover {
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    background-color: #f2f2f2
+}
+.home-page-ab-wrap {
+    -webkit-transition: width .3s;
+    -moz-transition: width .3s;
+    -o-transition: width .3s;
+    transition: width .3s;
+    padding: 10px 5px;
+}
+.home-page-ab-img {
+    height: 170px;
+    overflow: hidden;
+    border-bottom: 3px solid $flat_dark_blue;
+}
+.home-page-ab-img img {
+    width: 130%
+}
+.home-page-ab-header {
+    padding: 10px
+}
+.home-page-ab-header h3 {
+    margin: 10px 0;
+}
+.home-page-ab-header a {
+    color: #555
+}
+.home-page-ab-header a:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
+.other-article-data {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    border-top: 1px solid #dedede;
+    width: 100%;
+}
+.other-article-data ul {
+    padding: 0;
+}
+.other-article-data ul li {
+    text-align: center;
+    width: 50%;
+    list-style-type: none;
+    float: left;
+    padding-top: 10px;
+}

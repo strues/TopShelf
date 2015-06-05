@@ -1,0 +1,34 @@
+.block-area {
+  height: 320px;
+  vertical-align: middle;
+  background-color: $flat_blue;
+  margin-left: -15px;
+  margin-right: -15px;
+  color: $flat_dark_black;
+  text-align: center;
+  text-transform: small-caps;
+  vertical-align: middle;
+}
+
+.block-area-col {
+  height: 320px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  &:hover{
+    border: 1px solid $flat_dark_white;
+    background-color: $flat_dark_black;
+    color: #fff;
+
+  }
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tagline h3 {
+  color: $flat_blue;
+}

@@ -1,0 +1,11 @@
+{
+	"apps": [{
+		"name": "tsgApp",
+		"script": "src/server/app.js",
+		"watch": true,
+		"ignore_watch": ["files"],
+		"env": {
+			"NODE_ENV": "production"
+		}
+	}]
+}

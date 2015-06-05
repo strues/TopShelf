@@ -8,41 +8,20 @@
 
 var gulp        = require('gulp'),
     browserSync = require('browser-sync'),
-    plg         = require('gulp-load-plugins')({lazy: true}), // jshint ignore:line
     config      = require('../config')(),
-    error       = require('../util/error'),
-    colors      = plg.util.colors;
+    error       = require('../util/error');
 
 function isOnlyChange(event) {
   return event.type === 'changed';
 }
 
-gulp.task('watch', ['templatecache', 'inject'], function () {
+gulp.task('watch', ['serve'], function() {
 
-  gulp.watch([config.client + '/*.html', 'bower.json'], ['inject', 'bower']);
+  process.env.ENVIRONMENT_TYPE = 'development';
 
-  gulp.watch([
-    config.sass
-    ], function(event) {
-      if (isOnlyChange(event)) {
-        gulp.start('sass');
-      } else {
-        gulp.start('inject');
-      }
-    });
+  gulp.watch(config.sass, ['sass']);
+  gulp.watch(config.ngApp, ['lint']);
+  gulp.watch(config.index, ['inject']);
+  gulp.watch(config.html, ['partials']);
 
-  gulp.watch([
-    config.js
-    ], function(event) {
-      if (isOnlyChange(event)) {
-        gulp.start('lint');
-      } else {
-        gulp.start('inject');
-      }
-    });
-
-  gulp.watch(config.client + '/app/**/*.tpl.html', function(event) {
-      browserSync.reload(event.path);
-    });
 });
-

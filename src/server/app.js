@@ -6,36 +6,35 @@
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var express = require('express'),
-    debug   = require('debug')('app:' + process.pid),
+var debug   = require('debug')('tsg'),
+    express = require('express'),
     db      = require('./config/mongoose'),
     chalk   = require('chalk'),
-    config  = require('./config/environment');
+    config  = require('./config/environment'),
+    fs      = require('fs');
+
+var httpsCfg = {
+  key: fs.readFileSync('./server.key', 'utf8'),
+  cert: fs.readFileSync('./server.crt', 'utf8')
+};
 
 // Expose App
 var app = express();
-var fs = require('fs');
-var key         = fs.readFileSync('./server.key', 'utf8');
-var cert        = fs.readFileSync('./server.crt', 'utf8');
-var credentials = {
-    key: key,
-    cert: cert
-}; // ssl
+
 var server = require('http').createServer(app);
-var https = require('https').createServer(credentials, app);
+var secureServer = require('https').createServer(httpsCfg, app);
 
 require('./config/express')(app);
 require('./routes')(app);
 
 server.listen(config.port, config.ip, function() {
-  debug(chalk.yellow('Express is running on love',
+  console.log(chalk.yellow('Express is running on love',
       config.port, app.get('env')));
 });
-https.listen('8443', config.ip, function() {
-    console.log(chalk.blue('Express is running in SSL'))
-});
-process.on('uncaughtException', function(err) {
-  debug(err);
+
+secureServer.listen(8443, config.ip, function() {
+  console.log(chalk.yellow('Express is running on love',
+      '8443', app.get('env')));
 });
 
 exports = module.exports = app;

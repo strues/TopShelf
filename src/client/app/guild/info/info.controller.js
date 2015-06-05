@@ -1,18 +1,25 @@
-(function () {
+(function() {
   'use strict';
-  /**
-   * @ngdoc Controller
-   * @name app.guild.controller:GuildInfoCtrl
-   *
-   * @description Currently is just "there"
-   *
-   */
+
+ /**
+  * @ngdoc controller
+  * @name app.guild.controller:InfoCtrl
+  * @description < description placeholder >
+  */
+
   angular
     .module('app.guild')
-    .controller('GuildInfoCtrl', GuildInfoCtrl);
+    .controller('InfoCtrl', InfoCtrl);
+
+  InfoCtrl.$inject = [];
   /* @ngInject */
-  function GuildInfoCtrl() {
+  function InfoCtrl() {
+
+    /*jshint validthis: true */
     var vm = this;
-    vm.ctrlName = 'GuildInfoCtrl';
+
+    vm.controllerName = 'GuildInfo';
+
   }
-}());
+
+})();

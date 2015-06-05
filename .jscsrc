@@ -53,8 +53,8 @@
     "disallowSpacesInsideParentheses": true,
 
     "validateJSDoc": {
-        "checkParamNames": true,
-        "requireParamTypes": true
+        "checkParamNames": null,
+        "requireParamTypes": null
     },
 
     "disallowMultipleLineBreaks": true,

@@ -1,14 +1,45 @@
-'use strict';
-
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema   = mongoose.Schema,
+    moment   = require('moment'),
+    _        = require('lodash');
 
 var FileSchema = new Schema({
-    url: String,
-    dateOfUploading: Date,
-    fileName: String,
-    isPrivate: Boolean,
-    uploaderId: String
+  title: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  url: {
+    type: String,
+    default: ''
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  filename: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  description: {
+    type: String,
+    default: ''
+  },
+  isPrivate: Boolean,
+  uploaderId: String,
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+  views: {
+    type: Number,
+    default: 0
+  },
+  likes: [{
+    type: Schema.ObjectId,
+    ref: 'User'
+  }]
 });
 
 module.exports = mongoose.model('File', FileSchema);

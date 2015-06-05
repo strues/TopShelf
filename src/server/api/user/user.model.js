@@ -1,20 +1,17 @@
-/**
- * An module for defining and initializing the User model.
- * Exporting the User model definition, schema and model instance.
- * @module {Object} user:model
- * @property {Object} definition - The [definition object]{@link user:model~UserDefinition}
- * @property {Schema} schema - The [mongoose model schema]{@link user:model~UserSchema}
- * @property {Model} model - The [mongoose model]{@link user:model~User}
- */
 'use strict';
 
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-
 var Schema = mongoose.Schema;
+
+var validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email);
+};
 
 var userSchema = new mongoose.Schema({
   email: {
+    validate:[validateEmail, 'not valid'],
     type: String,
     unique: true,
     lowercase: true,
@@ -22,35 +19,36 @@ var userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    select: false
+    select: false,
+    min: 5,
+    max: 20,
+    trim: true
   },
-  displayName: String,
-  avatar: String,
+  displayName: {
+    type: String
+  },
   picture: String,
   role: {
     type: String,
-    default: 'User',
-    enum: ['User', 'Raider', 'Admin']
+    default: 'User'
   },
-  isAdmin: Boolean,
-  facebook: String,
-  battlenet: String,
-  xenforo: String,
-  google: String,
-  twitter: String,
-  providers: [],
-  resetPasswordToken: String,
-  resetPasswordTokenExpiration: Date,
   twitch: {
     type: String,
     trim: true,
     default: ''
   },
-  battletag:{
-    type: String,
-    trim: true,
-    default: ''
+  battletag: {
+    type: String
   },
+  isAdmin: Boolean,
+  providers: {},
+  facebook: String,
+  battlenet: String,
+  xenforo: String,
+  google: String,
+  twitter: String,
+  resetPasswordToken: String,
+  resetPasswordTokenExpiration: Date,
   articles: {
     type: Schema.Types.ObjectId,
     ref: 'Article'
@@ -81,6 +79,19 @@ function getToken() {
   };
 }
 
+userSchema.statics = {
+  /**
+   *  Find User By username
+   *  @param {String}
+   *  @param {Function}
+   */
+  findByUsername: function(name, cb) {
+    this.findOne({
+      displayName: name
+    }).exec(cb);
+  }
+};
+
 userSchema.pre('save', function(next) {
   var user = this;
   if (!user.isModified('password')) {
@@ -99,23 +110,5 @@ userSchema.methods.comparePassword = function(password, done) {
     done(err, isMatch);
   });
 };
-
-userSchema.statics = {
-
-  /**
-   * Load
-   *
-   * @param {Object} options
-   * @param {Function} cb
-   * @api private
-   */
-
-  load: function (options, cb) {
-    options.select = options.select || 'displayName battletag';
-    this.findOne(options.criteria)
-      .select(options.select)
-      .exec(cb);
-  }
-}
 
 module.exports = mongoose.model('User', userSchema);

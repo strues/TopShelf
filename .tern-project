@@ -1,6 +1,5 @@
 {
   "libs": [
-    "browser",
     "ecma5",
     "ecma6"
   ],
@@ -8,14 +7,15 @@
     "src/client/**/*.js"
   ],
   "dontLoad": [
-    "bower_components/**/*.js",
-    "node_modules/**/*.js"
+    "bower_components/**/*.js"
   ],
   "plugins": {
     "complete_strings": {},
     "angular": true,
+    "node": {},
+    "node-express": {},
     "doc_comment": {
      "fullDocs": true
-    }
+   }
   }
 }

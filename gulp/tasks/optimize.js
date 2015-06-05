@@ -4,20 +4,16 @@
  */
 
 'use strict';
-
-var args = require('yargs').argv;
-var browserSync = require('browser-sync'),
-    glob        = require('glob'),
-    _           = require('lodash'),
-    plg         = require('gulp-load-plugins')({lazy: true}), // jshint ignore:line
+var plg         = require('gulp-load-plugins')({
+                        pattern: ['gulp-*', 'gulp.*'],
+                        replaceString: /^gulp(-|\.)/,
+                        camelize: true,
+                        lazy: true}),
     config      = require('../config')(),
     gulp        = require('gulp'),
-    path        = require('path'),
     minifyCSS   = require('gulp-minify-css'),
     ngFS        = require('gulp-angular-filesort'),
-    error       = require('../util/error'),
-    header      = require('../util/header'),
-    colors      = plg.util.colors;
+    header      = require('../util/header');
 
 /**
  * Optimize all files, move to a build folder,
@@ -25,23 +21,21 @@ var browserSync = require('browser-sync'),
  * @return {Stream}
  */
 gulp.task('optimize', ['inject', 'vet'], function() {
-  plg.notify('Optimizing the js, css, and html');
-
   var assets = plg.useref.assets({searchPath: './'});
   // Filters are named for the gulp-useref path
   var cssFilter = plg.filter('**/*.css');
   var jsAppFilter = plg.filter('**/' + config.optimized.app);
   var jslibFilter = plg.filter('**/' + config.optimized.lib);
 
-  var templateCache = gulp.src(config.temp + config.templateCache.file);
+  var partials = gulp.src(config.temp + 'partials.min.js');
 
   return gulp
       .src(config.index)
       .pipe(plg.plumber())
-        .pipe(plg.inject(templateCache, {
+        .pipe(plg.inject(partials, {
           read: false
         }), {
-          starttag: '<!-- inject:templates:js -->'
+          starttag: '<!-- inject:partials:js -->'
         })
         .pipe(assets) // Gather all assets from the html with useref
         // Get the css

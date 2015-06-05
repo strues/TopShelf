@@ -13,7 +13,7 @@ var gulp         = require('gulp'),
     minifyCSS   = require('gulp-minify-css'),
     pngquant     = require('imagemin-pngquant'),
     spritesmith  = require('gulp.spritesmith'),
-    plg          = require('gulp-load-plugins')({lazy: true});// jshint ignore:line
+    plg          = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('images', function () {
   return gulp.src(config.images)
@@ -31,7 +31,7 @@ gulp.task('images', function () {
 
 gulp.task('images:sprite', function () {
   // Generate our spritesheet
-  var spriteData = gulp.src(config.client + '/img/icons/*.png')
+  var spriteData = gulp.src(config.client + 'img/icons/*.png')
   .pipe(spritesmith({
     imgName: 'sprite.png',
     cssName: 'sprite.css'

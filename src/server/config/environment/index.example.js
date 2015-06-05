@@ -1,23 +1,27 @@
 'use strict';
 
 var path = require('path');
-var _ = require('lodash'); //jshint ignore:line
+var _ = require('lodash');
+
+function requiredProcessEnv(name) {
+    if (!process.env[name]) {
+        throw new Error('You must set the ' + name + ' environment variable');
+    }
+    return process.env[name];
+}
 
 // All configurations will extend these options
+// You'll want to change everything in 'CAPS' to your settings
 // ============================================
 var all = {
-  env: process.env.NODE_ENV,
-
+ env: process.env.NODE_ENV,
   // Root path of server
   root: path.normalize(__dirname + '/../../..'),
-
   // Server port
-  port: process.env.PORT || 9000,
-  // Secret for session, you will want to change this and make it an environment variable
+  port: process.env.PORT || 9000, // Only applies to development
   secrets: {
-    session: 'topk3k'
+    session: 'YOURSECRET' // Change this to something unique
   },
-  //seedDB: false,
   redis: {
     host: '127.0.0.1',
     port: 6379
@@ -25,29 +29,16 @@ var all = {
   tokenDuration : {
     session: 60 * 24 * 30
   },
-  guild: 'Top Shelf',
-  realm: 'Sargeras',
-  region: 'us',
+  guild: 'YOURGUILDNAME',
+  realm: 'YOURREALM',
+  region: 'US, EU, ETC',
   // List of user roles
-  userRoles: ['user', 'raider', 'admin'],
-
+  userRoles: ['guest', 'user', 'admin'],
   // MongoDB connection options
   mongo: {
     options: {
       db: {
         safe: true
-      },
-      server: {
-        socketOptions: {
-          keepAlive: 1,
-          connectTimeoutMS: 10000
-        }
-      },
-      replset: {
-        socketOptions: {
-          keepAlive: 1,
-          connectTimeoutMS: 10000
-        }
       }
     }
   },
@@ -60,23 +51,11 @@ var all = {
       //stream: 'access.log'
     }
   },
-  facebook: {
-    clientSecret: process.env.FACEBOOK_SECRET || 'secret'
-  },
   bnet: {
-    clientSecret: process.env.BNET_SECRET || 'asdfasdfsdf'
-  },
-  twitter: {
-    clientSecret: process.env.TWITTER_SECRET || 'secret'
-  },
-
-  google: {
-    clientSecret: process.env.GOOGLE_SECRET || 'secret'
-  },
-  mailgun: {
-      user: process.env.MAILGUN_USER || 'mail@asdfasdfasdf.com',
-      password: process.env.MAILGUN_PASSWORD || 'asdfasdfsadf'
-    }
+    clientID:     process.env.BNET_ID || 'APIKEY',
+    clientSecret: process.env.BNET_SECRET || 'APISECRET',
+    callbackURL:  (process.env.DOMAIN || '') + '/auth/bnet/callback'
+  }
 };
 
 // Export the config object based on the NODE_ENV

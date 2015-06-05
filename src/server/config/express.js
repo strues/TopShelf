@@ -3,71 +3,75 @@
  */
 
 'use strict';
-
-var express        = require('express'),
-    debug          = require('debug')('app:express' + process.pid),
-    config         = require('./environment'),
-    favicon        = require('serve-favicon'),
-    morgan         = require('morgan'),
-    compression    = require('compression'),
-    bodyParser     = require('body-parser'),
-    methodOverride = require('method-override'),
-    cookieParser   = require('cookie-parser'),
-    errorHandler   = require('errorhandler'),
-    path           = require('path'),
-    multer         = require('multer'),
-    busboy         = require('connect-busboy'),
-    session        = require('express-session'),
-    mongoose       = require('mongoose'),
-    mongoStore     = require('connect-mongo')(session),
-    flash          = require('connect-flash');
+var debug = require('debug')('tsg:express');
+var express = require('express'),
+  favicon = require('serve-favicon'),
+  dexter = require('morgan'),
+  compression = require('compression'),
+  bodyParser = require('body-parser'),
+  methodOverride = require('method-override'),
+  cookieParser = require('cookie-parser'),
+  errorHandler = require('errorhandler'),
+  path = require('path'),
+  cors = require('cors'),
+  logger = require('./logger'),
+  config = require('./environment'),
+  passport = require('passport'),
+  multer = require('multer'),
+  session = require('express-session'),
+  busboy = require('connect-busboy'),
+  mongoose = require('mongoose'),
+  mongoStore = require('connect-mongo')(session);
 
 module.exports = function(app) {
   var env = app.get('env');
-  // Showing stack errors
-  app.set('showStackError', true);
 
-  app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
-  app.use(morgan('dev'));
 
-  // Request body parsing middleware should be above methodOverride
+  // Enable logger (morgan)
+  app.use(dexter(logger.getLogFormat(), logger.getLogOptions()));
+
+  // always bodyParser before cookie, method or session
+  // parse application/x-www-form-urlencoded
+
+  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
   }));
-  app.use(bodyParser.json());
+
+  // parse application/json
+
   app.use(methodOverride('X-HTTP-Method-Override'));
-  // Enable jsonp
   app.enable('jsonp callback');
-  debug('Setup session with Redis');
   app.use(cookieParser());
+  app.set('appPath', path.join(config.root, 'client'));
+  app.use(busboy());
+  app.use(passport.initialize());
+  // Enable jsonp
   app.use(session({
-    secret: config.secrets.session,
+    secret: config.session.secret,
     resave: true,
     saveUninitialized: true,
-    store: new mongoStore({mongooseConnection: mongoose.connection})
+    store: new mongoStore({
+      mongooseConnection: mongoose.connection
+    })
   }));
-  // connect flash for flash messages
-  app.use(flash());
-  // busboy to handle file uploading
-  app.use(busboy());
 
-  app.set('appPath', path.join(config.root, 'client'));
-  // Should be placed before express.static
-  app.use(compression({
-    // only compress files for the following content types
-    filter: function(req, res) {
-      return (/json|text|javascript|css/)
-      .test(res.getHeader('Content-Type'));
-    },
-    // zlib option for compression level
-    level: 6
-  }));
+  app.use(passport.session());
+  app.use(function(req, res, next) {
+    //console.log('I am adding the allow origin');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
 
   if ('production' === env) {
-    app.use(favicon(path.join(config.root, 'client',
-      'assets/favicon.ico')));
+    app.use(compression());
+    app.use(favicon(path.join(config.root, 'client', 'assets/favicon.ico')));
     app.use(express.static(app.get('appPath')));
   }
 

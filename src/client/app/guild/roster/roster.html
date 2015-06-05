@@ -1,0 +1,28 @@
+<div class="container" ng-controller="RosterCtrl as vm">
+
+  <div id="content" class="row">
+
+
+  <table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+          <th></th>
+          <th>Character Name</th>
+          <th>Class</th>
+          <th>Spec</th>
+          <th>Rank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="member in ::vm.members | orderBy:'rank' | filter:filterMaxOnly | filter:filterNoAlt | filter:filterNoRAlt">
+          <td><img ng-src="https://us.battle.net/static-render/us/{{member.character.thumbnail}}" class="img-circle img-responsive"></td>
+          <td>{{member.character.name}}</td>
+          <td>{{member.character.class | className}}</td>
+          <td>{{member.character.spec.name}}</td>
+          <td>{{member.rank | guildRank}}</td>
+          <td><a ng-href="http://us.battle.net/wow/en/character/sargeras/{{ trustUrl(member.character.name) }}/simple" target="_blank">Armory</a></td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+</div>

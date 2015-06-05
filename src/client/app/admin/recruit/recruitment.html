@@ -1,0 +1,42 @@
+<div class="row">
+
+<div ng-controller="RecruitmentCtrl as recruit">
+  <div class="col-sm-12 col-md-5">
+    <form form-for="recruit.recruitData" service="recruitSvc" submit-with="recruit.submit()">
+      <radio-field attribute="currentlyRecruiting" label="Currently Recruiting" options="recruit.statusOptions"></radio-field>
+      <select-field attribute="classType" label="Class Needed" options="recruit.classDefs"></select-field>
+      <select-field attribute="classSpec" label="Spec Needed" options="recruit.specDefs"></select-field>
+      <radio-field attribute="priority" label="Priority" options="recruit.priorityOpt"></radio-field>
+      <submit-button label="Submit"></submit-button>
+    </form>
+
+  </div>
+</div>
+<div class="col-sm-6 col-md-6 col-md-offset-1" style="background-color: #fff;" ng-controller="RecruitmentListCtrl as vm">
+            <h2 class="text-primary" style="text-align: right;">Currently Recruiting</h2>
+            <table class="table table-condensed">
+              <thead>
+                <tr style="font-size:14px;">
+                  <th>Class Type:</th>
+                  <th>Class Spec:</th>
+                  <th>Priority:</th>
+                  <th>Status:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="recruitment in vm.recruitments" ng-class-even="table-striped">
+                  <td><img ng-src="assets/images/icons/icon_class_{{ recruitment.classType }}.png" style="padding-right: 10px;" height="30px"></td>
+                  <td>{{recruitment.classSpec}}</td>
+                  <td>{{recruitment.priority}}</td>
+                  <td>{{recruitment.status}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a href="" ng-click="vm.deleteRecruitment(recruitment)" class="btn btn-sm btn-danger">
+                        <span class="mdi-action-delete"></span></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>

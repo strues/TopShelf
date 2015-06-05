@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl as nav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-click="nav.isCollapsed = !nav.isCollapsed" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="guild.home" rel="home">
+              <img src="/img/logo.png" height="60px" class="brand-image" alt="Top Shelf Guild logo"></a>
+        </div>
+
+        <div class="navbar-collapse collapse in" collapse="nav.isCollapsed" aria-expanded="true">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-link"><a ui-sref="guild.home">Home</a></li>
+              <li class="nav-link"><a ui-sref="guild.info">Info</a></li>
+              <li class="nav-link"><a ui-sref="guild.streams">Streams</a></li>
+              <li class="nav-link"><a ui-sref="guild.roster">Roster</a></li>
+              <li><a href="https://topshelfguild.com/forums/" target="_blank">Forums</a></li>
+              <li class="nav-link" ng-if="nav.isAuthenticated() && nav.isAdmin">
+                <a ui-sref="admin.dashboard"> Admin</a>
+              </li>
+              <li ng-if="!nav.isAuthenticated()">
+                <a ui-sref="account.signup">Sign up</a>
+              </li>
+              <li ng-if="!nav.isAuthenticated()">
+                <a ui-sref="account.login"> Login</a>
+              </li>
+                <li class="dropdown" ng-if="nav.isAuthenticated()" dropdown>
+                  <a href="#" class="dropdown-toggle"
+                    role="button" aria-expanded="false" dropdown-toggle><span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a ui-sref="account.profile">Account</a>
+                    </li>
+                    <li><a ng-click="nav.logout()">Logout</a>
+                    </li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+    </div><!--/.container-->
+</nav><!--/nav-->

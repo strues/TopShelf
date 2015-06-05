@@ -1,83 +1,68 @@
-// Collections
+$collection-top-margin: 8px;
+$collection-bottom-margin: 6px;
+$collection-bg-color: $flat_dark_white;
+$collection-border-color: darken($collection-bg-color, 5%);
+$collection-active-bg-color: darken($collection-bg-color, 5%);
+$collection-active-color: $flat_blue;
+
 .collection {
-  margin: $element-top-margin 0 $element-bottom-margin 0;
-  border: 1px solid $collection-border-color;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #e0e0e0;
   border-radius: 2px;
   overflow: hidden;
-  position: relative;
-  width: 100%;
-
-  .collection-item {
-    background-color: $collection-bg-color;
+  position: relative; }
+  .collection .collection-item {
+    background-color: #fff;
     line-height: 1.5rem;
-    padding: 10px 0px;
+    padding: 10px 20px;
     margin: 0;
-    border-bottom: 1px solid $collection-border-color;
-
-    // Avatar Collection
-    &.avatar {
-      height: 84px;
+    border-bottom: 1px solid #e0e0e0; }
+    .collection .collection-item.avatar {
+      min-height: 84px;
       padding-left: 72px;
-      position: relative;
-
-      .circle {
+      position: relative; }
+      .collection .collection-item.avatar .circle {
         position: absolute;
         width: 42px;
         height: 42px;
         overflow: hidden;
         left: 15px;
         display: inline-block;
-        vertical-align: middle;
-      }
-      i.circle {
+        vertical-align: middle; }
+      .collection .collection-item.avatar i.circle {
         font-size: 18px;
         line-height: 42px;
         color: #fff;
         background-color: #999;
-        text-align: center;
-      }
-
-
-      .title {
-        font-size: 16px;
-      }
-
-      p {
-        margin: 0;
-      }
-
-      .secondary-content {
+        text-align: center; }
+      .collection .collection-item.avatar .title {
+        font-size: 16px; }
+      .collection .collection-item.avatar p {
+        margin: 0; }
+      .collection .collection-item.avatar .secondary-content {
         position: absolute;
         top: 16px;
-        right: 16px;
-      }
-
-    }
-
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-  }
-  a.collection-item{
+        right: 16px; }
+    .collection .collection-item:last-child {
+      border-bottom: none; }
+    .collection .collection-item.active {
+      background-color: #26a69a;
+      color: #eafaf9; }
+  .collection a.collection-item {
     display: block;
-    &:not(.active) {
-      &:hover {
-
-      }
-    }
-  }
-
-  &.with-header {
-    .collection-header {
-      background-color: $collection-bg-color;
-      border-bottom: 1px solid $collection-border-color;
-      padding: 10px 0px;
-    }
-    .collection-item {
-     padding-left: 0;
-    }
-  }
-
-}
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    -ms-transition: 0.25s;
+    transition: 0.25s;
+    color: #26a69a; }
+    .collection a.collection-item:not(.active):hover {
+      background-color: #ddd; }
+  .collection.with-header .collection-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 20px; }
+  .collection.with-header .collection-item {
+    padding-left: 30px; }
+  .collection.with-header .collection-item.avatar {
+    padding-left: 72px; }

@@ -1,14 +1,15 @@
+/**
+* @ngdoc directive
+* @name app.common.directive:passwordMatch
+* @scope true
+* @restrict A
+*
+* @description Indicator showing whether or not two passwords match
+*
+*/
+
 (function() {
   'use strict';
-
-  /**
-   * @ngdoc directive
-   * @module app.common
-   * @name passwordMatch
-   * @restrict E
-   * @scope true
-   * @description < description placeholder >
-   */
 
   angular
     .module('app.common')

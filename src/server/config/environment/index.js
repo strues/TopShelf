@@ -1,7 +1,14 @@
 'use strict';
 
 var path = require('path');
-var _ = require('lodash'); //jshint ignore:line
+var _ = require('lodash');
+
+function requiredProcessEnv(name) {
+  if (!process.env[name]) {
+    throw new Error('You must set the ' + name + ' environment variable');
+  }
+  return process.env[name];
+}
 
 // All configurations will extend these options
 // ============================================
@@ -14,22 +21,21 @@ var all = {
   // Server port
   port: process.env.PORT || 9000,
   // Secret for session, you will want to change this and make it an environment variable
-  secrets: {
-    session: 'topk3k'
+  session: {
+    secret: 'topk3k'
   },
-  //seedDB: false,
   redis: {
     host: '127.0.0.1',
     port: 6379
   },
-  tokenDuration : {
+  tokenDuration: {
     session: 60 * 24 * 30
   },
   guild: 'Top Shelf',
   realm: 'Sargeras',
   region: 'us',
   // List of user roles
-  userRoles: ['user', 'raider', 'admin'],
+  userRoles: ['User', 'Raider', 'Admin'],
 
   // MongoDB connection options
   mongo: {
@@ -77,9 +83,9 @@ var all = {
     clientSecret: process.env.XENFORO_SECRET || 'g3tr3kt'
   },
   mailgun: {
-      user: process.env.MAILGUN_USER || 'mail@topshelfguild.com',
-      password: process.env.MAILGUN_PASSWORD || 'nssteven0889'
-    }
+    user: process.env.MAILGUN_USER || 'mail@topshelfguild.com',
+    password: process.env.MAILGUN_PASSWORD || 'nssteven0889'
+  }
 };
 
 // Export the config object based on the NODE_ENV

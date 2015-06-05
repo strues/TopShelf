@@ -11,7 +11,7 @@ var gulp        = require('gulp'),
     config      = require('../config')(),
     error       = require('../util/error'),
     del         = require('del'),
-    plg         = require('gulp-load-plugins')({lazy: true});// jshint ignore:line
+    plg         = require('gulp-load-plugins')({lazy: true});
 
 /**
  * Remove all files from the build, temp, and reports folders
@@ -27,7 +27,7 @@ gulp.task('clean', function(done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-fonts', function(done) {
-  clean(config.build + 'fonts/**/*.*', done);
+  clean(config.build + 'font/**/*.*', done);
 });
 
 /**
@@ -57,8 +57,7 @@ gulp.task('clean-sass', function(done) {
 gulp.task('clean-code', function(done) {
   var files = [].concat(
       config.temp + '**/*.js',
-      config.build + 'js/**/*.js',
-      config.build + '**/*.html'
+      config.build + 'js/**/*.js'
   );
   clean(files, done);
 });

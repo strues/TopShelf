@@ -1,9 +1,11 @@
 'use strict';
 
-var _ = require('lodash'); //jshint ignore:line
-var User = require('./user.model'),
-  config = require('../../config/environment'),
-  jwt = require('jwt-simple');
+var _      = require('lodash'); //jshint ignore:line
+var User   = require('./user.model'),
+    request = require('request'),
+    auth = require('../../auth/auth.service'),
+    config = require('../../config/environment'),
+    jwt    = require('jwt-simple');
 
 function handleError(res, err) {
   return res.status(500).send(err);

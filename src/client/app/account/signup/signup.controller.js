@@ -2,7 +2,7 @@
   'use strict';
 
   /** @ngdoc controller
-   * @name app.account.controller:SignupController
+   * @name app.account.controller:SignupCtrl
    *
    * @propertyOf app.account
    *
@@ -11,13 +11,12 @@
    */
   angular
     .module('app.account')
-    .controller('SignupController', SignupController);
+    .controller('SignupCtrl', SignupCtrl);
 
-  SignupController.$inject = ['$auth'];
+  SignupCtrl.$inject = ['$auth', 'toastr'];
   /* @ngInject */
-  function SignupController($auth) {
+  function SignupCtrl($auth, toastr) {
     var vm = this;
-
     vm.signup = function() {
       $auth.signup({
         displayName: vm.displayName,
@@ -26,11 +25,10 @@
       }).catch(function(response) {
         if (typeof response.data.message === 'object') {
           angular.forEach(response.data.message, function(message) {
-            Materialize.toast(message, 3000);
+            toastr.error(message[0], 'Error!');
           });
         } else {
-          Materialize.toast(response, 3000);
-          console.log('error');
+          toastr.success(response.data.message, 'Success');
         }
       });
     };

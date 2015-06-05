@@ -1,3 +1,4 @@
+
 'use strict';
 /**
  * Module for handling roster requests.
@@ -14,8 +15,9 @@ var controller = require('./roster.controller');
 var router = express.Router();
 
 // register application routes
-router.route('/')
-  .get(controller.getRoster);
+router.get('/', controller.getGuild);
+
+router.get('/roster', controller.getRoster);
 
 // Export the configured express router for the user api routes
 module.exports = router;

@@ -54,7 +54,7 @@ router.post('/', function(req, res) {
             });
           }
           var token = req.headers.authorization.split(' ')[1];
-          var payload = jwt.decode(token, config.secrets.session);
+          var payload = jwt.decode(token, config.session.secret);
           User.findById(payload.sub, function(err, user) {
             if (!user) {
               return res.status(400).send({

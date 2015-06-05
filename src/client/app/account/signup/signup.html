@@ -1,0 +1,44 @@
+<div id="wrapper" ng-controller="SignupCtrl as signup">
+	<form autocomplete="off" method="post" ng-submit="signup.signup()" name="signupForm">
+		<!-- displayName -->
+		<div class="input-wrapper" ng-class="{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }">
+			<label for="username"><i class="fa fa-user fa-3x"></i></label><input id="username" name="displayName" type="text" placeholder="Username" ng-model="signup.displayName" required autofocus>
+				<!-- ngMessage -->
+			<div class="help-block text-danger" ng-if="signupForm.displayName.$dirty" ng-messages="signupForm.displayName.$error">
+				<div ng-message="required">You must enter your name.</div>
+			</div>				<!-- /ngMessage -->
+		</div>
+		<!-- email -->
+		<div class="input-wrapper" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
+			<label for="username"><i class="fa fa-envelope fa-3x"></i></label><input name="email" id="username" type="email" placeholder="Email"  ng-model="signup.email" ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+			<!-- ngMessage -->
+			<div class="help-block text-danger" ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error">
+					<div ng-message="required">Your email address is required.</div>
+					<div ng-message="pattern">Your email address is invalid.</div>
+				</div>				<!-- /ngMessage -->
+		</div>
+		<!-- password -->
+		<div class="input-wrapper" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
+			<label for="password"><i class="fa fa-lock fa-3x"></i></label><input password-strength name="password" id="password" type="password" placeholder="Password" ng-model="signup.password" required>
+			<!-- ngMessage -->
+			<div class="help-block text-danger" ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error">
+				<div ng-message="required">Password is required.</div>
+			</div>				<!-- /ngMessage -->
+		</div>
+		<!-- confirm password -->
+		<div class="input-wrapper" ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }">
+			<label for="password"><i class="fa fa-lock fa-3x"></i></label><input id="password" name="confirmPassword" type="password" placeholder="Confirm Password" required>
+			<!-- ngMessage -->
+			<div class="help-block text-danger" ng-if="signupForm.confirmPassword.$dirty" ng-messages="signupForm.confirmPassword.$error">
+				<div ng-message="compareTo">Password must match.</div>
+			</div>				<!-- ngMessage -->
+		</div>
+		<!-- submit -->
+		<div class="input-wrapper">
+			<input type="submit" value="Signup" ng-disabled="signupForm.$invalid">
+			<p>
+				Already a member? <a ui-sref="account.login">Login Now</a> <span>&rarr;</span>
+			</p>
+		</div>
+	</form>
+</div>

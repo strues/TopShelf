@@ -3,10 +3,6 @@
 var _ = require('lodash');
 var Recruitment = require('./recruitment.model');
 
-function handleError(res, err) {
-  return res.status(500).json(err);
-}
-
 /**
  * @api {get} /recruitment Get Recruitment Status.
  * @apiName all
@@ -17,13 +13,14 @@ function handleError(res, err) {
  * @apiSuccess {String} priority How badly the guild needs the applicant.
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
-exports.list = function(req, res) {
-  Recruitment.find().exec(function(err, recruitments) {
-    if (err) {
-      return handleError(res, err);
-    }
-    return res.status(200).send(recruitments);
-  });
+exports.all = function(req, res) {
+  Recruitment.find()
+    .exec(function(err, recruitments) {
+      if (err) {
+        return handleError(res, err);
+      }
+      return res.status(200).json(recruitments);
+    });
 };
 
 /**
@@ -46,7 +43,7 @@ exports.show = function(req, res) {
     if (!recruitment) {
       return res.sendStatus(404);
     }
-    return res.status(200).json(recruitment);
+    return res.json(recruitment);
   });
 };
 
@@ -68,6 +65,49 @@ exports.create = function(req, res) {
       return handleError(res, err);
     }
     return res.status(201).json(recruitment);
+  });
+};
+
+/**
+ * @api {put} /recruitment/:id Update Recruitment Needs
+ * @apiName updateRecruitment
+ * @apiGroup Recruitment
+ *
+ * @apiPermission admin
+ *
+ * @apiParam {String} classType The class needed.
+ * @apiParam {String} classSpec The specialization of the class.
+ * @apiParam {String} priority How badly the guild needs the applicant.
+ * @apiParam {Boolean} currentlyRecruiting Whether or not recruitment is necessary.
+ * @apiParam {Date} updatedOn The last time this data was changed
+ */
+exports.update = function(req, res) {
+  Recruitment.findById(req.params.id, function(err, recruitment) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!recruitment) {
+      return res.sendStatus(404);
+    }
+
+    // set the new user information if it exists in the request
+    if (req.body.classType) recruitment.classType =
+      req.body.classType;
+    if (req.body.classSpec) recruitment.classSpec =
+      req.body.classSpec;
+    if (req.body.priority) recruitment.priority =
+      req.body.priority;
+    if (req.body.currentlyRecruiting) recruitment.currentlyRecruiting =
+      req.body.currentlyRecruiting;
+    if (req.body.updatedOn) recruitment.updatedOn =
+      req.body.updatedOn;
+
+    recruitment.save(function(err) {
+      if (err) {
+        return handleError(res, err);
+      }
+      return res.status(204).json(recruitment);
+    });
   });
 };
 
@@ -97,3 +137,7 @@ exports.destroy = function(req, res) {
     });
   });
 };
+
+function handleError(res, err) {
+  return res.status(500).json(err);
+}

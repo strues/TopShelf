@@ -6,160 +6,61 @@
 'use strict';
 
 var browserSync = require('browser-sync'),
-    glob        = require('glob'),
-    _           = require('lodash'),
-    plg         = require('gulp-load-plugins')({lazy: true}),// jshint ignore:line
-    config      = require('../config')(),
-    gulp        = require('gulp'),
-    path        = require('path'),
-    error       = require('../util/error'),
-    colors      = plg.util.colors;
+  plg = require('gulp-load-plugins')({
+    pattern: ['gulp-*', 'gulp.*'],
+    replaceString: /^gulp(-|\.)/,
+    camelize: true,
+    lazy: true
+  }),
+  config = require('../config')(),
+  gulp = require('gulp');
 
-var args = require('yargs').argv;
+var reload = browserSync.reload;
 
-/**
- * serve the dev environment
- * --debug-brk or --debug
- * --nosync
- */
-gulp.task('serve-dev', ['watch'], function() {
-  serve(true /*isDev*/);
+gulp.task('runapp', function() {
+  return plg.nodemon({
+      script: 'src/server/app.js',
+      ext: 'js scss css html',
+      ignore: [
+        '.tmp/**',
+        '.git/**',
+        'node_modules/**',
+        'bower_components/**',
+        '.sass-cache'],
+      verbose: true
+    })
+    .on('restart', function () {
+      console.log('restarted');
+      setTimeout(browserSync.reload, 500);
+    });
 });
+gulp.task('serve', ['sass', 'partials', 'lint', 'inject', 'runapp'], function() {
 
-/**
- * serve the build environment
- * --debug-brk or --debug
- * --nosync
- */
-gulp.task('serve-build', ['build'], function() {
-  serve(true /*isDev*/);
-});
-
-// __________________________________________________________________________
-// Functions and Config for nodemon / Browser-Sync
-// ==========================================================================
-
-function getNodeOptions(isDev) {
-  return {
-    script: config.nodeServer,
-    ext: 'html js scss css',
-    delayTime: 1,
-    env: {
-      'PORT': config.defaultPort,
-      'NODE_ENV': isDev ? 'development' : 'production'
-    },
-    watch: [config.server]
-  };
-}
-
-function runNodeInspector() {
-  plg.notify('Running node-inspector.');
-  plg.notify('Browse to http://localhost:8080/debug?port=5858');
-  var exec = require('child_process').exec;
-  exec('node-inspector');
-}
-
-/**
- * When files change, log it
- * @param  {Object} event - event that fired
- */
-
-function changeEvent(event) {
-  var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
-  plg.notify('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
-}
-
-/**
- * serve the code
- * --debug-brk or --debug
- * --nosync
- * @param  {Boolean} isDev - dev or build mode
- * @param  {Boolean} specRunner - server spec runner html
- */
-
-function serve(isDev) {
-  var debug = args.debug || args.debugBrk;
-  var debugMode = args.debug ? '--debug' : args.debugBrk ? '--debug-brk' : '';
-  var nodeOptions = getNodeOptions(isDev);
-
-  if (debug) {
-    runNodeInspector();
-    nodeOptions.nodeArgs = [debugMode + '=5858'];
-  }
-
-  if (args.verbose) {
-    console.log(nodeOptions);
-  }
-
-  return plg.nodemon(nodeOptions)
-        .on('restart', [], function(ev) {
-          plg.notify('*** nodemon restarted');
-          plg.notify('files changed:\n' + ev);
-          setTimeout(function() {
-            browserSync.notify('reloading now ...');
-            browserSync.reload({stream: false});
-          }, config.browserReloadDelay);
-        })
-        .on('start', function() {
-          plg.notify('*** nodemon started');
-          startBrowserSync(isDev);
-        })
-        .on('crash', function() {
-          plg.notify('*** nodemon crashed: script crashed for some reason');
-        })
-        .on('exit', function() {
-          plg.notify('*** nodemon exited cleanly');
-        });
-}
-
-/**
- * Start BrowserSync
- * --nosync will avoid browserSync
- */
-
-function startBrowserSync(isDev, specRunner) {
-  if (args.nosync || browserSync.active) {
-    return;
-  }
-
-  var options = {
-    proxy:{
-      target:'localhost:9000' // express' port
+  browserSync({
+    proxy: {
+      target: '127.0.0.1:9000' // express' port
     },
     port: 3000, // browser-sync's port
     browser: ['google chrome'],
     files: [
-        config.client + '**/*',
-        config.temp + '**/*.css',
-        '!' + config.sass
+      config.client + '**/*',
+      config.temp + '**/*.css',
+      '!' + config.sass
     ],
     open: false,
-    ui: {
-      port: 5050,
-      weinre: {
-        port: 5051
-      }
-    },
+    ui: false,
     injectChanges: true,
     logFileChanges: true,
     logLevel: 'debug',
     logPrefix: 'topshelf',
-    notify: true
-  };
+    notify: true,
+    ghost: false,
+    xip: false
+  });
+  console.log('Starting BrowserSync on port 3000');
+  gulp.watch(config.sass, ['sass'], reload);
+  gulp.watch(config.ngApp, ['lint'], reload);
+  gulp.watch(config.index, ['inject'], reload);
+  gulp.watch(config.html, ['partials'], reload);
 
-  browserSync(options);
-
-  plg.notify('Starting BrowserSync on port 3000');
-
-  // If build: watches the files, builds, and restarts browser-sync.
-  // If dev: watches sass, compiles it to css, browser-sync handles reload
-  if (isDev) {
-    gulp.watch([config.sass], ['sass', 'sass-watcher', browserSync.reload])
-        .on('change', changeEvent);
-  } else {
-    gulp.watch([config.sass, config.js, config.html],
-['optimize', browserSync.reload])
-        .on('change', changeEvent);
-  }
-
-}
+});

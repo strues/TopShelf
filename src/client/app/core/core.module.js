@@ -10,18 +10,17 @@
    */
   angular
       .module('app.core', [
-        'ngStorage',
-        'ngResource',
-        'ngMessages',
-        'ngCookies',
-        'vModal',
         'ngAnimate',
-        'satellizer',
+        'ngCookies',
+        'ngMessages',
+        'ngResource',
         'ui.router',
-        'ui.materialize',
-        'ct.ui.router.extras',
-        'angular-carousel',
+        'ui.bootstrap',
+        'satellizer',
+        'textAngular',
+        'toastr',
         'angularFileUpload',
-        'ngWig'
+        'formFor',
+        'formFor.bootstrapTemplates'
       ]);
 }());
