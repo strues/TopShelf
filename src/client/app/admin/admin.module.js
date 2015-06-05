@@ -43,7 +43,7 @@
       .state('admin.media', {
         url: '/media',
         views: {
-          'workspace@root.admin': {
+          'workspace@admin': {
             templateUrl: 'app/admin/media/media.html',
             controller: 'MediaController'
           }
