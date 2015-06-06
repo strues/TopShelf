@@ -16,7 +16,8 @@
       create: create,
       updateProfile: updateProfile,
       destroy: destroy,
-      getCharacters: getCharacters
+      forgotPassword: forgotPassword,
+      resetPassword: resetPassword
     };
     return service;
 
@@ -26,11 +27,6 @@
     function getProfile() {
       return $http.get(apiBase + '/me');
     }
-    function getCharacters() {
-
-      return $http.get('https://us.api.battle.net/wow/user/characters');
-
-    }
     function create(userData) {
       return $http.post(apiBase, userData);
     }
@@ -39,6 +35,12 @@
     }
     function destroy(id) {
       return $http.delete(apiBase + '/' + id);
+    }
+    function forgotPassword(emailData) {
+      return $http.post('/auth/forgot' , emailData);
+    }
+    function resetPassword(token, passwordData) {
+      return $http.post('/reset' + '/' + token, passwordData);
     }
   }
 })();

@@ -1,0 +1,11 @@
+<div id="wrapper" ng-controller="ForgotCtrl as forgot">
+  <h2>Enter your email and we'll send you a link to reset your password.</h2>
+	<form autocomplete="off" method="post" ng-submit="forgot.forgot()" name="forgotForm">
+		<div class="input-wrapper">
+			<label for="email"><i class="fa fa-envelope fa-3x"></i></label><input type="text" id="username" ng-model="forgot.email" placeholder="Email" required spellcheck="false">
+		</div>
+		<div class="input-wrapper">
+			<input type="submit" value="Reset Password" ng-disabled="forgotForm.$invalid">
+		</div>
+	</form>
+</div>
