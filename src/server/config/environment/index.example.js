@@ -19,8 +19,8 @@ var all = {
   root: path.normalize(__dirname + '/../../..'),
   // Server port
   port: process.env.PORT || 9000, // Only applies to development
-  secrets: {
-    session: 'YOURSECRET' // Change this to something unique
+  session: {
+    secret: 'YOURSECRET' // Change this to something unique
   },
   redis: {
     host: '127.0.0.1',
