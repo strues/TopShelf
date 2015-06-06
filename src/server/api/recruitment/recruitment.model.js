@@ -20,6 +20,6 @@ var RecruitmentSchema = new Schema({
     default: Date.now
   },
   currentlyRecruiting: {type:Boolean}
-});
+})
 
 module.exports = mongoose.model('Recruitment', RecruitmentSchema);

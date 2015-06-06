@@ -69,7 +69,7 @@ exports.create = function(req, res) {
 };
 
 /**
- * @api {put} /recruitment/:id Update Recruitment Needs
+ * @api {put} /recruiting/:id Update Recruitment Needs
  * @apiName updateRecruitment
  * @apiGroup Recruitment
  *
@@ -112,7 +112,7 @@ exports.update = function(req, res) {
 };
 
 /**
- * @api {delete} /recruitment/:id Delete The Recruitment Need
+ * @api {delete} /recruiting/:id Delete The Recruitment Need
  * @apiName destroy
  * @apiGroup Recruitment
  *
