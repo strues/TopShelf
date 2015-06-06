@@ -20,7 +20,7 @@
         'textAngular',
         'toastr',
         'angularFileUpload',
-        'formFor',
-        'formFor.bootstrapTemplates'
+        'formly',
+        'formlyBootstrap'
       ]);
 }());

@@ -3,14 +3,100 @@
     <div class="col-sm-6 col-md-4 col-md-offset-1">
       <h1>Guild Recruitment</h1>
       <div class="well">
-      <form form-for="recruit.recruitData" service="recruitSvc" submit-with="recruit.submit()">
-        <radio-field attribute="currentlyRecruiting" label="Currently Recruiting" options="recruit.statusOptions"></radio-field>
-        <select-field attribute="classType" label="Class Needed" options="recruit.classDefs"></select-field>
-        <select-field attribute="classSpec" label="Spec Needed" options="recruit.specDefs"></select-field>
-        <radio-field attribute="priority" label="Priority" options="recruit.priorityOpt"></radio-field>
-        <submit-button label="Submit"></submit-button>
-      </form>
-    </div>
+        <h3>Modify Recruitment</h3>
+        <form role="form" class="form" name="recruitmentStatusForm" ng-submit="recruit.submit()">
+          <div class="row">
+            <label>Status</label>
+            <select ng-model="recruit.formData.currentlyRecruiting" class="form-control" required>
+              <option value=""></option>
+              <option value="True">Open</option>
+              <option value="False">Closed</option>
+            </select>
+            <label>Class Type</label>
+            <select ng-model="recruit.formData.classType" class="form-control" required>
+              <option value=""></option>
+              <option value="DeathKnight">Death Knight</option>
+              <option value="Druid">Druid</option>
+              <option value="Hunter">Hunter</option>
+              <option value="Mage">Mage</option>
+              <option value="Monk">Monk</option>
+              <option value="Paladin">Paladin</option>
+              <option value="Priest">Priest</option>
+              <option value="Rogue">Rogue</option>
+              <option value="Shaman">Shaman</option>
+              <option value="Warlock">Warlock</option>
+              <option value="Warrior">Warrior</option>
+            </select>
+
+            <label>Specialization</label>
+            <select ng-model="recruit.formData.classSpec" class="form-control" required>
+              <option value=""></option>
+              <option value="Affliction">Affliction</option>
+              <option value="Arcane">Arcane</option>
+              <option value="Arms">Arms</option>
+              <option value="Assasination">Assasination</option>
+              <option value="Balance">Balance</option>
+              <option value="Beast Mastery">Beast Mastery</option>
+              <option value="Blood">Blood</option>
+              <option value="Brewmaster">Brewmaster</option>
+              <option value="Combat">Combat</option>
+              <option value="Demonology">Demonology</option>
+              <option value="Destruction">Destruction</option>
+              <option value="Discipline">Discipline</option>
+              <option value="Elemental">Elemental</option>
+              <option value="Enhancement">Enhancement</option>
+              <option value="Feral">Feral</option>
+              <option value="Fire">Fire</option>
+              <option value="Frost">Frost</option>
+              <option value="Fury">Fury</option>
+              <option value="Gladiator">Gladiator</option>
+              <option value="Guardian">Guardian</option>
+              <option value="Holy">Holy</option>
+              <option value="Marksman">Marksman</option>
+              <option value="Mistweaver">Mistweaver</option>
+              <option value="Protection">Protection</option>
+              <option value="Restoration">Restoration</option>
+              <option value="Retribution">Retribution</option>
+              <option value="Shadow">Shadow</option>
+              <option value="Subtlety">Subtlety</option>
+              <option value="Survival">Survival</option>
+              <option value="Unholy">Unholy</option>
+              <option value="Windwalker">Windwalker</option>
+            </select>
+          </div>
+          <!-- row-->
+          <div class="row">
+            <label>Priority</label>
+            <select ng-model="recruit.formData.priority" class="form-control" required>
+              <option value=""></option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+          <button style="margin-top: 5px" type="submit" class="btn btn-success btn-block">Save <i class="fa fa-save"></i></button>
+        </form>
+      </div>
+      <div class="row">
+        <h3>Add Recruitment Thread</h3>
+        <form role="form" class="form-horizontal" name="recruitTForm" ng-submit="recruit.save()">
+          <div class="form-group">
+            <label>Thread URL</label>
+            <input type="text" class="form-control" ng-model="recruit.recruitTD.threadUrl" placeholder="http://www.mmo-champion.com"
+            required>
+          </div>
+          <div class="form-group">
+            <label>Website Name</label>
+            <input type="text" class="form-control" ng-model="recruit.recruitTD.websiteName" placeholder="MMO-Champ"  required>
+          </div>
+          <div class="form-group">
+            <label>Notes</label>
+            <textarea class="form-control" ng-model="recruit.recruitTD.threadNotes">
+          </div>
+          <button style="margin-top: 5px" type="submit" class="btn btn-success btn-block">Save <i class="fa fa-save"></i>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
   <div class="col-sm-6 col-md-5 col-md-offset-1" ng-controller="RecruitmentListCtrl as vm">
@@ -41,5 +127,14 @@
         </tr>
       </tbody>
     </table>
+    <div class="row">
+      <div ng-repeat="thread in vm.threads">
+        {{thread.threadUrl}}
+        <div class="btn-group">
+          <a href="" ng-click="vm.deleteThread(thread._id)" class="btn btn-sm btn-danger">
+            <i class="fa fa-trash"></i></a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

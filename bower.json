@@ -14,19 +14,18 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.4.1-build.4037+sha.2c3cd81",
-    "angular-animate": "1.4.1-build.4037+sha.2c3cd81",
-    "angular-messages": "1.4.1-build.4037+sha.2c3cd81",
-    "angular-resource": "1.4.1-build.4037+sha.2c3cd81",
+    "angular": "1.4.1-build.4039+sha.288225b",
+    "angular-animate": "1.4.1-build.4039+sha.288225b",
+    "angular-messages": "1.4.1-build.4039+sha.288225b",
+    "angular-resource": "1.4.1-build.4039+sha.288225b",
     "satellizer": "~0.11.0",
     "angular-ui-router": "~0.2.15",
-    "angular-cookies": "~1.4.0",
+    "angular-cookies": "1.4.1-build.4039+sha.288225b",
     "angular-bootstrap": "~0.13.0",
     "bootstrap-sass": "~3.3.4",
     "font-awesome": "~4.3.0",
     "textAngular": "~1.4.1",
     "angular-toastr": "~1.4.1",
-    "angular-file-upload": "~1.1.5",
-    "angular-form-for": "~3.0.7"
+    "angular-file-upload": "~1.1.5"
   }
 }

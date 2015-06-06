@@ -14,7 +14,10 @@
       show: show,
       create: create,
       change: change,
-      destroy: destroy
+      destroy: destroy,
+      createThread: createThread,
+      listThreads: listThreads,
+      destroyThread: destroyThread
     };
 
     return service;
@@ -36,6 +39,15 @@
     }
     function destroy(id) {
       return $http.delete(apiBase + '/' + id);
+    }
+    function createThread(recruitTD) {
+      return $http.post('/api/recruitment-threads', recruitTD);
+    }
+    function listThreads() {
+      return $http.get('/api/recruitment-threads');
+    }
+    function destroyThread(id) {
+      return $http.delete('/api/recruitment-threads' + '/' + id);
     }
 
   }

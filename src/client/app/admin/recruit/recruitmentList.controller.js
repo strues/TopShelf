@@ -23,6 +23,15 @@
         $state.reload();
       });
     };
+    recruitSvc.listThreads().success(function(data) {
+      vm.threads = data;
+    });
+    vm.deleteThread = function(id) {
+      recruitSvc.destroyThread(id).success(function () {
+        toastr.success('Removed');
+        $state.reload();
+      });
+    };
 
   }
 }());
