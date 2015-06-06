@@ -41,7 +41,7 @@ var userSchema = new mongoose.Schema({
     type: String
   },
   isAdmin: Boolean,
-  providers: {},
+  providers: [],
   facebook: String,
   battlenet: String,
   xenforo: String,

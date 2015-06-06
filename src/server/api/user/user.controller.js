@@ -25,8 +25,8 @@ function validationError(res, err) {
  * @apiParam {String} email user's email.
  *
  */
-exports.create = function(req, res) {
-  User.create(req.body, function(err, user) {
+exports.create = function (req, res) {
+  User.create(req.body, function (err, user) {
     if (err) {
       return handleError(res, err);
     }
@@ -52,17 +52,17 @@ exports.create = function(req, res) {
  * @apiGroup User
  *
  */
-exports.getMe = function(req, res) {
-  User.findById(req.user, function(err, user) {
+exports.getMe = function (req, res) {
+  User.findById(req.user, function (err, user) {
     res.send(user);
   });
 };
 
-exports.editMe = function(req, res) {
+exports.editMe = function (req, res) {
   var oldPass = req.body.oldPassword ? String(req.body.oldPassword) : null;
   var newPass = req.body.newPassword ? String(req.body.newPassword) : null;
 
-  User.findById(req.user, '+password', function(err, user) {
+  User.findById(req.user, '+password', function (err, user) {
     if (!user) {
       return res.status(400).send({
         message: 'User not found'
@@ -75,14 +75,14 @@ exports.editMe = function(req, res) {
     }
     // Users with local authentication require password.
     if (user.providers.indexOf('local') !== -1) {
-      user.comparePassword(oldPass, function(err, isMatch) {
+      user.comparePassword(oldPass, function (isMatch) {
         console.log(arguments);
         if (!isMatch) {
           return res.status(401).send({
             message: 'Wrong password'
           });
         }
-        user.save(function(err) {
+        user.save(function () {
           if (err) {
             validationError(res, err);
           }
@@ -93,7 +93,7 @@ exports.editMe = function(req, res) {
       if (newPass) {
         user.providers.push('local');
       }
-      user.save(function(err) {
+      user.save(function () {
         if (err) {
           validationError(res, err);
         }
@@ -103,11 +103,11 @@ exports.editMe = function(req, res) {
   });
 };
 
-exports.list = function(req, res) {
-  User.find({}, function(err, users) {
+exports.list = function (req, res) {
+  User.find({}, function (err, users) {
     var userArr = [];
 
-    users.forEach(function(user) {
+    users.forEach(function (user) {
       userArr.push(user);
     });
 

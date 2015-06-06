@@ -7,11 +7,11 @@
  */
 
 var mongoose = require('mongoose'),
-    config  = require('../config/environment'),
-    jwt     = require('jwt-simple'),
-    compose = require('composable-middleware'),
-    roles   = require('./roles.service'),
-    moment  = require('moment');
+  config = require('../config/environment'),
+  jwt = require('jwt-simple'),
+  compose = require('composable-middleware'),
+  roles = require('./roles.service'),
+  moment = require('moment');
 
 /**
  * Attaches the user object to the request if authenticated
@@ -20,15 +20,26 @@ var mongoose = require('mongoose'),
  */
 function ensureAuthenticated(req, res, next) {
   if (!req.headers.authorization) {
-    return res.status(401).json('Please make sure your' +
-      'request has an Authorization header');
+    return res.status(401).send({
+      message: 'Please make sure your' +
+        'request has an Authorization header'
+    });
   }
   var token = req.headers.authorization.split(' ')[1];
 
-  var payload = jwt.decode(token, config.session.secret);
-
+  var payload = null
+  try {
+    payload = jwt.decode(token, config.session.secret);
+  }
+  catch (err) {
+    return res.status(401).send({
+      message: err.message
+    });
+  }
   if (payload.exp <= moment().unix()) {
-    return res.status(401).json('Token has expired.');
+    return res.status(401).send({
+      message: 'Token has expired'
+    });
   }
   req.user = payload.sub;
   next();
@@ -64,7 +75,8 @@ function hasRole(roleRequired) {
     .use(function meetsRequirements(req, res, next) {
       if (roles.hasRole(req.role, roleRequired)) {
         next();
-      } else {
+      }
+      else {
         res.sendStatus(403);
       }
     });
@@ -81,7 +93,8 @@ function ensureAdmin(req, res, next) {
   var payload = null;
   try {
     payload = jwt.decode(token, config.session.secret);
-  } catch (err) {
+  }
+  catch (err) {
     return res.status(401).send({
       message: err.message
     });
@@ -112,7 +125,9 @@ function checkAuthenticated(req, res, next) {
   var token = req.headers.authorization ?
     req.headers.authorization.split(' ')[1] : null;
   var payload = token ? jwt.decode(token, config.session.secret) : null;
-  if (payload) { req.user = payload.sub; }
+  if (payload) {
+    req.user = payload.sub;
+  }
   next();
 }
 
@@ -148,9 +163,9 @@ module.exports = {
    */
   roles: roles,
 
-/**
- * Utility function, checks if admin is true or false
- * @type {Object}
- */
+  /**
+   * Utility function, checks if admin is true or false
+   * @type {Object}
+   */
   ensureAdmin: ensureAdmin
 };

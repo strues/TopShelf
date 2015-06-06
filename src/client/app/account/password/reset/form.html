@@ -1,0 +1,27 @@
+<div id="wrapper" ng-controller="ResetCtrl as reset">
+	<form autocomplete="off" method="post" name="resetForm" ng-submit="reset.reset()">
+    <div class="input-wrapper">
+			<label for="password"><i class="fa fa-lock fa-3x"></i></label><input type="password" id="password" ng-model="login.password" placeholder="Password" required>
+		</div>
+    <!-- confirm password -->
+		<div class="input-wrapper" ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }">
+			<label for="password"><i class="fa fa-lock fa-3x"></i></label><input id="password" name="confirmPassword" type="password" placeholder="Confirm Password" required>
+			<!-- ngMessage -->
+      <div ng-messages="resetForm.confirmPassword.$error" ng-show="resetForm.confirmPassword.$touched || resetForm.$submitted">
+        <div ng-message="compareTo">Password must match.</div>
+        <div ng-message="required">Password confirmation is required.</div>
+      </div>				<!-- ngMessage -->
+		</div>
+		<div class="input-wrapper">
+			<input type="submit" value="Reset Password" ng-disabled="resetForm.$invalid">
+			<p>
+				Not a member? <a ui-sref="account.signup">Sign up now</a> <span>&rarr;</span>
+			</p>
+		</div>
+	</form>
+	<div class="">
+		<!-- <button class="btn btn-block btn-secondary" ng-click="login.authenticate('battlenet')">
+				<span class="ion-social-bnet"></span>Sign in with Battle.net
+			</button> -->
+	</div>
+</div>
