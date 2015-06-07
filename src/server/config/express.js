@@ -16,7 +16,6 @@ var express = require('express'),
   cors = require('cors'),
   logger = require('./logger'),
   config = require('./environment'),
-  passport = require('passport'),
   multer = require('multer'),
   session = require('express-session'),
   busboy = require('connect-busboy'),
@@ -24,13 +23,14 @@ var express = require('express'),
   mongoStore = require('connect-mongo')(session);
 
 module.exports = function(app) {
-  var env = app.get('env');
 
-  app.engine('html', require('ejs').renderFile);
-  app.set('view engine', 'html');
+  var env = app.get('env');
 
   // Enable logger (morgan)
   app.use(dexter(logger.getLogFormat(), logger.getLogOptions()));
+
+  app.engine('html', require('ejs').renderFile);
+  app.set('view engine', 'html');
 
   // always bodyParser before cookie, method or session
   // parse application/x-www-form-urlencoded
@@ -47,7 +47,6 @@ module.exports = function(app) {
   app.use(cookieParser());
   app.set('appPath', path.join(config.root, 'client'));
   app.use(busboy());
-  app.use(passport.initialize());
   // Enable jsonp
   app.use(session({
     secret: config.session.secret,
@@ -58,7 +57,6 @@ module.exports = function(app) {
     })
   }));
 
-  app.use(passport.session());
   app.use(function(req, res, next) {
     //console.log('I am adding the allow origin');
     res.header('Access-Control-Allow-Origin', '*');

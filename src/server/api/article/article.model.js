@@ -1,9 +1,9 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema   = mongoose.Schema,
-    moment   = require('moment'),
-    _        = require('lodash');
+  Schema = mongoose.Schema,
+  moment = require('moment'),
+  _ = require('lodash');
 
 var ArticleSchema = new Schema({
   title: {
@@ -27,19 +27,36 @@ var ArticleSchema = new Schema({
   },
   description: {
     type: String,
-    trim: true,
-    required: 'Description must be provided'
+    trim: true
   },
-  content:{
+  content: {
     type: String,
     default: '',
     trim: true
   },
+  comments: [{
+    body: {
+      type: String,
+      required: 'Comment body is required'
+    },
+    author: {
+      name: {
+        type: String,
+        required: 'Author of the comment is required. (missing name)'
+      },
+      email: {
+        type: String,
+        required: 'Author of the comment is required. (missing email)'
+      }
+    },
+    date: Date,
+    isReply: Boolean
+  }],
   slug: {
     type: String
   },
   tags: [{
-    type:String,
+    type: String,
     lowercase: true,
     default: '',
     trim: true

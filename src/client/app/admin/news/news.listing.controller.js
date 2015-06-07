@@ -5,9 +5,9 @@
     .module('app.admin')
     .controller('NewsListingCtrl', NewsListingCtrl);
 
-  NewsListingCtrl.$inject = ['articleSvc', 'toastr', '$stateParams'];
+  NewsListingCtrl.$inject = ['articleSvc', '$state', 'toastr', '$stateParams'];
 
-  function NewsListingCtrl(articleSvc, $stateParams, toastr) {
+  function NewsListingCtrl(articleSvc, $state, $stateParams, toastr) {
 
     /*jshint validthis: true */
     var vm = this;
@@ -18,6 +18,13 @@
       .error(function(errMsg) {
         toastr.error(errMsg.message, 'Whoops');
       });
+
+    vm.deleteArticle = function(id) {
+      articleSvc.destroy(id).success(function() {
+        toastr.success('Deleted that poorly written article for you', 'Done');
+        $state.reload();
+      });
+    };
 
   }
 

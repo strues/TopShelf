@@ -53,14 +53,13 @@
 
     "browser": true,
     "node": true,
-    "predef": ["angular", "Materialize"],
+    "predef": ["angular"],
     "globals": {
       "angular"   : false,
       "jasmine"   : false,
       "$"         : false,
       "_"         : false,
       "module"    : false,
-      "require"   : false,
-      "Materialize": false
+      "require"   : false
     }
 }

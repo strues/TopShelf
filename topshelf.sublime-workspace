@@ -71,22 +71,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/client/app/guild/guild-services/progression.service.js",
-			"settings":
-			{
-				"buffer_size": 861,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js",
-			"settings":
-			{
-				"buffer_size": 488,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -95,10 +79,18 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 223.0,
-		"last_filter": "jscs",
+		"height": 368.0,
+		"last_filter": "lint",
 		"selected_items":
 		[
+			[
+				"lint",
+				"SublimeLinter: Disable Linter"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"jscs",
 				"JSCS Formatter: Format this file"
@@ -118,10 +110,6 @@
 			[
 				"them",
 				"Themr: List themes"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"comme",
@@ -292,7 +280,7 @@
 				"Snippet: gulp.task('name',funciton)"
 			]
 		],
-		"width": 651.0
+		"width": 633.0
 	},
 	"console":
 	{
@@ -313,23 +301,24 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/steven/Webdev/TopShelf/Develop",
-		"/Users/steven/Webdev/TopShelf/Develop/build",
-		"/Users/steven/Webdev/TopShelf/Develop/build/styles",
-		"/Users/steven/Webdev/TopShelf/Develop/src",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/progressionWidget",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/recruitmentWidget",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-services",
-		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/config"
+		"/Users/steventruesdell/Development/TopShelf/Dev",
+		"/Users/steventruesdell/Development/TopShelf/Dev/src",
+		"/Users/steventruesdell/Development/TopShelf/Dev/src/server"
 	],
 	"file_history":
 	[
+		"/Users/steventruesdell/Development/es6api/app/index.js",
+		"/Users/steventruesdell/Development/TopShelf/Dev/src/server/config/express.js",
+		"/Users/steventruesdell/Development/TopShelf/Dev/src/server/app.js",
+		"/Users/steventruesdell/Development/TopShelf/Dev/src/server/lib/index.js",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/steventruesdell/Development/TopShelf/Dev/package.json",
+		"/Users/steventruesdell/Development/TopShelf/Dev/src/server/.jshintrc",
+		"/Users/steventruesdell/Development/TopShelf/Dev/.jshintrc",
+		"/Users/steventruesdell/Development/TopShelf/Dev/.jscsrc",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/steventruesdell/Development/TopShelf/Dev/src/client/app/guild/guild-services/progression.service.js",
+		"/Users/steventruesdell/Development/TopShelf/Dev/src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/recruitmentWidget/recruitmentWidget.directive.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/guild-directives/progressionWidget/progressionWidget.tpl.html",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/config/express.js",
@@ -445,23 +434,11 @@
 		"/Users/steven/Webdev/TopShelf/Develop/src/client/app/guild/main/post-detail/details.controller.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/local/passport.js",
 		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/auth.service.js",
-		"/Users/steven/Webdev/material/server/api/user/user.model.js",
-		"/Users/steven/Webdev/material/server/app.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/index.js",
-		"/Users/steven/Webdev/material/server/api/user/user.controller.js",
-		"/Users/steven/Webdev/material/server/routes.js",
-		"/Users/steven/Webdev/material/server/api/user/index.js",
-		"/Users/steven/Webdev/material/server/api/user/user.socket.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/roster/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/progression/progression.controller.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/progression/index.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/lib/auth/roles.js",
-		"/Users/steven/Webdev/material/bin/server.js",
-		"/Users/steven/Webdev/TopShelf/Develop/src/server/api/application/index.js"
+		"/Users/steven/Webdev/material/server/api/user/user.model.js"
 	],
 	"find":
 	{
-		"height": 55.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -694,201 +671,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/client/app/guild/guild-services/progression.service.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 861,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								680,
-								685
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/client/app/guild/guild-directives/progressionWidget/progressionWidget.directive.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 488,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								488,
-								488
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete": false,
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -919,7 +709,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 0.0
+		"height": 37.0
 	},
 	"output.find_results":
 	{
@@ -929,7 +719,7 @@
 	"project": "topshelf.sublime-project",
 	"replace":
 	{
-		"height": 74.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":

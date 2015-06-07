@@ -20,7 +20,7 @@ var reload = browserSync.reload;
 gulp.task('runapp', function() {
   return plg.nodemon({
       script: 'src/server/app.js',
-      ext: 'js scss css html',
+      ext: 'js',
       ignore: [
         '.tmp/**',
         '.git/**',
@@ -34,6 +34,7 @@ gulp.task('runapp', function() {
       setTimeout(browserSync.reload, 500);
     });
 });
+
 gulp.task('serve', ['sass', 'partials', 'lint', 'inject', 'runapp'], function() {
 
   browserSync({

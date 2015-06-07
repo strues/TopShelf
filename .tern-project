@@ -4,18 +4,18 @@
     "ecma6"
   ],
   "loadEagerly": [
-    "src/client/**/*.js"
+    "src/client/**/*.js",
+    "src/server/**/*.js"
   ],
   "dontLoad": [
     "bower_components/**/*.js"
   ],
-  "plugins": {
-    "complete_strings": {},
-    "angular": true,
-    "node": {},
-    "node-express": {},
+  "complete_strings": {},
     "doc_comment": {
      "fullDocs": true
-   }
+    },
+    "node": {
+
+    }
   }
 }

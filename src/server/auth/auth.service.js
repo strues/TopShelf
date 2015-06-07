@@ -51,10 +51,10 @@ function ensureAuthenticated(req, res, next) {
 function createToken(user) {
   var payload = {
     sub: user._id,
-    iat: moment().unix(),
-    exp: moment().add(14, 'days').unix(),
     role: user.role,
-    isAdmin: user.isAdmin
+    isAdmin: user.isAdmin,
+    iat: moment().unix(),
+    exp: moment().add(14, 'days').unix()
   };
   return jwt.encode(payload, config.session.secret);
 }

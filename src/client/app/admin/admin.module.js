@@ -49,6 +49,17 @@
           }
         }
       })
+      .state('admin.news.create', {
+        title: 'Article Composer - TSG Admin',
+        url: '/create',
+        views: {
+          'workspace@admin': {
+            templateUrl: 'app/admin/news/create/create.html',
+            controller: 'NewsCreateCtrl',
+            controllerAs: 'ncc'
+          }
+        }
+      })
       .state('admin.news', {
         title: 'Article List - TSG Admin',
         url: '/news',
@@ -77,17 +88,6 @@
                 return articleSvc.get($stateParams.id);
               }
             }
-          }
-        }
-      })
-      .state('admin.news.create', {
-        title: 'Article Composer - TSG Admin',
-        url: '/create',
-        views: {
-          'workspace@admin': {
-            templateUrl: 'app/admin/news/create/create.html',
-            controller: 'NewsCreateCtrl',
-            controllerAs: 'ncc'
           }
         }
       })

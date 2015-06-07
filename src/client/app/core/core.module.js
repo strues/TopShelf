@@ -19,8 +19,6 @@
         'satellizer',
         'textAngular',
         'toastr',
-        'angularFileUpload',
-        'formly',
-        'formlyBootstrap'
+        'angularFileUpload'
       ]);
 }());
