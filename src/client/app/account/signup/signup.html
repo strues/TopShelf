@@ -19,7 +19,7 @@
 		</div>
 		<!-- password -->
 		<div class="input-wrapper" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
-			<label for="password"><i class="fa fa-lock fa-3x"></i></label><input password-strength name="password" id="password" type="password" placeholder="Password" ng-model="signup.user.password" required>
+			<label for="password"><i class="fa fa-lock fa-3x"></i></label><input name="password" id="password" type="password" placeholder="Password" ng-model="signup.user.password" required>
 			<!-- ngMessage -->
 			<div class="help-block text-danger" ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error">
 				<div ng-message="required">Password is required.</div>

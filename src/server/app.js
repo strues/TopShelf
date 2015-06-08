@@ -26,11 +26,8 @@ config.app = app;
 
 var server = require('http').Server(app);
 var secureServer = require('https').createServer(httpsCfg, app);
-var socket = require('socket.io')(server, {
-  serveClient: true
-});
-
-require('./config/sockets.js')(socket);
+var socketio = require('socket.io').listen(server);
+require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
 

@@ -25,30 +25,8 @@
   <div class="panel panel-default">
     <div class="panel-heading">Accounts</div>
     <div class="panel-body">
-      <legend><i class="fa fa-link"></i> Linked Accounts</legend>
-      <div class="btn-group-vertical">
-        <button class="btn btn-sm btn-danger" ng-if="user.facebook" ng-click="profile.unlink('facebook')">
-          <i class="fa fa-facebook"></i> Unlink Facebook Account
-        </button>
-        <button class="btn btn-sm btn-primary" ng-if="!user.facebook" ng-click="profile.link('facebook')">
-          <i class="fa fa-facebook"></i> Link Facebook Account
-        </button>
 
-        <button class="btn btn-sm btn-danger" ng-if="profile.user.google" ng-click="profile.unlink('google')">
-          <i class="fa fa-google-plus"></i> Unlink Google Account
-        </button>
-        <button class="btn btn-sm btn-primary" ng-if="!profile.user.google" ng-click="profile.link('google')">
-          <i class="fa fa-google-plus"></i> Link Google Account
-        </button>
-        <button class="btn btn-sm btn-danger" ng-if="user.twitter" ng-click="profile.unlink('twitter')">
-          <i class="fa fa-twitter"></i> Unlink Twitter Account
-        </button>
-        <button class="btn btn-sm btn-primary" ng-if="!user.twitter" ng-click="profile.link('twitter')">
-          <i class="fa fa-twitter"></i> Link Twitter Account
-        </button>
       </div>
     </div>
   </div>
-</div>
-
 </div>

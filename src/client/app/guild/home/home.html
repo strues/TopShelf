@@ -5,7 +5,7 @@
   <slide ng-repeat="article in home.articles | limitTo: 3" active="article.active"><img ng-src="{{article.image}}" alt=""/>
     <div class="caption">
       <h3><a ui-sref="guild.home.article({id:article._id})">{{::article.title | limitTo: 31}}</a></h3>
-      <p>Author: {{::article.author.displayName}}</p>
+      <p>Author: {{::article.author.username}}</p>
     </div>
   </slide>
 </carousel>
@@ -73,7 +73,7 @@
 	    <div class="other-article-data">
 	      <ul>
 	        <li>
-	          <p>{{article.author.displayName}}</p>
+	          <p>{{article.author.username}}</p>
 	        </li>
 	        <li>
 	          <p>{{article.created | date:'MMM dd, yyyy'}}</p>

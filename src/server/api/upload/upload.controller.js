@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-var File = require('./file.model');
+var Upload = require('./upload.model');
 var User = require('../user/user.model');
 var mongoose = require('mongoose');
 var config = require('../../config/environment');
@@ -10,24 +10,24 @@ var fs = require('fs-extra');
 var path = require('path');
 
 exports.all = function(req, res) {
-  File.find(function(err, files) {
+  Upload.find(function(err, uploads) {
     if (err) {
       return handleError(res, err);
     }
-    return res.status(200).json(files);
+    return res.status(200).json(uploads);
   });
 };
 
 // Get a single admin-file
 exports.show = function(req, res) {
-  File.findById(req.params.id, function(err, file) {
+  Upload.findById(req.params.id, function(err, upload) {
     if (err) {
       return handleError(res, err);
     }
-    if (!file) {
+    if (!upload) {
       return res.send(404);
     }
-    return res.json(file);
+    return res.json(upload);
   });
 };
 
@@ -46,15 +46,15 @@ exports.create = function(req, res) {
 
     console.log('Uploading: ' + filename);
 
-    // create 'files' folder if it doesn't exist
-    var filePath = path.join(config.root, '/client/assets/uploads');
+    // create 'uploads' folder if it doesn't exist
+    var filePath = path.join(config.root, '/client/uploads');
     fs.exists(filePath, function(exists) {
       if (!exists) {
         fs.mkdir(filePath);
       }
 
       // create '<username>' folder if it doesn't exist
-      filePath = path.join(config.root, '/client/assets/uploads');
+      filePath = path.join(config.root, '/client/uploads');
       fs.exists(filePath, function(exists) {
         if (!exists) {
           fs.mkdir(filePath);
@@ -65,7 +65,7 @@ exports.create = function(req, res) {
         fstream.on('close', function() {
           console.log('Upload Finished of ' + filename);
 
-          new File({
+          new Upload({
             title: req.body.title,
             url: filePath,
             created: new Date(),
@@ -88,38 +88,38 @@ exports.create = function(req, res) {
 
 // Updates an existing admin-file in the DB.
 exports.update = function(req, res) {
-  var fileUpdates = req.body;
+  var uploadUpdates = req.body;
   //get the original from db
-  File.findOne({
+  Upload.findOne({
     _id: req.params.id
-  }).exec(function(err, fileToEdit) {
-    fileToEdit.url = fileUpdates.url;
-    fileToEdit.alt = fileUpdates.alt;
-    fileToEdit.caption = fileUpdates.caption;
-    fileToEdit.title = fileUpdates.title;
+  }).exec(function(err, uploadToEdit) {
+    uploadToEdit.url = uploadUpdates.url;
+    uploadToEdit.alt = uploadUpdates.alt;
+    uploadToEdit.caption = uploadUpdates.caption;
+    uploadToEdit.title = uploadUpdates.title;
 
-    fileToEdit.save(function(err) {
+    uploadToEdit.save(function(err) {
       if (err) {
         res.sendStatus(400);
         return res.send({
           reason: err.toString()
         });
       }
-      res.send(fileToEdit);
+      res.send(uploadToEdit);
     });
   });
 };
 
 // Deletes a admin-file from the DB.
 exports.destroy = function(req, res) {
-  File.findById(req.params.id, function(err, file) {
+  Upload.findById(req.params.id, function(err, upload) {
     if (err) {
       return handleError(res, err);
     }
-    if (!file) {
+    if (!upload) {
       return res.send(404);
     }
-    file.remove(function(err) {
+    upload.remove(function(err) {
       if (err) {
         return handleError(res, err);
       }

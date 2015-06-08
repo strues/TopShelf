@@ -6,7 +6,7 @@ var User = require('./user.model');
 
 var user = new User({
   provider: 'local',
-  displayName: 'Traplord',
+  username: 'Traplord',
   email: 'test@test.com',
   password: 'password'
 });

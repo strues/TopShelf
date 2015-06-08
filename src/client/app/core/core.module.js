@@ -11,13 +11,12 @@
   angular
       .module('app.core', [
         'ngAnimate',
-        'ngCookies',
         'ngMessages',
         'ngResource',
         'ui.router',
         'ngStorage',
+        'btford.socket-io',
         'ui.bootstrap',
-        'satellizer',
         'textAngular',
         'toastr',
         'angularFileUpload'

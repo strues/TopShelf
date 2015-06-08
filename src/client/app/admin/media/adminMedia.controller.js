@@ -18,10 +18,10 @@
     $scope.selectedImages = {};
     $scope.showMediaLibrary = true;
     var uploader = $scope.uploader = new FileUploader({
-      url: '/api/files'
+      url: '/api/uploads'
     });
     // FILTERS
-    $http.get('/api/files').success(function(files) {
+    $http.get('/api/uploads').success(function(files) {
       $scope.files = files;
     });
     $scope.uploader.filters.push({
@@ -32,7 +32,7 @@
     });
 
     uploader.onCompleteAll = function() {
-      $http.get('/api/files').success(function(files) {
+      $http.get('/api/uploads').success(function(files) {
         $scope.files = files;
       });
     };

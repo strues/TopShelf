@@ -14,11 +14,21 @@
   Auth.$inject = ['$http', 'User', '$localStorage', '$q'];
   /* @ngInject */
   function Auth($http, User, $localStorage, $q) {
-    var currentUser = $localStorage.token ? User.get() : {};
-    //var currentUser = {};
-    // if ($localStorage.get('token')) {
-    //     currentUser = User.get();
-    // }
+    /**
+     * Return a callback or noop function
+     *
+     * @param  {Function|*} cb - a 'potential' function
+     * @return {Function}
+     */
+    var safeCb = function(cb) {
+        return (angular.isFunction(cb)) ? cb : angular.noop;
+      },
+      currentUser = {};
+
+    if ($localStorage.token) {
+      currentUser = User.get();
+    }
+
     return {
       /**
        * @ngdoc function
@@ -35,19 +45,19 @@
         var cb = callback || angular.noop;
         var deferred = $q.defer();
         $http.post('/auth/local', {
-          email: user.email,
-          password: user.password,
-          rememberme: user.rememberme
-        }).success(function(data) {
-          $localStorage.token = data.token;
-          currentUser = User.get();
-          deferred.resolve(data);
-          return cb();
-        }).error(function(err) {
-          this.logout();
-          deferred.reject(err);
-          return cb(err);
-        }.bind(this));
+            email: user.email,
+            password: user.password
+          })
+          .then(function(res) {
+            $localStorage.token = res.data.token;
+            currentUser = User.get();
+            deferred.resolve(res.data);
+            safeCb(callback)();
+          }, function(err) {
+            this.logout();
+            safeCb(callback)(err.data);
+            return $q.reject(err.data);
+          }.bind(this));
         return deferred.promise;
       },
       /**
@@ -75,14 +85,13 @@
        * @return {Promise} The promise of the User service
        */
       createUser: function(user, callback) {
-        var cb = callback || angular.noop;
         return User.save(user, function(data) {
           $localStorage.token = data.token;
           currentUser = User.get();
-          return cb(user);
+          return safeCb(callback)(null, user);
         }, function(err) {
           this.logout();
-          return cb(err);
+          return safeCb(callback)(err);
         }.bind(this)).$promise;
       },
       /**
@@ -98,16 +107,15 @@
        * @return {Promise} The promise of the User service
        */
       changePassword: function(oldPassword, newPassword, callback) {
-        var cb = callback || angular.noop;
         return User.changePassword({
           id: currentUser._id
         }, {
           oldPassword: oldPassword,
           newPassword: newPassword
         }, function(user) {
-          return cb(user);
+          return safeCb(callback)(null, user);
         }, function(err) {
-          return cb(err);
+          return safeCb(callback)(err);
         }).$promise;
       },
       /**
@@ -116,11 +124,26 @@
        * @methodOf auth.service:Auth
        * @description
        * Gets all available info on authenticated user
+       *   (synchronous|asynchronous)
        *
-       * @returns {Object} User
+       * @param  {Function|*} callback - optional, funciton(user)
+       * @return {Object|Promise}
        */
-      getCurrentUser: function() {
-        return currentUser;
+      getCurrentUser: function(callback) {
+        if (arguments.length === 0) {
+          return currentUser;
+        }
+
+        var value = (currentUser.hasOwnProperty('$promise')) ? currentUser.$promise :
+          currentUser;
+        return $q.when(value)
+          .then(function(user) {
+            safeCb(callback)(user);
+            return user;
+          }, function() {
+            safeCb(callback)({});
+            return {};
+          });
       },
       /**
        * @ngdoc function
@@ -128,37 +151,24 @@
        * @methodOf auth.service:Auth
        * @description
        * Check if a user is logged in
+       *   (synchronous|asynchronous)
        *
-       * @returns {Boolean} True if user is logged in
+       * @param  {Function|*} callback - optional, function(is)
+       * @return {Bool|Promise}
        */
-      isLoggedIn: function() {
-        return currentUser.hasOwnProperty('role');
-      },
-      /**
-       * @ngdoc function
-       * @name isLoggedInAsync
-       * @methodOf auth.service:Auth
-       * @description
-       * Waits for currentUser to resolve before
-       * checking if user is logged in
-       *
-       * @param {Function} cb A Callback
-       */
-      isLoggedInAsync: function(cb) {
-        if (currentUser.hasOwnProperty('$promise')) {
-          currentUser.$promise.then(function() {
-            cb(true);
-          }).catch(function() {
-            cb(false);
+      isLoggedIn: function(callback) {
+        if (arguments.length === 0) {
+          return currentUser.hasOwnProperty('role');
+        }
+
+        return this.getCurrentUser(null)
+          .then(function(user) {
+            var is = user.hasOwnProperty('role');
+            safeCb(callback)(is);
+            return is;
           });
-        }
-        else if (currentUser.hasOwnProperty('role')) {
-          cb(true);
-        }
-        else {
-          cb(false);
-        }
       },
+
       /**
        * @ngdoc function
        * @name isAdmin
@@ -166,17 +176,25 @@
        * @description
        * Check if a user is an admin
        *
-       * @param {Object} [user] - The user to check for
-       * the role. If no user is provided,
-       * the current user will be used
-       * to check for the role.
-       * @return {Boolean} True if user is admin
+       * @param  {Function|*} callback - optional, function(is)
+       * @return {Bool|Promise}
        */
-      isAdmin: function() {
-        return currentUser.role === 'admin';
+      isAdmin: function(callback) {
+        if (arguments.length === 0) {
+          return currentUser.role === 'admin';
+        }
+
+        return this.getCurrentUser(null)
+          .then(function(user) {
+            var is = user.role === 'admin';
+            safeCb(callback)(is);
+            return is;
+          });
       },
       /**
        * Get auth token
+       *
+       * @return {String} - a token string used for authenticating
        */
       getToken: function() {
         return $localStorage.token;

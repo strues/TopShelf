@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
   config = require('../config/environment'),
   passport = require('passport'),
   jwt = require('jsonwebtoken'),
+  _ = require('lodash'),
   expressJwt = require('express-jwt'),
   compose = require('composable-middleware'),
   User = require('../api/user/user.model'),
@@ -23,28 +24,22 @@ var validateJwt = expressJwt({
  * otherwise returns 403
  * @return {express.middleware}
  */
-function isAuthenticated(req, res, next) {
+function isAuthenticated() {
   return compose()
     // Validate jwt
     .use(function(req, res, next) {
-      if (req.headers.authorization && req.headers.authorization.split(' ')[0] ===
-        'Bearer') {
-        return req.headers.authorization.split(' ')[1];
+      // allow access_token to be passed through query parameter as well
+      if (req.query && req.query.hasOwnProperty('access_token')) {
+        req.headers.authorization = 'Bearer ' + req.query.access_token;
       }
-      else if (req.query && req.query.token) {
-        return req.query.token;
-      }
-      return null;
+      validateJwt(req, res, next);
     })
     // Attach user to request
     .use(function(req, res, next) {
       User.findById(req.user._id, function(err, user) {
-        if (err) {
-          return next(err);
-        }
-        if (!user) {
-          return res.sendStatus(401);
-        }
+        if (err) return next(err);
+        if (!user) return res.status(401).end();
+
         req.user = user;
         next();
       });
@@ -72,7 +67,7 @@ function createToken(user) {
  */
 function hasRole(roleRequired) {
   if (!roleRequired) {
-    throw new Error('Required role needs to be set');
+    throw new Error('You need to attach a role.');
   }
 
   return compose()
@@ -85,6 +80,52 @@ function hasRole(roleRequired) {
       else {
         res.sendStatus(403);
       }
+    });
+}
+
+/**
+ * If there is a user, appends it to the req
+ * else req.user would be undefined
+ */
+function appendUser() {
+  return compose()
+    // Attach user to request
+    .use(function(req, res, next) {
+      validateJwt(req, res, function(val) {
+        if (_.isUndefined(val)) {
+          User.findById(req.user._id, function(err, user) {
+            if (err) {
+              return next(err);
+            }
+            else if (!user) {
+              req.user = undefined;
+              return next();
+            }
+            else {
+              req.user = user;
+              next();
+            }
+          });
+        }
+        else {
+          req.user = undefined;
+          next();
+        }
+      });
+    });
+}
+/**
+ * Takes the token cookie and adds the header
+ * for it on the request
+ */
+function addAuthHeaderFromCookie() {
+  return compose()
+    .use(function(req, res, next) {
+      if (req.cookies.token) {
+        req.headers.authorization = 'Bearer ' + _.trim(req.cookies.token,
+          '\"');
+      }
+      return next();
     });
 }
 
@@ -141,5 +182,7 @@ module.exports = {
    * Utility function, checks if admin is true or false
    * @type {Object}
    */
-  setToken: setToken
+  setToken: setToken,
+  appendUser: appendUser,
+  addAuthHeaderFromCookie: addAuthHeaderFromCookie
 };

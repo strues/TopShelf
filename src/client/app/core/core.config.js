@@ -30,9 +30,14 @@
 
   function authRun($rootScope, $location, Auth) {
     $rootScope.$on('$stateChangeStart', function (event, next) {
-     Auth.isLoggedInAsync(function(loggedIn) {
+     Auth.isLoggedIn(function(loggedIn) {
        if (next.authenticate && !loggedIn) {
-         $location.path('/login');
+         $location.path('/account/login');
+       }
+       if (next.authorize) {
+         if (next.authorize === 'admin' && !Auth.isAdmin()) {
+           $location.path('/');
+         }
        }
      });
    });

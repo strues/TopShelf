@@ -12,8 +12,8 @@ exports.list = function(req, res) {
     limit = +req.query.limit || 9;
 
   Article.find()
-      .sort('-created')
-      .populate('author', 'displayName')
+      .sort('date')
+      .populate('author', 'username')
       .limit(limit).skip((page - 1) * limit)
         .exec(function(err, articles) {
           if (err) {

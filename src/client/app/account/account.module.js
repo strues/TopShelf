@@ -38,6 +38,18 @@
           }
         }
       })
+      .state('account.logout', {
+        url: '/logout?referrer',
+        referrer: 'main',
+        template: '',
+        controller: function($state, Auth) {
+          var referrer = $state.params.referrer ||
+                          $state.current.referrer ||
+                          'guild.home';
+          Auth.logout();
+          $state.go(referrer);
+        }
+      })
       .state('account.profile', {
         url: '/profile',
         views: {

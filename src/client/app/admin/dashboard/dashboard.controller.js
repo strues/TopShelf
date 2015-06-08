@@ -11,9 +11,9 @@
     .module('app.admin')
     .controller('AdminDashboardCtrl', AdminDashboardCtrl);
 
-  AdminDashboardCtrl.$inject = ['$auth'];
+  AdminDashboardCtrl.$inject = ['Auth'];
   /* @ngInject */
-  function AdminDashboardCtrl($auth) {
+  function AdminDashboardCtrl(Auth) {
     var vm = this;
 
     //Page.setTitle('Admin');
@@ -23,8 +23,6 @@
      *
      * @returns {boolean}
      */
-    vm.isAuthenticated = function() {
-      return $auth.isAuthenticated();
-    };
+
   }
 })();

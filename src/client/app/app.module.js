@@ -23,12 +23,10 @@
   run.$inject = ['$rootScope', '$state', '$stateParams', '$timeout'];
   /* @ngInject */
   function run($rootScope, $state, $stateParams, $timeout) {
-    $rootScope.$on('$stateChangeStart',
-    function(e, toState, toParams, fromState, fromParams) {
-      $state.toState = toState;
-      $state.toParams = toParams;
-      $state.fromState = fromState;
-      $state.fromParams = fromParams;
+    $rootScope.$on('$stateChangeStart', function(event, next, nextParams, current) {
+      if (next.name === 'account.logout' && current && current.name && !current.authenticate) {
+        next.referrer = current.name;
+      }
     });
 
     $rootScope.$on('$stateChangeSuccess',

@@ -17,17 +17,17 @@
               <li class="nav-link"><a ui-sref="guild.info">Info</a></li>
               <li class="nav-link"><a ui-sref="guild.streams">Streams</a></li>
               <li class="nav-link"><a ui-sref="guild.roster">Roster</a></li>
-              <li><a href="https://topshelfguild.com/forums/" target="_blank">Forums</a></li>
-              <li class="nav-link" ng-if="nav.isAdmin">
+              <li class="nav-link"><a href="https://topshelfguild.com/forums/" target="_blank">Forums</a></li>
+              <li class="nav-link" ng-show="nav.isAdmin()">
                 <a ui-sref="admin.dashboard"> Admin</a>
               </li>
-              <li ng-if="!nav.isLoggedIn">
+              <li class="nav-link" ng-if="!nav.isLoggedIn()">
                 <a ui-sref="account.signup">Sign up</a>
               </li>
-              <li ng-if="!nav.isLoggedIn">
+              <li class="nav-link" ng-if="!nav.isLoggedIn()">
                 <a ui-sref="account.login"> Login</a>
               </li>
-                <li class="dropdown" ng-if="nav.isLoggedIn" dropdown>
+                <li class="dropdown" ng-if="nav.isLoggedIn()" dropdown>
                   <a href="#" class="dropdown-toggle"
                     role="button" aria-expanded="false" dropdown-toggle><span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">

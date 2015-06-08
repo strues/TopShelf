@@ -63,7 +63,7 @@
         <button type="button" class="btn btn-addon btn-danger" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
             <i class="fa fa-trash-o"></i> Remove all
         </button>
-        <p class="text-muted m-t-xl">Files are uploaded to "/assets/uploads/"</p>
+        <p class="text-muted m-t-xl">Files are uploaded to "/uploads/"</p>
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@
     <div class=""><!-- 170px img -->
   <div class="home-page-ab-img">
     <a href="#" class="thumbnail">
-      <img ng-src="/assets/uploads/{{file.filename}}" class="img-responsive" alt="uploaded image"/>
+      <img ng-src="/uploads/{{file.filename}}" class="img-responsive" alt="uploaded image"/>
     </a>
   </div>
   <span class="">{{file.filename}}</span>

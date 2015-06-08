@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     moment   = require('moment'),
     _        = require('lodash');
 
-var FileSchema = new Schema({
+var UploadSchema = new Schema({
   title: {
     type: String,
     default: '',
@@ -42,4 +42,4 @@ var FileSchema = new Schema({
   }]
 });
 
-module.exports = mongoose.model('File', FileSchema);
+module.exports = mongoose.model('Upload', UploadSchema);

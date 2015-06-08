@@ -14,19 +14,18 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.4.1-build.4039+sha.288225b",
-    "angular-animate": "1.4.1-build.4039+sha.288225b",
-    "angular-messages": "1.4.1-build.4039+sha.288225b",
-    "angular-resource": "1.4.1-build.4039+sha.288225b",
-    "satellizer": "~0.11.0",
+    "angular": "1.4.1-build.4042+sha.071be60",
+    "angular-animate": "1.4.1-build.4042+sha.071be60",
+    "angular-messages": "1.4.1-build.4042+sha.071be60",
+    "angular-resource": "1.4.1-build.4042+sha.071be60",
     "angular-ui-router": "~0.2.15",
-    "angular-cookies": "1.4.1-build.4039+sha.288225b",
     "angular-bootstrap": "~0.13.0",
     "bootstrap-sass": "~3.3.4",
     "font-awesome": "~4.3.0",
     "textAngular": "~1.4.1",
     "angular-toastr": "~1.4.1",
     "angular-file-upload": "~1.1.5",
-    "ngstorage": "~0.3.4"
+    "ngstorage": "~0.3.4",
+    "angular-socket-io": "~0.7.0"
   }
 }

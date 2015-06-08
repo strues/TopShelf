@@ -9,7 +9,7 @@ var debug = require('debug');
 module.exports = function(app) {
   // app.use('/api/recruitment-threads', require('./api/recruitmentThread'));
   app.use('/api/recruiting', require('./api/recruitment'));
-  app.use('/api/files', require('./api/file'));
+  app.use('/api/uploads', require('./api/upload'));
   app.use('/api/articles', require('./api/article'));
   app.use('/api/users', require('./api/user'));
   app.use('/api/roster', require('./api/roster'));

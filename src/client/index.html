@@ -24,7 +24,7 @@
     <div>
          <div ng-include="'app/core/layout/shell.html'"></div>
      </div>
-
+     <script src="socket.io/socket.io.js"></script>
     <!-- bower:js -->
     <script src="../../bower_components/es5-shim/es5-shim.js"></script>
     <script src="../../bower_components/jquery/dist/jquery.js"></script>
@@ -32,9 +32,7 @@
     <script src="../../bower_components/angular-animate/angular-animate.js"></script>
     <script src="../../bower_components/angular-messages/angular-messages.js"></script>
     <script src="../../bower_components/angular-resource/angular-resource.js"></script>
-    <script src="../../bower_components/satellizer/satellizer.js"></script>
     <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="../../bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="../../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
     <script src="../../bower_components/rangy/rangy-core.js"></script>
@@ -49,6 +47,7 @@
     <script src="../../bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <script src="../../bower_components/angular-file-upload/angular-file-upload.js"></script>
     <script src="../../bower_components/ngstorage/ngStorage.js"></script>
+    <script src="../../bower_components/angular-socket-io/socket.js"></script>
     <!-- endbower -->
     <!-- inject:js -->
     <script src="src/client/app/app.module.js"></script>
@@ -68,22 +67,21 @@
     <script src="src/client/app/account/services/auth.service.js"></script>
     <script src="src/client/app/account/services/user.service.js"></script>
     <script src="src/client/app/account/signup/signup.controller.js"></script>
-    <script src="src/client/app/admin/dashboard/dashboard.controller.js"></script>
     <script src="src/client/app/admin/media/adminMedia.controller.js"></script>
+    <script src="src/client/app/admin/dashboard/dashboard.controller.js"></script>
     <script src="src/client/app/admin/news/news.listing.controller.js"></script>
     <script src="src/client/app/admin/recruit/recruitment.controller.js"></script>
     <script src="src/client/app/admin/recruit/recruitmentList.controller.js"></script>
     <script src="src/client/app/admin/users/user.controller.js"></script>
     <script src="src/client/app/common/directives/mongooseError.directive.js"></script>
     <script src="src/client/app/common/directives/passwordMatch.directive.js"></script>
-    <script src="src/client/app/common/directives/passwordStrength.directive.js"></script>
     <script src="src/client/app/common/services/armory.service.js"></script>
     <script src="src/client/app/common/services/article.service.js"></script>
     <script src="src/client/app/common/services/authInterceptor.service.js"></script>
-    <script src="src/client/app/common/services/authorization.service.js"></script>
     <script src="src/client/app/common/services/classDef.service.js"></script>
     <script src="src/client/app/common/services/classSpec.service.js"></script>
     <script src="src/client/app/common/services/recruit.service.js"></script>
+    <script src="src/client/app/common/services/socket.service.js"></script>
     <script src="src/client/app/common/services/twitch.service.js"></script>
     <script src="src/client/app/core/layout/footer.controller.js"></script>
     <script src="src/client/app/core/layout/footer.directive.js"></script>

@@ -17,6 +17,7 @@
       .state('admin', {
         title: 'Admin - TSG Admin',
         url: '/admin',
+        authorize: 'admin',
         views: {
           'main@': {
             templateUrl: 'app/admin/admin.html',

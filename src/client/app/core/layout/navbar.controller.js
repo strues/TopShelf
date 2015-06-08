@@ -12,7 +12,7 @@
     var vm = this;
     vm.isCollapsed = true;
 
-    vm.isAdmin = Auth.isAdmin();
+    vm.isAdmin = Auth.isAdmin;
     vm.currentUser = Auth.getCurrentUser;
     vm.isLoggedIn = Auth.isLoggedIn;
     vm.isAuthenticated = function() {
@@ -22,6 +22,15 @@
       Auth.logout();
       toastr.info('See you around', 'Logged Out!');
       $location.path('/account/login');
+    };
+
+    vm.isActive = function(route) {
+      if (route !== '/') {
+        return -1 !== $location.path().indexOf(route);
+      }
+      else {
+        return route === $location.path();
+      }
     };
   }
 
