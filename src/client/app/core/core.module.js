@@ -15,6 +15,7 @@
         'ngMessages',
         'ngResource',
         'ui.router',
+        'ngStorage',
         'ui.bootstrap',
         'satellizer',
         'textAngular',

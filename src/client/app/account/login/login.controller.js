@@ -11,11 +11,10 @@
     .module('app.account')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['$auth', 'toastr'];
+  LoginCtrl.$inject = ['Auth', 'toastr', '$window', '$location'];
   /* @ngInject */
-  function LoginCtrl($auth, toastr) {
+  function LoginCtrl(Auth, toastr, $window, $location) {
     var vm = this;
-    // view model bindings
     /**
      * @ngdoc property
      * @name user
@@ -25,27 +24,34 @@
      *
      * @returns {User} The user data
      */
-    vm.login = function() {
-      $auth.login({
-          email: vm.email,
-          password: vm.password
-        })
-        .then(function() {
-          toastr.success('You\'re now logged in', 'Success');
-        })
-        .catch(function(response) {
-          toastr.error(response, 'Error!');
+    vm.user = {};
+    /**
+     * @ngdoc property
+     * @name error
+     * @propertyOf app.account.controller:LoginController
+     * @description
+     * Error flag
+     * @returns {Boolean} True if there is an error
+     */
+    vm.error = false;
+    vm.login = login;
+
+    function login(form) {
+      if (form.$valid) {
+        Auth.login({
+          email: vm.user.email,
+          password: vm.user.password
+        }).then(function() {
+          toastr.success('Successfully logged in', 'Welcome Back!');
+          // Logged in, redirect to home
+          $location.path('/');
+        }).catch(function(err) {
+          vm.error = err;
         });
-    };
-    vm.authenticate = function(provider, userData) {
-      $auth.authenticate(provider, userData)
-        .then(function(userData) {
-          toastr.success('You\'re now logged in', 'Success');
-          console.log(userData);
-        })
-        .catch(function(response) {
-        toastr.error(response.data ? response.data.message : response, 'Shit');
-        });
+      }
+    }
+    vm.loginOauth = function(provider) {
+      $window.location.href = '/auth/' + provider;
     };
   }
 }());

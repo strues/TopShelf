@@ -12,6 +12,7 @@ var express = require('express'),
   methodOverride = require('method-override'),
   cookieParser = require('cookie-parser'),
   errorHandler = require('errorhandler'),
+  passport = require('passport'),
   path = require('path'),
   cors = require('cors'),
   logger = require('./logger'),
@@ -22,7 +23,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   mongoStore = require('connect-mongo')(session);
 
-module.exports = function(app) {
+module.exports = function (app) {
 
   var env = app.get('env');
 
@@ -47,7 +48,8 @@ module.exports = function(app) {
   app.use(cookieParser());
   app.set('appPath', path.join(config.root, 'client'));
   app.use(busboy());
-  // Enable jsonp
+  app.use(passport.initialize());
+
   app.use(session({
     secret: config.session.secret,
     resave: true,
@@ -58,7 +60,7 @@ module.exports = function(app) {
   }));
 
   app.use(function(req, res, next) {
-    //console.log('I am adding the allow origin');
+    debug('I am adding the allow origin');
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers',

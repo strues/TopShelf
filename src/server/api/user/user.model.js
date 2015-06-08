@@ -1,114 +1,209 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema,
+  crypto = require('crypto'),
+  authTypes = ['bnet', 'twitter', 'facebook', 'google'];
 
-var validateEmail = function(email) {
+var validateEmail = function (email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
 };
 
-var userSchema = new mongoose.Schema({
-  email: {
-    validate:[validateEmail, 'not valid'],
+var UserSchema = new mongoose.Schema({
+  username: {
     type: String,
-    unique: true,
+    trim: true
+  },
+  email: {
+    type: String,
     lowercase: true,
     trim: true
   },
-  password: {
-    type: String,
-    select: false,
-    min: 5,
-    max: 20,
-    trim: true
-  },
-  displayName: {
-    type: String
-  },
-  picture: String,
   role: {
     type: String,
-    default: 'User'
+    default: 'user'
   },
-  twitch: {
-    type: String,
-    trim: true,
-    default: ''
+  enabled: {
+    type: Boolean,
+    default: true
   },
-  battletag: {
-    type: String
-  },
-  isAdmin: Boolean,
-  providers: [],
-  facebook: String,
-  battlenet: String,
-  xenforo: String,
-  google: String,
-  twitter: String,
+  hashedPassword: String,
+  provider: String,
+  salt: String,
+  facebook: {},
+  twitter: {},
+  google: {},
+  github: {},
   resetPasswordToken: String,
   resetPasswordTokenExpiration: Date,
+  // References to other collections
   articles: {
     type: Schema.Types.ObjectId,
     ref: 'Article'
+  },
+  // Battlenet
+  bnetId: Number,
+  battletag: String,
+  // characters
+  characters: [{
+    name: String,
+    realm: String,
+    battlegroup: String,
+    class: Number,
+    race: Number,
+    gender: Number,
+    level: Number,
+    achievementPoints: Number,
+    thumbnail: String
+  }],
+  mainCharacter: {
+    name: String,
+    realm: String,
+    thumb: String,
+    classNum: Number
   }
 });
 
 /**
- * Virtual 'token'
- * Non-sensitive info we'll be putting in the token
- * @memberOf userSchema
+ * Virtuals
  */
+UserSchema
+  .virtual('password')
+  .set(function (password) {
+    this._password = password;
+    this.salt = this.makeSalt();
+    this.hashedPassword = this.encryptPassword(password);
+  })
+  .get(function () {
+    return this._password;
+  });
 
-userSchema
+// Public profile information
+UserSchema
+  .virtual('profile')
+  .get(function () {
+    return {
+      'name': this.username,
+      'role': this.role
+    };
+  });
+
+// Non-sensitive info we'll be putting in the token
+UserSchema
   .virtual('token')
-  .get(getToken);
+  .get(function () {
+    return {
+      '_id': this._id,
+      'role': this.role
+    };
+  });
 
 /**
- * Return the value of the virtual token property
- *
- * @api private
- * @returns {{_id: *, role: *}}
+ * Validations
  */
-function getToken() {
-  // jshint validthis: true
-  return {
-    '_id': this._id,
-    'isAdmin': this.isAdmin
-  };
-}
 
-userSchema.statics = {
-  /**
-   *  Find User By username
-   *  @param {String}
-   *  @param {Function}
-   */
-  findByUsername: function(name, cb) {
-    this.findOne({
-      displayName: name
-    }).exec(cb);
-  }
-};
+// Validate empty email
+UserSchema
+  .path('email')
+  .validate(function (email) {
+    if (authTypes.indexOf(this.provider) !== -1) {
+      return true;
+    }
+    return email.length;
+  }, 'Email cannot be blank');
 
-userSchema.pre('save', function(next) {
-  var user = this;
-  if (!user.isModified('password')) {
-    return next();
-  }
-  bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(user.password, salt, function(err, hash) {
-      user.password = hash;
-      next();
+// Validate empty password
+UserSchema
+  .path('hashedPassword')
+  .validate(function (hashedPassword) {
+    if (authTypes.indexOf(this.provider) !== -1) {
+      return true;
+    }
+    return hashedPassword.length;
+  }, 'Password cannot be blank');
+
+// Validate email is not taken
+UserSchema
+  .path('email')
+  .validate(function (value, respond) {
+    var self = this;
+    this.constructor.findOne({
+      email: value
+    }, function (err, user) {
+      if (err) {
+        throw err;
+      }
+      if (user) {
+        if (self.id === user.id) {
+          return respond(true);
+        }
+        return respond(false);
+      }
+      respond(true);
     });
-  });
-});
+  }, 'The specified email address is already in use.');
 
-userSchema.methods.comparePassword = function(password, done) {
-  bcrypt.compare(password, this.password, function(err, isMatch) {
-    done(err, isMatch);
-  });
+var validatePresenceOf = function (value) {
+  return value && value.length;
 };
 
-module.exports = mongoose.model('User', userSchema);
+/**
+ * Pre-save hook
+ */
+UserSchema
+  .pre('save', function (next) {
+    if (!this.isNew) {
+      return next();
+    }
+    if (!validatePresenceOf(this.hashedPassword) &&
+    authTypes.indexOf(this.provider) ===
+      -1) {
+      next(new Error('Invalid password'));
+    } else {
+      next();
+    }
+  });
+
+/**
+ * Methods
+ */
+UserSchema.methods = {
+  /**
+   * Authenticate - check if the passwords are the same
+   *
+   * @param {String} plainText
+   * @return {Boolean}
+   * @api public
+   */
+  authenticate: function (plainText) {
+    return this.encryptPassword(plainText) === this.hashedPassword;
+  },
+
+  /**
+   * Make salt
+   *
+   * @return {String}
+   * @api public
+   */
+  makeSalt: function () {
+    return crypto.randomBytes(16).toString('base64');
+  },
+
+  /**
+   * Encrypt password
+   *
+   * @param {String} password
+   * @return {String}
+   * @api public
+   */
+  encryptPassword: function (password) {
+    if (!password || !this.salt) {
+      return '';
+    }
+    var salt = new Buffer(this.salt, 'base64');
+    return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+  }
+};
+
+module.exports = mongoose.model('User', UserSchema);

@@ -5,20 +5,21 @@
     .module('app.core')
     .controller('NavbarCtrl', NavbarCtrl);
 
-  NavbarCtrl.$inject = ['$auth', 'toastr', '$location', 'userSrv', 'Authorization'];
+  NavbarCtrl.$inject = ['Auth', 'toastr', '$location', 'User'];
   /* @ngInject */
-  function NavbarCtrl($auth, toastr, $location, userSrv, Authorization) {
+  function NavbarCtrl(Auth, toastr, $location, User) {
     // controllerAs ViewModel
     var vm = this;
     vm.isCollapsed = true;
 
-    vm.isAdmin = Authorization.roleCheck;
-
+    vm.isAdmin = Auth.isAdmin();
+    vm.currentUser = Auth.getCurrentUser;
+    vm.isLoggedIn = Auth.isLoggedIn;
     vm.isAuthenticated = function() {
-      return $auth.isAuthenticated();
+      return Auth.isLoggedIn();
     };
     vm.logout = function() {
-      $auth.logout();
+      Auth.logout();
       toastr.info('See you around', 'Logged Out!');
       $location.path('/account/login');
     };

@@ -46,10 +46,10 @@
             controller: 'ProfileCtrl',
             controllerAs: 'profile',
             resolve: {
-              authenticated: function($q, $location, $auth) {
+              authenticated: function($q, $location, Auth) {
                 var deferred = $q.defer();
 
-                if (!$auth.isAuthenticated()) {
+                if (!Auth.isLoggedIn) {
                   $location.path('/account/login');
                 }
                 else {

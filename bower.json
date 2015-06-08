@@ -26,6 +26,7 @@
     "font-awesome": "~4.3.0",
     "textAngular": "~1.4.1",
     "angular-toastr": "~1.4.1",
-    "angular-file-upload": "~1.1.5"
+    "angular-file-upload": "~1.1.5",
+    "ngstorage": "~0.3.4"
   }
 }

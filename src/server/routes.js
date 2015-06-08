@@ -7,7 +7,7 @@
 var debug = require('debug');
 
 module.exports = function(app) {
-  app.use('/api/recruitment-threads', require('./api/recruitmentThread'));
+  // app.use('/api/recruitment-threads', require('./api/recruitmentThread'));
   app.use('/api/recruiting', require('./api/recruitment'));
   app.use('/api/files', require('./api/file'));
   app.use('/api/articles', require('./api/article'));
@@ -17,24 +17,28 @@ module.exports = function(app) {
 
   // All other routes should redirect to the index.html
   app.route('/*')
-  .get(function(req, res) {
-    res.sendFile(app.get('appPath') + '/index.html');
-  });
+    .get(function(req, res) {
+      res.sendFile(app.get('appPath') + '/index.html');
+    });
 
   // Handle 404 Errors
-  app.use(function (req, res, next) {
+  app.use(function(req, res, next) {
     res.sendStatus(404);
     debug('404 Warning. URL: ' + req.url);
 
     // Respond with html page
     if (req.accepts('html')) {
-      res.render('error/404', {url: req.url});
+      res.render('error/404', {
+        url: req.url
+      });
       return;
     }
 
     // Respond with json
     if (req.accepts('json')) {
-      res.send({error: 'Not found!'});
+      res.send({
+        message: 'Not found!'
+      });
       return;
     }
 

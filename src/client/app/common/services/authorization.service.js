@@ -9,12 +9,12 @@
     .module('app.common')
     .factory('Authorization', Authorization);
 
-  Authorization.$inject = ['$auth'];
+  Authorization.$inject = ['Auth'];
 
-  function Authorization($auth) {
-    var currentUser = $auth.getPayload();
+  function Authorization(Auth) {
+    var currentUser = Auth.getCurrentUser();
     var service = {
-      showPayload: showPayload,
+
       roleCheck: roleCheck
     };
 
@@ -34,9 +34,7 @@
      * </pre>
      * @param {int} entity id
      */
-    function showPayload() {
-      return $auth.getPayload();
-    }
+
 
     /**
      * @ngdoc

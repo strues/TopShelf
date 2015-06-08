@@ -11,12 +11,11 @@
     .module('app.core')
     .controller('MasterCtrl', MasterCtrl);
 
-  MasterCtrl.$inject = ['$scope', '$auth'];
+  MasterCtrl.$inject = ['$scope'];
   /* @ngInject */
-  function MasterCtrl($scope, $auth) {
+  function MasterCtrl($scope) {
     var master = this;
 
-    master.auth = $auth;
     master.isCollapsed = true;
 
     var mobileView = 992;

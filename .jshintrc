@@ -7,7 +7,7 @@
     "forin": true,
     "freeze": true,
     "immed": true,
-    "indent": 2,
+    "indent": 4,
     "latedef": "nofunc",
     "newcap": true,
     "noarg": true,
@@ -17,8 +17,8 @@
     "plusplus": false,
     "quotmark": "single",
     "undef": true,
-    "unused": true,
-    "strict": true,
+    "unused": false,
+    "strict": false,
     "maxparams": 10,
     "maxdepth": 5,
     "maxstatements": 40,
@@ -53,13 +53,9 @@
 
     "browser": true,
     "node": true,
-    "predef": ["angular"],
+
     "globals": {
-      "angular"   : false,
-      "jasmine"   : false,
-      "$"         : false,
-      "_"         : false,
-      "module"    : false,
-      "require"   : false
+        "angular": false,
+        "$": false
     }
 }

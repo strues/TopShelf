@@ -11,23 +11,23 @@
               <img src="/img/logo.png" height="60px" class="brand-image" alt="Top Shelf Guild logo"></a>
         </div>
 
-        <div class="navbar-collapse collapse in" collapse="nav.isCollapsed" aria-expanded="true">
+        <div class="navbar-collapse collapse in" collapse="nav.isCollapsed" aria-expanded="true" ng-class="{collapse: nav.isCollapsed}">
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-link"><a ui-sref="guild.home">Home</a></li>
               <li class="nav-link"><a ui-sref="guild.info">Info</a></li>
               <li class="nav-link"><a ui-sref="guild.streams">Streams</a></li>
               <li class="nav-link"><a ui-sref="guild.roster">Roster</a></li>
               <li><a href="https://topshelfguild.com/forums/" target="_blank">Forums</a></li>
-              <li class="nav-link" ng-if="nav.isAuthenticated() && nav.isAdmin">
+              <li class="nav-link" ng-if="nav.isAdmin">
                 <a ui-sref="admin.dashboard"> Admin</a>
               </li>
-              <li ng-if="!nav.isAuthenticated()">
+              <li ng-if="!nav.isLoggedIn">
                 <a ui-sref="account.signup">Sign up</a>
               </li>
-              <li ng-if="!nav.isAuthenticated()">
+              <li ng-if="!nav.isLoggedIn">
                 <a ui-sref="account.login"> Login</a>
               </li>
-                <li class="dropdown" ng-if="nav.isAuthenticated()" dropdown>
+                <li class="dropdown" ng-if="nav.isLoggedIn" dropdown>
                   <a href="#" class="dropdown-toggle"
                     role="button" aria-expanded="false" dropdown-toggle><span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">

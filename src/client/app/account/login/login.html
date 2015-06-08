@@ -1,10 +1,10 @@
 <div id="wrapper" ng-controller="LoginCtrl as login">
-	<form autocomplete="off" method="post" name="loginForm" ng-submit="login.login()">
+	<form autocomplete="off" method="post" name="loginForm" ng-submit="login.login(loginForm)" novalidate>
 		<div class="input-wrapper">
-			<label for="username"><i class="fa fa-envelope fa-3x"></i></label><input type="text" id="username" ng-model="login.email" placeholder="Email" required spellcheck="false">
+			<label for="username"><i class="fa fa-envelope fa-3x"></i></label><input type="text" id="username" ng-model="login.user.email" placeholder="Email" required spellcheck="false">
 		</div>
 		<div class="input-wrapper">
-			<label for="password"><i class="fa fa-lock fa-3x"></i></label><input type="password" id="password" ng-model="login.password" placeholder="Password" required>
+			<label for="password"><i class="fa fa-lock fa-3x"></i></label><input type="password" id="password" ng-model="login.user.password" placeholder="Password" required>
 		</div>
 		<div class="input-wrapper">
 			<input type="submit" value="Login" ng-disabled="loginForm.$invalid">
@@ -15,8 +15,8 @@
 		</div>
 	</form>
 	<div class="">
-		<!-- <button class="btn btn-block btn-secondary" ng-click="login.authenticate('battlenet')">
+	<button class="btn btn-block btn-secondary" ng-click="login.authenticate('bnet')">
 				<span class="ion-social-bnet"></span>Sign in with Battle.net
-			</button> -->
+			</button>
 	</div>
 </div>

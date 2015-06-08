@@ -8,41 +8,47 @@
 
 var mongoose = require('mongoose'),
   config = require('../config/environment'),
-  jwt = require('jwt-simple'),
+  passport = require('passport'),
+  jwt = require('jsonwebtoken'),
+  expressJwt = require('express-jwt'),
   compose = require('composable-middleware'),
-  roles = require('./roles.service'),
+  User = require('../api/user/user.model'),
   moment = require('moment');
 
+var validateJwt = expressJwt({
+  secret: config.session.secret
+});
 /**
  * Attaches the user object to the request if authenticated
  * otherwise returns 403
  * @return {express.middleware}
  */
-function ensureAuthenticated(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(401).send({
-      message: 'Please make sure your' +
-        'request has an Authorization header'
+function isAuthenticated(req, res, next) {
+  return compose()
+    // Validate jwt
+    .use(function(req, res, next) {
+      if (req.headers.authorization && req.headers.authorization.split(' ')[0] ===
+        'Bearer') {
+        return req.headers.authorization.split(' ')[1];
+      }
+      else if (req.query && req.query.token) {
+        return req.query.token;
+      }
+      return null;
+    })
+    // Attach user to request
+    .use(function(req, res, next) {
+      User.findById(req.user._id, function(err, user) {
+        if (err) {
+          return next(err);
+        }
+        if (!user) {
+          return res.sendStatus(401);
+        }
+        req.user = user;
+        next();
+      });
     });
-  }
-  var token = req.headers.authorization.split(' ')[1];
-
-  var payload = null
-  try {
-    payload = jwt.decode(token, config.session.secret);
-  }
-  catch (err) {
-    return res.status(401).send({
-      message: err.message
-    });
-  }
-  if (payload.exp <= moment().unix()) {
-    return res.status(401).send({
-      message: 'Token has expired'
-    });
-  }
-  req.user = payload.sub;
-  next();
 }
 
 /**
@@ -52,7 +58,6 @@ function createToken(user) {
   var payload = {
     sub: user._id,
     role: user.role,
-    isAdmin: user.isAdmin,
     iat: moment().unix(),
     exp: moment().add(14, 'days').unix()
   };
@@ -71,9 +76,10 @@ function hasRole(roleRequired) {
   }
 
   return compose()
-    .use(ensureAuthenticated)
+    .use(isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
-      if (roles.hasRole(req.role, roleRequired)) {
+      if (config.userRoles.indexOf(req.user.role) >=
+        config.userRoles.indexOf(roleRequired)) {
         next();
       }
       else {
@@ -82,53 +88,33 @@ function hasRole(roleRequired) {
     });
 }
 
-function ensureAdmin(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(401).json(
-      'Please make sure your request has an Authorization header'
-    );
+/**
+ * Returns a jwt token signed by the app secret
+ */
+function signToken(id, role) {
+  var payload = {
+    _id: id
+  };
+  if (role !== null) {
+    payload.role = role;
   }
-  var token = req.headers.authorization.split(' ')[1];
-
-  var payload = null;
-  try {
-    payload = jwt.decode(token, config.session.secret);
-  }
-  catch (err) {
-    return res.status(401).send({
-      message: err.message
-    });
-  }
-
-  if (payload.exp <= moment().unix()) {
-    return res.status(401).json('Token has expired');
-  }
-  req.user = payload.sub;
-  req.user.role = payload.role;
-  req.isAdmin = payload.isAdmin;
-
-  if (!req.isAdmin) {
-    return res.status(401).json('Not authorized');
-  }
-  next();
+  return jwt.sign(payload, config.session.secret, {
+    expiresInMinutes: 30 * 24 * 60
+  });
 }
 
 /**
- * Check if the user is authenticated or not
- * If authenticated, pass on req.user
- *
- * @param req
- * @param res
- * @param next
+ * Set token cookie directly for oAuth strategies
  */
-function checkAuthenticated(req, res, next) {
-  var token = req.headers.authorization ?
-    req.headers.authorization.split(' ')[1] : null;
-  var payload = token ? jwt.decode(token, config.session.secret) : null;
-  if (payload) {
-    req.user = payload.sub;
+function setToken(req, res) {
+  if (!req.userInfo) {
+    return res.json(404, {
+      message: 'Something went wrong, please try again.'
+    });
   }
-  next();
+  var token = signToken(req.user._id, req.user.role);
+  res.cookie('token', JSON.stringify(token));
+  res.redirect('/');
 }
 
 module.exports = {
@@ -137,19 +123,7 @@ module.exports = {
    * Middleware for checking for valid authentication
    * @see {auth:service~ensureAuthenticated}
    */
-  ensureAuthenticated: ensureAuthenticated,
-
-  /**
-   * Middleware for creating the token
-   * @see {auth:service~createToken}
-   */
-  createToken: createToken,
-
-  /**
-   * Middleware for creating the token
-   * @see {auth:service~createToken}
-   */
-  checkAuthenticated: checkAuthenticated,
+  isAuthenticated: isAuthenticated,
 
   /**
    * Middleware for checking for a minimum role
@@ -161,11 +135,11 @@ module.exports = {
    * Utility functions for handling user roles
    * @type {Object}
    */
-  roles: roles,
+  signToken: signToken,
 
   /**
    * Utility function, checks if admin is true or false
    * @type {Object}
    */
-  ensureAdmin: ensureAdmin
+  setToken: setToken
 };

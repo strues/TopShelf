@@ -13,24 +13,32 @@
     .module('app.account')
     .controller('SignupCtrl', SignupCtrl);
 
-  SignupCtrl.$inject = ['$auth', 'toastr'];
+  SignupCtrl.$inject = ['Auth', 'toastr', '$window', '$location'];
   /* @ngInject */
-  function SignupCtrl($auth, toastr) {
+  function SignupCtrl(Auth, toastr, $window, $location) {
     var vm = this;
-    vm.signup = function() {
-      $auth.signup({
-        displayName: vm.displayName,
-        email: vm.email,
-        password: vm.password
-      }).catch(function(response) {
-        if (typeof response.data.message === 'object') {
-          angular.forEach(response.data.message, function(message) {
-            toastr.error(message[0], 'Error!');
-          });
-        } else {
-          toastr.success(response.data.message, 'Success');
-        }
-      });
-    };
+    vm.ctrlName = 'SignupController';
+    vm.user = {};
+    vm.error = false;
+    vm.register = register;
+
+    function register(form) {
+      if (form.$valid) {
+        Auth.createUser({
+          username: vm.user.username,
+          email: vm.user.email,
+          battletag: vm.user.battletag,
+          password: vm.user.password
+        }).then(function() {
+          toastr
+            .success('Sucessfully created your account.', 'Welcome!');
+          // Account created, redirect to home
+          $location.path('/');
+        }).catch(function(err) {
+          vm.error = err;
+          toastr.error('Uh oh');
+        });
+      }
+    }
   }
 }());
