@@ -15,3 +15,5 @@ src/client/styles/lib/
 doc/
 src/client/img/
 src/client/fonts/
+src/client/**/*.jpg
+Notes.md

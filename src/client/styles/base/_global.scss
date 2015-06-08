@@ -1,74 +1,65 @@
 html {
+  position: relative;
+  overflow-x: hidden;
   min-width: 100%;
   min-height: 100%;
   margin: 0;
   padding-top: 75px;
-  position: relative;
-  overflow-x: hidden;
 }
-
 body {
-  background: #2c3338;
   overflow-x: hidden;
+  background: #2c3338;
 }
 main {
   padding-bottom: 180px;
 }
-
 footer {
   background-color: $flat_white;
 }
-
 $transition-default: all 0.2s ease-in-out;
-
 .line {
-    margin: 20px 0;
-    border-bottom: 1px solid #fff;
+  margin: 20px 0;
+  border-bottom: 1px solid #fff;
 }
-
- .ap-menu ul li,
- .article-header ul li,
- .article-manage-item ul li,
- .article-wrap ul li,
- .block-type-btn ul li,
- .last-news-block ul li,
- .other-article-data ul li,
- .text-wrap ul li {
-     list-style-type: none;
- }
-
- .cf {
-     zoom: 1;
- }
-
- .cf:after,
- .cf:before {
-     content: "";
-     display: table;
- }
-
- .cf:after {
-     clear: both;
- }
-
- .block-type-btn {
-     margin-top: 30px
- }
- .block-type-btn ul {
-     padding: 0
- }
- .block-type-btn ul li {
-     -webkit-transition: color .3s;
-     -moz-transition: color .3s;
-     -o-transition: color .3s;
-     transition: color .3s;
-     list-style-type: none;
-     font-size: 2em;
-     color: #9E9E9E;
-     float: left;
-     margin: 0 10px
- }
- .block-type-btn ul li:hover {
-     color: #717171;
-     cursor: pointer
- }
+.ap-menu ul li,
+.article-header ul li,
+.article-manage-item ul li,
+.article-wrap ul li,
+.block-type-btn ul li,
+.last-news-block ul li,
+.other-article-data ul li,
+.text-wrap ul li {
+  list-style-type: none;
+}
+.cf {
+  zoom: 1;
+}
+.cf:after,
+.cf:before {
+  display: table;
+  content: '';
+}
+.cf:after {
+  clear: both;
+}
+.block-type-btn {
+  margin-top: 30px;
+}
+.block-type-btn ul {
+  padding: 0;
+}
+.block-type-btn ul li {
+  font-size: 2em;
+  float: left;
+  margin: 0 10px;
+  list-style-type: none;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  transition: color 0.3s;
+  color: #9e9e9e;
+}
+.block-type-btn ul li:hover {
+  cursor: pointer;
+  color: #717171;
+}

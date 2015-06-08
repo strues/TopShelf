@@ -13,9 +13,9 @@
     var vm = this;
     vm.articles = {};
     articleSvc.all().success(function(data) {
-        // bind the articles that come back to vm.articles
-        vm.articles = data;
-      });
+      // bind the articles that come back to vm.articles
+      vm.articles = data;
+    });
 
     vm.selectSlide = function(i) {
       vm.selected = i;

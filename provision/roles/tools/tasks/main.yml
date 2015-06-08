@@ -1,0 +1,10 @@
+---
+- name: Add up-to-date git ppa
+  apt_repository: repo='ppa:git-core/ppa'
+
+- name: Install packages
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+    - build-essential
+    - git
+    - vim
