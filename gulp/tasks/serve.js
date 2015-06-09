@@ -22,7 +22,11 @@ gulp.task('runapp', function() {
       script: 'src/server/app.js',
       ext: 'js',
       ignore: [
+        'Vagrantfile',
         '.tmp/**',
+        '.vagrant/**',
+        'puphpet/**',
+        'vm/**',
         '.git/**',
         'node_modules/**',
         'bower_components/**',

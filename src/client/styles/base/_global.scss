@@ -6,16 +6,24 @@ html {
   margin: 0;
   padding-top: 75px;
 }
+
 body {
   overflow-x: hidden;
   background: #2c3338;
 }
+
 main {
   padding-bottom: 180px;
 }
+
 footer {
   background-color: $flat_white;
 }
+
+.blue-area {
+  background-color: $flat_dark_blue;
+}
+
 $transition-default: all 0.2s ease-in-out;
 .line {
   margin: 20px 0;

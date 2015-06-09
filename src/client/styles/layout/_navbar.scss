@@ -18,7 +18,7 @@
 }
 .nav-link {
   border-top: 2px solid rgba(255, 255, 255, .01);
-  transition: border-top 0.3s;
+  transition: 0.3s;
   &:hover {
     border-top: 2px solid $flat_dark_black;
   }

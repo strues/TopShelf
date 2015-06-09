@@ -7,14 +7,13 @@
 var debug = require('debug');
 
 module.exports = function(app) {
-  // app.use('/api/recruitment-threads', require('./api/recruitmentThread'));
+  app.use('/api/recruitment-threads', require('./api/recruitmentThread'));
   app.use('/api/recruiting', require('./api/recruitment'));
   app.use('/api/uploads', require('./api/upload'));
   app.use('/api/articles', require('./api/article'));
   app.use('/api/users', require('./api/user'));
-  app.use('/api/roster', require('./api/roster'));
+  //app.use('/api/guild', require('./api/guild'));
   app.use('/auth', require('./auth'));
-
   // All other routes should redirect to the index.html
   app.route('/*')
     .get(function(req, res) {

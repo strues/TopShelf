@@ -19,6 +19,7 @@
         'ui.bootstrap',
         'textAngular',
         'toastr',
-        'angularFileUpload'
+        'angularFileUpload',
+        'youtube-embed'
       ]);
 }());

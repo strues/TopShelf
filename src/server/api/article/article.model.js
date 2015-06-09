@@ -74,4 +74,17 @@ var ArticleSchema = new Schema({
   }
 });
 
+ArticleSchema.statics = {
+  loadInfo: function(cb) {
+    this.find({})
+      .populate({
+        path: 'User',
+        select: 'username'
+      })
+      .sort('-date')
+      .limit(20)
+      .exec(cb);
+  }
+};
+
 module.exports = mongoose.model('Article', ArticleSchema);

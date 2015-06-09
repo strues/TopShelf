@@ -93,7 +93,8 @@ UserSchema
   .virtual('profile')
   .get(function() {
     return {
-      'name': this.username,
+      '_id': this._id,
+      'username': this.username,
       'role': this.role
     };
   });

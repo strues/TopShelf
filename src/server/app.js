@@ -8,6 +8,7 @@ var debug = require('debug')('tsg'),
   mongoose = require('mongoose'),
   chalk = require('chalk'),
   rq = require('./lib/rq'),
+  semver = require('semver'),
   Guild = require('./api/guild/guild.model'),
   config = require('./config/environment'),
   fs = require('fs');
@@ -31,73 +32,65 @@ require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
 
-// Start the server
-server.listen(config.port, config.ip, function () {
-  console.log(chalk.yellow('Express is running on love',
-    config.port, app.get('env')));
-});
-
-// Start the https server
-secureServer.listen(8443, config.ip, function () {
-  console.log(chalk.yellow('Express is running on love',
-    '8443', app.get('env')));
-
-  /*
-   * TODO: Move this from here to somewhere better.
-   */
-  Guild.findOne({}, function (err, guild) {
-    rq.bnet(
-      'us.battle.net',
-      '/api/wow/guild/' + config.realm + '/' + encodeURIComponent(
-        config.guild) + '?fields=members,news',
-      function (data) {
-        var lastUpdated = new Date().getTime();
-        if (guild !== null) {
-          for (var key in data) {
-            guild[key] = data[key];
-          }
-
-          guild.lastUpdated = lastUpdated;
-          guild.news = data.news;
-          guild.settings = {
-            webAdminBattletag: ''
-          };
-
-          guild.save(function (err) {
-            if (err) {
-              throw err;
-            }
-          });
-        }
-        else {
-          var newGuild = new Guild();
-          for (var key in data) { // jshint ignore:line
-            newGuild[key] = data[key];
-          }
-
-          newGuild.lastUpdated = lastUpdated;
-          newGuild.settings = {
-            webAdminBattletag: ''
-          };
-
-          newGuild.save(function (err) {
-            if (err) {
-              throw err;
-            }
-          });
-        }
-      }
-    );
-  });
-});
-
-db.on('error', function () {
+db.on('error', function() {
   console.error(chalk.red('MongoDB Connection Error. Please make sure that',
     config.mongo.url, 'is running.'));
 });
 
-db.once('open', function callback () {
-  console.info(chalk.green('Connected to MongoDB:', config.mongo.url));
+db.on('open', function () {
+  debug(chalk.green('Mongodb ' + 'connected!'));
+
+  // Start the server
+  server.listen(config.port, config.ip, function() {
+  // Test for correct node version as spec'ed in package.info
+  if (!semver.satisfies(process.versions.node, config.engine)) {
+    debug('Error: unsupported version of Node or io.js!'.red.bold);
+    debug(chalk.red(' needs Node or io.js version '));
+    process.exit(0);
+  }
+
+  // Log how we are running
+  debug(chalk.green('listening on port ' + app.get('port').toString()));
+  debug(chalk.green('listening in ' + app.settings.env.green.bold + ' mode.'));
+  debug(chalk.green('Ctrl+C' + ' to shut down. ;)'));
+
+  // Exit cleanly on Ctrl+C
+  process.on('SIGINT', function() {
+    socketio.close(); // close socket.io
+    console.log('\n');
+    debug(chalk.green('has ' + 'shutdown'));
+    debug('was running for ' + Math.round(process.uptime()).toString().green
+      .bold +
+      ' seconds.');
+    process.exit(0);
+  });
+});
+});
+
+var connectedCount = 0;
+
+socketio.on('connection', function (socket) {
+  connectedCount += 1;
+  // Listen for pageview messages from clients
+  socket.on('pageview', function (message) {
+    var ip = socket.handshake.headers['x-forwarded-for'] ||
+    socket.client.conn.remoteAddress || socket.handshake.address;
+    var url = message;
+    // Broadcast dashboard update (to all clients in default namespace)
+    socketio.emit('dashUpdate', {
+      connections: connectedCount,
+      ip: ip,
+      url: url,
+      timestamp: new Date()
+    });
+  });
+  // Update dashboard connections on disconnect events
+  socket.on('disconnect', function () {
+    connectedCount -= 1;
+    socketio.emit('dashUpdate', {
+      connections: connectedCount
+    });
+  });
 });
 
 // Expose App

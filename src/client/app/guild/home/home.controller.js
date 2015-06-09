@@ -21,18 +21,18 @@
       vm.selected = i;
     };
 
-    vm.class = 'col-sm-3 col-md-3';
+    vm.class = 'col-sm-6 col-md-4';
 
     vm.changeSize = function(btnNum) {
       switch (btnNum) {
         case 1:
-          vm.class = 'col-sm-3 col-md-3';
-          break;
-        case 2:
           vm.class = 'col-sm-6 col-md-4';
           break;
+        case 2:
+          vm.class = 'col-sm-6 col-md-6';
+          break;
         case 3:
-          vm.class = 'col-sm-12 col-md-8 col-md-offset-1';
+          vm.class = 'col-sm-12 col-md-12';
           break;
       }
     };

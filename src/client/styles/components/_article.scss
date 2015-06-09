@@ -26,6 +26,7 @@
 .article-list-wrap img,
 .article-wrap img {
     width: 100%;
+    height: 80%;
 }
 .article-list-wrap {
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
@@ -192,7 +193,8 @@
     border-bottom: 3px solid $flat_dark_blue;
 }
 .home-page-ab-img img {
-    width: 130%
+    width: 130%;
+    height: 110%;
 }
 .home-page-ab-header {
     padding: 10px

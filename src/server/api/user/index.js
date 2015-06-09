@@ -1,9 +1,9 @@
 'use strict';
 
-var express = require('express');
-var controller = require('./user.controller');
-var auth = require('../../auth/auth.service');
-var router = express.Router();
+var express    = require('express'),
+    controller = require('./user.controller'),
+    auth       = require('../../auth/auth.service'),
+    router     = express.Router();
 
 //router.get('/me', auth.isAuthenticated, controller.getMe);
 router.put('/me', auth.isAuthenticated, controller.editMe);
@@ -15,5 +15,4 @@ router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 
-// Export the configured express router for the user api routes
 module.exports = router;

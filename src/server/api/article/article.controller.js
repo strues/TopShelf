@@ -12,7 +12,7 @@ exports.list = function(req, res) {
     limit = +req.query.limit || 9;
 
   Article.find()
-      .sort('date')
+      .sort('-created')
       .populate('author', 'username')
       .limit(limit).skip((page - 1) * limit)
         .exec(function(err, articles) {
@@ -31,7 +31,7 @@ exports.read = function(req, res) {
 // Get a single post
 exports.show = function(req, res) {
   Article.findById(req.params.id)
-      .populate('author', 'displayName')
+      .populate('author', 'username')
         .exec(function(err, article) {
           if (err) {
             return handleError(res, err);
@@ -45,7 +45,7 @@ exports.show = function(req, res) {
 
 // Creates a new article in the DB.
 exports.create = function(req, res) {
-  Article.create(_.merge({author: req.user}, req.body),
+  Article.create(_.merge({author: req.user._id}, req.body),
     function(err, article) {
     if (err) {
       return handleError(res, err);
@@ -74,7 +74,7 @@ exports.update = function(req, res) {
     if (req.body.state) article.state = req.body.state;
     if (req.body.tags) article.tags = req.body.tags;
     if (req.body.image) article.image = req.body.image;
-    if (req.body.lrgImage) article.lrgImage = req.body.lrgImage;
+    if (req.body.category) article.category = req.body.category;
     if (req.body.views) article.views = req.body.views;
 
     article.save(function(err) {
@@ -102,17 +102,6 @@ exports.destroy = function(req, res) {
       return res.sendStatus(204);
     });
   });
-};
-
-Array.prototype.unique = function() {
-  var key, output, _i, _ref, _results;
-  output = {};
-  _results = [];
-  for (key = _i = 0, _ref = this.length; 0 <= _ref ? _i < _ref : _i > _ref;
-    key = 0 <= _ref ? ++_i : --_i) {
-    _results.push(output[this[key]] = this[key]);
-  }
-  return _results;
 };
 
 function handleError(res, err) {

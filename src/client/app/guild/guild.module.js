@@ -67,7 +67,7 @@
       .state('guild.info',
       {
         url: '/info',
-        title: 'About Us- Top Shelf',
+        title: 'About Us - Top Shelf',
         views:
         {
           'main@':
@@ -77,16 +77,16 @@
           }
         }
       })
-      .state('guild.streams',
+      .state('guild.videos',
       {
-        url: '/streams',
-        title: 'Top Shelf Live Streams',
+        url: '/videos',
+        title: 'Boss Kill Videos - Top Shelf',
         views:
         {
           'main@':
           {
-            tempalteUrl: 'app/guild/streams/streams.html',
-            controller: 'StreamsCtrl as str'
+            templateUrl: 'app/guild/videos/video-list.html',
+            controller: 'VideoCtrl as vid'
           }
         }
       })

@@ -3,17 +3,21 @@
     <div class="col-sm-6 col-md-4 col-md-offset-1">
       <h1>Guild Recruitment</h1>
       <div class="well">
-        <h3>Modify Recruitment</h3>
+        <tabset justified="true">
+          <tab heading="Modify Recruitment">
         <form role="form" class="form" name="recruitmentStatusForm" ng-submit="recruit.submit()">
           <div class="row">
+            <div class="col-xs-4">
             <label>Status</label>
-            <select ng-model="recruit.formData.currentlyRecruiting" class="form-control" required>
+            <select ng-model="recruit.formData.currentlyRecruiting" class="form-control input-md" required>
               <option value=""></option>
               <option value="True">Open</option>
               <option value="False">Closed</option>
             </select>
+          </div>
+          <div class="col-xs-8">
             <label>Class Type</label>
-            <select ng-model="recruit.formData.classType" class="form-control" required>
+            <select ng-model="recruit.formData.classType" class="form-control input-md" required>
               <option value=""></option>
               <option value="DeathKnight">Death Knight</option>
               <option value="Druid">Druid</option>
@@ -27,9 +31,10 @@
               <option value="Warlock">Warlock</option>
               <option value="Warrior">Warrior</option>
             </select>
-
+          </div>
+            <div class="col-xs-8">
             <label>Specialization</label>
-            <select ng-model="recruit.formData.classSpec" class="form-control" required>
+            <select ng-model="recruit.formData.classSpec" class="form-control input-md" required>
               <option value=""></option>
               <option value="Affliction">Affliction</option>
               <option value="Arcane">Arcane</option>
@@ -65,7 +70,7 @@
             </select>
           </div>
           <!-- row-->
-          <div class="row">
+          <div class="col-xs-4">
             <label>Priority</label>
             <select ng-model="recruit.formData.priority" class="form-control" required>
               <option value=""></option>
@@ -74,12 +79,14 @@
               <option value="High">High</option>
             </select>
           </div>
+          <div class="col-xs-12">
           <button style="margin-top: 5px" type="submit" class="btn btn-success btn-block">Save <i class="fa fa-save"></i></button>
+        </div>
         </form>
-      </div>
-      <div class="row">
-        <h3>Add Recruitment Thread</h3>
-        <form role="form" class="form-horizontal" name="recruitTForm" ng-submit="recruit.save()">
+      </tab>
+      <tab heading="Add Thread">
+        <h3>Recruitment Threads</h3>
+        <form role="form" class="form" name="recruitTForm" ng-submit="recruit.save()">
           <div class="form-group">
             <label>Thread URL</label>
             <input type="text" class="form-control" ng-model="recruit.recruitTD.threadUrl" placeholder="http://www.mmo-champion.com"
@@ -96,6 +103,8 @@
           <button style="margin-top: 5px" type="submit" class="btn btn-success btn-block">Save <i class="fa fa-save"></i>
           </button>
         </form>
+      </tab>
+    </tabset>
       </div>
     </div>
   </div>

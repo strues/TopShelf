@@ -1,31 +1,6 @@
-<article id="content-wrapper" class="content-wrapper admin-wrapper" >
-	<section id="content-main" class="content-main admin-main clearfix" ng-cloak>
-
-		<h1 class="content-heading">Admin</h1>
-
-		<div ng-if="dash.isAuthenticated() && dash.showAdmin">
-
-			<section ng-if="dash.users" class="userList content-section">
-				<h2>
-					<i class="fa fa-users"></i> Users
-				</h2>
-
-				<p class="lead">View all users and their currently linked authentication accounts.</p>
-
-				<ul class="userList-list">
-					<li ng-repeat="user in dash.users | orderBy:'displayName'" class="userList-item user clearfix">
-						<img class="user-picture img-thumbnail" height="150px" ng-src="{{user.picture ? user.picture : '/img/user-placeholder.png'}}"/>
-						<span class="user-displayName">{{::user.displayName}}</span>
-						<i ng-if="user.isAdmin" class="fa fa-wrench" title="Admin"></i>
-						<i class="user-logins fa fa-{{::login}}" ng-repeat="login in user.linkedAccounts"></i>
-					</li>
-				</ul>
-			</section>
-		</div>
-
-		<div ng-if="dash.showAdmin === false" class="alert alert-danger">
-			<i class="fa fa-warning"></i> You are not authorized to view this page.
-		</div>
-
-	</section>
-</article>
+<div id="content" ng-controller="UserCtrl as uctrl">
+<div class="container">
+	<div ng-repeat="user in uctrl.users" ng-class="{deleted: user.deleted}">
+		{{user.username}}
+</div>
+</div>
