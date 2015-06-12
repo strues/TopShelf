@@ -24,12 +24,7 @@ gulp.task('images', function () {
     .pipe(plg.changed(config.buildC + 'assets/img/'))
     .pipe(plg.cache(plg.imagemin({
       optimizationLevel: 6,
-      progressive: true,
-      svgoPlugins: [{
-        removeViewBox: false
-      }],
-      use: [pngquant()]
-    })))
+      progressive: true})))
     .pipe(gulp.dest(config.buildC + 'assets/img/'));
 });
 

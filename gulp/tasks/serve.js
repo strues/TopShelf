@@ -42,7 +42,7 @@ browserSync.use(bsyncSPA({
   selector: '[ng-app]'// Only needed for angular apps
 }));
 
-gulp.task('serve', ['runapp'], function() {
+gulp.task('serve', ['sass', 'runapp'], function() {
 
   browserSync.init({
     proxy: {
@@ -57,7 +57,7 @@ gulp.task('serve', ['runapp'], function() {
     files: [
       config.client + '**/*',
       config.temp + '**/*.css',
-      '!' + config.sass
+      config.sass
     ],
     open: false,
     ui: false,

@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row">
-    <carousel current-index="selected" data-interval="4000" data-pause="false">
+    <carousel data-interval="4000" data-pause="false">
       <slide ng-repeat="article in home.articles | limitTo: 3" active="article.active">
         <img ng-src="{{article.image}}" alt="" />
         <div class="caption">
-          <h3><a ui-sref="guild.home.article({id:article._id})">{{::article.title | limitTo: 31}}</a></h3>
+          <h3><a ui-sref="home.article({id:article._id})">{{::article.title | limitTo: 31}}</a></h3>
           <p>Author: {{::article.author.username}}</p>
         </div>
       </slide>
@@ -17,7 +17,7 @@
         <div class="container">
           <div class="row text-center">
             <div class="col-sm-12 col-md-4 block-area-col">
-              <a ui-sref="guild.videos"><i class="fa fa-play-circle fa-5x"></i>
+              <a ui-sref="videos"><i class="fa fa-play-circle fa-5x"></i>
             <h1 class="text-center">Kill Videos</h1></a>
             </div>
             <div class="col-sm-12 col-md-4 block-area-col">
@@ -77,7 +77,7 @@
               <div class="home-page-ab-img">
                 <img ng-src="{{article.image}}" alt="" />
               </div>
-              <div class="home-page-ab-header">
+              <div class="home-page-ab-header"><button class="btn btn-secondary" ng-click="home.readArticle(id)"></button>
                 <h3><a ui-sref="guild.home.article({id:article._id})">{{::article.title | limitTo: 61}}</a></h3>
                 <p>{{::article.description | limitTo: 140}}</p>
               </div>
@@ -98,4 +98,3 @@
     </div>
   </div>
 </div>
-<the-footer></the-footer>

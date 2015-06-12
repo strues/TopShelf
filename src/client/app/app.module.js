@@ -8,7 +8,7 @@
    * Main module for the application
    *
    * @requires
-   * app.core, app.common, app.account, app.guild, app.admin
+   * app.core, app.components, app.account, app.guild, app.admin
    */
   angular
     .module('app', [

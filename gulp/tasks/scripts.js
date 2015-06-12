@@ -27,6 +27,7 @@ gulp.task('scripts:build', function() {
       .pipe(plg.stripDebug())
       .pipe(header())
       .pipe(plg.concat('app.js'))
+      .pipe(plg.uglify({mangle: false}))
       .pipe(plg.sourcemaps.write('./'))
       .pipe(gulp.dest(config.buildC + 'js/'));
 });
