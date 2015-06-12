@@ -4,107 +4,112 @@
     <title ng-bind="$root.pageTitle"></title>
     <base href="/">
     <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no'>
-    <!-- inject:head:js -->
+    <!--build:css css/style.css -->
+    <!-- inject:bower:css -->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="/bower_components/textAngular/dist/textAngular.css">
     <!-- endinject -->
-    <!-- inject:html -->
-    <!-- endinject -->
-    <!-- bower:css -->
-    <link rel='stylesheet' href='../../bower_components/font-awesome/css/font-awesome.css' />
-    <link rel='stylesheet' href='../../bower_components/textAngular/dist/textAngular.css' />
-    <link rel='stylesheet' href='../../bower_components/angular-toastr/dist/angular-toastr.css' />
-    <!-- endbower -->
-    <!-- inject:css -->
+
     <link rel="stylesheet" href=".tmp/style.css">
-    <!-- endinject -->
-    <link href='https://fonts.googleapis.com/css?family=Oswald|Open+Sans:400|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+        <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald|Lato:300,400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <!-- Container -->
-
-    <div>
-         <div ng-include="'app/core/layout/shell.html'"></div>
-     </div>
+    <header>
+      <navbar></navbar> <!-- navigation directive -->
+    </header>
+    <section>
+      <!-- Main State Content Loads Here -->
+    <div ui-view></div>
+    <!-- End Main State Content Loads Here -->
+    </section>
+    <footer class="main-footer">
+       <!-- footer directive -->
+    </footer>
      <script src="socket.io/socket.io.js"></script>
      <script src="https://www.youtube.com/iframe_api"></script>
-    <!-- bower:js -->
-    <script src="../../bower_components/es5-shim/es5-shim.js"></script>
-    <script src="../../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../../bower_components/angular/angular.js"></script>
-    <script src="../../bower_components/angular-animate/angular-animate.js"></script>
-    <script src="../../bower_components/angular-messages/angular-messages.js"></script>
-    <script src="../../bower_components/angular-resource/angular-resource.js"></script>
-    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="../../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-    <script src="../../bower_components/rangy/rangy-core.js"></script>
-    <script src="../../bower_components/rangy/rangy-classapplier.js"></script>
-    <script src="../../bower_components/rangy/rangy-highlighter.js"></script>
-    <script src="../../bower_components/rangy/rangy-selectionsaverestore.js"></script>
-    <script src="../../bower_components/rangy/rangy-serializer.js"></script>
-    <script src="../../bower_components/rangy/rangy-textrange.js"></script>
-    <script src="../../bower_components/textAngular/dist/textAngular.js"></script>
-    <script src="../../bower_components/textAngular/dist/textAngular-sanitize.js"></script>
-    <script src="../../bower_components/textAngular/dist/textAngularSetup.js"></script>
-    <script src="../../bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
-    <script src="../../bower_components/angular-file-upload/angular-file-upload.js"></script>
-    <script src="../../bower_components/ngstorage/ngStorage.js"></script>
-    <script src="../../bower_components/angular-socket-io/socket.js"></script>
-    <script src="../../bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
-    <!-- endbower -->
-    <!-- inject:js -->
-    <script src="src/client/app/app.module.js"></script>
-    <script src="src/client/app/account/account.module.js"></script>
-    <script src="src/client/app/admin/admin.module.js"></script>
-    <script src="src/client/app/common/common.module.js"></script>
-    <script src="src/client/app/guild/guild.module.js"></script>
-    <script src="src/client/app/core/core.module.js"></script>
-    <script src="src/client/app/core/core.config.js"></script>
-    <script src="src/client/app/admin/sidebar.controller.js"></script>
-    <script src="src/client/app/common/className.filter.js"></script>
-    <script src="src/client/app/common/guildRank.filter.js"></script>
-    <script src="src/client/app/common/trustAsHtml.filter.js"></script>
-    <script src="src/client/app/account/login/login.controller.js"></script>
-    <script src="src/client/app/account/services/account.service.js"></script>
-    <script src="src/client/app/account/services/auth.service.js"></script>
-    <script src="src/client/app/account/services/user.service.js"></script>
-    <script src="src/client/app/account/profile/profile.controller.js"></script>
-    <script src="src/client/app/account/signup/signup.controller.js"></script>
-    <script src="src/client/app/admin/dashboard/dashboard.controller.js"></script>
-    <script src="src/client/app/admin/media/adminMedia.controller.js"></script>
-    <script src="src/client/app/admin/news/news.listing.controller.js"></script>
-    <script src="src/client/app/admin/recruit/recruitment.controller.js"></script>
-    <script src="src/client/app/admin/recruit/recruitmentList.controller.js"></script>
-    <script src="src/client/app/admin/users/user.controller.js"></script>
-    <script src="src/client/app/common/directives/mongooseError.directive.js"></script>
-    <script src="src/client/app/common/directives/passwordMatch.directive.js"></script>
-    <script src="src/client/app/common/services/armory.service.js"></script>
-    <script src="src/client/app/common/services/article.service.js"></script>
-    <script src="src/client/app/common/services/authInterceptor.service.js"></script>
-    <script src="src/client/app/common/services/classDef.service.js"></script>
-    <script src="src/client/app/common/services/classSpec.service.js"></script>
-    <script src="src/client/app/common/services/recruit.service.js"></script>
-    <script src="src/client/app/common/services/socket.service.js"></script>
-    <script src="src/client/app/guild/home/home.controller.js"></script>
-    <script src="src/client/app/guild/info/info.controller.js"></script>
-    <script src="src/client/app/guild/roster/roster.controller.js"></script>
-    <script src="src/client/app/guild/videos/video.controller.js"></script>
-    <script src="src/client/app/core/layout/footer.controller.js"></script>
-    <script src="src/client/app/core/layout/footer.directive.js"></script>
-    <script src="src/client/app/core/layout/navbar.controller.js"></script>
-    <script src="src/client/app/core/layout/navbar.directive.js"></script>
-    <script src="src/client/app/core/layout/shell.controller.js"></script>
-    <script src="src/client/app/account/password/forgot/forgot.controller.js"></script>
-    <script src="src/client/app/account/password/reset/reset.controller.js"></script>
-    <script src="src/client/app/admin/news/article/edit-article.controller.js"></script>
-    <script src="src/client/app/admin/news/create/news.create.controller.js"></script>
-    <script src="src/client/app/guild/components/widgets/progression-widget.controller.js"></script>
-    <script src="src/client/app/guild/components/widgets/progression-widget.directive.js"></script>
-    <script src="src/client/app/guild/components/widgets/recruit-widget-controller.js"></script>
-    <script src="src/client/app/guild/components/widgets/recruit-widget.directive.js"></script>
-    <script src="src/client/app/guild/news/view/newsView.controller.js"></script>
+     <!-- build:js js/lib.js -->
+    <!-- inject:bower:js -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/rangy/rangy-core.js"></script>
+    <script src="/bower_components/rangy/rangy-classapplier.js"></script>
+    <script src="/bower_components/rangy/rangy-highlighter.js"></script>
+    <script src="/bower_components/rangy/rangy-selectionsaverestore.js"></script>
+    <script src="/bower_components/rangy/rangy-serializer.js"></script>
+    <script src="/bower_components/rangy/rangy-textrange.js"></script>
+    <script src="/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="/bower_components/es5-shim/es5-shim.js"></script>
+    <script src="/bower_components/ngstorage/ngStorage.js"></script>
+    <script src="/bower_components/angular-socket-io/socket.js"></script>
+    <script src="/bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
+    <script src="/bower_components/textAngular/dist/textAngular.js"></script>
+    <script src="/bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+    <script src="/bower_components/textAngular/dist/textAngularSetup.js"></script>
+    <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
     <!-- endinject -->
-    <!-- inject:partials:js -->
-    <script src="/.tmp/templates.js"></script>
-    <!-- endinject -->
+    <!-- endbuild -->
+
+    <!-- build:js js/app.js -->
+     <!-- inject:js -->
+  <script src="/src/client/app/app.module.js"></script>
+  <script src="/src/client/app/account/account.module.js"></script>
+  <script src="/src/client/app/components/components.module.js"></script>
+  <script src="/src/client/app/admin/admin.module.js"></script>
+  <script src="/src/client/app/core/core.module.js"></script>
+  <script src="/src/client/app/guild/guild.module.js"></script>
+  <script src="/src/client/app/admin/sidebar.controller.js"></script>
+  <script src="/src/client/app/core/core.config.js"></script>
+  <script src="/src/client/app/account/login/login.controller.js"></script>
+  <script src="/src/client/app/account/profile/profile.controller.js"></script>
+  <script src="/src/client/app/account/signup/signup.controller.js"></script>
+  <script src="/src/client/app/admin/dashboard/dashboard.controller.js"></script>
+  <script src="/src/client/app/admin/media/adminMedia.controller.js"></script>
+  <script src="/src/client/app/admin/news/news.listing.controller.js"></script>
+  <script src="/src/client/app/admin/recruit/recruitment.controller.js"></script>
+  <script src="/src/client/app/admin/recruit/recruitmentList.controller.js"></script>
+  <script src="/src/client/app/admin/users/user.controller.js"></script>
+  <script src="/src/client/app/core/authenication/auth.service.js"></script>
+  <script src="/src/client/app/core/authenication/interceptor.service.js"></script>
+  <script src="/src/client/app/core/authenication/user.service.js"></script>
+  <script src="/src/client/app/core/services/armory.service.js"></script>
+  <script src="/src/client/app/core/services/article.service.js"></script>
+  <script src="/src/client/app/core/services/classDef.service.js"></script>
+  <script src="/src/client/app/core/services/classSpec.service.js"></script>
+  <script src="/src/client/app/core/services/recruit.service.js"></script>
+  <script src="/src/client/app/core/layout/footer.controller.js"></script>
+  <script src="/src/client/app/core/layout/footer.directive.js"></script>
+  <script src="/src/client/app/core/layout/navbar.controller.js"></script>
+  <script src="/src/client/app/core/layout/navbar.directive.js"></script>
+  <script src="/src/client/app/core/util/socket.service.js"></script>
+  <script src="/src/client/app/core/util/trustAsHtml.filter.js"></script>
+  <script src="/src/client/app/guild/home/home.controller.js"></script>
+  <script src="/src/client/app/guild/info/info.controller.js"></script>
+  <script src="/src/client/app/guild/roster/className.filter.js"></script>
+  <script src="/src/client/app/guild/roster/guildRank.filter.js"></script>
+  <script src="/src/client/app/guild/roster/roster.controller.js"></script>
+  <script src="/src/client/app/guild/videos/video.controller.js"></script>
+  <script src="/src/client/app/account/password/forgot/forgot.controller.js"></script>
+  <script src="/src/client/app/account/password/reset/reset.controller.js"></script>
+  <script src="/src/client/app/components/widgets/progression/progression-widget.controller.js"></script>
+  <script src="/src/client/app/components/widgets/progression/progression-widget.directive.js"></script>
+  <script src="/src/client/app/components/widgets/recruit/recruit-widget-controller.js"></script>
+  <script src="/src/client/app/components/widgets/recruit/recruit-widget.directive.js"></script>
+  <script src="/src/client/app/admin/news/article/edit-article.controller.js"></script>
+  <script src="/src/client/app/admin/news/create/news.create.controller.js"></script>
+  <script src="/src/client/app/core/authenication/directives/mongooseError.directive.js"></script>
+  <script src="/src/client/app/core/authenication/directives/passwordMatch.directive.js"></script>
+  <script src="/src/client/app/guild/news/view/newsView.controller.js"></script>
+  <script src="/.tmp/templates.js"></script>
+  <!-- endinject -->
+  <!-- inject:partials:js -->
+  <script src="/.tmp/templates.js"></script>
+  <!-- endinject -->
+  <!-- endbuild -->
   </body>
 </html>

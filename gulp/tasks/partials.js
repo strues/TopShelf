@@ -7,14 +7,13 @@
   */
 
 
-var gulp         = require('gulp'),
-    browserSync  = require('browser-sync'),
-    config       = require('../config')(),
-    plg          = require('gulp-load-plugins')({
-                            pattern: ['gulp-*', 'gulp.*'],
-                            replaceString: /^gulp(-|\.)/,
-                            camelize: true,
-                            lazy: true});
+var gulp    = require('gulp'),
+    config  = require('../config')(),
+    plg     = require('gulp-load-plugins')({
+                pattern: ['gulp-*', 'gulp.*'],
+                replaceString: /^gulp(-|\.)/,
+                camelize: true,
+                lazy: true});
 
 gulp.task('partials', function() {
   return gulp
@@ -28,8 +27,25 @@ gulp.task('partials', function() {
             config.templateCache.file,
             config.templateCache.options
         ))
-      .pipe(plg.uglify())
+      .pipe(plg.concat('templates.js'))
       .pipe(gulp.dest(config.temp))
-      .pipe(browserSync.reload({stream: true}))
-      .pipe(plg.size({showFiles: true}));
+      .pipe(plg.uglify())
+      .pipe(gulp.dest(config.buildC))
+      .pipe(plg.size({title: 'templates'}));
 });
+
+gulp.task('html:build', function() {
+  var assets = plg.useref.assets();
+
+  return gulp.src(config.index)
+    .pipe(assets)
+    .pipe(assets.restore())
+    .pipe(plg.useref())
+    .pipe(plg.minifyHtml({
+          empty: true,
+          spare: true,
+          quotes: true,
+          collapse: true
+     }))
+    .pipe(gulp.dest(config.buildC));
+  });

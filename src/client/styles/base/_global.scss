@@ -9,7 +9,11 @@ html {
 
 body {
   overflow-x: hidden;
-  background: #2c3338;
+  background: #fff;
+}
+
+nav {
+  margin-bottom: 30px;
 }
 
 main {
@@ -17,18 +21,23 @@ main {
 }
 
 footer {
-  background-color: $flat_white;
+  background-color: $flat_dark_blue;
+  color: $flat_white;
+
+  li a {
+    color: $flat_dark_white;
+  }
 }
 
 .blue-area {
   background-color: $flat_dark_blue;
 }
 
-$transition-default: all 0.2s ease-in-out;
 .line {
   margin: 20px 0;
   border-bottom: 1px solid #fff;
 }
+
 .ap-menu ul li,
 .article-header ul li,
 .article-manage-item ul li,
@@ -39,23 +48,29 @@ $transition-default: all 0.2s ease-in-out;
 .text-wrap ul li {
   list-style-type: none;
 }
+
 .cf {
   zoom: 1;
 }
+
 .cf:after,
 .cf:before {
   display: table;
   content: '';
 }
+
 .cf:after {
   clear: both;
 }
+
 .block-type-btn {
   margin-top: 30px;
 }
+
 .block-type-btn ul {
   padding: 0;
 }
+
 .block-type-btn ul li {
   font-size: 2em;
   float: left;
@@ -67,6 +82,7 @@ $transition-default: all 0.2s ease-in-out;
   transition: color 0.3s;
   color: #9e9e9e;
 }
+
 .block-type-btn ul li:hover {
   cursor: pointer;
   color: #717171;

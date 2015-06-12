@@ -14,11 +14,13 @@ var gulp = require('gulp'),
 gulp.task('build', function(callback) {
   rs(
     'clean',
-    'sass',
-    'inject',
-    'images',
     'partials',
+    'bower:build',
+    'scripts:build',
+    'sass:build',
+    //'html:build',
     'optimize',
+    'images',
     'fonts',
     callback);
 });

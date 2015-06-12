@@ -7,7 +7,7 @@
    * Module for admin things
    */
   angular
-    .module('app.admin', [])
+    .module('app.admin', ['app.core', 'app.components'])
     .config(configure);
 
   configure.$inject = ['$stateProvider'];
@@ -19,13 +19,13 @@
         url: '/admin',
         authorize: 'admin',
         views: {
-          'main@': {
+          '': {
             templateUrl: 'app/admin/admin.html',
             controller: 'AdminDashboardCtrl',
             controllerAs: 'vm'
           },
           'workspace': {
-            template: '<div ui-view="workspace"></div>',
+            template: '<ui-view="workspace" />',
             controller: 'AdminDashboardCtrl'
           }
         }

@@ -8,17 +8,17 @@
 'use strict';
 
 var gulp        = require('gulp'),
-    config      = require('../config')(),
-    error       = require('../util/error'),
-    del         = require('del'),
-    plg         = require('gulp-load-plugins')({lazy: true});
+      config      = require('../config')(),
+      error         = require('../util/error'),
+      del             = require('del'),
+      plg             = require('gulp-load-plugins')({lazy: true});
 
 /**
  * Remove all files from the build, temp, and reports folders
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean', function(done) {
-  var delconfig = [].concat(config.build, config.temp, config.report);
+  var delconfig = [].concat(config.build, config.temp, config.docu);
   del(delconfig, done);
 });
 
@@ -27,7 +27,7 @@ gulp.task('clean', function(done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-fonts', function(done) {
-  clean(config.build + 'font/**/*.*', done);
+  clean(config.build + 'assets/fonts/**/*.*', done);
 });
 
 /**
@@ -35,7 +35,7 @@ gulp.task('clean-fonts', function(done) {
  * @param  {Function} done - callback when complete
  */
 gulp.task('clean-images', function(done) {
-  clean(config.build + 'img/**/*.*', done);
+  clean(config.build + 'assets/img/**/*.*', done);
 });
 
 /**

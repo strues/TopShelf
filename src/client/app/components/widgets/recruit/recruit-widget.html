@@ -1,0 +1,9 @@
+<div class="recruitment-widget">
+  <ul class="collection with-header list-unstyled" ng-repeat="recruitment in rwidget.recruitments">
+    <li class="collection-item">
+      <img ng-src="/assets/img/icons/class/{{recruitment.classType}}.png" style="padding-left: 10px;" height="32px" alt="icon for {{recruitment.classType}}">
+      <span style="padding-left: 10px;">{{ recruitment.classSpec }}</span>
+      <strong>{{ recruitment.priority }}</strong>
+    </li>
+  </ul>
+</div>

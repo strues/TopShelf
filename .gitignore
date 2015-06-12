@@ -10,10 +10,11 @@ bower_components/
 .idea
 server.key
 server.crt
+build/
 src/server/config/environment/index.js
+src/server/config/environment/production.js
 src/client/styles/lib/
 doc/
-src/client/img/
-src/client/fonts/
-src/client/**/*.jpg
+src/client/assets/
 Notes.md
+

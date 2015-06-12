@@ -13,7 +13,7 @@
   angular
     .module('app', [
       'app.core',
-      'app.common',
+      'app.components',
 
       'app.account',
       'app.guild',

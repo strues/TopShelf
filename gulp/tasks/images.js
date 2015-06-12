@@ -7,17 +7,21 @@
 
 'use strict';
 
-var gulp         = require('gulp'),
-    config       = require('../config')(),
-    error        = require('../util/error'),
+var gulp        = require('gulp'),
+    config      = require('../config')(),
+    error       = require('../util/error'),
     minifyCSS   = require('gulp-minify-css'),
-    pngquant     = require('imagemin-pngquant'),
-    spritesmith  = require('gulp.spritesmith'),
-    plg          = require('gulp-load-plugins')({lazy: true});
+    pngquant    = require('imagemin-pngquant'),
+    spritesmith = require('gulp.spritesmith'),
+        plg     = require('gulp-load-plugins')({
+                    pattern: ['gulp-*', 'gulp.*'],
+                    replaceString: /^gulp(-|\.)/,
+                    camelize: true,
+                    lazy: true});
 
 gulp.task('images', function () {
   return gulp.src(config.images)
-    .pipe(plg.plumber({errorHandler: error}))
+    .pipe(plg.changed(config.buildC + 'assets/img/'))
     .pipe(plg.cache(plg.imagemin({
       optimizationLevel: 6,
       progressive: true,
@@ -26,7 +30,7 @@ gulp.task('images', function () {
       }],
       use: [pngquant()]
     })))
-    .pipe(gulp.dest(config.build + 'img/'));
+    .pipe(gulp.dest(config.buildC + 'assets/img/'));
 });
 
 gulp.task('images:sprite', function () {
@@ -40,7 +44,7 @@ gulp.task('images:sprite', function () {
   // Pipe image stream through image optimizer and onto disk
   spriteData.img
     .pipe(plg.imagemin())
-    .pipe(gulp.dest(config.build + 'img/'));
+    .pipe(gulp.dest(config.buildC + 'assets/img/'));
 
   // Pipe CSS stream through CSS optimizer and onto disk
   spriteData.css

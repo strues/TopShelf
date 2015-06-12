@@ -23,5 +23,4 @@ gulp.task('watch', ['serve'], function() {
   gulp.watch(config.ngApp, ['lint']);
   gulp.watch(config.index, ['inject']);
   gulp.watch(config.html, ['partials']);
-
 });

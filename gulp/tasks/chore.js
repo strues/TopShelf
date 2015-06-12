@@ -8,13 +8,13 @@
 
  'use strict';
 
-var gulp         = require('gulp'),
-     config      = require('../config')(),
-     fs          = require('fs'),
-     rs          = require('run-sequence'),
-     error       = require('../util/error'),
-     del         = require('del'),
-     plg         = require('gulp-load-plugins')({lazy: true});
+var gulp = require('gulp'),
+    config = require('../config')(),
+    fs     = require('fs'),
+    rs     = require('run-sequence'),
+    error  = require('../util/error'),
+    del    = require('del'),
+    plg    = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('chore', function(callback) {
   rs(

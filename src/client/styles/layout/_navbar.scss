@@ -3,25 +3,52 @@
   margin-top: -15px;
   height: 50px;
 }
-.navbar-default .navbar-brand {
-  font-size: 36px;
-  letter-spacing: 2.5px;
-  color: $flat_blue;
+
+.navbar-header {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
+
+.navbar-default .navbar-brand {
+padding-right: 0px;
+}
+
 .navbar {
   height: 70px;
   background-color: #2c3338;
   padding-bottom: 0;
 }
+
+.brand-image {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+.navbar-brand {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
 .navbar-nav >li {
   margin-left: 35px;
 }
+
 .nav-link {
   border-top: 2px solid rgba(255, 255, 255, .01);
-  transition: 0.3s;
   &:hover {
     border-top: 2px solid $flat_dark_black;
   }
+}
+
+.navbar-collapse  .dropdown-menu {
+  color: $flat_dark_white;
+  background-color: $flat_dark_blue;
+}
+.navbar-collapse  .dropdown-menu > li > a {
+  color: $flat_white;
+  text-align: right;
 }
 .navbar-default .navbar-nav > li > a {
   color: $flat_blue;
@@ -30,7 +57,6 @@
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
-  transition: $transition-default;
   &:hover {
     background-color: rgba(255, 255, 255, .9);
     color: $flat_dark_blue;
@@ -39,6 +65,7 @@
 .navbar-nav .dropdown-menu > li > a {
   color: $flat_dark_white;
 }
+
 .navbar-default .navbar-nav .dropdown-menu > li:hover > a,
 .navbar-default .navbar-nav .dropdown-menu > li:focus > a,
 .navbar-default .navbar-nav .dropdown-menu > li.active > a {
@@ -48,5 +75,36 @@
   border-radius: 0 0 3px 3px;
 }
 .navbar-default .navbar-nav .dropdown-menu > li.divider {
-  background-color: transparent;
+  background-color: $flat_dark_black;
+}
+.navbar-toggle {
+  border: none;
+  background: transparent !important;
+}
+.navbar-toggle:hover {
+  background: transparent !important;
+}
+.navbar-toggle .icon-bar {
+  width: 22px;
+  transition: all 0.2s;
+}
+.navbar-toggle .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+.navbar-toggle .middle-bar {
+  opacity: 0;
+}
+.navbar-toggle .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+.navbar-toggle.collapsed .top-bar {
+  transform: rotate(0);
+}
+.navbar-toggle.collapsed .middle-bar {
+  opacity: 1;
+}
+.navbar-toggle.collapsed .bottom-bar {
+  transform: rotate(0);
 }

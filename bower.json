@@ -20,7 +20,6 @@
     "angular-resource": "1.4.1-build.4042+sha.071be60",
     "angular-ui-router": "~0.2.15",
     "angular-bootstrap": "~0.13.0",
-    "bootstrap-sass": "~3.3.4",
     "font-awesome": "~4.3.0",
     "textAngular": "~1.4.1",
     "angular-toastr": "~1.4.1",

@@ -8,103 +8,64 @@
    * Module for the guild portions of the application
    */
   angular
-    .module('app.guild', [])
+    .module('app.guild', ['app.core', 'app.components'])
     .config(configure);
 
   configure.$inject = ['$stateProvider'];
 
-  function configure($stateProvider)
-  {
+  function configure($stateProvider) {
     $stateProvider
-      .state('guild',
-      {
+      .state('guild', {
         abstract: true,
         url: '',
-        templateUrl: 'app/core/layout/shell.html>'
+        template:'<ui-view />'
       })
-      .state('guild.home',
-      {
+      .state('guild.home', {
         url: '/',
         title: 'Top Shelf - Sargeras US Mythic Raiding',
-        views:
-        {
-          'main@':
-          {
-            templateUrl: 'app/guild/home/home.html',
-            controller: 'HomeCtrl',
-            controllerAs: 'home',
-            resolve:
-            { /* @ngInject */
-              articles: function(articleSvc)
-              {
-                return articleSvc.all();
-              }
-            }
+        templateUrl: 'app/guild/home/home.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'home',
+        resolve: { /* @ngInject */
+          articles: function(articleSvc) {
+            return articleSvc.all();
           }
         }
-
       })
-      .state('guild.home.article',
-      {
+      .state('guild.home.article', {
         url: 'news/:id',
-        views:
-        {
-          'main@':
-          {
-            templateUrl: 'app/guild/news/view/news.view.html',
-            controller: 'NewsViewCtrl',
-            controllerAs: 'vm',
-            resolve:
-            { /* @ngInject */
-              article: function($stateParams, articleSvc)
-              {
-                return articleSvc.get($stateParams.id);
-              }
-            }
+        templateUrl: 'app/guild/news/view/news.view.html',
+        controller: 'NewsViewCtrl',
+        controllerAs: 'vm',
+        resolve: { /* @ngInject */
+          article: function($stateParams, articleSvc) {
+            return articleSvc.get($stateParams.id);
           }
         }
       })
-      .state('guild.info',
-      {
+      .state('guild.info', {
         url: '/info',
         title: 'About Us - Top Shelf',
-        views:
-        {
-          'main@':
-          {
-            templateUrl: 'app/guild/info/info.html',
-            controller: 'InfoCtrl as info'
-          }
-        }
+        templateUrl: 'app/guild/info/info.html',
+        controller: 'InfoCtrl',
+        controllerAs: 'info'
       })
-      .state('guild.videos',
-      {
+      .state('guild.videos', {
         url: '/videos',
         title: 'Boss Kill Videos - Top Shelf',
-        views:
-        {
-          'main@':
-          {
-            templateUrl: 'app/guild/videos/video-list.html',
-            controller: 'VideoCtrl as vid'
-          }
-        }
+        templateUrl: 'app/guild/videos/video-list.html',
+        controller: 'VideoCtrl',
+        controllerAs: 'vid'
       })
-      .state('guild.roster',
-      {
+      .state('guild.roster', {
         url: '/roster',
         title: 'Active Raid Roster - Top Shelf',
-        views:
-        {
-          'main@':
-          {
-            templateUrl: 'app/guild/roster/roster.html',
-            controller: 'RosterCtrl as roster',
-            resolve: { /*@ngInject*/
-              members: function(armorySvc) {
-                return armorySvc.getMembers();
-              }
-            }
+        templateUrl: 'app/guild/roster/roster.html',
+        controller: 'RosterCtrl',
+        controllerAs: 'roster',
+        resolve: { /*@ngInject*/
+          members: function(armorySvc) {
+            return armorySvc.getMembers();
           }
         }
       });

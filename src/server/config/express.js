@@ -13,8 +13,6 @@ var express = require('express'),
     errorHandler   = require('errorhandler'),
     passport       = require('passport'),
     path           = require('path'),
-    csrf           = require('csurf'),
-    helmet         = require('helmet'),
     cors           = require('cors'),
     logger         = require('./logger'),
     config         = require('./environment'),
@@ -41,7 +39,7 @@ module.exports = function (app) {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
-  app.use(cors({credentials: true, origin: true}));
+  app.use(cors());
   // parse application/json
 
   app.use(methodOverride());
@@ -60,24 +58,11 @@ module.exports = function (app) {
   }));
 
   // Security Settings
-  app.disable('x-powered-by');          // Don't advertise our server type
-  app.use(csrf());                      // Prevent Cross-Site Request Forgery
-  app.use(helmet.ienoopen());           // X-Download-Options for IE8+
-  app.use(helmet.nosniff());            // Sets X-Content-Type-Options to nosniff
-  app.use(helmet.xssFilter());          // sets the X-XSS-Protection header
-  app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
+  app.disable('x-powered-by');
 
   // Passport OAUTH Middleware
   app.use(passport.initialize());
   app.use(passport.session());
-
-  // Keep user, csrf token and config available
-  app.use(function (req, res, next) {
-    res.locals.user = req.user;
-    res.locals.config = config;
-    res.locals._csrf = req.csrfToken();
-    next();
-  });
 
   // time in milliseconds...
   var minute = 1000 * 60;   //     60000
@@ -87,13 +72,6 @@ module.exports = function (app) {
 
   if ('production' === env) {
     app.use(compression());
-    app.enable('trust proxy', 1);
-    var ninetyDaysInMilliseconds = 7776000000;
-    app.use(helmet.hsts({maxAge: ninetyDaysInMilliseconds}));
-    app.set('etag', true);
-    // Turn on HTTPS/SSL cookies
-    config.session.proxy = true;
-    config.session.cookie.secure = true;
     app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
     app.use(express.static(app.get('appPath'), {maxAge: week}));
   }
@@ -103,12 +81,5 @@ module.exports = function (app) {
     app.use(express.static('./'));
     app.use(express.static('./tmp'));
     app.use(errorHandler()); // Error handler - has to be last
-  }
-  // Production 500 error handler (no stacktraces leaked to public!)
-  if (app.get('env') === 'production') {
-    app.use(function (err, req, res, next) {
-      res.status(err.status || 500);
-      debug('Error: ' + (err.status || 500).toString().red.bold + ' ' + err);
-    });
   }
 };

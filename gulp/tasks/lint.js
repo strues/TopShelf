@@ -6,29 +6,27 @@
  */
 'use strict';
 
-var gulp         = require('gulp'),
-    config       = require('../config')(),
-    plg          = require('gulp-load-plugins')({
-                            pattern: ['gulp-*', 'gulp.*'],
-                            replaceString: /^gulp(-|\.)/,
-                            camelize: true,
-                            lazy: true});
-
-var scssLintStylish = require('gulp-scss-lint-stylish');
+var gulp    = require('gulp'),
+    config  = require('../config')(),
+    plg     = require('gulp-load-plugins')({
+                pattern: ['gulp-*', 'gulp.*'],
+                replaceString: /^gulp(-|\.)/,
+                camelize: true,
+                lazy: true});
 
 gulp.task('lint', function() {
   return gulp
       .src(config.js)
-      .pipe(plg.jshint())
-      .pipe(plg.jshint.reporter('jshint-stylish', {
-        verbose: true
-      }));
+        .pipe(plg.jshint())
+        .pipe(plg.jshint.reporter('jshint-stylish', {
+          verbose: true
+        }));
 });
 
 gulp.task('jscs', function() {
   return gulp
         .src(config.js)
-        .pipe(plg.jscs());
+          .pipe(plg.jscs());
 });
 
 gulp.task('eslint', function() {
@@ -43,7 +41,7 @@ gulp.task('scsslint', function() {
           .src(config.sass)
           .pipe(plg.scssLint({
             config: config.root + '.scss-lint.yml',
-            reporterOutput: config.root + 'doc/' + 'scssReport.json',
-            customReport: scssLintStylish
+            reporterOutput: config.docu + 'scss/' + 'scssReport.json',
+            customReport: plg.scssLintStylish
           }));
 });

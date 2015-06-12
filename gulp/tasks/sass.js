@@ -7,13 +7,13 @@
 
 var gulp         = require('gulp'),
     browserSync  = require('browser-sync'),
-    plg          = require('gulp-load-plugins')({
-                            pattern: ['gulp-*', 'gulp.*'],
-                            replaceString: /^gulp(-|\.)/,
-                            camelize: true,
-                            lazy: true}),
     config       = require('../config')(),
-    handleErrors = require('../util/error');
+    handleErrors = require('../util/error'),
+    plg          = require('gulp-load-plugins')({
+                      pattern: ['gulp-*', 'gulp.*'],
+                      replaceString: /^gulp(-|\.)/,
+                      camelize: true,
+                      lazy: true});
 
 /**
  * Compile Sass to css
@@ -22,23 +22,36 @@ var gulp         = require('gulp'),
 gulp.task('sass', function() {
   return gulp
       .src(config.sass)
+      .pipe(plg.changed(config.temp))
       .pipe(plg.sassBulkImport())
-      .pipe(plg.if(process.env.ENVIRONMENT_TYPE === 'development',
-        plg.sourcemaps.init()))
-      .pipe(plg.changed('sass', {
-          extension: '.scss'
-        }))
-      .pipe(plg.sass({
-        sourceMap: 'sass',
-        outputStyle: 'expanded'
-      }))
+      .pipe(plg.if(process.env.ENVIRONMENT_TYPE === 'development', plg.sourcemaps.init()))
+      .pipe(plg.sass())
       .on('error', handleErrors)
-      .pipe(plg.if(process.env.ENVIRONMENT_TYPE === 'development',
-        plg.sourcemaps.write('./')))
+      .pipe(plg.if(process.env.ENVIRONMENT_TYPE === 'development', plg.sourcemaps.write('./')))
       .pipe(plg.postcss([
-        require('autoprefixer-core')({browsers: ['last 2 version']})
+        require('autoprefixer-core')({browsers: ['last 1 version']})
         ]))
       .pipe(gulp.dest(config.temp))
-      .pipe(browserSync.reload({stream: true}))
-      .pipe(plg.size({showFiles: true}));
+      .pipe(browserSync.reload({stream: true}));
+});
+
+gulp.task('sass:build', function() {
+  return gulp
+      .src(config.sass)
+      .pipe(plg.changed(config.buildC + 'css/'))
+      .pipe(plg.sassBulkImport())
+      .pipe(plg.sass())
+      .on('error', handleErrors)
+      .pipe(plg.postcss([require('autoprefixer-core')({
+        browsers: ['last 1 version']})
+      ]))
+      .pipe(plg.csso())
+      .pipe(gulp.dest(config.buildC + 'css/'))
+      .pipe(plg.size())
+      .pipe(plg.notify({
+        onLast: true,
+        message: function() {
+          return 'Total CSS size ' + plg.size().prettySize;
+        }
+      }));
 });
