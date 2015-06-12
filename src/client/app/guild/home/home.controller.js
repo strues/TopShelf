@@ -5,9 +5,9 @@
     .module('app.guild')
     .controller('HomeCtrl', HomeCtrl);
 
-  HomeCtrl.$inject = ['articleSvc'];
+  HomeCtrl.$inject = ['articleSvc', '$state'];
 
-  function HomeCtrl(articleSvc) {
+  function HomeCtrl(articleSvc, $state) {
 
     /*jshint validthis: true */
     var vm = this;
@@ -21,6 +21,9 @@
       vm.selected = i;
     };
 
+    vm.readArticle = function() {
+      $state.go('home.article');
+    }
     vm.class = 'col-sm-6 col-md-4';
 
     vm.changeSize = function(btnNum) {
