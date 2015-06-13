@@ -21,8 +21,7 @@ var gulp    = require('gulp'),
 
 gulp.task('inject', ['bower', 'partials', 'sass'], function () {
 
-  var injectStyles = gulp.src([config.temp + '**/*.css',
-    '!' + config.temp + '/vendor.css'], {read: false});
+  var injectStyles = gulp.src([config.temp + '**/*.css'], {read: false});
 
   var injectScripts = gulp.src(config.js);
   var injectPartials = gulp.src([config.temp + 'templates.js']);

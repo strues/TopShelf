@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <carousel data-interval="4000" data-pause="false">
+    <carousel data-interval="4000" data-pause="false" disable-ng-animate>
       <slide ng-repeat="article in home.articles | limitTo: 3" active="article.active">
         <img ng-src="{{article.image}}" alt="" />
         <div class="caption">
@@ -77,7 +77,7 @@
               <div class="home-page-ab-img">
                 <img ng-src="{{article.image}}" alt="" />
               </div>
-              <div class="home-page-ab-header"><button class="btn btn-secondary" ng-click="home.readArticle(id)"></button>
+              <div class="home-page-ab-header">
                 <h3><a ui-sref="guild.home.article({id:article._id})">{{::article.title | limitTo: 61}}</a></h3>
                 <p>{{::article.description | limitTo: 140}}</p>
               </div>

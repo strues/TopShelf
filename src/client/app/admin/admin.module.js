@@ -19,12 +19,12 @@
         url: '/admin',
         authorize: 'admin',
         views: {
-          '': {
+          'main@': {
             templateUrl: 'app/admin/admin.html',
             controller: 'AdminDashboardCtrl',
             controllerAs: 'vm'
           },
-          'workspace': {
+          'workspace@admin': {
             template: '<ui-view="workspace" />',
             controller: 'AdminDashboardCtrl'
           }
