@@ -28,6 +28,7 @@ var UserSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
+  lastSeenOnline: Date,
   hashedPassword: String,
   salt: String,
   provider: String,
@@ -48,6 +49,10 @@ var UserSchema = new mongoose.Schema({
   resetPasswordTokenExpiration: Date,
   // References to other collections
   articles: {
+    type: Schema.Types.ObjectId,
+    ref: 'Article'
+  },
+  comments: {
     type: Schema.Types.ObjectId,
     ref: 'Article'
   },
@@ -72,7 +77,7 @@ var UserSchema = new mongoose.Schema({
     thumb: String,
     classNum: Number
   }
-});
+  });
 
 /**
  * Virtuals
@@ -108,7 +113,6 @@ UserSchema
       'role': this.role
     };
   });
-
 /**
  * Validations
  */

@@ -10,16 +10,17 @@
     .module('app.core')
     .factory('articleSvc', articleSvc);
   /* @ngInject */
-  articleSvc.$inject = ['$http'];
+  articleSvc.$inject = ['$http', 'Auth'];
 
-  function articleSvc($http) {
+  function articleSvc($http, Auth) {
     var apiBase = 'api/articles';
     var service = {
       all: all,
       get: get,
       create: create,
       update: update,
-      destroy: destroy
+      destroy: destroy,
+      addComment: addComment
     };
     return service;
 
@@ -37,6 +38,12 @@
     }
     function destroy(id) {
       return $http.delete(apiBase + '/' + id);
+    }
+    function addComment(id, commentData) {
+      return $http.post(apiBase + '/' + id + '/comment', commentData);
+    }
+    function removeComment(commentId) {
+      return $http.delete(apiBase + '/' + id + '/comment/' + commentId);
     }
   }
 }());

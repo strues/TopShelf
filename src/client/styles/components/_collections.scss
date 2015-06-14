@@ -57,11 +57,15 @@ $collection-active-color: $flat_blue;
     transition: 0.25s;
     color: #26a69a; }
     .collection a.collection-item:not(.active):hover {
-      background-color: #ddd; }
+      background-color: #000; }
   .collection.with-header .collection-header {
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 10px 20px; }
+    background-color: $flat_green;
+    border-bottom: 1px solid $flat_dark_green;
+    padding: 10px 20px;
+    font-family: 'Oswald';
+    font-size: 18px;
+    color: $flat_white;
+  }
   .collection.with-header .collection-item {
     padding-left: 30px; }
   .collection.with-header .collection-item.avatar {

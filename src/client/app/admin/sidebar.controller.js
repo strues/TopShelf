@@ -12,7 +12,7 @@
     /*jshint validthis: true */
     var vm = this;
 
-    vm.showSidebar = false;
+    vm.showSidebar = true;
     vm.toggle = function() {
       vm.showSidebar = !vm.showSidebar;
     };
