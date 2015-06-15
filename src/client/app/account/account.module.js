@@ -21,15 +21,23 @@
       })
       .state('account.login', {
         url: '/login',
-        templateUrl: 'app/account/login/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'login'
+        views: {
+          'main@': {
+              templateUrl: 'app/account/login/login.html',
+              controller: 'LoginCtrl',
+              controllerAs: 'login'
+          }
+        }
       })
       .state('account.signup', {
         url: '/signup',
-        templateUrl: 'app/account/signup/signup.html',
-        controller: 'SignupCtrl',
-        controllerAs: 'signup'
+        views: {
+          'main@': {
+              templateUrl: 'app/account/signup/signup.html',
+              controller: 'SignupCtrl',
+              controllerAs: 'signup'
+          }
+        }
       })
       .state('account.logout', {
         url: '/logout?referrer',

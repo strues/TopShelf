@@ -21,18 +21,16 @@ var gulp         = require('gulp'),
  */
 gulp.task('sass', function() {
   return gulp
-      .src(config.sass)
-      .pipe(plg.changed(config.temp))
-      .pipe(plg.sassBulkImport())
-      .pipe(plg.if(process.env.ENVIRONMENT_TYPE === 'development', plg.sourcemaps.init()))
-      .pipe(plg.sass())
-      .on('error', handleErrors)
-      .pipe(plg.if(process.env.ENVIRONMENT_TYPE === 'development', plg.sourcemaps.write('./')))
-      .pipe(plg.postcss([
-        require('autoprefixer-core')({browsers: ['last 1 version']})
-        ]))
-      .pipe(gulp.dest(config.temp))
-      .pipe(browserSync.reload({stream: true}));
+    .src(config.sass)
+    .pipe(plg.changed(config.temp))
+    .pipe(plg.sassBulkImport())
+    .pipe(plg.sass())
+    .on('error', handleErrors)
+    .pipe(plg.postcss([
+      require('autoprefixer-core')({browsers: ['last 1 version']})
+      ]))
+    .pipe(gulp.dest(config.temp))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('sass:build', function() {

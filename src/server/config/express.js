@@ -4,7 +4,7 @@
 
 'use strict';
 var debug = require('debug')('tsg:express');
-var express = require('express'),
+var express        = require('express'),
     favicon        = require('serve-favicon'),
     dexter         = require('morgan'),
     compression    = require('compression'),
@@ -17,20 +17,31 @@ var express = require('express'),
     logger         = require('./logger'),
     config         = require('./environment'),
     multer         = require('multer'),
-    session        = require('express-session'),
+    expressSession = require('express-session'),
+    RedisStore     = require('connect-redis')(expressSession),
     busboy         = require('connect-busboy'),
-    mongoose       = require('mongoose'),
-    mongoStore     = require('connect-mongo')(session);
+    mongoose       = require('mongoose');
 
 module.exports = function (app) {
 
   var env = app.get('env');
-
+  require('../lib/redis');
   // Enable logger (morgan)
   app.use(dexter(logger.getLogFormat(), logger.getLogOptions()));
 
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
+
+ /**
+   * @name TopShelf#sessionStorage
+   * @description
+   * Connect-compatible {@link https://www.npmjs.org/package/connect-redis | redis sessions` storage } used by
+   * {@link TopShelf#express Express application } and {@link TopShelf#io  Socket.io server }
+   */
+  var sessionStorage = new RedisStore({
+    prefix: 'shelf_session_',
+    client: app.redisClient
+  })
 
   // always bodyParser before cookie, method or session
   // parse application/x-www-form-urlencoded
@@ -48,18 +59,19 @@ module.exports = function (app) {
   app.set('appPath', path.join(config.root, 'client'));
   app.use(busboy());
 
-  app.use(session({
+  app.use(expressSession({
+    key: 'tsg.sid',
     secret: config.session.secret,
+    store: sessionStorage,
+    expireAfterSeconds: parseInt(config.session.expireAfterSeconds, 10) || 180,
+    httpOnly: true,
     resave: true,
-    saveUninitialized: true,
-    store: new mongoStore({
-      mongooseConnection: mongoose.connection
-    })
+    saveUninitialized: true
   }));
 
   // Security Settings
   app.disable('x-powered-by');
-
+  app.enable('trust proxy');
   // Passport OAUTH Middleware
   app.use(passport.initialize());
   app.use(passport.session());

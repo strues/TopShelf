@@ -1,9 +1,9 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  moment = require('moment'),
-  _ = require('lodash');
+    Schema   = mongoose.Schema,
+    moment   = require('moment'),
+    _        = require('lodash');
 
 var ArticleSchema = new Schema({
   title: {
@@ -34,24 +34,6 @@ var ArticleSchema = new Schema({
     default: '',
     trim: true
   },
-  comments: [{
-    body: {
-      type: String,
-      required: 'Comment body is required'
-    },
-    author: {
-      name: {
-        type: String,
-        required: 'Author of the comment is required. (missing name)'
-      },
-      email: {
-        type: String,
-        required: 'Author of the comment is required. (missing email)'
-      }
-    },
-    date: Date,
-    isReply: Boolean
-  }],
   slug: {
     type: String
   },
@@ -67,11 +49,15 @@ var ArticleSchema = new Schema({
     enum: ['Draft', 'Published', 'Archived']
   },
   image: String,
-  featImage: String,
   views: {
     type: Number,
     default: 1
-  }
+  },
+  comments: [{
+    content: { type : String, default : '', trim : true },
+    user: { type : Schema.ObjectId, ref : 'User', index: true },
+    createdAt: { type : Date, default : Date.now }
+  }]
 });
 
 ArticleSchema.statics = {

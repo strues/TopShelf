@@ -4,12 +4,29 @@
 var _ = require('lodash');
 var async = require('async');
 var Article = require('./article.model'),
-    User = require('../user/user.model');
+    User = require('../user/user.model'),
+    QP = require('../../lib/queryParser');
+
+/**
+ * Get single post by a query
+ *
+ * @param {string|int} query - seoTitle or id of the post
+ * @returns Post.query
+ */
+function singleArticleQuery(query) {
+  var article;
+  if (isNumeric(query)) {
+    article = Article.findById(query);
+  } else {
+    article = Article.findOne({ 'seoTitle': query });
+  }
+  return article;
+}
 
 // Get list of articles
 exports.list = function(req, res) {
   var page = +req.query.page || 1,
-    limit = +req.query.limit || 9;
+      limit = +req.query.limit || 9;
 
   Article.find()
       .sort('-created')
@@ -31,7 +48,8 @@ exports.read = function(req, res) {
 // Get a single post
 exports.show = function(req, res) {
   Article.findById(req.params.id)
-      .populate('author', 'username')
+      .populate('comments')
+      .populate('user', 'username')
         .exec(function(err, article) {
           if (err) {
             return handleError(res, err);
@@ -41,6 +59,32 @@ exports.show = function(req, res) {
           }
           return res.json(article);
         });
+};
+/**
+* Add comment
+* @param {id} id of comment
+* @param {User} user id
+* @param {comment} comment text
+*/
+exports.addComment = function (req,res) {
+
+  Article.findById(req.params.id).populate('user', 'username')
+  .exec(function(err, article){
+    if (err) { return handleError(res, err); }
+    if(!article) { return res.send(404); }
+    var updated = _.merge(article, req.body);
+
+    updated.comments.push({
+      content: req.body.content,
+      user: req.user._id
+    });
+
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).json(article);
+    });
+  });
+
 };
 
 // Creates a new article in the DB.
@@ -104,6 +148,36 @@ exports.destroy = function(req, res) {
   });
 };
 
+/**
+* Remove comment
+*
+* @param {commentId} String
+* @param {id} String -- blog id
+*/
+exports.removeComment = function(req, res) {
+
+  Article.findById(req.params.id, function (err, article) {
+    if (err) { return handleError(res, err); }
+    if(!article) { return res.send(404); }
+    var updated = _.merge(article, req.body);
+
+    var index = -1;
+    for(var i=0;i<updated.comments.length;i++){
+      if(updated.comments[i]._id === req.params.commentId){
+        index=i;
+      }
+    }
+
+    if (index!==-1) updated.comments.splice(index, 1);
+    else return res.send(404);
+
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).json(article);
+    });
+  });
+
+};
 function handleError(res, err) {
   return res.status(500).json(err);
 }

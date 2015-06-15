@@ -5,9 +5,9 @@
     .module('app.guild')
     .controller('NewsViewCtrl', NewsViewCtrl);
 
-  NewsViewCtrl.$inject = ['articleSvc', '$stateParams'];
+  NewsViewCtrl.$inject = ['articleSvc', '$stateParams', 'Auth'];
 
-  function NewsViewCtrl(articleSvc, $stateParams) {
+  function NewsViewCtrl(articleSvc, $stateParams, Auth) {
 
     /*jshint validthis: true */
     var vm = this;
@@ -17,6 +17,19 @@
       articleSvc.get(articleId).success(function(article) {
         vm.article = article;
       });
+    }
+    vm.removeComment = function() {
+      articleSvc.removeComment(commentId).then(function() {
+       console.log('done');
+      });
+    }
+    vm.newCom = function() {
+        articleSvc.addComment(articleId, vm.commentData)
+       .success(function(article) {
+    vm.article.comments.push(comment);
+    vm.comment.user = Auth.getCurrentUser().username;
+    vm.content = '';
+     });
     }
   }
 })();

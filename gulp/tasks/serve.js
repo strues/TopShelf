@@ -8,7 +8,7 @@
 var gulp        = require('gulp'),
     browserSync = require('browser-sync').create(),
     reload      = browserSync.reload,
-    bsyncSPA    = require('browser-sync-spa'),
+//    bsyncSPA    = require('browser-sync-spa'),
     config      = require('../config')(),
     plg         = require('gulp-load-plugins')({
                     pattern: ['gulp-*', 'gulp.*'],
@@ -38,11 +38,11 @@ gulp.task('runapp', function() {
     });
 });
 
-browserSync.use(bsyncSPA({
-  selector: '[ng-app]'// Only needed for angular apps
-}));
+// browserSync.use(bsyncSPA({
+//   selector: '[ng-app]'// Only needed for angular apps
+// }));
 
-gulp.task('serve', ['sass', 'runapp'], function() {
+gulp.task('serve', ['sass', 'inject', 'runapp'], function() {
 
   browserSync.init({
     proxy: {

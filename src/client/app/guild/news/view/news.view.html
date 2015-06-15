@@ -1,115 +1,109 @@
 <!-- page-banner-section
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<section class="page-banner-section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<h2><span>Articles</span> From The Shelf</h2>
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<section class="page-banner-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h2><span>Articles</span> From The Shelf</h2>
+			</div>
+			<div class="col-md-6">
+				<ul class="page-pagin">
+					<li><a ui-sref="guild.home">Home</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End page-banner section -->
+<!-- blog-section
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<section class="blog-section standard"  ng-controller="NewsViewCtrl as vm">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="blog-box">
+					<div class="blog-post single-post">
+						<div class="date-post">
+							{{vm.article.created | date:'MMM dd, yyyy'}}
 						</div>
-						<div class="col-md-6">
-							<ul class="page-pagin">
-								<li><a ui-sref="guild.home">Home</a></li>
+						<div class="post-content">
+							<div class="post-content-text">
+								<ul class="post-tags">
+									<li><img class="user-picture" ng-src="{{::vm.author.picture}}"/><a
+										class="user-displayName"
+									ng-href="/news/author/{{::vm.author.id}}">{{::vm.article.author.username}}</a></li>
+									<li><a href="#">{{vm.article.category}}</a></li>
+								</ul>
+								<div ng-if="vm.article && vm.article !== 'error'">
+									<h1 class="content-heading">
+									{{::vm.article.title}}
+									</h1>
+									<p>
+										<div ta-bind ng-model="vm.article.content">
+										</div>
+									</p>
+									<div class="share-box">
+										<div class="row">
+											<div class="col-md-6">
+												<span>Share this article:</span>
+											</div>
+											<div class="col-md-6">
+												<ul class="social-share">
+													<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+													<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+													<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="autor-post">
+								<!--<img src="upload/blog/autor.jpg" alt="">-->
+								<div class="autor-content">
+									<h2>{{article.author.username}}</h2>
+									<p>{{::vm.article.author.bio}}</p>
+								</div>
+							</div>
+							<div class="comment-section">
+								<h2>Comments</h2>
 
-							</ul>
+								<div ng-repeat="comment in vm.article.comments | orderBy:'-created'" class="comment">
+								  <i class="fa fa-comment-o"></i> - <span class="body">
+								    {{ comment.content }}
+								  </span>
+								  <div class="sep"></div>
+								</div>
+								<form class="comment-form" ng-submit="vm.newCom(commentData)">
+									<h2>Leave a Reply</h2>
+									<textarea name="comment" id="comment" placeholder="Your Message (required)" ng-model="vm.commentData.content"></textarea>
+									<input type="submit" id="submit_contact" value="Post Comment">
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
-			</section>
-
-<!-- End page-banner section -->
-
-			<!-- blog-section
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<section class="blog-section standard"  ng-controller="NewsViewCtrl as vm">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-9">
-							<div class="blog-box">
-
-								<div class="blog-post single-post">
-									<div class="date-post">
-										{{vm.article.created | date:'MMM dd, yyyy'}}
-									</div>
-									<div class="post-content">
-
-										<div class="post-content-text">
-											<ul class="post-tags">
-												<li><img class="user-picture" ng-src="{{::vm.author.picture}}"/><a
-													class="user-displayName"
-													ng-href="/news/author/{{::vm.author.id}}">{{::vm.author.displayName}}</a></li>
-												<li><a href="#">{{vm.article.category}}</a></li>
-											</ul>
-											<div ng-if="vm.article && vm.article !== 'error'">
-												<h1 class="content-heading">
-													{{::vm.article.title}}
-												</h1>
-
-												<p>
-												<div ta-bind ng-model="vm.article.content">
-												</div>
-												</p>
-											<div class="share-box">
-												<div class="row">
-													<div class="col-md-6">
-														<span>Share this article:</span>
-													</div>
-													<div class="col-md-6">
-														<ul class="social-share">
-															<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-															<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-															<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="autor-post">
-											<!--<img src="upload/blog/autor.jpg" alt="">-->
-											<div class="autor-content">
-												<h2>{{vm.article.author.displayName}}</h2>
-												<p>{{::vm.article.author.bio}}</p>
-											</div>
-										</div>
-										<div class="comment-section">
-											<h2>Comments</h2>
-											<form class="comment-form">
-												<h2>Leave a Reply</h2>
-												<input name="name" id="name" type="text" placeholder="Name (required)">
-
-												<textarea name="comment" id="comment" placeholder="Your Message (required)"></textarea>
-												<input type="submit" id="submit_contact" value="Post Comment">
-											</form>
-										</div>
-
-									</div>
-
-								</div>
-
-							</div>
-						</div>
-							<div class="col-md-3">
-								<div class="sidebar">
-									<div class="category-widget widget">
-										<h2>Categories</h2>
-										<ul class="category-list">
-											<li>{{vm.article.category}}</li>
-										</ul>
-									</div>
-									<div class="top-posts-widget widget">
-										<h2>Top Posts</h2>
-										<!-- Nav tabs -->
-
-										</div>
-									</div>
-									<div class="flickr-widget widget">
-										<h2>Recruitment</h2>
-										<recruiting-widget></recruiting-widget>
-									</div>
-								</div>
-							</div>
-						</div>
-
+			</div>
+			<div class="col-md-3">
+				<div class="sidebar">
+					<div class="category-widget widget">
+						<h2>Categories</h2>
+						<ul class="category-list">
+							<li>{{vm.article.category}}</li>
+						</ul>
 					</div>
-				</section>
-				<!-- End blog section -->
+					<div class="top-posts-widget widget">
+						<h2>Top Posts</h2>
+						<!-- Nav tabs -->
+					</div>
+				</div>
+				<div class="flickr-widget widget">
+					<h2>Recruitment</h2>
+					<recruiting-widget></recruiting-widget>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<!-- End blog section -->
