@@ -6,6 +6,12 @@
     "jasmine": true,
     "mocha": true
   },
+  "globals": {
+      "angular": true
+  },
+  "plugins": [
+      "angular"
+  ],
 "ecmaFeatures": {
     "arrowFunctions": true,
     "blockBindings": true,
@@ -23,5 +29,13 @@
     "no-unused-vars": [2, {"vars": "all", "args": "none"}],
     "no-unused-expressions": [0],
     "no-use-before-define": [0]
+    "angular/ng_di": [2, "function"],
+    "angular/ng_empty_controller": [2, true],
+    "angular/ng_no_services": [2, ["$http", "$resource", "Restangular"]],
+    "angular/ng_module_name": [],
+    "angular/ng_no_digest": [2, true],
+    "angular/ng_controller_name": [2, "/[A-Z].*Ctrl$/"],
+    "angular/ng_definedundefined": [2, true],
+    "angular/ng_angularelement": [2, true]
   }
 }

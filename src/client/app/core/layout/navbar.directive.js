@@ -1,6 +1,4 @@
 (function() {
-  'use strict';
-
 /**
  * @ngdoc directive
  * @name app.core.directive:navbar
@@ -25,7 +23,8 @@
       restrict: 'EA',
       templateUrl: 'app/core/layout/navbar.html',
       controller: 'NavbarCtrl',
-      controllerAs: 'nav'
+      controllerAs: 'nav',
+      bindToController: true
     };
     return directive;
   }

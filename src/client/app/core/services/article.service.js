@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+
   /**
        * @ngdoc service
        * @name app.core.service:articleSvc
@@ -25,7 +25,7 @@
     return service;
 
     function all() {
-      return $http.get(apiBase);
+      return $http.get(apiBase + '?limit=10&skip=0');
     }
     function get(id) {
       return $http.get(apiBase + '/' + id);

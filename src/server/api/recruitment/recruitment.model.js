@@ -1,7 +1,6 @@
-'use strict';
+import mongoose from 'mongoose';
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
 var RecruitmentSchema = new Schema({
   classType: {
@@ -19,7 +18,9 @@ var RecruitmentSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  currentlyRecruiting: {type:Boolean}
-})
+  currentlyRecruiting: {
+      type: Boolean
+  }
+});
 
 module.exports = mongoose.model('Recruitment', RecruitmentSchema);

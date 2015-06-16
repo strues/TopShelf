@@ -43,25 +43,50 @@
 										</div>
 									</p>
 									<div class="share-box">
-										<div class="row">
-											<div class="col-md-6">
-												<span>Share this article:</span>
-											</div>
-											<div class="col-md-6">
-												<ul class="social-share">
-													<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-													<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-													<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-												</ul>
+												<div class="row">
+													<div class="col-md-6">
+														<span>Share this article:</span>
+													</div>
+													<div class="col-md-6">
+														<ul class="social-share">
+															<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+															<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+															<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+														</ul>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
+									<div class="autor-post">
+											<!--<img src="upload/blog/autor.jpg" alt="">-->
+											<div class="autor-content">
+												<h2>{{vm.article.author.username}}</h2>
+												<p>{{::vm.article.author.bio}}</p>
+											</div>
+										</div>
+										<div class="comment-section">
+											<h2>Comments</h2>
+											<ul class="list-unstyled collection with-header" ng-repeat="comment in vm.article.comments">
+												<li class="collection-header">{{comment.author.name}}</li>
+												<li class="collection-item">{{comment.body}}</li>
+											</ul>
+											<form class="comment-form" name="commentData" ng-submit="vm.newComment(commentData)">
+												<h2>Leave a Reply</h2>
+												<input name="name" id="name" type="text" ng-model="vm.commentData.author.name" placeholder="Name (required)">
+												<input name="email" id="email" type="email" ng-model="vm.commentData.author.email" placeholder="Email (required)">
+
+												<textarea name="comment" id="comment" ng-model="vm.commentData.body" placeholder="Your Message (required)"></textarea>
+												<input type="submit" id="submit_contact" value="Post Comment">
+											</form>
+										</div>
+
+									</div>
+
 								</div>
+
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
 			<div class="col-md-3">
 				<div class="sidebar">
 					<div class="category-widget widget">

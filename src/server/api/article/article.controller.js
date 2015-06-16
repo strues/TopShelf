@@ -1,17 +1,15 @@
-/*jshint node:true*/
-'use strict';
-
-var _ = require('lodash');
-var async = require('async');
-var Article = require('./article.model'),
-    User = require('../user/user.model'),
-    QP = require('../../lib/queryParser');
+import reportError from '../../lib/errors/reporter';
+import _ from 'lodash';
+import Article from './article.model';
+import QueryParser from '../../lib/queryParser';
+import isNumeric from 'isnumeric';
+import auth from '../../auth/auth.service';
 
 /**
- * Get single post by a query
+ * Get single Article by a query
  *
- * @param {string|int} query - seoTitle or id of the post
- * @returns Post.query
+ * @param {string|int} query - seoTitle or id of the article
+ * @returns Article.query
  */
 function singleArticleQuery(query) {
   var article;
@@ -24,160 +22,219 @@ function singleArticleQuery(query) {
 }
 
 // Get list of articles
-exports.list = function(req, res) {
-  var page = +req.query.page || 1,
-      limit = +req.query.limit || 9;
+exports.index = function(req, res) {
 
-  Article.find()
-      .sort('-created')
-      .populate('author', 'username')
-      .limit(limit).skip((page - 1) * limit)
-        .exec(function(err, articles) {
-          if (err) {
-            return handleError(res, err);
-          }
-          return res.status(200).json(articles);
-        });
+  var defaultConditions = {
+    state: 'Published'
+  };
+
+  var defaultOptions = {
+    limit: 10,
+    sort: '-createdDate'
+  };
+
+  var conditions = QueryParser.getConditions(req.query, defaultConditions);
+  var options = QueryParser.getOptions(req.query, defaultOptions);
+
+  if (conditions.state !== 'Published') {
+    auth.hasRole('admin')(req, res, returnArticles);
+  }
+  else {
+      returnArticles();
+  }
+
+  function returnArticles(err) {
+    if (err) { return res.status(401).json(err.message); }
+    let articles = Article.find(conditions, null, options)
+      .populate('author', '-salt -hashedPassword')
+      .exec();
+    let count = Article.count(conditions).exec();
+
+    Promise.all([articles, count]).then(results => {
+      let response = {
+        total: results[1],
+        results: results[0]
+      };
+      return res.status(200).json(response);
+    }, err => {
+      return res.status(500).json(reportError(err));
+    });
+  }
 };
 
-exports.read = function(req, res) {
-  req.article.update({'$inc': {views: 1}}, {w: 1}, function() {});
-  res.jsonp(req.article);
-};
-
-// Get a single post
-exports.show = function(req, res) {
-  Article.findById(req.params.id)
-      .populate('comments')
-      .populate('user', 'username')
-        .exec(function(err, article) {
-          if (err) {
-            return handleError(res, err);
-          }
-          if (!article) {
-            return res.sendStatus(404);
-          }
-          return res.json(article);
-        });
-};
 /**
-* Add comment
-* @param {id} id of comment
-* @param {User} user id
-* @param {comment} comment text
-*/
-exports.addComment = function (req,res) {
+ * Get a single article
+ *
+ * We can search a post by a seoTitle as well.
+ *
+ */
+exports.show = function(req, res) {
 
-  Article.findById(req.params.id).populate('user', 'username')
-  .exec(function(err, article){
-    if (err) { return handleError(res, err); }
-    if(!article) { return res.send(404); }
-    var updated = _.merge(article, req.body);
+  var response = function (err, article) {
+    if (err) { return res.status(500).json(reportError(err)); }
+    if (!article) { return res.status(404); }
 
-    updated.comments.push({
-      content: req.body.content,
-      user: req.user._id
-    });
+    return res.json(article);
+  };
 
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.status(200).json(article);
-    });
-  });
-
+  singleArticleQuery(req.params.id)
+    .populate('author', '-salt -hashedPassword')
+    .exec(response);
 };
 
-// Creates a new article in the DB.
+// Creates a new post in the DB.
 exports.create = function(req, res) {
-  Article.create(_.merge({author: req.user._id}, req.body),
-    function(err, article) {
-    if (err) {
-      return handleError(res, err);
-    }
+  // Set author of the post
+  // The `isAuthenticated` function set user to the request.
+  var newArticle = req.body;
+  newArticle.author = req.user._id;
+  newArticle.lastUpdated = Date.now();
+
+  Article.create(newArticle, function(err, article) {
+    if (err) { return res.status(400).json(reportError(err)); }
     return res.status(201).json(article);
   });
 };
 
-// Updates an existing article in the DB.
+// Updates an existing post in the DB.
 exports.update = function(req, res) {
-  Article.findById(req.params.id, function(err, article) {
-    if (err) {
-      return handleError(res, err);
-    }
-    if (!article) {
-      return res.sendStatus(404);
-    }
+  if (req.body._id) { delete req.body._id; }
 
-    // set the new user information if it exists in the request
-    if (req.body.title) article.title = req.body.title;
-    if (req.body.date) article.date = req.body.date;
-    if (req.body.lastUpdated) article.lastUpdated = req.body.date;
-    if (req.body.slug) article.slug = req.body.slug;
-    if (req.body.description) article.description = req.body.description;
-    if (req.body.content) article.content = req.body.content;
-    if (req.body.state) article.state = req.body.state;
-    if (req.body.tags) article.tags = req.body.tags;
-    if (req.body.image) article.image = req.body.image;
-    if (req.body.category) article.category = req.body.category;
-    if (req.body.views) article.views = req.body.views;
+  singleArticleQuery(req.params.id).exec((err, article) => {
+    if (err) { return res.status(500).json(reportError(err)); }
+    if (!article) { return res.sendStatus(404); }
 
-    article.save(function(err) {
-      if (err) {
-        return handleError(res, err);
-      }
+    var updated = _.merge(article, req.body);
+    updated.lastUpdated = Date.now();
+
+    updated.save((err, article) => {
+      if (err) { return res.status(400).json(reportError(err)); }
       return res.status(200).json(article);
     });
   });
 };
 
-// Deletes a article from the DB.
+// Deletes a post from the DB.
 exports.destroy = function(req, res) {
-  Article.findById(req.params.id, function(err, article) {
-    if (err) {
-      return handleError(res, err);
-    }
-    if (!article) {
-      return res.sendStatus(404);
-    }
+  singleArticleQuery(req.params.id).exec((err, article) => {
+    if (err) { return res.status(500).json(reportError(err)); }
+    if (!article) { return res.sendStatus(404); }
     article.remove(function(err) {
-      if (err) {
-        return handleError(res, err);
-      }
-      return res.sendStatus(204);
+      if (err) { return res.status(400).json(reportError(err)); }
+      return res.sendStatus(200);
     });
   });
 };
 
 /**
-* Remove comment
-*
-* @param {commentId} String
-* @param {id} String -- blog id
+* Adds new comment to the post
 */
-exports.removeComment = function(req, res) {
+exports.addComment = function(req, res) {
+  var comment = req.body;
+  comment.date = Date.now();
 
-  Article.findById(req.params.id, function (err, article) {
-    if (err) { return handleError(res, err); }
-    if(!article) { return res.send(404); }
-    var updated = _.merge(article, req.body);
+  singleArticleQuery(req.params.id).exec((err, article) => {
+    if (err) { return res.status(500).json(reportError(err)); }
+    if (!article) { return res.status(404).json({ message: 'Article does not exist'}); }
+    article.comments.push(comment);
+    article.save((err, article) => {
+      if (err) { return res.status(400).json(reportError(err)); }
+      return res.status(201).json(article);
+    });
 
-    var index = -1;
-    for(var i=0;i<updated.comments.length;i++){
-      if(updated.comments[i]._id === req.params.commentId){
-        index=i;
-      }
-    }
+  });
+};
 
-    if (index!==-1) updated.comments.splice(index, 1);
-    else return res.send(404);
+/**
+ * Edit comment by comment ID
+ */
+exports.editComment = function(req, res) {
+  if (req.body._id) { delete req.body._id; }
 
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
+  // get post
+  singleArticleQuery(req.params.id).exec((err, article) => {
+    if (err) { return res.status(500).json(reportError(err)); }
+    if (!article) { return res.sendStatus(404); }
+
+    // get comment
+    let comment = article.comments.id(req.params.commentId);
+    if (!comment) { return res.sendStatus(404); }
+    _.merge(comment, req.body);
+
+    article.save((err, article) => {
+      if (err) { return res.status(400).json(reportError(err)); }
       return res.status(200).json(article);
     });
   });
-
 };
-function handleError(res, err) {
-  return res.status(500).json(err);
-}
+
+/**
+ * Delete comment by its ID
+ */
+exports.destroyComment = function(req, res) {
+    singleArticleQuery(req.params.id).exec((err, article) => {
+    if (err) { return res.status(500).json(reportError(err)); }
+    if (!article) { return res.sendStatus(404); }
+
+    // get comment
+    let comment = article.comments.id(req.params.commentId);
+    if (!comment) { return res.sendStatus(404); }
+    comment.remove();
+
+    article.save((err, article) => {
+      if (err) { return res.status(400).json(reportError(err)); }
+      return res.status(200).json(article);
+    });
+  });
+};
+
+/**
+ * Get all comments
+ */
+exports.getAllComments = function(req, res) {
+  let defaultConditions = {
+    state: 'Published'
+  };
+
+  let defaultOptions = {
+    limit: 10,
+    sort: '-comments.date',
+    skip: 0
+  };
+
+  let conditions = QueryParser.getConditions(req.query, defaultConditions);
+  let options = QueryParser.getOptions(req.query, defaultOptions);
+
+  if (conditions.state !== 'Published') {
+    auth.hasRole('admin')(req, res, returnArticles);
+  }
+  else {
+    returnArticles();
+  }
+
+  function returnArticles(err) {
+    if (err) { return res.status(401).json(err.message); }
+
+    let results = Article.aggregate()
+      .match(conditions)
+      .unwind('comments')
+      .sort(options.sort)
+      .skip(parseInt(options.skip))
+      .limit(parseInt(options.limit))
+      .exec();
+
+    let total = Article.aggregate()
+    .group({_id: null, count: {$sum: {$size: '$comments'}}})
+    .exec();
+
+    Promise.all([results, total]).then(response => {
+      return res.status(200).json({total: response[1][0].count, results: response[0]});
+    }, err => {
+      return res.status(500).json(reportError(err));
+    });
+  }
+};
+
+Article.on('error', function(err) {
+  return err;
+});

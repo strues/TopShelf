@@ -1,5 +1,4 @@
 (function() {
-  'use strict';
 
   /* jshint latedef: nofunc */
   /** @ngdoc controller
@@ -11,17 +10,17 @@
       .module('app.admin')
       .controller('EditUserCtrl', EditUserCtrl);
 
-  EditUserCtrl.$inject = ['User', '$scope', '$timeout', 'ngToast', '$stateParams', '$http'];
+  EditUserCtrl.$inject = ['User', '$scope', '$timeout', 'ngToast', '$http', '$stateParams'];
   /* @ngInject */
-  function EditUserCtrl(User, $scope, ngToast, $timeout, $stateParams, $http) {
+  function EditUserCtrl(User, $scope, ngToast, $timeout, $http, $stateParams) {
     var vm = this;
-    var userId = $stateParams.id;
+    var username = $stateParams.id;
     // @TODO: Put to a service
-    if (userId && userId.length > 0) {
-      $http.get('/api/users/' + userId).success(function(user) {
+    if (username && username.length > 0) {
+      User.get({username}, function(user) {
         vm.user = user;
       });
-    }
+    };
     /**
      * Reset profile save button to initial state
      *
@@ -81,9 +80,9 @@
         // Set status to Saving... and update upon success or error in callbacks
         vm.btnSaveText = 'Saving...';
         // @TODO: Put to a service
-        return $http.put('/api/users/' + userId, profileData).then(_updateSuccess, _updateError);
-      }
-    };
+        return $http.put('/api/users/' + $stateParams.id, profileData);
+    }
+
     vm.removeUser = function(user, ev) {
       User.remove({
         id: user._id
@@ -94,4 +93,5 @@
       });
     };
   }
+}
 })();

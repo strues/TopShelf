@@ -1,7 +1,6 @@
 (function() {
-  'use strict';
 
-  angular
+angular
     .module('app.guild')
     .controller('HomeCtrl', HomeCtrl);
 
@@ -14,7 +13,7 @@
     vm.articles = {};
     articleSvc.all().success(function(data) {
       // bind the articles that come back to vm.articles
-      vm.articles = data;
+      vm.articles = data.results;
     });
 
     vm.selectSlide = function(i) {
@@ -23,7 +22,7 @@
 
     vm.readArticle = function() {
       $state.go('home.article');
-    }
+    };
     vm.class = 'col-sm-6 col-md-4';
 
     vm.changeSize = function(btnNum) {

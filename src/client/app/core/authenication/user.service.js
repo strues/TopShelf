@@ -1,37 +1,35 @@
+// User API $http calls
 (function() {
-  'use strict';
-  /**
-   * @ngdoc service
-   * @name app.core.factory:User
-   *
-   * @description
-   *
-   */
-  angular
-    .module('app.core')
-    .factory('User', User);
+
+	angular
+		.module('app.core')
+		.service('User', User);
 
   User.$inject = ['$resource'];
-  /* @ngInject */
-  function User($resource) {
-    return $resource('/api/users/:id/:controller', {
+
+	function User($resource) {
+		return $resource('/api/users/:id/:controller', {
       id: '@_id'
-    }, {
+    },
+    {
       changePassword: {
         method: 'PUT',
         params: {
-          controller: 'password'
+          controller:'password'
         }
       },
       get: {
         method: 'GET',
         params: {
-          id: 'me'
+          id:'me'
         }
       },
-      update: {
-        method: 'PUT'
-      }
-    });
-  }
-}());
+			update: {
+				method: 'PUT',
+				params: {
+					id:'@_id'
+				}
+			}
+	  });
+	}
+})();

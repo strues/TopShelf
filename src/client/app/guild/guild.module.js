@@ -13,8 +13,7 @@
 
   configure.$inject = ['$stateProvider'];
 
-  function configure($stateProvider)
-  {
+  function configure($stateProvider) {
     $stateProvider
       .state('guild',
       {
