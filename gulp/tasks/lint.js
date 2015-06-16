@@ -33,7 +33,8 @@ gulp.task('eslint', function() {
   return gulp
         .src(config.ngApp)
         .pipe(plg.eslint())
-        .pipe(plg.eslint.format());
+        .pipe(plg.eslint.format())
+        .pipe(plg.eslint.failOnError());
 });
 
 gulp.task('scsslint', function() {

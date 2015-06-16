@@ -1,9 +1,8 @@
-'use strict';
+import express from 'express';
+import controller from './upload.controller';
+import auth from '../../auth/auth.service';
 
-var express    = require('express'),
-    controller = require('./upload.controller'),
-    auth       = require('../../auth/auth.service'),
-    router     = express.Router();
+var router = express.Router();
 
 router.get('/', controller.all);
 router.get('/:id', controller.show);

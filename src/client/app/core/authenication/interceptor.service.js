@@ -1,6 +1,4 @@
 (function() {
-  'use strict';
-
   /**
    * @ngdoc service
    * @name app.core.service: authInterceptor

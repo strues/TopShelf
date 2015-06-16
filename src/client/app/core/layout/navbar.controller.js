@@ -7,24 +7,25 @@
     NavbarCtrl.$inject = ['Auth', 'ngToast', '$location', 'User'];
     /* @ngInject */
     function NavbarCtrl(Auth, ngToast, $location, User) {
-        var nav = this;
-        nav.isCollapsed = true;
+        var vm = this;
 
-        nav.isAdmin = Auth.isAdmin;
-        nav.currentUser = Auth.getCurrentUser;
-        nav.isLoggedIn = Auth.isLoggedIn;
-        nav.isAuthenticated = function() {
-            return Auth.isLoggedIn();
+        vm.isCollapsed = true;
+
+        vm.isAdmin = Auth.isAdmin;
+        vm.currentUser = Auth.getCurrentUser;
+        vm.isLoggedIn = Auth.isLoggedIn;
+        vm.isAuthenticated = function() {
+            return Auth.isLoggedIn;
         };
-        nav.logout = function() {
+        vm.logout = function() {
             Auth.logout();
             ngToast.create('See you around');
             $location.path('/account/login');
         };
 
-        nav.isActive = function(route) {
+        vm.isActive = function(route) {
             if (route !== '/') {
-                return -1 !== $location.path().indexOf(route);
+                return $location.path().indexOf(route) !== -1;
             } else {
                 return route === $location.path();
             }

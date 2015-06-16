@@ -26,7 +26,7 @@
       currentUser = {};
 
     if ($localStorage.token) {
-      currentUser = User.getMe();
+      currentUser = User.get();
     }
 
     return {
@@ -50,7 +50,7 @@
           })
           .then(function(res) {
             $localStorage.token = res.data.token;
-            currentUser = User.getMe();
+            currentUser = User.get();
             deferred.resolve(res.data);
             safeCb(callback)();
           }, function(err) {
@@ -87,7 +87,7 @@
       createUser: function(user, callback) {
         return User.save(user, function(data) {
           $localStorage.token = data.token;
-          currentUser = User.getMe();
+          currentUser = User.get();
           return safeCb(callback)(null, user);
         }, function(err) {
           this.logout();
@@ -202,7 +202,7 @@
       setSessionToken: function(sessionToken, callback) {
         var cb = callback || angular.noop;
         $localStorage.token = sessionToken;
-        currentUser = User.getMe(cb);
+        currentUser = User.get(cb);
       }
     };
   }

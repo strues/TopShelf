@@ -67,7 +67,7 @@
             controller: 'EditUserCtrl as editusr',
             resolve: { /* @ngInject */
               user: function($stateParams, User) {
-                return User.getUser($stateParams.id);
+                return User.get($stateParams.id);
               }
             }
           }
