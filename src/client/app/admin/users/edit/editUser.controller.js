@@ -17,7 +17,7 @@
     var username = $stateParams.id;
     // @TODO: Put to a service
     if (username && username.length > 0) {
-      User.get({username}, function(user) {
+      User.get(username, function(user) {
         vm.user = user;
       });
     };
