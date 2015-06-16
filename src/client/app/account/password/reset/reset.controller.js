@@ -11,9 +11,9 @@
     .module('app.account')
     .controller('ResetCtrl', ResetCtrl);
 
-  ResetCtrl.$inject = ['userSrv', 'toastr', '$auth', '$stateParams'];
+  ResetCtrl.$inject = ['userSrv', 'ngToast','$stateParams'];
   /* @ngInject */
-  function ResetCtrl(userSrv, toastr, $auth, $stateParams) {
+  function ResetCtrl(userSrv, ngToast, $stateParams) {
 
     /*jshint validthis: true */
     var vm = this;
@@ -21,11 +21,11 @@
     vm.reset = function() {
       userSrv.resetPassword($stateParams.token, {'password': vm.password})
         .then(function(token) {
-          toastr.success('Password has been updated');
-          $auth.setToken(token, true);
+          ngToast.create('Password has been updated');
+
         })
         .catch(function(response) {
-          toastr.info(response.data.message);
+         ngToast.create(response.data.message);
         });
     };
   }

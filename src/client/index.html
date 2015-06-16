@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="/bower_components/angular-toastr/dist/angular-toastr.css">
     <link rel="stylesheet" href="/bower_components/textAngular/dist/textAngular.css">
+    <link rel="stylesheet" href="/bower_components/ngtoast/dist/ngToast.css">
     <!-- endinject -->
     <link rel="stylesheet" href=".tmp/style.css">
     <!-- endbuild -->
@@ -40,10 +41,12 @@
     <script src="/bower_components/ngstorage/ngStorage.js"></script>
     <script src="/bower_components/angular-socket-io/socket.js"></script>
     <script src="/bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="/bower_components/textAngular/dist/textAngular.js"></script>
     <script src="/bower_components/textAngular/dist/textAngular-sanitize.js"></script>
     <script src="/bower_components/textAngular/dist/textAngularSetup.js"></script>
     <script src="/bower_components/angular-file-upload/angular-file-upload.js"></script>
+    <script src="/bower_components/ngtoast/dist/ngToast.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:js js/app.js -->
@@ -61,9 +64,9 @@
     <script src="/src/client/app/account/signup/signup.controller.js"></script>
     <script src="/src/client/app/admin/dashboard/dashboard.controller.js"></script>
     <script src="/src/client/app/admin/media/adminMedia.controller.js"></script>
+    <script src="/src/client/app/admin/news/news.listing.controller.js"></script>
     <script src="/src/client/app/admin/recruit/recruitment.controller.js"></script>
     <script src="/src/client/app/admin/recruit/recruitmentList.controller.js"></script>
-    <script src="/src/client/app/admin/news/news.listing.controller.js"></script>
     <script src="/src/client/app/admin/users/user.controller.js"></script>
     <script src="/src/client/app/core/authenication/auth.service.js"></script>
     <script src="/src/client/app/core/authenication/interceptor.service.js"></script>
@@ -82,20 +85,21 @@
     <script src="/src/client/app/core/util/trustAsHtml.filter.js"></script>
     <script src="/src/client/app/guild/home/home.controller.js"></script>
     <script src="/src/client/app/guild/info/info.controller.js"></script>
+    <script src="/src/client/app/guild/videos/video.controller.js"></script>
     <script src="/src/client/app/guild/roster/className.filter.js"></script>
     <script src="/src/client/app/guild/roster/guildRank.filter.js"></script>
     <script src="/src/client/app/guild/roster/roster.controller.js"></script>
-    <script src="/src/client/app/guild/videos/video.controller.js"></script>
-    <script src="/src/client/app/account/password/reset/reset.controller.js"></script>
     <script src="/src/client/app/account/password/forgot/forgot.controller.js"></script>
+    <script src="/src/client/app/account/password/reset/reset.controller.js"></script>
     <script src="/src/client/app/admin/news/article/edit-article.controller.js"></script>
     <script src="/src/client/app/admin/news/create/news.create.controller.js"></script>
-    <script src="/src/client/app/core/authenication/directives/mongooseError.directive.js"></script>
-    <script src="/src/client/app/core/authenication/directives/passwordMatch.directive.js"></script>
-    <script src="/src/client/app/components/widgets/progression/progression-widget.controller.js"></script>
-    <script src="/src/client/app/components/widgets/progression/progression-widget.directive.js"></script>
     <script src="/src/client/app/components/widgets/recruit/recruit-widget-controller.js"></script>
     <script src="/src/client/app/components/widgets/recruit/recruit-widget.directive.js"></script>
+    <script src="/src/client/app/components/widgets/progression/progression-widget.controller.js"></script>
+    <script src="/src/client/app/components/widgets/progression/progression-widget.directive.js"></script>
+    <script src="/src/client/app/admin/users/edit/editUser.controller.js"></script>
+    <script src="/src/client/app/core/authenication/directives/mongooseError.directive.js"></script>
+    <script src="/src/client/app/core/authenication/directives/passwordMatch.directive.js"></script>
     <script src="/src/client/app/guild/news/view/newsView.controller.js"></script>
     <script src="/.tmp/templates.js"></script>
     <!-- endinject -->

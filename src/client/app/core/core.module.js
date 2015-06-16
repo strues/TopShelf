@@ -17,8 +17,8 @@
         'ngStorage',
         'btford.socket-io',
         'ui.bootstrap',
+        'ngToast',
         'textAngular',
-        'toastr',
         'angularFileUpload',
         'youtube-embed'
       ]);

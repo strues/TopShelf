@@ -1,6 +1,13 @@
 <div id="content" ng-controller="UserCtrl as uctrl">
 <div class="container">
-	<div ng-repeat="user in uctrl.users" ng-class="{deleted: user.deleted}">
-		{{user.username}}
+<div class="col-sm-6 col-md-3" ng-repeat="user in uctrl.users">
+	<ul class="collection with-header list-unstyled">
+		<li class="collection-header">{{user.username}}</li>
+        <li class="collection-item"><i class="fa fa-envelope-o"></i> {{user.email}}</li>
+        <li class="collection-item"><i class="fa fa-group"></i> {{user.role}}</li>
+        <li class="collection-item"><a ui-sref="admin.users.user({id:user._id})">
+            <i class="fa fa-pencil"></i></a><i class="fa fa-trash-o" ng-click="uctrl.removeUser(user)"></i></li>
+    </ul>
+    </div>
 </div>
 </div>

@@ -11,19 +11,19 @@
     .module('app.admin')
     .controller('UserCtrl', UserCtrl);
 
-  UserCtrl.$inject = ['User', 'toastr'];
+  UserCtrl.$inject = ['User', 'ngToast'];
   /* @ngInject */
   function UserCtrl(User, toastr) {
     var vm = this;
     vm.users = User.query();
 
-    vm.deleteUser = function(user, ev) {
+    vm.removeUser = function(user, ev) {
       User.remove({
         id: user._id
       }, function() {
         vm.users.splice(this.$index, 1);
       }.bind(this), function() {
-        toastr.success('deleted');
+        ngToast.create('User deleted');
       });
     };
   }

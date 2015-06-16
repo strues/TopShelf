@@ -140,6 +140,39 @@ exports.editMe = function (req, res) {
   });
 };
 
+/**
+ * Update the current user's information
+ * @param  {String} req username
+ * @param  {String} res email address
+ * @return {String}     user
+ */
+exports.updateUser = function (req, res) {
+      User.findById(req.params.id, function(err, user) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!user) {
+      return res.sendStatus(404);
+    }
+
+    // set the new user information if it exists in the request
+    if (req.body.username) user.username = req.body.username;
+    if (req.body.email) user.email = req.body.email;
+    if (req.body.lastUpdated) user.lastUpdated = req.body.lastUpdated;
+    if (req.body.role) user.role = req.body.role;
+    if (req.body.active) user.active = req.body.active;
+    if (req.body.bio) user.bio = req.body.bio;
+    if (req.body.character) user.character = req.body.character;
+
+    user.save(function(err) {
+      if (err) {
+        return handleError(res, err);
+      }
+      return res.status(200).json(user);
+    });
+  });
+};
+
 exports.list = function (req, res) {
   User.find({}, function (err, users) {
     var userArr = [];

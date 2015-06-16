@@ -9,9 +9,9 @@
     .module('app.admin')
     .controller('RecruitmentListCtrl', RecruitmentListCtrl);
 
-  RecruitmentListCtrl.$inject = ['$http', 'toastr', '$state', 'recruitSvc'];
+  RecruitmentListCtrl.$inject = ['$http', 'ngToast', '$state', 'recruitSvc'];
   /* @ngInject */
-  function RecruitmentListCtrl($http, toastr, $state, recruitSvc) {
+  function RecruitmentListCtrl($http, ngToast, $state, recruitSvc) {
     var vm = this;
 
     recruitSvc.list().success(function(data) {
@@ -19,7 +19,7 @@
     });
     vm.deleteRecruitment = function(id) {
       recruitSvc.destroy(id).success(function () {
-        toastr.success('Removed');
+        ngToast.create('Removed');
         $state.reload();
       });
     };
@@ -28,7 +28,7 @@
     });
     vm.deleteThread = function(id) {
       recruitSvc.destroyThread(id).success(function () {
-        toastr.success('Removed');
+        ngToast.create('Removed');
         $state.reload();
       });
     };

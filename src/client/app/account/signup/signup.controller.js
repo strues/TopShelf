@@ -13,9 +13,9 @@
     .module('app.account')
     .controller('SignupCtrl', SignupCtrl);
 
-  SignupCtrl.$inject = ['Auth', 'toastr', '$window', '$location'];
+  SignupCtrl.$inject = ['Auth', 'ngToast', '$window', '$location'];
   /* @ngInject */
-  function SignupCtrl(Auth, toastr, $window, $location) {
+  function SignupCtrl(Auth, ngToast, $window, $location) {
     var vm = this;
     vm.ctrlName = 'SignupController';
     vm.user = {};
@@ -30,13 +30,12 @@
           battletag: vm.user.battletag,
           password: vm.user.password
         }).then(function() {
-          toastr
-            .success('Sucessfully created your account.', 'Welcome!');
+         ngToast.create('Sucessfully created your account.');
           // Account created, redirect to home
           $location.path('/');
         }).catch(function(err) {
           vm.error = err;
-          toastr.error('Uh oh');
+          ngToast.create('Uh oh');
         });
       }
     }

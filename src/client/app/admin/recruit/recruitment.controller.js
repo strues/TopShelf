@@ -6,10 +6,10 @@
     .controller('RecruitmentCtrl', RecruitmentCtrl);
 
   RecruitmentCtrl.$inject = ['recruitSvc', '$state', 'classSpec',
-    'classDef', 'toastr'
+    'classDef', 'ngToast'
   ];
 
-  function RecruitmentCtrl(recruitSvc, $state, classSpec, classDef, toastr) {
+  function RecruitmentCtrl(recruitSvc, $state, classSpec, classDef, ngToast) {
 
     /*jshint validthis: true */
     var vm = this;
@@ -19,12 +19,12 @@
     vm.submit = function () {
       recruitSvc.create(vm.formData).success(function() {
 
-        toastr.success('Goodluck, you\'re going to need it',
+        ngToast.create('Goodluck, you\'re going to need it',
           'Recruitment Updated');
         $state.reload();
 
       }).error(function(error) {
-        toastr.error('There was a problem with the server' +
+        ngToast.create('There was a problem with the server' +
           error.message, 'Something broke');
       });
     };
@@ -33,12 +33,12 @@
     vm.save = function () {
       recruitSvc.createThread(vm.recruitTD).success(function() {
 
-        toastr.success('Goodluck, you\'re going to need it',
+        ngToast.create('Goodluck, you\'re going to need it',
           'Recruitment Updated');
         $state.reload();
 
       }).error(function(error) {
-        toastr.error('There was a problem with the server' +
+        ngToast.create('There was a problem with the server' +
           error.message, 'Something broke');
       });
     };
