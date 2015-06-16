@@ -18,18 +18,13 @@
         vm.article = article;
       });
     }
-    vm.removeComment = function() {
-      articleSvc.removeComment(commentId).then(function() {
-       console.log('done');
-      });
-    }
-    vm.newCom = function() {
+
+    vm.newComment = function() {
         articleSvc.addComment(articleId, vm.commentData)
        .success(function(article) {
-    vm.article.comments.push(comment);
-    vm.comment.user = Auth.getCurrentUser().username;
-    vm.content = '';
+    vm.article.comments.push(vm.commentData);
+    vm.commentData = {};
      });
-    }
+ };
   }
 })();

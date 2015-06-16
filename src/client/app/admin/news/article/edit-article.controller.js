@@ -1,6 +1,4 @@
-(function()
-{
-  'use strict';
+(function() {
 
   angular
     .module('app.admin')

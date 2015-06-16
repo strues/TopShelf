@@ -38,6 +38,7 @@
     "express-session": "^1.11.2",
     "fs": "0.0.2",
     "fs-extra": "^0.18.4",
+    "isnumeric": "^0.2.0",
     "jsonwebtoken": "^5.0.1",
     "lodash": "^3.9.3",
     "method-override": "^2.3.3",

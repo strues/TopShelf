@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row">
     <carousel data-interval="4000" data-pause="false" disable-ng-animate>
-      <slide ng-repeat="article in home.articles | limitTo: 3" active="article.active">
+      <slide ng-repeat="article in home.articles | limitTo: 3">
         <img ng-src="{{article.image}}" alt="" />
         <div class="caption">
-          <h3><a ui-sref="home.article({id:article._id})">{{::article.title | limitTo: 31}}</a></h3>
+          <h3><a ui-sref="guild.home.article({id:article.seoTitle})">{{::article.title | limitTo: 31}}</a></h3>
           <p>Author: {{::article.author.username}}</p>
         </div>
       </slide>
@@ -78,7 +78,7 @@
                 <img ng-src="{{article.image}}" alt="" />
               </div>
               <div class="home-page-ab-header">
-                <h3><a ui-sref="guild.home.article({id:article._id})">{{::article.title | limitTo: 61}}</a></h3>
+                <h3><a ui-sref="guild.home.article({id:article.seoTitle})">{{::article.title | limitTo: 61}}</a></h3>
                 <p>{{::article.description | limitTo: 140}}</p>
               </div>
               <div class="other-article-data">

@@ -15,10 +15,10 @@
   /* @ngInject */
   function EditUserCtrl(User, $scope, ngToast, $timeout, $stateParams, $http) {
     var vm = this;
-    var userId = $stateParams.id;
+    var username = $stateParams.username;
     // @TODO: Put to a service
-    if (userId && userId.length > 0) {
-      $http.get('/api/users/' + userId).success(function(user) {
+    if (username && username.length > 0) {
+      $http.get('/api/users/' + username).success(function(user) {
         vm.user = user;
       });
     }
