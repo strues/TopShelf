@@ -2,9 +2,10 @@ import chai from 'chai';
 import _ from 'lodash';
 import app from '../../app';
 import request from 'supertest';
-import Article from './post.model.js';
+import Article from './article.model.js';
 import User from '../user/user.model';
 chai.should();
+
 var expect = chai.expect;
 
 var user = {
@@ -33,6 +34,7 @@ function createAdmin(done) {
       if (err) { return done(err); }
       // Get auth token for user
       var credentials = {
+        'email': user.email,
         'username': user.username,
         'password': user.password
       };
@@ -203,7 +205,7 @@ describe('Article API', function() {
         Article.findOne({seoTitle: editedArticle.seoTitle}, (err, article) => {
           if (err) { return done(err); }
 
-          expect(post).to.exist;
+          expect(article).to.exist;
           article.title.should.be.equal(editedArticle.title);
           article.seoTitle.should.be.equal(editedArticle.seoTitle);
           article.content.should.be.equal(editedArticle.content);

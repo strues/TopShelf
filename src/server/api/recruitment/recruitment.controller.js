@@ -1,7 +1,4 @@
-'use strict';
-
-var _ = require('lodash');
-var Recruitment = require('./recruitment.model');
+import Recruitment from './recruitment.model';
 
 /**
  * @api {get} /recruitment Get Recruitment Status.
