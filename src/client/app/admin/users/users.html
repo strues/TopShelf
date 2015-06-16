@@ -5,7 +5,7 @@
 		<li class="collection-header">{{user.username}}</li>
         <li class="collection-item"><i class="fa fa-envelope-o"></i> {{user.email}}</li>
         <li class="collection-item"><i class="fa fa-group"></i> {{user.role}}</li>
-        <li class="collection-item"><a ui-sref="admin.users.user({id:user._id})">
+        <li class="collection-item"><a ui-sref="admin.users.user({id:user.username})">
             <i class="fa fa-pencil"></i></a><i class="fa fa-trash-o" ng-click="uctrl.removeUser(user)"></i></li>
     </ul>
     </div>

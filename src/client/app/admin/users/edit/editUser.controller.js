@@ -1,5 +1,4 @@
 (function() {
-  'use strict';
 
   /* jshint latedef: nofunc */
   /** @ngdoc controller
@@ -15,7 +14,7 @@
   /* @ngInject */
   function EditUserCtrl(User, $scope, ngToast, $timeout, $stateParams, $http) {
     var vm = this;
-    var username = $stateParams.username;
+    var username = $stateParams.id;
     // @TODO: Put to a service
     if (username && username.length > 0) {
       $http.get('/api/users/' + username).success(function(user) {

@@ -1,5 +1,5 @@
 (function () {
-  'use strict';
+
   /**
        * @ngdoc service
        * @name app.core.service:articleSvc
