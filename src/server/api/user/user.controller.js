@@ -1,6 +1,7 @@
 import User from './user.model';
 import jwt from 'jsonwebtoken';
 import isNumeric from 'isnumeric';
+import _ from 'lodash';
 import reportError from '../../lib/errors/reporter';
 
 var config = require('../../config/environment');
@@ -131,31 +132,18 @@ exports.changePassword = function(req, res, next) {
  * @param  {String} res email address
  * @return {String}     user
  */
-exports.updateUser = function(req, res) {
-    User.findById(req.params.id, function(err, user) {
-        if (err) {
-            return reportError(err);
-        }
-        if (!user) {
-            return res.sendStatus(404);
-        }
-
-        // set the new user information if it exists in the request
-        if (req.body.username) {user.username = req.body.username; }
-        if (req.body.email) {user.email = req.body.email; }
-        if (req.body.lastUpdated) {user.lastUpdated = req.body.lastUpdated; }
-        if (req.body.role) {user.role = req.body.role; }
-        if (req.body.active) {user.active = req.body.active; }
-        if (req.body.bio) {user.bio = req.body.bio; }
-
-        user.save(function(err) {
-            if (err) {
-                return reportError(res, err);
-            }
-            return res.status(200).json(user);
-        });
-    });
-};
+ exports.update = function(req, res) {
+   if (req.body._id) { delete req.body._id; }
+   singleUserQuery(req.params.id).exec((err, user) => {
+     if (err) { return res.status(500).json(reportError(err)); }
+     if (!user) { return res.send(404); }
+     var updated = _.merge(user, req.body);
+     updated.save(function (err) {
+       if (err) { return res.status(500).json(reportError(err)); }
+       return res.status(200).json(user);
+     });
+   });
+ };
 
 /**
  * list
