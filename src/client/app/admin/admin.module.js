@@ -59,6 +59,20 @@
           }
         }
       })
+      .state('admin.users.user', {
+        url: '/:id',
+        views: {
+          'workspace@admin': {
+            templateUrl: 'app/admin/users/edit/edit-user.html',
+            controller: 'EditUserCtrl as editusr',
+            resolve: { /* @ngInject */
+              user: function($stateParams, User) {
+                return User.get($stateParams.id);
+              }
+            }
+          }
+        }
+      })
       .state('admin.news', {
         title: 'Article List - TSG Admin',
         url: '/news',

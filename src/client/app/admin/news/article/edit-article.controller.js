@@ -6,9 +6,9 @@
     .module('app.admin')
     .controller('EditArticleCtrl', EditArticleCtrl);
 
-  EditArticleCtrl.$inject = ['articleSvc', '$stateParams', 'toastr'];
+  EditArticleCtrl.$inject = ['articleSvc', '$stateParams', 'ngToast'];
 
-  function EditArticleCtrl(articleSvc, $stateParams, toastr)
+  function EditArticleCtrl(articleSvc, $stateParams, ngToast)
   {
 
     /*jshint validthis: true */
@@ -32,7 +32,7 @@
           // clear the form
           vm.articleData = {};
           // bind the message from our API to vm.message
-          toastr.success('Your post has been updated', 'Success');
+          ngToast.create('Your post has been updated');
         });
     };
 

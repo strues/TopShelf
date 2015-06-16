@@ -35,6 +35,7 @@ module.exports = function() {
             ngApp + '**/*.js',
             server + '**/*.js'
         ],
+        serverJS: [server + '**/*.js', !server + '**/*.*.spec.js'],
         jsOrder: [
             '**/app.module.js',
             '**/*.module.js',

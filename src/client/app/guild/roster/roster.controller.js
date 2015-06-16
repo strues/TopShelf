@@ -19,7 +19,6 @@
     var vm = this;
     armorySvc.getMembers().success(function(data) {
       vm.members = data.members;
-
     });
 
     $scope.trustUrl = function(url) {

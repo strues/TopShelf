@@ -1,0 +1,23 @@
+<div id="content" ng-controller="EditUserCtrl as editusr">
+    <div class="container">
+        <form method="post" ng-submit="editusr.updateUser()" class="form-inline">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" class="form-control" ng-model="editusr.user.username"
+                placeholder="Username" ng-required>
+            </div>
+             <div class="form-group">
+                <label for="role">Role</label>
+                <input id="role" type="text" class="form-control" ng-model="editusr.user.role"
+                placeholder="Role" ng-required>
+            </div>
+            <button type="submit"
+            class="btn-save btn"
+            ng-class="{'btn-primary': !editusr.btnSaved,
+                    'btn-success': editusr.btnSaved === true, 'btn-danger': editusr.btnSaved === 'error' || editusr.user.username === '' || editusr.user.username === null}"
+            ng-disabled="editusr.user.username === '' || editusr.user.username === null">
+            <i class="fa" ng-class="{'fa-download': !editusr.btnSaved, 'fa-check': editusr.btnSaved, 'fa-asterisk': editusr.user.username === '' || editusr.user.username === null, 'fa-ban': editusr.btnSaved === 'error'}"></i> {{editusr.btnSaveText}}
+            </button>
+        </form>
+    </div>
+</div>

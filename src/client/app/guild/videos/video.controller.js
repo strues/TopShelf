@@ -19,7 +19,7 @@
     var vm = this;
 
     vm.ctrl = 'videoctrl';
-
+    vm.guildBH = 't964tWVAUUM';
     vm.teoBH = 'QLMgPul3jNQ';
     vm.ironM = 'iunGvJf_kDY';
     vm.operator = 'nXT7n-nbtPM';

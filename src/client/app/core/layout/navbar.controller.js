@@ -4,9 +4,9 @@
         .module('app.core')
         .controller('NavbarCtrl', NavbarCtrl);
 
-    NavbarCtrl.$inject = ['Auth', 'toastr', '$location', 'User'];
+    NavbarCtrl.$inject = ['Auth', 'ngToast', '$location', 'User'];
     /* @ngInject */
-    function NavbarCtrl(Auth, toastr, $location, User) {
+    function NavbarCtrl(Auth, ngToast, $location, User) {
         var nav = this;
         nav.isCollapsed = true;
 
@@ -18,7 +18,7 @@
         };
         nav.logout = function() {
             Auth.logout();
-            toastr.info('See you around', 'Logged Out!');
+            ngToast.create('See you around');
             $location.path('/account/login');
         };
 

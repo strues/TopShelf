@@ -13,7 +13,7 @@ var validationError = function(res, err) {
  * Get list of users
  * restriction: 'admin'
  */
-exports.index = function(req, res) {
+exports.index = function(req, res) { // don't ever give out the password or salt
   User.find({}, '-salt -hashedPassword', function (err, users) {
     if (err) return res.status(500).json(err);
     res.status(200).json(users);
@@ -87,56 +87,43 @@ exports.changePassword = function(req, res, next) {
 exports.me = function(req, res, next) {
   var userId = req.user._id;
   User.findOne({
-    _id: userId
-  }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
+    _id: userId // don't ever give out the password or salt
+  }, '-salt -hashedPassword', function(err, user) {
     if (err) return next(err);
     if (!user) return res.json(401);
     res.json(user);
   });
 };
 
-exports.editMe = function (req, res) {
-  var oldPass = req.body.oldPassword ? String(req.body.oldPassword) : null;
-  var newPass = req.body.newPassword ? String(req.body.newPassword) : null;
-
-  User.findById(req.user, '+password', function (err, user) {
+/**
+ * Update the current user's information
+ * @param  {String} req username
+ * @param  {String} res email address
+ * @return {String}     user
+ */
+exports.updateUser = function (req, res) {
+      User.findById(req.params.id, function(err, user) {
+    if (err) {
+      return handleError(res, err);
+    }
     if (!user) {
-      return res.status(400).send({
-        message: 'User not found'
-      });
+      return res.sendStatus(404);
     }
-    user.displayName = req.body.displayName || user.displayName;
-    user.email = req.body.email || user.email;
-    if (newPass) {
-      user.password = newPass;
-    }
-    // Users with local authentication require password.
-    if (user.providers.indexOf('local') !== -1) {
-      user.comparePassword(oldPass, function (isMatch) {
-        console.log(arguments);
-        if (!isMatch) {
-          return res.status(401).send({
-            message: 'Wrong password'
-          });
-        }
-        user.save(function () {
-          if (err) {
-            validationError(res, err);
-          }
-          res.status(200).end();
-        });
-      });
-    } else {
-      if (newPass) {
-        user.providers.push('local');
+
+    // set the new user information if it exists in the request
+    if (req.body.username) user.username = req.body.username;
+    if (req.body.email) user.email = req.body.email;
+    if (req.body.lastUpdated) user.lastUpdated = req.body.lastUpdated;
+    if (req.body.role) user.role = req.body.role;
+    if (req.body.active) user.active = req.body.active;
+    if (req.body.bio) user.bio = req.body.bio;
+
+    user.save(function(err) {
+      if (err) {
+        return handleError(res, err);
       }
-      user.save(function () {
-        if (err) {
-          validationError(res, err);
-        }
-        res.status(200).end();
-      });
-    }
+      return res.status(200).json(user);
+    });
   });
 };
 

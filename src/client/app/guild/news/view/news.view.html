@@ -31,7 +31,7 @@
 								<ul class="post-tags">
 									<li><img class="user-picture" ng-src="{{::vm.author.picture}}"/><a
 										class="user-displayName"
-									ng-href="/news/author/{{::vm.author.id}}">{{::vm.article.author.username}}</a></li>
+									ng-href="/news/author/{{::vm.author.id}}">{{::article.author.username}}</a></li>
 									<li><a href="#">{{vm.article.category}}</a></li>
 								</ul>
 								<div ng-if="vm.article && vm.article !== 'error'">
@@ -57,28 +57,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="autor-post">
-								<!--<img src="upload/blog/autor.jpg" alt="">-->
-								<div class="autor-content">
-									<h2>{{article.author.username}}</h2>
-									<p>{{::vm.article.author.bio}}</p>
-								</div>
-							</div>
-							<div class="comment-section">
-								<h2>Comments</h2>
-
-								<div ng-repeat="comment in vm.article.comments | orderBy:'-created'" class="comment">
-								  <i class="fa fa-comment-o"></i> - <span class="body">
-								    {{ comment.content }}
-								  </span>
-								  <div class="sep"></div>
-								</div>
-								<form class="comment-form" ng-submit="vm.newCom(commentData)">
-									<h2>Leave a Reply</h2>
-									<textarea name="comment" id="comment" placeholder="Your Message (required)" ng-model="vm.commentData.content"></textarea>
-									<input type="submit" id="submit_contact" value="Post Comment">
-								</form>
 							</div>
 						</div>
 					</div>

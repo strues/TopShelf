@@ -11,9 +11,9 @@
     .module('app.account')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['Auth', 'toastr', '$window', '$location'];
+  LoginCtrl.$inject = ['Auth', 'ngToast', '$window', '$location'];
   /* @ngInject */
-  function LoginCtrl(Auth, toastr, $window, $location) {
+  function LoginCtrl(Auth, ngToast, $window, $location) {
     var vm = this;
     /**
      * @ngdoc property
@@ -42,7 +42,7 @@
           email: vm.user.email,
           password: vm.user.password
         }).then(function() {
-          toastr.success('Successfully logged in', 'Welcome Back!');
+          ngToast.create('Welcome Back!');
           // Logged in, redirect to home
           $location.path('/');
         }).catch(function(err) {

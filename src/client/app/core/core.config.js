@@ -8,22 +8,13 @@
         .run(authRun);
 
     configure
-        .$inject = ['$urlRouterProvider', '$httpProvider', '$locationProvider', 'toastrConfig'];
+        .$inject = ['$urlRouterProvider', '$httpProvider','$locationProvider'];
     /* @ngInject */
-    function configure($urlRouterProvider, $httpProvider, $locationProvider, toastrConfig) {
+    function configure($urlRouterProvider, $httpProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true).hashPrefix('!');
         $httpProvider.interceptors.push('authInterceptor');
-        angular.extend(toastrConfig, {
-            autoDismiss: true,
-            closeButton: true,
-            positionClass: 'toast-top-right',
-            tapToDismiss: true,
-            target: 'body',
-            timeOut: 5000,
-            titleClass: 'toast-title',
-            toastClass: 'toast'
-        });
+
     }
 
     authRun.$inject = ['$rootScope', '$location', 'Auth'];
