@@ -1,8 +1,6 @@
-'use strict';
+import _ from 'lodash';
 
-var _ = require('lodash');
-
-var queryOptions = exports.queryOptions = ['sort', 'limit', 'skip'];
+let queryOptions = exports.queryOptions = ['sort', 'limit', 'skip'];
 
 /**
  * Get conditions object from query for Mongoose.Model.find()
@@ -12,7 +10,7 @@ var queryOptions = exports.queryOptions = ['sort', 'limit', 'skip'];
  * @returns {Object} Conditions for mongoose query
  */
 exports.getConditions = function(query, options) {
-  var conditions = _.omit(query, queryOptions);
+  let conditions = _.omit(query, queryOptions);
 
   /**
    * Merges query objects with default options
@@ -22,7 +20,7 @@ exports.getConditions = function(query, options) {
    *
    * @returns object to be inserted into Mongoose query
    */
-  return _.omit(_.defaults(conditions, options), function(value) {
+  return _.omit(_.defaults(conditions, options), value => {
     if (value === 'any') {
       return true;
     }
@@ -41,7 +39,7 @@ exports.getConditions = function(query, options) {
  */
 exports.getOptions = function(query, options) {
   // Select options from query
-  var selectedOptions = _.pick(query, queryOptions);
+  let selectedOptions = _.pick(query, queryOptions);
 
   // Return selected options from query. Set defaults
   return _.defaults(selectedOptions, options);

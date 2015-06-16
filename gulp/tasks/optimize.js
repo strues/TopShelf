@@ -35,17 +35,17 @@ gulp.task('optimize',  function() {
       .pipe(jsAppFilter)
       .pipe(jsAppFilter.restore())
         // Get the vendor javascript
-        .pipe(jslibFilter)
-        .pipe(jslibFilter.restore())
-        .pipe(assets.restore())
-        .pipe(plg.useref())
-        // Replace the file names in the html with rev numbers
-        .pipe(plg.revReplace())
-        .pipe(plg.minifyHtml({
-          empty: true,
-          spare: true,
-          quotes: true,
-          collapse: true
-     }))
-        .pipe(gulp.dest(config.build + 'client/'));
+      .pipe(jslibFilter)
+      .pipe(jslibFilter.restore())
+      .pipe(assets.restore())
+      .pipe(plg.useref())
+      // Replace the file names in the html with rev numbers
+      .pipe(plg.revReplace())
+      .pipe(plg.minifyHtml({
+        empty: true,
+        spare: true,
+        quotes: true,
+        collapse: true
+      }))
+      .pipe(gulp.dest(config.build + 'client/'));
 });

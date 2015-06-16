@@ -2,13 +2,15 @@
 
 // Default NODE_ENV to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
+if (typeof Promise === 'undefined') {
+  require('babel/polyfill');
+}
+import express from 'express';
+import mongoose from 'mongoose';
 var debug    = require('debug')('tsg:express'),
-  express  = require('express'),
-  mongoose = require('mongoose'),
-  chalk    = require('chalk'),
-  config   = require('./config/environment'),
-  fs       = require('fs');
+    chalk    = require('chalk'),
+    config   = require('./config/environment'),
+    fs       = require('fs');
 
 // MongoDB
 mongoose.connect(config.mongo.uri);

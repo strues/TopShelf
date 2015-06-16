@@ -20,6 +20,9 @@ gulp.task('runapp', function() {
   return plg.nodemon({
       script: 'src/server/app.js',
       ext: 'js',
+      execMap: {
+      'js': 'babel-node --optional strict'
+      },
       ignore: [
         '.tmp/**',
         '.vagrant/**',

@@ -17,6 +17,7 @@ gulp.task('build', function(callback) {
     'partials',
     'bower:build',
     'scripts:build',
+    'server:build',
     'sass:build',
     //'html:build',
     'optimize',

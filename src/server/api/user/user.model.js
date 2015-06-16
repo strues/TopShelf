@@ -1,16 +1,17 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  crypto = require('crypto'),
-  authTypes = ['bnet', 'twitter', 'facebook', 'google'];
+import mongoose from 'mongoose';
+import crypto from 'crypto';
+
+var Schema    = mongoose.Schema,
+    authTypes = ['bnet', 'twitter', 'facebook', 'google'];
 
 var validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
 };
 
-var UserSchema = new mongoose.Schema({
+var UserSchema = new Schema({
   username: {
     type: String,
     trim: true
@@ -28,20 +29,9 @@ var UserSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
-  lastSeenOnline: Date,
   hashedPassword: String,
   salt: String,
   provider: String,
-  providers: {
-    type: Object,
-    default: {
-      local: false,
-      facebook: false,
-      twitter: false,
-      google: false
-    }
-  },
-
   facebook: {},
   twitter: {},
   google: {},
@@ -59,23 +49,8 @@ var UserSchema = new mongoose.Schema({
   // Battlenet
   bnetId: Number,
   battletag: String,
-  // characters
-  characters: [{
-    name: String,
-    realm: String,
-    battlegroup: String,
-    class: Number,
-    race: Number,
-    gender: Number,
-    level: Number,
-    achievementPoints: Number,
-    thumbnail: String
-  }],
-  mainCharacter: {
-    name: String,
-    realm: String,
-    thumb: String,
-    classNum: Number
+  bio: {
+    type: String
   }
   });
 
@@ -100,7 +75,12 @@ UserSchema
     return {
       '_id': this._id,
       'username': this.username,
-      'role': this.role
+      'role': this.role,
+      'email': this.email,
+      'battletag': this.battletag,
+      'bio': this.bio,
+      'lastUpdated': this.lastUpdated,
+      'active': this.active
     };
   });
 
@@ -110,6 +90,7 @@ UserSchema
   .get(function() {
     return {
       '_id': this._id,
+      'username': this.user,
       'role': this.role
     };
   });

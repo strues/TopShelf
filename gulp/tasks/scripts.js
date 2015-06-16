@@ -18,9 +18,13 @@ var gulp         = require('gulp'),
     header        = require('../util/header');
 
 gulp.task('scripts:build', function() {
+  var options = {
+    optional: ['strict']
+  };
   return gulp
       .src(config.js)
       .pipe(plg.changed(config.buildC + 'js/'))
+      .pipe(plg.babel(options))
       .pipe(plg.sourcemaps.init())
       .pipe(plg.ngAnnotate({remove: true, add: true, single_quotes: true }))
       .pipe(ngFS())
@@ -30,4 +34,14 @@ gulp.task('scripts:build', function() {
       .pipe(plg.uglify({mangle: false}))
       .pipe(plg.sourcemaps.write('./'))
       .pipe(gulp.dest(config.buildC + 'js/'));
+});
+
+gulp.task('server:build', function() {
+  var options = {
+    optional: ['strict']
+  };
+  return gulp
+    .src(config.serverJS)
+    .pipe(plg.babel(options))
+    .pipe(gulp.dest(config.build + 'server'));
 });
