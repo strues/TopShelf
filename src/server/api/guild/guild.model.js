@@ -1,8 +1,7 @@
-'use strict';
+import mongoose from 'mongoose';
+import _ from 'lodash';
 
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  _ = require('lodash');
+var Schema = mongoose.Schema;
 
 var GuildSchema = new Schema({
   achievementPoints: Number,

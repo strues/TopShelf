@@ -1,22 +1,21 @@
-'use strict';
+import express from 'express';
+import mongoose from 'mongoose';
+import chalk from 'chalk';
 
 // Default NODE_ENV to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 if (typeof Promise === 'undefined') {
   require('babel/polyfill');
 }
-import express from 'express';
-import mongoose from 'mongoose';
+
 var debug    = require('debug')('tsg:express'),
-    chalk    = require('chalk'),
-    config   = require('./config/environment'),
-    fs       = require('fs');
+    config   = require('./config/environment');
 
 // MongoDB
 mongoose.connect(config.mongo.uri);
-var db = mongoose.connection;
+const db = mongoose.connection;
 
-var app = express();
+const app = express();
 
 var server = require('http').createServer(app),
     socketio = require('socket.io').listen(server);
@@ -38,5 +37,5 @@ server.listen(config.port, config.ip, function () {
     console.info(chalk.green('Connected to MongoDB:', config.mongo.uri));
   });
 });
-// Expose App
-module.exports = app;
+
+export default app;

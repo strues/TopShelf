@@ -3,10 +3,11 @@ import jwt from 'jsonwebtoken';
 import isNumeric from 'isnumeric';
 import _ from 'lodash';
 import reportError from '../../lib/errors/reporter';
+import config from '../../config/environment';
 
-var config = require('../../config/environment');
+let UserController = {};
 
-var validationError = (res, err) => {
+let validationError = (res, err) => {
     return res.status(422).json(reportError(err));
 };
 
@@ -29,7 +30,7 @@ function singleUserQuery(query) {
  * @param  {[type]} res [description]
  * @return {[type]}     [description]
  */
-exports.index = function(req, res) { // don't ever give out the password or salt
+ UserController.index = (req, res) => { // don't ever give out the password or salt
     User.find({}, '-salt -hashedPassword', (err, users) => {
         if (err) {return res.status(500).json(err); }
         res.status(200).json(users);
@@ -39,8 +40,8 @@ exports.index = function(req, res) { // don't ever give out the password or salt
 /**
  * Creates a new user
  */
-exports.create = function(req, res, next) {
-    var newUser = new User(req.body);
+ UserController.create = (req, res, next) => {
+    let newUser = new User(req.body);
     newUser.provider = 'local';
     newUser.role = 'user';
     newUser.save((err, user) => {
@@ -70,8 +71,8 @@ exports.create = function(req, res, next) {
  * @param  {Function} next [description]
  * @return {[type]}        [description]
  */
-exports.show = function(req, res, next) {
-    var response = function(err, user) {
+ UserController.show = (req, res, next) => {
+    let response = (err, user) => {
         if (err) {
             return res.status(500).json(reportError(err));
         }
@@ -90,7 +91,7 @@ exports.show = function(req, res, next) {
  * @param  {[type]} res [description]
  * @return {[type]}     [description]
  */
-exports.destroy = function(req, res) {
+ UserController.destroy = (req, res) => {
     User.findByIdAndRemove(req.params.id, function(err, user) {
         if (err) {return res.status(500).json(err); }
         return res.sendStatus(204);
@@ -104,7 +105,7 @@ exports.destroy = function(req, res) {
  * @param  {Function} next [description]
  * @return {[type]}        [description]
  */
-exports.changePassword = function(req, res, next) {
+ UserController.changePassword = (req, res, next) => {
     var userId = req.user._id;
     var oldPass = String(req.body.oldPassword);
     var newPass = String(req.body.newPassword);
@@ -132,7 +133,7 @@ exports.changePassword = function(req, res, next) {
  * @param  {String} res email address
  * @return {String}     user
  */
- exports.update = function(req, res) {
+ UserController.update = (req, res) => {
    if (req.body._id) { delete req.body._id; }
    singleUserQuery(req.params.id).exec((err, user) => {
      if (err) { return res.status(500).json(reportError(err)); }
@@ -151,7 +152,7 @@ exports.changePassword = function(req, res, next) {
  * @param  {[type]} res [description]
  * @return {[type]}     [description]
  */
-exports.list = function(req, res) {
+ UserController.list = (req, res) => {
     User.find({}, function(err, users) {
         if (err) {
             reportError(err);
@@ -173,11 +174,11 @@ exports.list = function(req, res) {
  * @param  {Function} next [description]
  * @return {User}        The user
  */
-exports.me = function(req, res, next) {
+ UserController.me = (req, res, next) => {
     var userId = req.user._id;
     User.findOne({
         _id: userId // don't ever give out the password or salt
-    }, '-salt -hashedPassword', function(err, user) {
+    }, '-salt -hashedPassword', (err, user) => {
         if (err) {
             return next(err);
         }
@@ -191,6 +192,8 @@ exports.me = function(req, res, next) {
 /**
  * Authentication callback
  */
-exports.authCallback = function(req, res, next) {
+ UserController.authCallback = (req, res, next) => {
     res.redirect('/');
 };
+
+export default UserController;

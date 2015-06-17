@@ -1,22 +1,18 @@
-'use strict';
-
 /**
  * Module for setting up the authentication service functions.
  * Utility and service methods for the authentication and authorization services
  * @module {object} auth:service
  */
+import jwt from 'jsonwebtoken';
+import compose from 'composable-middleware';
+import _ from 'lodash';
+import moment from 'moment';
+import expressJwt from 'express-jwt';
 
-var mongoose = require('mongoose'),
-  config = require('../config/environment'),
-  passport = require('passport'),
-  jwt = require('jsonwebtoken'),
-  _ = require('lodash'),
-  expressJwt = require('express-jwt'),
-  compose = require('composable-middleware'),
-  User = require('../api/user/user.model'),
-  moment = require('moment');
+var config = require('../config/environment'),
+    User = require('../api/user/user.model');
 
-var validateJwt = expressJwt({
+let validateJwt = expressJwt({
   secret: config.session.secret
 });
 /**
@@ -27,7 +23,7 @@ var validateJwt = expressJwt({
 function isAuthenticated() {
   return compose()
     // Validate jwt
-    .use(function(req, res, next) {
+    .use((req, res, next) => {
       // allow access_token to be passed through query parameter as well
       if (req.query && req.query.hasOwnProperty('access_token')) {
         req.headers.authorization = 'Bearer ' + req.query.access_token;
@@ -36,9 +32,9 @@ function isAuthenticated() {
     })
     // Attach user to request
     .use(function(req, res, next) {
-      User.findById(req.user._id, function(err, user) {
-        if (err) return next(err);
-        if (!user) return res.status(401).end();
+      User.findById(req.user._id, (err, user) => {
+        if (err) {return next(err); }
+        if (!user) {return res.status(401).end(); }
 
         req.user = user;
         next();
@@ -47,16 +43,17 @@ function isAuthenticated() {
 }
 
 /**
- * Creates the JWT signed with secret
+ * Returns a jwt token signed by the app secret
  */
-function createToken(user) {
+function signToken(id, role) {
   var payload = {
-    sub: user._id,
-    role: user.role,
-    iat: moment().unix(),
-    exp: moment().add(14, 'days').unix()
+    _id: id,
+    role: role
   };
-  return jwt.encode(payload, config.session.secret);
+
+  return jwt.sign(payload, config.session.secret, {
+    expiresInMinutes: moment().add(14, 'days').unix()
+  });
 }
 
 /**
@@ -78,7 +75,7 @@ function hasRole(roleRequired) {
         next();
       }
       else {
-        res.sendStatus(403);
+        res.sendStatus(403).end();
       }
     });
 }
@@ -114,49 +111,6 @@ function appendUser() {
       });
     });
 }
-/**
- * Takes the token cookie and adds the header
- * for it on the request
- */
-function addAuthHeaderFromCookie() {
-  return compose()
-    .use(function(req, res, next) {
-      if (req.cookies.token) {
-        req.headers.authorization = 'Bearer ' + _.trim(req.cookies.token,
-          '\"');
-      }
-      return next();
-    });
-}
-
-/**
- * Returns a jwt token signed by the app secret
- */
-function signToken(id, role) {
-  var payload = {
-    _id: id
-  };
-  if (role !== null) {
-    payload.role = role;
-  }
-  return jwt.sign(payload, config.session.secret, {
-    expiresInMinutes: 30 * 24 * 60
-  });
-}
-
-/**
- * Set token cookie directly for oAuth strategies
- */
-function setToken(req, res) {
-  if (!req.userInfo) {
-    return res.json(404, {
-      message: 'Something went wrong, please try again.'
-    });
-  }
-  var token = signToken(req.user._id, req.user.role);
-  res.cookie('token', JSON.stringify(token));
-  res.redirect('/');
-}
 
 module.exports = {
 
@@ -182,7 +136,6 @@ module.exports = {
    * Utility function, checks if admin is true or false
    * @type {Object}
    */
-  setToken: setToken,
-  appendUser: appendUser,
-  addAuthHeaderFromCookie: addAuthHeaderFromCookie
+
+  appendUser: appendUser
 };

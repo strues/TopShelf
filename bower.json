@@ -14,17 +14,17 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.4.1-build.4042+sha.071be60",
-    "angular-animate": "1.4.1-build.4042+sha.071be60",
-    "angular-messages": "1.4.1-build.4042+sha.071be60",
-    "angular-resource": "1.4.1-build.4042+sha.071be60",
+    "angular": "^1.4.2",
+    "angular-animate": "^1.4.2",
+    "angular-messages": "^1.4.2",
+    "angular-resource": "^1.4.2",
     "angular-ui-router": "~0.2.15",
     "angular-bootstrap": "~0.13.0",
     "font-awesome": "~4.3.0",
     "textAngular": "~1.4.1",
     "angular-toastr": "~1.4.1",
     "angular-file-upload": "~1.1.5",
-    "ngstorage": "~0.3.4",
+    "ngstorage": "~0.3.5",
     "angular-socket-io": "~0.7.0",
     "angular-youtube-mb": "~1.0.2",
     "ngtoast": "~1.5.4"

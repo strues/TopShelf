@@ -1,17 +1,11 @@
-/**
- * Broadcast updates to client when the model changes
- */
-
-'use strict';
-
-var user = require('./user.model');
+import User from './user.model';
 
 exports.register = function(socket) {
-  user.schema.post('save', function (doc) {
+  User.schema.post('save', function (doc) {
     onSave(socket, doc);
   });
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('user:save', doc);
+  socket.emit('User:save', doc);
 }
