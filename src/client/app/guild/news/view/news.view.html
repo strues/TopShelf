@@ -38,10 +38,8 @@
 									<h1 class="content-heading">
 									{{::vm.article.title}}
 									</h1>
-									<p>
 										<div ta-bind ng-model="vm.article.content">
 										</div>
-									</p>
 									<div class="share-box">
 												<div class="row">
 													<div class="col-md-6">
@@ -61,20 +59,21 @@
 									<div class="autor-post">
 											<!--<img src="upload/blog/autor.jpg" alt="">-->
 											<div class="autor-content">
-												<h2>{{vm.article.author.username}}</h2>
+												<h2>{{::vm.article.author.username}}</h2>
 												<p>{{::vm.article.author.bio}}</p>
 											</div>
 										</div>
 										<div class="comment-section">
 											<h2>Comments</h2>
 											<ul class="list-unstyled collection with-header" ng-repeat="comment in vm.article.comments">
-												<li class="collection-header">{{comment.author.name}}</li>
+												<li class="collection-header"><i class="fa fa-comment-o"></i> {{comment.author.name}}</li>
 												<li class="collection-item">{{comment.body}}</li>
 											</ul>
+											<div class="separator"><hr/></div>
 											<form class="comment-form" name="commentData" ng-submit="vm.newComment(commentData)">
 												<h2>Leave a Reply</h2>
 												<input name="name" id="name" type="text" ng-model="vm.commentData.author.name" placeholder="Name (required)">
-												<input name="email" id="email" type="email" ng-model="vm.commentData.author.email" placeholder="Email (required)">
+												<input name="email" id="email" type="text" ng-model="vm.commentData.author.email" placeholder="Email (required)">
 
 												<textarea name="comment" id="comment" ng-model="vm.commentData.body" placeholder="Your Message (required)"></textarea>
 												<input type="submit" id="submit_contact" value="Post Comment">

@@ -1,14 +1,12 @@
-'use strict';
-
-var express = require('express');
-var passport = require('passport');
-var auth = require('../auth.service');
+import express from 'express';
+import passport from 'passport';
+import auth from '../auth.service';
 
 var router = express.Router();
 
 router
     .get('/', passport.authenticate('google', {
-        failureRedirect: '/signup',
+        failureRedirect: '/account/signup',
         scope: [
             'https://www.googleapis.com/auth/userinfo.profile',
             'https://www.googleapis.com/auth/userinfo.email'
@@ -16,9 +14,10 @@ router
         session: false
     }))
 
-    .get('/callback', auth.addAuthHeaderFromCookie(), auth.appendUser(), passport.authenticate('google', {
-        failureRedirect: '/signup',
+    .get('/callback', auth.appendUser(),
+      passport.authenticate('google', {
+        failureRedirect: '/account/signup',
         session: false
     }), auth.setTokenCookie);
 
-module.exports = router;
+export default router;

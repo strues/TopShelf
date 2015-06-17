@@ -1,7 +1,5 @@
-'use strict';
-
-var _ = require('lodash');
-var Guild = require('./guild.model');
+import _ from 'lodash';
+import Guild from './guild.model';
 
 /**
  * @api {get} /guild Get Guild Status.
@@ -11,7 +9,7 @@ var Guild = require('./guild.model');
  */
 exports.all = function(req, res) {
   Guild.find()
-    .exec(function(err, guilds) {
+    .exec((err, guilds) => {
       if (err) {
         return handleError(res, err);
       }

@@ -1,11 +1,5 @@
-'use strict';
-
-/**
- * Module dependencies.
- */
-
-var cluster = require('cluster');
-var os      = require('os');
+import cluster from 'cluster';
+import os from 'os';
 
 /**
  * Cluster setup.

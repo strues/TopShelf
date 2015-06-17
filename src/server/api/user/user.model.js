@@ -32,6 +32,17 @@ var UserSchema = new Schema({
     facebook: {},
     twitter: {},
     google: {},
+    providers: {
+      type: Object,
+      default: {
+        local: false,
+        facebook: false,
+        twitter: false,
+        google: false,
+        linkedin: false,
+        github: false
+      }
+    },
     resetPasswordToken: String,
     resetPasswordTokenExpiration: Date,
     // References to other collections

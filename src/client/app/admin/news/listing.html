@@ -12,12 +12,12 @@
           <th>Created</th>
       </thead>
       <tbody>
-      <tr ng-repeat="article in nlc.articles | orderBy:'-created':reverse">
+      <tr ng-repeat="article in nlc.articles">
         <td>{{article.title}}</td>
         <td ta-bind-html="article.description | limitTo : 100"></td>
         <td>{{article.created | date:'MM/dd/yyyy'}}</td>
         <td>
-          <a ui-sref="admin.news.article({id:article._id})">
+          <a ui-sref="admin.news.article({id:article.seoTitle})">
             <i class="fa fa-pencil"></i></a> | <i ng-click="nlc.deleteArticle(article._id)" class="fa fa-trash"></i>
         </td>
       </tr>

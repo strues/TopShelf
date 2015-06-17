@@ -12,7 +12,7 @@
         /*jshint validthis: true */
         var vm = this;
         articleSvc.all().success(function(data) {
-                vm.articles = data;
+                vm.articles = data.results;
                 vm.articlesLength = data.length;
             })
             .error(function(errMsg) {

@@ -2,27 +2,29 @@
  * Express Configuration
  */
 
-'use strict';
-var debug = require('debug')('tsg:express');
-var express        = require('express'),
-    favicon        = require('serve-favicon'),
-    dexter         = require('morgan'),
-    compression    = require('compression'),
-    bodyParser     = require('body-parser'),
-    methodOverride = require('method-override'),
-    errorHandler   = require('errorhandler'),
-    passport       = require('passport'),
-    path           = require('path'),
-    cors           = require('cors'),
-    logger         = require('./logger'),
-    config         = require('./environment'),
-    multer         = require('multer'),
-    expressSession = require('express-session'),
-    RedisStore     = require('connect-redis')(expressSession),
-    busboy         = require('connect-busboy'),
-    mongoose       = require('mongoose');
+import express from 'express';
+import morgan from 'morgan';
+import compression from 'compression';
+import bodyParser from 'body-parser';
+import methodOverride from 'method-override';
+import cors from 'cors';
+import expressSession from 'express-session';
+import errorHandler from 'errorhandler';
+import path from 'path';
+import multer from 'multer';
+import favicon from 'serve-favicon';
+import config from './environment';
+import logger from './logger';
+import mongoose from 'mongoose';
+import passport from 'passport';
+import busboy from 'connect-busboy';
 
-module.exports = function (app) {
+let dexter = morgan;
+
+let debug = require('debug')('tsg:express');
+let RedisStore = require('connect-redis')(expressSession);
+
+export default (app) => {
 
   var env = app.get('env');
   require('../lib/redis');
@@ -77,10 +79,10 @@ module.exports = function (app) {
   app.use(passport.session());
 
   // time in milliseconds...
-  var minute = 1000 * 60;   //     60000
-  var hour = (minute * 60); //   3600000
-  var day  = (hour * 24);   //  86400000
-  var week = (day * 7);     // 604800000
+  const minute = 1000 * 60;   //     60000
+  const hour = (minute * 60); //   3600000
+  const day  = (hour * 24);   //  86400000
+  const week = (day * 7);     // 604800000
 
   if ('production' === env) {
     app.use(compression());
