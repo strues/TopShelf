@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
 var RecruitmentSchema = new Schema({
   classType: {
@@ -19,7 +19,8 @@ var RecruitmentSchema = new Schema({
     default: Date.now
   },
   currentlyRecruiting: {
-      type: Boolean
+      type: Boolean,
+      default: false
   }
 });
 

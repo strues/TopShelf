@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import chalk from 'chalk';
-import fs from 'fs';
 
 // Default NODE_ENV to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -16,7 +15,7 @@ var debug    = require('debug')('tsg:express'),
 mongoose.connect(config.mongo.uri);
 const db = mongoose.connection;
 
-let app = express();
+const app = express();
 
 var server = require('http').createServer(app),
     socketio = require('socket.io').listen(server);

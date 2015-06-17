@@ -9,9 +9,6 @@
   "globals": {
       "angular": true
   },
-  "plugins": [
-      "angular"
-  ],
 "ecmaFeatures": {
     "arrowFunctions": true,
     "blockBindings": true,
@@ -44,14 +41,6 @@
     "new-cap": 0,
     "no-loop-func": 0,
     "no-unreachable": 0,
-    "no-labels": 0,
-    "angular/ng_di": [2, "function"],
-    "angular/ng_empty_controller": [2, true],
-    "angular/ng_no_services": [2, ["$http", "$resource", "Restangular"]],
-    "angular/ng_module_name": [],
-    "angular/ng_no_digest": [2, true],
-    "angular/ng_controller_name": [2, "/[A-Z].*Ctrl$/"],
-    "angular/ng_definedundefined": [2, true],
-    "angular/ng_angularelement": [2, true]
+    "no-labels": 0
   }
 }

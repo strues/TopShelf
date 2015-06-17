@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
 import crypto from 'crypto';
 
-var Schema = mongoose.Schema,
-    authTypes = ['bnet', 'twitter', 'facebook', 'google'];
+let Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
+let UserSchema = new Schema({
     username: {
         type: String,
         trim: true,
@@ -29,26 +28,16 @@ var UserSchema = new Schema({
     hashedPassword: String,
     salt: String,
     provider: String,
-    facebook: {},
-    twitter: {},
-    google: {},
-    providers: {
-      type: Object,
-      default: {
-        local: false,
-        facebook: false,
-        twitter: false,
-        google: false,
-        linkedin: false,
-        github: false
-      }
-    },
     resetPasswordToken: String,
     resetPasswordTokenExpiration: Date,
     // References to other collections
     articles: {
         type: Schema.Types.ObjectId,
         ref: 'Article'
+    },
+    characters: {
+        type: Schema.Types.ObjectId,
+        ref: 'Character'
     },
     comments: {
         type: Schema.Types.ObjectId,
@@ -98,7 +87,7 @@ UserSchema
     .get(function() {
         return {
             '_id': this._id,
-            'username': this.user,
+            'username': this.username,
             'role': this.role
         };
     });

@@ -1,6 +1,6 @@
 import express from 'express';
 import controller from './guild.controller';
-import auth from '../../auth/auth.service';
+//import auth from '../../auth/auth.service';
 
 var router = express.Router();
 

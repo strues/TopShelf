@@ -1,5 +1,7 @@
 import Recruitment from './recruitment.model';
 
+let RecruitmentController = {};
+
 /**
  * @api {get} /recruitment Get Recruitment Status.
  * @apiName all
@@ -10,7 +12,7 @@ import Recruitment from './recruitment.model';
  * @apiSuccess {String} priority How badly the guild needs the applicant.
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
-exports.all = function(req, res) {
+ RecruitmentController.all = (req, res) => {
   Recruitment.find()
     .exec(function(err, recruitments) {
       if (err) {
@@ -32,7 +34,7 @@ exports.all = function(req, res) {
  * @apiSuccess {String} priority How badly the guild needs the applicant.
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
-exports.show = function(req, res) {
+ RecruitmentController.show = (req, res) => {
   Recruitment.findById(req.params.id, function(err, recruitment) {
     if (err) {
       return handleError(res, err);
@@ -56,7 +58,7 @@ exports.show = function(req, res) {
  * @apiParam {String} priority How badly the guild needs the applicant.
  * @apiParam {String} status Whether or not recruitment is necessary.
  */
-exports.create = function(req, res) {
+ RecruitmentController.create = (req, res) => {
   Recruitment.create(req.body, function(err, recruitment) {
     if (err) {
       return handleError(res, err);
@@ -78,7 +80,7 @@ exports.create = function(req, res) {
  * @apiParam {Boolean} currentlyRecruiting Whether or not recruitment is necessary.
  * @apiParam {Date} updatedOn The last time this data was changed
  */
-exports.update = function(req, res) {
+ RecruitmentController.update = (req, res) => {
   Recruitment.findById(req.params.id, function(err, recruitment) {
     if (err) {
       return handleError(res, err);
@@ -118,7 +120,7 @@ exports.update = function(req, res) {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 204 OK
  */
-exports.destroy = function(req, res) {
+ RecruitmentController.destroy = (req, res) => {
   Recruitment.findById(req.params.id, function(err, recruitment) {
     if (err) {
       return handleError(res, err);
@@ -138,3 +140,5 @@ exports.destroy = function(req, res) {
 function handleError(res, err) {
   return res.status(500).json(err);
 }
+
+export default RecruitmentController;

@@ -1,20 +1,13 @@
 import express from 'express';
 import passport from 'passport';
-
-var config = require('../config/environment');
-var User = require('../api/user/user.model');
+import User from '../api/user/user.model';
+import config from '../config/environment';
 
 // Passport Configuration
 require('./local/passport').setup(User, config);
-//require('./bnet/passport').setup(User, config);
-//require('./google/passport').setup(User, config);
-// require('./twitter/passport').setup(User, config);
 
-var router = express.Router();
+let router = express.Router();
 
 router.use('/local', require('./local'));
-//router.use('/bnet', require('./bnet'));
-// router.use('/twitter', require('./twitter'));
-//router.use('/google', require('./google'));
 
 module.exports = router;

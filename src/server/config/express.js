@@ -10,7 +10,7 @@ import methodOverride from 'method-override';
 import cors from 'cors';
 import expressSession from 'express-session';
 import errorHandler from 'errorhandler';
-import path from 'path';
+import {join} from 'path';
 import multer from 'multer';
 import favicon from 'serve-favicon';
 import config from './environment';
@@ -26,8 +26,7 @@ let RedisStore = require('connect-redis')(expressSession);
 
 export default (app) => {
 
-  var env = app.get('env');
-  require('../lib/redis');
+  let env = app.get('env');
   // Enable logger (morgan)
   app.use(dexter(logger.getLogFormat(), logger.getLogOptions()));
 
@@ -58,7 +57,7 @@ export default (app) => {
   app.use(methodOverride());
   app.enable('jsonp callback');
 
-  app.set('appPath', path.join(config.root, 'client'));
+  app.set('appPath', join(config.root, 'client'));
   app.use(busboy());
 
   app.use(expressSession({
@@ -86,7 +85,7 @@ export default (app) => {
 
   if ('production' === env) {
     app.use(compression());
-    app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
+    app.use(favicon(join(config.root, 'client', 'favicon.ico')));
     app.use(express.static(app.get('appPath'), {maxAge: week}));
   }
 

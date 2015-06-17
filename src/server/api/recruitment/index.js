@@ -1,6 +1,4 @@
-'use strict';
-
-var express = require('express');
+import express from 'express';
 var controller = require('./recruitment.controller');
 var auth = require('../../auth/auth.service');
 
