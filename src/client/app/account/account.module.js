@@ -1,5 +1,4 @@
 (function() {
-  'use strict';
 
   /* @ngdoc object
    * @name app.account
@@ -53,22 +52,26 @@
       })
       .state('account.profile', {
         url: '/profile',
-        templateUrl: 'app/account/profile/profile.html',
-        controller: 'ProfileCtrl',
-        controllerAs: 'profile',
-        resolve: {
-          authenticated: function($q, $location, Auth) {
-            var deferred = $q.defer();
+        views: {
+          'main@': {
+            templateUrl: 'app/account/profile/profile.html',
+            controller: 'ProfileCtrl',
+            controllerAs: 'profile',
+            resolve: {
+              authenticated: function($q, $location, Auth) {
+                var deferred = $q.defer();
 
-            if (!Auth.isLoggedIn) {
-              $location.path('/account/login');
-            }
-            else {
-              deferred.resolve();
-            }
+                if (!Auth.isLoggedIn) {
+                  $location.path('/account/login');
+                }
+                else {
+                  deferred.resolve();
+                }
 
-            return deferred.promise;
+                return deferred.promise;
+              }
           }
+        }
         }
       })
       .state('account.password', {

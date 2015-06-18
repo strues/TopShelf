@@ -35,10 +35,10 @@ let UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Article'
     },
-    characters: {
+    characters: [{
         type: Schema.Types.ObjectId,
         ref: 'Character'
-    },
+    }],
     comments: {
         type: Schema.Types.ObjectId,
         ref: 'Article'

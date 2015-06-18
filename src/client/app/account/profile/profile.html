@@ -3,29 +3,50 @@
   <div class="panel panel-default">
     <div class="panel-heading">Profile</div>
     <div class="panel-body">
-      <legend><i class="ion-clipboard"></i> Edit My Profile</legend>
+      <legend><i class="fa fa-clipboard"></i> Edit My Profile</legend>
       <form method="post" ng-submit="profile.updateProfile()">
         <div class="form-group">
           <label class="control-label">Profile Picture</label>
-          <img class="profile-picture" ng-src="{{profile.user.picture || 'http://placehold.it/100x100'}}">
         </div>
         <div class="form-group">
-          <label class="control-label"><i class="fa fa-user"></i> Display Name</label>
-          <input type="text" class="form-control" ng-model="profile.user.displayName" />
+          <label class="control-label"><i class="fa fa-user"></i>  Username</label>
+          <input type="text" class="form-control" ng-model="profile.user.username" />
         </div>
         <div class="form-group">
           <label class="control-label"><i class="ion-at"></i> Email Address</label>
           <input type="email" class="form-control" ng-model="profile.user.email" />
         </div>
-        <button class="btn btn-lg btn-success">Update Information</button>
+				<button type="submit"
+							class="btn-save btn"
+							ng-class="{'btn-primary': !profile.btnSaved, 'btn-success': profile.btnSaved === true, 'btn-danger': profile.btnSaved === 'error' || profile.user.username === '' || profile.user.username === null}"
+							ng-disabled="profile.user.username === '' || profile.user.username === null">
+						<i class="fa" ng-class="{'fa-download': !profile.btnSaved, 'fa-check': profile.btnSaved, 'fa-asterisk': profile.user.username === '' || profile.user.username === null, 'fa-ban': profile.btnSaved === 'error'}"></i> {{profile.btnSaveText}}
+					</button>
       </form>
     </div>
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-heading">Accounts</div>
+    <div class="panel-heading">Characters</div>
     <div class="panel-body">
+			<form method="post" ng-submit="profile.importCharacter()">
+				<div class="form-group">
+					<label class="control-label"><i class="fa fa-user"></i> Character Name</label>
+					<input type="text" class="form-control" ng-model="profile.characterName" />
+				</div>
+				<button type="submit"
+							class="btn-save btn"
+							ng-class="{'btn-primary': !profile.btnSaved, 'btn-success': profile.btnSaved === true, 'btn-danger': profile.btnSaved === 'error' || profile.characterName === '' || profile.characterName === null}"
+							ng-disabled="profile.characterName === '' || profile.characterName === null">
+						<i class="fa" ng-class="{'fa-download': !profile.btnSaved, 'fa-check': profile.btnSaved, 'fa-asterisk': profile.characterName === '' || profile.characterName === null, 'fa-ban': profile.btnSaved === 'error'}"></i> {{profile.btnSaveText}}
+					</button>
+			</form>
+			<ul class="list-unstyled" ng-repeat="character in profile.characters">
+				<li>{{character.name}}</li>
+				<li><img class="profile-picture" ng-src="http://us.battle.net/static-render/us/{{character.thumbnail}}" trustAsHtml></li>
 
+				<li>{{character.class}}</li>
+			</ul>
       </div>
     </div>
   </div>

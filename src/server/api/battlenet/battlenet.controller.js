@@ -6,8 +6,10 @@ import reportError from '../../lib/errors/reporter';
 
 let BnetController = {};
 
-BnetController.index = (req, res) => {
+BnetController.grabUsersCharacters = (req, res) => {
+	var userId = req.user._id;
 	Character.find()
+	.find({player: userId})
 	.populate('player', 'username')
 	.exec(function(err, characters) {
       if (err) {
@@ -33,11 +35,14 @@ BnetController.grabCharacter = (req, res) => {
 	}, {apikey: '5m653qcbnr4h6rue7e4e4k7ryvcnpa9p'}, (err, charResp) => {
 		if (err) {return res.status(500).json(reportError(err)); }
 
-	Character.create(charResp, function(err, character) {
+		var newCharacter = charResp;
+			newCharacter.player = req.user._id;
+
+	Character.create(newCharacter, function(err, character) {
 		if (err) {
 			return err;
 		}
-		character.player = req.user._id;
+
 		return res.status(201).json(character);
 	});
 });

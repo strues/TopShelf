@@ -12,7 +12,7 @@
         vm.isCollapsed = true;
 
         vm.isAdmin = Auth.isAdmin;
-        vm.currentUser = Auth.getCurrentUser;
+        vm.getCurrentUser = Auth.getCurrentUser;
         vm.isLoggedIn = Auth.isLoggedIn;
         vm.isAuthenticated = function() {
             return Auth.isLoggedIn;
