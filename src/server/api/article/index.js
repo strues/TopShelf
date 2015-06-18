@@ -4,7 +4,6 @@ import auth from '../../auth/auth.service';
 
 var router = new express.Router();
 
-
 // Get all comments
 router.get('/comments', controller.getAllComments);
 

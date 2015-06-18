@@ -4,6 +4,7 @@ import auth from '../../auth/auth.service';
 
 var router = new express.Router();
 
-router.post('/', auth.isAuthenticated(), controller.grabCharacter);
+router.post('/character', auth.isAuthenticated(), controller.grabCharacter);
+router.get('/character', controller.index);
 
 export default router;

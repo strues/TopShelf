@@ -472,7 +472,7 @@ describe('Article all comments API', () => {
   });
   after(done => {
     User.remove().exec().then(() => done());
-  })
+  });
 
   it('should show all latest comments', done => {
     request(app)

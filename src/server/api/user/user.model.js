@@ -77,7 +77,8 @@ UserSchema
             'battletag': this.battletag,
             'bio': this.bio,
             'lastUpdated': this.lastUpdated,
-            'active': this.active
+            'active': this.active,
+            'characters': this.characters
         };
     });
 
@@ -99,9 +100,6 @@ UserSchema
 UserSchema
     .path('email')
     .validate(function(email) {
-        if (authTypes.indexOf(this.provider) !== -1) {
-            return true;
-        }
         return email.length;
     }, 'Email cannot be blank');
 
@@ -109,9 +107,6 @@ UserSchema
 UserSchema
     .path('hashedPassword')
     .validate(function(hashedPassword) {
-        if (authTypes.indexOf(this.provider) !== -1) {
-            return true;
-        }
         return hashedPassword.length;
     }, 'Password cannot be blank');
 
@@ -148,8 +143,7 @@ UserSchema
         if (!this.isNew) {
             return next();
         }
-        if (!validatePresenceOf(this.hashedPassword) &&
-            authTypes.indexOf(this.provider) ===
+        if (!validatePresenceOf(this.hashedPassword) ===
             -1) {
             next(new Error('Invalid password'));
         }
