@@ -8,6 +8,7 @@
 var gulp         = require('gulp'),
     browserSync  = require('browser-sync'),
     config       = require('../config')(),
+    minifyCSS    = require('gulp-minify-css'),
     handleErrors = require('../util/error'),
     plg          = require('gulp-load-plugins')({
                       pattern: ['gulp-*', 'gulp.*'],
@@ -43,7 +44,7 @@ gulp.task('sass:build', function() {
       .pipe(plg.postcss([require('autoprefixer-core')({
         browsers: ['last 1 version']})
       ]))
-      .pipe(plg.csso())
+      .pipe(minifyCSS())
       .pipe(gulp.dest(config.buildC + 'css/'))
       .pipe(plg.size())
       .pipe(plg.notify({

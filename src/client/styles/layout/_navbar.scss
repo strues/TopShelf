@@ -77,23 +77,9 @@ padding-right: 0px;
 .navbar-default .navbar-nav .dropdown-menu > li.divider {
   background-color: $flat_dark_black;
 }
-.navbar-toggle {
-  border: none;
-  background: transparent !important;
-}
-.navbar-toggle:hover {
-  background: transparent !important;
-}
+
 .navbar-toggle .icon-bar {
   width: 22px;
-  transition: all 0.2s;
-}
-.navbar-toggle .top-bar {
-  transform: rotate(45deg);
-  transform-origin: 10% 10%;
-}
-.navbar-toggle .middle-bar {
-  opacity: 0;
 }
 .navbar-toggle .bottom-bar {
   transform: rotate(-45deg);

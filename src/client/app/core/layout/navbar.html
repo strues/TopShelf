@@ -12,7 +12,7 @@
             </a>
         </div>
 
-        <div id="navbar" class="navbar-collapse collapse" ng-class="{collapse: nav.isCollapsed}">
+        <div id="navbar" class="navbar-collapse" ng-class="{collapse: nav.isCollapsed}">
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-link"><a ui-sref="guild.home">Home</a></li>
                 <li class="nav-link"><a ui-sref="guild.info">Info</a></li>
@@ -32,7 +32,7 @@
                 <li class="dropdown" ng-if="nav.isLoggedIn()" dropdown>
                    <a >{{nav.getCurrentUser().username}}</a>
                     <a href="#" class="dropdown-toggle" role="button" aria-expanded="false" dropdown-toggle>
-                        <span class="caret"></span>
+                        <i class="fa fa-sort-down"></i>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="account.profile">Account</a></li>

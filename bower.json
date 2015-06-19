@@ -24,7 +24,7 @@
     "textAngular": "~1.4.1",
     "angular-toastr": "~1.4.1",
     "angular-file-upload": "~1.1.5",
-    "ngstorage": "~0.3.5",
+    "ngstorage": "~0.3.6",
     "angular-socket-io": "~0.7.0",
     "angular-youtube-mb": "~1.0.2",
     "ngtoast": "~1.5.4"
