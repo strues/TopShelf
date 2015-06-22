@@ -1,14 +1,12 @@
 (function() {
 
-    'use strict';
-
     angular
         .module('app.core')
         .config(configure)
         .run(authRun);
 
     configure
-        .$inject = ['$urlRouterProvider', '$httpProvider','$locationProvider'];
+        .$inject = ['$urlRouterProvider', '$httpProvider', '$locationProvider'];
     /* @ngInject */
     function configure($urlRouterProvider, $httpProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');

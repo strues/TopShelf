@@ -1,6 +1,6 @@
+import chalk from 'chalk';
 import express from 'express';
 import mongoose from 'mongoose';
-import chalk from 'chalk';
 
 // Default NODE_ENV to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -8,8 +8,7 @@ if (typeof Promise === 'undefined') {
   require('babel/polyfill');
 }
 
-var debug    = require('debug')('tsg:express'),
-    config   = require('./config/environment');
+var config   = require('./config/environment');
 
 // MongoDB
 mongoose.connect(config.mongo.uri);
@@ -18,8 +17,8 @@ const db = mongoose.connection;
 const app = express();
 
 var server = require('http').createServer(app),
-    socketio = require('socket.io').listen(server);
-require('./config/socketio')(socketio);
+    io = require('socket.io').listen(server);
+require('./config/socketio')(io);
 require('./config/express')(app);
 require('./routes')(app);
 

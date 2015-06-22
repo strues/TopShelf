@@ -1,4 +1,4 @@
-'use strict';
+
 angular.module('app.guild').filter('className', function() {
   return function(classId) {
     switch (classId) {

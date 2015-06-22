@@ -15,7 +15,7 @@
     "modules": true
   },
 "rules": {
-    "no-console": 1,
+    "no-console": 0,
     "no-debugger": 2,
     "quotes": [1, "single", "avoid-escape"],
     "no-shadow": [0],

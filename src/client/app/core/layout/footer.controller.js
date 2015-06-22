@@ -1,5 +1,4 @@
 (function () {
-    'use strict';
     /**
        * @ngdoc object
        * @name app.core.controller:FooterCtrl

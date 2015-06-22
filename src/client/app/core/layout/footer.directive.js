@@ -1,5 +1,4 @@
 (function () {
-    'use strict';
     /**
        * @ngdoc directive
        * @name app.core.directive:footer

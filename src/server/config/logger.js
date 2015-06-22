@@ -1,10 +1,3 @@
-'use strict';
-
-/**
- * Module dependencies.
- */
-
-var dexter = require('morgan');
 var config = require('./environment');
 var fs = require('fs');
 

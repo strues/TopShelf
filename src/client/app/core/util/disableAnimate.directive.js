@@ -1,7 +1,7 @@
 (function() {
     angular
         .module('app.core')
-        .directive('disableNgAnimate',disableNgAnimate)
+        .directive('disableNgAnimate', disableNgAnimate);
 
         disableNgAnimate.$inject = ['$animate'];
         function disableNgAnimate($animate) { /* @ngInject */

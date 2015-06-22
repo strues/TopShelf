@@ -2,26 +2,23 @@
  * Express Configuration
  */
 
-import express from 'express';
-import morgan from 'morgan';
-import compression from 'compression';
 import bodyParser from 'body-parser';
-import methodOverride from 'method-override';
+import compression from 'compression';
+import busboy from 'connect-busboy';
 import cors from 'cors';
-import expressSession from 'express-session';
 import errorHandler from 'errorhandler';
-import {join} from 'path';
-import multer from 'multer';
+import express from 'express';
+import expressSession from 'express-session';
+import methodOverride from 'method-override';
+import morgan from 'morgan';
+import passport from 'passport';
+import { join } from 'path';
 import favicon from 'serve-favicon';
 import config from './environment';
 import logger from './logger';
-import mongoose from 'mongoose';
-import passport from 'passport';
-import busboy from 'connect-busboy';
 
 let dexter = morgan;
 
-let debug = require('debug')('tsg:express');
 let RedisStore = require('connect-redis')(expressSession);
 
 export default (app) => {
@@ -42,7 +39,7 @@ export default (app) => {
   var sessionStorage = new RedisStore({
     prefix: 'shelf_session_',
     client: app.redisClient
-  })
+  });
 
   // always bodyParser before cookie, method or session
   // parse application/x-www-form-urlencoded
@@ -83,13 +80,13 @@ export default (app) => {
   const day  = (hour * 24);   //  86400000
   const week = (day * 7);     // 604800000
 
-  if ('production' === env) {
+  if (env === 'production') {
     app.use(compression());
     app.use(favicon(join(config.root, 'client', 'favicon.ico')));
     app.use(express.static(app.get('appPath'), {maxAge: week}));
   }
 
-  if ('development' === env || 'test' === env) {
+  if (env === 'development' || env === 'test') {
     app.use(express.static('./src/client/'));
     app.use(express.static('./'));
     app.use(express.static('./tmp'));

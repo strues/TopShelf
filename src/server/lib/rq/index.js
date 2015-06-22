@@ -1,21 +1,21 @@
-var https = require('https');
-var http = require('http');
+import http from 'http';
+import https from 'https';
 
 function responseHandler (res, done) {
   var data = '';
 
-  res.on('data', function (chunk) {
+  res.on('data', (chunk) => {
     data += chunk;
   });
 
-  res.on('end', function () {
+  res.on('end', () => {
     data = JSON.parse(data);
     done(data);
   });
 }
 
 module.exports = {
-  oauth: function (host, path, token, done) {
+  oauth: (host, path, token, done) => {
     var rq = https.request({
         host: host,
         path: path + '?access_token=' + token,
@@ -25,19 +25,19 @@ module.exports = {
           Authorization: 'OAuth ' + token
         }
       },
-      function (res) {
+      (res) => {
         responseHandler(res, done);
       });
     rq.end();
   },
-  bnet: function (host, path, done) {
+  bnet: (host, path, done) => {
     var rq = http.request({
         host: host,
         path: path,
         port: 80,
         method: 'GET'
       },
-      function (res) {
+      (res) => {
         responseHandler(res, done);
       });
     rq.end();

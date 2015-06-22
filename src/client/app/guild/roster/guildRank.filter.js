@@ -1,4 +1,4 @@
-'use strict';
+
 angular.module('app.guild').filter('guildRank', function() {
   return function(rankId) {
     switch (rankId) {

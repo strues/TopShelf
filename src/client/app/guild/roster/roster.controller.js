@@ -1,6 +1,4 @@
 (function() {
-  'use strict';
-
   /**
    * @ngdoc controller
    * @name app.guild.controller:RosterCtrl

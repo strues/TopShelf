@@ -1,4 +1,4 @@
-var BaseController = function(mod, n) {
+var BaseController = (mod, n) => {
   this.model = mod;
   console.log('BASECONTROLLER ::: ' + n);
 };
@@ -9,10 +9,10 @@ BaseController.prototype = {
    *  POST - create a new Record
    *
    */
-  create: function(req, res) {
+  create: (req, res) => {
     var data = req.body || {};
     var user = new this.model(data);
-    user.save(function(err) {
+    user.save((err) => {
       if (err) return res.status(400).json(err);
       res.json(user);
     });
@@ -22,11 +22,11 @@ BaseController.prototype = {
    *  GET - list records
    *  @param {Object} req.query Should describe query parameters for filtering
    */
-  list: function(req, res) {
+  list: (req, res) => {
     this.model.find(req.query).sort({
         'createdAt': -1
       })
-      .exec(function(err, records) {
+      .exec((err, records) => {
         if (err) {
           return res.status(400).json(err);
         }
@@ -38,11 +38,11 @@ BaseController.prototype = {
    *  GET - find one Record
    *  @param {id} req.prams.id The ID of the record is required in url
    */
-  getOne: function(req, res) {
+  getOne: (req, res) => {
     this.model.findOne({
         _id: req.params.id
       })
-      .exec(function(err, records) {
+      .exec((err, records) => {
         if (err) {
           res.status(400).json(err);
         }
@@ -55,17 +55,18 @@ BaseController.prototype = {
    *  @param {Object} req.params.id The ID of the record to update is required in url
    *  Mongoose won't allow non-schema items to be saved, and handles validation
    */
-  update: function(req, res) {
+  update: (req, res) => {
     var data = req.body || {};
     var id = req.params.id;
-    this.model.findById(id, function(err, doc) {
+    this.model.findById(id, (err, doc) => {
+      if (err) { return res.status(400).json(err); }
       if (doc) {
         for (var attr in data) {
           if (data.hasOwnProperty(attr)) {
             doc[attr] = data[attr];
           }
         }
-        doc.save(function(err) {
+        doc.save((err) => {
           if (err) {
             res.status(400).json(err);
           }
@@ -74,7 +75,7 @@ BaseController.prototype = {
           }
         });
       }
-    })
+    });
   },
 
   /**
@@ -82,14 +83,14 @@ BaseController.prototype = {
    *  Delete one record by _id
    *
    */
-  delete: function(req, res, next) {
+  delete: (req, res, next) => {
     this.model.findOne({
       _id: req.params.id
-    }, function(err, doc) {
+    }, (err, doc) => {
       if (err) {
         res.status(400).json(err);
       }
-      doc.remove(function() {
+      doc.remove(() => {
         res.json(doc);
       });
     });
@@ -98,13 +99,13 @@ BaseController.prototype = {
   /**
    * DELETE - Delete Multipe Records
    */
-  deleteSome: function(req, res, next) {
+  deleteSome: (req, res, next) => {
     var toDel = req.body.ids || [];
     this.model.remove({
       '_id': {
         '$in': toDel
       }
-    }, function(err, del) {
+    }, (err, del) => {
       if (err) {
         res.status(400).json(err);
       }

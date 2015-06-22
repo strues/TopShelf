@@ -11,7 +11,6 @@ export default (app) => {
   app.use('/api/articles', require('./api/article'));
   app.use('/api/users', require('./api/user'));
   app.use('/api/battlenet', require('./api/battlenet'));
-  //app.use('/api/guild', require('./api/guild'));
   app.use('/auth', require('./auth'));
 
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
