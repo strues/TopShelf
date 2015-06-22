@@ -1,6 +1,6 @@
 import express from 'express';
-import controller from './upload.controller';
 import auth from '../../auth/auth.service';
+import controller from './upload.controller';
 
 var router = express.Router();
 

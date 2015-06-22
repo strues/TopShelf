@@ -1,6 +1,6 @@
-import express from 'express';
-import controller from './battlenet.controller';
-import auth from '../../auth/auth.service';
+import express from 'express'
+import auth from '../../auth/auth.service'
+import controller from './battlenet.controller'
 
 var router = new express.Router();
 

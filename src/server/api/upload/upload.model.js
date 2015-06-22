@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
     Schema   = mongoose.Schema,
-    moment   = require('moment'),
     _        = require('lodash');
 
 var UploadSchema = new Schema({

@@ -1,10 +1,7 @@
-'use strict';
+import express from 'express';
+import controller from './recruitmentThread.controller';
 
-var express = require('express');
-var controller = require('./recruitmentThread.controller');
-var RecruitmentThread = require('./recruitmentThread.model');
-
-var auth = require('../../auth/auth.service');
+let auth = require('../../auth/auth.service');
 
 var router = express.Router();
 

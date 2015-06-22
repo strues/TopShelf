@@ -1,6 +1,6 @@
 var bnet = require('battlenet-api')('5m653qcbnr4h6rue7e4e4k7ryvcnpa9p');
-import Character from '../user/character.model';
 import reportError from '../../lib/errors/reporter';
+import Character from '../user/character.model';
 
 //import config from '../../config/environment';
 

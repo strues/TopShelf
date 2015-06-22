@@ -1,6 +1,3 @@
-'use strict';
-
-var _ = require('lodash');
 var RecruitmentThread = require('./recruitmentThread.model');
 
 
@@ -16,7 +13,7 @@ var RecruitmentThread = require('./recruitmentThread.model');
  */
 exports.allThreads = function(req, res) {
   RecruitmentThread.find()
-    .exec(function(err, recruitmentthreads) {
+    .exec((err, recruitmentthreads) => {
       if (err) {
         return handleError(res, err);
       }
@@ -37,7 +34,7 @@ exports.allThreads = function(req, res) {
  * @apiSuccess {Date} updatedOn the last time this was updated
  */
 exports.createThread = function(req, res) {
-  RecruitmentThread.create(req.body, function(err, recruitmentthread) {
+  RecruitmentThread.create(req.body, (err, recruitmentthread) => {
     if (err) {
       return handleError(res, err);
     }
@@ -59,7 +56,7 @@ exports.createThread = function(req, res) {
  * @apiParam {Date} updatedOn The last time this data was changed
  */
 exports.updateThread = function(req, res) {
-  RecruitmentThread.findById(req.params.id, function(err, recruitmentthread) {
+  RecruitmentThread.findById(req.params.id, (err, recruitmentthread)  => {
     if (err) {
       return handleError(res, err);
     }
@@ -77,7 +74,7 @@ exports.updateThread = function(req, res) {
     if (req.body.updatedOn) recruitmentthread.updatedOn =
       req.body.updatedOn;
 
-    recruitmentthread.save(function(err) {
+    recruitmentthread.save((err) => {
       if (err) {
         return handleError(res, err);
       }
@@ -99,7 +96,7 @@ exports.updateThread = function(req, res) {
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
 exports.show = function(req, res) {
-  RecruitmentThread.findById(req.params.id, function(err, recruitmentthread) {
+  RecruitmentThread.findById(req.params.id, (err, recruitmentthread) => {
     if (err) {
       return handleError(res, err);
     }
@@ -121,14 +118,14 @@ exports.show = function(req, res) {
  *     HTTP/1.1 204 OK
  */
 exports.destroy = function(req, res) {
-  RecruitmentThread.findById(req.params.id, function(err, recruitmentthread) {
+  RecruitmentThread.findById(req.params.id, (err, recruitmentthread)  => {
     if (err) {
       return handleError(res, err);
     }
     if (!recruitmentthread) {
       return res.sendStatus(404);
     }
-    recruitmentthread.remove(function(err) {
+    recruitmentthread.remove((err) => {
       if (err) {
         return handleError(res, err);
       }

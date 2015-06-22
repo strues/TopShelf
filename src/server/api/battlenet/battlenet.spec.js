@@ -1,7 +1,7 @@
 import chai from 'chai';
 import _ from 'lodash';
-import app from '../../app';
 import request from 'supertest';
+import app from '../../app';
 import Character from '../user/character.model.js';
 import User from '../user/user.model';
 chai.should();
