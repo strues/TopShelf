@@ -7,6 +7,7 @@ let errors = require('./lib/errors');
 export default (app) => {
   app.use('/api/recruitment-threads', require('./api/recruitmentThread'));
   app.use('/api/recruiting', require('./api/recruitment'));
+  app.use('/api/raids', require('./api/raid'));
   app.use('/api/uploads', require('./api/upload'));
   app.use('/api/articles', require('./api/article'));
   app.use('/api/users', require('./api/user'));

@@ -104,6 +104,24 @@
             }
           }
         }
+      })
+      .state('guild.raids',
+      {
+        url: '/raids',
+        title: 'Active Raid Roster - Top Shelf',
+        views:
+        {
+          'main@':
+          {
+            templateUrl: 'app/guild/raid/raids.html',
+            controller: 'RaidCtrl as raidc',
+            resolve: { /*@ngInject*/
+              members: function(armorySvc) {
+                return armorySvc.getMembers();
+              }
+            }
+          }
+        }
       });
   }
 }());

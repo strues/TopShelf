@@ -43,6 +43,10 @@ let UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Article'
     },
+    raids: {
+        type: Schema.Types.ObjectId,
+        ref: 'Raid'
+    },
     // Battlenet
     bnetId: Number,
     battletag: String,

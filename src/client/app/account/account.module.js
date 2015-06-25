@@ -74,6 +74,23 @@
         }
         }
       })
+      .state('account.user', {
+        url: '/:id',
+        views: {
+          'main@': {
+            templateUrl: 'app/account/account.html',
+            controller: 'AccountCtrl',
+            controllerAs: 'acc',
+            resolve:
+            { /* @ngInject */
+              person: function($stateParams, userSvc)
+              {
+                return userSvc.get($stateParams.id);
+              }
+            }
+          }
+        }
+      })
       .state('account.password', {
         abstract: true,
         url: '/password',
