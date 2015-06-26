@@ -27,4 +27,10 @@ let RaidSchema = new Schema({
 	}
 });
 
+RaidSchema.index({
+	organizer: 1,
+	players: 1,
+	raidZone: 1
+});
+
 module.exports = mongoose.model('Raid', RaidSchema);

@@ -10,9 +10,9 @@
       .module('app.admin')
       .controller('EditUserCtrl', EditUserCtrl);
 
-  EditUserCtrl.$inject = ['User', '$scope', '$timeout', 'ngToast', '$http', '$stateParams'];
+  EditUserCtrl.$inject = ['User', '$scope', '$timeout', 'toastr', '$http', '$stateParams'];
   /* @ngInject */
-  function EditUserCtrl(User, $scope, ngToast, $timeout, $http, $stateParams) {
+  function EditUserCtrl(User, $scope, toastr, $timeout, $http, $stateParams) {
     var vm = this;
     var username = $stateParams.id;
     // @TODO: Put to a service
@@ -20,7 +20,7 @@
       User.get(username, function(user) {
         vm.user = user;
       });
-    };
+    }
     /**
      * Reset profile save button to initial state
      *
@@ -63,7 +63,7 @@
       function _updateSuccess() {
         vm.btnSaved = true;
         vm.btnSaveText = 'Saved!';
-        ngToast('Saved user info');
+        toastr.success('Saved user info', 'Saved');
       }
 
       /**
@@ -76,7 +76,7 @@
         vm.btnSaveText = 'Error saving!';
       }
 
-      if (!!vm.user.username) {
+      if (!vm.user.username) {
         // Set status to Saving... and update upon success or error in callbacks
         vm.btnSaveText = 'Saving...';
         // @TODO: Put to a service
@@ -89,9 +89,9 @@
       }, function() {
         vm.users.splice(this.$index, 1);
       }.bind(this), function() {
-        ngToast.create('User deleted');
+        toastr.error('User permanently removed', 'Deleted');
       });
     };
-  }
+  };
 }
 })();

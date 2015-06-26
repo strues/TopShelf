@@ -11,9 +11,9 @@
     .module('app.components')
     .controller('RecruitingWidgetCtrl', RecruitingWidgetCtrl);
 
-  RecruitingWidgetCtrl.$inject = ['recruitSvc', 'ngToast'];
+  RecruitingWidgetCtrl.$inject = ['recruitSvc', 'toastr'];
   /* @ngInject */
-  function RecruitingWidgetCtrl(recruitSvc, ngToast) {
+  function RecruitingWidgetCtrl(recruitSvc, toastr) {
 
     /*jshint validthis: true */
     var vm = this;
@@ -22,7 +22,7 @@
           vm.recruitments = data;
         })
         .error(function() {
-          ngToast.create('Sorry, unable to retrieve  recruitment status');
+          toastr.create('Sorry, unable to retrieve  recruitment status');
         });
 
   }

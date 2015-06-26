@@ -10,9 +10,9 @@
     .module('app.account')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['Auth', 'ngToast', '$window', '$location'];
+  LoginCtrl.$inject = ['Auth', 'toastr', '$window', '$location'];
   /* @ngInject */
-  function LoginCtrl(Auth, ngToast, $window, $location) {
+  function LoginCtrl(Auth, toastr, $window, $location) {
     var vm = this;
     /**
      * @ngdoc property
@@ -24,14 +24,6 @@
      * @returns {User} The user data
      */
     vm.user = {};
-    /**
-     * @ngdoc property
-     * @name error
-     * @propertyOf app.account.controller:LoginController
-     * @description
-     * Error flag
-     * @returns {Boolean} True if there is an error
-     */
     vm.error = false;
     vm.login = login;
 
@@ -41,7 +33,7 @@
           email: vm.user.email,
           password: vm.user.password
         }).then(function() {
-          ngToast.create('Welcome Back!');
+          toastr.success('You\'re now logged in', 'Welcome Back!');
           // Logged in, redirect to home
           $location.path('/');
         }).catch(function(err) {

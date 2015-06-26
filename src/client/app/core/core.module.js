@@ -14,10 +14,10 @@
         'ngMessages',
         'ngResource',
         'ui.router',
+        'ui.bootstrap',
         'ngStorage',
         'btford.socket-io',
-        'ui.bootstrap',
-        'ngToast',
+        'toastr',
         'textAngular',
         'angularFileUpload',
         'youtube-embed'

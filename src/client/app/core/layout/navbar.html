@@ -19,7 +19,7 @@
                 <li class="nav-link"><a ng-href="https://topshelfguild.com/forums/applicationform/raider.2/form" target="_blank" trustAsHtml>Apply</a></li>
                 <li class="nav-link"><a ui-sref="guild.roster">Roster</a></li>
                 <li class="nav-link"><a ui-sref="guild.raids">Raids</a></li>
-                <li class="nav-link"><a ui-sref="guild.videos">Kill Videos</a></li>
+                <li class="nav-link"><a ui-sref="guild.videos">Videos</a></li>
                 <li class="nav-link"><a ng-href="https://topshelfguild.com/forums/" target="_blank" trustAsHtml>Forums</a></li>
                 <li class="nav-link" ng-show="nav.isAdmin()">
                     <a ui-sref="admin.dashboard"> Admin</a>
@@ -31,10 +31,7 @@
                     <a ui-sref="account.login"> Login</a>
                 </li>
                 <li class="dropdown" ng-if="nav.isLoggedIn()" dropdown>
-                   <a ui-sref="account.user({id: user._id})">{{nav.getCurrentUser().username}}</a>
-                    <a href="#" class="dropdown-toggle" role="button" aria-expanded="false" dropdown-toggle>
-                        <i class="fa fa-sort-down"></i>
-                    </a>
+                   <a class="dropdown-toggle" ui-sref="account.user({id: user._id})"dropdown-toggle>{{nav.getCurrentUser().username}} <i class="fa fa-sort-down"></i></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="account.profile">Account</a></li>
                         <li><a ng-click="nav.logout()">Logout</a>

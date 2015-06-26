@@ -16,11 +16,13 @@ padding-right: 0px;
 }
 // #2c3338 darkness
 .navbar {
-  height: 70px;
+  max-height: 70px;
   background-color: #2c3338;
   padding-bottom: 0;
 }
-
+.navbar-nav > li > a {
+  padding-bottom: 20px;
+}
 .brand-image {
   padding-right: 0px !important;
   padding-left: 0px !important;
@@ -38,25 +40,26 @@ padding-right: 0px;
 .nav-link {
   border-top: 2px solid rgba(255, 255, 255, .01);
   &:hover {
-    border-top: 2px solid $flat_dark_black;
+    background-color: #2c3338;
   }
 }
 
-.navbar-collapse  .dropdown-menu {
+.navbar-collapse .dropdown-menu {
   color: $flat_dark_white;
-  background-color: $flat_dark_blue;
+  background-color: #2c3338;
 }
+
 .navbar-collapse  .dropdown-menu > li > a {
   color: $flat_white;
   text-align: right;
 }
 .navbar-default .navbar-nav > li > a {
   color: $flat_blue;
-  display: inline-block;
+  background-color: #2c3338;
   font-family: $font-family-nav;
   font-size: 16px;
-  font-weight: 700;
   text-transform: uppercase;
+  z-index: 1000;
   &:hover {
     background-color: rgba(255, 255, 255, .9);
     color: $flat_dark_blue;
@@ -71,9 +74,7 @@ padding-right: 0px;
 .navbar-default .navbar-nav .dropdown-menu > li.active > a {
   color: $flat_dark_white;
 }
-.navbar-default .navbar-nav .dropdown-menu > li:last-child > a {
-  border-radius: 0 0 3px 3px;
-}
+
 .navbar-default .navbar-nav .dropdown-menu > li.divider {
   background-color: $flat_dark_black;
 }

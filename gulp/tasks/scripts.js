@@ -1,4 +1,3 @@
-'use strict';
 /*
  * @title Scripts
  * @description A task to compile Sass to CSS

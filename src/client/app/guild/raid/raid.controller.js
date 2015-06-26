@@ -9,9 +9,9 @@
 		.module('app.guild')
 		.controller('RaidCtrl', RaidCtrl);
 
-	RaidCtrl.$inject = ['$http', 'ngToast'];
+	RaidCtrl.$inject = ['$http', 'toastr'];
 	/* @ngInject */
-	function RaidCtrl($http, ngToast) {
+	function RaidCtrl($http, toastr) {
 
 		/*jshint validthis: true */
 		var vm = this;
@@ -19,14 +19,17 @@
 		vm.addRaid = function() {
 			// funcation assignmen
 			$http.post('/api/raids', vm.formData).success(function() {
-
-				ngToast.create('Goodluck, you\'re going to need it',
-					'Recruitment Updated');
+				toastr
+				.success('Goodluck, you\'re going to need it', 'Recruitment Updated');
 			}).error(function(error) {
-				ngToast.create('There was a problem with the server' +
+				toastr.error('There was a problem with the server' +
 					error.message, 'Something broke');
 			});
 		};
+
+		$http.get('/api/raids').success(function(data) {
+			vm.raids = data;
+		});
 	}
 
 })();

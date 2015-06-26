@@ -3,12 +3,8 @@
  * 2. Launch Browser-Sync
  */
 
-'use strict';
-
-var gulp        = require('gulp'),
-    browserSync = require('browser-sync').create(),
-    reload      = browserSync.reload,
-//    bsyncSPA    = require('browser-sync-spa'),
+var gulp        = require('gulp');
+var browserSync = require('browser-sync').create(),
     config      = require('../config')(),
     plg         = require('gulp-load-plugins')({
                     pattern: ['gulp-*', 'gulp.*'],
@@ -16,6 +12,7 @@ var gulp        = require('gulp'),
                     camelize: true,
                     lazy: true});
 
+var reload      = browserSync.reload;
 gulp.task('runapp', function() {
   return plg.nodemon({
       script: 'src/server/app.js',
@@ -72,7 +69,6 @@ gulp.task('serve', ['sass', 'inject', 'runapp'], function() {
     ghost: false,
     xip: false
   });
-
   console.log('Starting BrowserSync on port 3000');
   gulp.watch(config.sass, ['sass'], reload);
   gulp.watch(config.ngApp, ['lint'], reload);

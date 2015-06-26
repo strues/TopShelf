@@ -3,9 +3,9 @@
 		.module('app.account')
 		.controller('ProfileCtrl', ProfileCtrl);
 
-	ProfileCtrl.$inject = ['Auth', 'accountSvc', 'ngToast', 'bnetSvc', '$timeout'];
+	ProfileCtrl.$inject = ['Auth', 'accountSvc', 'toastr', 'bnetSvc', '$timeout'];
 
-	function ProfileCtrl(Auth, accountSvc, ngToast, bnetSvc, $timeout) {
+	function ProfileCtrl(Auth, accountSvc, toastr, bnetSvc, $timeout) {
 		var vm = this;
 		/**
 		 * Reset profile save button to initial state

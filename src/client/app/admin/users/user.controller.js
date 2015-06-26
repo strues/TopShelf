@@ -1,5 +1,4 @@
 (function() {
-    'use strict';
 
     /* jshint latedef: nofunc */
     /** @ngdoc controller
@@ -11,9 +10,9 @@
         .module('app.admin')
         .controller('UserCtrl', UserCtrl);
 
-    UserCtrl.$inject = ['User', 'ngToast'];
+    UserCtrl.$inject = ['User', 'toastr'];
     /* @ngInject */
-    function UserCtrl(User, ngToast) {
+    function UserCtrl(User, toastr) {
         var vm = this;
 
       User.query(function(data) {

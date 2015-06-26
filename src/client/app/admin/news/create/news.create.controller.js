@@ -5,9 +5,9 @@
     .module('app.admin')
     .controller('NewsCreateCtrl', NewsCreateCtrl);
 
-  NewsCreateCtrl.$inject = ['articleSvc', 'ngToast'];
+  NewsCreateCtrl.$inject = ['articleSvc', 'toastr'];
 
-  function NewsCreateCtrl(articleSvc, ngToast) {
+  function NewsCreateCtrl(articleSvc, toastr) {
 
     var vm = this;
     vm.saveArticle = function() {
@@ -17,12 +17,12 @@
         vm.processing = false;
         vm.articleData = {};
         vm.message = data.message;
-       ngToast.create('Your post should now appear on the main page',
+       toastr.success('Your post should now appear on the main page',
           'Article Saved!');
 
       }).error(function(error) {
-        ngToast.create('There was a problem with your post' +
-          error.message);
+        toastr.error('There was a problem with your post' +
+          error.message, 'Oops');
       });
     }; // end of $scope.createPost
   }

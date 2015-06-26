@@ -1,5 +1,4 @@
 (function() {
-  'use strict';
   /*
    * @ngdoc Controller
    * @name RecruitmentListCtrl
@@ -9,9 +8,9 @@
     .module('app.admin')
     .controller('RecruitmentListCtrl', RecruitmentListCtrl);
 
-  RecruitmentListCtrl.$inject = ['$http', 'ngToast', '$state', 'recruitSvc'];
+  RecruitmentListCtrl.$inject = ['$http', 'toastr', '$state', 'recruitSvc'];
   /* @ngInject */
-  function RecruitmentListCtrl($http, ngToast, $state, recruitSvc) {
+  function RecruitmentListCtrl($http, toastr, $state, recruitSvc) {
     var vm = this;
 
     recruitSvc.list().success(function(data) {
@@ -19,7 +18,7 @@
     });
     vm.deleteRecruitment = function(id) {
       recruitSvc.destroy(id).success(function () {
-        ngToast.create('Removed');
+        toastr.create('Removed');
         $state.reload();
       });
     };
@@ -28,7 +27,7 @@
     });
     vm.deleteThread = function(id) {
       recruitSvc.destroyThread(id).success(function () {
-        ngToast.create('Removed');
+        toastr.create('Removed');
         $state.reload();
       });
     };

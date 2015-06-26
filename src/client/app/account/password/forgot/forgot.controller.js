@@ -11,9 +11,9 @@
     .module('app.account')
     .controller('ForgotCtrl', ForgotCtrl);
 
-  ForgotCtrl.$inject = ['userSrv', 'ngToast'];
+  ForgotCtrl.$inject = ['userSrv', 'toastr'];
   /* @ngInject */
-  function ForgotCtrl(userSrv, ngToast) {
+  function ForgotCtrl(userSrv, toastr) {
 
     /*jshint validthis: true */
     var vm = this;
@@ -21,10 +21,10 @@
     vm.forgot = function() {
       userSrv.forgotPassword({'email': vm.email})
          .then(function() {
-           ngToast.create('Email has been sent');
+           toastr.create('Email has been sent');
          })
          .catch(function(response) {
-           ngToast.create(response.data.message);
+           toastr.create(response.data.message);
          });
      };
 
