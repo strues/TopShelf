@@ -15,14 +15,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 4413,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -32,9 +24,17 @@
 	"command_palette":
 	{
 		"height": 354.0,
-		"last_filter": "",
+		"last_filter": "instal",
 		"selected_items":
 		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"fix",
 				"FixMyJS"
@@ -50,10 +50,6 @@
 			[
 				"nginx",
 				"Set Syntax: nginx"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"comment",
@@ -97,10 +93,41 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/steventruesdell/Development/tsg"
+		"/Users/steventruesdell/Development/tsg",
+		"/Users/steventruesdell/Development/tsg/src",
+		"/Users/steventruesdell/Development/tsg/src/client",
+		"/Users/steventruesdell/Development/tsg/src/client/app",
+		"/Users/steventruesdell/Development/tsg/src/client/app/core",
+		"/Users/steventruesdell/Development/tsg/src/client/app/core/layout",
+		"/Users/steventruesdell/Development/tsg/src/client/app/core/util",
+		"/Users/steventruesdell/Development/tsg/src/client/app/guild/home",
+		"/Users/steventruesdell/Development/tsg/src/client/styles",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/base",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/components",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/layout",
+		"/Users/steventruesdell/Development/tsg/src/server/api"
 	],
 	"file_history":
 	[
+		"/Users/steventruesdell/Development/tsg/src/client/styles/components/_cards.scss",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/components/_login-signup.scss",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/components/_carousel.scss",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/components/_video.scss",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/base/_palette.scss",
+		"/Users/steventruesdell/Development/tsg/src/client/app/core/layout/navbar.html",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/layout/_navbar.scss",
+		"/Volumes/Rekt/dump/Archive/node-js-express-rest-web-services/6/Controllers/bookController.js",
+		"/Users/steventruesdell/Development/tsg/src/client/app/guild/home/home.html",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/layout/_home.scss",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/base/_typography.scss",
+		"/Users/steventruesdell/Development/tsg/src/client/styles/base/_global.scss",
+		"/Users/steventruesdell/Development/tsg/.editorconfig",
+		"/Users/steventruesdell/Development/tsg/.scss-lint.yml",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/steventruesdell/Development/tsg/src/client/app/account/login/login.html",
+		"/Volumes/Rekt/dump/Archive/node-js-express-rest-web-services/6/Routes/bookRoutes.js",
+		"/Volumes/Rekt/dump/Archive/node-js-express-rest-web-services/6/models/bookModel.js",
+		"/Users/steventruesdell/Development/tsg/package.json",
 		"/Users/steventruesdell/Development/goblin/default.hbs",
 		"/Users/steventruesdell/Downloads/themeforest-8576493-goblin-minimalist-contentfocused-theme/theme/default/goblin/default.hbs",
 		"/Users/steventruesdell/Development/goblin/partials/comment/disqus.hbs",
@@ -189,7 +216,6 @@
 		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/CSScomb.sublime-settings",
 		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Babel.sublime-settings",
-		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
 		"/Users/steventruesdell/.dotfiles/system/aliases.zsh",
 		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
 		"/Users/steventruesdell/.dotfiles/ssh/aliases.zsh",
@@ -214,6 +240,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			",1.0);",
 			"disq",
 			"boots",
 			"boot",
@@ -237,6 +264,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			", 1);",
 			"sCOThemeOpt",
 			"sCO",
 			"-color",
@@ -257,46 +285,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "package.json",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 4413,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								163,
-								163
-							]
-						],
-						"settings":
-						{
-							"WordCountShouldRun": true,
-							"WordCountSyntax": "json.sublime-syntax",
-							"bs_sintax": "json.sublime-syntax",
-							"buffer_scroll_name": "86340fe9",
-							"editorconfig": true,
-							"ensure_newline_at_eof_on_save": true,
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"trim_trailing_white_space_on_save": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
