@@ -7,7 +7,7 @@ import os from 'os';
 
 // Setup the cluster to use app.js
 cluster.setupMaster({
-  exec: 'app.js'
+  exec: './app.js'
 });
 
 // Listen for dying workers

@@ -1,0 +1,389 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pri",
+				"prism-line-numbers.js"
+			],
+			[
+				"i",
+				"jquery.infinitescroll.js"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 4413,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"fix",
+				"FixMyJS"
+			],
+			[
+				"jsb",
+				"Javascript Beautify"
+			],
+			[
+				"comm",
+				"Toggle Comment"
+			],
+			[
+				"nginx",
+				"Set Syntax: nginx"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"comment",
+				"Toggle Comment"
+			],
+			[
+				"csso",
+				"Run CSScomb"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"themr",
+				"Themr: List themes"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/steventruesdell/Development/tsg"
+	],
+	"file_history":
+	[
+		"/Users/steventruesdell/Development/goblin/default.hbs",
+		"/Users/steventruesdell/Downloads/themeforest-8576493-goblin-minimalist-contentfocused-theme/theme/default/goblin/default.hbs",
+		"/Users/steventruesdell/Development/goblin/partials/comment/disqus.hbs",
+		"/Users/steventruesdell/Development/goblin/src/js/main.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/imagesloaded.pkgd.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/sscr.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/jquery.placeholder.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/jquery.magnific-popup.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/jquery.infinitescroll.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/jquery.fitvids.js",
+		"/Users/steventruesdell/Development/goblin/gulpfile.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/prism.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/pace.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/moment.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/waveform.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/sdk.js",
+		"/Users/steventruesdell/Development/goblin/src/js/lib/jquery.mb.YTPlayer.js",
+		"/Users/steventruesdell/Development/goblin/partials/footer/three-columns.hbs",
+		"/Users/steventruesdell/Development/goblin/partials/widget/newsletter.hbs",
+		"/Users/steventruesdell/Development/goblin/partials/widget/about-author.hbs",
+		"/Users/steventruesdell/Development/goblin/post.hbs",
+		"/Users/steventruesdell/Development/goblin/src/sass/_vars.scss",
+		"/Users/steventruesdell/Development/goblin/src/sass/style.scss",
+		"/Users/steventruesdell/Development/goblin/assets/css/style.css",
+		"/Users/steventruesdell/Downloads/themeforest-8576493-goblin-minimalist-contentfocused-theme/theme/default/goblin/assets/css/style.css",
+		"/Users/steventruesdell/Downloads/themeforest-8576493-goblin-minimalist-contentfocused-theme/theme/default/goblin/src/sass/style.scss",
+		"/Users/steventruesdell/Downloads/themeforest-8576493-goblin-minimalist-contentfocused-theme/theme/default/goblin/gulpfile.js",
+		"/Users/steventruesdell/Downloads/themeforest-8576493-goblin-minimalist-contentfocused-theme/theme/default/goblin/package.json",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#7/config.js",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#6/index.js",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#5/config.js",
+		"/Users/steventruesdell/Development/nginx/sites-enabled/blog.steventr.conf",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#1/strues.conf",
+		"/Users/steventruesdell/Downloads/ghost-0.6.4/config.example.js",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#3/strues.conf",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#4/config.js",
+		"/Users/steventruesdell/Development/nginx/sites-enabled/topshelfguild.conf",
+		"/Users/steventruesdell/Development/nginx/sites-enabled/strues.conf",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#2/config.js",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#0/nginx.conf",
+		"/Users/steventruesdell/Development/nginx/nginx.conf",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/post.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/init.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/widgets.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/shortcode.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/postlist.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/comments.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/buttons.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/vars.scss",
+		"/Users/steventruesdell/Downloads/materialize-src/js/bin/materialize.js",
+		"/Users/steventruesdell/Downloads/materialize-src/js/global.js",
+		"/Users/steventruesdell/Downloads/materialize-src/sass/materialize.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/_materialize.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/js/base.js",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/js/config.js",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/syntax.scss",
+		"/Users/steventruesdell/Downloads/highlight/styles/xcode.css",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/js/plugins/highlight.js",
+		"/Users/steventruesdell/Downloads/highlight/highlight.pack.js",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/default.hbs",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/global.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/sass/index.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/src/js/plugins/fitvids.js",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/assets/js/theme.min.js",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatr/package.json",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatter/partials/topbar.hbs",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatter/gulpfile.js",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatter/assets/sass/style.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatter/default.hbs",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatter/index.hbs",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#1/default.hbs",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatter/partials/loop.hbs",
+		"/Users/steventruesdell/Library/Caches/com.binarynights.ForkLift2/#0/loop.hbs",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatter/assets/sass/_materialize.scss",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/content/themes/ghostmatter/package.json",
+		"/Users/steventruesdell/.dotfiles/zsh/zshrc.symlink",
+		"/Users/steventruesdell/.dotfiles/zsh/config.zsh",
+		"/Users/steventruesdell/.dotfiles/zsh/prompt.zsh",
+		"/Users/steventruesdell/.dotfiles/zsh/window.zsh",
+		"/Users/steventruesdell/Development/nodebox/dev/soop/config.js",
+		"/Users/steventruesdell/Downloads/yMciDl/puphpet/config.yaml",
+		"/Users/steventruesdell/Downloads/yMciDl/puphpet/vagrant/Vagrantfile-local",
+		"/Users/steventruesdell/Downloads/yMciDl/Vagrantfile",
+		"/Users/steventruesdell/Development/nodebox/README.md",
+		"/Users/steventruesdell/Development/nodebox/Vagrantfile",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/CSScomb.sublime-settings",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/Babel.sublime-settings",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/steventruesdell/.dotfiles/system/aliases.zsh",
+		"/Users/steventruesdell/Library/Application Support/Sublime Text 3/Packages/GoSublime/CHANGELOG.md",
+		"/Users/steventruesdell/.dotfiles/ssh/aliases.zsh",
+		"/Users/steventruesdell/.dotfiles/zsh/aliases.zsh",
+		"/Users/steventruesdell/.ssh/id_rsa.pub"
+	],
+	"find":
+	{
+		"height": 29.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"<current file>",
+			"current file"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"disq",
+			"boots",
+			"boot",
+			"mailc",
+			"boot",
+			"SC",
+			"sfThemeOptions",
+			"sfApp",
+			"_color",
+			"Montserrat",
+			"components/",
+			"\"",
+			"#fff",
+			"#000",
+			"_",
+			"\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"sCOThemeOpt",
+			"sCO",
+			"-color",
+			"Roboto",
+			"lib/",
+			"'",
+			"$white",
+			"$black",
+			"-",
+			"'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "package.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"WordCountShouldRun": true,
+							"WordCountSyntax": "json.sublime-syntax",
+							"bs_sintax": "json.sublime-syntax",
+							"buffer_scroll_name": "86340fe9",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 67.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "topshelf.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 229.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

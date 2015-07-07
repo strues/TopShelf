@@ -1,4 +1,3 @@
-
   <div class="row">
     <carousel data-interval="4000" data-pause="false" disable-ng-animate>
       <slide ng-repeat="article in home.articles | limitTo: 3">
@@ -11,9 +10,10 @@
     </carousel>
   </div>
   <div class="row">
+  <div class="col-md-12">
     <section class="tagline-area">
       <div class="block-area">
-          <div class="row text-center">
+          <div class="text-center">
             <div class="col-md-4 col-sm-hidden block-area-col">
               <a ui-sref="guild.videos"><i class="fa fa-play-circle fa-5x"></i>
             <h1 class="text-center">Kill Videos</h1></a>
@@ -29,6 +29,7 @@
           </div>
       </div>
     </section>
+    </div>
   </div>
   <!-- start news area -->
   <div class="row">
