@@ -53,6 +53,7 @@
     "nodemailer": "^1.4.0",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
+    "passport-oauth": "^1.0.0",
     "passport-oauth2": "^1.1.2",
     "path": "^0.11.14",
     "request": "^2.58.0",

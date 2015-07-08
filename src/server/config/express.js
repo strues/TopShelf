@@ -7,6 +7,7 @@ import compression from 'compression';
 import busboy from 'connect-busboy';
 import cors from 'cors';
 import errorHandler from 'errorhandler';
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import expressSession from 'express-session';
 import methodOverride from 'method-override';
@@ -48,6 +49,7 @@ export default (app) => {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+  app.use(cookieParser(config.session.secret));
   app.use(cors());
   // parse application/json
 
@@ -62,8 +64,7 @@ export default (app) => {
     secret: config.session.secret,
     store: sessionStorage,
     expireAfterSeconds: parseInt(config.session.expireAfterSeconds, 10) || 180,
-    httpOnly: true,
-    resave: true,
+    resave: false,
     saveUninitialized: true
   }));
 

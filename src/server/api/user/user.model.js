@@ -30,6 +30,14 @@ let UserSchema = new Schema({
     provider: String,
     resetPasswordToken: String,
     resetPasswordTokenExpiration: Date,
+    xf: {
+        id: {
+            type: String,
+            index: true
+        },
+        token: String,
+        username: String
+    },
     // References to other collections
     articles: {
         type: Schema.Types.ObjectId,
@@ -47,6 +55,7 @@ let UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Raid'
     },
+    loginCount      : {type : Number, default : 1},
     // Battlenet
     bnetId: Number,
     battletag: String,
@@ -150,8 +159,7 @@ UserSchema
         if (!validatePresenceOf(this.hashedPassword) ===
             -1) {
             next(new Error('Invalid password'));
-        }
-        else {
+        } else {
             next();
         }
     });
