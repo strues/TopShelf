@@ -2,12 +2,12 @@ import express from 'express';
 import controller from './user.controller';
 import auth from '../../auth/auth.service';
 
-var router = express.Router();
+const router = express.Router();
 
 router.get('/list', controller.list);
 router.get('/', auth.hasRole('admin'), controller.index);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
-router.get('/me', auth.isAuthenticated(), controller.me);
+router.get('/me', auth.ensureAuthorized, controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', controller.show);
 router.post('/', controller.create);

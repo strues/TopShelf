@@ -12,7 +12,7 @@ let RecruitmentController = {};
  * @apiSuccess {String} priority How badly the guild needs the applicant.
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
- RecruitmentController.all = (req, res) => {
+RecruitmentController.all = (req, res) => {
   Recruitment.find()
     .exec(function(err, recruitments) {
       if (err) {
@@ -34,7 +34,7 @@ let RecruitmentController = {};
  * @apiSuccess {String} priority How badly the guild needs the applicant.
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
- RecruitmentController.show = (req, res) => {
+RecruitmentController.show = (req, res) => {
   Recruitment.findById(req.params.id, function(err, recruitment) {
     if (err) {
       return handleError(res, err);
@@ -58,7 +58,7 @@ let RecruitmentController = {};
  * @apiParam {String} priority How badly the guild needs the applicant.
  * @apiParam {String} status Whether or not recruitment is necessary.
  */
- RecruitmentController.create = (req, res) => {
+RecruitmentController.create = (req, res) => {
   Recruitment.create(req.body, function(err, recruitment) {
     if (err) {
       return handleError(res, err);
@@ -80,7 +80,7 @@ let RecruitmentController = {};
  * @apiParam {Boolean} currentlyRecruiting Whether or not recruitment is necessary.
  * @apiParam {Date} updatedOn The last time this data was changed
  */
- RecruitmentController.update = (req, res) => {
+RecruitmentController.update = (req, res) => {
   Recruitment.findById(req.params.id, function(err, recruitment) {
     if (err) {
       return handleError(res, err);
@@ -90,18 +90,23 @@ let RecruitmentController = {};
     }
 
     // set the new user information if it exists in the request
-    if (req.body.classType) recruitment.classType =
-      req.body.classType;
-    if (req.body.classSpec) recruitment.classSpec =
-      req.body.classSpec;
-    if (req.body.priority) recruitment.priority =
-      req.body.priority;
-    if (req.body.currentlyRecruiting) recruitment.currentlyRecruiting =
-      req.body.currentlyRecruiting;
-    if (req.body.updatedOn) recruitment.updatedOn =
-      req.body.updatedOn;
+    if (req.body.classType) {
+      recruitment.classType = req.body.classType;
+    }
+    if (req.body.classSpec) {
+      recruitment.classSpec = req.body.classSpec;
+    }
+    if (req.body.priority) {
+      recruitment.priority = req.body.priority;
+    }
+    if (req.body.currentlyRecruiting) {
+      recruitment.currentlyRecruiting = req.body.currentlyRecruiting;
+    }
+    if (req.body.updatedOn) {
+      recruitment.updatedOn = req.body.updatedOn;
+    }
 
-    recruitment.save(function(err) {
+    recruitment.save(function() {
       if (err) {
         return handleError(res, err);
       }
@@ -120,7 +125,7 @@ let RecruitmentController = {};
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 204 OK
  */
- RecruitmentController.destroy = (req, res) => {
+RecruitmentController.destroy = (req, res) => {
   Recruitment.findById(req.params.id, function(err, recruitment) {
     if (err) {
       return handleError(res, err);
@@ -128,7 +133,7 @@ let RecruitmentController = {};
     if (!recruitment) {
       return res.sendStatus(404);
     }
-    recruitment.remove(function(err) {
+    recruitment.remove(function() {
       if (err) {
         return handleError(res, err);
       }

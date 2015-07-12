@@ -4,7 +4,7 @@ import controller from './battlenet.controller'
 
 var router = new express.Router();
 
-router.post('/characters', auth.isAuthenticated(), controller.grabCharacter);
+router.post('/characters', controller.grabCharacter);
 router.get('/characters/me', auth.appendUser(), controller.grabUsersCharacters);
 
 export default router;

@@ -9,19 +9,18 @@ import cors from 'cors';
 import errorHandler from 'errorhandler';
 import cookieParser from 'cookie-parser';
 import express from 'express';
-import expressSession from 'express-session';
+import session from 'express-session';
 import methodOverride from 'method-override';
 import morgan from 'morgan';
 import passport from 'passport';
-import { join } from 'path';
+import {join} from 'path';
 import favicon from 'serve-favicon';
-import config from './environment';
+import * as config from './environment';
 import logger from './logger';
+import redis from 'connect-redis';
+import flash from 'connect-flash';
 
-let dexter = morgan;
-
-let RedisStore = require('connect-redis')(expressSession);
-
+const dexter = morgan;
 export default (app) => {
 
   let env = app.get('env');
@@ -37,9 +36,10 @@ export default (app) => {
    * Connect-compatible {@link https://www.npmjs.org/package/connect-redis | redis sessions` storage } used by
    * {@link TopShelf#express Express application } and {@link TopShelf#io  Socket.io server }
    */
-  var sessionStorage = new RedisStore({
-    prefix: 'shelf_session_',
-    client: app.redisClient
+
+  const sessionMiddleware = new (redis(session))({
+    host: 'localhost',
+    port: 6379
   });
 
   // always bodyParser before cookie, method or session
@@ -59,27 +59,45 @@ export default (app) => {
   app.set('appPath', join(config.root, 'client'));
   app.use(busboy());
 
-  app.use(expressSession({
+  app.use(session({
+    store: sessionMiddleware,
     key: 'tsg.sid',
     secret: config.session.secret,
-    store: sessionStorage,
-    expireAfterSeconds: parseInt(config.session.expireAfterSeconds, 10) || 180,
-    resave: false,
-    saveUninitialized: true
-  }));
+    resave: true,
+    saveUninitialized: true,
+    cookie: {secure: false, maxAge: 7 * 24 * 60 * 60 * 1000}
+    }));
 
-  // Security Settings
-  app.disable('x-powered-by');
-  app.enable('trust proxy');
   // Passport OAUTH Middleware
   app.use(passport.initialize());
   app.use(passport.session());
 
+  app.all('/*', function(req, res, next) {
+  // CORS headers
+  res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  // Set custom headers for CORS
+  res.header('Access-Control-Allow-Headers', 'Content-type,Accept');
+  // If someone calls with method OPTIONS, let's display the allowed methods on our API
+  if (req.method === 'OPTIONS') {
+    res.status(200);
+    res.write("Allow: GET,PUT,POST,DELETE,OPTIONS");
+    res.end();
+  } else {
+    next();
+  }
+});
+
   // time in milliseconds...
   const minute = 1000 * 60;   //     60000
   const hour = (minute * 60); //   3600000
-  const day  = (hour * 24);   //  86400000
+  const day = (hour * 24);   //  86400000
   const week = (day * 7);     // 604800000
+
+  app.use(flash());
+  // Security Settings
+  app.disable('x-powered-by');
+  app.enable('trust proxy');
 
   if (env === 'production') {
     app.use(compression());

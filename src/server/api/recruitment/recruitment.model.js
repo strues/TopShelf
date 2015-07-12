@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 let Schema = mongoose.Schema;
 
-var RecruitmentSchema = new Schema({
+const RecruitmentSchema = new Schema({
   classType: {
     type: String,
     default: ''

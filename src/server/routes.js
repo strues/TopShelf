@@ -2,8 +2,6 @@
  * Main application routes
  */
 
-let errors = require('./lib/errors');
-
 export default (app) => {
   app.use('/api/recruitment-threads', require('./api/recruitmentThread'));
   app.use('/api/recruiting', require('./api/recruitment'));
@@ -13,9 +11,6 @@ export default (app) => {
   app.use('/api/users', require('./api/user'));
   app.use('/api/battlenet', require('./api/battlenet'));
   app.use('/auth', require('./auth'));
-
-  app.route('/:url(api|auth|components|app|bower_components|assets)/*')
-      .get(errors[404]);
 
   app.route('/*')
     .get(function(req, res) {

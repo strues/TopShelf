@@ -9,9 +9,9 @@
     .module('app.core')
     .factory('Auth', Auth);
 
-  Auth.$inject = ['$http', 'User', '$localStorage', '$q'];
+  Auth.$inject = ['$http', 'User', '$sessionStorage', '$cookies', '$q'];
   /* @ngInject */
-  function Auth($http, User, $localStorage, $q) {
+  function Auth($http, User, $sessionStorage, $cookies, $q) {
     /**
      * Return a callback or noop function
      *
@@ -23,7 +23,10 @@
       },
       currentUser = {};
 
-    if ($localStorage.token) {
+    if ($sessionStorage.token) {
+      currentUser = User.get();
+    }
+    if ($cookies.get('token')) {
       currentUser = User.get();
     }
 
@@ -46,7 +49,7 @@
             password: user.password
           })
           .then(function(res) {
-            $localStorage.token = res.data.token;
+            $sessionStorage.token = res.data.token;
             currentUser = User.get();
             deferred.resolve(res.data);
             safeCb(callback)();
@@ -67,7 +70,7 @@
        *
        */
       logout: function() {
-        delete $localStorage.token;
+        delete $sessionStorage.token;
         currentUser = {};
       },
       /**
@@ -83,7 +86,7 @@
        */
       createUser: function(user, callback) {
         return User.save(user, function(data) {
-          $localStorage.token = data.token;
+          $sessionStorage.token = data.token;
           currentUser = User.get();
           return safeCb(callback)(null, user);
         }, function(err) {
@@ -194,11 +197,11 @@
        * @return {String} - a token string used for authenticating
        */
       getToken: function() {
-        return $localStorage.token;
+        return $sessionStorage.token;
       },
       setSessionToken: function(sessionToken, callback) {
         var cb = callback || angular.noop;
-        $localStorage.token = sessionToken;
+        $sessionStorage.token = sessionToken;
         currentUser = User.get(cb);
       }
     };

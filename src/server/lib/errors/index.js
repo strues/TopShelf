@@ -1,38 +1,57 @@
+class NotFound extends Error {
+  constructor(msg) {
+    super(msg);
+    this.message = msg || 'Not Found';
+    this.status = 404;
+    Error.captureStackTrace(this);
+  }
+}
 
-/**
- * Error responses
- */
+class Forbidden extends Error {
+  constructor(msg) {
+    super(msg);
+    this.message = msg || 'Forbidden';
+    this.status = 403;
+    Error.captureStackTrace(this);
+  }
+}
 
-module.exports[404] = function pageNotFound(req, res) {
-    var viewFilePath = '404';
-    var statusCode = 404;
-    var result = {
-        status: statusCode
-    };
+class Internal extends Error {
+  constructor(msg) {
+    super(msg);
+    this.message = msg || 'Internal Error';
+    this.status = 500;
+    Error.captureStackTrace(this);
+  }
+}
 
-    res.status(result.status);
-    res.render(viewFilePath, function(err) {
-        if (err) {
-            return res.status(404).json(result);
-        }
+class Unauthorized extends Error {
+  constructor(msg) {
+    super(msg);
+    this.message = msg || 'Unauthorized';
+    this.status = 401;
+    Error.captureStackTrace(this);
+  }
+}
 
-        res.render(viewFilePath);
-    });
-};
+class Validation extends Error {
+  constructor(msg) {
+    super(msg);
+    this.message = msg || 'Validation';
+    this.status = 422;
+    Error.captureStackTrace(this);
+  }
+}
 
-module.exports[410] = function pageGone(req, res) {
-    var viewFilePath = '410';
-    var statusCode = 410;
-    var result = {
-        status: statusCode
-    };
+class BadRequest extends Error {
+  constructor(msg) {
+    super(msg);
+    this.message = msg || 'Bad Request';
+    this.status = 400;
+    Error.captureStackTrace(this);
+  }
+}
 
-    res.status(result.status);
-    res.render(viewFilePath, function(err) {
-        if (err) {
-            return res.status(410).json(result);
-        }
-
-        res.render(viewFilePath);
-    });
+export default {
+  Unauthorized, BadRequest, Internal, Forbidden, Validation, NotFound
 };

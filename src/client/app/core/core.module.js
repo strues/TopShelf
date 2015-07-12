@@ -13,6 +13,7 @@
         'ngAnimate',
         'ngMessages',
         'ngResource',
+        'ngCookies',
         'ui.router',
         'ui.bootstrap',
         'ngStorage',

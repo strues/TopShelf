@@ -12,11 +12,13 @@ import auth from '../../auth/auth.service';
  * @returns Article.query
  */
 function singleArticleQuery(query) {
-  var article;
+  let article;
   if (isNumeric(query)) {
     article = Article.findById(query);
   } else {
-    article = Article.findOne({ 'seoTitle': query });
+    article = Article.findOne({
+      'seoTitle': query
+    });
   }
   return article;
 }
@@ -24,27 +26,28 @@ function singleArticleQuery(query) {
 // Get list of articles
 exports.index = function(req, res) {
 
-  var defaultConditions = {
+  const defaultConditions = {
     state: 'Published'
   };
 
-  var defaultOptions = {
+  const defaultOptions = {
     limit: 10,
     sort: '-createdDate'
   };
 
-  var conditions = QueryParser.getConditions(req.query, defaultConditions);
-  var options = QueryParser.getOptions(req.query, defaultOptions);
+  let conditions = QueryParser.getConditions(req.query, defaultConditions);
+  let options = QueryParser.getOptions(req.query, defaultOptions);
 
   if (conditions.state !== 'Published') {
     auth.hasRole('admin')(req, res, returnArticles);
-  }
-  else {
-      returnArticles();
+  } else {
+    returnArticles();
   }
 
   function returnArticles(err) {
-    if (err) { return res.status(401).json(err.message); }
+    if (err) {
+      return res.status(401).json(err.message);
+    }
     let articles = Article.find(conditions, null, options)
       .populate('author', '-salt -hashedPassword')
       .exec();
@@ -56,8 +59,6 @@ exports.index = function(req, res) {
         results: results[0]
       };
       return res.status(200).json(response);
-    }, err => {
-      return res.status(500).json(reportError(err));
     });
   }
 };
@@ -70,9 +71,13 @@ exports.index = function(req, res) {
  */
 exports.show = function(req, res) {
 
-  var response = function (err, article) {
-    if (err) { return res.status(500).json(reportError(err)); }
-    if (!article) { return res.status(404); }
+  let response = function(err, article) {
+    if (err) {
+      return res.status(500).json(reportError(err));
+    }
+    if (!article) {
+      return res.status(404);
+    }
 
     return res.json(article);
   };
@@ -86,29 +91,39 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   // Set author of the post
   // The `isAuthenticated` function set user to the request.
-  var newArticle = req.body;
+  let newArticle = req.body;
   newArticle.author = req.user._id;
   newArticle.lastUpdated = Date.now();
 
   Article.create(newArticle, function(err, article) {
-    if (err) { return res.status(400).json(reportError(err)); }
+    if (err) {
+      return res.status(400).json(reportError(err));
+    }
     return res.status(201).json(article);
   });
 };
 
 // Updates an existing post in the DB.
 exports.update = function(req, res) {
-  if (req.body._id) { delete req.body._id; }
+  if (req.body._id) {
+    delete req.body._id;
+  }
 
   singleArticleQuery(req.params.id).exec((err, article) => {
-    if (err) { return res.status(500).json(reportError(err)); }
-    if (!article) { return res.sendStatus(404); }
+    if (err) {
+      return res.status(500).json(reportError(err));
+    }
+    if (!article) {
+      return res.sendStatus(404);
+    }
 
-    var updated = _.merge(article, req.body);
+    let updated = _.merge(article, req.body);
     updated.lastUpdated = Date.now();
 
-    updated.save((err, article) => {
-      if (err) { return res.status(400).json(reportError(err)); }
+    updated.save(() => {
+      if (err) {
+        return res.status(400).json(reportError(err));
+      }
       return res.status(200).json(article);
     });
   });
@@ -117,28 +132,42 @@ exports.update = function(req, res) {
 // Deletes a post from the DB.
 exports.destroy = function(req, res) {
   singleArticleQuery(req.params.id).exec((err, article) => {
-    if (err) { return res.status(500).json(reportError(err)); }
-    if (!article) { return res.sendStatus(404); }
-    article.remove(function(err) {
-      if (err) { return res.status(400).json(reportError(err)); }
+    if (err) {
+      return res.status(500).json(reportError(err));
+    }
+    if (!article) {
+      return res.sendStatus(404);
+    }
+    article.remove(function() {
+      if (err) {
+        return res.status(400).json(reportError(err));
+      }
       return res.sendStatus(200);
     });
   });
 };
 
 /**
-* Adds new comment to the post
-*/
+ * Adds new comment to the post
+ */
 exports.addComment = function(req, res) {
-  var comment = req.body;
+  let comment = req.body;
   comment.date = Date.now();
 
   singleArticleQuery(req.params.id).exec((err, article) => {
-    if (err) { return res.status(500).json(reportError(err)); }
-    if (!article) { return res.status(404).json({ message: 'Article does not exist'}); }
+    if (err) {
+      return res.status(500).json(reportError(err));
+    }
+    if (!article) {
+      return res.status(404).json({
+        message: 'Article does not exist'
+      });
+    }
     article.comments.push(comment);
-    article.save((err, article) => {
-      if (err) { return res.status(400).json(reportError(err)); }
+    article.save(() => {
+      if (err) {
+        return res.status(400).json(reportError(err));
+      }
       return res.status(201).json(article);
     });
 
@@ -149,20 +178,30 @@ exports.addComment = function(req, res) {
  * Edit comment by comment ID
  */
 exports.editComment = function(req, res) {
-  if (req.body._id) { delete req.body._id; }
+  if (req.body._id) {
+    delete req.body._id;
+  }
 
   // get post
   singleArticleQuery(req.params.id).exec((err, article) => {
-    if (err) { return res.status(500).json(reportError(err)); }
-    if (!article) { return res.sendStatus(404); }
+    if (err) {
+      return res.status(500).json(reportError(err));
+    }
+    if (!article) {
+      return res.sendStatus(404);
+    }
 
     // get comment
     let comment = article.comments.id(req.params.commentId);
-    if (!comment) { return res.sendStatus(404); }
+    if (!comment) {
+      return res.sendStatus(404);
+    }
     _.merge(comment, req.body);
 
-    article.save((err, article) => {
-      if (err) { return res.status(400).json(reportError(err)); }
+    article.save(() => {
+      if (err) {
+        return res.status(400).json(reportError(err));
+      }
       return res.status(200).json(article);
     });
   });
@@ -172,17 +211,25 @@ exports.editComment = function(req, res) {
  * Delete comment by its ID
  */
 exports.destroyComment = function(req, res) {
-    singleArticleQuery(req.params.id).exec((err, article) => {
-    if (err) { return res.status(500).json(reportError(err)); }
-    if (!article) { return res.sendStatus(404); }
+  singleArticleQuery(req.params.id).exec((err, article) => {
+    if (err) {
+      return res.status(500).json(reportError(err));
+    }
+    if (!article) {
+      return res.sendStatus(404);
+    }
 
     // get comment
     let comment = article.comments.id(req.params.commentId);
-    if (!comment) { return res.sendStatus(404); }
+    if (!comment) {
+      return res.sendStatus(404);
+    }
     comment.remove();
 
-    article.save((err, article) => {
-      if (err) { return res.status(400).json(reportError(err)); }
+    article.save(() => {
+      if (err) {
+        return res.status(400).json(reportError(err));
+      }
       return res.status(200).json(article);
     });
   });
@@ -207,13 +254,14 @@ exports.getAllComments = function(req, res) {
 
   if (conditions.state !== 'Published') {
     auth.hasRole('admin')(req, res, returnArticles);
-  }
-  else {
+  } else {
     returnArticles();
   }
 
   function returnArticles(err) {
-    if (err) { return res.status(401).json(err.message); }
+    if (err) {
+      return res.status(401).json(err.message);
+    }
 
     let results = Article.aggregate()
       .match(conditions)
@@ -224,13 +272,21 @@ exports.getAllComments = function(req, res) {
       .exec();
 
     let total = Article.aggregate()
-    .group({_id: null, count: {$sum: {$size: '$comments'}}})
-    .exec();
+      .group({
+        _id: null,
+        count: {
+          $sum: {
+            $size: '$comments'
+          }
+        }
+      })
+      .exec();
 
     Promise.all([results, total]).then(response => {
-      return res.status(200).json({total: response[1][0].count, results: response[0]});
-    }, err => {
-      return res.status(500).json(reportError(err));
+      return res.status(200).json({
+        total: response[1][0].count,
+        results: response[0]
+      });
     });
   }
 };

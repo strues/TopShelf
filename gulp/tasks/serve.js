@@ -21,6 +21,7 @@ gulp.task('runapp', function() {
       'js': 'babel-node --optional strict'
       },
       ignore: [
+        '*.paw',
         '.tmp/**',
         '.vagrant/**',
         'src/client/**',

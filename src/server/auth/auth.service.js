@@ -9,8 +9,8 @@ import _ from 'lodash';
 import moment from 'moment';
 import expressJwt from 'express-jwt';
 
-var config = require('../config/environment'),
-    User = require('../api/user/user.model');
+let config = require('../config/environment'),
+  User = require('../api/user/user.model');
 
 let validateJwt = expressJwt({
   secret: config.session.secret
@@ -33,8 +33,12 @@ function isAuthenticated() {
     // Attach user to request
     .use(function(req, res, next) {
       User.findById(req.user._id, (err, user) => {
-        if (err) {return next(err); }
-        if (!user) {return res.status(401).end(); }
+        if (err) {
+          return next(err);
+        }
+        if (!user) {
+          return res.status(401).end();
+        }
 
         req.user = user;
         next();
@@ -46,7 +50,7 @@ function isAuthenticated() {
  * Returns a jwt token signed by the app secret
  */
 function signToken(id, role) {
-  var payload = {
+  let payload = {
     _id: id,
     role: role
   };
@@ -73,8 +77,7 @@ function hasRole(roleRequired) {
       if (config.userRoles.indexOf(req.user.role) >=
         config.userRoles.indexOf(roleRequired)) {
         next();
-      }
-      else {
+      } else {
         res.sendStatus(403).end();
       }
     });
@@ -93,23 +96,33 @@ function appendUser() {
           User.findById(req.user._id, function(err, user) {
             if (err) {
               return next(err);
-            }
-            else if (!user) {
+            } else if (!user) {
               req.user = undefined;
               return next();
-            }
-            else {
+            } else {
               req.user = user;
               next();
             }
           });
-        }
-        else {
+        } else {
           req.user = undefined;
           next();
         }
       });
     });
+}
+
+function ensureAuthorized(req, res, next) {
+  let bearerToken;
+  let bearerHeader = req.headers["authorization"];
+  if (typeof bearerHeader !== 'undefined') {
+    var bearer = bearerHeader.split(" ");
+    bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  } else {
+    res.send(403);
+  }
 }
 
 module.exports = {
@@ -137,5 +150,7 @@ module.exports = {
    * @type {Object}
    */
 
-  appendUser: appendUser
+  appendUser: appendUser,
+
+  ensureAuthorized: ensureAuthorized
 };

@@ -6,9 +6,15 @@ let router = express.Router();
 
 router.post('/', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
-    var error = err || info;
-    if (error) { return res.status(401).json(error); }
-    if (!user) { return res.status(401).json({ msg: 'login failed' }); }
+    let error = err || info;
+    if (error) {
+      return res.status(401).json(error);
+    }
+    if (!user) {
+      return res.status(401).json({
+        msg: 'login failed'
+      });
+    }
 
     let token = auth.signToken(user._id, user.role);
 
@@ -16,7 +22,8 @@ router.post('/', (req, res, next) => {
       token: token,
       user: user
     });
-    })(req, res, next);
+  })(req, res, next);
 });
 
-export default router;
+export
+default router;

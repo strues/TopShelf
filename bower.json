@@ -26,6 +26,7 @@
     "angular-socket-io": "~0.7.0",
     "angular-youtube-mb": "~1.0.2",
     "angular-bootstrap": "~0.13.0",
-    "angular-toastr": "~1.4.1"
+    "angular-toastr": "~1.4.1",
+    "angular-cookies": "~1.4.2"
   }
 }

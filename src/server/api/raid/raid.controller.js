@@ -1,58 +1,38 @@
-import Raid from './raid.model';
-import _ from 'lodash';
-import reportError from '../../lib/errors/reporter';
-import User from '../user/user.model';
+const Raids = require('./raid.model');
+const DAO = require('../../lib/dao');
+const collection = new DAO(Raids);
 
-let RaidController = {};
-
-let validationError = (res, err) => {
-	return res.status(422).json(reportError(err));
+// Get some pages
+exports.find = function(req, res) {
+  collection.find(req, res);
 };
 
-Raid.on('error', err => reportError(err));
-
-/**
- * Get Raids list
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
- * @return {[type]}     [description]
- */
-RaidController.index = (req, res) => { // don't ever give out the password or salt
-	Raid.find({}, (err, raids) => {
-		if (err) {
-			return res.status(500).json(err);
-		}
-		res.status(200).json(raids);
-	});
+// Creates a new pages in the DB.
+exports.create = function(req, res) {
+  collection.create(req, res);
 };
 
-/**
- * Creates a new user
- */
-RaidController.create = (req, res, next) => {
-	let newRaid = new Raid(req.body);
-	newRaid.raidName = req.body.raidName;
-  newRaid.raidZone = req.body.raidZone;
-	newRaid.nOfPlayers = req.body.nOfPlayers;
-  newRaid.lastModified = Date.now();
-	newRaid.description = req.body.description;
-	newRaid.startDate = req.body.startDate;
-	newRaid.endDate = req.body.endDate;
-	newRaid.startHour = req.body.startHour;
-	newRaid.organizer = req.user._id;
-
-	newRaid.save((err, user) => {
-		if (err) {
-			return res.status(500).json(reportError(err));
-		}
-		if (!user) {
-			return res.status(500).json(reportError(err));
-		}
-		res.status(201).json({
-			newRaid: newRaid
-		});
-	});
+// Updates pages in the database
+exports.update = function(req, res) {
+  collection.update(req, res);
 };
 
+// Deletes a pages from the DB.
+exports.delete = function(req, res) {
+  collection.delete(req, res, null, true); //Last paramater prevent ability to delete all records at once
+};
 
-export default RaidController;
+// Get a single pages
+exports.findById = function(req, res) {
+  collection.findById(req, res);
+};
+
+// Updates an existing page in the DB.
+exports.updateById = function(req, res) {
+  collection.updateById(req, res);
+};
+
+// Deletes a pages from the DB.
+exports.deleteById = function(req, res) {
+  collection.deleteById(req, res);
+};
