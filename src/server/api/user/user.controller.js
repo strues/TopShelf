@@ -182,18 +182,17 @@ UserController.list = (req, res, next) => {
  * @return {User}        The user
  */
 UserController.me = (req, res, next) => {
-  User.findOne({token: req.token}, function(err, user) {
-      if (err) {
-          res.json({
-              type: false,
-              data: "Error occured: " + err
-          });
-      } else {
-          res.json({
-              type: true,
-              data: user
-          });
-      }
+  let userId = req.user.id;
+  User.findOne({
+    _id: userId // don't ever give out the password or salt
+  }, '-salt -hashedPassword', (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.json(401);
+    }
+    res.json(user);
   });
 };
 

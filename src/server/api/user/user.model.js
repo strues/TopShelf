@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 import crypto from 'crypto';
-let authTypes = ['github', 'twitter', 'facebook', 'google'];
-
 let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
@@ -9,18 +7,23 @@ let UserSchema = new Schema({
     type: String,
     trim: true,
     unique: true,
-    index: true
+    index: true,
+    default: ''
   },
   email: {
     type: String,
     lowercase: true,
     trim: true,
     unique: true,
-    index: true
+    index: true,
+    default: ''
   },
   role: {
-    type: String,
-    default: 'user'
+		type: [{
+			type: String,
+			enum: ['user', 'admin']
+		}],
+		default: ['user']
   },
   enabled: {
     type: Boolean,
@@ -29,9 +32,28 @@ let UserSchema = new Schema({
 
   hashedPassword: String,
   salt: String,
+  loginCount: {
+    type: Number,
+    default: 1
+  },
+  bio: {
+    type: String
+  },
+  updated: {
+    type: Date
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  /* For reset password */
+  resetPasswordToken: {
+    type: String
+  },
+  resetPasswordExpires: {
+    type: Date
+  },
   providers: String,
-  resetPasswordToken: String,
-  resetPasswordTokenExpiration: Date,
   xf: {
     id: {
       type: String,
@@ -56,16 +78,6 @@ let UserSchema = new Schema({
   raids: {
     type: Schema.Types.ObjectId,
     ref: 'Raid'
-  },
-  loginCount: {
-    type: Number,
-    default: 1
-  },
-  // Battlenet
-  bnetId: Number,
-  battletag: String,
-  bio: {
-    type: String
   }
 });
 
@@ -172,8 +184,7 @@ UserSchema
     if (!this.isNew) {
       return next();
     }
-    if (!validatePresenceOf(this.hashedPassword) ===
-      -1) {
+    if (!validatePresenceOf(this.hashedPassword) === -1) {
       next(new Error('Invalid password'));
     } else {
       next();

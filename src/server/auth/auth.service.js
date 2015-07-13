@@ -25,8 +25,8 @@ function isAuthenticated() {
     // Validate jwt
     .use((req, res, next) => {
       // allow access_token to be passed through query parameter as well
-      if (req.query && req.query.hasOwnProperty('access_token')) {
-        req.headers.authorization = 'Bearer ' + req.user.xf.token;
+      if (req.query && req.query.hasOwnProperty('access_token') && typeof req.query.access_token === 'string') {
+        req.headers.authorization = 'Bearer ' + req.query.access_token;
       }
       validateJwt(req, res, next);
     })
@@ -114,14 +114,14 @@ function appendUser() {
 
 function ensureAuthorized(req, res, next) {
   let bearerToken;
-  let bearerHeader = req.headers["authorization"];
+  let bearerHeader = req.headers.authorization;
   if (typeof bearerHeader !== 'undefined') {
-    var bearer = bearerHeader.split(" ");
+    let bearer = bearerHeader.split(" ");
     bearerToken = bearer[1];
     req.token = bearerToken;
     next();
   } else {
-    res.send(403);
+    res.sendStatus(403);
   }
 }
 

@@ -9,7 +9,7 @@ import cors from 'cors';
 import errorHandler from 'errorhandler';
 import cookieParser from 'cookie-parser';
 import express from 'express';
-import session from 'express-session';
+import expressSession from 'express-session';
 import methodOverride from 'method-override';
 import morgan from 'morgan';
 import passport from 'passport';
@@ -19,8 +19,8 @@ import * as config from './environment';
 import logger from './logger';
 import redis from 'connect-redis';
 import flash from 'connect-flash';
+let dexter = morgan;
 
-const dexter = morgan;
 export default (app) => {
 
   let env = app.get('env');
@@ -37,7 +37,7 @@ export default (app) => {
    * {@link TopShelf#express Express application } and {@link TopShelf#io  Socket.io server }
    */
 
-  const sessionMiddleware = new (redis(session))({
+  const sessionMiddleware = new (redis(expressSession))({
     host: 'localhost',
     port: 6379
   });
@@ -59,7 +59,7 @@ export default (app) => {
   app.set('appPath', join(config.root, 'client'));
   app.use(busboy());
 
-  app.use(session({
+  app.use(expressSession({
     store: sessionMiddleware,
     key: 'tsg.sid',
     secret: config.session.secret,

@@ -1,4 +1,4 @@
-var bnet = require('battlenet-api')('5m653qcbnr4h6rue7e4e4k7ryvcnpa9p');
+let bnet = require('battlenet-api')('5m653qcbnr4h6rue7e4e4k7ryvcnpa9p');
 import reportError from '../../lib/errors/reporter';
 import Character from '../user/character.model';
 
@@ -7,11 +7,13 @@ import Character from '../user/character.model';
 let BnetController = {};
 
 BnetController.grabUsersCharacters = (req, res) => {
-	var userId = req.user._id;
-	Character.find()
-	.find({player: userId})
-	.populate('player', 'username')
-	.exec(function(err, characters) {
+  let userId = req.user._id;
+  Character.find()
+    .find({
+      player: userId
+    })
+    .populate('player', 'username')
+    .exec(function(err, characters) {
       if (err) {
         return reportError(err);
       }
@@ -28,24 +30,28 @@ BnetController.grabUsersCharacters = (req, res) => {
  * @return {String}     character is the data along with the user's data
  */
 BnetController.grabCharacter = (req, res) => {
-	bnet.wow.character.guild({
-		origin: 'us',
-		realm: 'sargeras',
-		name: req.body.characterName
-	}, {apikey: '5m653qcbnr4h6rue7e4e4k7ryvcnpa9p'}, (err, charResp) => {
-		if (err) {return res.status(500).json(reportError(err)); }
+  bnet.wow.character.guild({
+    origin: 'us',
+    realm: 'sargeras',
+    name: req.body.characterName
+  }, {
+    apikey: '5m653qcbnr4h6rue7e4e4k7ryvcnpa9p'
+  }, (err, charResp) => {
+    if (err) {
+      return res.status(500).json(reportError(err));
+    }
 
-		var newCharacter = charResp;
-			newCharacter.player = req.user._id;
+    let newCharacter = charResp;
+    newCharacter.player = req.user._id;
 
-	Character.create(newCharacter, function(err, character) {
-		if (err) {
-			return err;
-		}
+    Character.create(newCharacter, function(character) {
+      if (err) {
+        return err;
+      }
 
-		return res.status(201).json(character);
-	});
-});
+      return res.status(201).json(character);
+    });
+  });
 };
 
 export default BnetController;

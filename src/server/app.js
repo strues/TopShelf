@@ -33,6 +33,9 @@ server.listen(config.port, config.ip, function() {
   db.once('open', function callback() {
     console.info(chalk.green('Connected to MongoDB:', config.mongo.uri));
   });
+  if (process.env.NODE_ENV === 'secure') {
+    console.log(chalk.green('HTTPs:\t\t\t\ton'));
+  }
 });
 
 export default app;

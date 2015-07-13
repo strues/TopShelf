@@ -9,20 +9,17 @@
     .module('app.core')
     .factory('authInterceptor', authInterceptor);
 
-  authInterceptor.$inject = ['$rootScope', '$q', '$cookies', '$sessionStorage', '$location'];
+  authInterceptor.$inject = ['$rootScope', '$q', '$localStorage', '$location'];
   /* @ngInject */
-  function authInterceptor($rootScope, $q, $cookies, $sessionStorage, $location) {
+  function authInterceptor($rootScope, $q, $localStorage, $location) {
 
     return {
       // Add authorization token to headers
       request: function(config) {
         config.headers = config.headers || {};
-        if ($sessionStorage.token) {
+        if ($localStorage.token) {
           config.headers.Authorization = 'Bearer ' +
-            $sessionStorage.token;
-        } else if ($cookies.token) {
-          config.headers.Authorization = 'Bearer ' +
-                      $cookies.get('token');
+            $localStorage.token;
         }
         return config;
       },
@@ -31,7 +28,7 @@
         if (response.status === 401) {
           $location.path('/');
           // remove any stale tokens
-          delete $sessionStorage.token;
+          delete $localStorage.token;
           return $q.reject(response);
         }
         else {

@@ -1,4 +1,6 @@
 (function() {
+  'use strict';
+
   /**
    * @ngdoc service
    * @name app.core.Auth
@@ -9,9 +11,9 @@
     .module('app.core')
     .factory('Auth', Auth);
 
-  Auth.$inject = ['$http', 'User', '$sessionStorage', '$cookies', '$q'];
+  Auth.$inject = ['$http', 'User', '$localStorage', '$q'];
   /* @ngInject */
-  function Auth($http, User, $sessionStorage, $cookies, $q) {
+  function Auth($http, User, $localStorage, $q) {
     /**
      * Return a callback or noop function
      *
@@ -23,10 +25,7 @@
       },
       currentUser = {};
 
-    if ($sessionStorage.token) {
-      currentUser = User.get();
-    }
-    if ($cookies.get('token')) {
+    if ($localStorage.token) {
       currentUser = User.get();
     }
 
@@ -43,13 +42,14 @@
        * @return {Promise} A promise
        */
       login: function(user, callback) {
+        var cb = callback || angular.noop;
         var deferred = $q.defer();
         $http.post('/auth/local', {
             email: user.email,
             password: user.password
           })
           .then(function(res) {
-            $sessionStorage.token = res.data.token;
+            $localStorage.token = res.data.token;
             currentUser = User.get();
             deferred.resolve(res.data);
             safeCb(callback)();
@@ -70,7 +70,7 @@
        *
        */
       logout: function() {
-        delete $sessionStorage.token;
+        delete $localStorage.token;
         currentUser = {};
       },
       /**
@@ -86,7 +86,7 @@
        */
       createUser: function(user, callback) {
         return User.save(user, function(data) {
-          $sessionStorage.token = data.token;
+          $localStorage.token = data.token;
           currentUser = User.get();
           return safeCb(callback)(null, user);
         }, function(err) {
@@ -197,11 +197,11 @@
        * @return {String} - a token string used for authenticating
        */
       getToken: function() {
-        return $sessionStorage.token;
+        return $localStorage.token;
       },
       setSessionToken: function(sessionToken, callback) {
         var cb = callback || angular.noop;
-        $sessionStorage.token = sessionToken;
+        $localStorage.token = sessionToken;
         currentUser = User.get(cb);
       }
     };
