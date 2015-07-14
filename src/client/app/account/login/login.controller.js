@@ -10,9 +10,9 @@
     .module('app.account')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['Auth', 'toastr', '$window', '$location'];
+  LoginCtrl.$inject = ['Auth', 'toastr', '$timeout', '$rootScope', '$window', '$location'];
   /* @ngInject */
-  function LoginCtrl(Auth, toastr, $window, $location) {
+  function LoginCtrl(Auth, toastr, $timeout, $rootScope, $window, $location) {
     var vm = this;
     /**
      * @ngdoc property
@@ -33,9 +33,12 @@
           email: vm.user.email,
           password: vm.user.password
         }).then(function() {
+          $timeout(function() {
+           $rootScope.isLoggedIn = Auth.isLoggedIn();
+           $location.path('/');
+         });
           toastr.success('You\'re now logged in', 'Welcome Back!');
           // Logged in, redirect to home
-          $location.path('/');
         }).catch(function(err) {
           vm.error = err;
         });

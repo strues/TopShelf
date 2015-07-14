@@ -49,8 +49,10 @@ exports.create = function(req, res) {
       if (!exists) {
         fs.mkdir(filePath);
       }
+
+      // create '<username>' folder if it doesn't exist
       filePath = path.join(config.root, '/client/uploads');
-      fs.exists(filePath, function() {
+      fs.exists(filePath, function(exists) {
         if (!exists) {
           fs.mkdir(filePath);
         }
@@ -68,12 +70,12 @@ exports.create = function(req, res) {
             isPrivate: false,
             description: req.body.description,
             user: req.user
-          })
-          .save(function(err) {
+          }).save(function(err, file) {
             if (err) {
-              return reportError(err);
+              console.log(err);
             }
-            res.status(201).send('Okay');
+
+            res.sendStatus(201);
           });
         });
       });

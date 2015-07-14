@@ -40,13 +40,13 @@
       return $http.delete(apiBase + '/' + id);
     }
     function createThread(recruitTD) {
-      return $http.post('/api/recruitment-threads', recruitTD);
+      return $http.post('/api/recruiting/threads', recruitTD);
     }
     function listThreads() {
-      return $http.get('/api/recruitment-threads');
+      return $http.get('/api/recruiting/threads');
     }
     function destroyThread(id) {
-      return $http.delete('/api/recruitment-threads' + '/' + id);
+      return $http.delete('/api/recruiting/threads' + '/' + id);
     }
 
   }

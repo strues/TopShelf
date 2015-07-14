@@ -5,6 +5,7 @@ import _ from 'lodash';
 import reportError from '../../lib/errors/reporter';
 import config from '../../config/environment';
 import errors from '../../lib/errors';
+import Roles from '../roles/roles.model';
 
 let UserController = {};
 
@@ -192,10 +193,27 @@ UserController.me = (req, res, next) => {
     if (!user) {
       return res.json(401);
     }
-    res.json(user);
+    user = user.toJSON();
+    Roles.findOne({
+      role: user.role
+    }, function(error, found) {
+      if (!found) {
+        res.send(401);
+        return false;
+      }
+      let permissions = [];
+      for (let permission in found.permissions) {
+        if (found.permissions.hasOwnProperty(permission)) {
+          if (found.permissions[permission] === true) {
+            permissions.push(permission);
+          }
+        }
+      }
+      user.permissions = permissions;
+      res.json(user);
+    });
   });
 };
-
 /**
  * Authentication callback
  */

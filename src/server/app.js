@@ -19,6 +19,7 @@ const io = require('socket.io')(server);
 
 require('./config/socketio')(io);
 require('./config/express')(app);
+require('./init')(); // Create dummy data on startup uncomment for true
 require('./routes')(app);
 
 server.listen(config.port, config.ip, function() {

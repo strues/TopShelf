@@ -1,5 +1,6 @@
 import Recruitment from './recruitment.model';
-
+import DAO from '../../lib/dao';
+let collection = new DAO(Recruitment);
 let RecruitmentController = {};
 
 /**
@@ -13,17 +14,11 @@ let RecruitmentController = {};
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
 RecruitmentController.all = (req, res) => {
-  Recruitment.find()
-    .exec(function(err, recruitments) {
-      if (err) {
-        return handleError(res, err);
-      }
-      return res.status(200).json(recruitments);
-    });
+  collection.findAll(req, res);
 };
 
 /**
- * @api {get} /recruitment/:id Get Recruitment By Id
+ * @api {get} /recruiting/:id Get Recruitment By Id
  * @apiName show
  * @apiGroup Recruitment
  *
@@ -35,19 +30,11 @@ RecruitmentController.all = (req, res) => {
  * @apiSuccess {String} status Whether or not recruitment is necessary.
  */
 RecruitmentController.show = (req, res) => {
-  Recruitment.findById(req.params.id, function(err, recruitment) {
-    if (err) {
-      return handleError(res, err);
-    }
-    if (!recruitment) {
-      return res.sendStatus(404);
-    }
-    return res.json(recruitment);
-  });
+  collection.findById(req, res);
 };
 
 /**
- * @api {post} /recruitment Post Recruitment Needs
+ * @api {post} /recruiting Post Recruitment Needs
  * @apiName create
  * @apiGroup Recruitment
  *
@@ -59,12 +46,7 @@ RecruitmentController.show = (req, res) => {
  * @apiParam {String} status Whether or not recruitment is necessary.
  */
 RecruitmentController.create = (req, res) => {
-  Recruitment.create(req.body, function(err, recruitment) {
-    if (err) {
-      return handleError(res, err);
-    }
-    return res.status(201).json(recruitment);
-  });
+  collection.create(req, res);
 };
 
 /**
@@ -81,38 +63,7 @@ RecruitmentController.create = (req, res) => {
  * @apiParam {Date} updatedOn The last time this data was changed
  */
 RecruitmentController.update = (req, res) => {
-  Recruitment.findById(req.params.id, function(err, recruitment) {
-    if (err) {
-      return handleError(res, err);
-    }
-    if (!recruitment) {
-      return res.sendStatus(404);
-    }
-
-    // set the new user information if it exists in the request
-    if (req.body.classType) {
-      recruitment.classType = req.body.classType;
-    }
-    if (req.body.classSpec) {
-      recruitment.classSpec = req.body.classSpec;
-    }
-    if (req.body.priority) {
-      recruitment.priority = req.body.priority;
-    }
-    if (req.body.currentlyRecruiting) {
-      recruitment.currentlyRecruiting = req.body.currentlyRecruiting;
-    }
-    if (req.body.updatedOn) {
-      recruitment.updatedOn = req.body.updatedOn;
-    }
-
-    recruitment.save(function() {
-      if (err) {
-        return handleError(res, err);
-      }
-      return res.status(204).json(recruitment);
-    });
-  });
+  collection.update(req, res);
 };
 
 /**
@@ -126,24 +77,7 @@ RecruitmentController.update = (req, res) => {
  *     HTTP/1.1 204 OK
  */
 RecruitmentController.destroy = (req, res) => {
-  Recruitment.findById(req.params.id, function(err, recruitment) {
-    if (err) {
-      return handleError(res, err);
-    }
-    if (!recruitment) {
-      return res.sendStatus(404);
-    }
-    recruitment.remove(function() {
-      if (err) {
-        return handleError(res, err);
-      }
-      return res.sendStatus(204);
-    });
-  });
+  collection.deleteById(req, res);
 };
-
-function handleError(res, err) {
-  return res.status(500).json(err);
-}
 
 export default RecruitmentController;
