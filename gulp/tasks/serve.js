@@ -26,6 +26,7 @@ gulp.task('runapp', function() {
         '.vagrant/**',
         'src/client/**',
         'vm/**',
+        'src/server/logs/**',
         '.git/**',
         'node_modules/**',
         'bower_components/**',

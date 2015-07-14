@@ -21,15 +21,18 @@ import redis from 'connect-redis';
 import flash from 'connect-flash';
 let dexter = morgan;
 
+const requestLogger = require('../lib/logger/requestLogger'),
+      responseLogger = require('../lib/logger/responseLogger');
 export default (app) => {
 
   let env = app.get('env');
   // Enable logger (morgan)
-  app.use(dexter(logger.getLogFormat(), logger.getLogOptions()));
+  //app.use(dexter(logger.getLogFormat(), logger.getLogOptions()));
 
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
-
+  app.use(requestLogger); /* log all requests and responses */
+  app.use(responseLogger);
  /**
    * @name TopShelf#sessionStorage
    * @description

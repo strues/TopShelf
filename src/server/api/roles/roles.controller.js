@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import Roles from './roles.model';
 import DAO from '../../lib/dao';
 let collection = new DAO(Roles);

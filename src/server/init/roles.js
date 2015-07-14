@@ -1,10 +1,10 @@
 module.exports = function() {
   console.log('creating roles...');
   let Roles = require('../api/roles/roles.model');
-  // let populateGlobalRoles = require('../components/roles');
 
   let basicRoles = [];
-
+// Roles Schema
+// Basic = fresh registeration
   let basic = {
     role: 'basic',
     permissions: {
@@ -25,9 +25,9 @@ module.exports = function() {
       allPrivilages: false
     }
   };
-
-  let level1 = {
-    role: 'level 1',
+// Guild Member
+  let member = {
+    role: 'guild member',
     permissions: {
       editContent: true,
       publishContent: false,
@@ -46,9 +46,9 @@ module.exports = function() {
       allPrivilages: false
     }
   };
-
-  let level2 = {
-    role: 'level 2',
+// Raider
+  let raider = {
+    role: 'raider',
     permissions: {
       editContent: true,
       publishContent: true,
@@ -67,9 +67,9 @@ module.exports = function() {
       allPrivilages: false
     }
   };
-
-  let level3 = {
-    role: 'level 3',
+// Officer
+  let officer = {
+    role: 'officer',
     permissions: {
       editContent: true,
       publishContent: true,
@@ -84,48 +84,6 @@ module.exports = function() {
       manageRecruitmentThreads: false,
       changeSiteSettings: false,
       importExportData: false,
-      deleteSite: false,
-      allPrivilages: false
-    }
-  };
-
-  let level4 = {
-    role: 'level 4',
-    permissions: {
-      editContent: true,
-      publishContent: true,
-      deleteContent: true,
-      manageMedia: true,
-      restrictAccess: true,
-      manageExtensions: true,
-      moderateComments: true,
-      manageUsers: true,
-      manageRoles: true,
-      manageRecruitment: false,
-      manageRecruitmentThreads: false,
-      changeSiteSettings: false,
-      importExportData: false,
-      deleteSite: false,
-      allPrivilages: false
-    }
-  };
-
-  let level5 = {
-    role: 'level 5',
-    permissions: {
-      editContent: true,
-      publishContent: true,
-      deleteContent: true,
-      manageMedia: true,
-      restrictAccess: true,
-      manageExtensions: true,
-      moderateComments: true,
-      manageUsers: true,
-      manageRoles: true,
-      manageRecruitment: true,
-      manageRecruitmentThreads: true,
-      changeSiteSettings: true,
-      importExportData: true,
       deleteSite: false,
       allPrivilages: false
     }
@@ -152,7 +110,7 @@ module.exports = function() {
     }
   };
 
-  basicRoles.push(basic, level1, level2, level3, level4, level5, admin);
+  basicRoles.push(basic, member, raider, officer, admin);
 
   // Roles.remove({}, function(err, roles) {
   //   if(err) { return handleError(err); }
@@ -173,6 +131,7 @@ module.exports = function() {
         console.log('roles initialized');
       });
     } else {
+      console.log('null');
       // populateGlobalRoles(roles);
     }
   });

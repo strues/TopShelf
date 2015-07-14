@@ -19,7 +19,7 @@
       "eqeqeq": [2],
       "no-caller": [2],
       "no-new": [2],
-      "no-param-reassign": [2],
+      "no-param-reassign": [0],
       "no-self-compare": [2],
       "no-throw-literal": [2],
       "no-undef": [2],

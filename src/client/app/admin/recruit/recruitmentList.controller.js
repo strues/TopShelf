@@ -18,7 +18,7 @@
     });
     vm.deleteRecruitment = function(id) {
       recruitSvc.destroy(id).success(function () {
-        toastr.create('Removed');
+        toastr.success('Removed the class from currently recruiting');
         $state.reload();
       });
     };
@@ -27,7 +27,7 @@
     });
     vm.deleteThread = function(id) {
       recruitSvc.destroyThread(id).success(function () {
-        toastr.create('Removed');
+        toastr.success('Removed the recruitment thread');
         $state.reload();
       });
     };

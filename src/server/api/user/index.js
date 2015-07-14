@@ -12,4 +12,5 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 
 router.put('/', auth.hasPermission('manageUsers'), controller.update);
+
 export default router;

@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.get('/', controller.allThreads);
 router.get('/:id', controller.show);
-router.delete('/:id', controller.destroy);
-router.post('/', controller.createThread);
-router.put('/:id', controller.updateThread);
+router.delete('/:id', auth.hasPermission('manageRecruitmentThreads'), controller.destroy);
+router.post('/', auth.hasPermission('manageRecruitmentThreads'), controller.createThread);
+router.put('/:id', auth.hasPermission('manageRecruitmentThreads'), controller.updateThread);
 
 module.exports = router;

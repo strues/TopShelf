@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.get('/', controller.all);
 router.get('/:id', controller.show);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.delete('/:id', controller.destroy);
+router.post('/', auth.hasPermission('manageRecruitment'), controller.create);
+router.put('/:id', auth.hasPermission('manageRecruitment'), controller.update);
+router.delete('/:id', auth.hasPermission('manageRecruitment'), controller.destroy);
 
 export default router;

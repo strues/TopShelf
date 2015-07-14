@@ -8,7 +8,7 @@ const logger = new (winston.Logger)({
       json: false,
       timestamp: false,
       colorize: true,
-      showLevel: false,
+      showLevel: true,
       prettyPrint: true
       }),
     new (winston.transports.File)({
