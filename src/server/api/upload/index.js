@@ -2,7 +2,7 @@ import express from 'express';
 import auth from '../../auth/auth.service';
 import controller from './upload.controller';
 
-var router = express.Router();
+const router = express.Router();
 
 router.get('/', controller.all);
 router.get('/:id', controller.show);

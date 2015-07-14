@@ -19,11 +19,8 @@ let UserSchema = new Schema({
     default: ''
   },
   role: {
-		type: [{
-			type: String,
-			enum: ['user', 'admin']
-		}],
-		default: ['user']
+		type: String,
+		default: 'user'
   },
   enabled: {
     type: Boolean,

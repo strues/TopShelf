@@ -3,7 +3,7 @@ import controller from './recruitmentThread.controller';
 
 let auth = require('../../auth/auth.service');
 
-var router = express.Router();
+const router = express.Router();
 
 router.get('/', controller.allThreads);
 router.get('/:id', controller.show);

@@ -1,8 +1,7 @@
-var mongoose = require('mongoose'),
-    Schema   = mongoose.Schema,
-    _        = require('lodash');
+import mongoose from 'mongoose';
+let Schema = mongoose.Schema;
 
-var UploadSchema = new Schema({
+let UploadSchema = new Schema({
   title: {
     type: String,
     default: '',

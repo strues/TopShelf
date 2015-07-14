@@ -1,5 +1,5 @@
-var config = require('./environment');
-var fs = require('fs');
+import fs from 'fs';
+let config = require('./environment');
 
 /**
  * Module init function.
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   getLogOptions: function() {
-    var options = {};
+    let options = {};
 
     try {
       if ('stream' in config.log.options) {

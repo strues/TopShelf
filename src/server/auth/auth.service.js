@@ -8,9 +8,9 @@ import compose from 'composable-middleware';
 import _ from 'lodash';
 import moment from 'moment';
 import expressJwt from 'express-jwt';
+import User from '../api/user/user.model';
 
-let config = require('../config/environment'),
-  User = require('../api/user/user.model');
+let config = require('../config/environment');
 
 let validateJwt = expressJwt({
   secret: config.session.secret
@@ -112,19 +112,6 @@ function appendUser() {
     });
 }
 
-function ensureAuthorized(req, res, next) {
-  let bearerToken;
-  let bearerHeader = req.headers.authorization;
-  if (typeof bearerHeader !== 'undefined') {
-    let bearer = bearerHeader.split(" ");
-    bearerToken = bearer[1];
-    req.token = bearerToken;
-    next();
-  } else {
-    res.sendStatus(403);
-  }
-}
-
 module.exports = {
 
   /**
@@ -150,7 +137,5 @@ module.exports = {
    * @type {Object}
    */
 
-  appendUser: appendUser,
-
-  ensureAuthorized: ensureAuthorized
+  appendUser: appendUser
 };

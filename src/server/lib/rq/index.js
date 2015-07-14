@@ -1,8 +1,8 @@
 import http from 'http';
 import https from 'https';
 
-function responseHandler (res, done) {
-  var data = '';
+function responseHandler(res, done) {
+  let data = '';
 
   res.on('data', (chunk) => {
     data += chunk;
@@ -16,7 +16,7 @@ function responseHandler (res, done) {
 
 module.exports = {
   oauth: (host, path, token, done) => {
-    var rq = https.request({
+    let rq = https.request({
         host: host,
         path: path + '?access_token=' + token,
         port: 443,
@@ -31,7 +31,7 @@ module.exports = {
     rq.end();
   },
   bnet: (host, path, done) => {
-    var rq = http.request({
+    let rq = http.request({
         host: host,
         path: path,
         port: 80,

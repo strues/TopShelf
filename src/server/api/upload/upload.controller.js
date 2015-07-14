@@ -1,31 +1,28 @@
-'use strict';
-
-var _ = require('lodash');
-var Upload = require('./upload.model');
-var User = require('../user/user.model');
-var mongoose = require('mongoose');
-var config = require('../../config/environment');
-var busboy = require('connect-busboy');
-var fs = require('fs-extra');
-var path = require('path');
+import _ from 'lodash';
+import Upload from './upload.model';
+import * as config from '../../config/environment';
+import fs from 'fs-extra';
+import path from 'path';
+import reportError from '../../lib/errors/reporter';
+import errors from '../../lib/errors';
 
 exports.all = function(req, res) {
   Upload.find(function(err, uploads) {
     if (err) {
-      return handleError(res, err);
+      return reportError(err);
     }
     return res.status(200).json(uploads);
   });
 };
 
 // Get a single admin-file
-exports.show = function(req, res) {
+exports.show = function(req, res, next) {
   Upload.findById(req.params.id, function(err, upload) {
     if (err) {
-      return handleError(res, err);
+      return reportError(err);
     }
     if (!upload) {
-      return res.send(404);
+      return next(new errors.NotFound('Unable to find a matching upload'));
     }
     return res.json(upload);
   });
@@ -34,7 +31,7 @@ exports.show = function(req, res) {
 // Creates a new admin-file in the DB.
 exports.create = function(req, res) {
 
-  var fstream;
+  let fstream;
   req.pipe(req.busboy);
   req.busboy.on('file', function(fieldname, file, filename) {
     if (filename.length === 0) {
@@ -47,15 +44,13 @@ exports.create = function(req, res) {
     console.log('Uploading: ' + filename);
 
     // create 'uploads' folder if it doesn't exist
-    var filePath = path.join(config.root, '/client/uploads');
+    let filePath = path.join(config.root, '/client/uploads');
     fs.exists(filePath, function(exists) {
       if (!exists) {
         fs.mkdir(filePath);
       }
-
-      // create '<username>' folder if it doesn't exist
       filePath = path.join(config.root, '/client/uploads');
-      fs.exists(filePath, function(exists) {
+      fs.exists(filePath, function() {
         if (!exists) {
           fs.mkdir(filePath);
         }
@@ -73,12 +68,12 @@ exports.create = function(req, res) {
             isPrivate: false,
             description: req.body.description,
             user: req.user
-          }).save(function(err, file) {
+          })
+          .save(function(err) {
             if (err) {
-              console.log(err);
+              return reportError(err);
             }
-
-            res.sendStatus(201);
+            res.status(201).send('Okay');
           });
         });
       });
@@ -87,47 +82,40 @@ exports.create = function(req, res) {
 };
 
 // Updates an existing admin-file in the DB.
-exports.update = function(req, res) {
-  var uploadUpdates = req.body;
+exports.update = function(req, res, next) {
+  let uploadUpdates = req.body;
   //get the original from db
   Upload.findOne({
     _id: req.params.id
-  }).exec(function(err, uploadToEdit) {
+  })
+  .exec(function(err, uploadToEdit) {
     uploadToEdit.url = uploadUpdates.url;
     uploadToEdit.alt = uploadUpdates.alt;
     uploadToEdit.caption = uploadUpdates.caption;
     uploadToEdit.title = uploadUpdates.title;
-
-    uploadToEdit.save(function(err) {
+    uploadToEdit.save(function() {
       if (err) {
-        res.sendStatus(400);
-        return res.send({
-          reason: err.toString()
-        });
+        return next(new errors.NotFound('There was a problem with your request'));
       }
-      res.send(uploadToEdit);
+      res.status(204).send(uploadToEdit);
     });
   });
 };
 
 // Deletes a admin-file from the DB.
-exports.destroy = function(req, res) {
+exports.destroy = function(req, res, next) {
   Upload.findById(req.params.id, function(err, upload) {
     if (err) {
-      return handleError(res, err);
+      return reportError(err);
     }
     if (!upload) {
-      return res.send(404);
+      return next(new errors.NotFound('Unable to find a matching upload'));
     }
-    upload.remove(function(err) {
+    upload.remove(function() {
       if (err) {
-        return handleError(res, err);
+        return reportError(err);
       }
       return res.sendStatus(204);
     });
   });
 };
-
-function handleError(res, err) {
-  return res.send(500, err);
-}

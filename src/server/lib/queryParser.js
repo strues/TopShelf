@@ -23,8 +23,7 @@ exports.getConditions = function(query, options) {
   return _.omit(_.defaults(conditions, options), value => {
     if (value === 'any') {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   });

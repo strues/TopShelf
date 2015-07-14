@@ -182,7 +182,7 @@ UserController.list = (req, res, next) => {
  * @return {User}        The user
  */
 UserController.me = (req, res, next) => {
-  let userId = req.user.id;
+  let userId = req.user._id;
   User.findOne({
     _id: userId // don't ever give out the password or salt
   }, '-salt -hashedPassword', (err, user) => {
