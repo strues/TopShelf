@@ -54,7 +54,8 @@
         views: {
           'workspace@admin': {
             templateUrl: 'app/admin/users/users.html',
-            controller: 'UserCtrl as uctrl'
+            controller: 'UserCtrl as uctrl',
+            hasPermission: 'manageUsers'
           }
         }
       })

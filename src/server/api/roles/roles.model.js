@@ -50,7 +50,7 @@ let RolesSchema = new Schema({
       type: Boolean,
       default: false
     },
-    manageRecruitmentThread: {
+    manageRecruitmentThreads: {
       type: Boolean,
       default: false
     },

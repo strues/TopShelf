@@ -169,6 +169,20 @@
           });
       },
 
+      isLoggedInAsync: function(cb) {
+              if(currentUser.hasOwnProperty('$promise')) {
+                currentUser.$promise.then(function() {
+                  cb(true);
+                }).catch(function() {
+                  cb(false);
+                });
+              } else if(currentUser.hasOwnProperty('role')) {
+                cb(true);
+              } else {
+                cb(false);
+              }
+            },
+
       /**
        * @ngdoc function
        * @name isAdmin
