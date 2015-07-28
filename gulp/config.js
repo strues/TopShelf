@@ -48,6 +48,7 @@ module.exports = function() {
         index: client + 'index.html',
         // app js, with no specs
         js: [
+          //  temp + '**/*.js',
             ngApp + '**/*.module.js',
             ngApp + '**/*.js',
             temp + 'templates.js',

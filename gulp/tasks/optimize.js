@@ -47,5 +47,6 @@ gulp.task('optimize',  function() {
         quotes: true,
         collapse: true
       }))
-      .pipe(gulp.dest(config.build + 'client/'));
+      .pipe(gulp.dest(config.build + 'client/'))
+      .pipe(plg.size({ title: path.join(config.build, '/client'), showFiles: true }));
 });

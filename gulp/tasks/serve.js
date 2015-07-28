@@ -25,7 +25,6 @@ gulp.task('runapp', function() {
         '.tmp/**',
         '.vagrant/**',
         'src/client/**',
-        'vm/**',
         'src/server/logs/**',
         '.git/**',
         'node_modules/**',
@@ -44,7 +43,7 @@ gulp.task('runapp', function() {
 //   selector: '[ng-app]'// Only needed for angular apps
 // }));
 
-gulp.task('serve', ['sass', 'inject', 'runapp'], function() {
+gulp.task('serve', ['sass', /*'scripts:watch', */'inject', 'runapp'], function() {
 
   browserSync.init({
     proxy: {

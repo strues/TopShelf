@@ -15,7 +15,7 @@ function isOnlyChange(event) {
   return event.type === 'changed';
 }
 
-gulp.task('watch', ['serve'], function() {
+gulp.task('watch', ['scripts:watch', 'serve'], function() {
 
   process.env.ENVIRONMENT_TYPE = 'development';
 

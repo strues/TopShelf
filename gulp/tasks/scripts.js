@@ -13,8 +13,49 @@ var gulp         = require('gulp'),
                             lazy: true}),
     config        = require('../config')(),
     handleErrors  = require('../util/error'),
+    path          = require('path'),
     ngFS          = require('gulp-angular-filesort'),
     header        = require('../util/header');
+
+function webpack(watch, callback) {
+  var webpackOptions = {
+    watch: watch,
+    module: {
+      preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'}],
+      loaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}]
+    },
+    output: {
+        path: __dirname,
+        filename: 'bundle.js'
+    }
+  };
+
+  if(watch) {
+    webpackOptions.devtool = 'inline-source-map';
+  }
+
+  var webpackChangeHandler = function(err, stats) {
+    if(err) {
+      conf.errorHandler('Webpack')(err);
+    }
+    plg.util.log(stats.toString({
+      colors: plg.util.colors.supportsColor,
+      chunks: false,
+      hash: false,
+      version: false
+    }));
+    browserSync.reload();
+    if(watch) {
+      watch = false;
+      callback();
+    }
+  };
+
+  return gulp.src(path.join(config.ngApp, '/app.module.js'))
+    .pipe(plg.webpack(webpackOptions, null, webpackChangeHandler))
+    .pipe(gulp.dest(path.join(config.temp, '/app')));
+}
+
 
 gulp.task('scripts:build', function() {
   var options = {
@@ -43,4 +84,12 @@ gulp.task('server:build', function() {
     .src(config.serverJS)
     .pipe(plg.babel(options))
     .pipe(gulp.dest(config.build + 'server'));
+});
+
+gulp.task('scripts', function () {
+  return webpack(false);
+});
+
+gulp.task('scripts:watch', ['scripts'], function (callback) {
+  return webpack(true, callback);
 });

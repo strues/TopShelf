@@ -10,7 +10,7 @@ import moment from 'moment';
 import expressJwt from 'express-jwt';
 import User from '../api/user/user.model';
 import Roles from '../api/roles/roles.model';
-
+import errors from '../lib/errors';
 let config = require('../config/environment');
 
 let validateJwt = expressJwt({
@@ -25,9 +25,15 @@ function isAuthenticated() {
   return compose()
     // Validate jwt
     .use(function(req, res, next) {
-      // allow access_token to be passed through query parameter as well
-      if (req.query && req.query.hasOwnProperty('access_token') && typeof req.query.access_token === 'string') {
-        req.headers.authorization = 'Bearer ' + req.query.access_token;
+      if (!req.headers.authorization) {
+        // allow access_token to be passed through query parameter or cookie as well
+        if (req.query && req.query.hasOwnProperty('access_token')) {
+          req.headers.authorization = 'Bearer ' + req.query.access_token;
+        } else if (req.cookies.token) {
+          try {
+            req.headers.authorization = 'Bearer ' + JSON.parse(req.cookies.token);
+          } finally {}
+        }
       }
       validateJwt(req, res, next);
     })
@@ -38,10 +44,10 @@ function isAuthenticated() {
           return next(err);
         }
         if (!user) {
-          return res.send(401);
+          return next(new errors.Unauthorized('Insufficient access.'));
         }
         if (!user.enabled) {
-          return res.send(401);
+          return next(new errors.Unauthorized('Insufficient access.'));
         }
         req.user = user;
         next();
@@ -70,15 +76,16 @@ function signToken(id, role) {
  * @return {ServerResponse}
  */
 function hasRole(roleRequired) {
-  if (!roleRequired) throw new Error('Required role needs to be set');
-
+  if (!roleRequired) {
+    throw new Error('Required role needs to be set');
+  }
   return compose()
     .use(isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
       if (config.userRoles.indexOf(req.user.role) >= config.userRoles.indexOf(roleRequired)) {
         next();
       } else {
-        res.send(403);
+        return next(new errors.Forbidden('Insufficient access.'));
       }
     });
 }
@@ -131,13 +138,12 @@ function hasPermission(permissionName) {
         role: req.user.role
       }, function(error, found) {
         if (!found) {
-          res.send(403);
-          return false;
+          return next(new errors.Forbidden('Insufficient access.'));
         }
         if (found.permissions[permissionName] || found.permissions.allPrivilages) {
           next();
         } else {
-          res.send(403);
+          return next(new errors.Forbidden('Insufficient access.'));
         }
       });
     });
